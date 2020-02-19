@@ -9,18 +9,75 @@
 import UIKit
 import QuartzCore
 import SceneKit
+import Alamofire
+import AlamofireImage
+import MaterialComponents.MaterialButtons
+import MaterialComponents.MaterialButtons_Theming
 
 class GameViewController: UIViewController {
 
+    @IBOutlet var headerButton: MDCButton!
+    
+    @IBOutlet var scnView: SCNView!
+    @IBOutlet var headerLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //let viewTabBar = tabBarItem.value(forKey: "view") as? UIView
+        //let imageView = viewTabBar?.subviews[0] as? UIImageView
+        //let label = viewTabBar?.subviews[0] as? UILabel
+        
+        let containerScheme = MDCContainerScheme()
+        
+        //containerScheme.colorScheme.primaryColor = .green
+        
+        let shapeScheme = MDCShapeScheme()
+        // Small Component Shape
+        shapeScheme.smallComponentShape = MDCShapeCategory(cornersWith: .cut, andSize: 4)
+
+        // Medium Component Shape
+        shapeScheme.mediumComponentShape = MDCShapeCategory(cornersWith: .rounded, andSize: 10)
+
+        // Large Component Shape
+        let largeShapeCategory = MDCShapeCategory()
+        let rounded50PercentCorner = MDCCornerTreatment.corner(withRadius: 0.5,
+                                                               valueType: .percentage)
+        let cut8PointsCorner = MDCCornerTreatment.corner(withCut: 8)
+        largeShapeCategory?.topLeftCorner = rounded50PercentCorner
+        largeShapeCategory?.topRightCorner = rounded50PercentCorner
+        largeShapeCategory?.bottomLeftCorner = cut8PointsCorner
+        largeShapeCategory?.bottomRightCorner = cut8PointsCorner
+        shapeScheme.largeComponentShape = largeShapeCategory!
+        
+        
+        containerScheme.shapeScheme = shapeScheme
+        
+        self.headerLabel.text = "Your Ship is STOPPED in Deep Space."
+        self.headerButton.applyTextTheme(withScheme: containerScheme)
+        self.headerButton.applyContainedTheme(withScheme: containerScheme)
+        //self.head
+        
+        //self.tabBarController!.title = "Ship Abracadabra Stopped in Deep Space"
         let scene = SCNScene()
         //imageView.contentMode = .scaleAspectFit
-        let image = UIImage(named: "PIA12348orig.jpg")
-        scene.background.contents = image
+        let image = UIImage(named: "PIA12348orig.jpg")!
         
+        let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
+        
+        self.tabBarController?.title = "Ship Abracadabra"
+        
+        //image!.size = self.view.frame.size
+        
+        scene.background.contents = aspectScaledToFitImage
+        //scene.background.contentsTransform = SCNMatrix4MakeScale(Float(self.view.frame.width), Float(self.view.frame.height), 1)
+        
+        scene.background.wrapS = SCNWrapMode.repeat
+        scene.background.wrapT = SCNWrapMode.repeat
+        
+        //sky.size = sky.texture.size
         let donkeyNode = SCNNode()
+        
         let shipScene = SCNScene(named: "space11.dae")!
 
         let shipSceneChildNodes = shipScene.rootNode.childNodes
@@ -71,7 +128,8 @@ class GameViewController: UIViewController {
         //ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
         
         // retrieve the SCNView
-        let scnView = self.view as! SCNView
+        let scnView = self.scnView!
+        //self.view as! SCNView
         
         // set the scene to the view
         scnView.scene = scene
@@ -80,7 +138,7 @@ class GameViewController: UIViewController {
         scnView.allowsCameraControl = true
         
         // show statistics such as fps and timing information
-        scnView.showsStatistics = true
+        scnView.showsStatistics = false
         
         // configure the view
         scnView.backgroundColor = UIColor.black
@@ -142,4 +200,30 @@ class GameViewController: UIViewController {
         }
     }
 
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
+    }
+    
 }
