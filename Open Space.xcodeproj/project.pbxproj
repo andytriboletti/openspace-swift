@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
+		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
 		6FB0EEF923FDA1A800EA28D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */; };
 		6FB0EEFB23FDA1A800EA28D7 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFA23FDA1A800EA28D7 /* art.scnassets */; };
 		6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
+		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6FB0EEF523FDA1A800EA28D7 /* Open Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FB0EEFA23FDA1A800EA28D7 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */,
 				6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */,
 			);
 			path = images;
@@ -164,6 +167,7 @@
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6FB0EF0223FDA1A900EA28D7 /* Assets.xcassets in Resources */,
+				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,

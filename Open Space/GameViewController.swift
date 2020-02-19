@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
         
         let scene = SCNScene()
         //imageView.contentMode = .scaleAspectFit
-        let image = UIImage(named: "Metal_Weave_003_basecolor.jpg")
+        let image = UIImage(named: "PIA12348orig.jpg")
         scene.background.contents = image
         
         let donkeyNode = SCNNode()
