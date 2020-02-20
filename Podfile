@@ -8,7 +8,6 @@ target 'Open Space' do
   pod 'AlamofireImage'
   pod 'MaterialComponents/Buttons+Theming'
   pod 'MaterialComponents/Buttons'
-  pod 'MaterialComponents'
   pod 'PopupDialog', '~> 1.1'
   pod 'SCLAlertView'
   # Pods for Open Space

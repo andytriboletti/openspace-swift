@@ -77,11 +77,16 @@ class GameViewController: UIViewController {
     
     @objc func shipsAction(_ sender: UIBarButtonItem) {
         
-        self.performSegue(withIdentifier: "selectShip", sender: self)
+        self.performSegue(withIdentifier: "selectShip", sender: sender)
         
-       }
+    }
        
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     
+              
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         baseNode = SCNNode()
