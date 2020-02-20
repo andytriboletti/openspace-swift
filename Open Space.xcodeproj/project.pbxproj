@@ -21,6 +21,8 @@
 		6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */; };
 		6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */; };
 		6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF1123FDA24600EA28D7 /* space11.dae */; };
+		6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296423FEC8620082209D /* space_icon_200.jpg */; };
+		6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */; };
 		6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB587623FE4BA7004263CB /* allgreentree.dae */; };
 		6FDB588323FEB952004263CB /* planet1.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588123FEB952004263CB /* planet1.dae */; };
 		6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588623FEB9B8004263CB /* yellowstar.dae */; };
@@ -47,6 +49,8 @@
 		6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Open Space.entitlements"; sourceTree = "<group>"; };
 		6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipb.dae; sourceTree = "<group>"; };
 		6FB0EF1123FDA24600EA28D7 /* space11.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = space11.dae; sourceTree = "<group>"; };
+		6FD0296423FEC8620082209D /* space_icon_200.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_200.jpg; sourceTree = "<group>"; };
+		6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_1024.jpg; sourceTree = "<group>"; };
 		6FDB587623FE4BA7004263CB /* allgreentree.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = allgreentree.dae; path = "Open Space/3dmodels/tree/allgreentree.dae"; sourceTree = SOURCE_ROOT; };
 		6FDB588123FEB952004263CB /* planet1.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = planet1.dae; sourceTree = "<group>"; };
 		6FDB588623FEB9B8004263CB /* yellowstar.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = yellowstar.dae; sourceTree = "<group>"; };
@@ -87,7 +91,9 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */,
 				6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */,
+				6FD0296423FEC8620082209D /* space_icon_200.jpg */,
 				6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */,
 			);
 			path = images;
@@ -267,6 +273,7 @@
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
 				6FB0EF0223FDA1A900EA28D7 /* Assets.xcassets in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
+				6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
@@ -275,6 +282,7 @@
 				6FDB588323FEB952004263CB /* planet1.dae in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,
+				6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */,
 				6FA52B1F23FE3D3100B16480 /* d.dae in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

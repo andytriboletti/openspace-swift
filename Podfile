@@ -9,6 +9,7 @@ target 'Open Space' do
   pod 'MaterialComponents/Buttons+Theming'
   pod 'MaterialComponents/Buttons'
   pod 'MaterialComponents'
+  pod 'PopupDialog', '~> 1.1'
   # Pods for Open Space
 
 end

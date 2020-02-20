@@ -13,9 +13,49 @@ import Alamofire
 import AlamofireImage
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
+import PopupDialog
 
 class GameViewController: UIViewController {
 
+    @IBAction func headerButtonClicked() {
+        print("header clicked")
+
+        // Prepare the popup assets
+        let title = "Where do you want to navigate to?"
+        //let message = nil
+        _ = UIImage(named: "space_icon_1024.jpg")
+
+        // Create the dialog
+        let popup = PopupDialog(title: title, message: nil, image: nil)
+
+        // Create buttons
+        let buttonOne = CancelButton(title: "Cancel") {
+            print("You canceled the dialog.")
+        }
+
+        // This button will not the dismiss the dialog
+        let buttonTwo = DefaultButton(title: "Earth", dismissOnTap: false) {
+            print("earth")
+        }
+
+        let buttonThree = DefaultButton(title: "Earth Moon", height: 60) {
+            print("earth moon")
+        }
+        let buttonFour = DefaultButton(title: "Mars", height: 60) {
+            print("mars")
+        }
+        let buttonFive = DefaultButton(title: "Spaceship Firefly", height: 60) {
+            print("spaceship")
+        }
+
+        let buttons = [buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive]
+        popup.addButtons(buttons)
+
+        // Present dialog
+        self.present(popup, animated: true, completion: nil)
+        
+    }
+    
     required init?(coder: NSCoder) {
         baseNode = SCNNode()
         super.init(coder: coder)

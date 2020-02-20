@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
+  - DynamicBlurView (4.0.0)
   - MaterialComponents (105.0.1):
     - MaterialComponents/ActionSheet (= 105.0.1)
     - "MaterialComponents/ActionSheet+Theming (= 105.0.1)"
@@ -594,6 +595,8 @@ PODS:
   - MotionAnimator (2.8.1):
     - MotionInterchange (~> 1.6)
   - MotionInterchange (1.6.0)
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -601,26 +604,31 @@ DEPENDENCIES:
   - MaterialComponents
   - MaterialComponents/Buttons
   - "MaterialComponents/Buttons+Theming"
+  - PopupDialog (~> 1.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - DynamicBlurView
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
     - MotionAnimator
     - MotionInterchange
+    - PopupDialog
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   MaterialComponents: cfc2fbc3a380238821ea1786d237e21b32d8514e
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
 
-PODFILE CHECKSUM: a4f1e7805a810483f019493528d18ba5001a14c6
+PODFILE CHECKSUM: fea663d4831f8b48e1dd99d22312d9f991f581c3
 
 COCOAPODS: 1.9.0.beta.3
