@@ -13,21 +13,21 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ah-VH-Hs3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-Bc-blZ">
-                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="54" width="375" height="564"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxG-s4-Txb">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qI-U9-j7b" customClass="MDCButton">
-                                        <rect key="frame" x="0.0" y="34" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="34" width="375" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" title="Navigate To..."/>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-G8-uET">
-                                        <rect key="frame" x="0.0" y="88" width="414" height="627"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="476"/>
                                     </sceneKitView>
                                 </subviews>
                             </stackView>
