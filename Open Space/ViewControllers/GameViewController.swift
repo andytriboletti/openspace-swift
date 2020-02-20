@@ -132,7 +132,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
+        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
         //let viewTabBar = tabBarItem.value(forKey: "view") as? UIView
