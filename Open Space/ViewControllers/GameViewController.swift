@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
         }
 
         // This button will not the dismiss the dialog
-        let buttonTwo = DefaultButton(title: "Earth", dismissOnTap: false) {
+        let buttonTwo = DefaultButton(title: "Earth") {
             print("earth")
         }
 
@@ -121,13 +121,23 @@ class GameViewController: UIViewController {
         scene.background.wrapT = SCNWrapMode.repeat
         
         
-        addObject(name: "space11.dae", position: nil, scale: nil)
+        addObject(name: "space11.dae", position: nil, scale: SCNVector3(10.0,10.0,10.0))
         //addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500))
         addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500), scale: nil)
-        addObject(name: "starregular.dae", position: SCNVector3(00,500,500), scale: SCNVector3(5,5,5))
+        
+        addObject(name: "mars.dae", position: SCNVector3(-1000,-100,-10), scale: SCNVector3(3,3,3))
+        
+        
+        
+        addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
 
         addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
+        
+        
+        //static asteroid
+        addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
        
+        
         let shipScenec = SCNScene(named: "a.dae")!
 
         let shipSceneChildNodesc = shipScenec.rootNode.childNodes
