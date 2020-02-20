@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */; };
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
+		6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A523FEF1B100D767E0 /* Assets.xcassets */; };
 		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
 		6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
 		6F9C596423FE1BDF00808386 /* a.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C596323FE1BDF00808386 /* a.dae */; };
@@ -17,7 +18,6 @@
 		6FB0EEF923FDA1A800EA28D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */; };
 		6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */; };
 		6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */; };
-		6FB0EF0223FDA1A900EA28D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0123FDA1A900EA28D7 /* Assets.xcassets */; };
 		6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */; };
 		6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */; };
 		6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF1123FDA24600EA28D7 /* space11.dae */; };
@@ -38,6 +38,7 @@
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
+		6F7380A523FEF1B100D767E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F9C596323FE1BDF00808386 /* a.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = a.dae; path = "Open Space/3dmodels/asteroids/a.dae"; sourceTree = SOURCE_ROOT; };
@@ -47,7 +48,6 @@
 		6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6FB0EEFF23FDA1A800EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6FB0EF0123FDA1A900EA28D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FB0EF0423FDA1A900EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FB0EF0623FDA1A900EA28D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Open Space.entitlements"; sourceTree = "<group>"; };
@@ -99,6 +99,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6F7380A523FEF1B100D767E0 /* Assets.xcassets */,
 				6FD0296C23FED5A80082209D /* 2k_mars.jpg */,
 				6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */,
 				6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */,
@@ -151,7 +152,6 @@
 				6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */,
 				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
 				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
-				6FB0EF0123FDA1A900EA28D7 /* Assets.xcassets */,
 				6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */,
 				6FB0EF0623FDA1A900EA28D7 /* Info.plist */,
 				6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */,
@@ -291,8 +291,8 @@
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
+				6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
-				6FB0EF0223FDA1A900EA28D7 /* Assets.xcassets in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
 				6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
