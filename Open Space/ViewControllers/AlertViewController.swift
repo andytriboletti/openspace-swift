@@ -13,14 +13,13 @@ import DynamicBlurView
 class AlertViewController: UIViewController {
     @IBOutlet var cancelButton: MDCButton!
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
         self.cancelButton.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.cancelButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
     }
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        appDelegate.blurView?.removeFromSuperview()
 
     }
 }

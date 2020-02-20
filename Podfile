@@ -11,10 +11,7 @@ target 'Open Space' do
   pod 'MaterialComponents'
   pod 'PopupDialog', '~> 1.1'
   pod 'SCLAlertView'
-  pod "PopUpCollectionView"
   # Pods for Open Space
 
 end
 platform :ios, '13.2'
-pod 'SCLAlertView'
-pod "PopUpCollectionView"

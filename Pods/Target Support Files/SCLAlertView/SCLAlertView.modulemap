@@ -1,5 +1,5 @@
 framework module SCLAlertView {
-  umbrella header "SCLAlertView-framework-umbrella.h"
+  umbrella header "SCLAlertView-umbrella.h"
 
   export *
   module * { export * }

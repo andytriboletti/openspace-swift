@@ -19,11 +19,6 @@ import DynamicBlurView
 
 class GameViewController: UIViewController {
 
-    
-    required init?(coder: NSCoder) {
-        baseNode = SCNNode()
-        super.init(coder: coder)
-    }
     @IBOutlet var headerButton: MDCButton!
     
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
@@ -82,71 +77,20 @@ class GameViewController: UIViewController {
     
     @objc func shipsAction(_ sender: UIBarButtonItem) {
         
-        appDelegate.blurView = DynamicBlurView(frame: view.bounds)
-        appDelegate.blurView!.blurRadius = 8
-        self.view.addSubview(appDelegate.blurView!)
+        self.performSegue(withIdentifier: "selectShip", sender: self)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let myAlert = storyboard.instantiateViewController(withIdentifier: "alert")
-        myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.present(myAlert, animated: true, completion: nil)
-        
-//
-//        let alertView = SCLAlertView()
-//        alertView.addButton("First Button", target:self, selector:Selector("firstButton"))
-//        alertView.addButton("Second Button") {
-//            print("Second button tapped")
-//        }
-//        alertView.showCustom("String", subTitle: "String", color: .green, icon: UIImage(named: "rocket_1024.png")!)
-//
-        
-        
-//
-//        // Prepare the popup assets
-//        let title = "Which Spaceship do you want to control?"
-//        let icon = UIImage(named: "rocket_1024.png")
-//
-//        let popup = PopupDialog(title: title, message: nil, image: icon)
-//
-//        let buttonOne = CancelButton(title: "Cancel") {
-//            print("You canceled the dialog.")
-//        }
-//
-//        // This button will not the dismiss the dialog
-//        let buttonTwo = DefaultButton(title: "Abracadabra (selected)") {
-//            print("abra")
-//        }
-//
-//        // This button will not the dismiss the dialog
-//        let buttonThree = DefaultButton(title: "Firefly") {
-//            print("firefly")
-//        }
-//
-//
-//        let buttons = [buttonOne, buttonTwo, buttonThree]
-//        popup.addButtons(buttons)
-//
-//        // Present dialog
-//        self.present(popup, animated: true, completion: nil)
-//
-//
        }
        
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        baseNode = SCNNode()
+
         let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
-        //let viewTabBar = tabBarItem.value(forKey: "view") as? UIView
-        //let imageView = viewTabBar?.subviews[0] as? UIImageView
-        //let label = viewTabBar?.subviews[0] as? UILabel
-        
-        
-        
-        self.headerLabel.text = "Your Ship is STOPPED in Deep Space."
+        //self.headerLabel.text = "Your Ship is STOPPED in Deep Space."
+        self.headerLabel.text = "You are near Mars. You are stopped."
         self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
         //self.head
