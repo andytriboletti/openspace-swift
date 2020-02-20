@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SceneKit
+import SpriteKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,3 +41,103 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+public extension UIBezierPath {
+    
+    var elements: [PathElement] {
+        var pathElements = [PathElement]()
+        withUnsafeMutablePointer(to: &pathElements) { elementsPointer in
+            cgPath.apply(info: elementsPointer) { (userInfo, nextElementPointer) in
+                let nextElement = PathElement(element: nextElementPointer.pointee)
+                let elementsPointer = userInfo!.assumingMemoryBound(to: [PathElement].self)
+                elementsPointer.pointee.append(nextElement)
+            }
+        }
+        return pathElements
+    }
+}
+
+public enum PathElement {
+    
+    case moveToPoint(CGPoint)
+    case addLineToPoint(CGPoint)
+    case addQuadCurveToPoint(CGPoint, CGPoint)
+    case addCurveToPoint(CGPoint, CGPoint, CGPoint)
+    case closeSubpath
+    
+    init(element: CGPathElement) {
+        switch element.type {
+        case .moveToPoint: self = .moveToPoint(element.points[0])
+        case .addLineToPoint: self = .addLineToPoint(element.points[0])
+        case .addQuadCurveToPoint: self = .addQuadCurveToPoint(element.points[0], element.points[1])
+        case .addCurveToPoint: self = .addCurveToPoint(element.points[0], element.points[1], element.points[2])
+        case .closeSubpath: self = .closeSubpath
+        @unknown default:
+            fatalError()
+        }
+    }
+}
+
+let animationDuration = 2.0
+
+public extension SCNAction {
+    
+    class func moveAlong(path: UIBezierPath) -> SCNAction {
+        
+        let points = path.elements
+        var actions = [SCNAction]()
+        
+        for point in points {
+            
+            switch point {
+            case .moveToPoint(let aaa):
+                let moveAction = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
+                actions.append(moveAction)
+                break
+                
+            case .addCurveToPoint(let aaa, let bbb, let ccc ):
+                let moveAction1 = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
+                let moveAction2 = SCNAction.move(to: SCNVector3(bbb.x, bbb.y, 0), duration: animationDuration)
+                let moveAction3 = SCNAction.move(to: SCNVector3(ccc.x, ccc.y, 0), duration: animationDuration)
+                actions.append(moveAction1)
+                actions.append(moveAction2)
+                actions.append(moveAction3)
+                break
+                
+            case .addLineToPoint(let aaa ):
+                let moveAction = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
+                actions.append(moveAction)
+                break
+                
+            case .addQuadCurveToPoint(let aaa, let bbb ):
+                let moveAction1 = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
+                let moveAction2 = SCNAction.move(to: SCNVector3(bbb.x, bbb.y, 0), duration: animationDuration)
+                actions.append(moveAction1)
+                actions.append(moveAction2)
+                break
+                
+            default:
+                let moveAction = SCNAction.move(to: SCNVector3(0, 0, 0), duration: animationDuration)
+                actions.append(moveAction)
+                break
+            }
+        }
+        return SCNAction.sequence(actions)
+    }
+    
+}
+
+extension SCNNode {
+
+    convenience init(named name: String) {
+        self.init()
+
+        guard let scene = SCNScene(named: name) else {
+            return
+        }
+
+        for childNode in scene.rootNode.childNodes {
+            addChildNode(childNode)
+        }
+    }
+
+}

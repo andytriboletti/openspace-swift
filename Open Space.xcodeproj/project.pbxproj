@@ -12,6 +12,8 @@
 		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
 		6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
 		6F9C596423FE1BDF00808386 /* a.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C596323FE1BDF00808386 /* a.dae */; };
+		6FA52B1D23FE335500B16480 /* b.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FA52B1C23FE335500B16480 /* b.dae */; };
+		6FA52B1F23FE3D3100B16480 /* d.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FA52B1E23FE3D3100B16480 /* d.dae */; };
 		6FB0EEF923FDA1A800EA28D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */; };
 		6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */; };
 		6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F9C596323FE1BDF00808386 /* a.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = a.dae; path = "Open Space/3dmodels/asteroids/a.dae"; sourceTree = SOURCE_ROOT; };
+		6FA52B1C23FE335500B16480 /* b.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = b.dae; sourceTree = "<group>"; };
+		6FA52B1E23FE3D3100B16480 /* d.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = d.dae; sourceTree = "<group>"; };
 		6FB0EEF523FDA1A800EA28D7 /* Open Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,15 @@
 			path = asteroids;
 			sourceTree = "<group>";
 		};
+		6FA52B2023FE3DEF00B16480 /* debris */ = {
+			isa = PBXGroup;
+			children = (
+				6FA52B1E23FE3D3100B16480 /* d.dae */,
+				6FA52B1C23FE335500B16480 /* b.dae */,
+			);
+			path = debris;
+			sourceTree = "<group>";
+		};
 		6FB0EEEC23FDA1A800EA28D7 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 		6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */ = {
 			isa = PBXGroup;
 			children = (
+				6FA52B2023FE3DEF00B16480 /* debris */,
 				6F9C596D23FE1EEF00808386 /* asteroids */,
 				6FB0EF0E23FDA1DF00EA28D7 /* spaceships */,
 			);
@@ -200,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
@@ -208,6 +223,7 @@
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,
+				6FA52B1F23FE3D3100B16480 /* d.dae in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
