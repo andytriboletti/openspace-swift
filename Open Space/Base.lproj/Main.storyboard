@@ -98,11 +98,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DXM-bR-i7A">
-                                <rect key="frame" x="0.0" y="10" width="414" height="822"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DXM-bR-i7A">
+                                <rect key="frame" x="5" y="20" width="404" height="802"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select A Ship To Control" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGH-ht-BXB">
-                                        <rect key="frame" x="98" y="0.0" width="218.5" height="60"/>
+                                        <rect key="frame" x="93" y="0.0" width="218.5" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="pxd-Nl-evg"/>
                                         </constraints>
@@ -111,7 +111,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1QN-ZG-v2O">
-                                        <rect key="frame" x="28" y="70" width="358" height="682"/>
+                                        <rect key="frame" x="51" y="60" width="302" height="682"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aka-AJ-9zj">
                                             <size key="itemSize" width="128" height="128"/>
@@ -131,7 +131,7 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-yg-5Pv" customClass="MDCButton">
-                                        <rect key="frame" x="28" y="762" width="358" height="60"/>
+                                        <rect key="frame" x="28" y="742" width="348" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="SC1-kh-IeD"/>
                                         </constraints>
@@ -144,19 +144,19 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1QN-ZG-v2O" secondAttribute="trailing" constant="28" id="0Ir-eb-3i2"/>
-                                    <constraint firstItem="FPK-yg-5Pv" firstAttribute="leading" secondItem="DXM-bR-i7A" secondAttribute="leading" constant="28" id="BIR-NN-pVn"/>
-                                    <constraint firstAttribute="trailing" secondItem="FPK-yg-5Pv" secondAttribute="trailing" constant="28" id="DCB-xA-iiB"/>
-                                    <constraint firstItem="1QN-ZG-v2O" firstAttribute="leading" secondItem="DXM-bR-i7A" secondAttribute="leading" constant="28" id="ZLL-Qp-SIB"/>
+                                    <constraint firstAttribute="trailing" secondItem="FPK-yg-5Pv" secondAttribute="trailing" constant="28" id="7pj-Gg-jB0"/>
+                                    <constraint firstItem="FPK-yg-5Pv" firstAttribute="leading" secondItem="DXM-bR-i7A" secondAttribute="leading" constant="28" id="Brk-pD-XRv"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DXM-bR-i7A" firstAttribute="top" secondItem="74G-KB-HNS" secondAttribute="top" constant="10" id="KJM-Xv-zca"/>
-                            <constraint firstItem="DXM-bR-i7A" firstAttribute="leading" secondItem="74G-KB-HNS" secondAttribute="leading" id="MEK-hY-Orb"/>
-                            <constraint firstItem="DXM-bR-i7A" firstAttribute="centerY" secondItem="HRE-ux-Heq" secondAttribute="centerY" id="Oki-LE-RAl"/>
-                            <constraint firstItem="74G-KB-HNS" firstAttribute="trailing" secondItem="DXM-bR-i7A" secondAttribute="trailing" id="oAi-B7-22a"/>
+                            <constraint firstItem="DXM-bR-i7A" firstAttribute="top" secondItem="74G-KB-HNS" secondAttribute="top" constant="20" id="GEe-xd-LE1"/>
+                            <constraint firstAttribute="bottom" secondItem="DXM-bR-i7A" secondAttribute="bottom" constant="20" id="JPQ-Ns-akK"/>
+                            <constraint firstItem="74G-KB-HNS" firstAttribute="trailing" secondItem="DXM-bR-i7A" secondAttribute="trailing" constant="5" id="RL7-5u-ie2"/>
+                            <constraint firstItem="DXM-bR-i7A" firstAttribute="centerY" secondItem="HRE-ux-Heq" secondAttribute="centerY" id="Ur1-Jv-ZeA"/>
+                            <constraint firstItem="DXM-bR-i7A" firstAttribute="leading" secondItem="74G-KB-HNS" secondAttribute="leading" constant="5" id="fGK-2V-hu4"/>
+                            <constraint firstItem="DXM-bR-i7A" firstAttribute="centerX" secondItem="HRE-ux-Heq" secondAttribute="centerX" id="nP1-JO-uq6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="74G-KB-HNS"/>
                     </view>
