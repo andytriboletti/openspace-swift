@@ -11,10 +11,12 @@ import SceneKit
 import SpriteKit
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
-
+import DynamicBlurView
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var blurView: DynamicBlurView?
+    
     var containerScheme:MDCContainerScheme!
     var window: UIWindow?
 

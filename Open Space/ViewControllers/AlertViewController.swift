@@ -9,7 +9,7 @@
 import UIKit
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
-
+import DynamicBlurView
 class AlertViewController: UIViewController {
     @IBOutlet var cancelButton: MDCButton!
 
@@ -20,5 +20,7 @@ class AlertViewController: UIViewController {
     }
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        appDelegate.blurView?.removeFromSuperview()
+
     }
 }

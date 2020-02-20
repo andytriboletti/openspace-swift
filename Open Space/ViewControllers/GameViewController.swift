@@ -15,6 +15,7 @@ import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
 import PopupDialog
 import SCLAlertView
+import DynamicBlurView
 
 class GameViewController: UIViewController {
 
@@ -80,6 +81,10 @@ class GameViewController: UIViewController {
       }
     
     @objc func shipsAction(_ sender: UIBarButtonItem) {
+        
+        appDelegate.blurView = DynamicBlurView(frame: view.bounds)
+        appDelegate.blurView!.blurRadius = 8
+        self.view.addSubview(appDelegate.blurView!)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let myAlert = storyboard.instantiateViewController(withIdentifier: "alert")
