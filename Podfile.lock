@@ -597,6 +597,7 @@ PODS:
   - MotionInterchange (1.6.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
+  - SCLAlertView (0.8)
 
 DEPENDENCIES:
   - Alamofire
@@ -605,6 +606,7 @@ DEPENDENCIES:
   - MaterialComponents/Buttons
   - "MaterialComponents/Buttons+Theming"
   - PopupDialog (~> 1.1)
+  - SCLAlertView
 
 SPEC REPOS:
   trunk:
@@ -617,6 +619,7 @@ SPEC REPOS:
     - MotionAnimator
     - MotionInterchange
     - PopupDialog
+    - SCLAlertView
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -628,7 +631,8 @@ SPEC CHECKSUMS:
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: fea663d4831f8b48e1dd99d22312d9f991f581c3
+PODFILE CHECKSUM: c8a39a9def68aead552061e45862a3ebc0860fad
 
 COCOAPODS: 1.9.0.beta.3

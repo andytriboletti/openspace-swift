@@ -9,15 +9,43 @@
 import UIKit
 import SceneKit
 import SpriteKit
+import MaterialComponents.MaterialButtons
+import MaterialComponents.MaterialButtons_Theming
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var containerScheme:MDCContainerScheme!
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        containerScheme = MDCContainerScheme()
+        
+        //containerScheme.colorScheme.primaryColor = .green
+        
+        let shapeScheme = MDCShapeScheme()
+        // Small Component Shape
+        shapeScheme.smallComponentShape = MDCShapeCategory(cornersWith: .cut, andSize: 4)
+
+        // Medium Component Shape
+        shapeScheme.mediumComponentShape = MDCShapeCategory(cornersWith: .rounded, andSize: 10)
+
+        // Large Component Shape
+        let largeShapeCategory = MDCShapeCategory()
+        let rounded50PercentCorner = MDCCornerTreatment.corner(withRadius: 0.5,
+                                                               valueType: .percentage)
+        let cut8PointsCorner = MDCCornerTreatment.corner(withCut: 8)
+        largeShapeCategory?.topLeftCorner = rounded50PercentCorner
+        largeShapeCategory?.topRightCorner = rounded50PercentCorner
+        largeShapeCategory?.bottomLeftCorner = cut8PointsCorner
+        largeShapeCategory?.bottomRightCorner = cut8PointsCorner
+        shapeScheme.largeComponentShape = largeShapeCategory!
+        
+        
+        containerScheme.shapeScheme = shapeScheme
+        
         return true
     }
 
@@ -140,4 +168,15 @@ extension SCNNode {
         }
     }
 
+}
+//extensions
+extension UIViewController {
+    var appDelegate: AppDelegate {
+        return (UIApplication.shared.delegate as? AppDelegate?)!!
+    }
+}
+extension SCNScene {
+    var appDelegate: AppDelegate {
+        return (UIApplication.shared.delegate as? AppDelegate?)!!
+    }
 }

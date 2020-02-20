@@ -10,6 +10,8 @@
 		193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */; };
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
 		6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A523FEF1B100D767E0 /* Assets.xcassets */; };
+		6F7380A823FEF61100D767E0 /* rocket_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A723FEF61100D767E0 /* rocket_1024.png */; };
+		6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */; };
 		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
 		6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
 		6F9C596423FE1BDF00808386 /* a.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C596323FE1BDF00808386 /* a.dae */; };
@@ -39,6 +41,8 @@
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
 		6F7380A523FEF1B100D767E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6F7380A723FEF61100D767E0 /* rocket_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rocket_1024.png; path = Assets.xcassets/AppIcon.appiconset/rocket_1024.png; sourceTree = "<group>"; };
+		6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F9C596323FE1BDF00808386 /* a.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = a.dae; path = "Open Space/3dmodels/asteroids/a.dae"; sourceTree = SOURCE_ROOT; };
@@ -99,6 +103,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6F7380A723FEF61100D767E0 /* rocket_1024.png */,
 				6F7380A523FEF1B100D767E0 /* Assets.xcassets */,
 				6FD0296C23FED5A80082209D /* 2k_mars.jpg */,
 				6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */,
@@ -202,6 +207,7 @@
 			children = (
 				6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */,
 				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
+				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 				6FD0296B23FED5270082209D /* planetveg.dae in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
+				6F7380A823FEF61100D767E0 /* rocket_1024.png in Resources */,
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
@@ -363,6 +370,7 @@
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */,
 				6FB0EEF923FDA1A800EA28D7 /* AppDelegate.swift in Sources */,
+				6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

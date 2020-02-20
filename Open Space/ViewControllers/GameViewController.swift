@@ -14,12 +14,27 @@ import AlamofireImage
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
 import PopupDialog
+import SCLAlertView
 
 class GameViewController: UIViewController {
 
+    
+    required init?(coder: NSCoder) {
+        baseNode = SCNNode()
+        super.init(coder: coder)
+    }
+    @IBOutlet var headerButton: MDCButton!
+    
+    @IBOutlet var spaceShipsButton: UIBarButtonItem!
+    
+    var baseNode:SCNNode!
+    @IBOutlet var scnView: SCNView!
+    @IBOutlet var headerLabel: UILabel!
+    
     @IBAction func headerButtonClicked() {
         print("header clicked")
 
+        
         // Prepare the popup assets
         let title = "Where do you want to navigate to?"
         //let message = nil
@@ -55,51 +70,80 @@ class GameViewController: UIViewController {
         self.present(popup, animated: true, completion: nil)
         
     }
+    @IBAction func showAlertButtonTapped(_ sender: UIButton) {
+
+          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+          let myAlert = storyboard.instantiateViewController(withIdentifier: "alert")
+          myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+          myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+          self.present(myAlert, animated: true, completion: nil)
+      }
     
-    required init?(coder: NSCoder) {
-        baseNode = SCNNode()
-        super.init(coder: coder)
-    }
-    @IBOutlet var headerButton: MDCButton!
+    @objc func shipsAction(_ sender: UIBarButtonItem) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let myAlert = storyboard.instantiateViewController(withIdentifier: "alert")
+        myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(myAlert, animated: true, completion: nil)
+        
+//
+//        let alertView = SCLAlertView()
+//        alertView.addButton("First Button", target:self, selector:Selector("firstButton"))
+//        alertView.addButton("Second Button") {
+//            print("Second button tapped")
+//        }
+//        alertView.showCustom("String", subTitle: "String", color: .green, icon: UIImage(named: "rocket_1024.png")!)
+//
+        
+        
+//
+//        // Prepare the popup assets
+//        let title = "Which Spaceship do you want to control?"
+//        let icon = UIImage(named: "rocket_1024.png")
+//
+//        let popup = PopupDialog(title: title, message: nil, image: icon)
+//
+//        let buttonOne = CancelButton(title: "Cancel") {
+//            print("You canceled the dialog.")
+//        }
+//
+//        // This button will not the dismiss the dialog
+//        let buttonTwo = DefaultButton(title: "Abracadabra (selected)") {
+//            print("abra")
+//        }
+//
+//        // This button will not the dismiss the dialog
+//        let buttonThree = DefaultButton(title: "Firefly") {
+//            print("firefly")
+//        }
+//
+//
+//        let buttons = [buttonOne, buttonTwo, buttonThree]
+//        popup.addButtons(buttons)
+//
+//        // Present dialog
+//        self.present(popup, animated: true, completion: nil)
+//
+//
+       }
+       
     
-    var baseNode:SCNNode!
-    @IBOutlet var scnView: SCNView!
-    @IBOutlet var headerLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
+        self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
         //let viewTabBar = tabBarItem.value(forKey: "view") as? UIView
         //let imageView = viewTabBar?.subviews[0] as? UIImageView
         //let label = viewTabBar?.subviews[0] as? UILabel
         
-        let containerScheme = MDCContainerScheme()
         
-        //containerScheme.colorScheme.primaryColor = .green
-        
-        let shapeScheme = MDCShapeScheme()
-        // Small Component Shape
-        shapeScheme.smallComponentShape = MDCShapeCategory(cornersWith: .cut, andSize: 4)
-
-        // Medium Component Shape
-        shapeScheme.mediumComponentShape = MDCShapeCategory(cornersWith: .rounded, andSize: 10)
-
-        // Large Component Shape
-        let largeShapeCategory = MDCShapeCategory()
-        let rounded50PercentCorner = MDCCornerTreatment.corner(withRadius: 0.5,
-                                                               valueType: .percentage)
-        let cut8PointsCorner = MDCCornerTreatment.corner(withCut: 8)
-        largeShapeCategory?.topLeftCorner = rounded50PercentCorner
-        largeShapeCategory?.topRightCorner = rounded50PercentCorner
-        largeShapeCategory?.bottomLeftCorner = cut8PointsCorner
-        largeShapeCategory?.bottomRightCorner = cut8PointsCorner
-        shapeScheme.largeComponentShape = largeShapeCategory!
-        
-        
-        containerScheme.shapeScheme = shapeScheme
         
         self.headerLabel.text = "Your Ship is STOPPED in Deep Space."
-        self.headerButton.applyTextTheme(withScheme: containerScheme)
-        self.headerButton.applyContainedTheme(withScheme: containerScheme)
+        self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
+        self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
         //self.head
         
         //self.tabBarController!.title = "Ship Abracadabra Stopped in Deep Space"

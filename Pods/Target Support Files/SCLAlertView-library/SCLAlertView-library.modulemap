@@ -1,0 +1,6 @@
+module SCLAlertView {
+  umbrella header "SCLAlertView-library-umbrella.h"
+
+  export *
+  module * { export * }
+}
