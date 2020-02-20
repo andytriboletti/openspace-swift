@@ -20,7 +20,11 @@ import DynamicBlurView
 class GameViewController: UIViewController {
 
     @IBOutlet var headerButton: MDCButton!
-    
+    @IBOutlet var headerButton2: MDCButton!
+
+    @IBOutlet var headerButtonView: UIView!
+    @IBOutlet var headerButton2View: UIView!
+
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
     
     var baseNode:SCNNode!
@@ -94,21 +98,47 @@ class GameViewController: UIViewController {
         let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
-        //self.headerLabel.text = "Your Ship is STOPPED in Deep Space."
-        self.headerLabel.text = "You are near Mars. You are stopped."
+        let nearPlanet = true
+        
+        if(nearPlanet) {
+            self.headerLabel.text = "Your ship 'Centa' is near Mars. It is stopped."
+
+            self.headerButton.isHidden=false
+            self.headerButton2.isHidden=false
+            
+            self.headerButtonView.isHidden=false
+            self.headerButton2View.isHidden=false
+            
+            
+        }
+        else {
+            self.headerLabel.text = "It is stopped."
+            
+            self.headerButton.isHidden=true
+            self.headerButtonView.isHidden=true
+            
+            self.headerButton2.isHidden=false
+            self.headerButton2View.isHidden=false
+            
+        }
         self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        //self.head
+        
+        self.headerButton2.applyTextTheme(withScheme: appDelegate.containerScheme)
+        self.headerButton2.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
         //self.tabBarController!.title = "Ship Abracadabra Stopped in Deep Space"
         let scene = SCNScene()
         //imageView.contentMode = .scaleAspectFit
-        let image = UIImage(named: "PIA12348orig.jpg")!
+        //let backgroundFilename = "PIA12348orig.jpg"
+        //let backgroundFilename = "PIA13005orig.jpg"
+        let backgroundFilename = "PIA15415orig.jpg"
+        let image = UIImage(named: backgroundFilename)!
         
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
         
-        self.tabBarController?.title = "Ship Abracadabra"
+        self.tabBarController?.title = "Centa Viewport"
         
         //image!.size = self.view.frame.size
         
@@ -119,13 +149,18 @@ class GameViewController: UIViewController {
         scene.background.wrapT = SCNWrapMode.repeat
         
         
+        //spaceship facing forward is y = 0 is center
         addObject(name: "space11.dae", position: nil, scale: SCNVector3(10.0,10.0,10.0))
         //addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500))
         addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500), scale: nil)
         
-        addObject(name: "mars.dae", position: SCNVector3(-1000,-100,-10), scale: SCNVector3(3,3,3))
+        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: SCNVector3(5,5,5))
         
+        //static asteroid
+         addObject(name: "a.dae", position: SCNVector3(100,0,-100), scale: SCNVector3(10,10,10))
         
+        //static asteroid
+        //      addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
         
         addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
 
@@ -134,8 +169,7 @@ class GameViewController: UIViewController {
         
         addObject(name: "instantmeshstation2.dae", position: SCNVector3(-1000, 800, 10), scale: SCNVector3(5,5,5))
         
-        //static asteroid
-        addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
+      
        
         
         let shipScenec = SCNScene(named: "a.dae")!

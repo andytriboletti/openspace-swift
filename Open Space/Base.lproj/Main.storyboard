@@ -33,7 +33,7 @@
                                                 <rect key="frame" x="28" y="5" width="358" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                <state key="normal" title="Navigate To..."/>
+                                                <state key="normal" title="Land on Mars"/>
                                                 <connections>
                                                     <action selector="headerButtonClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="Hq8-mv-L7c"/>
                                                 </connections>
@@ -47,8 +47,29 @@
                                             <constraint firstItem="1qI-U9-j7b" firstAttribute="top" secondItem="dhk-8W-d84" secondAttribute="top" constant="5" id="zHB-GX-wh9"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHP-J0-E9c">
+                                        <rect key="frame" x="0.0" y="98" width="414" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPC-a3-AIJ" customClass="MDCButton">
+                                                <rect key="frame" x="28" y="5" width="358" height="44"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                <state key="normal" title="Navigate To..."/>
+                                                <connections>
+                                                    <action selector="headerButtonClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="riB-Ze-Jbt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="centerX" secondItem="DHP-J0-E9c" secondAttribute="centerX" id="8Oq-1o-Yii"/>
+                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="centerY" secondItem="DHP-J0-E9c" secondAttribute="centerY" id="B95-x9-zmi"/>
+                                            <constraint firstAttribute="bottom" secondItem="DPC-a3-AIJ" secondAttribute="bottom" constant="5" id="ERn-2q-W9X"/>
+                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="top" secondItem="DHP-J0-E9c" secondAttribute="top" constant="5" id="JMM-xL-NC2"/>
+                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="leading" secondItem="DHP-J0-E9c" secondAttribute="leading" constant="28" id="OLX-qq-0R2"/>
+                                        </constraints>
+                                    </view>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-G8-uET">
-                                        <rect key="frame" x="0.0" y="98" width="414" height="617"/>
+                                        <rect key="frame" x="0.0" y="162" width="414" height="553"/>
                                     </sceneKitView>
                                 </subviews>
                             </stackView>
@@ -65,6 +86,9 @@
                     <tabBarItem key="tabBarItem" title="Navigation" image="sun.dust" catalog="system" id="Gzf-CG-Pf4" userLabel="Navigation"/>
                     <connections>
                         <outlet property="headerButton" destination="1qI-U9-j7b" id="C3V-mv-zdX"/>
+                        <outlet property="headerButton2" destination="DPC-a3-AIJ" id="mFO-fF-SuK"/>
+                        <outlet property="headerButton2View" destination="DHP-J0-E9c" id="HW4-ZZ-0AA"/>
+                        <outlet property="headerButtonView" destination="dhk-8W-d84" id="lmG-Xo-aZH"/>
                         <outlet property="headerLabel" destination="BxG-s4-Txb" id="iud-lR-nq5"/>
                         <outlet property="scnView" destination="u9e-G8-uET" id="XCw-Ov-1i1"/>
                         <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="Ibv-0z-hje"/>
@@ -120,7 +144,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SFe-PQ-tVa">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shipIdentifier" id="SFe-PQ-tVa">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7in-2h-1xk">

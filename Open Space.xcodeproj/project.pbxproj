@@ -33,6 +33,8 @@
 		6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588623FEB9B8004263CB /* yellowstar.dae */; };
 		6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588823FEBAEF004263CB /* yellowstar100.dae */; };
 		6FDB588B23FEBE06004263CB /* starregular.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588A23FEBE06004263CB /* starregular.dae */; };
+		6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911F823FF427B00255491 /* PIA13005orig.jpg */; };
+		6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911FA23FF435500255491 /* PIA15415orig.jpg */; };
 		6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		6FDB588623FEB9B8004263CB /* yellowstar.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = yellowstar.dae; sourceTree = "<group>"; };
 		6FDB588823FEBAEF004263CB /* yellowstar100.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = yellowstar100.dae; sourceTree = "<group>"; };
 		6FDB588A23FEBE06004263CB /* starregular.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = starregular.dae; sourceTree = "<group>"; };
+		6FE911F823FF427B00255491 /* PIA13005orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA13005orig.jpg; sourceTree = "<group>"; };
+		6FE911FA23FF435500255491 /* PIA15415orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA15415orig.jpg; sourceTree = "<group>"; };
 		6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = instantmeshstation2.dae; path = "Open Space/3dmodels/stations/instantmeshstation2.dae"; sourceTree = SOURCE_ROOT; };
 		E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,11 +107,11 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6FE911F723FF425400255491 /* nasaspace */,
 				6F7380A723FEF61100D767E0 /* rocket_1024.png */,
 				6F7380A523FEF1B100D767E0 /* Assets.xcassets */,
 				6FD0296C23FED5A80082209D /* 2k_mars.jpg */,
 				6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */,
-				6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */,
 				6FD0296423FEC8620082209D /* space_icon_200.jpg */,
 				6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */,
 			);
@@ -233,6 +237,16 @@
 			path = stars;
 			sourceTree = "<group>";
 		};
+		6FE911F723FF425400255491 /* nasaspace */ = {
+			isa = PBXGroup;
+			children = (
+				6FE911FA23FF435500255491 /* PIA15415orig.jpg */,
+				6FE911F823FF427B00255491 /* PIA13005orig.jpg */,
+				6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */,
+			);
+			path = nasaspace;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,6 +309,7 @@
 			files = (
 				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
+				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */,
@@ -302,6 +317,7 @@
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
 				6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
+				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
 				6FD0296B23FED5270082209D /* planetveg.dae in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
