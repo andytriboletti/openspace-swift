@@ -21,6 +21,7 @@
 		6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */; };
 		6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */; };
 		6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF1123FDA24600EA28D7 /* space11.dae */; };
+		6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB587623FE4BA7004263CB /* allgreentree.dae */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Open Space.entitlements"; sourceTree = "<group>"; };
 		6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipb.dae; sourceTree = "<group>"; };
 		6FB0EF1123FDA24600EA28D7 /* space11.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = space11.dae; sourceTree = "<group>"; };
+		6FDB587623FE4BA7004263CB /* allgreentree.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = allgreentree.dae; path = "Open Space/3dmodels/tree/allgreentree.dae"; sourceTree = SOURCE_ROOT; };
 		E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,7 +105,6 @@
 		6FB0EEEC23FDA1A800EA28D7 = {
 			isa = PBXGroup;
 			children = (
-				6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */,
 				6FB0EEF723FDA1A800EA28D7 /* Open Space */,
 				6FB0EEF623FDA1A800EA28D7 /* Products */,
 				4A6CA5CD975451981FEB3438 /* Pods */,
@@ -122,15 +123,15 @@
 		6FB0EEF723FDA1A800EA28D7 /* Open Space */ = {
 			isa = PBXGroup;
 			children = (
+				6FDB587D23FE5EA9004263CB /* ViewControllers */,
 				6F96DE6223FDDE3800BAE0CF /* images */,
 				6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */,
-				6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */,
 				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
-				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
 				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
 				6FB0EF0123FDA1A900EA28D7 /* Assets.xcassets */,
 				6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */,
 				6FB0EF0623FDA1A900EA28D7 /* Info.plist */,
+				6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -138,6 +139,7 @@
 		6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */ = {
 			isa = PBXGroup;
 			children = (
+				6FDB587C23FE5E95004263CB /* tree */,
 				6FA52B2023FE3DEF00B16480 /* debris */,
 				6F9C596D23FE1EEF00808386 /* asteroids */,
 				6FB0EF0E23FDA1DF00EA28D7 /* spaceships */,
@@ -152,6 +154,23 @@
 				6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */,
 			);
 			path = spaceships;
+			sourceTree = "<group>";
+		};
+		6FDB587C23FE5E95004263CB /* tree */ = {
+			isa = PBXGroup;
+			children = (
+				6FDB587623FE4BA7004263CB /* allgreentree.dae */,
+			);
+			path = tree;
+			sourceTree = "<group>";
+		};
+		6FDB587D23FE5EA9004263CB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */,
+				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +239,7 @@
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
 				6FB0EF0223FDA1A900EA28D7 /* Assets.xcassets in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
+				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,
