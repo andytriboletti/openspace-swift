@@ -16,8 +16,13 @@ import MaterialComponents.MaterialButtons_Theming
 
 class GameViewController: UIViewController {
 
+    required init?(coder: NSCoder) {
+        baseNode = SCNNode()
+        super.init(coder: coder)
+    }
     @IBOutlet var headerButton: MDCButton!
     
+    var baseNode:SCNNode!
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
     override func viewDidLoad() {
@@ -75,26 +80,15 @@ class GameViewController: UIViewController {
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
         
-        //sky.size = sky.texture.size
-        let donkeyNode = SCNNode()
         
-        let shipScene = SCNScene(named: "space11.dae")!
+        addObject(name: "space11.dae", position: nil, scale: nil)
+        //addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500))
+        addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500), scale: nil)
+        addObject(name: "starregular.dae", position: SCNVector3(00,500,500), scale: SCNVector3(5,5,5))
 
-        let shipSceneChildNodes = shipScene.rootNode.childNodes
-        for childNode in shipSceneChildNodes {
-            donkeyNode.addChildNode(childNode)
-        }
-        
-        
-        let shipSceneb = SCNScene(named: "spaceshipb.dae")!
-
-        let shipSceneChildNodesb = shipSceneb.rootNode.childNodes
-        for childNode in shipSceneChildNodesb {
-            childNode.position = SCNVector3(00,000,500)
-            donkeyNode.addChildNode(childNode)
-        }
-        //let shipScenec = SCNScene(named: "a.dae")!
-        let shipScenec = SCNScene(named: "d.dae")!
+        addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
+       
+        let shipScenec = SCNScene(named: "a.dae")!
 
         let shipSceneChildNodesc = shipScenec.rootNode.childNodes
         for childNode in shipSceneChildNodesc {
@@ -103,7 +97,7 @@ class GameViewController: UIViewController {
             childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
             childNode.scale = SCNVector3(100, 50, 50)
 
-            donkeyNode.addChildNode(childNode)
+            baseNode.addChildNode(childNode)
 
             let howLongToTravel = 5000
             let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
@@ -127,18 +121,14 @@ class GameViewController: UIViewController {
             
         }
         
-        let shipScened = SCNScene(named: "b.dae")!
 
-        let shipSceneChildNodesd = shipScened.rootNode.childNodes
-        for childNode in shipSceneChildNodesd {
-            childNode.position = SCNVector3(00,000,300)
-            childNode.scale = SCNVector3(50, 50, 50)
-            donkeyNode.addChildNode(childNode)
-        }
+
+    
         
         
         
-        scene.rootNode.addChildNode(donkeyNode)
+        
+        scene.rootNode.addChildNode(baseNode)
         
         //scene.rootNode.addChildNode(scene.rootNode.childNodes)
 
@@ -268,5 +258,21 @@ class GameViewController: UIViewController {
 
         return newImage!
     }
-    
+
+    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
+        let shipScene = SCNScene(named: name)!
+
+         let shipSceneChildNodes = shipScene.rootNode.childNodes
+         for childNode in shipSceneChildNodes {
+             baseNode.addChildNode(childNode)
+            if(position != nil) {
+                childNode.position = position!
+            }
+            if(scale != nil) {
+                childNode.scale = scale!
+            }
+         }
+         
+    }
 }
+
