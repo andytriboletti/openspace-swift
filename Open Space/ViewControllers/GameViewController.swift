@@ -132,7 +132,9 @@ class GameViewController: UIViewController {
         addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
 
         addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
+        //instantmeshstation2.dae
         
+        addObject(name: "instantmeshstation2.dae", position: SCNVector3(-1000, 800, 10), scale: SCNVector3(5,5,5))
         
         //static asteroid
         addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
