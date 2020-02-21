@@ -407,7 +407,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="bottom" secondItem="CJu-p7-VXC" secondAttribute="top" constant="20" id="1Cs-9y-eMY"/>
                                     <constraint firstAttribute="bottom" secondItem="CJu-p7-VXC" secondAttribute="bottom" constant="20" id="3wj-iX-6Qr"/>
