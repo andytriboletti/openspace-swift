@@ -74,7 +74,8 @@ class GameViewController: UIViewController {
         let nearPlanet = true
         
         if(nearPlanet) {
-            self.headerLabel.text = "Your ship 'Centa' is near Mars. It is stopped."
+            
+            self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Mars. It is stopped."
 
             self.headerButton.isHidden=false
             self.headerButton2.isHidden=false
@@ -111,7 +112,7 @@ class GameViewController: UIViewController {
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
         
-        self.tabBarController?.title = "Centa Viewport"
+        self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
         
         //image!.size = self.view.frame.size
         
@@ -123,9 +124,9 @@ class GameViewController: UIViewController {
         
         
         //spaceship facing forward is y = 0 is center
-        addObject(name: "space11.dae", position: nil, scale: SCNVector3(10.0,10.0,10.0))
-        //addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500))
-        addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500), scale: nil)
+        addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10.0,10.0,10.0))
+        
+        addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
         addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: SCNVector3(6,6,6))
         

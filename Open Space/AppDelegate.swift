@@ -16,6 +16,7 @@ import SceneKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var gameState: GameState!
     var blurView: DynamicBlurView?
     
     var containerScheme:MDCContainerScheme!
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         containerScheme = MDCContainerScheme()
         containerScheme.colorScheme.primaryColor = UIColor.green.darker()!
         containerScheme.colorScheme.primaryColorVariant = .green
+        
+        self.gameState = GameState()
         
         let shapeScheme = MDCShapeScheme()
         // Small Component Shape
