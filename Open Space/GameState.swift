@@ -10,7 +10,7 @@ import Foundation
 
 class GameState {
     var currentShipName:String = "Anderik"
-    var currentShipModel:String = "spaceshipb.dae"
+    var currentShipModel:String = "spaceshipb.scn"
     var closestOtherPlayerShipModel:String = "space11.dae"
     var closestOtherPlayerShipName:String = "Centa"
 
