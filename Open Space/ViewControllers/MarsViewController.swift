@@ -16,7 +16,7 @@ class MarsViewController: UIViewController {
     
     var baseNode:SCNNode!
     @IBOutlet var scnView: SCNView!
-
+    
     
     @IBAction func takeOffAction() {
         self.performSegue(withIdentifier: "takeOff", sender: self)
@@ -32,7 +32,7 @@ class MarsViewController: UIViewController {
         
         baseNode = SCNNode()
         let scene = SCNScene()
-
+        
         let backgroundFilename = "PIA01120orig.jpg"
         let image = UIImage(named: backgroundFilename)!
         
@@ -41,18 +41,30 @@ class MarsViewController: UIViewController {
         scene.background.contents = aspectScaledToFitImage
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
-                
-        //addObject(name: "space11.dae", position: nil, scale: SCNVector3(10.0,10.0,10.0))
+        
         
         scene.rootNode.addChildNode(baseNode)
-
+        
+        
+        
+        
+        
         
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         scene.rootNode.addChildNode(cameraNode)
         
         // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+        //increased values for y move object lower to bottom of screen
+        //increase values for x move object to the left
+        //increase values for z move object smaller
+        cameraNode.position = SCNVector3(x: 0, y: 15, z: 50)
+        cameraNode.rotation = SCNVector4(1, 0, 0, 0.1) //slightly rotate so base is pointed away from user
+
+        baseNode.rotation = SCNVector4(0, -1, 0, 3.14/2)
+        //baseNode.runAction(SCNAction.rotateBy(x: 0, y: -1, z: 0, duration: 1))
+        //baseNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
+
         
         // create and add a light to the scene
         let lightNode = SCNNode()
@@ -89,7 +101,9 @@ class MarsViewController: UIViewController {
         
         // configure the view
         scnView.backgroundColor = UIColor.black
-        
+        // add a tap gesture recognizer
+           let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+           scnView.addGestureRecognizer(tapGesture)
         
         
         self.takeOffButton.applyTextTheme(withScheme: appDelegate.containerScheme)
@@ -99,18 +113,45 @@ class MarsViewController: UIViewController {
         let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         self.navigationItem.leftBarButtonItem = shipButton
         
-        // Do any additional setup after loading the view.
+        addObject(name: "flagcool.dae", position:  SCNVector3(1,1,1), scale: nil)
+
+    }
+    @objc
+    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        // retrieve the SCNView
+        }
+    
+    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
+        let shipScene = SCNScene(named: name)!
+        var animationPlayer: SCNAnimationPlayer! = nil
+        
+        let shipSceneChildNodes = shipScene.rootNode.childNodes
+        for childNode in shipSceneChildNodes {
+            if(position != nil) {
+                childNode.position = position!
+            }
+            if(scale != nil) {
+                childNode.scale = scale!
+            }
+            baseNode.addChildNode(childNode)
+            baseNode.scale = SCNVector3(0.50, 0.50, 0.50)
+            baseNode.position = SCNVector3(0,0,0)
+            //print(child.animationKeys)
+            
+            
+        }
+        
+        for key in shipScene.rootNode.animationKeys {
+            // for every animation key
+            animationPlayer = shipScene.rootNode.animationPlayer(forKey: key)
+            
+            self.scnView.scene!.rootNode.addAnimationPlayer(animationPlayer, forKey: key)
+            animationPlayer.play()
+            
+            
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
