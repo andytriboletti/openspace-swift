@@ -231,7 +231,8 @@ class GameViewController: UIViewController {
         
         // show statistics such as fps and timing information
         scnView.showsStatistics = false
-        
+        scnView.autoenablesDefaultLighting=true
+
         // configure the view
         scnView.backgroundColor = UIColor.black
         

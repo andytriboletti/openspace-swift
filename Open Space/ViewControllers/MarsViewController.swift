@@ -94,8 +94,9 @@ class MarsViewController: UIViewController {
         scnView.scene = scene
         
         // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
-        
+        //scnView.allowsCameraControl = true
+        scnView.autoenablesDefaultLighting=true
+
         // show statistics such as fps and timing information
         scnView.showsStatistics = false
         
@@ -114,7 +115,11 @@ class MarsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = shipButton
         
         addObject(name: "flagcool.dae", position:  SCNVector3(1,1,1), scale: nil)
-
+        
+        for _ in 1...50 {
+            //addAsteroid()
+        }
+        
     }
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
@@ -152,6 +157,43 @@ class MarsViewController: UIViewController {
         }
         
     }
-    
+    func addAsteroid(position: SCNVector3? = nil, scale: SCNVector3? = nil) {
+
+        var myScale = scale
+        if(scale == nil) {
+            let minValue = 1
+            let maxValue = 5
+            let xScale = Int.random(in: minValue ..< maxValue)
+            let yScale = Int.random(in: minValue ..< maxValue)
+            let zScale = Int.random(in: minValue ..< maxValue)
+            myScale = SCNVector3(xScale, yScale, zScale)
+        }
+        
+        var myPosition = position
+        if(position == nil) {
+            
+            //not too close, not too far
+            let minValue = 10
+            let maxValue = 100
+            
+
+            var xVal = Int.random(in: minValue ..< maxValue)
+            var yVal = Int.random(in: minValue ..< maxValue)
+            var zVal = Int.random(in: minValue ..< maxValue)
+            //randomly do positive or negative
+            if arc4random_uniform(2) == 0 {
+                xVal = xVal * -1
+            }
+            if arc4random_uniform(2) == 0 {
+                yVal = yVal * -1
+            }
+            if arc4random_uniform(2) == 0 {
+                zVal = zVal * -1
+            }
+            
+            myPosition = SCNVector3(xVal, yVal, zVal)
+        }
+        addObject(name: "a.dae", position: myPosition, scale: myScale)
+    }
     
 }
