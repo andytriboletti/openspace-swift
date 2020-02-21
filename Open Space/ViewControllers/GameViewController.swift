@@ -159,6 +159,10 @@ class GameViewController: UIViewController {
         //static asteroid
          addObject(name: "a.dae", position: SCNVector3(100,0,-100), scale: SCNVector3(10,10,10))
         
+         addObject(name: "instantmeshstation2.scn", position: SCNVector3(-400, -800, -400), scale: SCNVector3(5,5,5))
+          
+        
+         
         //static asteroid
         //      addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
         
@@ -167,10 +171,7 @@ class GameViewController: UIViewController {
         addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
         //instantmeshstation2.dae
         
-        addObject(name: "instantmeshstation2.dae", position: SCNVector3(-1000, 800, 10), scale: SCNVector3(5,5,5))
-        
-      
-       
+ 
         
         let shipScenec = SCNScene(named: "a.dae")!
 

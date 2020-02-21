@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */; };
+		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
 		6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A523FEF1B100D767E0 /* Assets.xcassets */; };
 		6F7380A823FEF61100D767E0 /* rocket_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A723FEF61100D767E0 /* rocket_1024.png */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
+		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
 		6F7380A523FEF1B100D767E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F7380A723FEF61100D767E0 /* rocket_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rocket_1024.png; path = Assets.xcassets/AppIcon.appiconset/rocket_1024.png; sourceTree = "<group>"; };
@@ -194,6 +196,8 @@
 		6FB65B4123FEDAEB008FBEF2 /* stations */ = {
 			isa = PBXGroup;
 			children = (
+				6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */,
+				6F43938D23FF56830007614D /* instantmeshstation2.scn */,
 			);
 			path = stations;
 			sourceTree = "<group>";
@@ -228,7 +232,6 @@
 		6FDB588523FEB990004263CB /* stars */ = {
 			isa = PBXGroup;
 			children = (
-				6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */,
 				6FD0296823FECDD20082209D /* starcrumpled.dae */,
 				6FDB588A23FEBE06004263CB /* starregular.dae */,
 				6FDB588823FEBAEF004263CB /* yellowstar100.dae */,
@@ -316,6 +319,7 @@
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
 				6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */,
+				6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
@@ -533,7 +537,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
@@ -559,7 +563,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
