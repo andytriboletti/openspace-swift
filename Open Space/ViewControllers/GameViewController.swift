@@ -156,8 +156,9 @@ class GameViewController: UIViewController {
         
         addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: SCNVector3(5,5,5))
         
-        //static asteroid
-         addObject(name: "a.dae", position: SCNVector3(100,0,-100), scale: SCNVector3(10,10,10))
+        for _ in 1...50 {
+            addAsteroid()
+        }
         
          addObject(name: "instantmeshstation2.scn", position: SCNVector3(-400, -800, -400), scale: SCNVector3(5,5,5))
           
@@ -344,6 +345,29 @@ class GameViewController: UIViewController {
         return newImage!
     }
 
+    func addAsteroid(position: SCNVector3? = nil, scale: SCNVector3? = nil) {
+
+        var myScale = scale
+        if(scale == nil) {
+            let minValue = 5
+            let maxValue = 70
+            let xScale = Int.random(in: minValue ..< maxValue)
+            let yScale = Int.random(in: minValue ..< maxValue)
+            let zScale = Int.random(in: minValue ..< maxValue)
+            myScale = SCNVector3(xScale, yScale, zScale)
+        }
+        
+        var myPosition = position
+        if(position == nil) {
+            let minValue = -1000
+            let maxValue = 1000
+            let xVal = Int.random(in: minValue ..< maxValue)
+            let yVal = Int.random(in: minValue ..< maxValue)
+            let zVal = Int.random(in: minValue ..< maxValue)
+            myPosition = SCNVector3(xVal, yVal, zVal)
+        }
+        addObject(name: "a.dae", position: myPosition, scale: myScale)
+    }
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
 
