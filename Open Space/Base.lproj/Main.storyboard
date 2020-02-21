@@ -109,36 +109,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="OhC-oh-z3M">
-                                <rect key="frame" x="28" y="393.5" width="358" height="109"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-Eb-NTv">
-                                        <rect key="frame" x="0.0" y="0.0" width="358" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-ms-FfK" customClass="MDCButton">
-                                        <rect key="frame" x="0.0" y="79" width="358" height="30"/>
-                                        <state key="normal" title="Take Off"/>
-                                        <connections>
-                                            <action selector="takeOffAction" destination="Tx7-Uf-egN" eventType="touchUpInside" id="uw8-0z-EHQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HM-3k-odO">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </sceneKitView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-ms-FfK" customClass="MDCButton">
+                                <rect key="frame" x="28" y="782" width="358" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="JUn-vv-1qS"/>
+                                </constraints>
+                                <state key="normal" title="Take Off"/>
+                                <connections>
+                                    <action selector="takeOffAction" destination="Tx7-Uf-egN" eventType="touchUpInside" id="uw8-0z-EHQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="OhC-oh-z3M" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" constant="28" id="Aru-Yr-sZO"/>
-                            <constraint firstItem="OhC-oh-z3M" firstAttribute="centerY" secondItem="gXU-MH-6eG" secondAttribute="centerY" id="PcB-s2-gYw"/>
-                            <constraint firstItem="Trs-eh-ekj" firstAttribute="trailing" secondItem="OhC-oh-z3M" secondAttribute="trailing" constant="28" id="fiC-Zj-WML"/>
-                            <constraint firstItem="OhC-oh-z3M" firstAttribute="centerX" secondItem="gXU-MH-6eG" secondAttribute="centerX" id="jCx-gK-p8J"/>
+                            <constraint firstItem="Trs-eh-ekj" firstAttribute="bottom" secondItem="nBS-ms-FfK" secondAttribute="bottom" constant="20" id="82k-eg-5ti"/>
+                            <constraint firstItem="1HM-3k-odO" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" id="ZrZ-hk-U85"/>
+                            <constraint firstItem="nBS-ms-FfK" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" constant="28" id="g8U-b6-FUW"/>
+                            <constraint firstItem="Trs-eh-ekj" firstAttribute="bottom" secondItem="1HM-3k-odO" secondAttribute="bottom" id="gYP-Nq-RZz"/>
+                            <constraint firstItem="1HM-3k-odO" firstAttribute="top" secondItem="Trs-eh-ekj" secondAttribute="top" id="ibF-em-6Bw"/>
+                            <constraint firstItem="nBS-ms-FfK" firstAttribute="centerX" secondItem="1HM-3k-odO" secondAttribute="centerX" id="rDc-NN-h20"/>
+                            <constraint firstItem="Trs-eh-ekj" firstAttribute="trailing" secondItem="1HM-3k-odO" secondAttribute="trailing" id="rY5-bn-M3x"/>
+                            <constraint firstItem="1HM-3k-odO" firstAttribute="centerX" secondItem="gXU-MH-6eG" secondAttribute="centerX" id="vuI-fh-Cqj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Trs-eh-ekj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Mars" id="TOV-nn-x7X"/>
                     <connections>
+                        <outlet property="scnView" destination="1HM-3k-odO" id="fsl-iu-kyR"/>
                         <outlet property="takeOffButton" destination="nBS-ms-FfK" id="am8-B1-02N"/>
                         <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="a2K-Gh-aKu"/>
                         <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="rQs-aG-VQ2"/>
@@ -382,7 +382,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ibv-0z-hje"/>
+        <segue reference="a2K-Gh-aKu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="folder" catalog="system" width="128" height="95"/>
