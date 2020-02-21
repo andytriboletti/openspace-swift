@@ -196,8 +196,8 @@
 		6FB65B4123FEDAEB008FBEF2 /* stations */ = {
 			isa = PBXGroup;
 			children = (
-				6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */,
 				6F43938D23FF56830007614D /* instantmeshstation2.scn */,
+				6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */,
 			);
 			path = stations;
 			sourceTree = "<group>";
