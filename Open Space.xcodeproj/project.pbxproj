@@ -17,6 +17,8 @@
 		6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A523FEF1B100D767E0 /* Assets.xcassets */; };
 		6F7380A823FEF61100D767E0 /* rocket_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A723FEF61100D767E0 /* rocket_1024.png */; };
 		6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */; };
+		6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */; };
+		6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */; };
 		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
 		6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
 		6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F988A9823FF944100F7ED73 /* flagcool.scn */; };
@@ -59,6 +61,8 @@
 		6F7380A523FEF1B100D767E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F7380A723FEF61100D767E0 /* rocket_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rocket_1024.png; path = Assets.xcassets/AppIcon.appiconset/rocket_1024.png; sourceTree = "<group>"; };
 		6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F988A9823FF944100F7ED73 /* flagcool.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = flagcool.scn; sourceTree = "<group>"; };
@@ -139,6 +143,14 @@
 			path = mars;
 			sourceTree = "<group>";
 		};
+		6F86CC6B24003A94005AECC9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +203,7 @@
 		6FB0EEF723FDA1A800EA28D7 /* Open Space */ = {
 			isa = PBXGroup;
 			children = (
+				6F86CC6B24003A94005AECC9 /* Cells */,
 				6FDB587D23FE5EA9004263CB /* ViewControllers */,
 				6F96DE6223FDDE3800BAE0CF /* images */,
 				6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */,
@@ -255,6 +268,7 @@
 				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
 				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
 				6F43938F23FF6DC60007614D /* MarsViewController.swift */,
+				6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -433,9 +447,11 @@
 			files = (
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
+				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,
 				6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */,
 				6FB0EEF923FDA1A800EA28D7 /* AppDelegate.swift in Sources */,
 				6FA5934924001B42007C16E3 /* PaddingLabel.swift in Sources */,
+				6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */,
 				6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */,
 				6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */,
 				6F6D845D23FF8C8800328057 /* Utils.swift in Sources */,

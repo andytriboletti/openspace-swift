@@ -16,6 +16,7 @@ import SceneKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
     var gameState: GameState!
     var blurView: DynamicBlurView?
     

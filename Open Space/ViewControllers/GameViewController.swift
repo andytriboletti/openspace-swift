@@ -31,13 +31,13 @@ class GameViewController: UIViewController {
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
     
-    @IBAction func headerButtonClicked() {
+    @IBAction func landButtonClicked() {
         print("land on mars")
         self.performSegue(withIdentifier: "landOnMars", sender: self)
         
         
     }
-    @IBAction func headerButton2Clicked() {
+    @IBAction func navigateToClicked() {
         print("where do you want to go")
         self.performSegue(withIdentifier: "selectDestination", sender: self)
         
