@@ -56,6 +56,7 @@
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 <state key="normal" title="Navigate To..."/>
                                                 <connections>
+                                                    <action selector="headerButton2Clicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="rF1-eY-Qu0"/>
                                                     <action selector="headerButtonClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="riB-Ze-Jbt"/>
                                                 </connections>
                                             </button>
@@ -92,11 +93,60 @@
                         <outlet property="headerLabel" destination="BxG-s4-Txb" id="iud-lR-nq5"/>
                         <outlet property="scnView" destination="u9e-G8-uET" id="XCw-Ov-1i1"/>
                         <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="Ibv-0z-hje"/>
+                        <segue destination="vG4-S1-hbb" kind="presentation" identifier="landOnMars" modalPresentationStyle="fullScreen" id="JMa-bL-d6Q"/>
+                        <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" id="JNV-Sx-ib3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3058" y="268"/>
+            <point key="canvasLocation" x="2459" y="86"/>
+        </scene>
+        <!--Mars-->
+        <scene sceneID="01v-20-zf0">
+            <objects>
+                <viewController title="Mars" id="Tx7-Uf-egN" customClass="MarsViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gXU-MH-6eG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="OhC-oh-z3M">
+                                <rect key="frame" x="28" y="393.5" width="358" height="109"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9j-Eb-NTv">
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-ms-FfK" customClass="MDCButton">
+                                        <rect key="frame" x="0.0" y="79" width="358" height="30"/>
+                                        <state key="normal" title="Take Off"/>
+                                        <connections>
+                                            <action selector="takeOffAction" destination="Tx7-Uf-egN" eventType="touchUpInside" id="uw8-0z-EHQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="OhC-oh-z3M" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" constant="28" id="Aru-Yr-sZO"/>
+                            <constraint firstItem="OhC-oh-z3M" firstAttribute="centerY" secondItem="gXU-MH-6eG" secondAttribute="centerY" id="PcB-s2-gYw"/>
+                            <constraint firstItem="Trs-eh-ekj" firstAttribute="trailing" secondItem="OhC-oh-z3M" secondAttribute="trailing" constant="28" id="fiC-Zj-WML"/>
+                            <constraint firstItem="OhC-oh-z3M" firstAttribute="centerX" secondItem="gXU-MH-6eG" secondAttribute="centerX" id="jCx-gK-p8J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Trs-eh-ekj"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mars" id="TOV-nn-x7X"/>
+                    <connections>
+                        <outlet property="takeOffButton" destination="nBS-ms-FfK" id="am8-B1-02N"/>
+                        <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="a2K-Gh-aKu"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="rQs-aG-VQ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Rx-N6-s7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5128" y="-504"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="eNT-fy-uAL">
@@ -112,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZc-7r-Qls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="864"/>
+            <point key="canvasLocation" x="897" y="925"/>
         </scene>
         <!--Alert View Controller-->
         <scene sceneID="44I-5j-bbo">
@@ -125,8 +175,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DXM-bR-i7A">
                                 <rect key="frame" x="5" y="20" width="404" height="802"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select A Ship To Control" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGH-ht-BXB">
-                                        <rect key="frame" x="93" y="0.0" width="218.5" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Ship Do You Want To Control?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGH-ht-BXB">
+                                        <rect key="frame" x="40" y="0.0" width="324.5" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="pxd-Nl-evg"/>
                                         </constraints>
@@ -232,7 +282,108 @@
             </objects>
             <point key="canvasLocation" x="897.75" y="87"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KtF-rl-tq7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vG4-S1-hbb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZmK-3T-stl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Tx7-Uf-egN" kind="relationship" relationship="rootViewController" id="YOT-JB-gTc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0N-G6-edg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4275" y="-504"/>
+        </scene>
+        <!--Where Do You Want To Go?-->
+        <scene sceneID="CRh-oW-hmb">
+            <objects>
+                <viewController storyboardIdentifier="alertWhereDoYouWantToGo" title="Where Do You Want To Go?" id="32f-fL-zJD" customClass="AlertViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GR2-tR-zyE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WTc-Hv-9Wc">
+                                <rect key="frame" x="5" y="20" width="404" height="802"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHc-fd-oa6">
+                                        <rect key="frame" x="77.5" y="0.0" width="249.5" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="aGB-WD-vE4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UID-EJ-Yvy">
+                                        <rect key="frame" x="51" y="60" width="302" height="682"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9hF-fE-YZQ">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shipIdentifier" id="w8W-sg-uiN">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IS0-b8-hg4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJu-p7-VXC" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="742" width="348" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="N2M-aE-STD"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="dismissButtonTapped:" destination="32f-fL-zJD" eventType="touchUpInside" id="ei0-Wa-Qus"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CJu-p7-VXC" secondAttribute="trailing" constant="28" id="7Hr-hm-le6"/>
+                                    <constraint firstItem="CJu-p7-VXC" firstAttribute="leading" secondItem="WTc-Hv-9Wc" secondAttribute="leading" constant="28" id="gho-g8-7gx"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WTc-Hv-9Wc" firstAttribute="centerX" secondItem="GR2-tR-zyE" secondAttribute="centerX" id="0Es-bZ-Qhp"/>
+                            <constraint firstItem="WTc-Hv-9Wc" firstAttribute="centerY" secondItem="GR2-tR-zyE" secondAttribute="centerY" id="1Xb-ly-ivo"/>
+                            <constraint firstAttribute="bottom" secondItem="WTc-Hv-9Wc" secondAttribute="bottom" constant="20" id="Hq2-Sy-7C8"/>
+                            <constraint firstItem="uLq-mR-3fX" firstAttribute="trailing" secondItem="WTc-Hv-9Wc" secondAttribute="trailing" constant="5" id="PV6-wD-QVa"/>
+                            <constraint firstItem="WTc-Hv-9Wc" firstAttribute="top" secondItem="uLq-mR-3fX" secondAttribute="top" constant="20" id="p18-Nw-GZX"/>
+                            <constraint firstItem="WTc-Hv-9Wc" firstAttribute="leading" secondItem="uLq-mR-3fX" secondAttribute="leading" constant="5" id="tWA-Og-sUA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uLq-mR-3fX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xA2-pk-32g"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="CJu-p7-VXC" id="Tqe-X2-eII"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="27F-SZ-z6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-726" y="552"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ibv-0z-hje"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="sun.dust" catalog="system" width="128" height="119"/>

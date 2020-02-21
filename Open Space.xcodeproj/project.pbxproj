@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */; };
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
+		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
 		6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A523FEF1B100D767E0 /* Assets.xcassets */; };
 		6F7380A823FEF61100D767E0 /* rocket_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A723FEF61100D767E0 /* rocket_1024.png */; };
@@ -43,6 +44,7 @@
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
+		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
 		6F7380A523FEF1B100D767E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F7380A723FEF61100D767E0 /* rocket_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rocket_1024.png; path = Assets.xcassets/AppIcon.appiconset/rocket_1024.png; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */,
 				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
 				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
+				6F43938F23FF6DC60007614D /* MarsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */,
 				6FB0EEF923FDA1A800EA28D7 /* AppDelegate.swift in Sources */,
+				6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */,
 				6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

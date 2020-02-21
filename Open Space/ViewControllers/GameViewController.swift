@@ -32,42 +32,15 @@ class GameViewController: UIViewController {
     @IBOutlet var headerLabel: UILabel!
     
     @IBAction func headerButtonClicked() {
-        print("header clicked")
-
+        print("land on mars")
+        self.performSegue(withIdentifier: "landOnMars", sender: self)
         
-        // Prepare the popup assets
-        let title = "Where do you want to navigate to?"
-        //let message = nil
-        _ = UIImage(named: "space_icon_1024.jpg")
-
-        // Create the dialog
-        let popup = PopupDialog(title: title, message: nil, image: nil)
-
-        // Create buttons
-        let buttonOne = CancelButton(title: "Cancel") {
-            print("You canceled the dialog.")
-        }
-
-        // This button will not the dismiss the dialog
-        let buttonTwo = DefaultButton(title: "Earth") {
-            print("earth")
-        }
-
-        let buttonThree = DefaultButton(title: "Earth Moon", height: 60) {
-            print("earth moon")
-        }
-        let buttonFour = DefaultButton(title: "Mars", height: 60) {
-            print("mars")
-        }
-        let buttonFive = DefaultButton(title: "Spaceship Firefly", height: 60) {
-            print("spaceship")
-        }
-
-        let buttons = [buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive]
-        popup.addButtons(buttons)
-
-        // Present dialog
-        self.present(popup, animated: true, completion: nil)
+        
+    }
+    @IBAction func headerButton2Clicked() {
+        print("where do you want to go")
+        self.performSegue(withIdentifier: "selectDestination", sender: self)
+        
         
     }
     @IBAction func showAlertButtonTapped(_ sender: UIButton) {
@@ -154,7 +127,7 @@ class GameViewController: UIViewController {
         //addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500))
         addObject(name: "spaceshipb.dae", position: SCNVector3(00,000,500), scale: nil)
         
-        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: SCNVector3(5,5,5))
+        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: SCNVector3(6,6,6))
         
         for _ in 1...50 {
             addAsteroid()
@@ -359,11 +332,26 @@ class GameViewController: UIViewController {
         
         var myPosition = position
         if(position == nil) {
-            let minValue = -1000
+            
+            //not too close, not too far
+            let minValue = 200
             let maxValue = 1000
-            let xVal = Int.random(in: minValue ..< maxValue)
-            let yVal = Int.random(in: minValue ..< maxValue)
-            let zVal = Int.random(in: minValue ..< maxValue)
+            
+
+            var xVal = Int.random(in: minValue ..< maxValue)
+            var yVal = Int.random(in: minValue ..< maxValue)
+            var zVal = Int.random(in: minValue ..< maxValue)
+            //randomly do positive or negative
+            if arc4random_uniform(2) == 0 {
+                xVal = xVal * -1
+            }
+            if arc4random_uniform(2) == 0 {
+                yVal = yVal * -1
+            }
+            if arc4random_uniform(2) == 0 {
+                zVal = zVal * -1
+            }
+            
             myPosition = SCNVector3(xVal, yVal, zVal)
         }
         addObject(name: "a.dae", position: myPosition, scale: myScale)
