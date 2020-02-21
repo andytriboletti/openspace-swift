@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4cu-mg-f7Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4cu-mg-f7Y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -112,6 +112,55 @@
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HM-3k-odO">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </sceneKitView>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-0C-Fzj">
+                                <rect key="frame" x="0.0" y="108" width="414" height="290"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
+                                        <rect key="frame" x="22" y="0.0" width="370" height="80"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="qdO-rn-J2U"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP9-IT-vpA" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="100" width="358" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="cbz-z0-J1g"/>
+                                        </constraints>
+                                        <state key="normal" title="Spaceport: Build &amp; Repair Ships"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s13-Zs-hVV" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="170" width="358" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="wne-Vm-tth"/>
+                                        </constraints>
+                                        <state key="normal" title="Trading Post: Buy &amp; Sell Goods"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-34-oAg" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="240" width="358" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aOD-yr-mIh"/>
+                                        </constraints>
+                                        <state key="normal" title="Explore: Find Resources"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iP9-IT-vpA" secondAttribute="trailing" constant="28" id="0TU-YX-ZPT"/>
+                                    <constraint firstItem="XeF-ym-5aq" firstAttribute="centerX" secondItem="uGk-0C-Fzj" secondAttribute="centerX" id="5GR-nh-fxL"/>
+                                    <constraint firstItem="35Y-34-oAg" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="Cqe-5S-Q3Y"/>
+                                    <constraint firstItem="s13-Zs-hVV" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="MZG-6T-ZVJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="s13-Zs-hVV" secondAttribute="trailing" constant="28" id="WAc-SJ-l1c"/>
+                                    <constraint firstAttribute="trailing" secondItem="35Y-34-oAg" secondAttribute="trailing" constant="28" id="eTo-Sn-NZR"/>
+                                    <constraint firstItem="iP9-IT-vpA" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="kO9-L8-E7C"/>
+                                    <constraint firstItem="iP9-IT-vpA" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="pR3-Pz-rBL"/>
+                                    <constraint firstAttribute="trailing" secondItem="iP9-IT-vpA" secondAttribute="trailing" constant="28" id="shd-Ba-sRe"/>
+                                </constraints>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-ms-FfK" customClass="MDCButton">
                                 <rect key="frame" x="28" y="782" width="358" height="60"/>
                                 <constraints>
@@ -126,6 +175,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Trs-eh-ekj" firstAttribute="bottom" secondItem="nBS-ms-FfK" secondAttribute="bottom" constant="20" id="82k-eg-5ti"/>
+                            <constraint firstItem="uGk-0C-Fzj" firstAttribute="top" secondItem="Trs-eh-ekj" secondAttribute="top" constant="20" id="Naq-fh-ucc"/>
+                            <constraint firstItem="Trs-eh-ekj" firstAttribute="trailing" secondItem="uGk-0C-Fzj" secondAttribute="trailing" id="ObU-tp-q2v"/>
                             <constraint firstItem="1HM-3k-odO" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" id="ZrZ-hk-U85"/>
                             <constraint firstItem="nBS-ms-FfK" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" constant="28" id="g8U-b6-FUW"/>
                             <constraint firstItem="Trs-eh-ekj" firstAttribute="bottom" secondItem="1HM-3k-odO" secondAttribute="bottom" id="gYP-Nq-RZz"/>
@@ -133,13 +184,18 @@
                             <constraint firstItem="nBS-ms-FfK" firstAttribute="centerX" secondItem="1HM-3k-odO" secondAttribute="centerX" id="rDc-NN-h20"/>
                             <constraint firstItem="Trs-eh-ekj" firstAttribute="trailing" secondItem="1HM-3k-odO" secondAttribute="trailing" id="rY5-bn-M3x"/>
                             <constraint firstItem="1HM-3k-odO" firstAttribute="centerX" secondItem="gXU-MH-6eG" secondAttribute="centerX" id="vuI-fh-Cqj"/>
+                            <constraint firstItem="uGk-0C-Fzj" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" id="xen-R4-Fcd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Trs-eh-ekj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Mars" id="TOV-nn-x7X"/>
                     <connections>
+                        <outlet property="exploreButton" destination="35Y-34-oAg" id="xnO-hc-8Eu"/>
+                        <outlet property="headerLabel" destination="XeF-ym-5aq" id="8Jx-9y-RF8"/>
                         <outlet property="scnView" destination="1HM-3k-odO" id="fsl-iu-kyR"/>
+                        <outlet property="spaceportButton" destination="iP9-IT-vpA" id="elg-D6-Kyb"/>
                         <outlet property="takeOffButton" destination="nBS-ms-FfK" id="am8-B1-02N"/>
+                        <outlet property="tradingPostButton" destination="s13-Zs-hVV" id="Ita-g8-NdN"/>
                         <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="a2K-Gh-aKu"/>
                         <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="rQs-aG-VQ2"/>
                     </connections>
@@ -381,11 +437,11 @@
             <point key="canvasLocation" x="-726" y="552"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="folder" catalog="system" width="64" height="46"/>
+        <image name="sun.dust" catalog="system" width="64" height="58"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="a2K-Gh-aKu"/>
     </inferredMetricsTieBreakers>
-    <resources>
-        <image name="folder" catalog="system" width="128" height="95"/>
-        <image name="sun.dust" catalog="system" width="128" height="119"/>
-    </resources>
 </document>

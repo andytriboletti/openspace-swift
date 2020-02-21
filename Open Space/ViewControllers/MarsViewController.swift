@@ -12,7 +12,15 @@ import MaterialComponents.MaterialButtons_Theming
 import SceneKit
 
 class MarsViewController: UIViewController {
+    @IBOutlet var spaceportButton: MDCButton!
+
+    @IBOutlet var tradingPostButton: MDCButton!
+    
+    @IBOutlet var exploreButton: MDCButton!
+
     @IBOutlet var takeOffButton: MDCButton!
+    
+    @IBOutlet var headerLabel: PaddingLabel!
     
     var baseNode:SCNNode!
     @IBOutlet var scnView: SCNView!
@@ -29,6 +37,11 @@ class MarsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        headerLabel.layer.masksToBounds = true
+        headerLabel.layer.cornerRadius = 35.0
+        headerLabel.layer.borderColor = UIColor.darkGray.cgColor
+        headerLabel.layer.borderWidth = 3.0
         
         baseNode = SCNNode()
         let scene = SCNScene()
@@ -110,6 +123,15 @@ class MarsViewController: UIViewController {
         
         self.takeOffButton.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.takeOffButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
+        
+        self.spaceportButton.applyTextTheme(withScheme: appDelegate.containerScheme)
+        self.spaceportButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
+        
+        self.tradingPostButton.applyTextTheme(withScheme: appDelegate.containerScheme)
+        self.tradingPostButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
+        
+        self.exploreButton.applyTextTheme(withScheme: appDelegate.containerScheme)
+        self.exploreButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
         
         let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
