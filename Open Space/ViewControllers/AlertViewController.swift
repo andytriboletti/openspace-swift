@@ -12,17 +12,7 @@ import MaterialComponents.MaterialButtons_Theming
 import DynamicBlurView
 class AlertViewController: UIViewController {
     @IBOutlet var cancelButton: MDCButton!
-    @objc func shipsAction(_ sender: UIBarButtonItem) {
-        
-        
-       }
-       
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let shipButton = UIBarButtonItem(title: "wtf", style: .done, target: self, action: #selector(shipsAction(_:)))
-              self.navigationItem.leftBarButtonItem = shipButton
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.cancelButton.applyTextTheme(withScheme: appDelegate.containerScheme)
