@@ -27,6 +27,7 @@
 		6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
 		6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F988A9823FF944100F7ED73 /* flagcool.scn */; };
 		6F9C596423FE1BDF00808386 /* a.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C596323FE1BDF00808386 /* a.dae */; };
+		6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FA314682401945D009D77AB /* PIA17563orig.jpg */; };
 		6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA4D33323FFB2CB0088B4A4 /* GameState.swift */; };
 		6FA52B1D23FE335500B16480 /* b.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FA52B1C23FE335500B16480 /* b.dae */; };
 		6FA52B1F23FE3D3100B16480 /* d.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FA52B1E23FE3D3100B16480 /* d.dae */; };
@@ -75,6 +76,7 @@
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F988A9823FF944100F7ED73 /* flagcool.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = flagcool.scn; sourceTree = "<group>"; };
 		6F9C596323FE1BDF00808386 /* a.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = a.dae; path = "Open Space/3dmodels/asteroids/a.dae"; sourceTree = SOURCE_ROOT; };
+		6FA314682401945D009D77AB /* PIA17563orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = PIA17563orig.jpg; path = sourceimages/PIA17563orig.jpg; sourceTree = SOURCE_ROOT; };
 		6FA4D33323FFB2CB0088B4A4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		6FA52B1C23FE335500B16480 /* b.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = b.dae; sourceTree = "<group>"; };
 		6FA52B1E23FE3D3100B16480 /* d.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = d.dae; sourceTree = "<group>"; };
@@ -179,6 +181,17 @@
 				6F9C596323FE1BDF00808386 /* a.dae */,
 			);
 			path = asteroids;
+			sourceTree = "<group>";
+		};
+		6FA314672401943D009D77AB /* space */ = {
+			isa = PBXGroup;
+			children = (
+				6FA314682401945D009D77AB /* PIA17563orig.jpg */,
+				6FE911FA23FF435500255491 /* PIA15415orig.jpg */,
+				6FE911F823FF427B00255491 /* PIA13005orig.jpg */,
+				6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */,
+			);
+			path = space;
 			sourceTree = "<group>";
 		};
 		6FA52B2023FE3DEF00B16480 /* debris */ = {
@@ -308,10 +321,8 @@
 		6FE911F723FF425400255491 /* nasa */ = {
 			isa = PBXGroup;
 			children = (
+				6FA314672401943D009D77AB /* space */,
 				6F6D845923FF8B8E00328057 /* mars */,
-				6FE911FA23FF435500255491 /* PIA15415orig.jpg */,
-				6FE911F823FF427B00255491 /* PIA13005orig.jpg */,
-				6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */,
 			);
 			path = nasa;
 			sourceTree = "<group>";
@@ -406,6 +417,7 @@
 				6FA5934724001043007C16E3 /* spaceshipb.scn in Resources */,
 				6FDB588323FEB952004263CB /* mars.dae in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
+				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,
 				6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */,
 				6FA52B1F23FE3D3100B16480 /* d.dae in Resources */,

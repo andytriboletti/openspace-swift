@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation-->
+        <!--Game-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game" id="BV1-FR-VrT" customClass="GameViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ah-VH-Hs3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -19,7 +19,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-Bc-blZ">
                                 <rect key="frame" x="0.0" y="98" width="414" height="715"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxG-s4-Txb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxG-s4-Txb">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -33,7 +33,7 @@
                                                 <rect key="frame" x="28" y="5" width="358" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                <state key="normal" title="Land on Mars"/>
+                                                <state key="normal" title="..."/>
                                                 <connections>
                                                     <action selector="landButtonClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="k4P-Ao-FKO"/>
                                                 </connections>
@@ -54,7 +54,7 @@
                                                 <rect key="frame" x="28" y="5" width="358" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                <state key="normal" title="Navigate To..."/>
+                                                <state key="normal" title="NAVIGATE TO ..."/>
                                                 <connections>
                                                     <action selector="navigateToClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="2VE-0g-mFe"/>
                                                 </connections>
@@ -115,7 +115,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="290"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="29" y="0.0" width="356" height="80"/>
+                                        <rect key="frame" x="22" y="0.0" width="370" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -131,21 +131,21 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cbz-z0-J1g"/>
                                         </constraints>
-                                        <state key="normal" title="Spaceport: Build &amp; Repair Ships"/>
+                                        <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s13-Zs-hVV" customClass="MDCButton">
                                         <rect key="frame" x="28" y="170" width="358" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wne-Vm-tth"/>
                                         </constraints>
-                                        <state key="normal" title="Trading Post: Buy &amp; Sell Goods"/>
+                                        <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-34-oAg" customClass="MDCButton">
                                         <rect key="frame" x="28" y="240" width="358" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aOD-yr-mIh"/>
                                         </constraints>
-                                        <state key="normal" title="Explore: Find Resources"/>
+                                        <state key="normal" title="EXPLORE: SELL RESOURCES"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -165,7 +165,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="JUn-vv-1qS"/>
                                 </constraints>
-                                <state key="normal" title="Take Off"/>
+                                <state key="normal" title="TAKE OFF"/>
                                 <connections>
                                     <action selector="takeOffAction" destination="Tx7-Uf-egN" eventType="touchUpInside" id="uw8-0z-EHQ"/>
                                 </connections>

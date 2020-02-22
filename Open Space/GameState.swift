@@ -9,7 +9,11 @@
 import Foundation
 
 class GameState {
-    var currentShipName:String = "Anderik"
+    var shipNames:Array = ["Anderik", "Eleuz"]
+    var currentShipName:String {
+        let theName = shipNames[1]
+        return theName
+    }
     var currentShipModel:String = "spaceshipb.scn"
     var closestOtherPlayerShipModel:String = "space11.dae"
     var closestOtherPlayerShipName:String = "Centa"

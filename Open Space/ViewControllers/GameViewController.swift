@@ -66,37 +66,30 @@ class GameViewController: UIViewController {
      
               
     }
+    func drawISS() {
+        addObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)
+        
+    }
+    func drawMars() {
+        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+    }
+    func showHeaderButtons() {
+        self.headerButton.isHidden=false
+        self.headerButton2.isHidden=false
+        
+        self.headerButtonView.isHidden=false
+        self.headerButton2View.isHidden=false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         baseNode = SCNNode()
 
         let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
-        let nearPlanet = true
-        
-        if(nearPlanet) {
-            
-            self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Mars. It is stopped."
-
-            self.headerButton.isHidden=false
-            self.headerButton2.isHidden=false
-            
-            self.headerButtonView.isHidden=false
-            self.headerButton2View.isHidden=false
-            
-            
-        }
-        else {
-            self.headerLabel.text = "It is stopped."
-            
-            self.headerButton.isHidden=true
-            self.headerButtonView.isHidden=true
-            
-            self.headerButton2.isHidden=false
-            self.headerButton2View.isHidden=false
-            
-        }
         self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
@@ -108,7 +101,7 @@ class GameViewController: UIViewController {
         //imageView.contentMode = .scaleAspectFit
         //let backgroundFilename = "PIA12348orig.jpg"
         //let backgroundFilename = "PIA13005orig.jpg"
-        let backgroundFilename = "PIA15415orig.jpg"
+        let backgroundFilename = "PIA17563orig.jpg"
         let image = UIImage(named: backgroundFilename)!
         
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
@@ -125,22 +118,21 @@ class GameViewController: UIViewController {
         scene.background.wrapT = SCNWrapMode.repeat
         
         
+        
+        
         //spaceship facing forward is y = 0 is center
         addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10.0,10.0,10.0))
         
         addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
-        //addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 6)
-
-        addObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)
-
         for _ in 1...50 {
             addAsteroid()
         }
         
-         addObject(name: "instantmeshstation2.scn", position: SCNVector3(-400, -800, -400), scale: SCNVector3(5,5,5))
+         addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
           
-        
+        addObject(name: "sunlowres.scn", position: SCNVector3(100, 100, -500), scale: 0.5)
+
          
         //static asteroid
         //      addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
@@ -155,6 +147,38 @@ class GameViewController: UIViewController {
         //instantmeshstation2.dae
         
  
+        
+        let nearPlanet = false
+        let nearStation = true
+        
+        if(nearPlanet) {
+            self.headerButton.setTitle("Land on Mars", for: .normal)
+            self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Mars. It is stopped."
+
+            showHeaderButtons()
+
+            drawMars()
+            
+        }
+        else if(nearStation) {
+            self.headerButton.setTitle("Dock With Station", for: .normal)
+            self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near the International Space Station. It is stopped."
+
+            showHeaderButtons()
+            drawISS()
+
+        }
+        else {
+            self.headerLabel.text = "It is stopped."
+            
+            self.headerButton.isHidden=true
+            self.headerButtonView.isHidden=true
+            
+            self.headerButton2.isHidden=false
+            self.headerButton2View.isHidden=false
+            
+        }
+        
         
         let shipScenec = SCNScene(named: "a.dae")!
 
@@ -360,8 +384,8 @@ class GameViewController: UIViewController {
 
         var myScale = scale
         if(scale == nil) {
-            let minValue = 5
-            let maxValue = 70
+            let minValue = 20
+            let maxValue = 100
             let xScale = Int.random(in: minValue ..< maxValue)
             let yScale = Int.random(in: minValue ..< maxValue)
             let zScale = Int.random(in: minValue ..< maxValue)
@@ -372,8 +396,8 @@ class GameViewController: UIViewController {
         if(position == nil) {
             
             //not too close, not too far
-            let minValue = 200
-            let maxValue = 1000
+            let minValue = 300
+            let maxValue = 5000
             
 
             var xVal = Int.random(in: minValue ..< maxValue)
