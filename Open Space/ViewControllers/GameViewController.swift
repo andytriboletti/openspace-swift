@@ -128,7 +128,7 @@ class GameViewController: UIViewController {
         
         addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
-        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: SCNVector3(6,6,6))
+        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 6)
         
         for _ in 1...50 {
             addAsteroid()
@@ -141,7 +141,11 @@ class GameViewController: UIViewController {
         //static asteroid
         //      addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
         
-        addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
+        //addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
+
+        //Sun_1_1391000.usdz
+        //addObject(name: "Sun_1_1391000.usdz", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(0.2,0.2,0.2))
+        addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(1,1,1))
 
         addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
         //instantmeshstation2.dae
@@ -357,6 +361,9 @@ class GameViewController: UIViewController {
             myPosition = SCNVector3(xVal, yVal, zVal)
         }
         addObject(name: "a.dae", position: myPosition, scale: myScale)
+    }
+    func addObject(name: String, position: SCNVector3?, scale: Float) {
+        addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
