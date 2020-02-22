@@ -182,6 +182,18 @@ extension UIViewController {
         return (UIApplication.shared.delegate as? AppDelegate?)!!
     }
 }
+extension SCNNode {
+    func getTopParent(rootNode: SCNNode) -> SCNNode {
+        if(self.parent == nil || self.parent == rootNode) {
+            return self
+        }
+        else {
+            return (self.parent?.getTopParent(rootNode: rootNode))!
+        }
+    
+    }
+}
+
 extension SCNScene {
     var appDelegate: AppDelegate {
         return (UIApplication.shared.delegate as? AppDelegate?)!!

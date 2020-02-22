@@ -19,6 +19,7 @@ import DynamicBlurView
 
 class GameViewController: UIViewController {
 
+    
     @IBOutlet var headerButton: MDCButton!
     @IBOutlet var headerButton2: MDCButton!
 
@@ -28,6 +29,7 @@ class GameViewController: UIViewController {
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
     
     var baseNode:SCNNode!
+    
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
     
@@ -128,8 +130,10 @@ class GameViewController: UIViewController {
         
         addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
-        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 6)
-        
+        //addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 6)
+
+        addObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)
+
         for _ in 1...50 {
             addAsteroid()
         }
@@ -145,7 +149,7 @@ class GameViewController: UIViewController {
 
         //Sun_1_1391000.usdz
         //addObject(name: "Sun_1_1391000.usdz", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(0.2,0.2,0.2))
-        addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(1,1,1))
+        addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: 10)
 
         addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
         //instantmeshstation2.dae
@@ -253,35 +257,63 @@ class GameViewController: UIViewController {
         
         // check what nodes are tapped
         let p = gestureRecognize.location(in: scnView)
-        let hitResults = scnView.hitTest(p, options: [:])
+        //let hitResults = scnView.hitTest(p, options: [])
+        let hitResults = scnView.hitTest(p, options: [SCNHitTestOption.searchMode: SCNHitTestSearchMode.all.rawValue])
+        //SCNHitTestSearchModeAll
         // check that we clicked on at least one object
+        //print(hitResults.count)
         if hitResults.count > 0 {
             // retrieved the first clicked object
-            let result = hitResults[0]
+            let result:SCNHitTestResult = hitResults[0]
+            
+            var node = result.node
+            node = node.getTopParent(rootNode: baseNode)
             
             // get its material
-            let material = result.node.geometry!.firstMaterial!
-            
-            // highlight it
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
-            
-            // on completion - unhighlight
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 0.5
-                
-                material.emission.contents = UIColor.black
-                
-                SCNTransaction.commit()
+            highlightNode(node: node, color: .red)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.highlightNode(node: node, color: .black)
+
             }
+
             
-            material.emission.contents = UIColor.red
-            
-            SCNTransaction.commit()
         }
     }
-    
+    func highlightNode(node: SCNNode, color: UIColor) {
+        let material = node.geometry?.firstMaterial
+        // highlight it
+
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 0.0
+        
+        if(node.geometry != nil) {
+            highlightMaterial(material: material!, color: color)
+        }
+        else {
+            highlightMaterialChildren(node: node, color: color)
+        }
+
+        SCNTransaction.commit()
+    }
+    func highlightMaterialChildren(node: SCNNode, color: UIColor) {
+        for childNode in node.childNodes {
+            //print(childNode)
+            // get its material
+            let material = childNode.geometry?.firstMaterial
+            // highlight it
+            if(childNode.geometry != nil) {
+                highlightMaterial(material: material!, color: color)
+            }
+            else {
+                highlightMaterialChildren(node: childNode, color: color)
+            }
+            
+        }
+    }
+    func highlightMaterial(material: SCNMaterial, color: UIColor) {
+        material.emission.contents = color
+        
+    }
     override var shouldAutorotate: Bool {
         return true
     }
