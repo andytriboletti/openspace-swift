@@ -145,7 +145,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aOD-yr-mIh"/>
                                         </constraints>
-                                        <state key="normal" title="EXPLORE: SELL RESOURCES"/>
+                                        <state key="normal" title="EXPLORE: FIND RESOURCES"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -450,6 +450,6 @@
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ibv-0z-hje"/>
+        <segue reference="a2K-Gh-aKu"/>
     </inferredMetricsTieBreakers>
 </document>
