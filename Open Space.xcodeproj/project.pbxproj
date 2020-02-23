@@ -12,6 +12,9 @@
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
+		6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */; };
+		6F5B8E292402458B00757B99 /* mtrushmore.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E262402458B00757B99 /* mtrushmore.dae */; };
+		6F5B8E2A2402458B00757B99 /* mtrushmore.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E272402458B00757B99 /* mtrushmore.scn */; };
 		6F636B8D24015A760070C292 /* Sun_1_1391000.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B8C24015A760070C292 /* Sun_1_1391000.usdz */; };
 		6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9024015CA10070C292 /* 2k_sun.jpg */; };
 		6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9224015CEE0070C292 /* sunlowres.scn */; };
@@ -62,6 +65,9 @@
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
+		6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EXPORT_GOOGLE_SAT_WM.png; sourceTree = "<group>"; };
+		6F5B8E262402458B00757B99 /* mtrushmore.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = mtrushmore.dae; sourceTree = "<group>"; };
+		6F5B8E272402458B00757B99 /* mtrushmore.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mtrushmore.scn; sourceTree = "<group>"; };
 		6F636B8C24015A760070C292 /* Sun_1_1391000.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Sun_1_1391000.usdz; sourceTree = "<group>"; };
 		6F636B9024015CA10070C292 /* 2k_sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2k_sun.jpg; path = sourceimages/2k_sun.jpg; sourceTree = SOURCE_ROOT; };
 		6F636B9224015CEE0070C292 /* sunlowres.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = sunlowres.scn; path = "Open Space/3dmodels/planets/sunlowres.scn"; sourceTree = SOURCE_ROOT; };
@@ -138,6 +144,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6F3DBE7524022A3E00E1974A /* earthdestinations */ = {
+			isa = PBXGroup;
+			children = (
+				6F698F422402450100E86B65 /* mtrushmore */,
+				6F85AB76240241D10041CC37 /* mteverest */,
+			);
+			path = earthdestinations;
+			sourceTree = "<group>";
+		};
+		6F698F422402450100E86B65 /* mtrushmore */ = {
+			isa = PBXGroup;
+			children = (
+				6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */,
+				6F5B8E262402458B00757B99 /* mtrushmore.dae */,
+				6F5B8E272402458B00757B99 /* mtrushmore.scn */,
+			);
+			path = mtrushmore;
+			sourceTree = "<group>";
+		};
 		6F6D845623FF87A100328057 /* flags */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +178,13 @@
 				6F6D845A23FF8B8E00328057 /* PIA01120orig.jpg */,
 			);
 			path = mars;
+			sourceTree = "<group>";
+		};
+		6F85AB76240241D10041CC37 /* mteverest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = mteverest;
 			sourceTree = "<group>";
 		};
 		6F86CC6B24003A94005AECC9 /* Cells */ = {
@@ -254,6 +286,7 @@
 		6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */ = {
 			isa = PBXGroup;
 			children = (
+				6F3DBE7524022A3E00E1974A /* earthdestinations */,
 				6F6D845623FF87A100328057 /* flags */,
 				6FB65B4123FEDAEB008FBEF2 /* stations */,
 				6FDB588523FEB990004263CB /* stars */,
@@ -398,12 +431,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F5B8E2A2402458B00757B99 /* mtrushmore.scn in Resources */,
 				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */,
+				6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
 				6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
@@ -417,6 +452,7 @@
 				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
 				6F6D845823FF87E300328057 /* flagcool.dae in Resources */,
 				6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */,
+				6F5B8E292402458B00757B99 /* mtrushmore.dae in Resources */,
 				6FD0296B23FED5270082209D /* planetveg.dae in Resources */,
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
