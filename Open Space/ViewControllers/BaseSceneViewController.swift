@@ -39,7 +39,7 @@ class BaseSceneViewController: UIViewController {
 
         
                 //addObject(name: "mtrushmore.scn", position: SCNVector3(-2000,-1000,-1000), scale: 0.2)
-            addObject(name: "mtwashington.scn", position: SCNVector3(-1000,-1000,-1000), scale: 0.3)
+            addObject(name: "mtwashington.scn", position: SCNVector3(-800,-800,-800), scale: 0.25)
                 
                 addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
               
@@ -117,9 +117,25 @@ class BaseSceneViewController: UIViewController {
                 scnView.scene = scene
                 
                 scnView.allowsCameraControl = true
-                
+//        scnView.allowsCameraControl = true
+//                   scnView.defaultCameraController.interactionMode = .pan
+//                   scnView.defaultCameraController.inertiaEnabled = true
+//
+//                   scnView.cameraControlConfiguration.rotationSensitivity=0.0
+//                   scnView.cameraControlConfiguration.truckSensitivity=0.0
+//
+//                   scnView.cameraControlConfiguration.panSensitivity = 1
+//                   scnView.defaultCameraController.maximumVerticalAngle = 0
+//                   scnView.defaultCameraController.minimumVerticalAngle = 0
+//                   scnView.defaultCameraController.maximumHorizontalAngle = 0
+//                   scnView.defaultCameraController.minimumHorizontalAngle = 0
+//
+                   
+                   //scnView!.pointOfView?.rotation = SCNVector4(0, 0, 0, 0)
+                   //scnView.pointOfView?.movabilityHint = .fixed
+        
                 // show statistics such as fps and timing information
-                scnView.showsStatistics = false
+                //scnView.showsStatistics = false
                 scnView.autoenablesDefaultLighting=true
                 
                 // configure the view
