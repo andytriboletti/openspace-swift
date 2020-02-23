@@ -115,7 +115,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="290"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="0.0" width="370" height="80"/>
+                                        <rect key="frame" x="29" y="0.0" width="356" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -249,7 +249,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationIdentifier" id="nN1-gp-c5e">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shipIdentifier" id="nN1-gp-c5e">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bIM-DY-irF">
@@ -371,24 +371,40 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UID-EJ-Yvy">
-                                        <rect key="frame" x="20" y="88" width="374" height="694"/>
+                                        <rect key="frame" x="20" y="88" width="374" height="654"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9hF-fE-YZQ">
-                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="itemSize" width="250" height="250"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationIdentifier" id="w8W-sg-uiN">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IS0-b8-hg4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationIdentifier" id="w8W-sg-uiN" customClass="LocationCollectionViewCell" customModule="Open_Space" customModuleProvider="target">
+                                                <rect key="frame" x="62" y="0.0" width="250" height="250"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dwM-WF-Xkx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rU2-48-EkJ">
+                                                            <rect key="frame" x="10" y="10" width="230" height="230"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="rU2-48-EkJ" firstAttribute="centerY" secondItem="dwM-WF-Xkx" secondAttribute="centerY" id="2hy-Y1-IWA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="rU2-48-EkJ" secondAttribute="bottom" constant="10" id="7tR-Kk-Ghx"/>
+                                                        <constraint firstItem="rU2-48-EkJ" firstAttribute="top" secondItem="dwM-WF-Xkx" secondAttribute="top" constant="10" id="8Cb-Pe-Zuq"/>
+                                                        <constraint firstItem="rU2-48-EkJ" firstAttribute="centerX" secondItem="dwM-WF-Xkx" secondAttribute="centerX" id="PBe-yd-RqM"/>
+                                                        <constraint firstItem="rU2-48-EkJ" firstAttribute="leading" secondItem="dwM-WF-Xkx" secondAttribute="leading" constant="10" id="e2H-tc-7dv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rU2-48-EkJ" secondAttribute="trailing" constant="10" id="oCk-13-9FV"/>
+                                                    </constraints>
                                                 </collectionViewCellContentView>
                                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <size key="customSize" width="128" height="128"/>
+                                                <size key="customSize" width="250" height="250"/>
+                                                <connections>
+                                                    <outlet property="cellImage" destination="rU2-48-EkJ" id="qaH-B0-O5S"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
@@ -408,15 +424,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="UID-EJ-Yvy" firstAttribute="bottom" secondItem="CJu-p7-VXC" secondAttribute="top" constant="20" id="1Cs-9y-eMY"/>
-                                    <constraint firstAttribute="bottom" secondItem="CJu-p7-VXC" secondAttribute="bottom" constant="20" id="3wj-iX-6Qr"/>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="top" secondItem="vHc-fd-oa6" secondAttribute="bottom" constant="20" id="Bmk-fj-W9Y"/>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="trailing" secondItem="CJu-p7-VXC" secondAttribute="trailing" id="L6T-V4-0tO"/>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="top" secondItem="vHc-fd-oa6" secondAttribute="bottom" constant="20" id="LIv-7V-idx"/>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="leading" secondItem="F8W-cq-epi" secondAttribute="leading" constant="20" id="Mca-x2-0dy"/>
+                                    <constraint firstItem="CJu-p7-VXC" firstAttribute="top" secondItem="UID-EJ-Yvy" secondAttribute="bottom" constant="20" id="Pft-wl-Ny6"/>
                                     <constraint firstItem="vHc-fd-oa6" firstAttribute="top" secondItem="F8W-cq-epi" secondAttribute="topMargin" id="Yhs-Tp-spb"/>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="centerX" secondItem="vHc-fd-oa6" secondAttribute="centerX" id="ank-62-8zb"/>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="leading" secondItem="CJu-p7-VXC" secondAttribute="leading" id="iE3-eu-x6k"/>
+                                    <constraint firstAttribute="bottom" secondItem="UID-EJ-Yvy" secondAttribute="bottom" constant="100" id="lkA-79-G72"/>
                                     <constraint firstItem="UID-EJ-Yvy" firstAttribute="top" secondItem="vHc-fd-oa6" secondAttribute="bottom" constant="20" id="q4u-kA-uSF"/>
                                     <constraint firstAttribute="trailing" secondItem="UID-EJ-Yvy" secondAttribute="trailing" constant="20" id="rui-Qr-krc"/>
                                 </constraints>
