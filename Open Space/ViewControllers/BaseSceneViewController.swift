@@ -17,76 +17,125 @@ class BaseSceneViewController: UIViewController {
      override func viewDidLoad() {
             super.viewDidLoad()
                 
-            baseNode = SCNNode()
-            let scene = SCNScene()
-            self.title="Mt Rushmore"
             
-            let backgroundFilename = "PIA01120orig.jpg"
-            let image = UIImage(named: backgroundFilename)!
-            
-            let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-            let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
-            scene.background.wrapS = SCNWrapMode.repeat
-            scene.background.wrapT = SCNWrapMode.repeat
-            
+                //node stuff
+                baseNode = SCNNode()
 
-            
-            
-            
-            // create and add a camera to the scene
-            let cameraNode = SCNNode()
-            cameraNode.camera = SCNCamera()
-            
-            // place the camera
-            cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-            scene.rootNode.addChildNode(cameraNode)
+                let scene = SCNScene()
+                let backgroundFilename = "PIA17563orig.jpg"
+                let image = UIImage(named: backgroundFilename)!
+                
+                let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+                let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
+                
+                
+                
+                scene.background.contents = aspectScaledToFitImage
 
-        
-            let lightNode = SCNNode()
-            lightNode.light = SCNLight()
-            lightNode.light!.type = .omni
-            lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-            scene.rootNode.addChildNode(lightNode)
+                scene.background.wrapS = SCNWrapMode.repeat
+                scene.background.wrapT = SCNWrapMode.repeat
+                addObject(name: "mtrushmore.scn", position: nil, scale: nil)
+                
+                addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
+              
+                
+                addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
+                //instantmeshstation2.dae
+                
+              
             
-            // create and add an ambient light to the scene
-            let ambientLightNode = SCNNode()
-            ambientLightNode.light = SCNLight()
-            ambientLightNode.light!.type = .ambient
-            ambientLightNode.light!.color = UIColor.darkGray
-            scene.rootNode.addChildNode(ambientLightNode)
+                
+                let shipScenec = SCNScene(named: "a.dae")!
+                
+                let shipSceneChildNodesc = shipScenec.rootNode.childNodes
+                for childNode in shipSceneChildNodesc {
+                    let initialPositionX = 0
+                    let initialPositionY = 200
+                    childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
+                    childNode.scale = SCNVector3(100, 50, 50)
+                    
+                    baseNode.addChildNode(childNode)
+                    
+                    let howLongToTravel = 5000
+                    let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
+                    var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
+                    childNode.runAction(moveAction)
+                    
+                    let path1 = UIBezierPath()
+                    path1.move(to: CGPoint(x: 1000,y: 1000))
+                    moveAction = SCNAction.moveAlong(path: path1)
+                    
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 0
+                    
+                    moveAction = SCNAction.moveAlong(path: path1)
+                    //let repeatAction = SCNAction.repeatForever(moveAction)
+                    
+                    
+                    SCNTransaction.commit()
+                    
+                    
+                    
+                }
             
-            let scnView = self.scnView!
-        
-//            var mountain = SCNScene(named: "mtwashington.scn")
-            scnView.scene = scene
-            scene.background.contents = aspectScaledToFitImage
+                
+                scene.rootNode.addChildNode(baseNode)
+                        
+                // create and add a camera to the scene
+                let cameraNode = SCNNode()
+                cameraNode.camera = SCNCamera()
+                scene.rootNode.addChildNode(cameraNode)
+                
+                // place the camera
+                cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+                
+                // create and add a light to the scene
+                let lightNode = SCNNode()
+                lightNode.light = SCNLight()
+                lightNode.light!.type = .omni
+                lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
+                scene.rootNode.addChildNode(lightNode)
+                
+                // create and add an ambient light to the scene
+                let ambientLightNode = SCNNode()
+                ambientLightNode.light = SCNLight()
+                ambientLightNode.light!.type = .ambient
+                ambientLightNode.light!.color = UIColor.darkGray
+                scene.rootNode.addChildNode(ambientLightNode)
+                
+                
+                let scnView = self.scnView!
+                //addObject(name: "mtrushmore.scn", position: nil, scale: nil)
 
-            
-            scnView.autoenablesDefaultLighting=true
-
-            // show statistics such as fps and timing information
-            scnView.showsStatistics = true
-            scnView.allowsCameraControl = true
-
-            addObject(name: "mars.dae", position: SCNVector3(1,1,1), scale: SCNVector3(1,1,1))
-            
-            scene.rootNode.addChildNode(baseNode)
+                var myScene = SCNScene(named: "mtrushmore.scn")
+                scnView.scene = myScene
+                
+                scnView.allowsCameraControl = true
+                
+                // show statistics such as fps and timing information
+                scnView.showsStatistics = false
+                scnView.autoenablesDefaultLighting=true
+                
+                // configure the view
+                scnView.backgroundColor = UIColor.black
 
 
 }
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
-        let shipScene = SCNScene(named: name)!
-        
-        let shipSceneChildNodes = shipScene.rootNode.childNodes
-        for childNode in shipSceneChildNodes {
-            baseNode.addChildNode(childNode)
-            if(position != nil) {
-                childNode.position = position!
-            }
-            if(scale != nil) {
-                childNode.scale = scale!
-            }
-        }
+        return
+//
+//        let shipScene = SCNScene(named: name)!
+//
+//        let shipSceneChildNodes = shipScene.rootNode.childNodes
+//        for childNode in shipSceneChildNodes {
+//            baseNode.addChildNode(childNode)
+//            if(position != nil) {
+//                childNode.position = position!
+//            }
+//            if(scale != nil) {
+//                childNode.scale = scale!
+//            }
+//        }
         
     }
 }

@@ -114,8 +114,8 @@ class GameViewController: UIViewController {
         
         
         
-        baseNode = SCNNode()
-        
+        self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
+
         let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
@@ -124,39 +124,28 @@ class GameViewController: UIViewController {
         
         self.headerButton2.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.headerButton2.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
-        //self.tabBarController!.title = "Ship Abracadabra Stopped in Deep Space"
+
+        //node stuff
+        baseNode = SCNNode()
+
         let scene = SCNScene()
-        //imageView.contentMode = .scaleAspectFit
-        //let backgroundFilename = "PIA12348orig.jpg"
-        //let backgroundFilename = "PIA13005orig.jpg"
         let backgroundFilename = "PIA17563orig.jpg"
         let image = UIImage(named: backgroundFilename)!
         
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
         
-        self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
         
-        //image!.size = self.view.frame.size
         
         scene.background.contents = aspectScaledToFitImage
-        //scene.background.contentsTransform = SCNMatrix4MakeScale(Float(self.view.frame.width), Float(self.view.frame.height), 1)
-        
+
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
-        
-        
-        
-        
-        //spaceship facing forward is y = 0 is center
         addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10.0,10.0,10.0))
         
         addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
-        for _ in 1...50 {
-            addAsteroid()
-        }
+
         
         addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
         
@@ -175,6 +164,9 @@ class GameViewController: UIViewController {
         addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
         //instantmeshstation2.dae
         
+        for _ in 1...50 {
+            addAsteroid()
+        }
         
         
         let locationState:LocationState = LocationState.random()
@@ -223,13 +215,7 @@ class GameViewController: UIViewController {
             
             
         }
-        
-        
-        
-        
-        
-        
-        
+    
         
         scene.rootNode.addChildNode(baseNode)
                 
@@ -255,20 +241,11 @@ class GameViewController: UIViewController {
         ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
         
-        // retrieve the ship node
-        //let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
         
-        // animate the 3d object
-        //ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-        
-        // retrieve the SCNView
         let scnView = self.scnView!
-        //self.view as! SCNView
         
-        // set the scene to the view
         scnView.scene = scene
         
-        // allows the user to manipulate the camera
         scnView.allowsCameraControl = true
         
         // show statistics such as fps and timing information
@@ -278,7 +255,6 @@ class GameViewController: UIViewController {
         // configure the view
         scnView.backgroundColor = UIColor.black
         
-        // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
     }
