@@ -41,7 +41,8 @@ class GameViewController: UIViewController {
     }
     @IBAction func navigateToClicked() {
         print("where do you want to go")
-        self.performSegue(withIdentifier: "selectDestination", sender: self)
+        //self.performSegue(withIdentifier: "selectDestination", sender: self)
+        self.performSegue(withIdentifier: "goToBase", sender: self)
         
         
     }
@@ -231,9 +232,7 @@ class GameViewController: UIViewController {
         
         
         scene.rootNode.addChildNode(baseNode)
-        
-        //scene.rootNode.addChildNode(scene.rootNode.childNodes)
-        
+                
         // create and add a camera to the scene
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */; };
+		6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */; };
+		6F02241C240248250035F7E4 /* mtwashington.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F02241A240248250035F7E4 /* mtwashington.dae */; };
+		6F02241E240248430035F7E4 /* mtwashington.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F02241D240248430035F7E4 /* mtwashington.scn */; };
+		6F022420240248CB0035F7E4 /* BaseSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02241F240248CB0035F7E4 /* BaseSceneViewController.swift */; };
 		6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6F158182240167E60005A00E /* ISS_stationary2.usdz */; };
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
@@ -61,6 +65,10 @@
 /* Begin PBXFileReference section */
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
+		6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EXPORT_GOOGLE_SAT_WM-mtwashington.png"; sourceTree = "<group>"; };
+		6F02241A240248250035F7E4 /* mtwashington.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = mtwashington.dae; sourceTree = "<group>"; };
+		6F02241D240248430035F7E4 /* mtwashington.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mtwashington.scn; sourceTree = "<group>"; };
+		6F02241F240248CB0035F7E4 /* BaseSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneViewController.swift; sourceTree = "<group>"; };
 		6F158182240167E60005A00E /* ISS_stationary2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = ISS_stationary2.usdz; sourceTree = "<group>"; };
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
@@ -144,9 +152,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6F022418240248140035F7E4 /* mtwashington */ = {
+			isa = PBXGroup;
+			children = (
+				6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */,
+				6F02241A240248250035F7E4 /* mtwashington.dae */,
+				6F02241D240248430035F7E4 /* mtwashington.scn */,
+			);
+			path = mtwashington;
+			sourceTree = "<group>";
+		};
 		6F3DBE7524022A3E00E1974A /* earthdestinations */ = {
 			isa = PBXGroup;
 			children = (
+				6F022418240248140035F7E4 /* mtwashington */,
 				6F698F422402450100E86B65 /* mtrushmore */,
 				6F85AB76240241D10041CC37 /* mteverest */,
 			);
@@ -335,6 +354,7 @@
 				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
 				6F43938F23FF6DC60007614D /* MarsViewController.swift */,
 				6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */,
+				6F02241F240248CB0035F7E4 /* BaseSceneViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -436,6 +456,8 @@
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
+				6F02241E240248430035F7E4 /* mtwashington.scn in Resources */,
+				6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */,
 				6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
@@ -451,6 +473,7 @@
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
 				6F6D845823FF87E300328057 /* flagcool.dae in Resources */,
+				6F02241C240248250035F7E4 /* mtwashington.dae in Resources */,
 				6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */,
 				6F5B8E292402458B00757B99 /* mtrushmore.dae in Resources */,
 				6FD0296B23FED5270082209D /* planetveg.dae in Resources */,
@@ -520,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F022420240248CB0035F7E4 /* BaseSceneViewController.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,

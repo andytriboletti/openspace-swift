@@ -94,6 +94,7 @@
                         <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="Ibv-0z-hje"/>
                         <segue destination="vG4-S1-hbb" kind="presentation" identifier="landOnMars" modalPresentationStyle="fullScreen" id="JMa-bL-d6Q"/>
                         <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" id="JNV-Sx-ib3"/>
+                        <segue destination="JGR-eV-JyE" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -312,6 +313,36 @@
             </objects>
             <point key="canvasLocation" x="138.75" y="87"/>
         </scene>
+        <!--Base Scene View Controller-->
+        <scene sceneID="8dh-Gn-2kJ">
+            <objects>
+                <viewController id="JGR-eV-JyE" customClass="BaseSceneViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j8w-OW-MG8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NU-7n-LU8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </sceneKitView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bWf-kG-hid" firstAttribute="bottom" secondItem="1NU-7n-LU8" secondAttribute="bottom" id="gss-v3-T2W"/>
+                            <constraint firstItem="bWf-kG-hid" firstAttribute="trailing" secondItem="1NU-7n-LU8" secondAttribute="trailing" id="k7k-g7-2Df"/>
+                            <constraint firstItem="1NU-7n-LU8" firstAttribute="top" secondItem="bWf-kG-hid" secondAttribute="top" id="mdz-e7-7oF"/>
+                            <constraint firstItem="1NU-7n-LU8" firstAttribute="leading" secondItem="bWf-kG-hid" secondAttribute="leading" id="oEb-Yn-Egx"/>
+                            <constraint firstItem="1NU-7n-LU8" firstAttribute="centerX" secondItem="j8w-OW-MG8" secondAttribute="centerX" id="wFx-56-a4H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bWf-kG-hid"/>
+                    </view>
+                    <connections>
+                        <outlet property="scnView" destination="1NU-7n-LU8" id="cv9-vu-JcW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JyU-9R-4YY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1603" y="-544"/>
+        </scene>
         <!--Ship A-->
         <scene sceneID="AtW-Wt-eXI">
             <objects>
@@ -466,6 +497,6 @@
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a2K-Gh-aKu"/>
+        <segue reference="Ibv-0z-hje"/>
     </inferredMetricsTieBreakers>
 </document>
