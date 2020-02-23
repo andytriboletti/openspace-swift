@@ -34,7 +34,12 @@ class BaseSceneViewController: UIViewController {
 
                 scene.background.wrapS = SCNWrapMode.repeat
                 scene.background.wrapT = SCNWrapMode.repeat
-                addObject(name: "mtrushmore.scn", position: nil, scale: nil)
+            
+                addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10.0,10.0,10.0))
+
+        
+                //addObject(name: "mtrushmore.scn", position: SCNVector3(-2000,-1000,-1000), scale: 0.2)
+            addObject(name: "mtwashington.scn", position: SCNVector3(-1000,-1000,-1000), scale: 0.3)
                 
                 addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
               
@@ -87,7 +92,7 @@ class BaseSceneViewController: UIViewController {
                 scene.rootNode.addChildNode(cameraNode)
                 
                 // place the camera
-                cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+                //cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
                 
                 // create and add a light to the scene
                 let lightNode = SCNNode()
@@ -107,8 +112,9 @@ class BaseSceneViewController: UIViewController {
                 let scnView = self.scnView!
                 //addObject(name: "mtrushmore.scn", position: nil, scale: nil)
 
-                var myScene = SCNScene(named: "mtrushmore.scn")
-                scnView.scene = myScene
+                // var myScene = SCNScene(named: "mtrushmore.scn")
+                //var myScene = SCNScene(named: "mtwashington.scn")
+                scnView.scene = scene
                 
                 scnView.allowsCameraControl = true
                 
@@ -122,20 +128,24 @@ class BaseSceneViewController: UIViewController {
 
 }
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
-        return
-//
-//        let shipScene = SCNScene(named: name)!
-//
-//        let shipSceneChildNodes = shipScene.rootNode.childNodes
-//        for childNode in shipSceneChildNodes {
-//            baseNode.addChildNode(childNode)
-//            if(position != nil) {
-//                childNode.position = position!
-//            }
-//            if(scale != nil) {
-//                childNode.scale = scale!
-//            }
-//        }
+        //return
         
+
+        let shipScene = SCNScene(named: name)!
+
+        let shipSceneChildNodes = shipScene.rootNode.childNodes
+        for childNode in shipSceneChildNodes {
+            baseNode.addChildNode(childNode)
+            if(position != nil) {
+                childNode.position = position!
+            }
+            if(scale != nil) {
+                childNode.scale = scale!
+            }
+        }
+        
+    }
+    func addObject(name: String, position: SCNVector3?, scale: Float) {
+        addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
 }
