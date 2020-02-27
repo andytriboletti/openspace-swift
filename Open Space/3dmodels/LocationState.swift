@@ -7,9 +7,11 @@
 //
 
 public enum LocationState: CaseIterable {
-    case nearPlanet
+    case nearMars
+    case nearEarth
     case nearISS
     case nearNothing
+    
     static func random<G: RandomNumberGenerator>(using generator: inout G) -> LocationState {
         return LocationState.allCases.randomElement(using: &generator)!
     }

@@ -9,9 +9,9 @@
 import Foundation
 
 class GameState {
-    var shipNames:Array = ["Anderik", "Eleuz"]
+    var shipNames:Array = ["Anderik", "Eleuz", "Artophy"]
     var currentShipName:String {
-        let theName = shipNames[1]
+        let theName = shipNames[2]
         return theName
     }
     var currentShipModel:String = "spaceshipb.scn"

@@ -74,6 +74,9 @@ class GameViewController: UIViewController {
     func drawMars() {
         addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
+    func drawEarth() {
+        addObject(name: "earth.scn", position: SCNVector3(-500, 0, -200), scale: 5)
+    }
     func showHeaderButtons() {
         self.headerButton.isHidden=false
         self.headerButton2.isHidden=false
@@ -99,7 +102,18 @@ class GameViewController: UIViewController {
         drawISS()
     }
     
-    func nearPlanet() {
+    func nearEarth() {
+        
+        self.headerButton.setTitle("Land on Earth", for: .normal)
+        self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Earth. It is stopped."
+        
+        showHeaderButtons()
+        
+        drawEarth()
+        
+    }
+    
+    func nearMars() {
         
         self.headerButton.setTitle("Land on Mars", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Mars. It is stopped."
@@ -129,11 +143,14 @@ class GameViewController: UIViewController {
         baseNode = SCNNode()
 
         let scene = SCNScene()
-        let backgroundFilename = "PIA17563orig.jpg"
+        let backgroundFilename = "PIA04921orig.jpg"
         let image = UIImage(named: backgroundFilename)!
-        
+        let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 1.0)
+        let purple = UIColor.black
+        let semi = rose.withAlphaComponent(0.5)
+        let colorizedImage = Utils.colorizeImage(image, with: semi)
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
+        let aspectScaledToFitImage = colorizedImage!.af_imageAspectScaled(toFill: size)
         
         
         
@@ -169,15 +186,18 @@ class GameViewController: UIViewController {
         }
         
         
-        let locationState:LocationState = LocationState.random()
+        //let locationState:LocationState = LocationState.random()
+        let locationState:LocationState = LocationState.nearEarth
         
         switch locationState {
-        case .nearPlanet:
-            nearPlanet()
+        case .nearEarth:
+            nearEarth()
         case .nearISS:
             nearISS()
         case .nearNothing:
             nearNothing()
+        case .nearMars:
+            nearMars()
         @unknown default:
             nearNothing()
         }
