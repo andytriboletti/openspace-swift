@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class SelectLocationViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SelectLocationViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -20,11 +20,17 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected")
+        print(indexPath.row)
+        print(indexPath.section)
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
         cell.backgroundColor = .green
         let cellImage = UIImage(named: "rocket_1024.png")
-        let size = CGSize(width: 230, height: 230)
+        let size = CGSize(width: 50, height: 50)
         let aspectScaledToFitImage = cellImage?.af_imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage
         return cell
@@ -35,9 +41,24 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionViewFlowLayout.itemSize = CGSize(width: 128, height: 128)
         
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical //.horizontal
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 20
+        collectionView.setCollectionViewLayout(layout, animated: true)
+            
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)//here your custom value for spacing
+        }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+                let lay = collectionViewLayout as! UICollectionViewFlowLayout
+                let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
+
+    return CGSize(width:widthPerItem, height:widthPerItem)
+    }
 
 }

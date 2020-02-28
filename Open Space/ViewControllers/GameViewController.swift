@@ -41,8 +41,8 @@ class GameViewController: UIViewController {
     }
     @IBAction func navigateToClicked() {
         print("where do you want to go")
-        //self.performSegue(withIdentifier: "selectDestination", sender: self)
-        self.performSegue(withIdentifier: "goToBase", sender: self)
+        self.performSegue(withIdentifier: "selectDestination", sender: self)
+        //self.performSegue(withIdentifier: "goToBase", sender: self)
         
         
     }
