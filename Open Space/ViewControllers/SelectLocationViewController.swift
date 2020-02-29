@@ -30,7 +30,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
         cell.backgroundColor = .green
         let cellImage = UIImage(named: "rocket_1024.png")
-        let size = CGSize(width: 50, height: 50)
+        let size = CGSize(width: 200, height: 200)
         let aspectScaledToFitImage = cellImage?.af_imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage
         return cell
