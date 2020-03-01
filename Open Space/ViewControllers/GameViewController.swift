@@ -143,7 +143,7 @@ class GameViewController: UIViewController {
         baseNode = SCNNode()
 
         let scene = SCNScene()
-        let backgroundFilename = "PIA04921orig.jpg"
+        let backgroundFilename = "iss006e48523orig.jpg"
         let image = UIImage(named: backgroundFilename)!
         let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 1.0)
         let purple = UIColor.black
