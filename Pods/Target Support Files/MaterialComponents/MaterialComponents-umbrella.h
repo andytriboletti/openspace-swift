@@ -29,7 +29,6 @@
 #import "MDCTextButtonColorThemer.h"
 #import "MaterialButtons+ShapeThemer.h"
 #import "MDCButtonShapeThemer.h"
-#import "MDCFloatingButtonShapeThemer.h"
 #import "MaterialButtons+Theming.h"
 #import "MDCButton+MaterialTheming.h"
 #import "MDCFloatingButton+MaterialTheming.h"
