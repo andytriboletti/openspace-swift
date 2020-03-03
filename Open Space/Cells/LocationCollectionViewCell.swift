@@ -10,4 +10,5 @@ import UIKit
 
 class LocationCollectionViewCell: UICollectionViewCell {
     @IBOutlet var cellImage: UIImageView!
+    @IBOutlet var cellLabel: UILabel!
 }

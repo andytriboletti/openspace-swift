@@ -11,10 +11,11 @@ import Alamofire
 import AlamofireImage
 
 class SelectLocationViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    var locations: Dictionary<Int, String> = [:]
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.locations.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -33,6 +34,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         let size = CGSize(width: 200, height: 200)
         let aspectScaledToFitImage = cellImage?.af_imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage
+        cell.cellLabel.text = self.locations[indexPath.row]
         return cell
     }
     
@@ -42,6 +44,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.locations = [0: "Earth", 1: "ISS", 2: "Moon", 3: "Mars"]
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //.horizontal
         layout.minimumLineSpacing = 10
