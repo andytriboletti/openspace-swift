@@ -69,10 +69,15 @@ class GameViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
 
-        baseNode?.enumerateChildNodes { (node, stop) in
+//        baseNode?.enumerateChildNodes { (node, stop) in
+//            node.removeFromParentNode()
+//        }
+//        baseNode.removeFromParentNode()
+//        
+        tempNode?.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode()
         }
-        baseNode.removeFromParentNode()
+        tempNode.removeFromParentNode()
         scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
                      node.removeFromParentNode()
         }
