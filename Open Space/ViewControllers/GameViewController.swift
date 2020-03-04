@@ -250,7 +250,7 @@ class GameViewController: UIViewController {
         addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawMoon() {
-        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+        addObject(name: "moon.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawEarth() {
         addObject(name: "earth.scn", position: SCNVector3(-500, 0, -200), scale: 5)

@@ -15,6 +15,7 @@
 		6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294564240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg */; };
 		6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294566240B1F7F008328FC /* iss006e48523orig.jpg */; };
 		6F30352D240FB007006C4684 /* NavGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F30352C240FB007006C4684 /* NavGameController.swift */; };
+		6F30352F240FC3C0006C4684 /* moon.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F30352E240FC3C0006C4684 /* moon.dae */; };
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
@@ -78,6 +79,7 @@
 		6F294564240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GSFC_20171208_Archive_e001359orig.jpg; path = sourceimages/GSFC_20171208_Archive_e001359orig.jpg; sourceTree = SOURCE_ROOT; };
 		6F294566240B1F7F008328FC /* iss006e48523orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iss006e48523orig.jpg; path = sourceimages/iss006e48523orig.jpg; sourceTree = SOURCE_ROOT; };
 		6F30352C240FB007006C4684 /* NavGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavGameController.swift; sourceTree = "<group>"; };
+		6F30352E240FC3C0006C4684 /* moon.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = moon.dae; sourceTree = "<group>"; };
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				6F677BA124076EE6004A1C8B /* earth.dae */,
 				6F677BA5240772F3004A1C8B /* earth.scn */,
 				6FD0296A23FED5270082209D /* planetveg.dae */,
+				6F30352E240FC3C0006C4684 /* moon.dae */,
 				6FDB588123FEB952004263CB /* mars.dae */,
 			);
 			path = planets;
@@ -482,6 +485,7 @@
 				6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
+				6F30352F240FC3C0006C4684 /* moon.dae in Resources */,
 				6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */,
 				6F636B8D24015A760070C292 /* Sun_1_1391000.usdz in Resources */,
 				6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */,
