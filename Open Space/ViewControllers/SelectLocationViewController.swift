@@ -49,8 +49,13 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
             //cell.backgroundColor = .red
             appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
+//            self.dismiss(animated: true, completion: {
+
+  //          })
             self.performSegue(withIdentifier: "goToGame", sender: self)
 
+            //self.present(NavGameController(), animated: true)
+            //self.dismiss(animated: true, completion: nil)
             
             //self.parent?.dismiss(animated: true, completion: nil)
          }
@@ -90,6 +95,12 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
                 let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
 
     return CGSize(width:widthPerItem, height:widthPerItem)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        //segue.destination.viewDidDisappear(false)
     }
 
 }

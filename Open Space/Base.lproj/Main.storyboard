@@ -93,7 +93,7 @@
                         <outlet property="scnView" destination="u9e-G8-uET" id="XCw-Ov-1i1"/>
                         <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="Ibv-0z-hje"/>
                         <segue destination="vG4-S1-hbb" kind="presentation" identifier="landOnMars" modalPresentationStyle="fullScreen" id="JMa-bL-d6Q"/>
-                        <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" id="JNV-Sx-ib3"/>
+                        <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" modalPresentationStyle="fullScreen" id="JNV-Sx-ib3"/>
                         <segue destination="JGR-eV-JyE" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
                     </connections>
                 </viewController>
@@ -197,7 +197,7 @@
                         <outlet property="takeOffButton" destination="nBS-ms-FfK" id="am8-B1-02N"/>
                         <outlet property="tradingPostButton" destination="s13-Zs-hVV" id="Ita-g8-NdN"/>
                         <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="a2K-Gh-aKu"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="rQs-aG-VQ2"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="overFullScreen" id="rQs-aG-VQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Rx-N6-s7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -298,7 +298,7 @@
         <!--Nav Game Controller-->
         <scene sceneID="nNH-s1-tGJ">
             <objects>
-                <navigationController title="Nav Game Controller" automaticallyAdjustsScrollViewInsets="NO" id="4cu-mg-f7Y" sceneMemberID="viewController">
+                <navigationController title="Nav Game Controller" automaticallyAdjustsScrollViewInsets="NO" id="4cu-mg-f7Y" customClass="NavGameController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
@@ -508,7 +508,7 @@
                         <outlet property="cancelButton" destination="CJu-p7-VXC" id="Tqe-X2-eII"/>
                         <outlet property="collectionView" destination="UID-EJ-Yvy" id="Bld-UW-NUD"/>
                         <outlet property="collectionViewFlowLayout" destination="9hF-fE-YZQ" id="Ev6-ru-qaf"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="XiJ-tA-caf"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="overFullScreen" id="XiJ-tA-caf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27F-SZ-z6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -521,7 +521,7 @@
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XiJ-tA-caf"/>
+        <segue reference="rQs-aG-VQ2"/>
         <segue reference="a2K-Gh-aKu"/>
     </inferredMetricsTieBreakers>
 </document>

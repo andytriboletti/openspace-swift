@@ -18,7 +18,9 @@ import SCLAlertView
 import DynamicBlurView
 
 class GameViewController: UIViewController {
-    
+    let cameraNode = SCNNode()
+    let camera = SCNCamera()
+    var tapGesture: UITapGestureRecognizer?
     var iss: SCNNode?
     @IBOutlet var headerButton: MDCButton!
     @IBOutlet var headerButton2: MDCButton!
@@ -28,7 +30,9 @@ class GameViewController: UIViewController {
     
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
     
-    var baseNode:SCNNode!
+    var baseNode:SCNNode! = SCNNode()
+    let scene = SCNScene()
+
     
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
@@ -62,20 +66,163 @@ class GameViewController: UIViewController {
     }
     
     
+    override func viewDidDisappear(_ animated: Bool) {
+
+        baseNode?.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
+        baseNode.removeFromParentNode()
+        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
+                     node.removeFromParentNode()
+        }
+        scnView.scene?.rootNode.removeFromParentNode()
+
+        scnView.removeGestureRecognizer(self.tapGesture!)
+        super.viewDidDisappear(animated)
+    }
+    func setupHeader() {
+        
+        self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
+        
+        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
+        self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
+        
+        self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
+        self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
+        
+        self.headerButton2.applyTextTheme(withScheme: appDelegate.containerScheme)
+        self.headerButton2.applyContainedTheme(withScheme: appDelegate.containerScheme)
+        
+        
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setupHeader()
         
+        
+        baseNode?.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
+        baseNode?.removeFromParentNode()
+        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
+                     node.removeFromParentNode()
+        }
+        scnView.scene?.rootNode.removeFromParentNode()
+
+//        scnView?.removeGestureRecognizer(self.tapGesture)
+        
+        
+        let backgroundFilename = "iss006e48523orig.jpg"
+        let image = UIImage(named: backgroundFilename)!
+        let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 1.0)
+        let purple = UIColor.black
+        let semi = rose.withAlphaComponent(0.5)
+        let colorizedImage = Utils.colorizeImage(image, with: semi)
+        let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        let aspectScaledToFitImage = colorizedImage!.af_imageAspectScaled(toFill: size)
+        
+        
+        
+        scene.background.contents = aspectScaledToFitImage
+        
+        scene.background.wrapS = SCNWrapMode.repeat
+        scene.background.wrapT = SCNWrapMode.repeat
+        addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
+        
+        addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
+        
+        
+        
+        addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
+        
+        addObject(name: "sunlowres.scn", position: SCNVector3(100, 100, -500), scale: 0.5)
+        
+        
+        //static asteroid
+        //      addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
+        
+        //addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
+        
+        //Sun_1_1391000.usdz
+        //addObject(name: "Sun_1_1391000.usdz", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(0.2,0.2,0.2))
+        //addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: 10)
+        
+        //addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
+        //instantmeshstation2.dae
+        
+        for _ in 1...50 {
+            addAsteroid()
+        }
+        
+        
+        //let locationState:LocationState = LocationState.random()
+        
+        
+        animateAsteroid()
+        
+        
+        
+        
+        
+        
+        
+        // create and add a camera to the scene
+        cameraNode.camera = self.camera
+        //scene.rootNode.addChildNode(cameraNode)
+        
+                // place the camera
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+
+        baseNode.addChildNode(cameraNode)
+
+        // create and add a light to the scene
+        let lightNode = SCNNode()
+        lightNode.light = SCNLight()
+        lightNode.light!.type = .omni
+        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
+        scene.rootNode.addChildNode(lightNode)
+        
+        // create and add an ambient light to the scene
+        let ambientLightNode = SCNNode()
+        ambientLightNode.light = SCNLight()
+        ambientLightNode.light!.type = .ambient
+        ambientLightNode.light!.color = UIColor.darkGray
+        scene.rootNode.addChildNode(ambientLightNode)
+        
+        refresh()
+
+        scene.rootNode.addChildNode(baseNode)
+
+
+        
+        self.scnView!.scene = scene
+        
+        self.scnView!.allowsCameraControl = true
+        
+        // show statistics such as fps and timing information
+        self.scnView!.showsStatistics = false
+        self.scnView!.autoenablesDefaultLighting=true
+        
+        // configure the view
+        self.scnView!.backgroundColor = UIColor.black
+        
+        self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        scnView.addGestureRecognizer(self.tapGesture!)
+        
+        
+
     }
     
     func refresh() {
         print("refresh")
-
-//        self.iss?.enumerateChildNodes { (node, stop) in
-//            node.removeFromParentNode()
-//        }
-//        self.iss?.removeFromParentNode()
-
+        
+        //        self.iss?.enumerateChildNodes { (node, stop) in
+        //            node.removeFromParentNode()
+        //        }
+        //        self.iss?.removeFromParentNode()
+        
         switch appDelegate.gameState.locationState {
         case .nearEarth:
             nearEarth()
@@ -162,131 +309,6 @@ class GameViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
-        
-        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-        self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
-        
-        self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
-        self.headerButton2.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.headerButton2.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
-        //node stuff
-        
-        
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
-            node.removeFromParentNode()
-        }
-        
-        baseNode = SCNNode()
-        
-        let scene = SCNScene()
-        let backgroundFilename = "iss006e48523orig.jpg"
-        let image = UIImage(named: backgroundFilename)!
-        let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 1.0)
-        let purple = UIColor.black
-        let semi = rose.withAlphaComponent(0.5)
-        let colorizedImage = Utils.colorizeImage(image, with: semi)
-        let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let aspectScaledToFitImage = colorizedImage!.af_imageAspectScaled(toFill: size)
-        
-        
-        
-        scene.background.contents = aspectScaledToFitImage
-        
-        scene.background.wrapS = SCNWrapMode.repeat
-        scene.background.wrapT = SCNWrapMode.repeat
-        addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
-        
-        addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
-        
-        
-        
-        addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
-        
-        addObject(name: "sunlowres.scn", position: SCNVector3(100, 100, -500), scale: 0.5)
-        
-        
-        //static asteroid
-        //      addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
-        
-        //addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
-        
-        //Sun_1_1391000.usdz
-        //addObject(name: "Sun_1_1391000.usdz", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(0.2,0.2,0.2))
-        //addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: 10)
-        
-        //addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
-        //instantmeshstation2.dae
-        
-        for _ in 1...50 {
-            addAsteroid()
-        }
-        
-        
-        //let locationState:LocationState = LocationState.random()
-        
-        
-        animateAsteroid()
-        
-        
-        scene.rootNode.addChildNode(baseNode)
-        
-        
-        refresh()
-
-        
-        
-        // create and add a camera to the scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        scene.rootNode.addChildNode(cameraNode)
-        
-        // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-        
-        // create and add a light to the scene
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light!.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
-        
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = .ambient
-        ambientLightNode.light!.color = UIColor.darkGray
-        scene.rootNode.addChildNode(ambientLightNode)
-        
-        
-        let scnView = self.scnView!
-        
-        scnView.scene = scene
-        
-        scnView.allowsCameraControl = true
-        
-        // show statistics such as fps and timing information
-        scnView.showsStatistics = false
-        scnView.autoenablesDefaultLighting=true
-        
-        // configure the view
-        scnView.backgroundColor = UIColor.black
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        scnView.addGestureRecognizer(tapGesture)
-        
-        
-        
-    }
     
     
     func animateAsteroid() {

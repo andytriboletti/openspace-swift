@@ -27,7 +27,12 @@ class MarsViewController: UIViewController {
     
     
     @IBAction func takeOffAction() {
-        self.performSegue(withIdentifier: "takeOff", sender: self)
+        //self.dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "takeOff", sender: self)
+            //self.dismiss(animated: true, completion: nil)
+
+        //})
+        
     }
     @objc func shipsAction(_ sender: UIBarButtonItem) {
         
