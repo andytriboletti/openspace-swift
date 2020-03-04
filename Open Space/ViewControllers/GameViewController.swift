@@ -73,7 +73,7 @@ class GameViewController: UIViewController {
 //            node.removeFromParentNode()
 //        }
 //        baseNode.removeFromParentNode()
-//        
+//
         tempNode?.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode()
         }
@@ -257,7 +257,7 @@ class GameViewController: UIViewController {
         addTempObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawMoon() {
-        addTempObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+        addTempObject(name: "moon.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawEarth() {
         addTempObject(name: "earth.scn", position: SCNVector3(-500, 0, -200), scale: 5)
