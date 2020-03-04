@@ -18,10 +18,11 @@ import SCLAlertView
 import DynamicBlurView
 
 class GameViewController: UIViewController {
-    let cameraNode = SCNNode()
-    let camera = SCNCamera()
+    var baseNode:SCNNode!
+    var tempNode:SCNNode!
+
     var tapGesture: UITapGestureRecognizer?
-    var iss: SCNNode?
+//    var iss: SCNNode?
     @IBOutlet var headerButton: MDCButton!
     @IBOutlet var headerButton2: MDCButton!
     
@@ -29,10 +30,7 @@ class GameViewController: UIViewController {
     @IBOutlet var headerButton2View: UIView!
     
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
-    
-    var baseNode:SCNNode! = SCNNode()
-    var tempNode:SCNNode! = SCNNode()
-    let scene = SCNScene()
+
 
     
     @IBOutlet var scnView: SCNView!
@@ -72,17 +70,18 @@ class GameViewController: UIViewController {
 //        baseNode?.enumerateChildNodes { (node, stop) in
 //            node.removeFromParentNode()
 //        }
-//        baseNode.removeFromParentNode()
+//        baseNode?.removeFromParentNode()
+//
 //
         tempNode?.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode()
         }
-        tempNode.removeFromParentNode()
-        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
-                     node.removeFromParentNode()
-        }
+        tempNode?.removeFromParentNode()
+//        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
+//                     node.removeFromParentNode()
+//        }
         
-        scnView.scene?.rootNode.removeFromParentNode()
+        //scnView.scene?.rootNode.removeFromParentNode()
 
         if(self.tapGesture != nil) {
             scnView.removeGestureRecognizer(self.tapGesture!)
@@ -106,7 +105,17 @@ class GameViewController: UIViewController {
         
     }
     override func viewDidLoad() {
+        scnView.scene?.rootNode.removeFromParentNode()
+
         viewDidDisappear(false)
+
+        let cameraNode = SCNNode()
+        let camera = SCNCamera()
+        
+        self.baseNode = SCNNode()
+        self.tempNode = SCNNode()
+        let scene = SCNScene()
+        
         super.viewDidLoad()
         
         setupHeader()
@@ -166,11 +175,15 @@ class GameViewController: UIViewController {
             addAsteroid()
         }
         
+        //max asteroid
+        
+        addObject(name: "a.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
+
         
         //let locationState:LocationState = LocationState.random()
         
         
-        animateAsteroid()
+        //animateAsteroid(baseNode: baseNode)
         
         
         
@@ -179,7 +192,7 @@ class GameViewController: UIViewController {
         
         
         // create and add a camera to the scene
-        cameraNode.camera = self.camera
+        cameraNode.camera = camera
         //scene.rootNode.addChildNode(cameraNode)
         
                 // place the camera
@@ -237,14 +250,21 @@ class GameViewController: UIViewController {
         switch appDelegate.gameState.locationState {
         case .nearEarth:
             nearEarth()
+            break
         case .nearISS:
             nearISS()
-        case .nearNothing:
-            nearNothing()
-        case .nearMars:
-            nearMars()
+            break
         case .nearMoon:
             nearMoon()
+            break
+        case .nearMars:
+            nearMars()
+            break
+
+        case .nearNothing:
+            nearNothing()
+            break
+
         @unknown default:
             nearNothing()
         }
@@ -257,7 +277,7 @@ class GameViewController: UIViewController {
         addTempObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawMoon() {
-        addTempObject(name: "moon.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+        addTempObject(name: "moon.scn", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawEarth() {
         addTempObject(name: "earth.scn", position: SCNVector3(-500, 0, -200), scale: 5)
@@ -322,7 +342,7 @@ class GameViewController: UIViewController {
     
     
     
-    func animateAsteroid() {
+    func animateAsteroid(baseNode: SCNNode) {
         let shipScenec = SCNScene(named: "a.dae")!
         
         let shipSceneChildNodesc = shipScenec.rootNode.childNodes
