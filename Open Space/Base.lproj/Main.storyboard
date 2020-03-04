@@ -473,7 +473,7 @@
                                         </constraints>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <action selector="dismissButtonTapped:" destination="32f-fL-zJD" eventType="touchUpInside" id="ei0-Wa-Qus"/>
+                                            <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="vGV-oN-c1J"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -508,7 +508,7 @@
                         <outlet property="cancelButton" destination="CJu-p7-VXC" id="Tqe-X2-eII"/>
                         <outlet property="collectionView" destination="UID-EJ-Yvy" id="Bld-UW-NUD"/>
                         <outlet property="collectionViewFlowLayout" destination="9hF-fE-YZQ" id="Ev6-ru-qaf"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="overFullScreen" id="XiJ-tA-caf"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="XiJ-tA-caf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27F-SZ-z6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -521,7 +521,7 @@
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rQs-aG-VQ2"/>
+        <segue reference="XiJ-tA-caf"/>
         <segue reference="a2K-Gh-aKu"/>
     </inferredMetricsTieBreakers>
 </document>
