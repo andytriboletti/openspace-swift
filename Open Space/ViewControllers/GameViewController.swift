@@ -75,9 +75,12 @@ class GameViewController: UIViewController {
         scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
                      node.removeFromParentNode()
         }
+        
         scnView.scene?.rootNode.removeFromParentNode()
 
-        scnView.removeGestureRecognizer(self.tapGesture!)
+        if(self.tapGesture != nil) {
+            scnView.removeGestureRecognizer(self.tapGesture!)
+        }
         super.viewDidDisappear(animated)
     }
     func setupHeader() {
@@ -96,20 +99,21 @@ class GameViewController: UIViewController {
         
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        viewDidDisappear(false)
+        super.viewDidLoad()
         
         setupHeader()
         
         
-        baseNode?.enumerateChildNodes { (node, stop) in
-            node.removeFromParentNode()
-        }
-        baseNode?.removeFromParentNode()
-        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
-                     node.removeFromParentNode()
-        }
-        scnView.scene?.rootNode.removeFromParentNode()
+//        baseNode?.enumerateChildNodes { (node, stop) in
+//            node.removeFromParentNode()
+//        }
+//        //baseNode?.removeFromParentNode()
+//        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
+//                     node.removeFromParentNode()
+//        }
+        //scnView.scene?.rootNode.removeFromParentNode()
 
 //        scnView?.removeGestureRecognizer(self.tapGesture)
         
