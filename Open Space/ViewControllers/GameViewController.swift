@@ -31,6 +31,7 @@ class GameViewController: UIViewController {
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
     
     var baseNode:SCNNode! = SCNNode()
+    var tempNode:SCNNode! = SCNNode()
     let scene = SCNScene()
 
     
@@ -135,13 +136,13 @@ class GameViewController: UIViewController {
         scene.background.wrapT = SCNWrapMode.repeat
         addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
         
-        addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
+        //addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
         
         
-        addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
+        //addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
         
-        addObject(name: "sunlowres.scn", position: SCNVector3(100, 100, -500), scale: 0.5)
+        //addObject(name: "sunlowres.scn", position: SCNVector3(100, 100, -500), scale: 0.5)
         
         
         //static asteroid
@@ -198,6 +199,7 @@ class GameViewController: UIViewController {
         refresh()
 
         scene.rootNode.addChildNode(baseNode)
+        baseNode.addChildNode(tempNode)
 
 
         
@@ -243,17 +245,17 @@ class GameViewController: UIViewController {
         }
     }
     func drawISS() {
-        addObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)
+        addTempObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)
         
     }
     func drawMars() {
-        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+        addTempObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawMoon() {
-        addObject(name: "moon.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+        addTempObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawEarth() {
-        addObject(name: "earth.scn", position: SCNVector3(-500, 0, -200), scale: 5)
+        addTempObject(name: "earth.scn", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func showHeaderButtons() {
         self.headerButton.isHidden=false
@@ -497,12 +499,30 @@ class GameViewController: UIViewController {
     func addObject(name: String, position: SCNVector3?, scale: Float) -> SCNNode {
         addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
+    func addTempObject(name: String, position: SCNVector3?, scale: Float) -> SCNNode {
+        addTempObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
+    }
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) -> SCNNode {
         let shipScene = SCNScene(named: name)!
         
         let shipSceneChildNodes = shipScene.rootNode.childNodes
         for childNode in shipSceneChildNodes {
             baseNode.addChildNode(childNode)
+            if(position != nil) {
+                childNode.position = position!
+            }
+            if(scale != nil) {
+                childNode.scale = scale!
+            }
+        }
+        return shipScene.rootNode
+    }
+    func addTempObject(name: String, position: SCNVector3?, scale: SCNVector3?) -> SCNNode {
+        let shipScene = SCNScene(named: name)!
+        
+        let shipSceneChildNodes = shipScene.rootNode.childNodes
+        for childNode in shipSceneChildNodes {
+            tempNode.addChildNode(childNode)
             if(position != nil) {
                 childNode.position = position!
             }
