@@ -10,9 +10,9 @@ import Foundation
 
 class GameState {
     var locationState:LocationState = LocationState.nearEarth
-    var shipNames:Array = ["Anderik", "Eleuz", "Artophy"]
+    var shipNames:Array = ["Anderik", "Eleuz", "Artophy", "Codile"]
     var currentShipName:String {
-        let theName = shipNames[2]
+        let theName = shipNames[3]
         return theName
     }
     var currentShipModel:String = "spaceshipb.scn"

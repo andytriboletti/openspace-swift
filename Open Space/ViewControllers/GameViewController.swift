@@ -133,14 +133,14 @@ class GameViewController: UIViewController {
 //        scnView?.removeGestureRecognizer(self.tapGesture)
         
         
-        let backgroundFilename = "iss006e48523orig.jpg"
+        let backgroundFilename = "starry-sky-998641.jpg"
         let image = UIImage(named: backgroundFilename)!
-        let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 1.0)
+        let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 0.5)
         let purple = UIColor.black
-        let semi = rose.withAlphaComponent(0.5)
+        let semi = rose.withAlphaComponent(0.1)
         let colorizedImage = Utils.colorizeImage(image, with: semi)
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let aspectScaledToFitImage = colorizedImage!.af_imageAspectScaled(toFill: size)
+        let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
         
         
         
