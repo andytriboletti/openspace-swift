@@ -295,11 +295,12 @@
             </objects>
             <point key="canvasLocation" x="-1477" y="389"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Game Controller-->
         <scene sceneID="nNH-s1-tGJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4cu-mg-f7Y" sceneMemberID="viewController">
+                <navigationController title="Nav Game Controller" automaticallyAdjustsScrollViewInsets="NO" id="4cu-mg-f7Y" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -507,6 +508,7 @@
                         <outlet property="cancelButton" destination="CJu-p7-VXC" id="Tqe-X2-eII"/>
                         <outlet property="collectionView" destination="UID-EJ-Yvy" id="Bld-UW-NUD"/>
                         <outlet property="collectionViewFlowLayout" destination="9hF-fE-YZQ" id="Ev6-ru-qaf"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="XiJ-tA-caf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27F-SZ-z6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -519,6 +521,7 @@
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XiJ-tA-caf"/>
         <segue reference="Ibv-0z-hje"/>
     </inferredMetricsTieBreakers>
 </document>

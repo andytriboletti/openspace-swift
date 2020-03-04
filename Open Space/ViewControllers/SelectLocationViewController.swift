@@ -49,8 +49,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
             //cell.backgroundColor = .red
             appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
-            (self.presentingViewController?.children[0].children[0] as! GameViewController).refresh()
-            self.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "goToGame", sender: self)
 
             
             //self.parent?.dismiss(animated: true, completion: nil)

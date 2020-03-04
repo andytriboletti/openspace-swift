@@ -19,7 +19,7 @@ import DynamicBlurView
 
 class GameViewController: UIViewController {
     
-    
+    var iss: SCNNode?
     @IBOutlet var headerButton: MDCButton!
     @IBOutlet var headerButton2: MDCButton!
     
@@ -70,7 +70,12 @@ class GameViewController: UIViewController {
     
     func refresh() {
         print("refresh")
-        
+
+//        self.iss?.enumerateChildNodes { (node, stop) in
+//            node.removeFromParentNode()
+//        }
+//        self.iss?.removeFromParentNode()
+
         switch appDelegate.gameState.locationState {
         case .nearEarth:
             nearEarth()
@@ -193,9 +198,9 @@ class GameViewController: UIViewController {
         
         //Sun_1_1391000.usdz
         //addObject(name: "Sun_1_1391000.usdz", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(0.2,0.2,0.2))
-        addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: 10)
+        //addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: 10)
         
-        addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
+        //addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
         //instantmeshstation2.dae
         
         for _ in 1...50 {
@@ -206,38 +211,7 @@ class GameViewController: UIViewController {
         //let locationState:LocationState = LocationState.random()
         
         
-        let shipScenec = SCNScene(named: "a.dae")!
-        
-        let shipSceneChildNodesc = shipScenec.rootNode.childNodes
-        for childNode in shipSceneChildNodesc {
-            let initialPositionX = 0
-            let initialPositionY = 200
-            childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
-            childNode.scale = SCNVector3(100, 50, 50)
-            
-            baseNode.addChildNode(childNode)
-            
-            let howLongToTravel = 5000
-            let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
-            var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
-            childNode.runAction(moveAction)
-            
-            let path1 = UIBezierPath()
-            path1.move(to: CGPoint(x: 1000,y: 1000))
-            moveAction = SCNAction.moveAlong(path: path1)
-            
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0
-            
-            moveAction = SCNAction.moveAlong(path: path1)
-            //let repeatAction = SCNAction.repeatForever(moveAction)
-            
-            
-            SCNTransaction.commit()
-            
-            
-            
-        }
+        animateAsteroid()
         
         
         scene.rootNode.addChildNode(baseNode)
@@ -292,6 +266,42 @@ class GameViewController: UIViewController {
         
     }
     
+    
+    func animateAsteroid() {
+        let shipScenec = SCNScene(named: "a.dae")!
+        
+        let shipSceneChildNodesc = shipScenec.rootNode.childNodes
+        for childNode in shipSceneChildNodesc {
+            let initialPositionX = 0
+            let initialPositionY = 200
+            childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
+            childNode.scale = SCNVector3(100, 50, 50)
+            
+            baseNode.addChildNode(childNode)
+            
+            let howLongToTravel = 5000
+            let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
+            var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
+            childNode.runAction(moveAction)
+            
+            let path1 = UIBezierPath()
+            path1.move(to: CGPoint(x: 1000,y: 1000))
+            moveAction = SCNAction.moveAlong(path: path1)
+            
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 0
+            
+            moveAction = SCNAction.moveAlong(path: path1)
+            //let repeatAction = SCNAction.repeatForever(moveAction)
+            
+            
+            SCNTransaction.commit()
+            
+            
+            
+        }
+        
+    }
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
@@ -436,10 +446,10 @@ class GameViewController: UIViewController {
         }
         addObject(name: "a.dae", position: myPosition, scale: myScale)
     }
-    func addObject(name: String, position: SCNVector3?, scale: Float) {
+    func addObject(name: String, position: SCNVector3?, scale: Float) -> SCNNode {
         addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
-    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
+    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) -> SCNNode {
         let shipScene = SCNScene(named: name)!
         
         let shipSceneChildNodes = shipScene.rootNode.childNodes
@@ -452,7 +462,7 @@ class GameViewController: UIViewController {
                 childNode.scale = scale!
             }
         }
-        
+        return shipScene.rootNode
     }
 }
 
