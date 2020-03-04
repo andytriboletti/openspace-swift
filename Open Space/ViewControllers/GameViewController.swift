@@ -67,6 +67,25 @@ class GameViewController: UIViewController {
         
         
     }
+    
+    func refresh() {
+        print("refresh")
+        
+        switch appDelegate.gameState.locationState {
+        case .nearEarth:
+            nearEarth()
+        case .nearISS:
+            nearISS()
+        case .nearNothing:
+            nearNothing()
+        case .nearMars:
+            nearMars()
+        case .nearMoon:
+            nearISS()
+        @unknown default:
+            nearNothing()
+        }
+    }
     func drawISS() {
         addObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)
         
@@ -123,13 +142,11 @@ class GameViewController: UIViewController {
         drawMars()
         
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
+    
+    override func viewDidAppear(_ animated: Bool) {
         
         self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
-
+        
         let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
@@ -138,10 +155,10 @@ class GameViewController: UIViewController {
         
         self.headerButton2.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.headerButton2.applyContainedTheme(withScheme: appDelegate.containerScheme)
-
+        
         //node stuff
         baseNode = SCNNode()
-
+        
         let scene = SCNScene()
         let backgroundFilename = "iss006e48523orig.jpg"
         let image = UIImage(named: backgroundFilename)!
@@ -155,14 +172,14 @@ class GameViewController: UIViewController {
         
         
         scene.background.contents = aspectScaledToFitImage
-
+        
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
         addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10.0,10.0,10.0))
         
         addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
-
+        
         
         addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
         
@@ -187,20 +204,6 @@ class GameViewController: UIViewController {
         
         
         //let locationState:LocationState = LocationState.random()
-        let locationState:LocationState = LocationState.nearEarth
-        
-        switch locationState {
-        case .nearEarth:
-            nearEarth()
-        case .nearISS:
-            nearISS()
-        case .nearNothing:
-            nearNothing()
-        case .nearMars:
-            nearMars()
-        @unknown default:
-            nearNothing()
-        }
         
         
         let shipScenec = SCNScene(named: "a.dae")!
@@ -235,10 +238,10 @@ class GameViewController: UIViewController {
             
             
         }
-    
+        
         
         scene.rootNode.addChildNode(baseNode)
-                
+        
         // create and add a camera to the scene
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
@@ -277,6 +280,16 @@ class GameViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
+        
+        refresh()
+        
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
     }
     
     @objc

@@ -21,11 +21,40 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
+
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
+            // cell.backgroundColor = .green
+            
+         }
+    }
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            //cell.contentView.backgroundColor = .red
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            //cell.contentView.backgroundColor = nil
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected")
         print(indexPath.row)
         print(indexPath.section)
+        if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
+            //cell.backgroundColor = .red
+            appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
+            (self.presentingViewController?.children[0].children[0] as! GameViewController).refresh()
+            self.dismiss(animated: true, completion: nil)
+
+            
+            //self.parent?.dismiss(animated: true, completion: nil)
+         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
