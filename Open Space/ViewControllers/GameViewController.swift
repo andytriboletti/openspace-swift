@@ -86,7 +86,7 @@ class GameViewController: UIViewController {
         case .nearMars:
             nearMars()
         case .nearMoon:
-            nearISS()
+            nearMoon()
         @unknown default:
             nearNothing()
         }
@@ -96,6 +96,9 @@ class GameViewController: UIViewController {
         
     }
     func drawMars() {
+        addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+    }
+    func drawMoon() {
         addObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawEarth() {
@@ -137,6 +140,17 @@ class GameViewController: UIViewController {
         
     }
     
+    func nearMoon() {
+        
+        self.headerButton.setTitle("Land on the Moon", for: .normal)
+        self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near the Moon. It is stopped."
+        
+        showHeaderButtons()
+        
+        drawMoon()
+        
+    }
+    
     func nearMars() {
         
         self.headerButton.setTitle("Land on Mars", for: .normal)
@@ -162,6 +176,14 @@ class GameViewController: UIViewController {
         self.headerButton2.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
         //node stuff
+        
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
         baseNode = SCNNode()
         
         let scene = SCNScene()
@@ -216,6 +238,11 @@ class GameViewController: UIViewController {
         
         scene.rootNode.addChildNode(baseNode)
         
+        
+        refresh()
+
+        
+        
         // create and add a camera to the scene
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
@@ -254,13 +281,6 @@ class GameViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
-        
-        refresh()
-        
-        
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         
         
