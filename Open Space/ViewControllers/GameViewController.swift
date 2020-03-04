@@ -182,7 +182,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
         
         baseNode = SCNNode()
         
@@ -202,7 +204,7 @@ class GameViewController: UIViewController {
         
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
-        addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10.0,10.0,10.0))
+        addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
         
         addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
         
