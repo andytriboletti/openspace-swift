@@ -35,9 +35,8 @@
 		6F6D845823FF87E300328057 /* flagcool.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D845723FF87E300328057 /* flagcool.dae */; };
 		6F6D845B23FF8B8E00328057 /* PIA01120orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D845A23FF8B8E00328057 /* PIA01120orig.jpg */; };
 		6F6D845D23FF8C8800328057 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D845C23FF8C8800328057 /* Utils.swift */; };
-		6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A523FEF1B100D767E0 /* Assets.xcassets */; };
-		6F7380A823FEF61100D767E0 /* rocket_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7380A723FEF61100D767E0 /* rocket_1024.png */; };
 		6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */; };
+		6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F81A27B24155C4300D79494 /* Assets.xcassets */; };
 		6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */; };
 		6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */; };
 		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
@@ -102,9 +101,8 @@
 		6F6D845723FF87E300328057 /* flagcool.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = flagcool.dae; sourceTree = "<group>"; };
 		6F6D845A23FF8B8E00328057 /* PIA01120orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA01120orig.jpg; sourceTree = "<group>"; };
 		6F6D845C23FF8C8800328057 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		6F7380A523FEF1B100D767E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6F7380A723FEF61100D767E0 /* rocket_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rocket_1024.png; path = Assets.xcassets/AppIcon.appiconset/rocket_1024.png; sourceTree = "<group>"; };
 		6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		6F81A27B24155C4300D79494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 		6FB0EEFF23FDA1A800EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FB0EF0423FDA1A900EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FB0EF0623FDA1A900EA28D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Open Space.entitlements"; sourceTree = "<group>"; };
 		6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipb.dae; sourceTree = "<group>"; };
 		6FB0EF1123FDA24600EA28D7 /* space11.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = space11.dae; sourceTree = "<group>"; };
 		6FD0296423FEC8620082209D /* space_icon_200.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_200.jpg; sourceTree = "<group>"; };
@@ -238,8 +235,6 @@
 				6F303534240FEA66006C4684 /* starry-sky-998641.jpg */,
 				6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */,
 				6FE911F723FF425400255491 /* nasa */,
-				6F7380A723FEF61100D767E0 /* rocket_1024.png */,
-				6F7380A523FEF1B100D767E0 /* Assets.xcassets */,
 				6FD0296C23FED5A80082209D /* 2k_mars.jpg */,
 				6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */,
 				6FD0296423FEC8620082209D /* space_icon_200.jpg */,
@@ -319,10 +314,10 @@
 				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
 				6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */,
 				6FB0EF0623FDA1A900EA28D7 /* Info.plist */,
-				6FB0EF0C23FDA1C200EA28D7 /* Open Space.entitlements */,
 				6F6D845C23FF8C8800328057 /* Utils.swift */,
 				6FA5934824001B42007C16E3 /* PaddingLabel.swift */,
 				6F30352C240FB007006C4684 /* NavGameController.swift */,
+				6F81A27B24155C4300D79494 /* Assets.xcassets */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -489,7 +484,6 @@
 				6F022424240250A60035F7E4 /* mtwashington.scn in Resources */,
 				6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
-				6F7380A623FEF1B100D767E0 /* Assets.xcassets in Resources */,
 				6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
 				6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
@@ -514,7 +508,6 @@
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
 				6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */,
 				6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
-				6F7380A823FEF61100D767E0 /* rocket_1024.png in Resources */,
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
@@ -529,6 +522,7 @@
 				6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */,
 				6FA52B1F23FE3D3100B16480 /* d.dae in Resources */,
 				6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
+				6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */,
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,10 +733,9 @@
 			baseConfigurationReference = 018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
@@ -752,9 +745,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "openspace prov dist";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -765,10 +758,9 @@
 			baseConfigurationReference = 2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
@@ -778,9 +770,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "openspace prov dist";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
