@@ -10,9 +10,10 @@ import Foundation
 
 class GameState {
     var locationState:LocationState = LocationState.nearEarth
-    var shipNames:Array = ["Anderik", "Eleuz", "Artophy", "Codile"]
+    //random name generator: https://www.samcodes.co.uk/project/markov-namegen/
+    var shipNames:Array = ["Anderik", "Eleuz", "Artophy", "Codile", "Krillow"]
     var currentShipName:String {
-        let theName = shipNames[3]
+        let theName = shipNames[4]
         return theName
     }
     var currentShipModel:String = "spaceshipb.scn"
