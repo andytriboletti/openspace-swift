@@ -53,7 +53,7 @@ class EarthViewController: UIViewController {
         
         baseNode = SCNNode()
         let scene = SCNScene()
-        self.title="Your ship '\(appDelegate.gameState.currentShipName)' is on Mars"
+        self.title="Your ship '\(appDelegate.gameState.currentShipName)' is on Earth"
         
         let backgroundFilename = "scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg"
         let image = UIImage(named: backgroundFilename)!
