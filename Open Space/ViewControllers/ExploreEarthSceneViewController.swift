@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class BaseSceneViewController: UIViewController {
+class ExploreEarthSceneViewController: UIViewController {
     var baseNode:SCNNode!
     @IBOutlet var scnView: SCNView!
        

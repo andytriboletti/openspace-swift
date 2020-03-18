@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */; };
 		6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */; };
-		6F022420240248CB0035F7E4 /* BaseSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02241F240248CB0035F7E4 /* BaseSceneViewController.swift */; };
+		6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */; };
 		6F022424240250A60035F7E4 /* mtwashington.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F022423240250A60035F7E4 /* mtwashington.scn */; };
 		6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6F158182240167E60005A00E /* ISS_stationary2.usdz */; };
 		6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294564240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg */; };
@@ -24,6 +24,7 @@
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
 		6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */; };
 		6F5B8E2A2402458B00757B99 /* mtrushmore.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E272402458B00757B99 /* mtrushmore.scn */; };
+		6F6146F124224F2F000DFACC /* EarthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6146F024224F2F000DFACC /* EarthViewController.swift */; };
 		6F636B8D24015A760070C292 /* Sun_1_1391000.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B8C24015A760070C292 /* Sun_1_1391000.usdz */; };
 		6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9024015CA10070C292 /* 2k_sun.jpg */; };
 		6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9224015CEE0070C292 /* sunlowres.scn */; };
@@ -39,6 +40,7 @@
 		6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F81A27B24155C4300D79494 /* Assets.xcassets */; };
 		6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */; };
 		6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */; };
+		6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */; };
 		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
 		6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
 		6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F988A9823FF944100F7ED73 /* flagcool.scn */; };
@@ -75,7 +77,7 @@
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
 		6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EXPORT_GOOGLE_SAT_WM-mtwashington.png"; sourceTree = "<group>"; };
-		6F02241F240248CB0035F7E4 /* BaseSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneViewController.swift; sourceTree = "<group>"; };
+		6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEarthSceneViewController.swift; sourceTree = "<group>"; };
 		6F022423240250A60035F7E4 /* mtwashington.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mtwashington.scn; sourceTree = "<group>"; };
 		6F158182240167E60005A00E /* ISS_stationary2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = ISS_stationary2.usdz; sourceTree = "<group>"; };
 		6F294564240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = GSFC_20171208_Archive_e001359orig.jpg; path = sourceimages/GSFC_20171208_Archive_e001359orig.jpg; sourceTree = SOURCE_ROOT; };
@@ -90,6 +92,7 @@
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
 		6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EXPORT_GOOGLE_SAT_WM.png; sourceTree = "<group>"; };
 		6F5B8E272402458B00757B99 /* mtrushmore.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mtrushmore.scn; sourceTree = "<group>"; };
+		6F6146F024224F2F000DFACC /* EarthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthViewController.swift; sourceTree = "<group>"; };
 		6F636B8C24015A760070C292 /* Sun_1_1391000.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Sun_1_1391000.usdz; sourceTree = "<group>"; };
 		6F636B9024015CA10070C292 /* 2k_sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2k_sun.jpg; path = sourceimages/2k_sun.jpg; sourceTree = SOURCE_ROOT; };
 		6F636B9224015CEE0070C292 /* sunlowres.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = sunlowres.scn; path = "Open Space/3dmodels/planets/sunlowres.scn"; sourceTree = SOURCE_ROOT; };
@@ -105,6 +108,7 @@
 		6F81A27B24155C4300D79494 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg"; sourceTree = "<group>"; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F988A9823FF944100F7ED73 /* flagcool.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = flagcool.scn; sourceTree = "<group>"; };
@@ -227,6 +231,14 @@
 				6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		6F894C9D24227B6900F011AC /* earth */ = {
+			isa = PBXGroup;
+			children = (
+				6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */,
+			);
+			path = earth;
 			sourceTree = "<group>";
 		};
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
@@ -374,7 +386,8 @@
 				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
 				6F43938F23FF6DC60007614D /* MarsViewController.swift */,
 				6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */,
-				6F02241F240248CB0035F7E4 /* BaseSceneViewController.swift */,
+				6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */,
+				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -410,6 +423,7 @@
 		6FE911F723FF425400255491 /* nasa */ = {
 			isa = PBXGroup;
 			children = (
+				6F894C9D24227B6900F011AC /* earth */,
 				6FA314672401943D009D77AB /* space */,
 				6F6D845923FF8B8E00328057 /* mars */,
 			);
@@ -510,6 +524,7 @@
 				6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
+				6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				6FA5934724001043007C16E3 /* spaceshipb.scn in Resources */,
@@ -577,7 +592,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
-				6F022420240248CB0035F7E4 /* BaseSceneViewController.swift in Sources */,
+				6F6146F124224F2F000DFACC /* EarthViewController.swift in Sources */,
+				6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,
@@ -733,9 +749,9 @@
 			baseConfigurationReference = 018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
@@ -745,7 +761,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "openspace prov dist";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -758,9 +774,9 @@
 			baseConfigurationReference = 2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
@@ -770,7 +786,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "openspace prov dist";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;

@@ -37,8 +37,15 @@ class GameViewController: UIViewController {
     @IBOutlet var headerLabel: UILabel!
     
     @IBAction func landButtonClicked() {
-        print("land on mars")
-        self.performSegue(withIdentifier: "landOnMars", sender: self)
+        if(appDelegate.gameState.locationState == LocationState.nearEarth) {
+            print("land on earth")
+            self.performSegue(withIdentifier: "landOnEarth", sender: self)
+
+        }
+        else {
+            print("land on mars")
+            self.performSegue(withIdentifier: "landOnMars", sender: self)
+        }
         
         
     }

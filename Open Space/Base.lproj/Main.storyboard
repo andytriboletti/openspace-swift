@@ -95,6 +95,7 @@
                         <segue destination="vG4-S1-hbb" kind="presentation" identifier="landOnMars" modalPresentationStyle="fullScreen" id="JMa-bL-d6Q"/>
                         <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" modalPresentationStyle="fullScreen" id="JNV-Sx-ib3"/>
                         <segue destination="JGR-eV-JyE" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
+                        <segue destination="r2S-AQ-5TL" kind="presentation" identifier="landOnEarth" modalPresentationStyle="fullScreen" id="wYm-Nz-ur2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -146,7 +147,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aOD-yr-mIh"/>
                                         </constraints>
-                                        <state key="normal" title="EXPLORE: FIND RESOURCES"/>
+                                        <state key="normal" title="EXPLORE MARS"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -302,7 +303,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -314,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="138.75" y="87"/>
         </scene>
-        <!--Base Scene View Controller-->
+        <!--Explore Earth Scene View Controller-->
         <scene sceneID="8dh-Gn-2kJ">
             <objects>
-                <viewController id="JGR-eV-JyE" customClass="BaseSceneViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JGR-eV-JyE" customClass="ExploreEarthSceneViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j8w-OW-MG8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,6 +382,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0N-G6-edg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4275" y="-504"/>
+        </scene>
+        <!--Earth View Controller-->
+        <scene sceneID="HX3-a7-kr1">
+            <objects>
+                <viewController id="J0M-22-PC3" customClass="EarthViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RO7-cM-56Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-cN-zkr">
+                                <rect key="frame" x="0.0" y="88" width="414" height="714"/>
+                            </sceneKitView>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
+                                <rect key="frame" x="20.5" y="108" width="373" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="80"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="wje-nH-mFd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="100" width="317" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
+                                        </constraints>
+                                        <state key="normal" title="Explore Earth"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IT3-M6-xxO" firstAttribute="centerX" secondItem="RFR-Dg-CTU" secondAttribute="centerX" id="0ae-XZ-I9N"/>
+                                    <constraint firstAttribute="trailing" secondItem="QOQ-Lg-Woz" secondAttribute="trailing" constant="28" id="DpU-mc-iqK"/>
+                                    <constraint firstItem="QOQ-Lg-Woz" firstAttribute="leading" secondItem="RFR-Dg-CTU" secondAttribute="leading" constant="28" id="yy3-iq-fN6"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8V-Ib-MSv" customClass="MDCButton">
+                                <rect key="frame" x="20" y="802" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="l5G-R3-HUa"/>
+                                </constraints>
+                                <state key="normal" title="TAKE OFF"/>
+                                <connections>
+                                    <action selector="takeOffAction" destination="J0M-22-PC3" eventType="touchUpInside" id="8US-br-Dyw"/>
+                                    <action selector="takeOffAction" destination="Tx7-Uf-egN" eventType="touchUpInside" id="Zgz-Oz-mUw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RFR-Dg-CTU" firstAttribute="centerX" secondItem="RO7-cM-56Z" secondAttribute="centerX" id="0sC-mS-Nb7"/>
+                            <constraint firstItem="v8V-Ib-MSv" firstAttribute="top" secondItem="3Z3-cN-zkr" secondAttribute="bottom" id="5ZS-iD-nEk"/>
+                            <constraint firstItem="v8V-Ib-MSv" firstAttribute="leading" secondItem="O9E-uD-wZb" secondAttribute="leading" constant="20" id="CMZ-5I-v63"/>
+                            <constraint firstItem="O9E-uD-wZb" firstAttribute="trailing" secondItem="3Z3-cN-zkr" secondAttribute="trailing" id="G2G-FN-law"/>
+                            <constraint firstItem="3Z3-cN-zkr" firstAttribute="leading" secondItem="O9E-uD-wZb" secondAttribute="leading" id="Gle-Ch-7wt"/>
+                            <constraint firstItem="3Z3-cN-zkr" firstAttribute="top" secondItem="O9E-uD-wZb" secondAttribute="top" id="ajy-C4-dV4"/>
+                            <constraint firstItem="v8V-Ib-MSv" firstAttribute="bottom" secondItem="O9E-uD-wZb" secondAttribute="bottom" id="gGG-8d-BaG"/>
+                            <constraint firstItem="v8V-Ib-MSv" firstAttribute="centerX" secondItem="RO7-cM-56Z" secondAttribute="centerX" id="qdv-IE-OyL"/>
+                            <constraint firstItem="RFR-Dg-CTU" firstAttribute="top" secondItem="O9E-uD-wZb" secondAttribute="top" constant="20" id="vHR-dx-GWP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O9E-uD-wZb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bXp-Tq-Jga"/>
+                    <connections>
+                        <outlet property="exploreButton" destination="QOQ-Lg-Woz" id="AEG-to-COx"/>
+                        <outlet property="headerLabel" destination="IT3-M6-xxO" id="AFP-OC-rZR"/>
+                        <outlet property="scnView" destination="3Z3-cN-zkr" id="WBK-Hx-jhW"/>
+                        <outlet property="takeOffButton" destination="v8V-Ib-MSv" id="XoH-xB-lny"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" id="XCF-Mg-a4A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FkE-B2-w4w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4532" y="388"/>
         </scene>
         <!--Where Do You Want To Go?-->
         <scene sceneID="CRh-oW-hmb">
@@ -515,13 +595,31 @@
             </objects>
             <point key="canvasLocation" x="-726.08695652173924" y="551.11607142857144"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="D1Y-Gk-wWB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r2S-AQ-5TL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cJo-8M-aWs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J0M-22-PC3" kind="relationship" relationship="rootViewController" id="IdK-sq-0gW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Wd-QX-WS9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3501" y="388"/>
+        </scene>
     </scenes>
     <resources>
         <image name="folder" catalog="system" width="64" height="46"/>
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XiJ-tA-caf"/>
+        <segue reference="XCF-Mg-a4A"/>
         <segue reference="a2K-Gh-aKu"/>
     </inferredMetricsTieBreakers>
 </document>
