@@ -111,10 +111,8 @@ class GameViewController: UIViewController {
         
         
     }
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
         scnView.scene?.rootNode.removeFromParentNode()
-
-        viewDidDisappear(false)
 
         let cameraNode = SCNNode()
         let camera = SCNCamera()
