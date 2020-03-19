@@ -4,3 +4,7 @@ If you find any bugs or defects email me at info@greenrobot.com or you can submi
 
 # blog
 https://blog.openspace.greenrobot.com
+
+
+# video
+https://www.youtube.com/watch?v=VikmTcxnLc0
