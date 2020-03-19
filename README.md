@@ -8,3 +8,5 @@ https://blog.openspace.greenrobot.com
 
 # video
 https://www.youtube.com/watch?v=VikmTcxnLc0
+
+![Open Space](https://i.imgur.com/8ERjHc9.png)
