@@ -42,10 +42,16 @@ class GameViewController: UIViewController {
             self.performSegue(withIdentifier: "landOnEarth", sender: self)
 
         }
-        else {
+        else if(appDelegate.gameState.locationState == LocationState.nearISS) {
+                print("land on earth")
+                self.performSegue(withIdentifier: "dockWithStation", sender: self)
+
+        }
+        else if(appDelegate.gameState.locationState == LocationState.nearMars) {
             print("land on mars")
             self.performSegue(withIdentifier: "landOnMars", sender: self)
         }
+        
         
         
     }
@@ -99,8 +105,8 @@ class GameViewController: UIViewController {
         
         self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
         
-        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-        self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
+//        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
+//        self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
         
         self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)

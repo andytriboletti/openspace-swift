@@ -96,6 +96,7 @@
                         <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" modalPresentationStyle="fullScreen" id="JNV-Sx-ib3"/>
                         <segue destination="JGR-eV-JyE" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
                         <segue destination="r2S-AQ-5TL" kind="presentation" identifier="landOnEarth" modalPresentationStyle="fullScreen" id="wYm-Nz-ur2"/>
+                        <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" id="3LN-Fm-zIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -303,7 +304,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -395,10 +396,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="714"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="27.5" y="108" width="359" height="150"/>
+                                <rect key="frame" x="20.5" y="108" width="373" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -410,7 +411,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz" customClass="MDCButton">
-                                        <rect key="frame" x="28" y="100" width="303" height="50"/>
+                                        <rect key="frame" x="28" y="100" width="317" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
@@ -613,13 +614,100 @@
             </objects>
             <point key="canvasLocation" x="3501" y="388"/>
         </scene>
+        <!--Space Station View Controller-->
+        <scene sceneID="iST-dK-SDa">
+            <objects>
+                <viewController id="0yc-aj-Qry" customClass="SpaceStationViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ySQ-WC-LXV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-S1-jmN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
+                            </sceneKitView>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-aX-i0y">
+                                <rect key="frame" x="20" y="0.0" width="374" height="778"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-BJ-Fq7" customClass="MDCButton">
+                                <rect key="frame" x="20" y="778" width="374" height="30"/>
+                                <state key="normal" title="TAKE OFF"/>
+                                <connections>
+                                    <action selector="takeOffAction" destination="0yc-aj-Qry" eventType="touchUpInside" id="T2g-oT-tdv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="374" height="150"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="W2C-4T-YPq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="drM-BJ-Fq7" firstAttribute="top" secondItem="RQ5-S1-jmN" secondAttribute="bottom" id="5Fr-cq-wLT"/>
+                            <constraint firstItem="RQ5-S1-jmN" firstAttribute="leading" secondItem="ySQ-WC-LXV" secondAttribute="leading" id="Sbq-hf-tsG"/>
+                            <constraint firstItem="2vs-Mr-fI7" firstAttribute="top" secondItem="Dai-I3-JFg" secondAttribute="top" constant="20" id="XmC-gW-EY4"/>
+                            <constraint firstItem="Dai-I3-JFg" firstAttribute="trailing" secondItem="RQ5-S1-jmN" secondAttribute="trailing" id="YiW-O9-XLG"/>
+                            <constraint firstItem="RQ5-S1-jmN" firstAttribute="top" secondItem="VLE-aX-i0y" secondAttribute="top" id="Ymj-oh-pvm"/>
+                            <constraint firstItem="VLE-aX-i0y" firstAttribute="leading" secondItem="ySQ-WC-LXV" secondAttribute="leading" constant="20" symbolic="YES" id="dIO-b0-tix"/>
+                            <constraint firstAttribute="trailing" secondItem="VLE-aX-i0y" secondAttribute="trailing" constant="20" symbolic="YES" id="f9a-c8-JP2"/>
+                            <constraint firstItem="VLE-aX-i0y" firstAttribute="top" secondItem="Dai-I3-JFg" secondAttribute="top" id="fVT-ps-yNr"/>
+                            <constraint firstItem="drM-BJ-Fq7" firstAttribute="centerX" secondItem="RQ5-S1-jmN" secondAttribute="centerX" id="h4H-9k-fdW"/>
+                            <constraint firstItem="Dai-I3-JFg" firstAttribute="bottom" secondItem="drM-BJ-Fq7" secondAttribute="bottom" id="hhl-Hk-s98"/>
+                            <constraint firstItem="RQ5-S1-jmN" firstAttribute="leading" secondItem="Dai-I3-JFg" secondAttribute="leading" id="ifY-El-DYu"/>
+                            <constraint firstItem="Dai-I3-JFg" firstAttribute="trailing" secondItem="2vs-Mr-fI7" secondAttribute="trailing" constant="20" id="jQ6-ON-Ozi"/>
+                            <constraint firstItem="drM-BJ-Fq7" firstAttribute="top" secondItem="VLE-aX-i0y" secondAttribute="bottom" id="jXe-Rg-Pu5"/>
+                            <constraint firstItem="RQ5-S1-jmN" firstAttribute="top" secondItem="Dai-I3-JFg" secondAttribute="top" id="lkn-qe-tU1"/>
+                            <constraint firstItem="2vs-Mr-fI7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="drM-BJ-Fq7" secondAttribute="leading" id="r7z-Jk-hCQ"/>
+                            <constraint firstItem="drM-BJ-Fq7" firstAttribute="top" secondItem="RQ5-S1-jmN" secondAttribute="bottom" id="yIK-WI-AdD"/>
+                            <constraint firstItem="drM-BJ-Fq7" firstAttribute="leading" secondItem="VLE-aX-i0y" secondAttribute="leading" id="yuR-zO-eei"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dai-I3-JFg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UNi-Ei-anI"/>
+                    <connections>
+                        <outlet property="headerLabel" destination="2vs-Mr-fI7" id="gzQ-Jr-avd"/>
+                        <outlet property="scnView" destination="RQ5-S1-jmN" id="Bko-Xb-O5a"/>
+                        <outlet property="takeOffButton" destination="drM-BJ-Fq7" id="lkf-oF-IG8"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" id="jz9-hn-pTh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J82-mS-h9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7422" y="-457"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NW5-Oc-eT1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b58-US-IYv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7tu-LX-RxZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0yc-aj-Qry" kind="relationship" relationship="rootViewController" id="Bk1-Wq-vrr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5RO-fp-i8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6059" y="-504"/>
+        </scene>
     </scenes>
     <resources>
         <image name="folder" catalog="system" width="64" height="46"/>
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rQs-aG-VQ2"/>
-        <segue reference="a2K-Gh-aKu"/>
+        <segue reference="3LN-Fm-zIv"/>
+        <segue reference="jz9-hn-pTh"/>
+        <segue reference="Ibv-0z-hje"/>
     </inferredMetricsTieBreakers>
 </document>

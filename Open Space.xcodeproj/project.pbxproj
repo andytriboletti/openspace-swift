@@ -41,6 +41,8 @@
 		6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */; };
 		6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */; };
 		6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */; };
+		6F9385592422ADDE001BE3F6 /* SpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */; };
+		6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */; };
 		6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
 		6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
 		6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F988A9823FF944100F7ED73 /* flagcool.scn */; };
@@ -109,6 +111,8 @@
 		6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg"; sourceTree = "<group>"; };
+		6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceStationViewController.swift; sourceTree = "<group>"; };
+		6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eye-of-the-storm-image-from-outer-space-71116.jpg"; sourceTree = "<group>"; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F988A9823FF944100F7ED73 /* flagcool.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = flagcool.scn; sourceTree = "<group>"; };
@@ -241,9 +245,17 @@
 			path = earth;
 			sourceTree = "<group>";
 		};
+		6F93855A2422BEFA001BE3F6 /* station */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = station;
+			sourceTree = "<group>";
+		};
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */,
 				6F303534240FEA66006C4684 /* starry-sky-998641.jpg */,
 				6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */,
 				6FE911F723FF425400255491 /* nasa */,
@@ -388,6 +400,7 @@
 				6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */,
 				6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */,
 				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
+				6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -423,6 +436,7 @@
 		6FE911F723FF425400255491 /* nasa */ = {
 			isa = PBXGroup;
 			children = (
+				6F93855A2422BEFA001BE3F6 /* station */,
 				6F894C9D24227B6900F011AC /* earth */,
 				6FA314672401943D009D77AB /* space */,
 				6F6D845923FF8B8E00328057 /* mars */,
@@ -528,6 +542,7 @@
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				6FA5934724001043007C16E3 /* spaceshipb.scn in Resources */,
+				6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */,
 				6FDB588323FEB952004263CB /* mars.dae in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,
@@ -594,6 +609,7 @@
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
 				6F6146F124224F2F000DFACC /* EarthViewController.swift in Sources */,
 				6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */,
+				6F9385592422ADDE001BE3F6 /* SpaceStationViewController.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,

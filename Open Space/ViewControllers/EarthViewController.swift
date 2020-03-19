@@ -134,8 +134,8 @@ class EarthViewController: UIViewController {
         self.exploreButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
         
-        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-        self.navigationItem.leftBarButtonItem = shipButton
+        //let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
+        //self.navigationItem.leftBarButtonItem = shipButton
         
         //addObject(name: "flagcool.dae", position:  SCNVector3(1,1,1), scale: nil)
         
