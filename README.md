@@ -24,4 +24,4 @@ https://solarsystem.nasa.gov/resources/2378/international-space-station-3d-model
 
 •The flag on Mars is from https://free3d.com/3d-model/flag-pole-animated-unity-package-55318.html
 
-The spaceship is from a Blender script available from this link: https://github.com/a1studmuffin/SpaceshipGenerator/issues/31
+•The spaceship is from a Blender script available from this link: https://github.com/a1studmuffin/SpaceshipGenerator/issues/31
