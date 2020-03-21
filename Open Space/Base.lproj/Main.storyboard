@@ -95,7 +95,7 @@
                         <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" modalPresentationStyle="fullScreen" id="JNV-Sx-ib3"/>
                         <segue destination="9Rk-qS-0kB" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
                         <segue destination="r2S-AQ-5TL" kind="presentation" identifier="landOnEarth" modalPresentationStyle="fullScreen" id="wYm-Nz-ur2"/>
-                        <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" id="3LN-Fm-zIv"/>
+                        <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" modalPresentationStyle="fullScreen" id="3LN-Fm-zIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -549,17 +549,17 @@
             <objects>
                 <viewController id="0yc-aj-Qry" customClass="SpaceStationViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ySQ-WC-LXV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-S1-jmN">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
                             </sceneKitView>
-                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-aX-i0y">
-                                <rect key="frame" x="20" y="0.0" width="374" height="150"/>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-aX-i0y">
+                                <rect key="frame" x="20" y="44" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="6.5" y="0.0" width="361.5" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -571,15 +571,21 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULR-na-kGG" customClass="MDCButton">
-                                        <rect key="frame" x="141.5" y="120" width="91" height="30"/>
+                                        <rect key="frame" x="0.0" y="110" width="374" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Hj9-BI-bRK"/>
+                                        </constraints>
                                         <state key="normal" title="Change View"/>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ULR-na-kGG" secondAttribute="trailing" id="iLb-r4-Ojq"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-BJ-Fq7" customClass="MDCButton">
-                                <rect key="frame" x="20" y="778" width="374" height="30"/>
+                                <rect key="frame" x="20" y="802" width="374" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="w04-kz-ajp"/>
+                                    <constraint firstAttribute="height" constant="60" id="w04-kz-ajp"/>
                                 </constraints>
                                 <state key="normal" title="TAKE OFF"/>
                                 <connections>
@@ -606,6 +612,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UNi-Ei-anI"/>
                     <connections>
+                        <outlet property="changeViewButton" destination="ULR-na-kGG" id="Tyi-Ra-JY4"/>
                         <outlet property="headerLabel" destination="2vs-Mr-fI7" id="gzQ-Jr-avd"/>
                         <outlet property="scnView" destination="RQ5-S1-jmN" id="Bko-Xb-O5a"/>
                         <outlet property="takeOffButton" destination="drM-BJ-Fq7" id="lkf-oF-IG8"/>
@@ -794,6 +801,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="W7z-Nr-mEd"/>
         <segue reference="3LN-Fm-zIv"/>
-        <segue reference="fDk-qc-0Zv"/>
+        <segue reference="jz9-hn-pTh"/>
     </inferredMetricsTieBreakers>
 </document>
