@@ -97,6 +97,9 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
     return CGSize(width:widthPerItem, height:widthPerItem)
     }
     
+    @IBAction func cancel() {
+        self.dismiss(animated: false, completion: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.

@@ -482,6 +482,9 @@
                                             <constraint firstAttribute="height" constant="60" id="N2M-aE-STD"/>
                                         </constraints>
                                         <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel" destination="32f-fL-zJD" eventType="touchUpInside" id="C9G-gx-7Xf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -789,7 +792,7 @@
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="R0G-66-DuO"/>
+        <segue reference="W7z-Nr-mEd"/>
         <segue reference="3LN-Fm-zIv"/>
         <segue reference="fDk-qc-0Zv"/>
     </inferredMetricsTieBreakers>
