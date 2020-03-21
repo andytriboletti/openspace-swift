@@ -9,6 +9,7 @@ https://blog.openspace.greenrobot.com
 # Video
 https://www.youtube.com/watch?v=VikmTcxnLc0
 
+# Screenshot
 ![Open Space](https://i.imgur.com/8ERjHc9.png)
 
 
