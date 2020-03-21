@@ -10,3 +10,7 @@ https://blog.openspace.greenrobot.com
 https://www.youtube.com/watch?v=VikmTcxnLc0
 
 ![Open Space](https://i.imgur.com/8ERjHc9.png)
+
+
+# info
+All assets in this repository are copyright their respective owners.
