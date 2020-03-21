@@ -91,17 +91,16 @@
                         <outlet property="headerButtonView" destination="dhk-8W-d84" id="lmG-Xo-aZH"/>
                         <outlet property="headerLabel" destination="BxG-s4-Txb" id="iud-lR-nq5"/>
                         <outlet property="scnView" destination="u9e-G8-uET" id="XCw-Ov-1i1"/>
-                        <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="Ibv-0z-hje"/>
                         <segue destination="vG4-S1-hbb" kind="presentation" identifier="landOnMars" modalPresentationStyle="fullScreen" id="JMa-bL-d6Q"/>
                         <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" modalPresentationStyle="fullScreen" id="JNV-Sx-ib3"/>
-                        <segue destination="JGR-eV-JyE" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
+                        <segue destination="9Rk-qS-0kB" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
                         <segue destination="r2S-AQ-5TL" kind="presentation" identifier="landOnEarth" modalPresentationStyle="fullScreen" id="wYm-Nz-ur2"/>
                         <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" id="3LN-Fm-zIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2459" y="86"/>
+            <point key="canvasLocation" x="3368.115942028986" y="85.714285714285708"/>
         </scene>
         <!--Mars-->
         <scene sceneID="01v-20-zf0">
@@ -118,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="290"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="0.0" width="370" height="80"/>
+                                        <rect key="frame" x="29" y="0.0" width="356" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -198,13 +197,12 @@
                         <outlet property="spaceportButton" destination="iP9-IT-vpA" id="elg-D6-Kyb"/>
                         <outlet property="takeOffButton" destination="nBS-ms-FfK" id="am8-B1-02N"/>
                         <outlet property="tradingPostButton" destination="s13-Zs-hVV" id="Ita-g8-NdN"/>
-                        <segue destination="hjN-gD-N3s" kind="presentation" identifier="selectShip" id="a2K-Gh-aKu"/>
                         <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="overFullScreen" id="rQs-aG-VQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Rx-N6-s7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5128" y="-504"/>
+            <point key="canvasLocation" x="6037.68115942029" y="-504.24107142857139"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="eNT-fy-uAL">
@@ -221,81 +219,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZc-7r-Qls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="897" y="925"/>
-        </scene>
-        <!--Alert View Controller-->
-        <scene sceneID="44I-5j-bbo">
-            <objects>
-                <viewController storyboardIdentifier="alert" id="hjN-gD-N3s" customClass="AlertViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HRE-ux-Heq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Ship Do You Want To Control?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGH-ht-BXB">
-                                <rect key="frame" x="44" y="20" width="326" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="pxd-Nl-evg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1QN-ZG-v2O">
-                                <rect key="frame" x="56" y="88" width="302" height="500"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="500" id="xWe-HW-NdE"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aka-AJ-9zj">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shipIdentifier" id="nN1-gp-c5e">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bIM-DY-irF">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-yg-5Pv" customClass="MDCButton">
-                                <rect key="frame" x="183" y="627" width="48" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="SC1-kh-IeD"/>
-                                </constraints>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="dismissButtonTapped:" destination="hjN-gD-N3s" eventType="touchUpInside" id="qsy-vB-roq"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="FGH-ht-BXB" firstAttribute="top" secondItem="74G-KB-HNS" secondAttribute="top" constant="20" id="4m1-3f-1eT"/>
-                            <constraint firstItem="1QN-ZG-v2O" firstAttribute="top" secondItem="FPK-yg-5Pv" secondAttribute="bottom" constant="-599" id="5Wy-lq-fnG"/>
-                            <constraint firstItem="1QN-ZG-v2O" firstAttribute="centerX" secondItem="FGH-ht-BXB" secondAttribute="centerX" id="FqQ-pz-ps8"/>
-                            <constraint firstItem="1QN-ZG-v2O" firstAttribute="centerX" secondItem="FPK-yg-5Pv" secondAttribute="centerX" id="SBO-wf-gM3"/>
-                            <constraint firstItem="1QN-ZG-v2O" firstAttribute="leading" secondItem="74G-KB-HNS" secondAttribute="leading" constant="56" id="YGJ-EO-G5n"/>
-                            <constraint firstItem="FPK-yg-5Pv" firstAttribute="top" secondItem="FGH-ht-BXB" secondAttribute="bottom" constant="547" id="eSf-Pq-wni"/>
-                            <constraint firstItem="1QN-ZG-v2O" firstAttribute="top" secondItem="FPK-yg-5Pv" secondAttribute="bottom" constant="-599" id="pts-Ej-yZ9"/>
-                            <constraint firstItem="FGH-ht-BXB" firstAttribute="leading" secondItem="74G-KB-HNS" secondAttribute="leading" constant="44" id="qDp-wx-HGf"/>
-                            <constraint firstItem="FGH-ht-BXB" firstAttribute="centerX" secondItem="HRE-ux-Heq" secondAttribute="centerX" id="uBw-Cd-x3B"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="74G-KB-HNS"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="WWE-NS-sZ2"/>
-                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="cancelButton" destination="FPK-yg-5Pv" id="Cc9-YW-C5P"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UWU-80-sas" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1477" y="389"/>
         </scene>
         <!--Nav Game Controller-->
         <scene sceneID="nNH-s1-tGJ">
@@ -316,16 +239,16 @@
             </objects>
             <point key="canvasLocation" x="138.75" y="87"/>
         </scene>
-        <!--Explore Earth Scene View Controller-->
+        <!--Earth Detail-->
         <scene sceneID="8dh-Gn-2kJ">
             <objects>
                 <viewController id="JGR-eV-JyE" customClass="ExploreEarthSceneViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j8w-OW-MG8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NU-7n-LU8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                             </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -338,13 +261,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bWf-kG-hid"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Earth Detail" id="GmU-jq-tgZ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="qyb-Ai-d8x"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="scnView" destination="1NU-7n-LU8" id="cv9-vu-JcW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyU-9R-4YY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1603" y="-544"/>
+            <point key="canvasLocation" x="2741" y="-695"/>
         </scene>
         <!--Ship A-->
         <scene sceneID="AtW-Wt-eXI">
@@ -382,7 +308,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0N-G6-edg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4275" y="-504"/>
+            <point key="canvasLocation" x="5184.057971014493" y="-504.24107142857139"/>
         </scene>
         <!--Earth View Controller-->
         <scene sceneID="HX3-a7-kr1">
@@ -416,6 +342,9 @@
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
                                         <state key="normal" title="Explore Earth"/>
+                                        <connections>
+                                            <segue destination="Ipd-nn-3nw" kind="presentation" identifier="exploreEarth" id="GUK-gq-uwz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -553,9 +482,6 @@
                                             <constraint firstAttribute="height" constant="60" id="N2M-aE-STD"/>
                                         </constraints>
                                         <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="vGV-oN-c1J"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -589,12 +515,13 @@
                         <outlet property="cancelButton" destination="CJu-p7-VXC" id="Tqe-X2-eII"/>
                         <outlet property="collectionView" destination="UID-EJ-Yvy" id="Bld-UW-NUD"/>
                         <outlet property="collectionViewFlowLayout" destination="9hF-fE-YZQ" id="Ev6-ru-qaf"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="XiJ-tA-caf"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" id="fDk-qc-0Zv"/>
+                        <segue destination="9Rk-qS-0kB" kind="presentation" identifier="exploreEarth" id="W7z-Nr-mEd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27F-SZ-z6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-726.08695652173924" y="551.11607142857144"/>
+            <point key="canvasLocation" x="-826" y="420"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D1Y-Gk-wWB">
@@ -629,7 +556,7 @@
                                 <rect key="frame" x="20" y="0.0" width="374" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                        <rect key="frame" x="6.5" y="0.0" width="361.5" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -684,7 +611,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J82-mS-h9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7422" y="-457"/>
+            <point key="canvasLocation" x="8331.8840579710159" y="-457.36607142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NW5-Oc-eT1">
@@ -702,16 +629,168 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5RO-fp-i8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6059" y="-504"/>
+            <point key="canvasLocation" x="6968.115942028986" y="-504.24107142857139"/>
+        </scene>
+        <!--Where on Earth Do You Want To Go?-->
+        <scene sceneID="8Yp-oW-lcl">
+            <objects>
+                <viewController storyboardIdentifier="alertWhereOnEarthDoYouWantToGo" title="Where on Earth Do You Want To Go?" id="Ipd-nn-3nw" customClass="WhereOnEarthSelectCollectionViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3zF-th-a7K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4j-4G-FyD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where on Earth do you want to go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOb-Kc-jzD">
+                                        <rect key="frame" x="49" y="8" width="316.5" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="gif-4x-6fN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JGb-qE-YMe">
+                                        <rect key="frame" x="20" y="88" width="374" height="654"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FNB-u5-0dw">
+                                            <size key="itemSize" width="200" height="250"/>
+                                            <size key="estimatedItemSize" width="200" height="250"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationIdentifier" id="0pO-N6-Tsf" customClass="LocationCollectionViewCell" customModule="Open_Space" customModuleProvider="target">
+                                                <rect key="frame" x="87" y="0.0" width="200" height="250"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kkA-cM-47X">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YzN-Si-Evy">
+                                                            <rect key="frame" x="0.0" y="10" width="200" height="240"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Wx-2f-8Pw">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="200" id="dYI-2I-eVs"/>
+                                                                        <constraint firstAttribute="width" constant="200" id="e2W-AA-CLw"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3l-oR-Cq5">
+                                                                    <rect key="frame" x="0.0" y="210" width="200" height="30"/>
+                                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="Duh-VO-aNJ"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="O3l-oR-Cq5" secondAttribute="trailing" id="03y-p6-nnZ"/>
+                                                                <constraint firstItem="O3l-oR-Cq5" firstAttribute="leading" secondItem="YzN-Si-Evy" secondAttribute="leading" id="bx4-7u-aXB"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="YzN-Si-Evy" firstAttribute="top" secondItem="kkA-cM-47X" secondAttribute="top" constant="10" id="7Je-SI-6rf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="YzN-Si-Evy" secondAttribute="trailing" id="LYv-fx-9dJ"/>
+                                                        <constraint firstItem="YzN-Si-Evy" firstAttribute="leading" secondItem="kkA-cM-47X" secondAttribute="leading" id="jmY-Y2-V63"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YzN-Si-Evy" secondAttribute="bottom" id="xUI-AR-gPr"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="200" height="250"/>
+                                                <connections>
+                                                    <outlet property="cellImage" destination="1Wx-2f-8Pw" id="1Wv-sS-O6t"/>
+                                                    <outlet property="cellLabel" destination="O3l-oR-Cq5" id="P3g-hd-I8F"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Ipd-nn-3nw" id="QWZ-jU-nvm"/>
+                                            <outlet property="delegate" destination="Ipd-nn-3nw" id="lHL-Vv-0gY"/>
+                                        </connections>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-Kw-QQv" customClass="MDCButton">
+                                        <rect key="frame" x="20" y="762" width="374" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="YcX-DJ-ubR"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel" destination="Ipd-nn-3nw" eventType="touchUpInside" id="aCa-Ki-O63"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="JGb-qE-YMe" secondAttribute="bottom" constant="100" id="8WV-vf-ebz"/>
+                                    <constraint firstItem="JGb-qE-YMe" firstAttribute="top" secondItem="AOb-Kc-jzD" secondAttribute="bottom" constant="20" id="LBc-fX-rkh"/>
+                                    <constraint firstItem="AOb-Kc-jzD" firstAttribute="top" secondItem="c4j-4G-FyD" secondAttribute="topMargin" id="ME5-PS-I4p"/>
+                                    <constraint firstItem="JGb-qE-YMe" firstAttribute="leading" secondItem="T0n-Kw-QQv" secondAttribute="leading" id="PhT-vx-3y6"/>
+                                    <constraint firstItem="T0n-Kw-QQv" firstAttribute="top" secondItem="JGb-qE-YMe" secondAttribute="bottom" constant="20" id="QEb-Du-Izs"/>
+                                    <constraint firstItem="JGb-qE-YMe" firstAttribute="top" secondItem="AOb-Kc-jzD" secondAttribute="bottom" constant="20" id="YwE-gr-qZA"/>
+                                    <constraint firstItem="JGb-qE-YMe" firstAttribute="trailing" secondItem="T0n-Kw-QQv" secondAttribute="trailing" id="ZrB-xr-V9Y"/>
+                                    <constraint firstItem="JGb-qE-YMe" firstAttribute="centerX" secondItem="AOb-Kc-jzD" secondAttribute="centerX" id="hms-X0-bxg"/>
+                                    <constraint firstAttribute="trailing" secondItem="JGb-qE-YMe" secondAttribute="trailing" constant="20" id="iNE-lh-M20"/>
+                                    <constraint firstItem="JGb-qE-YMe" firstAttribute="top" secondItem="AOb-Kc-jzD" secondAttribute="bottom" constant="20" id="lI6-2s-DxT"/>
+                                    <constraint firstItem="JGb-qE-YMe" firstAttribute="leading" secondItem="c4j-4G-FyD" secondAttribute="leading" constant="20" id="os7-f7-qff"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="c4j-4G-FyD" firstAttribute="centerX" secondItem="3zF-th-a7K" secondAttribute="centerX" id="615-fo-s4T"/>
+                            <constraint firstItem="c4j-4G-FyD" firstAttribute="leading" secondItem="8RF-Yj-oE0" secondAttribute="leading" id="RIr-dt-U5b"/>
+                            <constraint firstItem="8RF-Yj-oE0" firstAttribute="trailing" secondItem="c4j-4G-FyD" secondAttribute="trailing" id="S0E-Yy-PZB"/>
+                            <constraint firstItem="c4j-4G-FyD" firstAttribute="centerY" secondItem="3zF-th-a7K" secondAttribute="centerY" id="hUE-5T-MDH"/>
+                            <constraint firstItem="c4j-4G-FyD" firstAttribute="top" secondItem="8RF-Yj-oE0" secondAttribute="top" id="uS0-76-6hV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8RF-Yj-oE0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="b2O-6E-N5A"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="T0n-Kw-QQv" id="21J-92-FEC"/>
+                        <outlet property="collectionView" destination="JGb-qE-YMe" id="QjJ-av-oqx"/>
+                        <outlet property="collectionViewFlowLayout" destination="FNB-u5-0dw" id="Pl8-sD-sqb"/>
+                        <segue destination="9Rk-qS-0kB" kind="presentation" identifier="exploreEarth" id="R0G-66-DuO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j2x-Bs-Ykv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5465" y="446"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Thk-9b-QC1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Rk-qS-0kB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="clear" catalog="system" id="rdp-rI-G5B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JGR-eV-JyE" kind="relationship" relationship="rootViewController" id="iOk-2v-edY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IoL-UY-vPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1584" y="-695"/>
         </scene>
     </scenes>
     <resources>
+        <image name="clear" catalog="system" width="64" height="56"/>
         <image name="folder" catalog="system" width="64" height="46"/>
         <image name="sun.dust" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="R0G-66-DuO"/>
         <segue reference="3LN-Fm-zIv"/>
-        <segue reference="jz9-hn-pTh"/>
-        <segue reference="Ibv-0z-hje"/>
+        <segue reference="fDk-qc-0Zv"/>
     </inferredMetricsTieBreakers>
 </document>

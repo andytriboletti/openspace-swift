@@ -12,143 +12,147 @@ import SceneKit
 class ExploreEarthSceneViewController: UIViewController {
     var baseNode:SCNNode!
     @IBOutlet var scnView: SCNView!
-       
+
+    @objc func shipsAction(_ sender: UIBarButtonItem) {
+         
+        self.dismiss(animated: false, completion: nil)
+         
+     }
     
-     override func viewDidLoad() {
-            super.viewDidLoad()
-                
-            
-                //node stuff
-                baseNode = SCNNode()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let shipButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(shipsAction(_:)))
+        self.navigationItem.leftBarButtonItem = shipButton
+        
+        //node stuff
+        baseNode = SCNNode()
+        
+        let scene = SCNScene()
+        //let backgroundFilename = "starry-sky-998641.jpg"
+        let backgroundFilename = "pexels_taj-mahal-india-1603650.jpg"
+        let image = UIImage(named: backgroundFilename)!
+        
+        let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
+        
+        
+        
+        scene.background.contents = aspectScaledToFitImage
+        
+        scene.background.wrapS = SCNWrapMode.repeat
+        scene.background.wrapT = SCNWrapMode.repeat
+        
+        
+        
+        
+//        let shipScenec = SCNScene(named: "a.dae")!
+//
+//        let shipSceneChildNodesc = shipScenec.rootNode.childNodes
+//        for childNode in shipSceneChildNodesc {
+//            let initialPositionX = 0
+//            let initialPositionY = 200
+//            childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
+//            childNode.scale = SCNVector3(100, 50, 50)
+//
+//            baseNode.addChildNode(childNode)
+//
+//            let howLongToTravel = 5000
+//            let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
+//            var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
+//            childNode.runAction(moveAction)
+//
+//            let path1 = UIBezierPath()
+//            path1.move(to: CGPoint(x: 1000,y: 1000))
+//            moveAction = SCNAction.moveAlong(path: path1)
+//
+//            SCNTransaction.begin()
+//            SCNTransaction.animationDuration = 0
+//
+//            moveAction = SCNAction.moveAlong(path: path1)
+//            //let repeatAction = SCNAction.repeatForever(moveAction)
+//
+//
+//            SCNTransaction.commit()
+//
+//
+//
+//        }
+        
+        
+        scene.rootNode.addChildNode(baseNode)
+        
+        // create and add a camera to the scene
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 5000, y: 5000, z: 5000)
 
-                let scene = SCNScene()
-                let backgroundFilename = "PIA17563orig.jpg"
-                let image = UIImage(named: backgroundFilename)!
-                
-                let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-                let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
-                
-                
-                
-                scene.background.contents = aspectScaledToFitImage
 
-                scene.background.wrapS = SCNWrapMode.repeat
-                scene.background.wrapT = SCNWrapMode.repeat
-            
-                addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10.0,10.0,10.0))
+        baseNode.addChildNode(cameraNode)
 
         
-                //addObject(name: "mtrushmore.scn", position: SCNVector3(-2000,-1000,-1000), scale: 0.2)
-            addObject(name: "mtwashington.scn", position: SCNVector3(-800,-800,-800), scale: 0.25)
-                
-                addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
-              
-                
-                addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
-                //instantmeshstation2.dae
-                
-              
-            
-                
-                let shipScenec = SCNScene(named: "a.dae")!
-                
-                let shipSceneChildNodesc = shipScenec.rootNode.childNodes
-                for childNode in shipSceneChildNodesc {
-                    let initialPositionX = 0
-                    let initialPositionY = 200
-                    childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
-                    childNode.scale = SCNVector3(100, 50, 50)
-                    
-                    baseNode.addChildNode(childNode)
-                    
-                    let howLongToTravel = 5000
-                    let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
-                    var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
-                    childNode.runAction(moveAction)
-                    
-                    let path1 = UIBezierPath()
-                    path1.move(to: CGPoint(x: 1000,y: 1000))
-                    moveAction = SCNAction.moveAlong(path: path1)
-                    
-                    SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 0
-                    
-                    moveAction = SCNAction.moveAlong(path: path1)
-                    //let repeatAction = SCNAction.repeatForever(moveAction)
-                    
-                    
-                    SCNTransaction.commit()
-                    
-                    
-                    
-                }
-            
-                
-                scene.rootNode.addChildNode(baseNode)
-                        
-                // create and add a camera to the scene
-                let cameraNode = SCNNode()
-                cameraNode.camera = SCNCamera()
-                scene.rootNode.addChildNode(cameraNode)
-                
-                // place the camera
-                //cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-                
-                // create and add a light to the scene
-                let lightNode = SCNNode()
-                lightNode.light = SCNLight()
-                lightNode.light!.type = .omni
-                lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-                scene.rootNode.addChildNode(lightNode)
-                
-                // create and add an ambient light to the scene
-                let ambientLightNode = SCNNode()
-                ambientLightNode.light = SCNLight()
-                ambientLightNode.light!.type = .ambient
-                ambientLightNode.light!.color = UIColor.darkGray
-                scene.rootNode.addChildNode(ambientLightNode)
-                
-                
-                let scnView = self.scnView!
-                //addObject(name: "mtrushmore.scn", position: nil, scale: nil)
+        scnView!.pointOfView?.position = SCNVector3(x: 5000, y: 5000, z: 5000)
 
-                // var myScene = SCNScene(named: "mtrushmore.scn")
-                //var myScene = SCNScene(named: "mtwashington.scn")
-                scnView.scene = scene
-                
-                scnView.allowsCameraControl = true
-//        scnView.allowsCameraControl = true
-//                   scnView.defaultCameraController.interactionMode = .pan
-//                   scnView.defaultCameraController.inertiaEnabled = true
-//
-//                   scnView.cameraControlConfiguration.rotationSensitivity=0.0
-//                   scnView.cameraControlConfiguration.truckSensitivity=0.0
-//
-//                   scnView.cameraControlConfiguration.panSensitivity = 1
-//                   scnView.defaultCameraController.maximumVerticalAngle = 0
-//                   scnView.defaultCameraController.minimumVerticalAngle = 0
-//                   scnView.defaultCameraController.maximumHorizontalAngle = 0
-//                   scnView.defaultCameraController.minimumHorizontalAngle = 0
-//
-                   
-                   //scnView!.pointOfView?.rotation = SCNVector4(0, 0, 0, 0)
-                   //scnView.pointOfView?.movabilityHint = .fixed
         
-                // show statistics such as fps and timing information
-                //scnView.showsStatistics = false
-                scnView.autoenablesDefaultLighting=true
-                
-                // configure the view
-                scnView.backgroundColor = UIColor.black
+        
+        // place the camera
+        //cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+        
+        // create and add a light to the scene
+        let lightNode = SCNNode()
+        lightNode.light = SCNLight()
+        lightNode.light!.type = .omni
+        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
+        scene.rootNode.addChildNode(lightNode)
+        
+        // create and add an ambient light to the scene
+        let ambientLightNode = SCNNode()
+        ambientLightNode.light = SCNLight()
+        ambientLightNode.light!.type = .ambient
+        ambientLightNode.light!.color = UIColor.darkGray
+        scene.rootNode.addChildNode(ambientLightNode)
+        
+        
+        
+        //how do I start zoomed out?
+        //scene.rootNode.worldPosition = SCNVector3(x: 1000, y: 1000, z: 1000)
+        
+        let scnView = self.scnView!
+        
+        scnView.scene = scene
+        
+        scnView.allowsCameraControl = true
+        //        scnView.allowsCameraControl = true
+        //                   scnView.defaultCameraController.interactionMode = .pan
+        //                   scnView.defaultCameraController.inertiaEnabled = true
+        //
+        //                   scnView.cameraControlConfiguration.rotationSensitivity=0.0
+        //                   scnView.cameraControlConfiguration.truckSensitivity=0.0
+        //
+        //                   scnView.cameraControlConfiguration.panSensitivity = 1
+        //                   scnView.defaultCameraController.maximumVerticalAngle = 0
+        //                   scnView.defaultCameraController.minimumVerticalAngle = 0
+        //                   scnView.defaultCameraController.maximumHorizontalAngle = 0
+        //                   scnView.defaultCameraController.minimumHorizontalAngle = 0
+        //
+        
+        //scnView.pointOfView?.rotation = SCNVector4(0, 0, 0, 0)
+        //scnView.pointOfView?.movabilityHint = .fixed
+        
+        // show statistics such as fps and timing information
+        //scnView.showsStatistics = false
+        scnView.autoenablesDefaultLighting=true
+        
+        // configure the view
+        scnView.backgroundColor = UIColor.black
 
-
-}
+    }
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         //return
         
-
+        
         let shipScene = SCNScene(named: name)!
-
+        
         let shipSceneChildNodes = shipScene.rootNode.childNodes
         for childNode in shipSceneChildNodes {
             baseNode.addChildNode(childNode)
@@ -161,7 +165,50 @@ class ExploreEarthSceneViewController: UIViewController {
         }
         
     }
+    
+    
+    
     func addObject(name: String, position: SCNVector3?, scale: Float) {
         addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
+    
+    func addAsteroid(position: SCNVector3? = nil, scale: SCNVector3? = nil) {
+        
+        var myScale = scale
+        if(scale == nil) {
+            let minValue = 20
+            let maxValue = 100
+            let xScale = Int.random(in: minValue ..< maxValue)
+            let yScale = Int.random(in: minValue ..< maxValue)
+            let zScale = Int.random(in: minValue ..< maxValue)
+            myScale = SCNVector3(xScale, yScale, zScale)
+        }
+        
+        var myPosition = position
+        if(position == nil) {
+            
+            //not too close, not too far
+            let minValue = 300
+            let maxValue = 5000
+            
+            
+            var xVal = Int.random(in: minValue ..< maxValue)
+            var yVal = Int.random(in: minValue ..< maxValue)
+            var zVal = Int.random(in: minValue ..< maxValue)
+            //randomly do positive or negative
+            if arc4random_uniform(2) == 0 {
+                xVal = xVal * -1
+            }
+            if arc4random_uniform(2) == 0 {
+                yVal = yVal * -1
+            }
+            if arc4random_uniform(2) == 0 {
+                zVal = zVal * -1
+            }
+            
+            myPosition = SCNVector3(xVal, yVal, zVal)
+        }
+        addObject(name: "a.dae", position: myPosition, scale: myScale)
+    }
+    
 }
