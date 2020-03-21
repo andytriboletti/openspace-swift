@@ -12,6 +12,11 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 # Screenshot
 ![Open Space](https://i.imgur.com/8ERjHc9.png)
 
+# TODO
+• Allow ship name, color, and design selection.
+
+# Multiple Universes
+• If someone is interested in forking this code and creating their own universe, we could link the universes together through a worm hole. Contact me at andy@greenrobot.com to get started.
 
 # Info
 •All assets in this repository are copyright their respective owners.
