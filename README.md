@@ -24,7 +24,7 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 • Work on Moon view
 
 # Multiple Universes
-• If someone is interested in forking this code and creating their own universe, we could link the universes together through a worm hole. Contact me at andy@greenrobot.com to get started.
+• If someone is interested in forking this code and creating their own universe, we could link the universes together through a worm hole kind of like a web ring. Contact me at andy@greenrobot.com to get started.
 
 # Info
 •All assets in this repository are copyright their respective owners.
@@ -34,7 +34,7 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 •International Space Station model is from NASA
 https://solarsystem.nasa.gov/resources/2378/international-space-station-3d-model/
 
-•The images are from https://pexels.com or https://www.solarsystemscope.com/textures/
+•The images are from https://pexels.com or https://www.solarsystemscope.com/textures/ or https://images.nasa.gov/
 
 •The flag on Mars is from https://free3d.com/3d-model/flag-pole-animated-unity-package-55318.html
 
