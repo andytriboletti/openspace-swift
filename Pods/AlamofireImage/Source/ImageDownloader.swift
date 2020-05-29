@@ -280,7 +280,7 @@ open class ImageDownloader {
                        filter: ImageFilter? = nil,
                        progress: ProgressHandler? = nil,
                        progressQueue: DispatchQueue = DispatchQueue.main,
-                       completion: CompletionHandler?)
+                       completion: CompletionHandler? = nil)
         -> RequestReceipt? {
         var queuedRequest: DataRequest?
 
@@ -455,7 +455,7 @@ open class ImageDownloader {
                        progressQueue: DispatchQueue = DispatchQueue.main,
                        completion: CompletionHandler? = nil)
         -> [RequestReceipt] {
-        return urlRequests.compactMap {
+        urlRequests.compactMap {
             download($0, filter: filter, progress: progress, progressQueue: progressQueue, completion: completion)
         }
     }
@@ -561,7 +561,7 @@ open class ImageDownloader {
     }
 
     func isActiveRequestCountBelowMaximumLimit() -> Bool {
-        return activeRequestCount < maximumActiveDownloads
+        activeRequestCount < maximumActiveDownloads
     }
 
     static func urlIdentifier(for urlRequest: URLRequestConvertible) -> String {

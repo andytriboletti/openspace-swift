@@ -1,11 +1,11 @@
 PODS:
-  - Alamofire (5.0.2)
-  - AlamofireImage (4.0.2):
-    - Alamofire (< 6.0.0, >= 5.0.2)
-  - DynamicBlurView (4.0.0)
-  - MaterialComponents/AnimationTiming (107.0.0)
-  - MaterialComponents/Availability (107.0.0)
-  - MaterialComponents/Buttons (107.0.0):
+  - Alamofire (5.2.1)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
+  - DynamicBlurView (4.1.0)
+  - MaterialComponents/AnimationTiming (109.5.0)
+  - MaterialComponents/Availability (109.5.0)
+  - MaterialComponents/Buttons (109.5.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -16,65 +16,66 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - "MaterialComponents/Buttons+ColorThemer (107.0.0)":
+  - "MaterialComponents/Buttons+ColorThemer (109.5.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Color
-  - "MaterialComponents/Buttons+ShapeThemer (107.0.0)":
+  - "MaterialComponents/Buttons+ShapeThemer (109.5.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Shape
-  - "MaterialComponents/Buttons+Theming (107.0.0)":
+  - "MaterialComponents/Buttons+Theming (109.5.0)":
     - MaterialComponents/Buttons
     - "MaterialComponents/Buttons+ColorThemer"
     - "MaterialComponents/Buttons+ShapeThemer"
     - "MaterialComponents/Buttons+TypographyThemer"
     - MaterialComponents/schemes/Container
     - MaterialComponents/ShadowElevations
-  - "MaterialComponents/Buttons+TypographyThemer (107.0.0)":
+  - "MaterialComponents/Buttons+TypographyThemer (109.5.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/Elevation (107.0.0):
+  - MaterialComponents/Elevation (109.5.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (107.0.0):
+  - MaterialComponents/Ink (109.5.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/private/Application (107.0.0)
-  - MaterialComponents/private/Color (107.0.0):
+  - MaterialComponents/private/Application (109.5.0)
+  - MaterialComponents/private/Color (109.5.0):
     - MaterialComponents/Availability
-  - MaterialComponents/private/Math (107.0.0)
-  - MaterialComponents/Ripple (107.0.0):
+  - MaterialComponents/private/Math (109.5.0)
+  - MaterialComponents/Ripple (109.5.0):
     - MaterialComponents/AnimationTiming
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/schemes/Color (107.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
-  - MaterialComponents/schemes/Container (107.0.0):
+    - MaterialComponents/private/Math
+  - MaterialComponents/schemes/Color (109.5.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+  - MaterialComponents/schemes/Container (109.5.0):
     - MaterialComponents/schemes/Color
     - MaterialComponents/schemes/Shape
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/schemes/Shape (107.0.0):
+  - MaterialComponents/schemes/Shape (109.5.0):
     - MaterialComponents/ShapeLibrary
     - MaterialComponents/Shapes
-  - MaterialComponents/schemes/Typography (107.0.0):
+  - MaterialComponents/schemes/Typography (109.5.0):
     - "MaterialComponents/schemes/Typography+BasicFontScheme"
     - "MaterialComponents/schemes/Typography+Scheming"
     - MaterialComponents/Typography
-  - "MaterialComponents/schemes/Typography+BasicFontScheme (107.0.0)"
-  - "MaterialComponents/schemes/Typography+Scheming (107.0.0)"
-  - MaterialComponents/ShadowElevations (107.0.0)
-  - MaterialComponents/ShadowLayer (107.0.0):
+  - "MaterialComponents/schemes/Typography+BasicFontScheme (109.5.0)"
+  - "MaterialComponents/schemes/Typography+Scheming (109.5.0)"
+  - MaterialComponents/ShadowElevations (109.5.0)
+  - MaterialComponents/ShadowLayer (109.5.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/ShapeLibrary (107.0.0):
+  - MaterialComponents/ShapeLibrary (109.5.0):
     - MaterialComponents/private/Math
     - MaterialComponents/Shapes
-  - MaterialComponents/Shapes (107.0.0):
+  - MaterialComponents/Shapes (109.5.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/Typography (107.0.0):
+  - MaterialComponents/Typography (109.5.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -103,10 +104,10 @@ SPEC REPOS:
     - SCLAlertView
 
 SPEC CHECKSUMS:
-  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
-  AlamofireImage: ca7325440303d041a80b7caa55066ba945522378
-  DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
-  MaterialComponents: 68cf56c02292bd241c4a78bc17259318a238aae0
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
+  MaterialComponents: 7698cdf7eacb5f192456dbbe597aa7a8857fa3ef
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
@@ -114,4 +115,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: acdf609cce1196b5f3d239f94ce6b9fd986a0b03
 
-COCOAPODS: 1.9.0.beta.3
+COCOAPODS: 1.9.2
