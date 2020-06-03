@@ -6,5 +6,7 @@
 	<true/>
 	<key>com.apple.security.network.client</key>
 	<true/>
+	<key>application-identifier</key>
+	<string>779S839979.com.greenrobot.openspace</string>
 </dict>
 </plist>
