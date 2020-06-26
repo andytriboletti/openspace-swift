@@ -24,19 +24,19 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
 
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
+        if (collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell) != nil {
             // cell.backgroundColor = .green
             
          }
     }
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) {
+        if collectionView.cellForItem(at: indexPath) != nil {
             //cell.contentView.backgroundColor = .red
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) {
+        if collectionView.cellForItem(at: indexPath) != nil {
             //cell.contentView.backgroundColor = nil
         }
     }
@@ -46,7 +46,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         print("selected")
         print(indexPath.row)
         print(indexPath.section)
-        if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
+        if (collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell) != nil {
             //cell.backgroundColor = .red
             appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
 //            self.dismiss(animated: true, completion: {
@@ -65,7 +65,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         cell.backgroundColor = .green
         let cellImage = UIImage(named: "rocket_1024.png")
         let size = CGSize(width: 200, height: 200)
-        let aspectScaledToFitImage = cellImage?.af_imageAspectScaled(toFill: size)
+        let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage
         cell.cellLabel.text = self.locations[indexPath.row]
         return cell

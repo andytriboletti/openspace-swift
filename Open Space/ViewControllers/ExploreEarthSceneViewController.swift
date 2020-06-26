@@ -34,7 +34,7 @@ class ExploreEarthSceneViewController: UIViewController {
         let image = UIImage(named: backgroundFilename)!
         
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
+        let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
         
         
         

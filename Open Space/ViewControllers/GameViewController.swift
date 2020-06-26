@@ -147,11 +147,11 @@ class GameViewController: UIViewController {
         let backgroundFilename = "starry-sky-998641.jpg"
         let image = UIImage(named: backgroundFilename)!
         let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 0.5)
-        let purple = UIColor.black
+        _ = UIColor.black
         let semi = rose.withAlphaComponent(0.1)
-        let colorizedImage = Utils.colorizeImage(image, with: semi)
+        _ = Utils.colorizeImage(image, with: semi)
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
+        let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
         
         
         
@@ -275,9 +275,6 @@ class GameViewController: UIViewController {
         case .nearNothing:
             nearNothing()
             break
-
-        @unknown default:
-            nearNothing()
         }
     }
     func drawISS() {
@@ -532,13 +529,13 @@ class GameViewController: UIViewController {
         }
         addObject(name: "a.dae", position: myPosition, scale: myScale)
     }
-    func addObject(name: String, position: SCNVector3?, scale: Float) -> SCNNode {
+    func addObject(name: String, position: SCNVector3?, scale: Float) {
         addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
-    func addTempObject(name: String, position: SCNVector3?, scale: Float) -> SCNNode {
+    func addTempObject(name: String, position: SCNVector3?, scale: Float) {
         addTempObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
-    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) -> SCNNode {
+    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
         
         let shipSceneChildNodes = shipScene.rootNode.childNodes
@@ -551,9 +548,9 @@ class GameViewController: UIViewController {
                 childNode.scale = scale!
             }
         }
-        return shipScene.rootNode
+        //return shipScene.rootNode
     }
-    func addTempObject(name: String, position: SCNVector3?, scale: SCNVector3?) -> SCNNode {
+    func addTempObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
         
         let shipSceneChildNodes = shipScene.rootNode.childNodes
@@ -566,7 +563,7 @@ class GameViewController: UIViewController {
                 childNode.scale = scale!
             }
         }
-        return shipScene.rootNode
+        //return shipScene.rootNode
     }
 }
 

@@ -59,7 +59,7 @@ class EarthViewController: UIViewController {
         let image = UIImage(named: backgroundFilename)!
         
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let aspectScaledToFitImage = image.af_imageAspectScaled(toFill: size)
+        let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
         scene.background.contents = aspectScaledToFitImage
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
@@ -151,7 +151,7 @@ class EarthViewController: UIViewController {
     
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
-        var animationPlayer: SCNAnimationPlayer! = nil
+        var _: SCNAnimationPlayer! = nil
         
         let shipSceneChildNodes = shipScene.rootNode.childNodes
         for childNode in shipSceneChildNodes {
