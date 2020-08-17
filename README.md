@@ -2,6 +2,9 @@
 
 If you find any bugs or defects email me at info@greenrobot.com or you can submit a pull request.
 
+# Free Download
+https://testflight.apple.com/join/6MMGHF2j
+
 # Blog
 https://blog.openspace.greenrobot.com
 
