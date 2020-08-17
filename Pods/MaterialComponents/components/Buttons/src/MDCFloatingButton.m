@@ -44,6 +44,14 @@ static const UIEdgeInsets internalLayoutInsets = (UIEdgeInsets){0, 16, 0, 24};
     NSMutableDictionary<NSNumber *, NSMutableDictionary<NSNumber *, NSValue *> *>
         *shapeToModeToHitAreaInsets;
 
+@property(nonatomic, readonly)
+    NSMutableDictionary<NSNumber *, NSMutableDictionary<NSNumber *, NSNumber *> *>
+        *shapeToModeToCenterVisibleArea;
+
+@property(nonatomic, readonly)
+    NSMutableDictionary<NSNumber *, NSMutableDictionary<NSNumber *, NSValue *> *>
+        *shapeToModeToVisibleAreaInsets;
+
 @end
 
 @implementation MDCFloatingButton {
@@ -174,6 +182,10 @@ static const UIEdgeInsets internalLayoutInsets = (UIEdgeInsets){0, 16, 0, 24};
   _shapeToModeToHitAreaInsets = [@{
     @(MDCFloatingButtonShapeMini) : miniShapeHitAreaInsetsDictionary,
   } mutableCopy];
+
+  _shapeToModeToVisibleAreaInsets = [[NSMutableDictionary alloc] init];
+
+  _shapeToModeToCenterVisibleArea = [[NSMutableDictionary alloc] init];
 }
 
 #pragma mark - UIView
@@ -206,6 +218,12 @@ static const UIEdgeInsets internalLayoutInsets = (UIEdgeInsets){0, 16, 0, 24};
   return CGSizeMake(intrinsicWidth, intrinsicHeight);
 }
 
+// Expands size by provided edge insets.
+static inline CGSize CGSizeExpandWithInsets(CGSize size, UIEdgeInsets edgeInsets) {
+  return CGSizeMake(size.width + edgeInsets.left + edgeInsets.right,
+                    size.height + edgeInsets.top + edgeInsets.bottom);
+}
+
 - (CGSize)intrinsicContentSize {
   CGSize contentSize = CGSizeZero;
   if (self.mode == MDCFloatingButtonModeNormal) {
@@ -226,7 +244,10 @@ static const UIEdgeInsets internalLayoutInsets = (UIEdgeInsets){0, 16, 0, 24};
   if (self.maximumSize.width > 0) {
     contentSize.width = MIN(self.maximumSize.width, contentSize.width);
   }
-  return contentSize;
+
+  UIEdgeInsets visibleAreaInsets = [self visibleAreaInsetsForMode:self.mode];
+  CGSize adjustedSize = CGSizeExpandWithInsets(contentSize, visibleAreaInsets);
+  return adjustedSize;
 }
 
 /*
@@ -244,7 +265,8 @@ static const UIEdgeInsets internalLayoutInsets = (UIEdgeInsets){0, 16, 0, 24};
  */
 - (void)layoutSubviews {
   // We have to set cornerRadius before laying out subviews so that the boundingPath is correct.
-  self.layer.cornerRadius = CGRectGetHeight(self.bounds) / 2;
+  CGRect visibleBounds = UIEdgeInsetsInsetRect(self.bounds, self.visibleAreaInsets);
+  self.layer.cornerRadius = CGRectGetHeight(visibleBounds) / 2;
   [super layoutSubviews];
 
   if (self.mode == MDCFloatingButtonModeNormal) {
@@ -514,11 +536,72 @@ static const UIEdgeInsets internalLayoutInsets = (UIEdgeInsets){0, 16, 0, 24};
   super.hitAreaInsets = [self hitAreaInsetsForMode:self.mode];
 }
 
+- (void)setCenterVisibleArea:(BOOL)centerVisibleArea
+                    forShape:(MDCFloatingButtonShape)shape
+                      inMode:(MDCFloatingButtonMode)mode {
+  NSMutableDictionary *modeToCenterVisibleArea = self.shapeToModeToCenterVisibleArea[@(shape)];
+  if (!modeToCenterVisibleArea) {
+    modeToCenterVisibleArea = [@{} mutableCopy];
+    self.shapeToModeToCenterVisibleArea[@(shape)] = modeToCenterVisibleArea;
+  }
+  modeToCenterVisibleArea[@(mode)] = @(centerVisibleArea);
+  if (shape == _shape && mode == self.mode) {
+    [self updateShapeAndAllowResize:NO];
+  }
+}
+
+- (BOOL)centerVisibleAreaForMode:(MDCFloatingButtonMode)mode {
+  NSMutableDictionary *modeToCenterVisibleArea = self.shapeToModeToCenterVisibleArea[@(_shape)];
+  if (!modeToCenterVisibleArea) {
+    return NO;
+  }
+
+  return [modeToCenterVisibleArea[@(mode)] boolValue];
+}
+
+- (void)updateCenterVisibleArea {
+  super.centerVisibleArea = [self centerVisibleAreaForMode:self.mode];
+}
+
+- (void)setVisibleAreaInsets:(UIEdgeInsets)insets
+                    forShape:(MDCFloatingButtonShape)shape
+                      inMode:(MDCFloatingButtonMode)mode {
+  NSMutableDictionary *modeToVisibleAreaInsets = self.shapeToModeToVisibleAreaInsets[@(shape)];
+  if (!modeToVisibleAreaInsets) {
+    modeToVisibleAreaInsets = [@{} mutableCopy];
+    self.shapeToModeToVisibleAreaInsets[@(shape)] = modeToVisibleAreaInsets;
+  }
+  modeToVisibleAreaInsets[@(mode)] = [NSValue valueWithUIEdgeInsets:insets];
+  if (shape == _shape && mode == self.mode) {
+    [self updateShapeAndAllowResize:NO];
+  }
+}
+
+- (UIEdgeInsets)visibleAreaInsetsForMode:(MDCFloatingButtonMode)mode {
+  NSMutableDictionary *modeToVisibleAreaInsets = self.shapeToModeToVisibleAreaInsets[@(_shape)];
+  if (!modeToVisibleAreaInsets) {
+    return UIEdgeInsetsZero;
+  }
+
+  NSValue *insetsValue = modeToVisibleAreaInsets[@(mode)];
+  if (insetsValue) {
+    return [insetsValue UIEdgeInsetsValue];
+  } else {
+    return UIEdgeInsetsZero;
+  }
+}
+
+- (void)updateVisibleAreaInsets {
+  super.visibleAreaInsets = [self visibleAreaInsetsForMode:self.mode];
+}
+
 - (void)updateShapeAndAllowResize:(BOOL)allowsResize {
   BOOL minimumSizeChanged = [self updateMinimumSize];
   BOOL maximumSizeChanged = [self updateMaximumSize];
   [self updateContentEdgeInsets];
   [self updateHitAreaInsets];
+  [self updateCenterVisibleArea];
+  [self updateVisibleAreaInsets];
 
   if (allowsResize && (minimumSizeChanged || maximumSizeChanged)) {
     [self invalidateIntrinsicContentSize];

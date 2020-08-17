@@ -17,6 +17,7 @@
 
 #import "MaterialElevation.h"
 #import "MaterialInk.h"
+#import "MaterialRipple.h"
 #import "MaterialShadowElevations.h"
 #import "MaterialShapes.h"
 
@@ -36,17 +37,24 @@
  */
 @interface MDCButton : UIButton <MDCElevatable, MDCElevationOverriding>
 
-/** The ink style of the button. */
-@property(nonatomic, assign) MDCInkStyle inkStyle UI_APPEARANCE_SELECTOR;
+/** The ripple style of the button. */
+@property(nonatomic, assign) MDCRippleStyle rippleStyle;
 
-/** The ink color of the button. */
-@property(nonatomic, strong, null_resettable) UIColor *inkColor UI_APPEARANCE_SELECTOR;
+/**
+ The color of the ripple.
 
-/*
- Maximum radius of the button's ink. If the radius <= 0 then half the length of the diagonal of
- self.bounds is used. This value is ignored if button's @c inkStyle is set to |MDCInkStyleBounded|.
+ @note Defaults to a transparent black.
  */
-@property(nonatomic, assign) CGFloat inkMaxRippleRadius UI_APPEARANCE_SELECTOR;
+@property(nonatomic, strong, null_resettable) UIColor *rippleColor;
+
+/**
+ The maximum radius the ripple can expand to.
+
+ @note This property is ignored if @c rippleStyle is set to @c MDCRippleStyleBounded.
+
+ @note Defaults to 0.
+ */
+@property(nonatomic, assign) CGFloat rippleMaximumRadius;
 
 /**
  This property determines if an @c MDCButton should use the @c MDCInkView behavior or not.
@@ -73,14 +81,20 @@
 @property(nonatomic, getter=isUppercaseTitle) BOOL uppercaseTitle UI_APPEARANCE_SELECTOR;
 
 /**
- Insets to apply to the button’s hit area.
+ A Boolean value that determines whether the visible area is centered in the bounds of the view.
 
- Allows the button to detect touches outside of its bounds. A negative value indicates an
- extension past the bounds.
+ If set to YES, the visible area is centered in the bounds of the view, which is often used to
+ configure invisible tappable area. If set to NO, the visible area fills its bounds. This property
+ doesn't affect the result of @c sizeThatFits:.
 
- Default is UIEdgeInsetsZero.
+ The default value is @c NO.
+*/
+@property(nonatomic, assign) BOOL centerVisibleArea;
+
+/**
+ The default content edge insets of the button. They are set at initialization time.
  */
-@property(nonatomic) UIEdgeInsets hitAreaInsets;
+@property(nonatomic, readonly) UIEdgeInsets defaultContentEdgeInsets;
 
 /**
  The offset (in points) of the button's inkView or rippleView (depending on which is being used -
@@ -89,6 +103,11 @@
  Default is CGSizeZero.
  */
 @property(nonatomic) CGSize inkViewOffset;
+
+/**
+ The inset or outset margins for the rectangle surrounding the button’s ripple.
+ */
+@property(nonatomic, assign) UIEdgeInsets rippleEdgeInsets;
 
 /**
  The minimum size of the button’s alignment rect. If either the height or width are non-positive
@@ -152,25 +171,17 @@
 /**
  The shape generator used to define the button's shape.
 
- note: If a layer property is explicitly set after the shapeGenerator has been set,
- it can lead to unexpected behavior.
-
  When the shapeGenerator is nil, MDCButton will use the default underlying layer with
  its default settings.
+
+ @note If a layer property is explicitly set after the shapeGenerator has been set,
+       it can lead to unexpected behavior.
+
+ @note When @c centerVisibleArea is set to YES, this property can no longer be set.
 
  Default value for shapeGenerator is nil.
  */
 @property(nullable, nonatomic, strong) id<MDCShapeGenerating> shapeGenerator;
-
-/**
- If @c true, @c accessiblityTraits will always include @c UIAccessibilityTraitButton.
- If @c false, @c accessibilityTraits will inherit its behavior from @c UIButton.
-
- @note Defaults to true.
- @note This API is intended as a migration flag to restore @c UIButton behavior to @c MDCButton. In
-       a future version, this API will eventually be deprecated and then deleted.
- */
-@property(nonatomic, assign) BOOL accessibilityTraitsIncludesButton;
 
 /**
  A block that is invoked when the MDCButton receives a call to @c
@@ -324,7 +335,9 @@
  */
 + (nonnull instancetype)buttonWithType:(UIButtonType)buttonType NS_UNAVAILABLE;
 
-#pragma mark - To Be Deprecated
+@end
+
+@interface MDCButton (ToBeDeprecated)
 
 /**
  Enables the state-based font behavior of the receiver.
@@ -335,6 +348,34 @@
  @note This API will eventually be deprecated and removed.
  */
 @property(nonatomic, assign) BOOL enableTitleFontForState;
+
+/**
+ Insets to apply to the button’s hit area.
+
+ Allows the button to detect touches outside of its bounds. A negative value indicates an
+ extension past the bounds.
+
+ Default is UIEdgeInsetsZero.
+ */
+@property(nonatomic) UIEdgeInsets hitAreaInsets;
+
+/**
+ The inset margins for the rectangle surrounding all of the button’s visual representation.
+ Use this property when you wish to have the touch target (frame) be larger than the
+ visible content.
+
+ A positive value shrinks the visible area of the button. A negative value expands the visible area
+ of the button.
+
+ The button uses this property to determine intrinsicContentSize and sizeThatFits:.
+
+ @note This property sets the @c shapeGenerator. Therefore you cannot use both properties
+ simultaneously. If you do wish to use a custom shape with visibleAreaInsets, please set your own
+ shapeGenerator that is inset from the frame instead of setting this property directly.
+
+ Default is UIEdgeInsetsZero.
+*/
+@property(nonatomic, assign) UIEdgeInsets visibleAreaInsets;
 
 /**
  The font used by the button's @c title.
@@ -357,5 +398,27 @@
  @note This API will eventually be deprecated and removed.
  */
 - (nullable UIFont *)titleFontForState:(UIControlState)state;
+
+/**
+ If @c true, @c accessiblityTraits will always include @c UIAccessibilityTraitButton.
+ If @c false, @c accessibilityTraits will inherit its behavior from @c UIButton.
+
+ @note Defaults to true.
+ @note This API is intended as a migration flag to restore @c UIButton behavior to @c MDCButton. In
+       a future version, this API will eventually be deprecated and then deleted.
+ */
+@property(nonatomic, assign) BOOL accessibilityTraitsIncludesButton;
+
+/** The ink style of the button. */
+@property(nonatomic, assign) MDCInkStyle inkStyle UI_APPEARANCE_SELECTOR;
+
+/** The ink color of the button. */
+@property(nonatomic, strong, null_resettable) UIColor *inkColor UI_APPEARANCE_SELECTOR;
+
+/*
+ Maximum radius of the button's ink. If the radius <= 0 then half the length of the diagonal of
+ self.bounds is used. This value is ignored if button's @c inkStyle is set to |MDCInkStyleBounded|.
+ */
+@property(nonatomic, assign) CGFloat inkMaxRippleRadius UI_APPEARANCE_SELECTOR;
 
 @end
