@@ -9,7 +9,7 @@ target 'Open Space' do
   pod 'MaterialComponents/Buttons+Theming'
   pod 'MaterialComponents/Buttons'
   pod 'PopupDialog', '~> 1.1'
-  pod 'SCLAlertView'
+  pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift'
   # Pods for Open Space
 
 end
