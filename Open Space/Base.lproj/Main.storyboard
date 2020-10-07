@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4cu-mg-f7Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4cu-mg-f7Y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +31,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhk-8W-d84">
                                         <rect key="frame" x="0.0" y="34" width="414" height="54"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qI-U9-j7b" customClass="MDCButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qI-U9-j7b" customClass="MDCButton">
                                                 <rect key="frame" x="28" y="5" width="358" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -50,7 +52,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHP-J0-E9c">
                                         <rect key="frame" x="0.0" y="98" width="414" height="54"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPC-a3-AIJ" customClass="MDCButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPC-a3-AIJ" customClass="MDCButton">
                                                 <rect key="frame" x="28" y="5" width="358" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -74,6 +76,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="uZA-l0-wHL"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uZA-l0-wHL" firstAttribute="trailing" secondItem="6Az-Bc-blZ" secondAttribute="trailing" id="6nU-tO-HUG"/>
@@ -81,7 +84,6 @@
                             <constraint firstItem="6Az-Bc-blZ" firstAttribute="leading" secondItem="uZA-l0-wHL" secondAttribute="leading" id="hxl-VO-G1B"/>
                             <constraint firstItem="uZA-l0-wHL" firstAttribute="bottom" secondItem="6Az-Bc-blZ" secondAttribute="bottom" id="v60-KM-8aY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="uZA-l0-wHL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Navigation" image="sun.dust" catalog="system" id="Gzf-CG-Pf4" userLabel="Navigation"/>
                     <connections>
@@ -117,7 +119,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="290"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="29" y="0.0" width="356" height="80"/>
+                                        <rect key="frame" x="23" y="0.0" width="368.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -128,21 +130,21 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP9-IT-vpA" customClass="MDCButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP9-IT-vpA" customClass="MDCButton">
                                         <rect key="frame" x="28" y="100" width="358" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cbz-z0-J1g"/>
                                         </constraints>
                                         <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s13-Zs-hVV" customClass="MDCButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s13-Zs-hVV" customClass="MDCButton">
                                         <rect key="frame" x="28" y="170" width="358" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wne-Vm-tth"/>
                                         </constraints>
                                         <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-34-oAg" customClass="MDCButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-34-oAg" customClass="MDCButton">
                                         <rect key="frame" x="28" y="240" width="358" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aOD-yr-mIh"/>
@@ -162,7 +164,7 @@
                                     <constraint firstAttribute="trailing" secondItem="iP9-IT-vpA" secondAttribute="trailing" constant="28" id="shd-Ba-sRe"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-ms-FfK" customClass="MDCButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-ms-FfK" customClass="MDCButton">
                                 <rect key="frame" x="28" y="782" width="358" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="JUn-vv-1qS"/>
@@ -173,7 +175,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Trs-eh-ekj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Trs-eh-ekj" firstAttribute="bottom" secondItem="nBS-ms-FfK" secondAttribute="bottom" constant="20" id="82k-eg-5ti"/>
                             <constraint firstItem="uGk-0C-Fzj" firstAttribute="top" secondItem="Trs-eh-ekj" secondAttribute="top" constant="20" id="Naq-fh-ucc"/>
@@ -187,7 +190,6 @@
                             <constraint firstItem="1HM-3k-odO" firstAttribute="centerX" secondItem="gXU-MH-6eG" secondAttribute="centerX" id="vuI-fh-Cqj"/>
                             <constraint firstItem="uGk-0C-Fzj" firstAttribute="leading" secondItem="Trs-eh-ekj" secondAttribute="leading" id="xen-R4-Fcd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Trs-eh-ekj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Mars" id="TOV-nn-x7X"/>
                     <connections>
@@ -211,8 +213,8 @@
                     <view key="view" contentMode="scaleToFill" id="dpV-cN-tyb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="0Ss-88-bmh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Inventory" image="folder" catalog="system" id="ebT-ha-yyd"/>
                 </viewController>
@@ -251,7 +253,8 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                             </sceneKitView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bWf-kG-hid"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bWf-kG-hid" firstAttribute="bottom" secondItem="1NU-7n-LU8" secondAttribute="bottom" id="gss-v3-T2W"/>
                             <constraint firstItem="bWf-kG-hid" firstAttribute="trailing" secondItem="1NU-7n-LU8" secondAttribute="trailing" id="k7k-g7-2Df"/>
@@ -259,7 +262,6 @@
                             <constraint firstItem="1NU-7n-LU8" firstAttribute="leading" secondItem="bWf-kG-hid" secondAttribute="leading" id="oEb-Yn-Egx"/>
                             <constraint firstItem="1NU-7n-LU8" firstAttribute="centerX" secondItem="j8w-OW-MG8" secondAttribute="centerX" id="wFx-56-a4H"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bWf-kG-hid"/>
                     </view>
                     <navigationItem key="navigationItem" title="Earth Detail" id="GmU-jq-tgZ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="qyb-Ai-d8x"/>
@@ -322,10 +324,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="714"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="20.5" y="108" width="373" height="150"/>
+                                <rect key="frame" x="21.5" y="108" width="371" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="371" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -336,8 +338,8 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz" customClass="MDCButton">
-                                        <rect key="frame" x="28" y="100" width="317" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="100" width="315" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
@@ -353,7 +355,7 @@
                                     <constraint firstItem="QOQ-Lg-Woz" firstAttribute="leading" secondItem="RFR-Dg-CTU" secondAttribute="leading" constant="28" id="yy3-iq-fN6"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8V-Ib-MSv" customClass="MDCButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8V-Ib-MSv" customClass="MDCButton">
                                 <rect key="frame" x="20" y="802" width="374" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="l5G-R3-HUa"/>
@@ -365,7 +367,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="O9E-uD-wZb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RFR-Dg-CTU" firstAttribute="centerX" secondItem="RO7-cM-56Z" secondAttribute="centerX" id="0sC-mS-Nb7"/>
                             <constraint firstItem="v8V-Ib-MSv" firstAttribute="top" secondItem="3Z3-cN-zkr" secondAttribute="bottom" id="5ZS-iD-nEk"/>
@@ -377,7 +380,6 @@
                             <constraint firstItem="v8V-Ib-MSv" firstAttribute="centerX" secondItem="RO7-cM-56Z" secondAttribute="centerX" id="qdv-IE-OyL"/>
                             <constraint firstItem="RFR-Dg-CTU" firstAttribute="top" secondItem="O9E-uD-wZb" secondAttribute="top" constant="20" id="vHR-dx-GWP"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="O9E-uD-wZb"/>
                     </view>
                     <navigationItem key="navigationItem" id="bXp-Tq-Jga"/>
                     <connections>
@@ -404,7 +406,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHc-fd-oa6">
-                                        <rect key="frame" x="82.5" y="8" width="249.5" height="60"/>
+                                        <rect key="frame" x="81.5" y="8" width="251.5" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="aGB-WD-vE4"/>
                                         </constraints>
@@ -414,7 +416,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UID-EJ-Yvy">
                                         <rect key="frame" x="20" y="88" width="374" height="654"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9hF-fE-YZQ">
                                             <size key="itemSize" width="200" height="250"/>
                                             <size key="estimatedItemSize" width="200" height="250"/>
@@ -476,7 +478,7 @@
                                             <outlet property="delegate" destination="32f-fL-zJD" id="3yA-T3-1FM"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJu-p7-VXC" customClass="MDCButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJu-p7-VXC" customClass="MDCButton">
                                         <rect key="frame" x="20" y="762" width="374" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="N2M-aE-STD"/>
@@ -502,7 +504,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="uLq-mR-3fX"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
                             <constraint firstItem="F8W-cq-epi" firstAttribute="centerX" secondItem="GR2-tR-zyE" secondAttribute="centerX" id="JJ7-VJ-OOJ"/>
                             <constraint firstItem="F8W-cq-epi" firstAttribute="top" secondItem="uLq-mR-3fX" secondAttribute="top" id="PMh-aX-XW7"/>
@@ -510,7 +513,6 @@
                             <constraint firstItem="uLq-mR-3fX" firstAttribute="trailing" secondItem="F8W-cq-epi" secondAttribute="trailing" id="deK-uR-k8i"/>
                             <constraint firstItem="F8W-cq-epi" firstAttribute="leading" secondItem="uLq-mR-3fX" secondAttribute="leading" id="eC8-dk-TDB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="uLq-mR-3fX"/>
                     </view>
                     <navigationItem key="navigationItem" id="xA2-pk-32g"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -559,7 +561,7 @@
                                 <rect key="frame" x="20" y="44" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                        <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -570,7 +572,7 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULR-na-kGG" customClass="MDCButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULR-na-kGG" customClass="MDCButton">
                                         <rect key="frame" x="0.0" y="110" width="374" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Hj9-BI-bRK"/>
@@ -582,7 +584,7 @@
                                     <constraint firstAttribute="trailing" secondItem="ULR-na-kGG" secondAttribute="trailing" id="iLb-r4-Ojq"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-BJ-Fq7" customClass="MDCButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-BJ-Fq7" customClass="MDCButton">
                                 <rect key="frame" x="20" y="802" width="374" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="w04-kz-ajp"/>
@@ -593,7 +595,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Dai-I3-JFg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RQ5-S1-jmN" firstAttribute="leading" secondItem="ySQ-WC-LXV" secondAttribute="leading" id="Sbq-hf-tsG"/>
                             <constraint firstItem="Dai-I3-JFg" firstAttribute="trailing" secondItem="RQ5-S1-jmN" secondAttribute="trailing" id="YiW-O9-XLG"/>
@@ -608,7 +611,6 @@
                             <constraint firstItem="drM-BJ-Fq7" firstAttribute="top" secondItem="RQ5-S1-jmN" secondAttribute="bottom" constant="20" id="yIK-WI-AdD"/>
                             <constraint firstItem="drM-BJ-Fq7" firstAttribute="leading" secondItem="VLE-aX-i0y" secondAttribute="leading" id="yuR-zO-eei"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Dai-I3-JFg"/>
                     </view>
                     <navigationItem key="navigationItem" id="UNi-Ei-anI"/>
                     <connections>
@@ -653,7 +655,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where on Earth do you want to go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOb-Kc-jzD">
-                                        <rect key="frame" x="49" y="8" width="316.5" height="60"/>
+                                        <rect key="frame" x="47.5" y="8" width="319.5" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="gif-4x-6fN"/>
                                         </constraints>
@@ -663,7 +665,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JGb-qE-YMe">
                                         <rect key="frame" x="20" y="88" width="374" height="654"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FNB-u5-0dw">
                                             <size key="itemSize" width="200" height="250"/>
                                             <size key="estimatedItemSize" width="200" height="250"/>
@@ -725,7 +727,7 @@
                                             <outlet property="delegate" destination="Ipd-nn-3nw" id="lHL-Vv-0gY"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-Kw-QQv" customClass="MDCButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-Kw-QQv" customClass="MDCButton">
                                         <rect key="frame" x="20" y="762" width="374" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="YcX-DJ-ubR"/>
@@ -751,7 +753,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="8RF-Yj-oE0"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
                             <constraint firstItem="c4j-4G-FyD" firstAttribute="centerX" secondItem="3zF-th-a7K" secondAttribute="centerX" id="615-fo-s4T"/>
                             <constraint firstItem="c4j-4G-FyD" firstAttribute="leading" secondItem="8RF-Yj-oE0" secondAttribute="leading" id="RIr-dt-U5b"/>
@@ -759,7 +762,6 @@
                             <constraint firstItem="c4j-4G-FyD" firstAttribute="centerY" secondItem="3zF-th-a7K" secondAttribute="centerY" id="hUE-5T-MDH"/>
                             <constraint firstItem="c4j-4G-FyD" firstAttribute="top" secondItem="8RF-Yj-oE0" secondAttribute="top" id="uS0-76-6hV"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8RF-Yj-oE0"/>
                     </view>
                     <navigationItem key="navigationItem" id="b2O-6E-N5A"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -793,14 +795,31 @@
             <point key="canvasLocation" x="1584" y="-695"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="clear" catalog="system" width="64" height="56"/>
-        <image name="folder" catalog="system" width="64" height="46"/>
-        <image name="sun.dust" catalog="system" width="64" height="58"/>
-    </resources>
+    <designables>
+        <designable name="2vs-Mr-fI7">
+            <size key="intrinsicContentSize" width="470" height="31.5"/>
+        </designable>
+        <designable name="IT3-M6-xxO">
+            <size key="intrinsicContentSize" width="371" height="31.5"/>
+        </designable>
+        <designable name="XeF-ym-5aq">
+            <size key="intrinsicContentSize" width="368.5" height="31.5"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="W7z-Nr-mEd"/>
         <segue reference="3LN-Fm-zIv"/>
-        <segue reference="jz9-hn-pTh"/>
+        <segue reference="fDk-qc-0Zv"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="clear" catalog="system" width="128" height="114"/>
+        <image name="folder" catalog="system" width="128" height="97"/>
+        <image name="sun.dust" catalog="system" width="128" height="119"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

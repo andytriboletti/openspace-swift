@@ -21,6 +21,7 @@
 		6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F303534240FEA66006C4684 /* starry-sky-998641.jpg */; };
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
+		6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */; };
 		6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
 		6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */; };
 		6F5B8E2A2402458B00757B99 /* mtrushmore.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E272402458B00757B99 /* mtrushmore.scn */; };
@@ -94,6 +95,7 @@
 		6F303534240FEA66006C4684 /* starry-sky-998641.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "starry-sky-998641.jpg"; sourceTree = "<group>"; };
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
+		6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-tom-fisk-1653823_great-wall.jpg"; sourceTree = "<group>"; };
 		6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metal_Weave_003_basecolor.jpg; sourceTree = "<group>"; };
 		6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EXPORT_GOOGLE_SAT_WM.png; sourceTree = "<group>"; };
 		6F5B8E272402458B00757B99 /* mtrushmore.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mtrushmore.scn; sourceTree = "<group>"; };
@@ -119,7 +121,7 @@
 		6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eye-of-the-storm-image-from-outer-space-71116.jpg"; sourceTree = "<group>"; };
 		6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereOnEarthSelectCollectionViewController.swift; sourceTree = "<group>"; };
 		6F9385612425A249001BE3F6 /* EarthLocationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthLocationState.swift; sourceTree = "<group>"; };
-		6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "pexels_taj-mahal-india-1603650.jpg"; path = "7wonders/pexels_taj-mahal-india-1603650.jpg"; sourceTree = SOURCE_ROOT; };
+		6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "pexels_taj-mahal-india-1603650.jpg"; path = "Open Space/3dmodels/earthdestinations/pics/pexels_taj-mahal-india-1603650.jpg"; sourceTree = SOURCE_ROOT; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
 		6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		6F988A9823FF944100F7ED73 /* flagcool.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = flagcool.scn; sourceTree = "<group>"; };
@@ -196,12 +198,21 @@
 		6F3DBE7524022A3E00E1974A /* earthdestinations */ = {
 			isa = PBXGroup;
 			children = (
-				6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */,
+				6F4A3F59252E1AF900147723 /* pics */,
 				6F022418240248140035F7E4 /* mtwashington */,
 				6F698F422402450100E86B65 /* mtrushmore */,
 				6F85AB76240241D10041CC37 /* mteverest */,
 			);
 			path = earthdestinations;
+			sourceTree = "<group>";
+		};
+		6F4A3F59252E1AF900147723 /* pics */ = {
+			isa = PBXGroup;
+			children = (
+				6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */,
+				6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */,
+			);
+			path = pics;
 			sourceTree = "<group>";
 		};
 		6F698F422402450100E86B65 /* mtrushmore */ = {
@@ -522,6 +533,7 @@
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6F022424240250A60035F7E4 /* mtwashington.scn in Resources */,
 				6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
+				6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
 				6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */,
