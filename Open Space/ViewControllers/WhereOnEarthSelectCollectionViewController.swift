@@ -82,7 +82,9 @@ class WhereOnEarthSelectCollectionViewController: AlertViewController, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locations = [0: "Great Wall of China", 1: "Petra", 2: "Christ the Redeemer", 3: "Machu Picchu", 4: "Chichen Itza", 5: "Colosseum", 6: "Taj Mahal", 7: "Great Pyramid of Giza"]
+        //self.locations = [0: "Great Wall of China", 1: "Petra", 2: "Christ the Redeemer", 3: "Machu Picchu", 4: "Chichen Itza", 5: "Colosseum", 6: "Taj Mahal", 7: "Great Pyramid of Giza"]
+        
+        self.locations = [0: "Great Wall of China", 1: "Taj Mahal", 2: "Petra", 3: "Machu Picchu", 4: "Chichen Itza", 5: "Colosseum", 6: "Christ the Redeemer", 7: "Great Pyramid of Giza"]
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //.horizontal
         layout.minimumLineSpacing = 10
