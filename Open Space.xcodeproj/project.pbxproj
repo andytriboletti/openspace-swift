@@ -30,6 +30,11 @@
 		6F636B8D24015A760070C292 /* Sun_1_1391000.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B8C24015A760070C292 /* Sun_1_1391000.usdz */; };
 		6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9024015CA10070C292 /* 2k_sun.jpg */; };
 		6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9224015CEE0070C292 /* sunlowres.scn */; };
+		6F643EA02530DBCC001164E4 /* pexels-fly-rj-2818895-christ.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9B2530DBCB001164E4 /* pexels-fly-rj-2818895-christ.jpg */; };
+		6F643EA12530DBCC001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9C2530DBCB001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg */; };
+		6F643EA22530DBCC001164E4 /* pexels-pixabay-262786-pyramid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9D2530DBCB001164E4 /* pexels-pixabay-262786-pyramid.jpg */; };
+		6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9E2530DBCB001164E4 /* pexels-chait-goli-1797161-colosseum.jpg */; };
+		6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9F2530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg */; };
 		6F677BA224076EE6004A1C8B /* earth.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA124076EE6004A1C8B /* earth.dae */; };
 		6F677BA424076FF4004A1C8B /* 2k_earth_daymap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA324076FF4004A1C8B /* 2k_earth_daymap.jpg */; };
 		6F677BA6240772F3004A1C8B /* earth.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA5240772F3004A1C8B /* earth.scn */; };
@@ -105,6 +110,11 @@
 		6F636B8C24015A760070C292 /* Sun_1_1391000.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Sun_1_1391000.usdz; sourceTree = "<group>"; };
 		6F636B9024015CA10070C292 /* 2k_sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2k_sun.jpg; path = sourceimages/2k_sun.jpg; sourceTree = SOURCE_ROOT; };
 		6F636B9224015CEE0070C292 /* sunlowres.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = sunlowres.scn; path = "Open Space/3dmodels/planets/sunlowres.scn"; sourceTree = SOURCE_ROOT; };
+		6F643E9B2530DBCB001164E4 /* pexels-fly-rj-2818895-christ.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-fly-rj-2818895-christ.jpg"; sourceTree = "<group>"; };
+		6F643E9C2530DBCB001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-alex-azabache-3290068-chicken-itza.jpg"; sourceTree = "<group>"; };
+		6F643E9D2530DBCB001164E4 /* pexels-pixabay-262786-pyramid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-pixabay-262786-pyramid.jpg"; sourceTree = "<group>"; };
+		6F643E9E2530DBCB001164E4 /* pexels-chait-goli-1797161-colosseum.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-chait-goli-1797161-colosseum.jpg"; sourceTree = "<group>"; };
+		6F643E9F2530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-pixabay-259967-machu-picchu.jpg"; sourceTree = "<group>"; };
 		6F677BA124076EE6004A1C8B /* earth.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = earth.dae; sourceTree = "<group>"; };
 		6F677BA324076FF4004A1C8B /* 2k_earth_daymap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2k_earth_daymap.jpg; sourceTree = "<group>"; };
 		6F677BA5240772F3004A1C8B /* earth.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = earth.scn; sourceTree = "<group>"; };
@@ -214,6 +224,11 @@
 				6F4A3F5E252E40A800147723 /* pexels-abdullah-ghatasheh-1631665.jpg */,
 				6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */,
 				6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */,
+				6F643E9C2530DBCB001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg */,
+				6F643E9E2530DBCB001164E4 /* pexels-chait-goli-1797161-colosseum.jpg */,
+				6F643E9B2530DBCB001164E4 /* pexels-fly-rj-2818895-christ.jpg */,
+				6F643E9F2530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg */,
+				6F643E9D2530DBCB001164E4 /* pexels-pixabay-262786-pyramid.jpg */,
 			);
 			path = pics;
 			sourceTree = "<group>";
@@ -530,12 +545,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F5B8E2A2402458B00757B99 /* mtrushmore.scn in Resources */,
+				6F643EA22530DBCC001164E4 /* pexels-pixabay-262786-pyramid.jpg in Resources */,
 				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6F022424240250A60035F7E4 /* mtwashington.scn in Resources */,
 				6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
+				6F643EA12530DBCC001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
 				6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
@@ -550,6 +567,7 @@
 				6F6D845B23FF8B8E00328057 /* PIA01120orig.jpg in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
+				6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
 				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
 				6F677BA424076FF4004A1C8B /* 2k_earth_daymap.jpg in Resources */,
 				6F677BA6240772F3004A1C8B /* earth.scn in Resources */,
@@ -561,12 +579,14 @@
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
+				6F643EA02530DBCC001164E4 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
 				6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */,
 				6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
+				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				6FA5934724001043007C16E3 /* spaceshipb.scn in Resources */,
 				6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */,

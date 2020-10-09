@@ -13,11 +13,11 @@ public enum EarthLocationState: String, CaseIterable {
     case nearGreatWallofChina = "pexels-tom-fisk-1653823_great-wall.jpg";
     case nearTajMahal = "pexels_taj-mahal-india-1603650.jpg";
     case nearPetra = "pexels-abdullah-ghatasheh-1631665.jpg";
-    //case nearChristTheRedeemer
-    //case nearMachuPichu
-    //case nearChichenItza
-    //case nearColosseum
-    //case nearGreatPyramidOfGiza
+    case nearMachuPichu = "pexels-pixabay-259967-machu-picchu.jpg"
+    case nearChichenItza = "pexels-alex-azabache-3290068-chicken-itza.jpg"
+    case nearColosseum = "pexels-chait-goli-1797161-colosseum.jpg"
+    case nearChristTheRedeemer = "pexels-fly-rj-2818895-christ.jpg"
+    case nearGreatPyramidOfGiza = "pexels-pixabay-262786-pyramid.jpg"
 
 //
     static func random<G: RandomNumberGenerator>(using generator: inout G) -> EarthLocationState {
