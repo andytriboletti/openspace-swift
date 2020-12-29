@@ -77,6 +77,13 @@
 		6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296C23FED5A80082209D /* 2k_mars.jpg */; };
 		6FD92042259B71B5008F6CA3 /* quasar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92041259B71B5008F6CA3 /* quasar.png */; };
 		6FD92045259B71E9008F6CA3 /* quasar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92044259B71E9008F6CA3 /* quasar.png */; };
+		6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204C259B87A2008F6CA3 /* iss044e045215_lrg.jpg */; };
+		6FD92054259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204D259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg */; };
+		6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204E259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg */; };
+		6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */; };
+		6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92050259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg */; };
+		6FD92058259B87A2008F6CA3 /* florence.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92051259B87A2008F6CA3 /* florence.jpg */; };
+		6FD92059259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92052259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg */; };
 		6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB587623FE4BA7004263CB /* allgreentree.dae */; };
 		6FDB588323FEB952004263CB /* mars.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588123FEB952004263CB /* mars.dae */; };
 		6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588623FEB9B8004263CB /* yellowstar.dae */; };
@@ -162,6 +169,13 @@
 		6FD0296C23FED5A80082209D /* 2k_mars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2k_mars.jpg; sourceTree = "<group>"; };
 		6FD92041259B71B5008F6CA3 /* quasar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quasar.png; path = sourceimages/quasar.png; sourceTree = SOURCE_ROOT; };
 		6FD92044259B71E9008F6CA3 /* quasar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quasar.png; path = sourceimages/quasar.png; sourceTree = SOURCE_ROOT; };
+		6FD9204C259B87A2008F6CA3 /* iss044e045215_lrg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iss044e045215_lrg.jpg; path = sourceimages/iss/iss044e045215_lrg.jpg; sourceTree = SOURCE_ROOT; };
+		6FD9204D259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 30509478486_5fff4559ab_o.jpg; path = sourceimages/iss/30509478486_5fff4559ab_o.jpg; sourceTree = SOURCE_ROOT; };
+		6FD9204E259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bwhi1apicaaamlo.jpg_large.jpg; path = sourceimages/iss/bwhi1apicaaamlo.jpg_large.jpg; sourceTree = SOURCE_ROOT; };
+		6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iss045e166104.jpg; path = sourceimages/iss/iss045e166104.jpg; sourceTree = SOURCE_ROOT; };
+		6FD92050259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 14648179676_db2001e0fa_o.jpg; path = sourceimages/iss/14648179676_db2001e0fa_o.jpg; sourceTree = SOURCE_ROOT; };
+		6FD92051259B87A2008F6CA3 /* florence.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = florence.jpg; path = sourceimages/iss/florence.jpg; sourceTree = SOURCE_ROOT; };
+		6FD92052259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 24609260915_a840b027e5_o.jpg; path = sourceimages/iss/24609260915_a840b027e5_o.jpg; sourceTree = SOURCE_ROOT; };
 		6FDB587623FE4BA7004263CB /* allgreentree.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = allgreentree.dae; path = "Open Space/3dmodels/tree/allgreentree.dae"; sourceTree = SOURCE_ROOT; };
 		6FDB588123FEB952004263CB /* mars.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = mars.dae; sourceTree = "<group>"; };
 		6FDB588623FEB9B8004263CB /* yellowstar.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = yellowstar.dae; sourceTree = "<group>"; };
@@ -394,6 +408,7 @@
 		6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */ = {
 			isa = PBXGroup;
 			children = (
+				6FD9204B259B878F008F6CA3 /* iss */,
 				6F3DBE7524022A3E00E1974A /* earthdestinations */,
 				6F6D845623FF87A100328057 /* flags */,
 				6FB65B4123FEDAEB008FBEF2 /* stations */,
@@ -425,6 +440,20 @@
 				6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */,
 			);
 			path = stations;
+			sourceTree = "<group>";
+		};
+		6FD9204B259B878F008F6CA3 /* iss */ = {
+			isa = PBXGroup;
+			children = (
+				6FD92050259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg */,
+				6FD92052259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg */,
+				6FD9204D259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg */,
+				6FD9204E259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg */,
+				6FD92051259B87A2008F6CA3 /* florence.jpg */,
+				6FD9204C259B87A2008F6CA3 /* iss044e045215_lrg.jpg */,
+				6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */,
+			);
+			path = iss;
 			sourceTree = "<group>";
 		};
 		6FDB587C23FE5E95004263CB /* tree */ = {
@@ -571,6 +600,7 @@
 				6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */,
 				6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */,
 				6F6D845B23FF8B8E00328057 /* PIA01120orig.jpg in Resources */,
+				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
@@ -583,6 +613,7 @@
 				6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */,
 				6FD0296B23FED5270082209D /* planetveg.dae in Resources */,
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
+				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
 				6F643EA02530DBCC001164E4 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
@@ -594,10 +625,12 @@
 				6FD92042259B71B5008F6CA3 /* quasar.png in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
+				6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				6FA5934724001043007C16E3 /* spaceshipb.scn in Resources */,
 				6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */,
 				6FDB588323FEB952004263CB /* mars.dae in Resources */,
+				6FD92054259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg in Resources */,
 				6F93856624261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,
@@ -605,11 +638,14 @@
 				6F677BA224076EE6004A1C8B /* earth.dae in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,
 				6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */,
+				6FD92058259B87A2008F6CA3 /* florence.jpg in Resources */,
 				6FA52B1F23FE3D3100B16480 /* d.dae in Resources */,
+				6FD92059259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg in Resources */,
 				6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
 				6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */,
 				6FD92045259B71E9008F6CA3 /* quasar.png in Resources */,
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
+				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

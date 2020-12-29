@@ -12,6 +12,7 @@ import MaterialComponents.MaterialButtons_Theming
 import SceneKit
 
 class SpaceStationViewController: UIViewController {
+    var scene: SCNScene = SCNScene()
     
     @IBOutlet var changeViewButton: MDCButton!
     
@@ -29,6 +30,21 @@ class SpaceStationViewController: UIViewController {
     @IBOutlet var scnView: SCNView!
     
     
+    @IBAction func changeView() {
+        let pictures = ["eye-of-the-storm-image-from-outer-space-71116.jpg","14648179676_db2001e0fa_o.jpg"
+        ,"24609260915_a840b027e5_o.jpg",
+        "30509478486_5fff4559ab_o.jpg",
+        "bwhi1apicaaamlo.jpg_large.jpg",
+        "florence.jpg",
+        "iss044e045215_lrg.jpg",
+        "iss045e166104.jpg"]
+        let backgroundFilename = pictures.randomElement()!
+        let image = UIImage(named: backgroundFilename)!
+        
+        let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
+        scene.background.contents = aspectScaledToFitImage
+    }
     @IBAction func takeOffAction() {
         //self.dismiss(animated: true, completion: {
         self.performSegue(withIdentifier: "takeOff", sender: self)
@@ -52,15 +68,12 @@ class SpaceStationViewController: UIViewController {
         headerLabel.layer.borderWidth = 3.0
         
         baseNode = SCNNode()
-        let scene = SCNScene()
+        self.scene = SCNScene()
         self.title="Your ship '\(appDelegate.gameState.currentShipName)' is on the Space Station "
-        
-        let backgroundFilename = "eye-of-the-storm-image-from-outer-space-71116.jpg"
-        let image = UIImage(named: backgroundFilename)!
-        
+
+        changeView()
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
-        scene.background.contents = aspectScaledToFitImage
+
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
         

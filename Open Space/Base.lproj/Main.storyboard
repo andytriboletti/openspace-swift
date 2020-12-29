@@ -607,6 +607,9 @@
                                             <constraint firstAttribute="height" constant="60" id="Hj9-BI-bRK"/>
                                         </constraints>
                                         <state key="normal" title="Change View"/>
+                                        <connections>
+                                            <action selector="changeView" destination="0yc-aj-Qry" eventType="touchDown" id="SgU-gp-FXi"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -838,7 +841,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="W7z-Nr-mEd"/>
         <segue reference="3LN-Fm-zIv"/>
-        <segue reference="fDk-qc-0Zv"/>
+        <segue reference="jz9-hn-pTh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
