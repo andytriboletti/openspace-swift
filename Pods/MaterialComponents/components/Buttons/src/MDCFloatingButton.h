@@ -90,6 +90,13 @@ typedef NS_ENUM(NSInteger, MDCFloatingButtonImageLocation) {
 @property(nonatomic, assign) MDCFloatingButtonMode mode;
 
 /**
+ The shape of the floating button.
+
+ The default value is decided by the @c -initWithFrame:shape: initializer.
+ */
+@property(nonatomic, assign) MDCFloatingButtonShape shape;
+
+/**
  Changes the mode (with animation, if desired).
 
  If animated, the floating button's size will be updated automatically as part of the animation.
@@ -227,17 +234,6 @@ typedef NS_ENUM(NSInteger, MDCFloatingButtonImageLocation) {
 - (void)setHitAreaInsets:(UIEdgeInsets)hitAreaInsets NS_UNAVAILABLE;
 
 /**
- Sets the @c hitAreaInsets value when the button has the specified @c shape and @c mode.
-
- @param hitAreaInsets The new hit area insets value.
- @param shape The shape for the hit area insets.
- @param mode The mode for the hit area insets.
- */
-- (void)setHitAreaInsets:(UIEdgeInsets)hitAreaInsets
-                forShape:(MDCFloatingButtonShape)shape
-                  inMode:(MDCFloatingButtonMode)mode UI_APPEARANCE_SELECTOR;
-
-/**
  Sets the @c centerVisibleArea value when the button has the specified @c shape and @c mode.
 
  @param centerVisibleArea The boolean value that determines whether the visible area is centered in
@@ -249,17 +245,20 @@ typedef NS_ENUM(NSInteger, MDCFloatingButtonImageLocation) {
                     forShape:(MDCFloatingButtonShape)shape
                       inMode:(MDCFloatingButtonMode)mode;
 
-/**
- Sets the @c visibleAreaInsets value when the button has the specified @c shape and @c mode.
+@end
 
- @param visibleAreaInsets The insets to the visual representation of the button.
- @param shape The floating action button's shape (Default, Mini).
- @param mode The floating action button's mode (Normal, Expanded).
+@interface MDCFloatingButton (Deprecated)
+
+/**
+ Sets the @c hitAreaInsets value when the button has the specified @c shape and @c mode.
+
+ @param hitAreaInsets The new hit area insets value.
+ @param shape The shape for the hit area insets.
+ @param mode The mode for the hit area insets.
  */
-- (void)setVisibleAreaInsets:(UIEdgeInsets)visibleAreaInsets
-                    forShape:(MDCFloatingButtonShape)shape
-                      inMode:(MDCFloatingButtonMode)mode
-    __attribute__((deprecated(
-        "Consider using setCenterVisibleArea:forShape:InMode: to adjust visible area.")));
+- (void)setHitAreaInsets:(UIEdgeInsets)hitAreaInsets
+                forShape:(MDCFloatingButtonShape)shape
+                  inMode:(MDCFloatingButtonMode)mode UI_APPEARANCE_SELECTOR
+    __deprecated_msg("Use setCenterVisibleArea:forShape:inMode: instead.");
 
 @end

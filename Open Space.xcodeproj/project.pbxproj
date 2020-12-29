@@ -75,6 +75,8 @@
 		6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296823FECDD20082209D /* starcrumpled.dae */; };
 		6FD0296B23FED5270082209D /* planetveg.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296A23FED5270082209D /* planetveg.dae */; };
 		6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296C23FED5A80082209D /* 2k_mars.jpg */; };
+		6FD92042259B71B5008F6CA3 /* quasar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92041259B71B5008F6CA3 /* quasar.png */; };
+		6FD92045259B71E9008F6CA3 /* quasar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92044259B71E9008F6CA3 /* quasar.png */; };
 		6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB587623FE4BA7004263CB /* allgreentree.dae */; };
 		6FDB588323FEB952004263CB /* mars.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588123FEB952004263CB /* mars.dae */; };
 		6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588623FEB9B8004263CB /* yellowstar.dae */; };
@@ -158,6 +160,8 @@
 		6FD0296823FECDD20082209D /* starcrumpled.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = starcrumpled.dae; sourceTree = "<group>"; };
 		6FD0296A23FED5270082209D /* planetveg.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = planetveg.dae; sourceTree = "<group>"; };
 		6FD0296C23FED5A80082209D /* 2k_mars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2k_mars.jpg; sourceTree = "<group>"; };
+		6FD92041259B71B5008F6CA3 /* quasar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quasar.png; path = sourceimages/quasar.png; sourceTree = SOURCE_ROOT; };
+		6FD92044259B71E9008F6CA3 /* quasar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quasar.png; path = sourceimages/quasar.png; sourceTree = SOURCE_ROOT; };
 		6FDB587623FE4BA7004263CB /* allgreentree.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = allgreentree.dae; path = "Open Space/3dmodels/tree/allgreentree.dae"; sourceTree = SOURCE_ROOT; };
 		6FDB588123FEB952004263CB /* mars.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = mars.dae; sourceTree = "<group>"; };
 		6FDB588623FEB9B8004263CB /* yellowstar.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = yellowstar.dae; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 		6F4A3F59252E1AF900147723 /* pics */ = {
 			isa = PBXGroup;
 			children = (
+				6FD92041259B71B5008F6CA3 /* quasar.png */,
 				6F4A3F5E252E40A800147723 /* pexels-abdullah-ghatasheh-1631665.jpg */,
 				6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */,
 				6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */,
@@ -380,6 +385,7 @@
 				6F6D845C23FF8C8800328057 /* Utils.swift */,
 				6FA5934824001B42007C16E3 /* PaddingLabel.swift */,
 				6F30352C240FB007006C4684 /* NavGameController.swift */,
+				6FD92044259B71E9008F6CA3 /* quasar.png */,
 				6F81A27B24155C4300D79494 /* Assets.xcassets */,
 			);
 			path = "Open Space";
@@ -585,6 +591,7 @@
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
+				6FD92042259B71B5008F6CA3 /* quasar.png in Resources */,
 				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
@@ -601,6 +608,7 @@
 				6FA52B1F23FE3D3100B16480 /* d.dae in Resources */,
 				6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
 				6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */,
+				6FD92045259B71E9008F6CA3 /* quasar.png in Resources */,
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -821,7 +829,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
@@ -849,7 +857,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
