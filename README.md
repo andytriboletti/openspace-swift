@@ -2,6 +2,8 @@
 
 If you find any bugs or defects email me at info@greenrobot.com or you can submit a pull request.
 
+Given enough eyeballs, all bugs are shallow. -Eric S. Raymond
+
 # Free Download
 https://testflight.apple.com/join/6MMGHF2j
 
