@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //containerScheme.colorScheme.primaryColorVariant = .green
         //containerScheme.colorScheme.primaryColor = .black
         //containerScheme.colorScheme.onPrimaryColor = .white
-        containerScheme.colorScheme.onBackgroundColor = .white
         self.gameState = GameState()
         
         let shapeScheme = MDCShapeScheme()

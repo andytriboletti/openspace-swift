@@ -301,7 +301,6 @@ class GameViewController: UIViewController {
     }
     func nearISS() {
         self.headerButton.setTitle("Dock With Station", for: .normal)
-        self.headerButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near the International Space Station. It is stopped."
         
         showHeaderButtons()
@@ -314,7 +313,6 @@ class GameViewController: UIViewController {
         //self.headerButton2.setTitle("Navigate To...", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Earth. It is stopped."
         
-        self.headerButton.setTitleColor(.white, for: UIControl.State.normal)
         showHeaderButtons()
         
         drawEarth()
