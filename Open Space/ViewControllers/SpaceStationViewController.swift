@@ -134,17 +134,7 @@ class SpaceStationViewController: UIViewController {
         scnView.addGestureRecognizer(tapGesture)
         
         
-        self.takeOffButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.takeOffButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
-        self.changeViewButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.changeViewButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
-        //let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-        //self.navigationItem.leftBarButtonItem = shipButton
-        
-        //addObject(name: "flagcool.dae", position:  SCNVector3(1,1,1), scale: nil)
-        
+    
         for _ in 1...50 {
             //addAsteroid()
         }

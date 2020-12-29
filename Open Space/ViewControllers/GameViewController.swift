@@ -23,8 +23,8 @@ class GameViewController: UIViewController {
 
     var tapGesture: UITapGestureRecognizer?
 //    var iss: SCNNode?
-    @IBOutlet var headerButton: MDCButton!
-    @IBOutlet var headerButton2: MDCButton!
+    @IBOutlet var headerButton: UIButton!
+    @IBOutlet var headerButton2: UIButton!
     
     @IBOutlet var headerButtonView: UIView!
     @IBOutlet var headerButton2View: UIView!
@@ -102,17 +102,9 @@ class GameViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     func setupHeader() {
-        
+        self.headerButton2.setTitle("Navigate To...", for: .normal)
+
         self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
-        
-//        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-//        self.tabBarController!.navigationItem.leftBarButtonItem = shipButton
-        
-        self.headerButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.headerButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
-        self.headerButton2.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.headerButton2.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
         
         
@@ -309,6 +301,7 @@ class GameViewController: UIViewController {
     }
     func nearISS() {
         self.headerButton.setTitle("Dock With Station", for: .normal)
+        self.headerButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near the International Space Station. It is stopped."
         
         showHeaderButtons()
@@ -318,8 +311,10 @@ class GameViewController: UIViewController {
     func nearEarth() {
         
         self.headerButton.setTitle("Land on Earth", for: .normal)
+        //self.headerButton2.setTitle("Navigate To...", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Earth. It is stopped."
         
+        self.headerButton.setTitleColor(.white, for: UIControl.State.normal)
         showHeaderButtons()
         
         drawEarth()

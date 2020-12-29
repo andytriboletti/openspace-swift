@@ -15,9 +15,7 @@ class AlertViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cancelButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.cancelButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
+
     }
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

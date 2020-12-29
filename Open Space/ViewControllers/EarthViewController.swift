@@ -121,23 +121,7 @@ class EarthViewController: UIViewController {
         scnView.addGestureRecognizer(tapGesture)
         
         
-        self.takeOffButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.takeOffButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-//        
-//        self.spaceportButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-//        self.spaceportButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-//        
-//        self.tradingPostButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-//        self.tradingPostButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-//        
-        self.exploreButton.applyTextTheme(withScheme: appDelegate.containerScheme)
-        self.exploreButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
-        
-        
-        //let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-        //self.navigationItem.leftBarButtonItem = shipButton
-        
-        //addObject(name: "flagcool.dae", position:  SCNVector3(1,1,1), scale: nil)
+    
         
         for _ in 1...50 {
             //addAsteroid()

@@ -31,7 +31,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhk-8W-d84">
                                         <rect key="frame" x="0.0" y="34" width="414" height="54"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qI-U9-j7b" customClass="MDCButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qI-U9-j7b">
                                                 <rect key="frame" x="28" y="5" width="358" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -49,29 +49,32 @@
                                             <constraint firstItem="1qI-U9-j7b" firstAttribute="top" secondItem="dhk-8W-d84" secondAttribute="top" constant="5" id="zHB-GX-wh9"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHP-J0-E9c">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALv-bU-yoG">
                                         <rect key="frame" x="0.0" y="98" width="414" height="54"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPC-a3-AIJ" customClass="MDCButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joy-nd-zxe">
                                                 <rect key="frame" x="28" y="5" width="358" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                <state key="normal" title="NAVIGATE TO ..."/>
+                                                <state key="normal" title="..."/>
                                                 <connections>
-                                                    <action selector="navigateToClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="2VE-0g-mFe"/>
+                                                    <action selector="navigateToClicked" destination="BV1-FR-VrT" eventType="touchDown" id="hbh-yg-fWF"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="centerX" secondItem="DHP-J0-E9c" secondAttribute="centerX" id="8Oq-1o-Yii"/>
-                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="centerY" secondItem="DHP-J0-E9c" secondAttribute="centerY" id="B95-x9-zmi"/>
-                                            <constraint firstAttribute="bottom" secondItem="DPC-a3-AIJ" secondAttribute="bottom" constant="5" id="ERn-2q-W9X"/>
-                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="top" secondItem="DHP-J0-E9c" secondAttribute="top" constant="5" id="JMM-xL-NC2"/>
-                                            <constraint firstItem="DPC-a3-AIJ" firstAttribute="leading" secondItem="DHP-J0-E9c" secondAttribute="leading" constant="28" id="OLX-qq-0R2"/>
+                                            <constraint firstItem="joy-nd-zxe" firstAttribute="centerX" secondItem="ALv-bU-yoG" secondAttribute="centerX" id="EDP-d2-I39"/>
+                                            <constraint firstItem="joy-nd-zxe" firstAttribute="leading" secondItem="ALv-bU-yoG" secondAttribute="leading" constant="28" id="HQh-Gy-uIH"/>
+                                            <constraint firstItem="joy-nd-zxe" firstAttribute="centerY" secondItem="ALv-bU-yoG" secondAttribute="centerY" id="YPp-QK-UEd"/>
+                                            <constraint firstAttribute="bottom" secondItem="joy-nd-zxe" secondAttribute="bottom" constant="5" id="pno-Fi-T9q"/>
+                                            <constraint firstItem="joy-nd-zxe" firstAttribute="top" secondItem="ALv-bU-yoG" secondAttribute="top" constant="5" id="qvG-ST-5FO"/>
                                         </constraints>
                                     </view>
-                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-G8-uET">
-                                        <rect key="frame" x="0.0" y="162" width="414" height="553"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHP-J0-E9c">
+                                        <rect key="frame" x="0.0" y="162" width="414" height="0.0"/>
+                                    </view>
+                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-G8-uET">
+                                        <rect key="frame" x="0.0" y="172" width="414" height="543"/>
                                     </sceneKitView>
                                 </subviews>
                             </stackView>
@@ -87,8 +90,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Navigation" image="sun.dust" catalog="system" id="Gzf-CG-Pf4" userLabel="Navigation"/>
                     <connections>
-                        <outlet property="headerButton" destination="1qI-U9-j7b" id="C3V-mv-zdX"/>
-                        <outlet property="headerButton2" destination="DPC-a3-AIJ" id="mFO-fF-SuK"/>
+                        <outlet property="headerButton" destination="1qI-U9-j7b" id="q8Y-sk-Lo8"/>
+                        <outlet property="headerButton2" destination="joy-nd-zxe" id="m13-Fq-ttg"/>
                         <outlet property="headerButton2View" destination="DHP-J0-E9c" id="HW4-ZZ-0AA"/>
                         <outlet property="headerButtonView" destination="dhk-8W-d84" id="lmG-Xo-aZH"/>
                         <outlet property="headerLabel" destination="BxG-s4-Txb" id="iud-lR-nq5"/>
@@ -258,7 +261,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -275,11 +278,11 @@
             <objects>
                 <viewController id="JGR-eV-JyE" customClass="ExploreEarthSceneViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j8w-OW-MG8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NU-7n-LU8">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </sceneKitView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bWf-kG-hid"/>
@@ -367,7 +370,7 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz" customClass="MDCButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
                                         <rect key="frame" x="28" y="100" width="315" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
@@ -814,7 +817,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Rk-qS-0kB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="clear" catalog="system" id="rdp-rI-G5B">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -839,9 +842,9 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="W7z-Nr-mEd"/>
+        <segue reference="67b-Hk-5Ts"/>
         <segue reference="3LN-Fm-zIv"/>
-        <segue reference="rQs-aG-VQ2"/>
+        <segue reference="XCF-Mg-a4A"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
