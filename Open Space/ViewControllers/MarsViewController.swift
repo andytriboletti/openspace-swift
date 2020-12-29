@@ -132,9 +132,10 @@ class MarsViewController: UIViewController {
         self.exploreButton.applyTextTheme(withScheme: appDelegate.containerScheme)
         self.exploreButton.applyContainedTheme(withScheme: appDelegate.containerScheme)
         
+        //TODO add Ships button and allow to change ships on mars.
         
-        let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-        self.navigationItem.leftBarButtonItem = shipButton
+        //let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
+        //self.navigationItem.leftBarButtonItem = shipButton
         
         addObject(name: "flagcool.dae", position:  SCNVector3(1,1,1), scale: nil)
         
