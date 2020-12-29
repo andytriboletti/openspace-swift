@@ -330,8 +330,12 @@ class GameViewController: UIViewController {
         
         self.headerButton.setTitle("Land on the Moon", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near the Moon. It is stopped."
+                
+        self.headerButton.isHidden=true
+        self.headerButton2.isHidden=false
         
-        showHeaderButtons()
+        self.headerButtonView.isHidden=true
+        self.headerButton2View.isHidden=false
         
         drawMoon()
         
