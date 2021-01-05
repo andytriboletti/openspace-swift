@@ -4,12 +4,17 @@ If you find any bugs or defects email me at info@greenrobot.com or you can submi
 
 Given enough eyeballs, all bugs are shallow. -Eric S. Raymond
 
+# GIT LFS required
+•In order to use the images GIT LFS is required (git-lfs).
+
 # Free Download
 https://testflight.apple.com/join/6MMGHF2j
 
 # Blog
 https://blog.openspace.greenrobot.com
 
+# Assets License and where they came from
+• All the images are from NASA or are public domain from places like Pexels.com
 
 # Video
 https://www.youtube.com/watch?v=VikmTcxnLc0
