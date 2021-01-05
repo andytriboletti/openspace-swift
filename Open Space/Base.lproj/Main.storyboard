@@ -97,7 +97,7 @@
                         <outlet property="headerLabel" destination="BxG-s4-Txb" id="iud-lR-nq5"/>
                         <outlet property="scnView" destination="u9e-G8-uET" id="XCw-Ov-1i1"/>
                         <segue destination="vG4-S1-hbb" kind="presentation" identifier="landOnMars" modalPresentationStyle="fullScreen" id="JMa-bL-d6Q"/>
-                        <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" modalPresentationStyle="fullScreen" id="JNV-Sx-ib3"/>
+                        <segue destination="32f-fL-zJD" kind="presentation" identifier="selectDestination" animates="NO" modalPresentationStyle="fullScreen" id="JNV-Sx-ib3"/>
                         <segue destination="9Rk-qS-0kB" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
                         <segue destination="r2S-AQ-5TL" kind="presentation" identifier="landOnEarth" modalPresentationStyle="fullScreen" id="wYm-Nz-ur2"/>
                         <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" modalPresentationStyle="fullScreen" id="3LN-Fm-zIv"/>
@@ -202,7 +202,7 @@
                         <outlet property="spaceportButton" destination="iP9-IT-vpA" id="elg-D6-Kyb"/>
                         <outlet property="takeOffButton" destination="nBS-ms-FfK" id="am8-B1-02N"/>
                         <outlet property="tradingPostButton" destination="s13-Zs-hVV" id="Ita-g8-NdN"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="overFullScreen" id="rQs-aG-VQ2"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="rQs-aG-VQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Rx-N6-s7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -261,7 +261,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -377,7 +377,7 @@
                                         </constraints>
                                         <state key="normal" title="Explore Earth"/>
                                         <connections>
-                                            <segue destination="Ipd-nn-3nw" kind="presentation" identifier="exploreEarth" id="GUK-gq-uwz"/>
+                                            <segue destination="Ipd-nn-3nw" kind="presentation" identifier="exploreEarth" animates="NO" modalPresentationStyle="fullScreen" id="GUK-gq-uwz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -419,7 +419,7 @@
                         <outlet property="headerLabel" destination="IT3-M6-xxO" id="AFP-OC-rZR"/>
                         <outlet property="scnView" destination="3Z3-cN-zkr" id="WBK-Hx-jhW"/>
                         <outlet property="takeOffButton" destination="v8V-Ib-MSv" id="XoH-xB-lny"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" id="XCF-Mg-a4A"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="XCF-Mg-a4A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FkE-B2-w4w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -552,8 +552,8 @@
                         <outlet property="cancelButton" destination="CJu-p7-VXC" id="Tqe-X2-eII"/>
                         <outlet property="collectionView" destination="UID-EJ-Yvy" id="Bld-UW-NUD"/>
                         <outlet property="collectionViewFlowLayout" destination="9hF-fE-YZQ" id="Ev6-ru-qaf"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" id="fDk-qc-0Zv"/>
-                        <segue destination="9Rk-qS-0kB" kind="presentation" identifier="exploreEarth" id="W7z-Nr-mEd"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="fDk-qc-0Zv"/>
+                        <segue destination="9Rk-qS-0kB" kind="presentation" identifier="exploreEarth" modalPresentationStyle="fullScreen" id="W7z-Nr-mEd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27F-SZ-z6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -587,10 +587,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-S1-jmN">
-                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="694"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-aX-i0y">
-                                <rect key="frame" x="20" y="44" width="374" height="170"/>
+                                <rect key="frame" x="20" y="88" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
@@ -653,7 +653,7 @@
                         <outlet property="headerLabel" destination="2vs-Mr-fI7" id="gzQ-Jr-avd"/>
                         <outlet property="scnView" destination="RQ5-S1-jmN" id="Bko-Xb-O5a"/>
                         <outlet property="takeOffButton" destination="drM-BJ-Fq7" id="lkf-oF-IG8"/>
-                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" id="jz9-hn-pTh"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="jz9-hn-pTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J82-mS-h9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -842,9 +842,9 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="67b-Hk-5Ts"/>
-        <segue reference="3LN-Fm-zIv"/>
-        <segue reference="XCF-Mg-a4A"/>
+        <segue reference="W7z-Nr-mEd"/>
+        <segue reference="Bk1-Wq-vrr"/>
+        <segue reference="jz9-hn-pTh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
