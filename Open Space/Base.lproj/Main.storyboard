@@ -122,7 +122,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="23" y="0.0" width="368.5" height="80"/>
+                                        <rect key="frame" x="30" y="0.0" width="354.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -587,13 +587,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-S1-jmN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="694"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-aX-i0y">
-                                <rect key="frame" x="20" y="88" width="374" height="170"/>
+                                <rect key="frame" x="20" y="44" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
+                                        <rect key="frame" x="7.5" y="0.0" width="359.5" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -804,7 +804,7 @@
                         <outlet property="cancelButton" destination="T0n-Kw-QQv" id="21J-92-FEC"/>
                         <outlet property="collectionView" destination="JGb-qE-YMe" id="QjJ-av-oqx"/>
                         <outlet property="collectionViewFlowLayout" destination="FNB-u5-0dw" id="Pl8-sD-sqb"/>
-                        <segue destination="9Rk-qS-0kB" kind="presentation" identifier="exploreEarth" id="R0G-66-DuO"/>
+                        <segue destination="9Rk-qS-0kB" kind="presentation" identifier="exploreEarth" modalPresentationStyle="fullScreen" id="R0G-66-DuO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2x-Bs-Ykv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -842,9 +842,9 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="W7z-Nr-mEd"/>
-        <segue reference="Bk1-Wq-vrr"/>
-        <segue reference="jz9-hn-pTh"/>
+        <segue reference="R0G-66-DuO"/>
+        <segue reference="3LN-Fm-zIv"/>
+        <segue reference="fDk-qc-0Zv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
