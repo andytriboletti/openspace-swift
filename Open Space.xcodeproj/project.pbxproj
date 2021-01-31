@@ -76,7 +76,6 @@
 		6FD0296B23FED5270082209D /* planetveg.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296A23FED5270082209D /* planetveg.dae */; };
 		6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296C23FED5A80082209D /* 2k_mars.jpg */; };
 		6FD92042259B71B5008F6CA3 /* quasar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92041259B71B5008F6CA3 /* quasar.png */; };
-		6FD92045259B71E9008F6CA3 /* quasar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92044259B71E9008F6CA3 /* quasar.png */; };
 		6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204C259B87A2008F6CA3 /* iss044e045215_lrg.jpg */; };
 		6FD92054259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204D259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg */; };
 		6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204E259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg */; };
@@ -549,7 +548,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "GreenRobot LLC";
 				TargetAttributes = {
 					6FB0EEF423FDA1A800EA28D7 = {
@@ -644,7 +643,6 @@
 				6FD92059259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg in Resources */,
 				6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
 				6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */,
-				6FD92045259B71E9008F6CA3 /* quasar.png in Resources */,
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
 			);
@@ -881,7 +879,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
@@ -908,7 +906,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
