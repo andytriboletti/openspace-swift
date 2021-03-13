@@ -20,7 +20,7 @@ import DynamicBlurView
 class GameViewController: UIViewController {
     var baseNode:SCNNode!
     var tempNode:SCNNode!
-
+    var spaceShip:[SCNNode]!
     var tapGesture: UITapGestureRecognizer?
 //    var iss: SCNNode?
     @IBOutlet var headerButton: UIButton!
@@ -39,11 +39,56 @@ class GameViewController: UIViewController {
     @IBAction func landButtonClicked() {
         if(appDelegate.gameState.locationState == LocationState.nearEarth) {
             print("land on earth")
-            self.performSegue(withIdentifier: "landOnEarth", sender: self)
+            //var node = spaceShip.getTopParent(rootNode: spaceShip)
+            for node in spaceShip {
+                if(node.name == "Spaceship") {
+                //node.position = SCNVector3(200, 200, 200)
+                //node.scale = SCNVector3(100, 50, 50)
+                //highlightNode(node: node, color: .red)
+                    //-500, 0, -200
+                let toPlace = SCNVector3(x: -500, y: 0, z: -200)
+                var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
 
+                node.runAction(moveAction)
+//                let path1 = UIBezierPath()
+//                path1.move(to: CGPoint(x: 1000,y: 1000))
+//                moveAction = SCNAction.moveAlong(path: path1)
+//                SCNTransaction.begin()
+//                SCNTransaction.animationDuration = 0
+//
+                }
+//
+//                SCNTransaction.commit()
+            }
+            //var topSpace = spaceShip.getTopParent(rootNode: baseNode)
+            //highlightNode(node: topSpace, color: .red)
+//            for node in spaceShip.childNodes {
+//                highlightNode(node: node, color: .red)
+//                let toPlace = SCNVector3(x: 100, y: 100, z: 100)
+//                var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
+//
+//                node.runAction(moveAction)
+//                let path1 = UIBezierPath()
+//                path1.move(to: CGPoint(x: 1000,y: 1000))
+//                moveAction = SCNAction.moveAlong(path: path1)
+//
+//                SCNTransaction.begin()
+//                SCNTransaction.animationDuration = 0
+//
+//                moveAction = SCNAction.moveAlong(path: path1)
+//                //let repeatAction = SCNAction.repeatForever(moveAction)
+//
+//
+//                SCNTransaction.commit()
+//            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                self.performSegue(withIdentifier: "landOnEarth", sender: self)
+            }
+            //appDelegate.gameState.currentShipModel.hidden = true
         }
         else if(appDelegate.gameState.locationState == LocationState.nearISS) {
-                print("land on earth")
+                print("land on iss")
                 self.performSegue(withIdentifier: "dockWithStation", sender: self)
 
         }
@@ -151,28 +196,8 @@ class GameViewController: UIViewController {
         
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
-        addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
+        spaceShip = addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
         
-        //addObject(name: appDelegate.gameState.closestOtherPlayerShipModel, position: SCNVector3(00,000,500), scale: nil)
-        
-        
-        
-        //addObject(name: "instantmeshstation2.scn", position: SCNVector3(-4000, -400, -4000), scale: 1)
-        
-        //addObject(name: "sunlowres.scn", position: SCNVector3(100, 100, -500), scale: 0.5)
-        
-        
-        //static asteroid
-        //      addObject(name: "a.dae", position: SCNVector3(100,100,100), scale: SCNVector3(30,30,30))
-        
-        //addObject(name: "starcrumpled.dae", position: SCNVector3(-1000, 300, 10), scale: SCNVector3(2,2,2))
-        
-        //Sun_1_1391000.usdz
-        //addObject(name: "Sun_1_1391000.usdz", position: SCNVector3(-5000, 5000, 5000), scale: SCNVector3(0.2,0.2,0.2))
-        //addObject(name: "sunlowres.scn", position: SCNVector3(-5000, 5000, 5000), scale: 10)
-        
-        //addObject(name: "b.dae", position: SCNVector3(400,-400,400), scale: SCNVector3(30,30,30))
-        //instantmeshstation2.dae
         
         for _ in 1...50 {
             addAsteroid()
@@ -526,13 +551,13 @@ class GameViewController: UIViewController {
         }
         addObject(name: "a.dae", position: myPosition, scale: myScale)
     }
-    func addObject(name: String, position: SCNVector3?, scale: Float) {
-        addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
+    func addObject(name: String, position: SCNVector3?, scale: Float) -> [SCNNode] {
+        return addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
     func addTempObject(name: String, position: SCNVector3?, scale: Float) {
         addTempObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
     }
-    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
+    func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) -> [SCNNode] {
         let shipScene = SCNScene(named: name)!
         
         let shipSceneChildNodes = shipScene.rootNode.childNodes
@@ -545,7 +570,7 @@ class GameViewController: UIViewController {
                 childNode.scale = scale!
             }
         }
-        //return shipScene.rootNode
+        return shipSceneChildNodes
     }
     func addTempObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
