@@ -25,11 +25,7 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 # TODO
 • Allow ship name, color, and design selection.
 
-• Complete 7 wonders of the World screen by selecting images of the wonders at Pexels, and coding them to show up correctly.
-
 • Save last location of your ship in User Defaults so if you leave the game and come back you don't keep starting near Earth.
-
-• Add more views of Earth to the Space Station.
 
 • Work on Moon view
 

@@ -44,41 +44,6 @@ class ExploreEarthSceneViewController: UIViewController {
         
         
         
-        
-//        let shipScenec = SCNScene(named: "a.dae")!
-//
-//        let shipSceneChildNodesc = shipScenec.rootNode.childNodes
-//        for childNode in shipSceneChildNodesc {
-//            let initialPositionX = 0
-//            let initialPositionY = 200
-//            childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
-//            childNode.scale = SCNVector3(100, 50, 50)
-//
-//            baseNode.addChildNode(childNode)
-//
-//            let howLongToTravel = 5000
-//            let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
-//            var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
-//            childNode.runAction(moveAction)
-//
-//            let path1 = UIBezierPath()
-//            path1.move(to: CGPoint(x: 1000,y: 1000))
-//            moveAction = SCNAction.moveAlong(path: path1)
-//
-//            SCNTransaction.begin()
-//            SCNTransaction.animationDuration = 0
-//
-//            moveAction = SCNAction.moveAlong(path: path1)
-//            //let repeatAction = SCNAction.repeatForever(moveAction)
-//
-//
-//            SCNTransaction.commit()
-//
-//
-//
-//        }
-        
-        
         scene.rootNode.addChildNode(baseNode)
         
         // create and add a camera to the scene

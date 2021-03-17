@@ -35,66 +35,40 @@ class GameViewController: UIViewController {
     
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
-    
+    func moveToPlanet() {
+        for node in spaceShip {
+            if(node.name == "Spaceship") {
+                let toPlace = SCNVector3(x: -500, y: 0, z: -200)
+                var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
+                node.runAction(moveAction)
+            }
+        }
+    }
     @IBAction func landButtonClicked() {
         if(appDelegate.gameState.locationState == LocationState.nearEarth) {
             print("land on earth")
             //var node = spaceShip.getTopParent(rootNode: spaceShip)
-            for node in spaceShip {
-                if(node.name == "Spaceship") {
-                //node.position = SCNVector3(200, 200, 200)
-                //node.scale = SCNVector3(100, 50, 50)
-                //highlightNode(node: node, color: .red)
-                    //-500, 0, -200
-                let toPlace = SCNVector3(x: -500, y: 0, z: -200)
-                var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
-
-                node.runAction(moveAction)
-//                let path1 = UIBezierPath()
-//                path1.move(to: CGPoint(x: 1000,y: 1000))
-//                moveAction = SCNAction.moveAlong(path: path1)
-//                SCNTransaction.begin()
-//                SCNTransaction.animationDuration = 0
-//
-                }
-//
-//                SCNTransaction.commit()
-            }
-            //var topSpace = spaceShip.getTopParent(rootNode: baseNode)
-            //highlightNode(node: topSpace, color: .red)
-//            for node in spaceShip.childNodes {
-//                highlightNode(node: node, color: .red)
-//                let toPlace = SCNVector3(x: 100, y: 100, z: 100)
-//                var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
-//
-//                node.runAction(moveAction)
-//                let path1 = UIBezierPath()
-//                path1.move(to: CGPoint(x: 1000,y: 1000))
-//                moveAction = SCNAction.moveAlong(path: path1)
-//
-//                SCNTransaction.begin()
-//                SCNTransaction.animationDuration = 0
-//
-//                moveAction = SCNAction.moveAlong(path: path1)
-//                //let repeatAction = SCNAction.repeatForever(moveAction)
-//
-//
-//                SCNTransaction.commit()
-//            }
+            moveToPlanet()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "landOnEarth", sender: self)
             }
-            //appDelegate.gameState.currentShipModel.hidden = true
         }
         else if(appDelegate.gameState.locationState == LocationState.nearISS) {
                 print("land on iss")
-                self.performSegue(withIdentifier: "dockWithStation", sender: self)
+                moveToPlanet()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    self.performSegue(withIdentifier: "dockWithStation", sender: self)
+                }
 
         }
         else if(appDelegate.gameState.locationState == LocationState.nearMars) {
             print("land on mars")
-            self.performSegue(withIdentifier: "landOnMars", sender: self)
+            moveToPlanet()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.performSegue(withIdentifier: "landOnMars", sender: self)
+            }
         }
         
         
