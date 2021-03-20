@@ -9,19 +9,18 @@
 import UIKit
 
 import UIKit
-import MaterialComponents.MaterialButtons
-import MaterialComponents.MaterialButtons_Theming
+
 import SceneKit
 
 class EarthViewController: UIViewController {
     
-    @IBOutlet var spaceportButton: MDCButton!
+    @IBOutlet var spaceportButton: UIButton!
 
-    @IBOutlet var tradingPostButton: MDCButton!
+    @IBOutlet var tradingPostButton: UIButton!
     
-    @IBOutlet var exploreButton: MDCButton!
+    @IBOutlet var exploreButton: UIButton!
 
-    @IBOutlet var takeOffButton: MDCButton!
+    @IBOutlet var takeOffButton: UIButton!
     
     @IBOutlet var headerLabel: PaddingLabel!
     

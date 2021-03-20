@@ -7,22 +7,21 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialButtons
-import MaterialComponents.MaterialButtons_Theming
+
 import SceneKit
 
 class SpaceStationViewController: UIViewController {
     var scene: SCNScene = SCNScene()
     
-    @IBOutlet var changeViewButton: MDCButton!
+    @IBOutlet var changeViewButton: UIButton!
     
-    @IBOutlet var spaceportButton: MDCButton!
+    @IBOutlet var spaceportButton: UIButton!
     
-    @IBOutlet var tradingPostButton: MDCButton!
+    @IBOutlet var tradingPostButton: UIButton!
     
-    @IBOutlet var exploreButton: MDCButton!
+    @IBOutlet var exploreButton: UIButton!
     
-    @IBOutlet var takeOffButton: MDCButton!
+    @IBOutlet var takeOffButton: UIButton!
     
     @IBOutlet var headerLabel: PaddingLabel!
     
@@ -72,7 +71,7 @@ class SpaceStationViewController: UIViewController {
         self.title="Your ship '\(appDelegate.gameState.currentShipName)' is on the Space Station "
 
         changeView()
-        let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        _ = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat

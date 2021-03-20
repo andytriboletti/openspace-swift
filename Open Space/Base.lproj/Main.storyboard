@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-Bc-blZ">
-                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="808"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxG-s4-Txb">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
@@ -71,10 +71,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHP-J0-E9c">
-                                        <rect key="frame" x="0.0" y="162" width="414" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="162" width="414" height="93"/>
                                     </view>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-G8-uET">
-                                        <rect key="frame" x="0.0" y="172" width="414" height="543"/>
+                                        <rect key="frame" x="0.0" y="265" width="414" height="543"/>
                                     </sceneKitView>
                                 </subviews>
                             </stackView>
@@ -89,6 +89,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Navigation" image="sun.dust" catalog="system" id="Gzf-CG-Pf4" userLabel="Navigation"/>
+                    <navigationItem key="navigationItem" id="5DG-6d-1QQ"/>
                     <connections>
                         <outlet property="headerButton" destination="1qI-U9-j7b" id="q8Y-sk-Lo8"/>
                         <outlet property="headerButton2" destination="joy-nd-zxe" id="m13-Fq-ttg"/>
@@ -101,6 +102,7 @@
                         <segue destination="9Rk-qS-0kB" kind="presentation" identifier="goToBase" modalPresentationStyle="fullScreen" id="67b-Hk-5Ts"/>
                         <segue destination="r2S-AQ-5TL" kind="presentation" identifier="landOnEarth" modalPresentationStyle="fullScreen" id="wYm-Nz-ur2"/>
                         <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" modalPresentationStyle="fullScreen" id="3LN-Fm-zIv"/>
+                        <segue destination="VzB-dU-ig3" kind="presentation" identifier="travel" modalPresentationStyle="fullScreen" id="OTN-eM-VNw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -426,6 +428,38 @@
             </objects>
             <point key="canvasLocation" x="4532" y="388"/>
         </scene>
+        <!--Travel View Controller-->
+        <scene sceneID="E0R-Kt-zOf">
+            <objects>
+                <viewController id="VzB-dU-ig3" customClass="TravelViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vwB-yR-SWf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwm-bn-wTD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZJa-al-ReH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fwm-bn-wTD" firstAttribute="top" secondItem="ZJa-al-ReH" secondAttribute="top" id="RMx-wk-PUf"/>
+                            <constraint firstItem="ZJa-al-ReH" firstAttribute="trailing" secondItem="fwm-bn-wTD" secondAttribute="trailing" id="U5f-4V-eAg"/>
+                            <constraint firstItem="ZJa-al-ReH" firstAttribute="bottom" secondItem="fwm-bn-wTD" secondAttribute="bottom" id="ieF-U9-2t2"/>
+                            <constraint firstItem="fwm-bn-wTD" firstAttribute="leading" secondItem="ZJa-al-ReH" secondAttribute="leading" id="qvn-mp-8Ef"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Quw-8c-9Mh"/>
+                    <connections>
+                        <outlet property="videoView" destination="fwm-bn-wTD" id="Pwl-0h-5wg"/>
+                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="ZYK-lD-fPd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="va2-th-KYM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1703" y="716"/>
+        </scene>
         <!--Where Do You Want To Go?-->
         <scene sceneID="CRh-oW-hmb">
             <objects>
@@ -464,7 +498,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xcH-0g-oN6">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xcH-0g-oN6">
                                                             <rect key="frame" x="0.0" y="10" width="100" height="140"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-ZP-lWi">
@@ -841,9 +875,10 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="W7z-Nr-mEd"/>
+        <segue reference="67b-Hk-5Ts"/>
         <segue reference="3LN-Fm-zIv"/>
         <segue reference="fDk-qc-0Zv"/>
+        <segue reference="ZYK-lD-fPd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>

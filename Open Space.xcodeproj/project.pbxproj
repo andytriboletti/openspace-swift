@@ -48,6 +48,8 @@
 		6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */; };
 		6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */; };
 		6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */; };
+		6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6F895FA42606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 */; };
+		6F895FA82606B51500378FA7 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F895FA72606B51500378FA7 /* TravelViewController.swift */; };
 		6F9385592422ADDE001BE3F6 /* SpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */; };
 		6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */; };
 		6F93856024259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */; };
@@ -138,6 +140,8 @@
 		6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg"; sourceTree = "<group>"; };
+		6F895FA42606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = lightspeed_PexelsVideos2757709.mp4; sourceTree = "<group>"; };
+		6F895FA72606B51500378FA7 /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
 		6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceStationViewController.swift; sourceTree = "<group>"; };
 		6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eye-of-the-storm-image-from-outer-space-71116.jpg"; sourceTree = "<group>"; };
 		6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereOnEarthSelectCollectionViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +306,14 @@
 			path = earth;
 			sourceTree = "<group>";
 		};
+		6F895FA32606B4C200378FA7 /* videos */ = {
+			isa = PBXGroup;
+			children = (
+				6F895FA42606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 */,
+			);
+			path = videos;
+			sourceTree = "<group>";
+		};
 		6F93855A2422BEFA001BE3F6 /* station */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +406,7 @@
 				6FDB587D23FE5EA9004263CB /* ViewControllers */,
 				6F96DE6223FDDE3800BAE0CF /* images */,
 				6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */,
+				6F895FA32606B4C200378FA7 /* videos */,
 				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
 				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
 				6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */,
@@ -478,6 +491,7 @@
 				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
 				6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */,
 				6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */,
+				6F895FA72606B51500378FA7 /* TravelViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -619,6 +633,7 @@
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
+				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
 				6F643EA02530DBCC001164E4 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
 				6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */,
 				6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
@@ -718,6 +733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F895FA82606B51500378FA7 /* TravelViewController.swift in Sources */,
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
 				6F6146F124224F2F000DFACC /* EarthViewController.swift in Sources */,
 				6F93856024259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift in Sources */,

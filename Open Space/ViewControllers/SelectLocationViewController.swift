@@ -48,7 +48,9 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         print(indexPath.section)
         if (collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell) != nil {
             //cell.backgroundColor = .red
-            appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
+            //appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
+            //need to travel = yes
+            appDelegate.gameState.goingToLocationState = LocationState.allCases[indexPath.row]
 //            self.dismiss(animated: true, completion: {
 
   //          })
@@ -92,7 +94,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 let lay = collectionViewLayout as! UICollectionViewFlowLayout
-                let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
+                let widthPerItem = 200 //collectionView.frame.width / 2 - lay.minimumInteritemSpacing
 
     return CGSize(width:widthPerItem, height:widthPerItem)
     }

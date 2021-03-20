@@ -6,8 +6,8 @@ target 'Open Space' do
   use_frameworks!
   pod 'Alamofire'
   pod 'AlamofireImage'
-  pod 'MaterialComponents/Buttons+Theming'
-  pod 'MaterialComponents/Buttons'
+  #pod 'MaterialComponents/Buttons+Theming'
+  #pod 'MaterialComponents/Buttons'
   pod 'PopupDialog', '~> 1.1'
   pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift'
   # Pods for Open Space

@@ -3,85 +3,6 @@ PODS:
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
   - DynamicBlurView (4.1.0)
-  - MaterialComponents/AnimationTiming (119.3.0)
-  - MaterialComponents/Availability (119.3.0)
-  - MaterialComponents/Buttons (119.3.0):
-    - MaterialComponents/Elevation
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/Ripple
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/ShapeLibrary
-    - MaterialComponents/Shapes
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - "MaterialComponents/Buttons+ColorThemer (119.3.0)":
-    - MaterialComponents/Buttons
-    - MaterialComponents/schemes/Color
-  - "MaterialComponents/Buttons+ShapeThemer (119.3.0)":
-    - MaterialComponents/Buttons
-    - MaterialComponents/schemes/Shape
-  - "MaterialComponents/Buttons+Theming (119.3.0)":
-    - MaterialComponents/Buttons
-    - "MaterialComponents/Buttons+ColorThemer"
-    - "MaterialComponents/Buttons+ShapeThemer"
-    - "MaterialComponents/Buttons+TypographyThemer"
-    - MaterialComponents/schemes/Container
-    - MaterialComponents/ShadowElevations
-  - "MaterialComponents/Buttons+TypographyThemer (119.3.0)":
-    - MaterialComponents/Buttons
-    - MaterialComponents/schemes/Typography
-  - MaterialComponents/Elevation (119.3.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Ink (119.3.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/private/Application (119.3.0)
-  - MaterialComponents/private/Color (119.3.0):
-    - MaterialComponents/Availability
-  - MaterialComponents/private/Math (119.3.0)
-  - MaterialComponents/Ripple (119.3.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/schemes/Color (119.3.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-  - MaterialComponents/schemes/Container (119.3.0):
-    - MaterialComponents/schemes/Color
-    - MaterialComponents/schemes/Shape
-    - MaterialComponents/schemes/Typography
-  - MaterialComponents/schemes/Shape (119.3.0):
-    - MaterialComponents/ShapeLibrary
-    - MaterialComponents/Shapes
-  - MaterialComponents/schemes/Typography (119.3.0):
-    - "MaterialComponents/schemes/Typography+BasicFontScheme"
-    - "MaterialComponents/schemes/Typography+Scheming"
-    - MaterialComponents/Typography
-  - "MaterialComponents/schemes/Typography+BasicFontScheme (119.3.0)"
-  - "MaterialComponents/schemes/Typography+Scheming (119.3.0)"
-  - MaterialComponents/ShadowElevations (119.3.0)
-  - MaterialComponents/ShadowLayer (119.3.0):
-    - MaterialComponents/ShadowElevations
-  - MaterialComponents/ShapeLibrary (119.3.0):
-    - MaterialComponents/private/Math
-    - MaterialComponents/Shapes
-  - MaterialComponents/Shapes (119.3.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowLayer
-  - MaterialComponents/Typography (119.3.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Math
-    - MDFTextAccessibility
-  - MDFInternationalization (2.0.0)
-  - MDFTextAccessibility (2.0.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
   - SCLAlertView (0.8.1)
@@ -89,8 +10,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - MaterialComponents/Buttons
-  - "MaterialComponents/Buttons+Theming"
   - PopupDialog (~> 1.1)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
 
@@ -99,9 +18,6 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - DynamicBlurView
-    - MaterialComponents
-    - MDFInternationalization
-    - MDFTextAccessibility
     - PopupDialog
 
 EXTERNAL SOURCES:
@@ -117,12 +33,9 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
-  MaterialComponents: 49658f0fd7ef6e098e9943fce3f293e700595570
-  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
-  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
 
-PODFILE CHECKSUM: 1da616e038c2c5bff973ef8ae14a805a01f2ef3c
+PODFILE CHECKSUM: 8221d7d3ce1832df3ac5b568536fbdeaae3f36ed
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

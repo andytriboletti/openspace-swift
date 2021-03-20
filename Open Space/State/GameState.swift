@@ -9,6 +9,8 @@
 import Foundation
 
 class GameState {
+    
+    var goingToLocationState:LocationState?
     var locationState:LocationState = LocationState.nearEarth
     var earthLocationState:EarthLocationState = EarthLocationState.random()
     //random name generator: https://www.samcodes.co.uk/project/markov-namegen/

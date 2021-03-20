@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialButtons
-import MaterialComponents.MaterialButtons_Theming
+
 import DynamicBlurView
 class AlertViewController: UIViewController {
-    @IBOutlet var cancelButton: MDCButton!
+    @IBOutlet var cancelButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

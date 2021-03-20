@@ -29,7 +29,7 @@ class ExploreEarthSceneViewController: UIViewController {
         baseNode = SCNNode()
         
         let scene = SCNScene()
-        let backgroundFilename = EarthLocationState.AllCases.Element.self
+        _ = EarthLocationState.AllCases.Element.self
         //let image = UIImage(named: backgroundFilename.nearTajMahal.rawValue)!
         let image = UIImage(named:appDelegate.gameState.earthLocationState.rawValue)
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)

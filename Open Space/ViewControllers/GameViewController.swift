@@ -11,8 +11,7 @@ import QuartzCore
 import SceneKit
 import Alamofire
 import AlamofireImage
-import MaterialComponents.MaterialButtons
-import MaterialComponents.MaterialButtons_Theming
+
 import PopupDialog
 import SCLAlertView
 import DynamicBlurView
@@ -39,7 +38,16 @@ class GameViewController: UIViewController {
         for node in spaceShip {
             if(node.name == "Spaceship") {
                 let toPlace = SCNVector3(x: -500, y: 0, z: -200)
-                var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
+                let moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
+                node.runAction(moveAction)
+            }
+        }
+    }
+    func moveAwayFromPlanet() {
+        for node in spaceShip {
+            if(node.name == "Spaceship") {
+                let toPlace = SCNVector3(x: 500, y: 0, z: 200)
+                let moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
                 node.runAction(moveAction)
             }
         }
@@ -179,7 +187,7 @@ class GameViewController: UIViewController {
         
         //max asteroid
         
-        addObject(name: "a.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
+        _ = addObject(name: "a.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
 
         
         //let locationState:LocationState = LocationState.random()
@@ -304,6 +312,8 @@ class GameViewController: UIViewController {
         
         showHeaderButtons()
         drawISS()
+        travel()
+
     }
     
     func nearEarth() {
@@ -315,9 +325,40 @@ class GameViewController: UIViewController {
         showHeaderButtons()
         
         drawEarth()
+        travel()
         
     }
     
+    func travel() {
+        
+        if(appDelegate.gameState.goingToLocationState != nil) {
+
+            //self.view.makeToast("This is a piece of toast", style: style)
+            var travelingTo:String = ""
+            if(appDelegate.gameState.goingToLocationState == LocationState.nearEarth) {
+                travelingTo = "Earth"
+            }
+            else if(appDelegate.gameState.goingToLocationState == LocationState.nearISS) {
+                travelingTo = "the ISS"
+            }
+            else if(appDelegate.gameState.goingToLocationState == LocationState.nearMoon) {
+                travelingTo = "the Moon"
+            }
+            else if(appDelegate.gameState.goingToLocationState == LocationState.nearMars) {
+                travelingTo = "Mars"
+            }
+            
+            self.showToast(message: "Traveling to \(travelingTo)", font: .systemFont(ofSize: 24.0))
+
+            //move ship
+            moveAwayFromPlanet()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.performSegue(withIdentifier: "travel", sender: self)
+            }
+            //after 3 seconds go to travel screen then go to goingToLocationState
+
+        }
+    }
     func nearMoon() {
         
         self.headerButton.setTitle("Land on the Moon", for: .normal)
@@ -330,7 +371,8 @@ class GameViewController: UIViewController {
         self.headerButton2View.isHidden=false
         
         drawMoon()
-        
+        travel()
+
     }
     
     func nearMars() {
@@ -341,7 +383,8 @@ class GameViewController: UIViewController {
         showHeaderButtons()
         
         drawMars()
-        
+        travel()
+
     }
     
     
@@ -523,7 +566,7 @@ class GameViewController: UIViewController {
             
             myPosition = SCNVector3(xVal, yVal, zVal)
         }
-        addObject(name: "a.dae", position: myPosition, scale: myScale)
+        _ = addObject(name: "a.dae", position: myPosition, scale: myScale)
     }
     func addObject(name: String, position: SCNVector3?, scale: Float) -> [SCNNode] {
         return addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))
@@ -563,3 +606,23 @@ class GameViewController: UIViewController {
     }
 }
 
+extension UIViewController {
+
+func showToast(message : String, font: UIFont) {
+
+    let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 200, y: self.view.frame.size.height-200, width: 400, height: 100))
+    toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+    toastLabel.textColor = UIColor.white
+    toastLabel.font = font
+    toastLabel.textAlignment = .center;
+    toastLabel.text = message
+    toastLabel.alpha = 1.0
+    toastLabel.layer.cornerRadius = 10;
+    toastLabel.clipsToBounds  =  true
+    self.view.addSubview(toastLabel)
+    UIView.animate(withDuration: 6.0, delay: 0.1, options: .curveEaseOut, animations: {
+         toastLabel.alpha = 0.0
+    }, completion: {(isCompleted) in
+        toastLabel.removeFromSuperview()
+    })
+} }
