@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-Bc-blZ">
-                                <rect key="frame" x="0.0" y="54" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxG-s4-Txb">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
@@ -71,10 +71,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHP-J0-E9c">
-                                        <rect key="frame" x="0.0" y="162" width="414" height="93"/>
+                                        <rect key="frame" x="0.0" y="162" width="414" height="0.0"/>
                                     </view>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-G8-uET">
-                                        <rect key="frame" x="0.0" y="265" width="414" height="543"/>
+                                        <rect key="frame" x="0.0" y="172" width="414" height="543"/>
                                     </sceneKitView>
                                 </subviews>
                             </stackView>
@@ -326,7 +326,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc5-Hg-bTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897.75" y="87"/>
+            <point key="canvasLocation" x="1467" y="33"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KtF-rl-tq7">
@@ -453,7 +453,7 @@
                     <navigationItem key="navigationItem" id="Quw-8c-9Mh"/>
                     <connections>
                         <outlet property="videoView" destination="fwm-bn-wTD" id="Pwl-0h-5wg"/>
-                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="ZYK-lD-fPd"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="MBY-mz-0HI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="va2-th-KYM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -877,8 +877,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="67b-Hk-5Ts"/>
         <segue reference="3LN-Fm-zIv"/>
-        <segue reference="fDk-qc-0Zv"/>
-        <segue reference="ZYK-lD-fPd"/>
+        <segue reference="MBY-mz-0HI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
