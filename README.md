@@ -29,6 +29,12 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 
 • Work on Moon view
 
+• Explore Mars
+
+• Add icons on go to selection screen
+
+• Speed up travel video segue
+
 # Multiple Universes
 • If someone is interested in forking this code and creating their own universe, we could link the universes together through a worm hole kind of like a web ring. Contact me at andy@greenrobot.com to get started.
 

@@ -93,8 +93,8 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-                let lay = collectionViewLayout as! UICollectionViewFlowLayout
-                let widthPerItem = 200 //collectionView.frame.width / 2 - lay.minimumInteritemSpacing
+            _ = collectionViewLayout as! UICollectionViewFlowLayout
+            let widthPerItem = 200 //collectionView.frame.width / 2 - lay.minimumInteritemSpacing
 
     return CGSize(width:widthPerItem, height:widthPerItem)
     }
