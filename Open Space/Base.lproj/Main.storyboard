@@ -355,10 +355,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-cN-zkr">
-                                <rect key="frame" x="0.0" y="88" width="414" height="714"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="758"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="21.5" y="108" width="371" height="150"/>
+                                <rect key="frame" x="21.5" y="64" width="371" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="371" height="80"/>
@@ -373,7 +373,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="28" y="100" width="315" height="50"/>
+                                        <rect key="frame" x="30" y="100" width="311" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
@@ -382,11 +382,23 @@
                                             <segue destination="Ipd-nn-3nw" kind="presentation" identifier="exploreEarth" animates="NO" modalPresentationStyle="fullScreen" id="GUK-gq-uwz"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
+                                        <rect key="frame" x="30" y="170" width="311" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="qIu-9i-fdI"/>
+                                        </constraints>
+                                        <state key="normal" title="Shipyard: Configure your spaceship"/>
+                                        <connections>
+                                            <segue destination="68B-pU-erf" kind="presentation" modalPresentationStyle="fullScreen" id="UoK-ba-gXt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="IT3-M6-xxO" firstAttribute="centerX" secondItem="RFR-Dg-CTU" secondAttribute="centerX" id="0ae-XZ-I9N"/>
-                                    <constraint firstAttribute="trailing" secondItem="QOQ-Lg-Woz" secondAttribute="trailing" constant="28" id="DpU-mc-iqK"/>
-                                    <constraint firstItem="QOQ-Lg-Woz" firstAttribute="leading" secondItem="RFR-Dg-CTU" secondAttribute="leading" constant="28" id="yy3-iq-fN6"/>
+                                    <constraint firstItem="QOQ-Lg-Woz" firstAttribute="leading" secondItem="RFR-Dg-CTU" secondAttribute="leading" constant="30" id="6Bw-hQ-70o"/>
+                                    <constraint firstAttribute="trailing" secondItem="QOQ-Lg-Woz" secondAttribute="trailing" constant="30" id="K73-ny-UHx"/>
+                                    <constraint firstItem="fzI-Ji-ZQh" firstAttribute="leading" secondItem="RFR-Dg-CTU" secondAttribute="leading" constant="30" id="aWn-8G-uhg"/>
+                                    <constraint firstAttribute="trailing" secondItem="fzI-Ji-ZQh" secondAttribute="trailing" constant="30" id="bgO-mD-Zvi"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8V-Ib-MSv" customClass="MDCButton">
@@ -620,10 +632,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-S1-jmN">
-                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="694"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-aX-i0y">
-                                <rect key="frame" x="20" y="44" width="374" height="170"/>
+                                <rect key="frame" x="20" y="88" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
@@ -844,6 +856,64 @@
             </objects>
             <point key="canvasLocation" x="5465" y="446"/>
         </scene>
+        <!--Shipyard View Controller-->
+        <scene sceneID="L7F-ck-QNe">
+            <objects>
+                <viewController id="68B-pU-erf" customClass="ShipyardViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sL4-xM-K4c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdu-Li-tEX">
+                                <rect key="frame" x="30" y="74" width="354" height="30"/>
+                                <state key="normal" title="Configure Ship Name"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTk-eU-Cq5">
+                                <rect key="frame" x="30" y="134" width="354" height="3"/>
+                                <state key="normal" title="Configure Ship Design"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lJ-HR-LY3">
+                                <rect key="frame" x="30" y="237" width="354" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <segue destination="J0M-22-PC3" kind="presentation" identifier="cancelAndGoToEarth" modalPresentationStyle="fullScreen" id="G6a-xv-v4e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZZ-a2-Jj7">
+                                <rect key="frame" x="30" y="297" width="354" height="8"/>
+                                <state key="normal" title="Save Ship"/>
+                                <connections>
+                                    <segue destination="J0M-22-PC3" kind="presentation" identifier="saveAndGoToEarth" modalPresentationStyle="fullScreen" id="byS-Wg-BUq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f1i-uz-ShR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="top" secondItem="f1i-uz-ShR" secondAttribute="top" constant="30" id="0e3-H1-2FM"/>
+                            <constraint firstItem="hTk-eU-Cq5" firstAttribute="top" secondItem="Tdu-Li-tEX" secondAttribute="bottom" constant="30" id="0mB-KS-14g"/>
+                            <constraint firstItem="pZZ-a2-Jj7" firstAttribute="top" secondItem="6lJ-HR-LY3" secondAttribute="bottom" constant="30" id="3D8-77-9n0"/>
+                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="4pC-LN-4Bs"/>
+                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="top" secondItem="hTk-eU-Cq5" secondAttribute="bottom" constant="100" id="DnX-KA-zYR"/>
+                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="top" secondItem="sL4-xM-K4c" secondAttribute="top" constant="237" id="GLg-ZK-g2j"/>
+                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="PDr-5y-Y3h"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="6lJ-HR-LY3" secondAttribute="trailing" constant="30" id="UZU-AL-4Fg"/>
+                            <constraint firstItem="hTk-eU-Cq5" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="VBA-Hh-EPN"/>
+                            <constraint firstItem="pZZ-a2-Jj7" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="Zpo-gj-I1r"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="Tdu-Li-tEX" secondAttribute="trailing" constant="30" id="Zyg-XI-7Jr"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="hTk-eU-Cq5" secondAttribute="trailing" constant="30" id="bfF-DZ-IWD"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="Tdu-Li-tEX" secondAttribute="trailing" constant="30" id="dTW-sl-zmF"/>
+                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="sXW-C2-UbP"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="bottom" secondItem="pZZ-a2-Jj7" secondAttribute="bottom" constant="557" id="sjz-Vc-DB7"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="pZZ-a2-Jj7" secondAttribute="trailing" constant="30" id="tDj-Aj-SCr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GWE-VB-IZg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yac-O0-I9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7558" y="662"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Thk-9b-QC1">
             <objects>
@@ -862,6 +932,21 @@
             </objects>
             <point key="canvasLocation" x="1584" y="-695"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="8g3-if-Njx">
+            <objects>
+                <viewController id="coN-Ma-RTJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DsB-S2-Mrh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1P8-zw-qb2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zki-1t-bPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6396" y="-1177"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
@@ -875,9 +960,10 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="67b-Hk-5Ts"/>
-        <segue reference="3LN-Fm-zIv"/>
-        <segue reference="MBY-mz-0HI"/>
+        <segue reference="W7z-Nr-mEd"/>
+        <segue reference="Bk1-Wq-vrr"/>
+        <segue reference="G6a-xv-v4e"/>
+        <segue reference="XCF-Mg-a4A"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
