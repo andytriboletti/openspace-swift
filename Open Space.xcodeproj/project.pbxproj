@@ -238,7 +238,6 @@
 				6F4A3F59252E1AF900147723 /* pics */,
 				6F022418240248140035F7E4 /* mtwashington */,
 				6F698F422402450100E86B65 /* mtrushmore */,
-				6F85AB76240241D10041CC37 /* mteverest */,
 			);
 			path = earthdestinations;
 			sourceTree = "<group>";
@@ -283,13 +282,6 @@
 				6F6D845A23FF8B8E00328057 /* PIA01120orig.jpg */,
 			);
 			path = mars;
-			sourceTree = "<group>";
-		};
-		6F85AB76240241D10041CC37 /* mteverest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = mteverest;
 			sourceTree = "<group>";
 		};
 		6F86CC6B24003A94005AECC9 /* Cells */ = {

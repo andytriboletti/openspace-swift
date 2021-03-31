@@ -124,7 +124,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="23" y="0.0" width="368.5" height="80"/>
+                                        <rect key="frame" x="30" y="0.0" width="354.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -358,10 +358,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="758"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="21.5" y="64" width="371" height="220"/>
+                                <rect key="frame" x="28.5" y="64" width="357" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="371" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="357" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -373,7 +373,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="311" height="50"/>
+                                        <rect key="frame" x="30" y="100" width="297" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
@@ -383,7 +383,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="170" width="311" height="50"/>
+                                        <rect key="frame" x="30" y="170" width="297" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="qIu-9i-fdI"/>
                                         </constraints>
@@ -638,7 +638,7 @@
                                 <rect key="frame" x="20" y="88" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
+                                        <rect key="frame" x="7.5" y="0.0" width="359.5" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -866,24 +866,55 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdu-Li-tEX">
                                 <rect key="frame" x="30" y="74" width="354" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="bsJ-vj-AOJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="zEc-7P-h7j"/>
+                                </constraints>
                                 <state key="normal" title="Configure Ship Name"/>
+                                <connections>
+                                    <action selector="configureShipName" destination="68B-pU-erf" eventType="touchDown" id="E5W-ok-9oi"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTk-eU-Cq5">
-                                <rect key="frame" x="30" y="134" width="354" height="3"/>
-                                <state key="normal" title="Configure Ship Design"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZZ-a2-Jj7">
+                                <rect key="frame" x="30" y="324" width="354" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ft8-0q-t3a"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="qCl-Li-tmE"/>
+                                </constraints>
+                                <state key="normal" title="Save Ship"/>
+                                <connections>
+                                    <segue destination="J0M-22-PC3" kind="presentation" identifier="saveAndGoToEarth" modalPresentationStyle="fullScreen" id="byS-Wg-BUq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lJ-HR-LY3">
-                                <rect key="frame" x="30" y="237" width="354" height="30"/>
+                                <rect key="frame" x="30" y="264" width="354" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ErN-vj-8q3"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="o5g-Yc-xeU"/>
+                                </constraints>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <segue destination="J0M-22-PC3" kind="presentation" identifier="cancelAndGoToEarth" modalPresentationStyle="fullScreen" id="G6a-xv-v4e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZZ-a2-Jj7">
-                                <rect key="frame" x="30" y="297" width="354" height="8"/>
-                                <state key="normal" title="Save Ship"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Ship Name: Kri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Miw-GQ-x5S">
+                                <rect key="frame" x="119.5" y="45" width="175" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aNV-YY-ASX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTk-eU-Cq5">
+                                <rect key="frame" x="30" y="134" width="354" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PjY-rU-3uZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="YoC-E7-PIf"/>
+                                </constraints>
+                                <state key="normal" title="Configure Ship Design"/>
                                 <connections>
-                                    <segue destination="J0M-22-PC3" kind="presentation" identifier="saveAndGoToEarth" modalPresentationStyle="fullScreen" id="byS-Wg-BUq"/>
+                                    <action selector="configureShipDesign" destination="68B-pU-erf" eventType="touchDown" id="Iye-nt-haJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -893,19 +924,25 @@
                             <constraint firstItem="Tdu-Li-tEX" firstAttribute="top" secondItem="f1i-uz-ShR" secondAttribute="top" constant="30" id="0e3-H1-2FM"/>
                             <constraint firstItem="hTk-eU-Cq5" firstAttribute="top" secondItem="Tdu-Li-tEX" secondAttribute="bottom" constant="30" id="0mB-KS-14g"/>
                             <constraint firstItem="pZZ-a2-Jj7" firstAttribute="top" secondItem="6lJ-HR-LY3" secondAttribute="bottom" constant="30" id="3D8-77-9n0"/>
-                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="4pC-LN-4Bs"/>
+                            <constraint firstItem="pZZ-a2-Jj7" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="621-uw-LxZ"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="6lJ-HR-LY3" secondAttribute="trailing" constant="30" id="7jo-nK-lgA"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="Tdu-Li-tEX" secondAttribute="trailing" constant="30" id="Bqe-rM-xcm"/>
                             <constraint firstItem="6lJ-HR-LY3" firstAttribute="top" secondItem="hTk-eU-Cq5" secondAttribute="bottom" constant="100" id="DnX-KA-zYR"/>
-                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="top" secondItem="sL4-xM-K4c" secondAttribute="top" constant="237" id="GLg-ZK-g2j"/>
+                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="IFL-ka-Fui"/>
+                            <constraint firstItem="hTk-eU-Cq5" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="Ie7-v6-LNA"/>
+                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="JGN-G8-III"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="hTk-eU-Cq5" secondAttribute="trailing" constant="30" id="LfH-cy-EzA"/>
                             <constraint firstItem="6lJ-HR-LY3" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="PDr-5y-Y3h"/>
                             <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="6lJ-HR-LY3" secondAttribute="trailing" constant="30" id="UZU-AL-4Fg"/>
                             <constraint firstItem="hTk-eU-Cq5" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="VBA-Hh-EPN"/>
+                            <constraint firstItem="Miw-GQ-x5S" firstAttribute="top" secondItem="f1i-uz-ShR" secondAttribute="top" constant="1" id="YOk-PF-3Pr"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="pZZ-a2-Jj7" secondAttribute="trailing" constant="30" id="Yjb-sU-m4n"/>
                             <constraint firstItem="pZZ-a2-Jj7" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="Zpo-gj-I1r"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="Tdu-Li-tEX" secondAttribute="trailing" constant="30" id="Zyg-XI-7Jr"/>
                             <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="hTk-eU-Cq5" secondAttribute="trailing" constant="30" id="bfF-DZ-IWD"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="Tdu-Li-tEX" secondAttribute="trailing" constant="30" id="dTW-sl-zmF"/>
-                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="sXW-C2-UbP"/>
                             <constraint firstItem="f1i-uz-ShR" firstAttribute="bottom" secondItem="pZZ-a2-Jj7" secondAttribute="bottom" constant="557" id="sjz-Vc-DB7"/>
                             <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="pZZ-a2-Jj7" secondAttribute="trailing" constant="30" id="tDj-Aj-SCr"/>
+                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="trailing" secondItem="hTk-eU-Cq5" secondAttribute="trailing" id="xYW-x0-3gm"/>
+                            <constraint firstItem="Miw-GQ-x5S" firstAttribute="centerX" secondItem="Tdu-Li-tEX" secondAttribute="centerX" id="z2d-vn-Hvg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GWE-VB-IZg"/>
@@ -950,13 +987,13 @@
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
-            <size key="intrinsicContentSize" width="470" height="31.5"/>
+            <size key="intrinsicContentSize" width="456" height="21.5"/>
         </designable>
         <designable name="IT3-M6-xxO">
-            <size key="intrinsicContentSize" width="371" height="31.5"/>
+            <size key="intrinsicContentSize" width="357" height="21.5"/>
         </designable>
         <designable name="XeF-ym-5aq">
-            <size key="intrinsicContentSize" width="368.5" height="31.5"/>
+            <size key="intrinsicContentSize" width="354.5" height="21.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

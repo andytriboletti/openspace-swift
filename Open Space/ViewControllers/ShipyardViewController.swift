@@ -10,6 +10,13 @@ import UIKit
 
 class ShipyardViewController: UIViewController {
 
+    @IBAction func configureShipName() {
+        print("configure ship name")
+    }
+    
+    @IBAction func configureShipDesign() {
+        print("configure ship design")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
