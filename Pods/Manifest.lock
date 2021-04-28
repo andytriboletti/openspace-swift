@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (5.4.1)
-  - AlamofireImage (4.1.0):
-    - Alamofire (~> 5.1)
+  - Alamofire (5.4.3)
+  - AlamofireImage (4.2.0):
+    - Alamofire (~> 5.4)
   - DynamicBlurView (4.1.0)
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
@@ -30,8 +30,8 @@ CHECKOUT OPTIONS:
     :git: https://github.com/vikmeup/SCLAlertView-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
