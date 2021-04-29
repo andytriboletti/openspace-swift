@@ -7,23 +7,24 @@
 //
 
 import UIKit
-
+import Defaults
 class ShipyardViewController: UIViewController {
 
     @IBAction func configureShipName() {
         print("configure ship name")
         //1. Create the alert controller.
-        let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Ship Name", message: "Enter your Ship's Name", preferredStyle: .alert)
 
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
-            textField.text = "Some default text"
+            textField.text = "Ship Name"
         }
 
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             print("Text field: \(textField!.text)")
+            Defaults[.shipName] = textField!.text!
         }))
 
         // 4. Present the alert.

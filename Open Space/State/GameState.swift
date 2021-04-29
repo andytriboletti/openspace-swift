@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Defaults
 
 class GameState {
     
@@ -17,7 +18,8 @@ class GameState {
     var shipNames:Array = ["Anderik", "Eleuz", "Artophy", "Codile", "Krillow"]
     var currentShipName:String {
         let theName = shipNames[4]
-        return theName
+        //return theName
+        return Defaults[.shipName]
     }
     var currentShipModel:String = "spaceshipb.scn"
     var closestOtherPlayerShipModel:String = "space11.dae"

@@ -1,10 +1,10 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireImage" "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView" "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog" "${PODS_CONFIGURATION_BUILD_DIR}/SCLAlertView"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireImage" "${PODS_CONFIGURATION_BUILD_DIR}/Defaults" "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView" "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog" "${PODS_CONFIGURATION_BUILD_DIR}/SCLAlertView"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireImage/AlamofireImage.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView/DynamicBlurView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog/PopupDialog.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SCLAlertView/SCLAlertView.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireImage/AlamofireImage.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Defaults/Defaults.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView/DynamicBlurView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog/PopupDialog.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SCLAlertView/SCLAlertView.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "Accelerate" -framework "Alamofire" -framework "AlamofireImage" -framework "CFNetwork" -framework "DynamicBlurView" -framework "PopupDialog" -framework "SCLAlertView" -framework "UIKit"
+OTHER_LDFLAGS = $(inherited) -framework "Accelerate" -framework "Alamofire" -framework "AlamofireImage" -framework "CFNetwork" -framework "Defaults" -framework "DynamicBlurView" -framework "PopupDialog" -framework "SCLAlertView" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

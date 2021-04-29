@@ -19,6 +19,7 @@
 		6F303531240FE382006C4684 /* moon.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F303530240FE382006C4684 /* moon.scn */; };
 		6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */; };
 		6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F303534240FEA66006C4684 /* starry-sky-998641.jpg */; };
+		6F34E311263B4C8200E67276 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34E310263B4C8200E67276 /* Defaults.swift */; };
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
 		6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */; };
@@ -111,6 +112,7 @@
 		6F303530240FE382006C4684 /* moon.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = moon.scn; sourceTree = "<group>"; };
 		6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-of-stars-and-galaxy-3772378.jpg"; sourceTree = "<group>"; };
 		6F303534240FEA66006C4684 /* starry-sky-998641.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "starry-sky-998641.jpg"; sourceTree = "<group>"; };
+		6F34E310263B4C8200E67276 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-tom-fisk-1653823_great-wall.jpg"; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				6F30352C240FB007006C4684 /* NavGameController.swift */,
 				6FD92044259B71E9008F6CA3 /* quasar.png */,
 				6F81A27B24155C4300D79494 /* Assets.xcassets */,
+				6F34E310263B4C8200E67276 /* Defaults.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */,
 				6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */,
 				6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */,
+				6F34E311263B4C8200E67276 /* Defaults.swift in Sources */,
 				6FA3146C2401E57F009D77AB /* LocationState.swift in Sources */,
 				6F6D845D23FF8C8800328057 /* Utils.swift in Sources */,
 			);
