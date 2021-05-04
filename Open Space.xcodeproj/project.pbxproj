@@ -22,6 +22,8 @@
 		6F34E311263B4C8200E67276 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34E310263B4C8200E67276 /* Defaults.swift */; };
 		6F34E3272640E9E500E67276 /* spaceshipa.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3262640E9E500E67276 /* spaceshipa.dae */; };
 		6F34E3292640E9F600E67276 /* spaceshipa.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3282640E9F600E67276 /* spaceshipa.scn */; };
+		6F34E32B2641A51200E67276 /* spaceshipc.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E32A2641A51200E67276 /* spaceshipc.dae */; };
+		6F34E32D2641A52100E67276 /* spaceshipc.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E32C2641A52100E67276 /* spaceshipc.scn */; };
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
 		6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */; };
@@ -116,6 +118,8 @@
 		6F34E310263B4C8200E67276 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		6F34E3262640E9E500E67276 /* spaceshipa.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipa.dae; sourceTree = "<group>"; };
 		6F34E3282640E9F600E67276 /* spaceshipa.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = spaceshipa.scn; sourceTree = "<group>"; };
+		6F34E32A2641A51200E67276 /* spaceshipc.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipc.dae; sourceTree = "<group>"; };
+		6F34E32C2641A52100E67276 /* spaceshipc.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = spaceshipc.scn; sourceTree = "<group>"; };
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-tom-fisk-1653823_great-wall.jpg"; sourceTree = "<group>"; };
@@ -443,6 +447,8 @@
 				6F34E3262640E9E500E67276 /* spaceshipa.dae */,
 				6F34E3282640E9F600E67276 /* spaceshipa.scn */,
 				6FA5934624001043007C16E3 /* spaceshipb.scn */,
+				6F34E32A2641A51200E67276 /* spaceshipc.dae */,
+				6F34E32C2641A52100E67276 /* spaceshipc.scn */,
 			);
 			path = spaceships;
 			sourceTree = "<group>";
@@ -620,6 +626,7 @@
 				6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */,
 				6F6D845B23FF8B8E00328057 /* PIA01120orig.jpg in Resources */,
 				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
+				6F34E32B2641A51200E67276 /* spaceshipc.dae in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
@@ -633,6 +640,7 @@
 				6FD0296B23FED5270082209D /* planetveg.dae in Resources */,
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
+				6F34E32D2641A52100E67276 /* spaceshipc.scn in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
 				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
