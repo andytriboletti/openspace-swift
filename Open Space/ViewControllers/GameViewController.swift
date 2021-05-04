@@ -178,8 +178,9 @@ class GameViewController: UIViewController {
         
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
-        spaceShip = addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
-        
+        //spaceShip = addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(5,5,5))
+        spaceShip = addObject(name: appDelegate.gameState.currentShipModel, position: nil, scale: SCNVector3(10,10,10))
+
         
         for _ in 1...50 {
             addAsteroid()

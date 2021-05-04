@@ -20,6 +20,8 @@
 		6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */; };
 		6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F303534240FEA66006C4684 /* starry-sky-998641.jpg */; };
 		6F34E311263B4C8200E67276 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34E310263B4C8200E67276 /* Defaults.swift */; };
+		6F34E3272640E9E500E67276 /* spaceshipa.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3262640E9E500E67276 /* spaceshipa.dae */; };
+		6F34E3292640E9F600E67276 /* spaceshipa.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3282640E9F600E67276 /* spaceshipa.scn */; };
 		6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
 		6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
 		6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */; };
@@ -73,7 +75,6 @@
 		6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */; };
 		6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */; };
 		6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */; };
-		6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF1123FDA24600EA28D7 /* space11.dae */; };
 		6FCCF111260297E000514899 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6FCCF110260297E000514899 /* README.md */; };
 		6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296423FEC8620082209D /* space_icon_200.jpg */; };
 		6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */; };
@@ -113,6 +114,8 @@
 		6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-of-stars-and-galaxy-3772378.jpg"; sourceTree = "<group>"; };
 		6F303534240FEA66006C4684 /* starry-sky-998641.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "starry-sky-998641.jpg"; sourceTree = "<group>"; };
 		6F34E310263B4C8200E67276 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		6F34E3262640E9E500E67276 /* spaceshipa.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipa.dae; sourceTree = "<group>"; };
+		6F34E3282640E9F600E67276 /* spaceshipa.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = spaceshipa.scn; sourceTree = "<group>"; };
 		6F43938D23FF56830007614D /* instantmeshstation2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = instantmeshstation2.scn; sourceTree = "<group>"; };
 		6F43938F23FF6DC60007614D /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-tom-fisk-1653823_great-wall.jpg"; sourceTree = "<group>"; };
@@ -169,7 +172,6 @@
 		6FB0EF0423FDA1A900EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FB0EF0623FDA1A900EA28D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipb.dae; sourceTree = "<group>"; };
-		6FB0EF1123FDA24600EA28D7 /* space11.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = space11.dae; sourceTree = "<group>"; };
 		6FCCF110260297E000514899 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6FD0296423FEC8620082209D /* space_icon_200.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_200.jpg; sourceTree = "<group>"; };
 		6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_1024.jpg; sourceTree = "<group>"; };
@@ -437,8 +439,9 @@
 		6FB0EF0E23FDA1DF00EA28D7 /* spaceships */ = {
 			isa = PBXGroup;
 			children = (
-				6FB0EF1123FDA24600EA28D7 /* space11.dae */,
 				6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */,
+				6F34E3262640E9E500E67276 /* spaceshipa.dae */,
+				6F34E3282640E9F600E67276 /* spaceshipa.scn */,
 				6FA5934624001043007C16E3 /* spaceshipb.scn */,
 			);
 			path = spaceships;
@@ -601,6 +604,7 @@
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6F022424240250A60035F7E4 /* mtwashington.scn in Resources */,
+				6F34E3272640E9E500E67276 /* spaceshipa.dae in Resources */,
 				6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
 				6F643EA12530DBCC001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
 				6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
@@ -639,7 +643,6 @@
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
 				6FD92042259B71B5008F6CA3 /* quasar.png in Resources */,
-				6FB0EF1223FDA24600EA28D7 /* space11.dae in Resources */,
 				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
 				6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
@@ -661,6 +664,7 @@
 				6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */,
 				6FCCF111260297E000514899 /* README.md in Resources */,
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
+				6F34E3292640E9F600E67276 /* spaceshipa.scn in Resources */,
 				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

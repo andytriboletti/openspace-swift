@@ -21,7 +21,8 @@ class GameState {
         //return theName
         return Defaults[.shipName]
     }
-    var currentShipModel:String = "spaceshipb.scn"
+    //var currentShipModel:String = "spaceshipb.scn"
+    var currentShipModel:String = "spaceshipa.scn"
     var closestOtherPlayerShipModel:String = "space11.dae"
     var closestOtherPlayerShipName:String = "Centa"
 
