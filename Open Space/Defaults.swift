@@ -6,7 +6,6 @@
 //  Copyright © 2021 GreenRobot LLC. All rights reserved.
 //
 
-import Foundation
 import Defaults
 
 extension Defaults.Keys {
