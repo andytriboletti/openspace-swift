@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4cu-mg-f7Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4cu-mg-f7Y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -864,85 +864,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdu-Li-tEX">
-                                <rect key="frame" x="30" y="74" width="354" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="bsJ-vj-AOJ"/>
-                                    <constraint firstAttribute="height" constant="30" id="zEc-7P-h7j"/>
-                                </constraints>
-                                <state key="normal" title="Configure Ship Name"/>
-                                <connections>
-                                    <action selector="configureShipName" destination="68B-pU-erf" eventType="touchDown" id="E5W-ok-9oi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZZ-a2-Jj7">
-                                <rect key="frame" x="30" y="324" width="354" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ft8-0q-t3a"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="qCl-Li-tmE"/>
-                                </constraints>
-                                <state key="normal" title="Save Ship"/>
-                                <connections>
-                                    <segue destination="J0M-22-PC3" kind="presentation" identifier="saveAndGoToEarth" modalPresentationStyle="fullScreen" id="byS-Wg-BUq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lJ-HR-LY3">
-                                <rect key="frame" x="30" y="264" width="354" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ErN-vj-8q3"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="o5g-Yc-xeU"/>
-                                </constraints>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <segue destination="J0M-22-PC3" kind="presentation" identifier="cancelAndGoToEarth" modalPresentationStyle="fullScreen" id="G6a-xv-v4e"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Ship Name: Kri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Miw-GQ-x5S">
-                                <rect key="frame" x="119.5" y="45" width="175" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="aNV-YY-ASX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTk-eU-Cq5">
-                                <rect key="frame" x="30" y="134" width="354" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PjY-rU-3uZ"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="YoC-E7-PIf"/>
-                                </constraints>
-                                <state key="normal" title="Configure Ship Design"/>
-                                <connections>
-                                    <action selector="configureShipDesign" destination="68B-pU-erf" eventType="touchDown" id="Iye-nt-haJ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="Xjd-aF-whv">
+                                <rect key="frame" x="50" y="78" width="314" height="198"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Ship Name: Kri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Miw-GQ-x5S">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="XO2-se-nsC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTk-eU-Cq5">
+                                        <rect key="frame" x="0.0" y="84" width="314" height="30"/>
+                                        <state key="normal" title="Exchange Ship For A New One"/>
+                                        <connections>
+                                            <action selector="configureShipDesign" destination="68B-pU-erf" eventType="touchDown" id="Iye-nt-haJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lJ-HR-LY3">
+                                        <rect key="frame" x="0.0" y="168" width="314" height="30"/>
+                                        <state key="normal" title="Return To Earth Landing View"/>
+                                        <connections>
+                                            <segue destination="J0M-22-PC3" kind="presentation" identifier="cancelAndGoToEarth" modalPresentationStyle="fullScreen" id="G6a-xv-v4e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="f1i-uz-ShR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="top" secondItem="f1i-uz-ShR" secondAttribute="top" constant="30" id="0e3-H1-2FM"/>
-                            <constraint firstItem="hTk-eU-Cq5" firstAttribute="top" secondItem="Tdu-Li-tEX" secondAttribute="bottom" constant="30" id="0mB-KS-14g"/>
-                            <constraint firstItem="pZZ-a2-Jj7" firstAttribute="top" secondItem="6lJ-HR-LY3" secondAttribute="bottom" constant="30" id="3D8-77-9n0"/>
-                            <constraint firstItem="pZZ-a2-Jj7" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="621-uw-LxZ"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="6lJ-HR-LY3" secondAttribute="trailing" constant="30" id="7jo-nK-lgA"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="Tdu-Li-tEX" secondAttribute="trailing" constant="30" id="Bqe-rM-xcm"/>
-                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="top" secondItem="hTk-eU-Cq5" secondAttribute="bottom" constant="100" id="DnX-KA-zYR"/>
-                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="IFL-ka-Fui"/>
-                            <constraint firstItem="hTk-eU-Cq5" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="Ie7-v6-LNA"/>
-                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="JGN-G8-III"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="hTk-eU-Cq5" secondAttribute="trailing" constant="30" id="LfH-cy-EzA"/>
-                            <constraint firstItem="6lJ-HR-LY3" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="PDr-5y-Y3h"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="6lJ-HR-LY3" secondAttribute="trailing" constant="30" id="UZU-AL-4Fg"/>
-                            <constraint firstItem="hTk-eU-Cq5" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="VBA-Hh-EPN"/>
-                            <constraint firstItem="Miw-GQ-x5S" firstAttribute="top" secondItem="f1i-uz-ShR" secondAttribute="top" constant="1" id="YOk-PF-3Pr"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="pZZ-a2-Jj7" secondAttribute="trailing" constant="30" id="Yjb-sU-m4n"/>
-                            <constraint firstItem="pZZ-a2-Jj7" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="30" id="Zpo-gj-I1r"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="hTk-eU-Cq5" secondAttribute="trailing" constant="30" id="bfF-DZ-IWD"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="bottom" secondItem="pZZ-a2-Jj7" secondAttribute="bottom" constant="557" id="sjz-Vc-DB7"/>
-                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="pZZ-a2-Jj7" secondAttribute="trailing" constant="30" id="tDj-Aj-SCr"/>
-                            <constraint firstItem="Tdu-Li-tEX" firstAttribute="trailing" secondItem="hTk-eU-Cq5" secondAttribute="trailing" id="xYW-x0-3gm"/>
-                            <constraint firstItem="Miw-GQ-x5S" firstAttribute="centerX" secondItem="Tdu-Li-tEX" secondAttribute="centerX" id="z2d-vn-Hvg"/>
+                            <constraint firstItem="Xjd-aF-whv" firstAttribute="leading" secondItem="f1i-uz-ShR" secondAttribute="leading" constant="50" id="ILD-1b-O7V"/>
+                            <constraint firstItem="f1i-uz-ShR" firstAttribute="trailing" secondItem="Xjd-aF-whv" secondAttribute="trailing" constant="50" id="Rxa-7M-duU"/>
+                            <constraint firstItem="Xjd-aF-whv" firstAttribute="top" secondItem="f1i-uz-ShR" secondAttribute="top" constant="34" id="enJ-6O-PuT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GWE-VB-IZg"/>

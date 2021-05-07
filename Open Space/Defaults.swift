@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Cocoa
 import Defaults
 
 extension Defaults.Keys {
