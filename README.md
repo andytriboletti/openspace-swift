@@ -23,7 +23,7 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 ![Open Space](https://i.imgur.com/8ERjHc9.png)
 
 # TODO
-• Allow ship name, color, and design selection.
+• Fix display of ship name
 
 • Save last location of your ship in User Defaults so if you leave the game and come back you don't keep starting near Earth.
 
@@ -32,6 +32,8 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 • Explore Mars
 
 • Add icons on go to selection screen
+
+•Add icons on ship selection screen
 
 • Speed up travel video segue
 
