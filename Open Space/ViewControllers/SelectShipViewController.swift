@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import Defaults
 
 class SelectShipViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var locations: Dictionary<Int, String> = [:]
@@ -50,16 +51,12 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
             //cell.backgroundColor = .red
             //appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
             //need to travel = yes
-            appDelegate.gameState.goingToLocationState = LocationState.allCases[indexPath.row]
-//            self.dismiss(animated: true, completion: {
+            //appDelegate.gameState.goingToLocationState = LocationState.allCases[indexPath.row]
 
-  //          })
-            self.performSegue(withIdentifier: "goToGame", sender: self)
+            //TODO SELECT SHIP
+            Defaults[.currentShipModel] = appDelegate.gameState.possibleShips[indexPath.row]
+            self.dismiss(animated: false, completion: nil)
 
-            //self.present(NavGameController(), animated: true)
-            //self.dismiss(animated: true, completion: nil)
-            
-            //self.parent?.dismiss(animated: true, completion: nil)
          }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -79,7 +76,7 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locations = [0: "Earth", 1: "ISS", 2: "Moon", 3: "Mars"]
+        self.locations = [0: "Anderik", 1: "Eleuz", 2: "Artophy"]
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //.horizontal
         layout.minimumLineSpacing = 10

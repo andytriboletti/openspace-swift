@@ -366,6 +366,7 @@
 		6FA3146A2401E56D009D77AB /* State */ = {
 			isa = PBXGroup;
 			children = (
+				6F34E310263B4C8200E67276 /* Defaults.swift */,
 				6FA4D33323FFB2CB0088B4A4 /* GameState.swift */,
 				6FA3146B2401E57F009D77AB /* LocationState.swift */,
 				6F9385612425A249001BE3F6 /* EarthLocationState.swift */,
@@ -420,7 +421,6 @@
 				6F30352C240FB007006C4684 /* NavGameController.swift */,
 				6FD92044259B71E9008F6CA3 /* quasar.png */,
 				6F81A27B24155C4300D79494 /* Assets.xcassets */,
-				6F34E310263B4C8200E67276 /* Defaults.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";

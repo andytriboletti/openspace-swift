@@ -17,13 +17,17 @@ class GameState {
     //random name generator: https://www.samcodes.co.uk/project/markov-namegen/
     var shipNames:Array = ["Anderik", "Eleuz", "Artophy", "Codile", "Krillow"]
     var currentShipName:String {
-        let theName = shipNames[4]
+        //let theName = shipNames[4]
         //return theName
         return Defaults[.shipName]
     }
     //var currentShipModel:String = "spaceshipb.scn"
-    var currentShipModel:String = "spaceshipc.scn"
+    //var currentShipModel:String = "spaceshipc.scn"
+    var currentShipModel:String {
+        return Defaults[.currentShipModel]
+    }
     var closestOtherPlayerShipModel:String = "space11.dae"
     var closestOtherPlayerShipName:String = "Centa"
 
+    var possibleShips:Array = ["spaceshipa.scn", "spaceshipb.scn", "spaceshipc.scn"]
 }
