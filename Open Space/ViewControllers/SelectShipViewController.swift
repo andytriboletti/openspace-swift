@@ -62,7 +62,7 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
         cell.backgroundColor = .green
-        let cellImage = UIImage(named: "rocket_1024.png")
+        let cellImage = UIImage(named: "Anderik.png")
         let size = CGSize(width: 100, height: 100)
         let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage

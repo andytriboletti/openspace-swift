@@ -100,6 +100,9 @@
 		6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911F823FF427B00255491 /* PIA13005orig.jpg */; };
 		6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911FA23FF435500255491 /* PIA15415orig.jpg */; };
 		6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */; };
+		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
+		6FF9344126614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Artophy.png */; };
+		6FF9344226614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Eleuz.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +204,9 @@
 		6FE911F823FF427B00255491 /* PIA13005orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA13005orig.jpg; sourceTree = "<group>"; };
 		6FE911FA23FF435500255491 /* PIA15415orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA15415orig.jpg; sourceTree = "<group>"; };
 		6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = instantmeshstation2.dae; path = "Open Space/3dmodels/stations/instantmeshstation2.dae"; sourceTree = SOURCE_ROOT; };
+		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
+		6FF9343E26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
+		6FF9343F26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -328,6 +334,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6FF9343C26614AF800CFEFD2 /* ship_thumbnails */,
 				6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */,
 				6F303534240FEA66006C4684 /* starry-sky-998641.jpg */,
 				6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */,
@@ -545,6 +552,16 @@
 			path = nasa;
 			sourceTree = "<group>";
 		};
+		6FF9343C26614AF800CFEFD2 /* ship_thumbnails */ = {
+			isa = PBXGroup;
+			children = (
+				6FF9343D26614B3500CFEFD2 /* Anderik.png */,
+				6FF9343E26614B3500CFEFD2 /* Artophy.png */,
+				6FF9343F26614B3500CFEFD2 /* Eleuz.png */,
+			);
+			path = ship_thumbnails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -619,6 +636,7 @@
 				6F4A3F5B252E1B4200147723 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
 				6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */,
 				6F5B8E282402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
+				6FF9344226614B3500CFEFD2 /* Eleuz.png in Resources */,
 				6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
@@ -653,11 +671,13 @@
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
+				6FF9344126614B3500CFEFD2 /* Artophy.png in Resources */,
 				6FD92042259B71B5008F6CA3 /* quasar.png in Resources */,
 				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
 				6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				6FA5934724001043007C16E3 /* spaceshipb.scn in Resources */,
+				6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */,
 				6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */,
 				6FDB588323FEB952004263CB /* mars.dae in Resources */,
 				6FD92054259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg in Resources */,
