@@ -62,7 +62,16 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
         cell.backgroundColor = .green
-        let cellImage = UIImage(named: "Anderik.png")
+        var cellImage:UIImage?
+        if(indexPath.row == 0) {
+            cellImage = UIImage(named: self.locations[0]!)!
+        }
+        else if(indexPath.row == 1) {
+            cellImage = UIImage(named: self.locations[1]!)!
+        }
+        else if(indexPath.row == 2) {
+            cellImage = UIImage(named: self.locations[2]!)!
+        }
         let size = CGSize(width: 100, height: 100)
         let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage
@@ -76,7 +85,7 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locations = [0: "Anderik", 1: "Eleuz", 2: "Artophy"]
+        self.locations = [0: "Anderik", 1: "Artophy", 2: "Eleuz"]
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //.horizontal
         layout.minimumLineSpacing = 10

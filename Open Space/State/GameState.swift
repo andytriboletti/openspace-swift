@@ -15,19 +15,17 @@ class GameState {
     var locationState:LocationState = LocationState.nearEarth
     var earthLocationState:EarthLocationState = EarthLocationState.random()
     //random name generator: https://www.samcodes.co.uk/project/markov-namegen/
-    var shipNames:Array = ["Anderik", "Eleuz", "Artophy", "Codile", "Krillow"]
+    var shipNames:Array = ["Anderik", "Artophy", "Eleuz", "Codile", "Krillow"]
     var currentShipName:String {
         //let theName = shipNames[4]
         //return theName
         return Defaults[.shipName]
     }
-    //var currentShipModel:String = "spaceshipb.scn"
-    //var currentShipModel:String = "spaceshipc.scn"
     var currentShipModel:String {
         return Defaults[.currentShipModel]
     }
     var closestOtherPlayerShipModel:String = "space11.dae"
     var closestOtherPlayerShipName:String = "Centa"
 
-    var possibleShips:Array = ["spaceshipa.scn", "spaceshipb.scn", "spaceshipc.scn"]
+    var possibleShips:Array = ["anderik.scn", "artophy.scn", "eleuz.scn"]
 }

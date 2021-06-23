@@ -12,6 +12,6 @@ extension Defaults.Keys {
     static let shipName = Key<String>("shipName", default: "Kristoff")
     //            ^            ^         ^                ^
     //           Key          Type   UserDefaults name   Default value
-    static let currentShipModel = Key<String>("currentShipModel", default: "spaceshipc.scn")
+    static let currentShipModel = Key<String>("currentShipModel", default: "anderik.scn")
 
 }
