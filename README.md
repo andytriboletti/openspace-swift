@@ -33,8 +33,6 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 
 • Add icons on go to selection screen
 
-•Add icons on ship selection screen
-
 • Speed up travel video segue
 
 # Multiple Universes

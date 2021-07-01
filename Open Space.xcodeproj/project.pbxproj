@@ -100,6 +100,10 @@
 		6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911F823FF427B00255491 /* PIA13005orig.jpg */; };
 		6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911FA23FF435500255491 /* PIA15415orig.jpg */; };
 		6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */; };
+		6FED3587268E762F002F1B12 /* iss.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3583268E762E002F1B12 /* iss.png */; };
+		6FED3588268E762F002F1B12 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3584268E762E002F1B12 /* mars.png */; };
+		6FED3589268E762F002F1B12 /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3585268E762F002F1B12 /* moon.png */; };
+		6FED358A268E762F002F1B12 /* earth.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3586268E762F002F1B12 /* earth.png */; };
 		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
 		6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
@@ -204,6 +208,10 @@
 		6FE911F823FF427B00255491 /* PIA13005orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA13005orig.jpg; sourceTree = "<group>"; };
 		6FE911FA23FF435500255491 /* PIA15415orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA15415orig.jpg; sourceTree = "<group>"; };
 		6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = instantmeshstation2.dae; path = "Open Space/3dmodels/stations/instantmeshstation2.dae"; sourceTree = SOURCE_ROOT; };
+		6FED3583268E762E002F1B12 /* iss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iss.png; sourceTree = "<group>"; };
+		6FED3584268E762E002F1B12 /* mars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mars.png; sourceTree = "<group>"; };
+		6FED3585268E762F002F1B12 /* moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moon.png; sourceTree = "<group>"; };
+		6FED3586268E762F002F1B12 /* earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth.png; sourceTree = "<group>"; };
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
@@ -334,6 +342,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6FED3582268E761B002F1B12 /* planet_thumbnails */,
 				6FF9343C26614AF800CFEFD2 /* ship_thumbnails */,
 				6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */,
 				6F303534240FEA66006C4684 /* starry-sky-998641.jpg */,
@@ -552,6 +561,17 @@
 			path = nasa;
 			sourceTree = "<group>";
 		};
+		6FED3582268E761B002F1B12 /* planet_thumbnails */ = {
+			isa = PBXGroup;
+			children = (
+				6FED3586268E762F002F1B12 /* earth.png */,
+				6FED3583268E762E002F1B12 /* iss.png */,
+				6FED3584268E762E002F1B12 /* mars.png */,
+				6FED3585268E762F002F1B12 /* moon.png */,
+			);
+			path = planet_thumbnails;
+			sourceTree = "<group>";
+		};
 		6FF9343C26614AF800CFEFD2 /* ship_thumbnails */ = {
 			isa = PBXGroup;
 			children = (
@@ -655,10 +675,12 @@
 				6F677BA424076FF4004A1C8B /* 2k_earth_daymap.jpg in Resources */,
 				6F677BA6240772F3004A1C8B /* earth.scn in Resources */,
 				6F6D845823FF87E300328057 /* flagcool.dae in Resources */,
+				6FED358A268E762F002F1B12 /* earth.png in Resources */,
 				6F4A3F5F252E40A800147723 /* pexels-abdullah-ghatasheh-1631665.jpg in Resources */,
 				6F677BAA240776F1004A1C8B /* PIA04921orig.jpg in Resources */,
 				6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */,
 				6FD0296B23FED5270082209D /* planetveg.dae in Resources */,
+				6FED3587268E762F002F1B12 /* iss.png in Resources */,
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
 				6F34E32D2641A52100E67276 /* eleuz.scn in Resources */,
@@ -672,6 +694,8 @@
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
 				6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */,
+				6FED3588268E762F002F1B12 /* mars.png in Resources */,
+				6FED3589268E762F002F1B12 /* moon.png in Resources */,
 				6FD92042259B71B5008F6CA3 /* quasar.png in Resources */,
 				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
 				6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */,

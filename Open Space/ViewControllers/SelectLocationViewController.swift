@@ -65,7 +65,20 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
         cell.backgroundColor = .green
-        let cellImage = UIImage(named: "rocket_1024.png")
+        var cellImage:UIImage?
+        if(indexPath.row == 0) {
+            cellImage = UIImage(named: "earth.png")
+        }
+        else if(indexPath.row == 1) {
+            cellImage = UIImage(named: "iss.png")
+        }
+        else if(indexPath.row == 2) {
+            cellImage = UIImage(named: "moon.png")
+        }
+        else if(indexPath.row == 3) {
+            cellImage = UIImage(named: "mars.png")
+        }
+        
         let size = CGSize(width: 100, height: 100)
         let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage
