@@ -31,8 +31,6 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 
 • Explore Mars
 
-• Add icons on go to selection screen
-
 • Speed up travel video segue
 
 # Multiple Universes
