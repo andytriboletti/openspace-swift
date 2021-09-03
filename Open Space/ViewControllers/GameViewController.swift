@@ -22,7 +22,6 @@ class GameViewController: UIViewController {
     var tempNode:SCNNode!
     var spaceShip:[SCNNode]!
     var tapGesture: UITapGestureRecognizer?
-//    var iss: SCNNode?
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var headerButton2: UIButton!
     
@@ -56,7 +55,6 @@ class GameViewController: UIViewController {
     @IBAction func landButtonClicked() {
         if(appDelegate.gameState.locationState == LocationState.nearEarth) {
             print("land on earth")
-            //var node = spaceShip.getTopParent(rootNode: spaceShip)
             moveToPlanet()
             
             
@@ -108,21 +106,10 @@ class GameViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
 
-//        baseNode?.enumerateChildNodes { (node, stop) in
-//            node.removeFromParentNode()
-//        }
-//        baseNode?.removeFromParentNode()
-//
-//
         tempNode?.enumerateChildNodes { (node, stop) in
             node.removeFromParentNode()
         }
         tempNode?.removeFromParentNode()
-//        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
-//                     node.removeFromParentNode()
-//        }
-        
-        //scnView.scene?.rootNode.removeFromParentNode()
 
         if(self.tapGesture != nil) {
             scnView.removeGestureRecognizer(self.tapGesture!)
@@ -150,19 +137,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         setupHeader()
-        
-        
-//        baseNode?.enumerateChildNodes { (node, stop) in
-//            node.removeFromParentNode()
-//        }
-//        //baseNode?.removeFromParentNode()
-//        scnView.scene?.rootNode.enumerateChildNodes { (node, stop) in
-//                     node.removeFromParentNode()
-//        }
-        //scnView.scene?.rootNode.removeFromParentNode()
 
-//        scnView?.removeGestureRecognizer(self.tapGesture)
-        
         
         let backgroundFilename = "starry-sky-998641.jpg"
         let image = UIImage(named: backgroundFilename)!
@@ -172,8 +147,6 @@ class GameViewController: UIViewController {
         _ = Utils.colorizeImage(image, with: semi)
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
-        
-        
         
         scene.background.contents = aspectScaledToFitImage
         
@@ -185,23 +158,9 @@ class GameViewController: UIViewController {
         for _ in 1...50 {
             addAsteroid()
         }
-        
-        //max asteroid
-        
+                
         _ = addObject(name: "a.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
 
-        
-        //let locationState:LocationState = LocationState.random()
-        
-        
-        //animateAsteroid(baseNode: baseNode)
-        
-        
-        
-        
-        
-        
-        
         // create and add a camera to the scene
         cameraNode.camera = camera
         //scene.rootNode.addChildNode(cameraNode)
@@ -251,13 +210,7 @@ class GameViewController: UIViewController {
     }
     
     func refresh() {
-        print("refresh")
-        
-        //        self.iss?.enumerateChildNodes { (node, stop) in
-        //            node.removeFromParentNode()
-        //        }
-        //        self.iss?.removeFromParentNode()
-        
+
         switch appDelegate.gameState.locationState {
         case .nearEarth:
             nearEarth()
