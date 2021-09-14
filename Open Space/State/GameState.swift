@@ -28,4 +28,5 @@ class GameState {
     var closestOtherPlayerShipName:String = "Centa"
 
     var possibleShips:Array = ["anderik.scn", "artophy.scn", "eleuz.scn"]
+    var shipNamesAndModels:Dictionary = ["anderik.scn": "Anderik", "artophy.scn": "Artophy", "eleuz.scn": "Eleuz"]
 }

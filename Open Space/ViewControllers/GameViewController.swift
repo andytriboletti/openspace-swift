@@ -156,10 +156,11 @@ class GameViewController: UIViewController {
 
         
         for _ in 1...50 {
-            addAsteroid()
+            //addAsteroid()
         }
                 
-        _ = addObject(name: "a.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
+        //_ = addObject(name: "b.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
+        _ = addObject(name: "anderik.scn", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
 
         // create and add a camera to the scene
         cameraNode.camera = camera

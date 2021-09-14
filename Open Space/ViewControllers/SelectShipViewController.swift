@@ -55,6 +55,7 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
 
             //TODO SELECT SHIP
             Defaults[.currentShipModel] = appDelegate.gameState.possibleShips[indexPath.row]
+            Defaults[.shipName] = appDelegate.gameState.possibleShips[indexPath.row]
             self.dismiss(animated: false, completion: nil)
 
          }
