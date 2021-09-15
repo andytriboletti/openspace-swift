@@ -203,7 +203,7 @@ class MarsViewController: UIViewController {
             
             myPosition = SCNVector3(xVal, yVal, zVal)
         }
-        addObject(name: "a.dae", position: myPosition, scale: myScale)
+        addObject(name: "a.scn", position: myPosition, scale: myScale)
     }
     
 }

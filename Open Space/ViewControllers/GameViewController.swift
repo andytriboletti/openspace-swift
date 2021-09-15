@@ -156,11 +156,11 @@ class GameViewController: UIViewController {
 
         
         for _ in 1...50 {
-            //addAsteroid()
+            addAsteroid()
         }
                 
         //_ = addObject(name: "b.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
-        _ = addObject(name: "anderik.scn", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
+        _ = addObject(name: "a.scn", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
 
         // create and add a camera to the scene
         cameraNode.camera = camera
@@ -236,7 +236,7 @@ class GameViewController: UIViewController {
         
     }
     func drawMars() {
-        addTempObject(name: "mars.dae", position: SCNVector3(-500, 0, -200), scale: 5)
+        addTempObject(name: "mars.scn", position: SCNVector3(-500, 0, -200), scale: 5)
     }
     func drawMoon() {
         addTempObject(name: "moon.scn", position: SCNVector3(-500, 0, -200), scale: 5)
@@ -345,7 +345,7 @@ class GameViewController: UIViewController {
     
     
     func animateAsteroid(baseNode: SCNNode) {
-        let shipScenec = SCNScene(named: "a.dae")!
+        let shipScenec = SCNScene(named: "a.scn")!
         
         let shipSceneChildNodesc = shipScenec.rootNode.childNodes
         for childNode in shipSceneChildNodesc {
@@ -521,7 +521,7 @@ class GameViewController: UIViewController {
             
             myPosition = SCNVector3(xVal, yVal, zVal)
         }
-        _ = addObject(name: "a.dae", position: myPosition, scale: myScale)
+        _ = addObject(name: "a.scn", position: myPosition, scale: myScale)
     }
     func addObject(name: String, position: SCNVector3?, scale: Float) -> [SCNNode] {
         return addObject(name: name, position: position, scale: SCNVector3(x: scale, y: scale, z: scale))

@@ -107,6 +107,8 @@
 		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
 		6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
+		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
+		72E8C50526F2586000D5FDEB /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,6 +217,8 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
+		72E8C50226F257FF00D5FDEB /* mars.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mars.scn; sourceTree = "<group>"; };
+		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
 		E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -360,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				6F9C596323FE1BDF00808386 /* a.dae */,
+				72E8C50426F2586000D5FDEB /* a.scn */,
 			);
 			path = asteroids;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 				6F30352E240FC3C0006C4684 /* moon.dae */,
 				6F303530240FE382006C4684 /* moon.scn */,
 				6FDB588123FEB952004263CB /* mars.dae */,
+				72E8C50226F257FF00D5FDEB /* mars.scn */,
 			);
 			path = planets;
 			sourceTree = "<group>";
@@ -667,6 +673,7 @@
 				6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */,
 				6F6D845B23FF8B8E00328057 /* PIA01120orig.jpg in Resources */,
 				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
+				72E8C50526F2586000D5FDEB /* a.scn in Resources */,
 				6F34E32B2641A51200E67276 /* spaceshipc.dae in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
@@ -689,6 +696,7 @@
 				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
 				6F643EA02530DBCC001164E4 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
 				6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */,
+				72E8C50326F257FF00D5FDEB /* mars.scn in Resources */,
 				6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
