@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.3)
+  - Alamofire (5.4.4)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
   - Defaults (4.2.2)
@@ -12,7 +12,7 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Defaults
-  - PopupDialog (~> 1.1)
+  - PopupDialog
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
 
 SPEC REPOS:
@@ -33,13 +33,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/vikmeup/SCLAlertView-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   Defaults: d785e56c0fb8890dc40351603f05c8e1df1bdd45
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
 
-PODFILE CHECKSUM: 3d977bba8b90984a1d95f903c7dc9473bc97b383
+PODFILE CHECKSUM: 2c54fc246ee5a173645c7f6028a39cdd9b0cc609
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

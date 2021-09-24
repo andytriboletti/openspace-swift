@@ -3,7 +3,8 @@ CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireImage" "${PODS_CONFIGURATION_BUILD_DIR}/Defaults" "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView" "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog" "${PODS_CONFIGURATION_BUILD_DIR}/SCLAlertView"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/AlamofireImage/AlamofireImage.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Defaults/Defaults.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DynamicBlurView/DynamicBlurView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/PopupDialog/PopupDialog.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SCLAlertView/SCLAlertView.framework/Headers"
-LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
 OTHER_LDFLAGS = $(inherited) -framework "Accelerate" -framework "Alamofire" -framework "AlamofireImage" -framework "CFNetwork" -framework "Defaults" -framework "DynamicBlurView" -framework "PopupDialog" -framework "SCLAlertView" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
