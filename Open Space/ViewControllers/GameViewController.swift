@@ -119,7 +119,7 @@ class GameViewController: UIViewController {
     func setupHeader() {
         self.headerButton2.setTitle("Navigate To...", for: .normal)
 
-        self.tabBarController?.title = "'\(appDelegate.gameState.currentShipName)' Viewport"
+        self.tabBarController?.title = "'\(appDelegate.gameState.getShipName())' Viewport"
         
         
         
