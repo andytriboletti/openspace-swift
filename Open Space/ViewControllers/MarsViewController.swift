@@ -50,7 +50,7 @@ class MarsViewController: UIViewController {
         
         baseNode = SCNNode()
         let scene = SCNScene()
-        self.title="Your ship '\(appDelegate.gameState.currentShipName)' is on Mars"
+        self.title="Your ship '\(appDelegate.gameState.getShipName())' is on Mars"
         
         let backgroundFilename = "PIA01120orig.jpg"
         let image = UIImage(named: backgroundFilename)!

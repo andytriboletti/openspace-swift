@@ -68,7 +68,7 @@ class SpaceStationViewController: UIViewController {
         
         baseNode = SCNNode()
         self.scene = SCNScene()
-        self.title="Your ship '\(appDelegate.gameState.currentShipName)' is on the Space Station "
+        self.title="Your ship '\(appDelegate.gameState.getShipName())' is on the Space Station "
 
         changeView()
         _ = CGSize(width: self.view.frame.width, height: self.view.frame.height)

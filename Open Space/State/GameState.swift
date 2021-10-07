@@ -29,4 +29,8 @@ class GameState {
 
     var possibleShips:Array = ["anderik.scn", "artophy.scn", "eleuz.scn"]
     var shipNamesAndModels:Dictionary = ["anderik.scn": "Anderik", "artophy.scn": "Artophy", "eleuz.scn": "Eleuz"]
+    
+    func getShipName() -> String {
+        return self.shipNamesAndModels[self.currentShipName]!
+    }
 }

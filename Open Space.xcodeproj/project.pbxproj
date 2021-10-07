@@ -107,9 +107,21 @@
 		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
 		6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
+		72D19A24270DF62800175BD9 /* Open_SpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */; };
+		72D19A26270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */; };
 		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
 		72E8C50526F2586000D5FDEB /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		72D19A27270DF62800175BD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FB0EEED23FDA1A800EA28D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FB0EEF423FDA1A800EA28D7;
+			remoteInfo = "Open Space";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +229,9 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
+		72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open SpaceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITests.swift; sourceTree = "<group>"; };
+		72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		72E8C50226F257FF00D5FDEB /* mars.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mars.scn; sourceTree = "<group>"; };
 		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
 		E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +243,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72D19A1E270DF62800175BD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +431,7 @@
 			children = (
 				6FCCF110260297E000514899 /* README.md */,
 				6FB0EEF723FDA1A800EA28D7 /* Open Space */,
+				72D19A22270DF62800175BD9 /* Open SpaceUITests */,
 				6FB0EEF623FDA1A800EA28D7 /* Products */,
 				4A6CA5CD975451981FEB3438 /* Pods */,
 				35D7EF5FCFAD97927D9DE97E /* Frameworks */,
@@ -419,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				6FB0EEF523FDA1A800EA28D7 /* Open Space.app */,
+				72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -588,6 +612,15 @@
 			path = ship_thumbnails;
 			sourceTree = "<group>";
 		};
+		72D19A22270DF62800175BD9 /* Open SpaceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */,
+				72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */,
+			);
+			path = "Open SpaceUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -611,18 +644,40 @@
 			productReference = 6FB0EEF523FDA1A800EA28D7 /* Open Space.app */;
 			productType = "com.apple.product-type.application";
 		};
+		72D19A20270DF62800175BD9 /* Open SpaceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72D19A2B270DF62800175BD9 /* Build configuration list for PBXNativeTarget "Open SpaceUITests" */;
+			buildPhases = (
+				72D19A1D270DF62800175BD9 /* Sources */,
+				72D19A1E270DF62800175BD9 /* Frameworks */,
+				72D19A1F270DF62800175BD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72D19A28270DF62800175BD9 /* PBXTargetDependency */,
+			);
+			name = "Open SpaceUITests";
+			productName = "Open SpaceUITests";
+			productReference = 72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		6FB0EEED23FDA1A800EA28D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "GreenRobot LLC";
 				TargetAttributes = {
 					6FB0EEF423FDA1A800EA28D7 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					72D19A20270DF62800175BD9 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 6FB0EEF423FDA1A800EA28D7;
 					};
 				};
 			};
@@ -640,6 +695,7 @@
 			projectRoot = "";
 			targets = (
 				6FB0EEF423FDA1A800EA28D7 /* Open Space */,
+				72D19A20270DF62800175BD9 /* Open SpaceUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -729,6 +785,13 @@
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 				6F34E3292640E9F600E67276 /* anderik.scn in Resources */,
 				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72D19A1F270DF62800175BD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,7 +885,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72D19A1D270DF62800175BD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72D19A24270DF62800175BD9 /* Open_SpaceUITests.swift in Sources */,
+				72D19A26270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72D19A28270DF62800175BD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FB0EEF423FDA1A800EA28D7 /* Open Space */;
+			targetProxy = 72D19A27270DF62800175BD9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */ = {
@@ -1018,6 +1098,54 @@
 			};
 			name = Release;
 		};
+		72D19A29270DF62800175BD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 779S839979;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.Open-SpaceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Open Space";
+			};
+			name = Debug;
+		};
+		72D19A2A270DF62800175BD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 779S839979;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.Open-SpaceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Open Space";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1035,6 +1163,15 @@
 			buildConfigurations = (
 				6FB0EF0A23FDA1A900EA28D7 /* Debug */,
 				6FB0EF0B23FDA1A900EA28D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72D19A2B270DF62800175BD9 /* Build configuration list for PBXNativeTarget "Open SpaceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72D19A29270DF62800175BD9 /* Debug */,
+				72D19A2A270DF62800175BD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -253,7 +253,7 @@ class GameViewController: UIViewController {
     }
     
     func nearNothing() {
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is stopped in space."
+        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is stopped in space."
         
         self.headerButton.isHidden=true
         self.headerButtonView.isHidden=true
@@ -263,7 +263,7 @@ class GameViewController: UIViewController {
     }
     func nearISS() {
         self.headerButton.setTitle("Dock With Station", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near the International Space Station. It is stopped."
+        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the International Space Station. It is stopped."
         
         showHeaderButtons()
         drawISS()
@@ -275,7 +275,7 @@ class GameViewController: UIViewController {
         
         self.headerButton.setTitle("Land on Earth", for: .normal)
         //self.headerButton2.setTitle("Navigate To...", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Earth. It is stopped."
+        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Earth. It is stopped."
         
         showHeaderButtons()
         
@@ -317,7 +317,7 @@ class GameViewController: UIViewController {
     func nearMoon() {
         
         self.headerButton.setTitle("Land on the Moon", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near the Moon. It is stopped."
+        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the Moon. It is stopped."
                 
         self.headerButton.isHidden=true
         self.headerButton2.isHidden=false
@@ -333,7 +333,7 @@ class GameViewController: UIViewController {
     func nearMars() {
         
         self.headerButton.setTitle("Land on Mars", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.currentShipName)' is near Mars. It is stopped."
+        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Mars. It is stopped."
         
         showHeaderButtons()
         
