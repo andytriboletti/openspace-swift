@@ -669,7 +669,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "GreenRobot LLC";
 				TargetAttributes = {
 					6FB0EEF423FDA1A800EA28D7 = {
@@ -1049,10 +1049,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
-				DEAD_CODE_STRIPPING = NO;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1078,10 +1079,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
-				DEAD_CODE_STRIPPING = NO;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

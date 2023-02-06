@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.4)
+  - Alamofire (5.6.4)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
   - Defaults (4.2.2)
@@ -33,7 +33,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/vikmeup/SCLAlertView-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   Defaults: d785e56c0fb8890dc40351603f05c8e1df1bdd45
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
@@ -42,4 +42,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2c54fc246ee5a173645c7f6028a39cdd9b0cc609
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
