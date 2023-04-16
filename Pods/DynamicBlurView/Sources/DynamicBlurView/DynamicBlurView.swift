@@ -173,7 +173,7 @@ extension DynamicBlurView {
 
 extension DynamicBlurView {
     /// Remove cache of blur image then get it again.
-    open func refresh() {
+    public func refresh() {
         blurLayer.refresh()
         staticImage = nil
         blurRatio = 1
@@ -181,7 +181,7 @@ extension DynamicBlurView {
     }
 
     /// Remove cache of blur image.
-    open func remove() {
+    public func remove() {
         blurLayer.refresh()
         staticImage = nil
         blurRatio = 1

@@ -10,8 +10,7 @@
 #endif
 #endif
 
-#import "DynamicBlurView.h"
-
+#import <DynamicBlurView/DynamicBlurView.h>
 FOUNDATION_EXPORT double DynamicBlurViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char DynamicBlurViewVersionString[];
 
