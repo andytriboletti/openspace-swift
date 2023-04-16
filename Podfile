@@ -14,4 +14,3 @@ target 'Open Space' do
   # Pods for Open Space
 
 end
-platform :ios, '13.2'
