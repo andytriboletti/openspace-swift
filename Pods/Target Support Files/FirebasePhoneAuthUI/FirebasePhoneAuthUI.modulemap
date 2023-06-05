@@ -1,0 +1,6 @@
+framework module FirebasePhoneAuthUI {
+  umbrella header "FirebasePhoneAuthUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseCore
 import SpriteKit
 
 import DynamicBlurView
@@ -26,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.gameState = GameState()
         
-        
+        FirebaseApp.configure()
         
         return true
     }
