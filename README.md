@@ -2,10 +2,6 @@
 
 If you find any bugs or defects email me at info@greenrobot.com or you can submit a pull request.
 
-Given enough eyeballs, all bugs are shallow. -Eric S. Raymond
-
-# GIT LFS required
-•In order to use the images GIT LFS is required (git-lfs).
 
 # Free Download
 https://testflight.apple.com/join/6MMGHF2j
@@ -49,6 +45,15 @@ https://solarsystem.nasa.gov/resources/2378/international-space-station-3d-model
 •The spaceship is from a Blender script available from this link: https://github.com/a1studmuffin/SpaceshipGenerator/issues/31
 
 •The ship names were generated from https://www.samcodes.co.uk/project/markov-namegen/
+
+# Building
+•You will need to sign up for Firebase and download a GoogleService-info.plist for this project. You should not check your GoogleService-Info.plist into the project.
+•pod install in directory
+•open Xcode, build and run.
+•Install git-lfs if you don't have it to download media assets.
+
+# GIT LFS required
+•In order to use the images GIT LFS is required (git-lfs).
 
 # Contributing
 
