@@ -48,9 +48,12 @@ https://solarsystem.nasa.gov/resources/2378/international-space-station-3d-model
 
 # Building
 •You will need to sign up for Firebase and download a GoogleService-info.plist for this project. You should not check your GoogleService-Info.plist into the project.
+
 •pod install in directory
+
 •open Xcode, build and run.
-•Install git-lfs if you don't have it to download media assets.
+
+•Install git-lfs if you don't have it, to download media assets.
 
 # GIT LFS required
 •In order to use the images GIT LFS is required (git-lfs).
