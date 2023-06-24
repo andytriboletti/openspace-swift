@@ -19,6 +19,10 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 ![Open Space](https://i.imgur.com/8ERjHc9.png)
 
 # TODO
+• Login, Sign in, Sign out, delete account
+
+• Ship selection screen for new users
+
 • Save last location of your ship in User Defaults so if you leave the game and come back you don't keep starting near Earth.
 
 • Work on Moon view
