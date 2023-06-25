@@ -107,6 +107,7 @@
 		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
 		6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
+		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
 		729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 729B3C532A2E33C80053D567 /* GoogleService-Info.plist */; };
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		72BEF0BD2A313ED400F86AD9 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */; };
@@ -232,6 +233,7 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
+		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		729B3C532A2E33C80053D567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 				6FDADF242644D1BF00F7878C /* SelectShipViewController.swift */,
 				729B3C552A2E8AEA0053D567 /* SignInViewController.swift */,
 				72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */,
+				727718492A48C42900465B2E /* AccountViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 			files = (
 				729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */,
 				6F895FA82606B51500378FA7 /* TravelViewController.swift in Sources */,
+				7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */,
 				6FDADF252644D1BF00F7878C /* SelectShipViewController.swift in Sources */,
 				6F91EC9B260F9A700058B9F5 /* ShipyardViewController.swift in Sources */,
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
