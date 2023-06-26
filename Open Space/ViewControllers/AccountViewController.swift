@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 
 class AccountViewController: UIViewController {
+    var rootViewController:SignInViewController?
 
     @IBOutlet weak var loggedInAs: UILabel!
     @IBOutlet weak var signOutButton: UIButton!
@@ -17,6 +18,24 @@ class AccountViewController: UIViewController {
     @IBAction func signOutButtonTapped(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
+            
+            // Get the frame of the existing view controller's view
+                let frame = self.view.frame
+            
+            // User is not signed in
+            rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            
+            // Set the frame of the new view controller's view to match the existing view controller's frame
+            rootViewController!.view.frame = frame
+
+            // Assuming you have a reference to your app's UIWindow object
+            guard let window = UIApplication.shared.windows.first else {
+                return
+            }
+            window.rootViewController = rootViewController
+            window.makeKeyAndVisible()
+            
+            
             
             //todo go to sign in screen
             // Perform any additional actions or UI updates after sign out

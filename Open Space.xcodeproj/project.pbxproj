@@ -472,7 +472,6 @@
 				729B3C532A2E33C80053D567 /* GoogleService-Info.plist */,
 				6F6D845C23FF8C8800328057 /* Utils.swift */,
 				6FA5934824001B42007C16E3 /* PaddingLabel.swift */,
-				6F30352C240FB007006C4684 /* NavGameController.swift */,
 				6FD92044259B71E9008F6CA3 /* quasar.png */,
 				6F81A27B24155C4300D79494 /* Assets.xcassets */,
 			);
@@ -559,6 +558,7 @@
 				729B3C552A2E8AEA0053D567 /* SignInViewController.swift */,
 				72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */,
 				727718492A48C42900465B2E /* AccountViewController.swift */,
+				6F30352C240FB007006C4684 /* NavGameController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

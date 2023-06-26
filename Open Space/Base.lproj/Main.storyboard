@@ -310,7 +310,7 @@
         <!--Nav Game Controller-->
         <scene sceneID="nNH-s1-tGJ">
             <objects>
-                <navigationController title="Nav Game Controller" automaticallyAdjustsScrollViewInsets="NO" id="4cu-mg-f7Y" customClass="NavGameController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navGame" title="Nav Game Controller" automaticallyAdjustsScrollViewInsets="NO" id="4cu-mg-f7Y" customClass="NavGameController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
@@ -404,10 +404,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-cN-zkr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="836"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="792"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="22" y="20" width="370.5" height="220"/>
+                                <rect key="frame" x="22" y="64" width="370.5" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="370.5" height="80"/>
@@ -985,6 +985,9 @@
                         <viewLayoutGuide key="safeArea" id="1P8-zw-qb2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="goToSignedIn" modalPresentationStyle="overCurrentContext" id="XLF-8k-sj0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zki-1t-bPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1136,8 +1139,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="67b-Hk-5Ts"/>
         <segue reference="Bk1-Wq-vrr"/>
-        <segue reference="G6a-xv-v4e"/>
-        <segue reference="rQs-aG-VQ2"/>
+        <segue reference="IdK-sq-0gW"/>
+        <segue reference="XLF-8k-sj0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
