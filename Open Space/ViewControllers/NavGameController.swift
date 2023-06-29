@@ -20,7 +20,6 @@ class NavGameController: UINavigationController, FUIAuthDelegate {
         if(screenSetup == false) {
             screenSetup = true
             
-            let signedIn = true
             if let currentUser = Auth.auth().currentUser {
                 let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabViewController") as UIViewController
                 // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
@@ -34,7 +33,7 @@ class NavGameController: UINavigationController, FUIAuthDelegate {
                 let size = self.view.bounds.size
                 
                 // User is not signed in
-                rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController
                 
                 // Set the frame of the new view controller's view to match the existing view controller's frame
                 rootViewController!.view.frame = frame

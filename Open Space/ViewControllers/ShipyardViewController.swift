@@ -23,7 +23,7 @@ class ShipyardViewController: UIViewController {
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            print("Text field: \(textField!.text)")
+            print("Text field: \(String(describing: textField!.text))")
             Defaults[.shipName] = textField!.text!
         }))
 

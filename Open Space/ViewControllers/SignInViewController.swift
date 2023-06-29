@@ -16,41 +16,43 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     var rootViewController:SignInViewController?
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if let user = Auth.auth().currentUser {
             if let email = user.email {
                 print("Logged-in user email: \(email)")
                 dismiss(animated:false)
             }
         }
-        let authUI = FUIAuth.defaultAuthUI()
-        // You need to adopt a FUIAuthDelegate protocol to receive callback
-        authUI!.delegate = self
-        // Do any additional setup after loading the view.
-        
-        let providers: [FUIAuthProvider] = [
-            FUIOAuth.appleAuthProvider(),
-        ]
-        authUI!.providers = providers
-        
-        //self.authUI.providers = providers
-        let authViewController = authUI!.authViewController()
-        //present(authViewController, animated: true, completion: nil)
-        //navigationController!.pushViewController(authViewController, animated: true)
-        //self.present(authViewController, animated: true)
-        //let signInViewController = SignInViewController()
-        authViewController.modalPresentationStyle = .fullScreen
-        authViewController.modalTransitionStyle = .crossDissolve
-       // self.window.rootViewController = signInViewController
-        //present(authViewController, animated: true, completion: nil)
-     
-        let frame = self.view.frame
-        let authController = authUI!.authViewController()
-        authController.view.frame = frame
-        authController.preferredContentSize = frame.size
-        
-        present(authController, animated: true, completion: nil)
-        
-        super.viewDidAppear(animated)
+        else {
+            let authUI = FUIAuth.defaultAuthUI()
+            // You need to adopt a FUIAuthDelegate protocol to receive callback
+            authUI!.delegate = self
+            // Do any additional setup after loading the view.
+            
+            let providers: [FUIAuthProvider] = [
+                FUIOAuth.appleAuthProvider(),
+            ]
+            authUI!.providers = providers
+            
+            //self.authUI.providers = providers
+            let authViewController = authUI!.authViewController()
+            //present(authViewController, animated: true, completion: nil)
+            //navigationController!.pushViewController(authViewController, animated: true)
+            //self.present(authViewController, animated: true)
+            //let signInViewController = SignInViewController()
+            authViewController.modalPresentationStyle = .fullScreen
+            authViewController.modalTransitionStyle = .crossDissolve
+            // self.window.rootViewController = signInViewController
+            //present(authViewController, animated: true, completion: nil)
+            
+            let frame = self.view.frame
+            let authController = authUI!.authViewController()
+            authController.view.frame = frame
+            authController.preferredContentSize = frame.size
+            authController.modalPresentationStyle = .fullScreen
+            present(authController, animated: true, completion: nil)
+        }
 
         
     }

@@ -124,7 +124,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="23" y="0.0" width="368.5" height="80"/>
+                                        <rect key="frame" x="30" y="0.0" width="354.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -407,10 +407,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="792"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="22" y="64" width="370.5" height="220"/>
+                                <rect key="frame" x="29" y="64" width="356.5" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="370.5" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="356.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -422,7 +422,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="310.5" height="50"/>
+                                        <rect key="frame" x="30" y="100" width="296.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
@@ -432,7 +432,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="170" width="310.5" height="50"/>
+                                        <rect key="frame" x="30" y="170" width="296.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="qIu-9i-fdI"/>
                                         </constraints>
@@ -681,13 +681,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-S1-jmN">
-                                <rect key="frame" x="0.0" y="92" width="414" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VLE-aX-i0y">
-                                <rect key="frame" x="20" y="92" width="374" height="170"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
+                                        <rect key="frame" x="7.5" y="0.0" width="359.5" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -714,7 +714,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drM-BJ-Fq7" customClass="MDCButton">
-                                <rect key="frame" x="20" y="802" width="374" height="60"/>
+                                <rect key="frame" x="20" y="836" width="374" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="w04-kz-ajp"/>
                                 </constraints>
@@ -753,24 +753,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J82-mS-h9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8331.8840579710159" y="-457.36607142857139"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="NW5-Oc-eT1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b58-US-IYv" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7tu-LX-RxZ">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0yc-aj-Qry" kind="relationship" relationship="rootViewController" id="Bk1-Wq-vrr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5RO-fp-i8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6968.115942028986" y="-504.24107142857139"/>
         </scene>
         <!--Where on Earth Do You Want To Go?-->
         <scene sceneID="8Yp-oW-lcl">
@@ -1127,20 +1109,19 @@
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
-            <size key="intrinsicContentSize" width="470" height="31.5"/>
+            <size key="intrinsicContentSize" width="456" height="21.5"/>
         </designable>
         <designable name="IT3-M6-xxO">
-            <size key="intrinsicContentSize" width="370.5" height="31.5"/>
+            <size key="intrinsicContentSize" width="356.5" height="21.5"/>
         </designable>
         <designable name="XeF-ym-5aq">
-            <size key="intrinsicContentSize" width="368.5" height="31.5"/>
+            <size key="intrinsicContentSize" width="354.5" height="21.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="67b-Hk-5Ts"/>
-        <segue reference="Bk1-Wq-vrr"/>
         <segue reference="IdK-sq-0gW"/>
-        <segue reference="XLF-8k-sj0"/>
+        <segue reference="jz9-hn-pTh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
