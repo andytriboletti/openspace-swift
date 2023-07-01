@@ -70,6 +70,15 @@ class GameViewController: UIViewController {
                 }
 
         }
+
+        else if(appDelegate.gameState.locationState == LocationState.nearMoon) {
+            print("land on the moon")
+            moveToPlanet()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.performSegue(withIdentifier: "landOnMoon", sender: self)
+            }
+        }
+        
         else if(appDelegate.gameState.locationState == LocationState.nearMars) {
             print("land on mars")
             moveToPlanet()
@@ -77,7 +86,6 @@ class GameViewController: UIViewController {
                 self.performSegue(withIdentifier: "landOnMars", sender: self)
             }
         }
-        
         
         
     }
@@ -319,12 +327,8 @@ class GameViewController: UIViewController {
         self.headerButton.setTitle("Land on the Moon", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the Moon. It is stopped."
                 
-        self.headerButton.isHidden=true
-        self.headerButton2.isHidden=false
-        
-        self.headerButtonView.isHidden=true
-        self.headerButton2View.isHidden=false
-        
+        showHeaderButtons()
+
         drawMoon()
         travel()
 

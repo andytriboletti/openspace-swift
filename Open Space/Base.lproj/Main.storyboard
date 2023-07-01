@@ -103,6 +103,7 @@
                         <segue destination="r2S-AQ-5TL" kind="presentation" identifier="landOnEarth" modalPresentationStyle="fullScreen" id="wYm-Nz-ur2"/>
                         <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" modalPresentationStyle="fullScreen" id="3LN-Fm-zIv"/>
                         <segue destination="VzB-dU-ig3" kind="presentation" identifier="travel" modalPresentationStyle="fullScreen" id="OTN-eM-VNw"/>
+                        <segue destination="tZW-om-ASc" kind="presentation" identifier="landOnMoon" modalPresentationStyle="fullScreen" id="dqS-xb-ODl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -124,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="354.5" height="80"/>
+                                        <rect key="frame" x="23" y="0.0" width="368.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -209,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Rx-N6-s7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6037.68115942029" y="-504.24107142857139"/>
+            <point key="canvasLocation" x="6613" y="-755"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="eNT-fy-uAL">
@@ -314,7 +315,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -407,10 +408,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="792"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="29" y="64" width="356.5" height="220"/>
+                                <rect key="frame" x="22" y="64" width="370.5" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="356.5" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="370.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -422,7 +423,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="296.5" height="50"/>
+                                        <rect key="frame" x="30" y="100" width="310.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
@@ -432,7 +433,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="170" width="296.5" height="50"/>
+                                        <rect key="frame" x="30" y="170" width="310.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="qIu-9i-fdI"/>
                                         </constraints>
@@ -687,7 +688,7 @@
                                 <rect key="frame" x="20" y="0.0" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="7.5" y="0.0" width="359.5" height="100"/>
+                                        <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1106,22 +1107,145 @@
             </objects>
             <point key="canvasLocation" x="8620" y="306"/>
         </scene>
+        <!--Moon-->
+        <scene sceneID="zSS-rH-UaL">
+            <objects>
+                <viewController title="Moon" id="GXa-oh-Nth" customClass="MoonViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rGj-w1-M6b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cub-oi-i7Y">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </sceneKitView>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f2U-aj-baq">
+                                <rect key="frame" x="0.0" y="64" width="414" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqc-kC-xpI" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
+                                        <rect key="frame" x="30.5" y="0.0" width="353.5" height="80"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Bjz-fS-bMJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkT-Ji-ib2" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="100" width="358" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="wes-GI-9qV"/>
+                                        </constraints>
+                                        <state key="normal" title="EXPLORE THE MOON"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgd-XS-51u" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="150" width="358" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="o7G-R9-P6q"/>
+                                        </constraints>
+                                        <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-PB-kvm" customClass="MDCButton">
+                                        <rect key="frame" x="28" y="150" width="358" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="FXd-0k-LTT"/>
+                                        </constraints>
+                                        <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jgd-XS-51u" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="35J-zz-gL5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y7t-PB-kvm" secondAttribute="trailing" constant="28" id="QdX-hL-97s"/>
+                                    <constraint firstItem="Lqc-kC-xpI" firstAttribute="centerX" secondItem="f2U-aj-baq" secondAttribute="centerX" id="TuC-df-CA4"/>
+                                    <constraint firstItem="jgd-XS-51u" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="cIh-lT-AqI"/>
+                                    <constraint firstAttribute="trailing" secondItem="jgd-XS-51u" secondAttribute="trailing" constant="28" id="cRK-hJ-5Tf"/>
+                                    <constraint firstItem="rkT-Ji-ib2" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="cyk-tx-zAH"/>
+                                    <constraint firstAttribute="trailing" secondItem="jgd-XS-51u" secondAttribute="trailing" constant="28" id="glb-R9-vAg"/>
+                                    <constraint firstAttribute="trailing" secondItem="rkT-Ji-ib2" secondAttribute="trailing" constant="28" id="n41-u0-VVG"/>
+                                    <constraint firstItem="Y7t-PB-kvm" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="rsQ-AA-xOu"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bod-Hy-Ze2" customClass="MDCButton">
+                                <rect key="frame" x="28" y="816" width="358" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qpp-Rj-0MN"/>
+                                </constraints>
+                                <state key="normal" title="TAKE OFF"/>
+                                <connections>
+                                    <action selector="takeOffAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="Stp-4l-S5T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SWV-zf-GBg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f2U-aj-baq" firstAttribute="leading" secondItem="SWV-zf-GBg" secondAttribute="leading" id="BDI-F5-jnO"/>
+                            <constraint firstItem="cub-oi-i7Y" firstAttribute="leading" secondItem="SWV-zf-GBg" secondAttribute="leading" id="OSh-jc-CZe"/>
+                            <constraint firstItem="SWV-zf-GBg" firstAttribute="bottom" secondItem="bod-Hy-Ze2" secondAttribute="bottom" constant="20" id="V4E-Au-Vaj"/>
+                            <constraint firstItem="cub-oi-i7Y" firstAttribute="top" secondItem="SWV-zf-GBg" secondAttribute="top" id="YFZ-8F-Vbj"/>
+                            <constraint firstItem="f2U-aj-baq" firstAttribute="top" secondItem="SWV-zf-GBg" secondAttribute="top" constant="20" id="Z1N-ZE-zeU"/>
+                            <constraint firstItem="SWV-zf-GBg" firstAttribute="trailing" secondItem="f2U-aj-baq" secondAttribute="trailing" id="Z4D-S6-tH9"/>
+                            <constraint firstItem="bod-Hy-Ze2" firstAttribute="centerX" secondItem="cub-oi-i7Y" secondAttribute="centerX" id="cRv-eJ-ji4"/>
+                            <constraint firstItem="cub-oi-i7Y" firstAttribute="centerX" secondItem="rGj-w1-M6b" secondAttribute="centerX" id="dRN-a7-o0t"/>
+                            <constraint firstItem="SWV-zf-GBg" firstAttribute="trailing" secondItem="cub-oi-i7Y" secondAttribute="trailing" id="jSU-di-fd0"/>
+                            <constraint firstItem="bod-Hy-Ze2" firstAttribute="leading" secondItem="SWV-zf-GBg" secondAttribute="leading" constant="28" id="mbg-KS-5fy"/>
+                            <constraint firstItem="SWV-zf-GBg" firstAttribute="bottom" secondItem="cub-oi-i7Y" secondAttribute="bottom" id="pvl-s8-nW4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Moon" id="GL4-Sn-18c"/>
+                    <connections>
+                        <outlet property="exploreButton" destination="rkT-Ji-ib2" id="pgw-qx-Tra"/>
+                        <outlet property="headerLabel" destination="Lqc-kC-xpI" id="p18-Sx-lHM"/>
+                        <outlet property="scnView" destination="cub-oi-i7Y" id="eev-2i-7YD"/>
+                        <outlet property="spaceportButton" destination="jgd-XS-51u" id="sOp-Pd-P0g"/>
+                        <outlet property="takeOffButton" destination="bod-Hy-Ze2" id="mXm-4d-3MD"/>
+                        <outlet property="tradingPostButton" destination="Y7t-PB-kvm" id="w5t-7o-oyZ"/>
+                        <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOffFromMoon" id="Brq-sk-l5G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fa3-DF-t8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7314" y="-1657"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JZi-wz-taK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tZW-om-ASc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lR4-KM-she">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GXa-oh-Nth" kind="relationship" relationship="rootViewController" id="xer-5M-2qc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9eo-Jt-ZJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6365" y="-2281"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
-            <size key="intrinsicContentSize" width="456" height="21.5"/>
+            <size key="intrinsicContentSize" width="470" height="31.5"/>
         </designable>
         <designable name="IT3-M6-xxO">
-            <size key="intrinsicContentSize" width="356.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="370.5" height="31.5"/>
+        </designable>
+        <designable name="Lqc-kC-xpI">
+            <size key="intrinsicContentSize" width="353.5" height="19"/>
         </designable>
         <designable name="XeF-ym-5aq">
-            <size key="intrinsicContentSize" width="354.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="368.5" height="31.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="67b-Hk-5Ts"/>
         <segue reference="IdK-sq-0gW"/>
-        <segue reference="jz9-hn-pTh"/>
+        <segue reference="Brq-sk-l5G"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>

@@ -111,6 +111,12 @@
 		729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 729B3C532A2E33C80053D567 /* GoogleService-Info.plist */; };
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		72BEF0BD2A313ED400F86AD9 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */; };
+		72C5131E2A4F67FF00AAD941 /* geoodesic_dome.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */; };
+		72C513202A4F705100AAD941 /* geodesic_sphere.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C5131F2A4F705100AAD941 /* geodesic_sphere.dae */; };
+		72C513222A4F710300AAD941 /* geodesic_sphere2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C513212A4F710300AAD941 /* geodesic_sphere2.dae */; };
+		72C513242A4FC1C500AAD941 /* geodesic_sphere2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72C513232A4FC1C500AAD941 /* geodesic_sphere2.scn */; };
+		72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C513252A4FC29700AAD941 /* MoonViewController.swift */; };
+		72C513292A50DF2800AAD941 /* moonbackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513282A50DF2800AAD941 /* moonbackground.jpg */; };
 		72D19A24270DF62800175BD9 /* Open_SpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */; };
 		72D19A26270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */; };
 		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
@@ -237,6 +243,12 @@
 		729B3C532A2E33C80053D567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = geoodesic_dome.dae; sourceTree = "<group>"; };
+		72C5131F2A4F705100AAD941 /* geodesic_sphere.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = geodesic_sphere.dae; sourceTree = "<group>"; };
+		72C513212A4F710300AAD941 /* geodesic_sphere2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = geodesic_sphere2.dae; sourceTree = "<group>"; };
+		72C513232A4FC1C500AAD941 /* geodesic_sphere2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = geodesic_sphere2.scn; sourceTree = "<group>"; };
+		72C513252A4FC29700AAD941 /* MoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonViewController.swift; sourceTree = "<group>"; };
+		72C513282A50DF2800AAD941 /* moonbackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moonbackground.jpg; sourceTree = "<group>"; };
 		72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open SpaceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITests.swift; sourceTree = "<group>"; };
 		72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -376,6 +388,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				72C513282A50DF2800AAD941 /* moonbackground.jpg */,
 				6FED3582268E761B002F1B12 /* planet_thumbnails */,
 				6FF9343C26614AF800CFEFD2 /* ship_thumbnails */,
 				6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */,
@@ -481,6 +494,10 @@
 		6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */ = {
 			isa = PBXGroup;
 			children = (
+				72C513212A4F710300AAD941 /* geodesic_sphere2.dae */,
+				72C513232A4FC1C500AAD941 /* geodesic_sphere2.scn */,
+				72C5131F2A4F705100AAD941 /* geodesic_sphere.dae */,
+				72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */,
 				6FD9204B259B878F008F6CA3 /* iss */,
 				6F3DBE7524022A3E00E1974A /* earthdestinations */,
 				6F6D845623FF87A100328057 /* flags */,
@@ -543,14 +560,12 @@
 		6FDB587D23FE5EA9004263CB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				72C513272A4FC2A500AAD941 /* PlanetViews */,
 				6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */,
 				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
 				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
-				6F43938F23FF6DC60007614D /* MarsViewController.swift */,
 				6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */,
 				6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */,
-				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
-				6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */,
 				6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */,
 				6F895FA72606B51500378FA7 /* TravelViewController.swift */,
 				6F91EC9A260F9A700058B9F5 /* ShipyardViewController.swift */,
@@ -622,6 +637,17 @@
 				6FF9343F26614B3500CFEFD2 /* Artophy.png */,
 			);
 			path = ship_thumbnails;
+			sourceTree = "<group>";
+		};
+		72C513272A4FC2A500AAD941 /* PlanetViews */ = {
+			isa = PBXGroup;
+			children = (
+				6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */,
+				6F43938F23FF6DC60007614D /* MarsViewController.swift */,
+				72C513252A4FC29700AAD941 /* MoonViewController.swift */,
+				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
+			);
+			path = PlanetViews;
 			sourceTree = "<group>";
 		};
 		72D19A22270DF62800175BD9 /* Open SpaceUITests */ = {
@@ -734,9 +760,11 @@
 				6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */,
 				6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
+				72C513242A4FC1C500AAD941 /* geodesic_sphere2.scn in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
 				6F30352F240FC3C0006C4684 /* moon.dae in Resources */,
 				6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */,
+				72C513222A4F710300AAD941 /* geodesic_sphere2.dae in Resources */,
 				6F636B8D24015A760070C292 /* Sun_1_1391000.usdz in Resources */,
 				6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */,
 				6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */,
@@ -744,6 +772,7 @@
 				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
 				72E8C50526F2586000D5FDEB /* a.scn in Resources */,
 				6F34E32B2641A51200E67276 /* spaceshipc.dae in Resources */,
+				72C513292A50DF2800AAD941 /* moonbackground.jpg in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
@@ -780,11 +809,13 @@
 				6FA5934724001043007C16E3 /* artophy.scn in Resources */,
 				6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */,
 				6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */,
+				72C5131E2A4F67FF00AAD941 /* geoodesic_dome.dae in Resources */,
 				6FDB588323FEB952004263CB /* mars.dae in Resources */,
 				6FD92054259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg in Resources */,
 				6F93856624261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg in Resources */,
 				729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
+				72C513202A4F705100AAD941 /* geodesic_sphere.dae in Resources */,
 				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,
 				6F303531240FE382006C4684 /* moon.scn in Resources */,
 				6F677BA224076EE6004A1C8B /* earth.dae in Resources */,
@@ -887,6 +918,7 @@
 				6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */,
 				6F9385622425A249001BE3F6 /* EarthLocationState.swift in Sources */,
 				6F9385592422ADDE001BE3F6 /* SpaceStationViewController.swift in Sources */,
+				72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,
