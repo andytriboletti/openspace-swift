@@ -35,6 +35,11 @@ class MoonViewController: UIViewController {
         //})
         
     }
+    
+    @IBAction func exploreAction() {
+        self.performSegue(withIdentifier: "goToExploreMoon", sender: self)
+    }
+    
     @objc func shipsAction(_ sender: UIBarButtonItem) {
         
         self.performSegue(withIdentifier: "selectShip", sender: sender)

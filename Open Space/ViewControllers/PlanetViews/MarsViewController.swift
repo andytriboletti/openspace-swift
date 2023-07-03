@@ -34,6 +34,7 @@ class MarsViewController: UIViewController {
         //})
         
     }
+    
     @objc func shipsAction(_ sender: UIBarButtonItem) {
         
         self.performSegue(withIdentifier: "selectShip", sender: sender)
