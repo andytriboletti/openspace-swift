@@ -6,9 +6,10 @@ class ExploreMoonViewController: UIViewController, SCNSceneRendererDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //sceneView = SCNView(frame: view.bounds)
         
-        sceneView = SCNView(frame: UIScreen.main.bounds)
+        // Create a full-screen SCNView
+        sceneView = SCNView(frame: view.bounds)
+        sceneView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(sceneView)
         
         // Configure the sceneView properties
@@ -31,8 +32,10 @@ class ExploreMoonViewController: UIViewController, SCNSceneRendererDelegate {
         
         // Set the scene on the sceneView
         sceneView.scene = scene
-        sceneView.contentMode = .scaleAspectFill
-
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true // Hide the status bar
     }
     
     func createFloorNode() -> SCNNode {
@@ -44,8 +47,6 @@ class ExploreMoonViewController: UIViewController, SCNSceneRendererDelegate {
         
         return floorNode
     }
-
-
     
     func createSpheresOnFloor(scene: SCNScene) {
         let numRows = 5
