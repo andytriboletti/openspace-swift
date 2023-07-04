@@ -116,9 +116,12 @@
 		72C513222A4F710300AAD941 /* geodesic_sphere2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C513212A4F710300AAD941 /* geodesic_sphere2.dae */; };
 		72C513242A4FC1C500AAD941 /* geodesic_sphere2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72C513232A4FC1C500AAD941 /* geodesic_sphere2.scn */; };
 		72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C513252A4FC29700AAD941 /* MoonViewController.swift */; };
-		72C513292A50DF2800AAD941 /* moonbackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513282A50DF2800AAD941 /* moonbackground.jpg */; };
+		72C513292A50DF2800AAD941 /* moonbackgroundwithearth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513282A50DF2800AAD941 /* moonbackgroundwithearth.jpg */; };
 		72C5132B2A51ED7200AAD941 /* GameScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72C5132A2A51ED7200AAD941 /* GameScene.scn */; };
 		72C5132D2A51EFE400AAD941 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5132C2A51EFE400AAD941 /* ExploreMoonViewController.swift */; };
+		72C513322A53750B00AAD941 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513312A53750B00AAD941 /* moon_surface.jpg */; };
+		72C513362A5375AE00AAD941 /* moon_surface.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C513352A5375AD00AAD941 /* moon_surface.png */; };
+		72C513382A53A96700AAD941 /* lroc_color_poles_8k.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513372A53A96700AAD941 /* lroc_color_poles_8k.jpg */; };
 		72D19A24270DF62800175BD9 /* Open_SpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */; };
 		72D19A26270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */; };
 		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
@@ -250,9 +253,12 @@
 		72C513212A4F710300AAD941 /* geodesic_sphere2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = geodesic_sphere2.dae; sourceTree = "<group>"; };
 		72C513232A4FC1C500AAD941 /* geodesic_sphere2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = geodesic_sphere2.scn; sourceTree = "<group>"; };
 		72C513252A4FC29700AAD941 /* MoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonViewController.swift; sourceTree = "<group>"; };
-		72C513282A50DF2800AAD941 /* moonbackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moonbackground.jpg; sourceTree = "<group>"; };
+		72C513282A50DF2800AAD941 /* moonbackgroundwithearth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moonbackgroundwithearth.jpg; sourceTree = "<group>"; };
 		72C5132A2A51ED7200AAD941 /* GameScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = GameScene.scn; sourceTree = "<group>"; };
 		72C5132C2A51EFE400AAD941 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
+		72C513312A53750B00AAD941 /* moon_surface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moon_surface.jpg; sourceTree = "<group>"; };
+		72C513352A5375AD00AAD941 /* moon_surface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moon_surface.png; sourceTree = "<group>"; };
+		72C513372A53A96700AAD941 /* lroc_color_poles_8k.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lroc_color_poles_8k.jpg; sourceTree = "<group>"; };
 		72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open SpaceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITests.swift; sourceTree = "<group>"; };
 		72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -392,7 +398,10 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
-				72C513282A50DF2800AAD941 /* moonbackground.jpg */,
+				72C513372A53A96700AAD941 /* lroc_color_poles_8k.jpg */,
+				72C513352A5375AD00AAD941 /* moon_surface.png */,
+				72C513312A53750B00AAD941 /* moon_surface.jpg */,
+				72C513282A50DF2800AAD941 /* moonbackgroundwithearth.jpg */,
 				6FED3582268E761B002F1B12 /* planet_thumbnails */,
 				6FF9343C26614AF800CFEFD2 /* ship_thumbnails */,
 				6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */,
@@ -759,10 +768,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F5B8E2A2402458B00757B99 /* mtrushmore.scn in Resources */,
+				72C513322A53750B00AAD941 /* moon_surface.jpg in Resources */,
 				6F643EA22530DBCC001164E4 /* pexels-pixabay-262786-pyramid.jpg in Resources */,
 				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
+				72C513382A53A96700AAD941 /* lroc_color_poles_8k.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6F022424240250A60035F7E4 /* mtwashington.scn in Resources */,
 				6F34E3272640E9E500E67276 /* spaceshipa.dae in Resources */,
@@ -786,7 +797,7 @@
 				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
 				72E8C50526F2586000D5FDEB /* a.scn in Resources */,
 				6F34E32B2641A51200E67276 /* spaceshipc.dae in Resources */,
-				72C513292A50DF2800AAD941 /* moonbackground.jpg in Resources */,
+				72C513292A50DF2800AAD941 /* moonbackgroundwithearth.jpg in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
@@ -804,6 +815,7 @@
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
 				6F34E32D2641A52100E67276 /* eleuz.scn in Resources */,
+				72C513362A5375AE00AAD941 /* moon_surface.png in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
 				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,

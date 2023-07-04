@@ -12,7 +12,8 @@ import Defaults
 class GameState {
     
     var goingToLocationState:LocationState?
-    var locationState:LocationState = LocationState.nearEarth
+    //var locationState:LocationState = LocationState.nearEarth
+    var locationState:LocationState = LocationState.nearMoon
     var earthLocationState:EarthLocationState = EarthLocationState.random()
     //random name generator: https://www.samcodes.co.uk/project/markov-namegen/
     var shipNames:Array = ["Anderik", "Artophy", "Eleuz", "Codile", "Krillow"]

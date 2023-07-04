@@ -58,7 +58,7 @@ class MoonViewController: UIViewController {
         let scene = SCNScene()
         self.title="Your ship '\(appDelegate.gameState.getShipName())' is on the Moon"
         
-        let backgroundFilename = "moonbackground.jpg"
+        let backgroundFilename = "moonbackgroundwithearth.jpg"
         let image = UIImage(named: backgroundFilename)!
         
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
