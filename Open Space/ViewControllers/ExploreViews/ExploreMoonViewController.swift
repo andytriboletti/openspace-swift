@@ -2,15 +2,16 @@ import UIKit
 import SceneKit
 
 class ExploreMoonViewController: UIViewController, SCNSceneRendererDelegate {
-    var sceneView: SCNView!
+    @IBOutlet var headerLabel: PaddingLabel!
+    @IBOutlet var sceneView: SCNView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Create a full-screen SCNView
-        sceneView = SCNView(frame: view.bounds)
-        sceneView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(sceneView)
+        //sceneView = SCNView(frame: view.bounds)
+        //sceneView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //view.addSubview(sceneView)
         
         // Configure the sceneView properties
         sceneView.delegate = self
@@ -32,6 +33,12 @@ class ExploreMoonViewController: UIViewController, SCNSceneRendererDelegate {
         
         // Set the scene on the sceneView
         sceneView.scene = scene
+        
+        // Set the properties for headerLabel
+        headerLabel.text = "Welcome To The Moon! Where Do You Want To Go?"
+        headerLabel.textColor = UIColor.white
+        headerLabel.backgroundColor = UIColor.black
+        
     }
     
     override var prefersStatusBarHidden: Bool {
