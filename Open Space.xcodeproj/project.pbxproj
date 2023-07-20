@@ -107,9 +107,11 @@
 		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
 		6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
+		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
 		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
 		729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 729B3C532A2E33C80053D567 /* GoogleService-Info.plist */; };
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
+		72B693B32A61BC4D005A0863 /* OpenspaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */; };
 		72BEF0BD2A313ED400F86AD9 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */; };
 		72C5131E2A4F67FF00AAD941 /* geoodesic_dome.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */; };
 		72C513202A4F705100AAD941 /* geodesic_sphere.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C5131F2A4F705100AAD941 /* geodesic_sphere.dae */; };
@@ -244,9 +246,11 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
+		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		729B3C532A2E33C80053D567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenspaceAPI.swift; sourceTree = "<group>"; };
 		72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = geoodesic_dome.dae; sourceTree = "<group>"; };
 		72C5131F2A4F705100AAD941 /* geodesic_sphere.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = geodesic_sphere.dae; sourceTree = "<group>"; };
@@ -501,6 +505,7 @@
 				6FA5934824001B42007C16E3 /* PaddingLabel.swift */,
 				6FD92044259B71E9008F6CA3 /* quasar.png */,
 				6F81A27B24155C4300D79494 /* Assets.xcassets */,
+				72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */,
 				727718492A48C42900465B2E /* AccountViewController.swift */,
 				6F30352C240FB007006C4684 /* NavGameController.swift */,
+				72301FA02A579D1A00898D50 /* YourSphereViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -947,9 +953,11 @@
 				6F9385622425A249001BE3F6 /* EarthLocationState.swift in Sources */,
 				6F9385592422ADDE001BE3F6 /* SpaceStationViewController.swift in Sources */,
 				72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */,
+				72B693B32A61BC4D005A0863 /* OpenspaceAPI.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,
+				72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */,
 				6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */,
 				72BEF0BD2A313ED400F86AD9 /* TabViewController.swift in Sources */,
 				6FB0EEF923FDA1A800EA28D7 /* AppDelegate.swift in Sources */,
