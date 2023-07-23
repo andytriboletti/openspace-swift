@@ -29,7 +29,7 @@ class MoonViewController: UIViewController {
     
     @IBAction func takeOffAction() {
         //self.dismiss(animated: true, completion: {
-            self.performSegue(withIdentifier: "takeOff", sender: self)
+            self.performSegue(withIdentifier: "takeOffFromMoon", sender: self)
             //self.dismiss(animated: true, completion: nil)
 
         //})
