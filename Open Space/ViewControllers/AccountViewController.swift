@@ -28,8 +28,6 @@ class AccountViewController: UIViewController {
                }
                
                self?.deleteUser()
-
-               self!.goToSignIn()
            }))
            
            // Present the confirmation alert
@@ -96,6 +94,13 @@ class AccountViewController: UIViewController {
                } else if let message = message {
                    // User deleted successfully
                    print("Success: \(message)")
+                   
+                   DispatchQueue.main.async {
+                       // Your UI update code or UI-related task
+                       self!.goToSignIn()
+
+                   }
+
                }
            }
        }
