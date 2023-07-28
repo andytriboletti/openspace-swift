@@ -209,7 +209,7 @@ class GameViewController: UIViewController {
         self.scnView!.autoenablesDefaultLighting=true
         
         // configure the view
-        self.scnView!.backgroundColor = UIColor.black
+        //self.scnView!.backgroundColor = UIColor.black
         
         self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(self.tapGesture!)
