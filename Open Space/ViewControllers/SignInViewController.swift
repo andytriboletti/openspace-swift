@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuthUI
 import FirebaseCore
 import FirebaseOAuthUI
+import Defaults
+
 //import SceneDelegate
 class SignInViewController: UIViewController, FUIAuthDelegate {
     public var authUI:FUIAuth = FUIAuth.defaultAuthUI()!
@@ -151,7 +153,8 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                     print(uid)
                     print("IdToken: ")
                     print(idToken)
-                    
+                    Defaults[.email] = email!
+                    Defaults[.authToken] = idToken
                     // Call the OpenspaceAPI to retrieve the last_location
                     OpenspaceAPI.shared.loginWithEmail(email: email!, authToken: idToken) { lastLocation, error in
                         if let error = error {
@@ -161,8 +164,10 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                             // Use the last_location
                             print("Last Location: \(lastLocation)")
                             
-                            
-                            
+                            //save email and authToken in Defaults
+                            Defaults[.email] = email!
+                            Defaults[.authToken] = idToken
+
                             print("Successfully signed in with user: \(user!)")
 
                             let uid = currentUser.uid

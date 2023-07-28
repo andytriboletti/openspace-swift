@@ -13,5 +13,7 @@ extension Defaults.Keys {
     //            ^            ^         ^                ^
     //           Key          Type   UserDefaults name   Default value
     static let currentShipModel = Key<String>("currentShipModel", default: "anderik.scn")
+    static let email = Key<String>("email", default: "")
+    static let authToken = Key<String>("authToken", default: "")
 
 }
