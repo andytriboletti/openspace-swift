@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
-
+import Defaults
 class SelectLocationViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var locations: Dictionary<Int, String> = [:]
     @IBOutlet var collectionView: UICollectionView!
@@ -50,10 +50,31 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
             //cell.backgroundColor = .red
             //appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
             //need to travel = yes
-            appDelegate.gameState.goingToLocationState = LocationState.allCases[indexPath.row]
-//            self.dismiss(animated: true, completion: {
+            var goingToLocation = LocationState.allCases[indexPath.row]
+            appDelegate.gameState.goingToLocationState = goingToLocation
+            
+            //save the location on the server
+            
+            // To get the string value of the enum, you can use a switch statement:
+            var whereString: String
 
-  //          })
+            //can I do this differently, so locations can be added in one place
+            switch goingToLocation {
+            case .nearEarth:
+                whereString = "nearEarth"
+            case .nearISS:
+                whereString = "nearISS"
+            case .nearMars:
+                whereString = "nearMars"
+            case .nearMoon:
+                whereString = "nearMoon"
+            case .nearNothing:
+                whereString = "nearNothing"
+            }
+
+            print(whereString) // Output: "premium"
+            
+            self.saveLocation(location: whereString)
             self.performSegue(withIdentifier: "goToGame", sender: self)
 
             //self.present(NavGameController(), animated: true)
@@ -62,6 +83,25 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
             //self.parent?.dismiss(animated: true, completion: nil)
          }
     }
+    
+    //Save location of user
+    ////////////////////
+    func saveLocation(location: String) {
+        let email = Defaults[.email] // Replace with the actual email
+        let authToken = Defaults[.authToken] // Replace with the actual auth token
+
+        OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location) { [weak self] message, error in
+               if let error = error {
+                   // Handle the error
+                   print("Error: \(error.localizedDescription)")
+               } else if let message = message {
+                   // User deleted successfully
+                   print("Success: \(message)")
+
+
+               }
+           }
+       }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
         cell.backgroundColor = .green
