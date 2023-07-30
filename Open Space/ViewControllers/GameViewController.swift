@@ -219,25 +219,57 @@ class GameViewController: UIViewController {
     }
     
     func refresh() {
-
-        switch appDelegate.gameState.locationState {
-        case .nearEarth:
-            nearEarth()
-            break
-        case .nearISS:
-            nearISS()
-            break
-        case .nearMoon:
-            nearMoon()
-            break
-        case .nearMars:
-            nearMars()
-            break
-
-        case .nearNothing:
-            nearNothing()
-            break
-        }
+        //connect to server and get current saved location
+        var email = Defaults[.email]
+        var authToken = Defaults[.authToken]
+        
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] location, error in
+               if let error = error {
+                   // Handle the error
+                   print("Error: \(error.localizedDescription)")
+               } else if let location = location {
+                   // User deleted successfully
+                   print("Success: \(location)")
+                   if(location == "nearEarth") {
+                       self!.appDelegate.gameState.locationState = LocationState.nearEarth
+                   }
+                   if(location == "nearISS") {
+                       self!.appDelegate.gameState.locationState = LocationState.nearISS
+                   }
+                   if(location == "nearMoon") {
+                       self!.appDelegate.gameState.locationState = LocationState.nearMoon
+                   }
+                   if(location == "nearMars") {
+                       self!.appDelegate.gameState.locationState = LocationState.nearMars
+                   }
+                   if(location == "nearNothing") {
+                       self!.appDelegate.gameState.locationState = LocationState.nearNothing
+                   }
+                   DispatchQueue.main.async {
+                       switch self!.appDelegate.gameState.locationState {
+                       case .nearEarth:
+                           self!.nearEarth()
+                           break
+                       case .nearISS:
+                           self!.nearISS()
+                           break
+                       case .nearMoon:
+                           self!.nearMoon()
+                           break
+                       case .nearMars:
+                           self!.nearMars()
+                           break
+                           
+                       case .nearNothing:
+                           self!.nearNothing()
+                           break
+                       }
+                   }
+               }
+           }
+       
+    
+        
     }
     func drawISS() {
         addTempObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)

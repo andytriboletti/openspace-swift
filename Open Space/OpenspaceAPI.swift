@@ -143,6 +143,66 @@ class OpenspaceAPI {
     
     
     
+    
+    //get location
+    func getLocation(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
+            let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-location")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+            let parameters: [String: Any] = [
+                "email": email,
+                "authToken": authToken,
+            ]
+            print(authToken)
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            } catch {
+                // Handle the error
+                completion(nil, error)
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                // Handle the server response
+                if let error = error {
+                    // Handle the error
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+                    return
+                }
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        if let location = json["last_location"] as? String {
+                            // User deleted successfully
+                            completion(location, nil)
+                        } else if let error = json["error"] as? String {
+                            // Error deleting user
+                            completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
+                        }
+                    }
+                } catch {
+                    // Handle the error
+                    completion(nil, error)
+                }
+            }
+            
+            task.resume()
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //delete user
     
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
