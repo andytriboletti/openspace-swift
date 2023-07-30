@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseAuth
+import Defaults
 
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
@@ -127,7 +129,7 @@ class OpenspaceAPI {
                             // User deleted successfully
                             completion(message, nil)
                         } else if let error = json["error"] as? String {
-                            // Error deleting user
+                            // Error saving location
                             completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
                         }
                     }
@@ -144,58 +146,103 @@ class OpenspaceAPI {
     
     
     
-    //get location
-    func getLocation(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
-            let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-location")!
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            
-            let parameters: [String: Any] = [
-                "email": email,
-                "authToken": authToken,
-            ]
-            print(authToken)
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            } catch {
-                // Handle the error
+    
+
+    // Function to refresh the Firebase auth token
+    func refreshAuthToken(completion: @escaping (String?, Error?) -> Void) {
+        Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { (token, error) in
+            if let error = error {
                 completion(nil, error)
-                return
+            } else if let token = token {
+                completion(token, nil)
+            } else {
+                completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
             }
-            
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                // Handle the server response
-                if let error = error {
-                    // Handle the error
-                    completion(nil, error)
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
-                    return
-                }
-                
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        if let location = json["last_location"] as? String {
-                            // User deleted successfully
-                            completion(location, nil)
-                        } else if let error = json["error"] as? String {
-                            // Error deleting user
-                            completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
-                        }
-                    }
-                } catch {
-                    // Handle the error
-                    completion(nil, error)
-                }
-            }
-            
-            task.resume()
         }
+    }
+
     
     
+    
+    
+    // Get location
+       func getLocation(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
+           let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-location")!
+           var request = URLRequest(url: url)
+           request.httpMethod = "POST"
+
+           let parameters: [String: Any] = [
+               "email": email,
+               "authToken": authToken,
+           ]
+
+           do {
+               request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+           } catch {
+               // Handle the error
+               completion(nil, error)
+               return
+           }
+
+           let task = URLSession.shared.dataTask(with: request) { [self] (data, response, error) in
+               // Handle the server response
+               if let error = error {
+                   // Handle the error
+                   DispatchQueue.main.async {
+                       completion(nil, error)
+                   }
+                   return
+               }
+
+               guard let data = data else {
+                   DispatchQueue.main.async {
+                       completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+                   }
+                   return
+               }
+
+               do {
+                   if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                       if let location = json["last_location"] as? String {
+                           // Location retrieved successfully
+                           DispatchQueue.main.async {
+                               completion(location, nil)
+                           }
+                       } else if let error = json["error"] as? String {
+                           if error == "Invalid authToken." {
+                               // Retry with a refreshed token
+                               refreshAuthToken { (newToken, tokenError) in
+                                   if let newToken = newToken {
+                                       // Retry the request with the new token
+                                       DispatchQueue.main.async {
+                                           self.getLocation(email: email, authToken: newToken, completion: completion)
+                                       }
+                                   } else {
+                                       // Failed to refresh token or get a new token
+                                       DispatchQueue.main.async {
+                                           completion(nil, tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+                                       }
+                                   }
+                               }
+                           } else {
+                               // Other errors from the server
+                               DispatchQueue.main.async {
+                                   completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
+                               }
+                           }
+                       }
+                   }
+               } catch {
+                   // Handle the error
+                   DispatchQueue.main.async {
+                       completion(nil, error)
+                   }
+               }
+           }
+
+           task.resume()
+       }
+
     
     
     
