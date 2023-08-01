@@ -1284,8 +1284,18 @@
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cub-oi-i7Y">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </sceneKitView>
-                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f2U-aj-baq">
-                                <rect key="frame" x="0.0" y="20" width="414" height="150"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bod-Hy-Ze2">
+                                <rect key="frame" x="28" y="816" width="358" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qpp-Rj-0MN"/>
+                                </constraints>
+                                <state key="normal" title="TAKE OFF"/>
+                                <connections>
+                                    <action selector="takeOffAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="Stp-4l-S5T"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="center" misplaced="YES" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f2U-aj-baq">
+                                <rect key="frame" x="0.0" y="151" width="414" height="290"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqc-kC-xpI" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="30.5" y="0.0" width="353.5" height="80"/>
@@ -1304,48 +1314,38 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wes-GI-9qV"/>
                                         </constraints>
-                                        <state key="normal" title="EXPLORE THE MOON"/>
+                                        <state key="normal" title="EXPLORE THE MOON FOR MINERALS"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="cdu-lA-sTV"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgd-XS-51u">
-                                        <rect key="frame" x="28" y="150" width="358" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cor-Bm-buU">
+                                        <rect key="frame" x="146.5" y="170" width="121" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="o7G-R9-P6q"/>
+                                            <constraint firstAttribute="height" constant="50" id="QHy-Ub-OBy"/>
                                         </constraints>
-                                        <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
+                                        <state key="normal" title="AUCTION HOUSE"/>
+                                        <connections>
+                                            <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="sDh-Hy-Chj"/>
+                                        </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-PB-kvm">
-                                        <rect key="frame" x="28" y="150" width="358" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYc-Vg-479">
+                                        <rect key="frame" x="132.5" y="240" width="149" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="FXd-0k-LTT"/>
+                                            <constraint firstAttribute="height" constant="50" id="1iv-s4-OP7"/>
                                         </constraints>
-                                        <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
+                                        <state key="normal" title="GO TO SPHERE BASE"/>
+                                        <connections>
+                                            <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="Avj-0j-ohv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jgd-XS-51u" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="35J-zz-gL5"/>
-                                    <constraint firstAttribute="trailing" secondItem="Y7t-PB-kvm" secondAttribute="trailing" constant="28" id="QdX-hL-97s"/>
                                     <constraint firstItem="Lqc-kC-xpI" firstAttribute="centerX" secondItem="f2U-aj-baq" secondAttribute="centerX" id="TuC-df-CA4"/>
-                                    <constraint firstItem="jgd-XS-51u" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="cIh-lT-AqI"/>
-                                    <constraint firstAttribute="trailing" secondItem="jgd-XS-51u" secondAttribute="trailing" constant="28" id="cRK-hJ-5Tf"/>
                                     <constraint firstItem="rkT-Ji-ib2" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="cyk-tx-zAH"/>
-                                    <constraint firstAttribute="trailing" secondItem="jgd-XS-51u" secondAttribute="trailing" constant="28" id="glb-R9-vAg"/>
                                     <constraint firstAttribute="trailing" secondItem="rkT-Ji-ib2" secondAttribute="trailing" constant="28" id="n41-u0-VVG"/>
-                                    <constraint firstItem="Y7t-PB-kvm" firstAttribute="leading" secondItem="f2U-aj-baq" secondAttribute="leading" constant="28" id="rsQ-AA-xOu"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bod-Hy-Ze2">
-                                <rect key="frame" x="28" y="816" width="358" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="qpp-Rj-0MN"/>
-                                </constraints>
-                                <state key="normal" title="TAKE OFF"/>
-                                <connections>
-                                    <action selector="takeOffAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="Stp-4l-S5T"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SWV-zf-GBg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1368,16 +1368,14 @@
                         <outlet property="exploreButton" destination="rkT-Ji-ib2" id="pgw-qx-Tra"/>
                         <outlet property="headerLabel" destination="Lqc-kC-xpI" id="p18-Sx-lHM"/>
                         <outlet property="scnView" destination="cub-oi-i7Y" id="eev-2i-7YD"/>
-                        <outlet property="spaceportButton" destination="jgd-XS-51u" id="sOp-Pd-P0g"/>
                         <outlet property="takeOffButton" destination="bod-Hy-Ze2" id="mXm-4d-3MD"/>
-                        <outlet property="tradingPostButton" destination="Y7t-PB-kvm" id="w5t-7o-oyZ"/>
                         <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOffFromMoon" modalPresentationStyle="fullScreen" id="Brq-sk-l5G"/>
                         <segue destination="U1y-oS-a8q" kind="presentation" identifier="goToExploreMoon" modalPresentationStyle="fullScreen" id="swR-cr-neU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fa3-DF-t8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7174" y="-1319"/>
+            <point key="canvasLocation" x="7111.594202898551" y="-1351.3392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JZi-wz-taK">
@@ -1548,10 +1546,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="yKX-Ie-zFg"/>
         <segue reference="W7z-Nr-mEd"/>
-        <segue reference="Xc6-Ax-Zhf"/>
-        <segue reference="YDq-sH-WGm"/>
+        <segue reference="swR-cr-neU"/>
+        <segue reference="tEX-l7-IDV"/>
         <segue reference="IdK-sq-0gW"/>
-        <segue reference="fDk-qc-0Zv"/>
+        <segue reference="Brq-sk-l5G"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
