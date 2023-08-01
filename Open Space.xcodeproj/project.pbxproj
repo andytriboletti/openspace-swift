@@ -109,6 +109,7 @@
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
 		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
+		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
 		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
 		729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 729B3C532A2E33C80053D567 /* GoogleService-Info.plist */; };
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
@@ -121,7 +122,7 @@
 		72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C513252A4FC29700AAD941 /* MoonViewController.swift */; };
 		72C513292A50DF2800AAD941 /* moonbackgroundwithearth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513282A50DF2800AAD941 /* moonbackgroundwithearth.jpg */; };
 		72C5132B2A51ED7200AAD941 /* GameScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72C5132A2A51ED7200AAD941 /* GameScene.scn */; };
-		72C5132D2A51EFE400AAD941 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5132C2A51EFE400AAD941 /* ExploreMoonViewController.swift */; };
+		72C5132D2A51EFE400AAD941 /* MoonSphereBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */; };
 		72C513322A53750B00AAD941 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513312A53750B00AAD941 /* moon_surface.jpg */; };
 		72C513362A5375AE00AAD941 /* moon_surface.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C513352A5375AD00AAD941 /* moon_surface.png */; };
 		72C513382A53A96700AAD941 /* lroc_color_poles_8k.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513372A53A96700AAD941 /* lroc_color_poles_8k.jpg */; };
@@ -195,7 +196,7 @@
 		6F91EC9A260F9A700058B9F5 /* ShipyardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipyardViewController.swift; sourceTree = "<group>"; };
 		6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceStationViewController.swift; sourceTree = "<group>"; };
 		6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eye-of-the-storm-image-from-outer-space-71116.jpg"; sourceTree = "<group>"; };
-		6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereOnEarthSelectCollectionViewController.swift; sourceTree = "<group>"; };
+		6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhereOnEarthSelectCollectionViewController.swift; path = "../New Group/WhereOnEarthSelectCollectionViewController.swift"; sourceTree = "<group>"; };
 		6F9385612425A249001BE3F6 /* EarthLocationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthLocationState.swift; sourceTree = "<group>"; };
 		6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "pexels_taj-mahal-india-1603650.jpg"; path = "Open Space/3dmodels/earthdestinations/pics/pexels_taj-mahal-india-1603650.jpg"; sourceTree = SOURCE_ROOT; };
 		6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PIA12348orig.jpg; sourceTree = "<group>"; };
@@ -249,6 +250,7 @@
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
+		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		729B3C532A2E33C80053D567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +263,7 @@
 		72C513252A4FC29700AAD941 /* MoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonViewController.swift; sourceTree = "<group>"; };
 		72C513282A50DF2800AAD941 /* moonbackgroundwithearth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moonbackgroundwithearth.jpg; sourceTree = "<group>"; };
 		72C5132A2A51ED7200AAD941 /* GameScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = GameScene.scn; sourceTree = "<group>"; };
-		72C5132C2A51EFE400AAD941 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
+		72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonSphereBaseViewController.swift; sourceTree = "<group>"; };
 		72C513312A53750B00AAD941 /* moon_surface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moon_surface.jpg; sourceTree = "<group>"; };
 		72C513352A5375AD00AAD941 /* moon_surface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moon_surface.png; sourceTree = "<group>"; };
 		72C513372A53A96700AAD941 /* lroc_color_poles_8k.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lroc_color_poles_8k.jpg; sourceTree = "<group>"; };
@@ -581,13 +583,13 @@
 		6FDB587D23FE5EA9004263CB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				72C5132E2A53278300AAD941 /* ExploreViews */,
+				7243A82F2A796C1A0054E261 /* Earth */,
+				7243A82E2A796BFA0054E261 /* Moon */,
 				72C513272A4FC2A500AAD941 /* PlanetViews */,
 				6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */,
 				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
 				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
 				6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */,
-				6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */,
 				6F895FA72606B51500378FA7 /* TravelViewController.swift */,
 				6F91EC9A260F9A700058B9F5 /* ShipyardViewController.swift */,
 				6FDADF242644D1BF00F7878C /* SelectShipViewController.swift */,
@@ -595,8 +597,6 @@
 				72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */,
 				727718492A48C42900465B2E /* AccountViewController.swift */,
 				6F30352C240FB007006C4684 /* NavGameController.swift */,
-				72301FA02A579D1A00898D50 /* YourSphereViewController.swift */,
-				7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -662,24 +662,35 @@
 			path = ship_thumbnails;
 			sourceTree = "<group>";
 		};
+		7243A82E2A796BFA0054E261 /* Moon */ = {
+			isa = PBXGroup;
+			children = (
+				72C513252A4FC29700AAD941 /* MoonViewController.swift */,
+				72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */,
+				72301FA02A579D1A00898D50 /* YourSphereViewController.swift */,
+				7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */,
+				7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */,
+			);
+			path = Moon;
+			sourceTree = "<group>";
+		};
+		7243A82F2A796C1A0054E261 /* Earth */ = {
+			isa = PBXGroup;
+			children = (
+				6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */,
+				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
+				6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */,
+			);
+			path = Earth;
+			sourceTree = "<group>";
+		};
 		72C513272A4FC2A500AAD941 /* PlanetViews */ = {
 			isa = PBXGroup;
 			children = (
 				6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */,
 				6F43938F23FF6DC60007614D /* MarsViewController.swift */,
-				72C513252A4FC29700AAD941 /* MoonViewController.swift */,
-				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
 			);
 			path = PlanetViews;
-			sourceTree = "<group>";
-		};
-		72C5132E2A53278300AAD941 /* ExploreViews */ = {
-			isa = PBXGroup;
-			children = (
-				72C5132C2A51EFE400AAD941 /* ExploreMoonViewController.swift */,
-				6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */,
-			);
-			path = ExploreViews;
 			sourceTree = "<group>";
 		};
 		72D19A22270DF62800175BD9 /* Open SpaceUITests */ = {
@@ -950,7 +961,7 @@
 				6F91EC9B260F9A700058B9F5 /* ShipyardViewController.swift in Sources */,
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
 				6F6146F124224F2F000DFACC /* EarthViewController.swift in Sources */,
-				72C5132D2A51EFE400AAD941 /* ExploreMoonViewController.swift in Sources */,
+				72C5132D2A51EFE400AAD941 /* MoonSphereBaseViewController.swift in Sources */,
 				6F93856024259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift in Sources */,
 				6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */,
 				6F9385622425A249001BE3F6 /* EarthLocationState.swift in Sources */,
@@ -958,6 +969,7 @@
 				7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */,
 				72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */,
 				72B693B32A61BC4D005A0863 /* OpenspaceAPI.swift in Sources */,
+				7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,

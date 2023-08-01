@@ -1,7 +1,7 @@
 import UIKit
 import SceneKit
 
-class ExploreMoonViewController: UIViewController, SCNSceneRendererDelegate {
+class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     @IBOutlet var headerLabel: PaddingLabel!
     @IBOutlet var sceneView: SCNView!
 
