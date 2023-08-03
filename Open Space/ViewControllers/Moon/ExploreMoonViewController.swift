@@ -113,6 +113,7 @@ class ExploreMoonViewController: UIViewController {
                             // Show the "Claim Daily Treasure!" button on the main thread
                             DispatchQueue.main.async {
                                 self.showTreasureButton()
+
                             }
                         }
                     }
@@ -130,6 +131,7 @@ class ExploreMoonViewController: UIViewController {
 
 
         func showClaimedText() {
+            addButtonToStackView()
             // Hide the button and show the text
             treasureButton.isHidden = true
             let claimedLabel = UILabel()
@@ -152,8 +154,8 @@ class ExploreMoonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addButtonToStackView()
-        
+        self.addButtonToStackView()
+
         // Call the function to check if the daily treasure is available for the user
          checkDailyTreasureAvailability()
         
@@ -362,6 +364,9 @@ class ExploreMoonViewController: UIViewController {
             if let data = data {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
+                        
+                        
+                        //what is value of json
                         if status == "claimed" {
                             // Show a success message to the user on the main thread
                             DispatchQueue.main.async {
