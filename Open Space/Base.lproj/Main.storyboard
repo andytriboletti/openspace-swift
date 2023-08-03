@@ -1542,7 +1542,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="R2I-68-bRq">
-                                <rect key="frame" x="0.0" y="20" width="414" height="220"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring The Moon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-Z8-8O1" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="138.5" y="0.0" width="137" height="80"/>
@@ -1556,20 +1556,6 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k54-cQ-sW4">
-                                        <rect key="frame" x="146" y="100" width="122" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="CoA-Oh-Wfz"/>
-                                        </constraints>
-                                        <state key="normal" title="EXPLORE NORTH"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9x-d0-ZKo">
-                                        <rect key="frame" x="146" y="170" width="122" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="0Tm-tf-eYc"/>
-                                        </constraints>
-                                        <state key="normal" title="EXPLORE SOUTH"/>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3Nd-Z8-8O1" firstAttribute="centerX" secondItem="R2I-68-bRq" secondAttribute="centerX" id="nl3-8Q-H2E"/>
@@ -1596,6 +1582,7 @@
                     <connections>
                         <outlet property="headerLabel" destination="3Nd-Z8-8O1" id="ufo-l1-0dK"/>
                         <outlet property="scnView" destination="43g-hq-Bbg" id="GZk-OY-cfe"/>
+                        <outlet property="stackView" destination="R2I-68-bRq" id="jlC-Bl-ygG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zo3-Mb-lEv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1624,7 +1611,6 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="4DD-l7-rYR"/>
         <segue reference="awi-wi-S5y"/>
         <segue reference="W7z-Nr-mEd"/>
         <segue reference="6XQ-gR-cEl"/>

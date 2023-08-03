@@ -8,14 +8,17 @@
 
 import UIKit
 import SceneKit
+import Alamofire
+import Defaults
 
 class ExploreMoonViewController: UIViewController {
-    
+    @IBOutlet weak var stackView: UIStackView!
+
     @IBOutlet var spaceportButton: UIButton!
 
     @IBOutlet var tradingPostButton: UIButton!
     
-    @IBOutlet var exploreButton: UIButton!
+    @IBOutlet var treasureButton: UIButton!
 
     @IBOutlet var takeOffButton: UIButton!
     
@@ -40,9 +43,119 @@ class ExploreMoonViewController: UIViewController {
         self.performSegue(withIdentifier: "selectShip", sender: sender)
         
     }
+
+
+    func addButtonToStackView() {
+            // Create a new UIButton instance
+            treasureButton = UIButton(type: .system)
+        treasureButton.setTitle("Claim Hourly Treasure!", for: .normal)
+        treasureButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+
+            // Add any additional customization to the button (e.g., setting background color, text color, etc.)
+
+            // Add the button to the stack view
+            stackView.addArrangedSubview(treasureButton)
+
+            // Optionally, you can set constraints for the button if needed
+        treasureButton.translatesAutoresizingMaskIntoConstraints = false
+        treasureButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+
+    @objc func buttonTapped() {
+        // Action to be performed when the button is tapped
+        print("Button tapped!")
+        
+        claimDailyTreasure()
+    }
+    
+    // ...
+
+    func checkDailyTreasureAvailability() {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+        print(authToken)
+        let apiUrl = "https://server.openspace.greenrobot.com/wp-json/openspace/v1/check-daily-treasure" // Replace with the actual API URL
+
+        guard let url = URL(string: apiUrl) else {
+            // Handle invalid URL
+            return
+        }
+
+        let parameters: [String: Any] = ["email": email, "authToken": authToken]
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            // Handle JSON serialization error
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                // Handle the error case
+                print("Error checking daily treasure availability: \(error.localizedDescription)")
+                return
+            }
+
+            if let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
+                        if status == "claimed" {
+                            // Show the "Daily treasure already claimed." text on the main thread
+                            DispatchQueue.main.async {
+                                self.showClaimedText()
+                            }
+                        } else if status == "available" {
+                            // Show the "Claim Daily Treasure!" button on the main thread
+                            DispatchQueue.main.async {
+                                self.showTreasureButton()
+                            }
+                        }
+                    }
+                } catch {
+                    // Handle JSON parsing error on the main thread
+                    return
+                }
+            }
+        }
+
+        task.resume()
+    }
+
+    // ...
+
+
+        func showClaimedText() {
+            // Hide the button and show the text
+            treasureButton.isHidden = true
+            let claimedLabel = UILabel()
+            claimedLabel.text = "Hourly treasure already claimed."
+            claimedLabel.textAlignment = .center
+            claimedLabel.textColor = .white
+            stackView.addArrangedSubview(claimedLabel)
+        }
+
+        func showTreasureButton() {
+            // Hide the text and show the button
+            treasureButton.isHidden = false
+        }
+//
+//        @IBAction func claimDailyTreasureAction() {
+//            // Call the function to claim the daily treasure (you need to implement this)
+//            claimDailyTreasure()
+//        }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addButtonToStackView()
+        
+        // Call the function to check if the daily treasure is available for the user
+         checkDailyTreasureAvailability()
         
         headerLabel.layer.masksToBounds = true
         headerLabel.layer.cornerRadius = 35.0
@@ -206,5 +319,92 @@ class ExploreMoonViewController: UIViewController {
         }
         addObject(name: "a.scn", position: myPosition, scale: myScale)
     }
+    
+    
+
+
+    // ...
+
+    func claimDailyTreasure() {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+
+        let apiUrl = "https://server.openspace.greenrobot.com/wp-json/openspace/v1/claim-daily-treasure" // Replace with the actual API URL
+
+        guard let url = URL(string: apiUrl) else {
+            // Handle invalid URL
+            return
+        }
+
+        let parameters: [String: Any] = ["email": email, "authToken": authToken]
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            // Handle JSON serialization error
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                // Handle the error case
+                print("Error claiming daily treasure: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.showError()
+                }
+                return
+            }
+
+            if let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
+                        if status == "claimed" {
+                            // Show a success message to the user on the main thread
+                            DispatchQueue.main.async {
+                                self.showSuccessMessage()
+                            }
+                        } else {
+                            // Show an error message or handle any other response status accordingly on the main thread
+                            DispatchQueue.main.async {
+                                self.showError()
+                            }
+                        }
+                    }
+                } catch {
+                    // Handle JSON parsing error on the main thread
+                    DispatchQueue.main.async {
+                        self.showError()
+                    }
+                }
+            }
+        }
+
+        task.resume()
+    }
+
+    // ...
+
+
+
+    func showSuccessMessage() {
+        // Show a success message to the user (e.g., an alert or a label)
+        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your hourly treasure.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func showError() {
+        // Show an error message to the user (e.g., an alert or a label)
+        let alertController = UIAlertController(title: "Error", message: "Unable to claim the daily treasure.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
     
 }

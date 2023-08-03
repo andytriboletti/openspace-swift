@@ -213,6 +213,8 @@ class OpenspaceAPI {
                                // Retry with a refreshed token
                                refreshAuthToken { (newToken, tokenError) in
                                    if let newToken = newToken {
+                                       Defaults[.authToken] = newToken
+                                       print(newToken)
                                        // Retry the request with the new token
                                        DispatchQueue.main.async {
                                            self.getLocation(email: email, authToken: newToken, completion: completion)
