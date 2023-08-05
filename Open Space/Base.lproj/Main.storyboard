@@ -368,6 +368,31 @@
             </objects>
             <point key="canvasLocation" x="2741" y="-695"/>
         </scene>
+        <!--Cargo-->
+        <scene sceneID="MBJ-h9-R6L">
+            <objects>
+                <viewController title="Cargo" id="5fb-7X-jYJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="COF-xq-3BM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ship Cargo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX7-hh-kF9">
+                                <rect key="frame" x="165" y="78" width="85" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WtJ-zT-3Yc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Cargo" id="Lvh-hK-yeB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chd-Uk-fYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439.13043478260875" y="949.55357142857133"/>
+        </scene>
         <!--Ship A-->
         <scene sceneID="AtW-Wt-eXI">
             <objects>
@@ -383,6 +408,7 @@
                         <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="z8O-yY-5eS"/>
                         <segue destination="zN1-Qm-r2p" kind="relationship" relationship="viewControllers" id="IVr-JJ-1Yf"/>
                         <segue destination="8yW-2I-6Lp" kind="relationship" relationship="viewControllers" id="hiX-el-6oX"/>
+                        <segue destination="5fb-7X-jYJ" kind="relationship" relationship="viewControllers" id="zQn-3l-wdI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc5-Hg-bTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1686,13 +1712,12 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="O3q-Lp-PKb"/>
         <segue reference="mn8-YF-6UY"/>
         <segue reference="W7z-Nr-mEd"/>
         <segue reference="6XQ-gR-cEl"/>
         <segue reference="tEX-l7-IDV"/>
         <segue reference="IdK-sq-0gW"/>
-        <segue reference="Brq-sk-l5G"/>
+        <segue reference="MBY-mz-0HI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="clear" catalog="system" width="128" height="114"/>
