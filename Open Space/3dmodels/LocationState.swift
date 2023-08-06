@@ -18,8 +18,8 @@ public enum LocationState: CaseIterable {
     }
 
     static func random() -> LocationState {
-        var g = SystemRandomNumberGenerator()
-        return LocationState.random(using: &g)
+        var systemRandom = SystemRandomNumberGenerator()
+        return LocationState.random(using: &systemRandom)
     }
 }
 extension CaseIterable where Self: Equatable {

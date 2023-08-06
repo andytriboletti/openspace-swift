@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Open_SpaceUITestsLaunchTests: XCTestCase {
+class OpenSpaceUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -718,6 +718,7 @@
 				6FB0EEF323FDA1A800EA28D7 /* Resources */,
 				88EA40E22F21EE23DD50742A /* [CP] Embed Pods Frameworks */,
 				6FD92067259BC653008F6CA3 /* ShellScript */,
+				72A3C04F2A80113A00C2A01E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -932,6 +933,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "xattr -cr ~/Library/Developer/Xcode/DerivedData || echo Clear\n";
+		};
+		72A3C04F2A80113A00C2A01E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		88EA40E22F21EE23DD50742A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

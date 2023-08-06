@@ -1,0 +1,4 @@
+excluded:
+  - Pods/**
+type_body_length:
+  warning: 500

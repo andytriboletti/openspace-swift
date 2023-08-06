@@ -9,7 +9,7 @@
 
 import XCTest
 
-class Open_SpaceUITests: XCTestCase {
+class OpenSpaceUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -25,11 +25,7 @@ class Open_SpaceUITests: XCTestCase {
     }
 
     func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-        XCUIApplication()/*@START_MENU_TOKEN@*/.windows["SceneWindow"].windows/*[[".windows[\"Open Space\"]",".groups.windows",".windows",".windows[\"SceneWindow\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.buttons["Navigate To..."].click()
-        XCUIApplication()/*@START_MENU_TOKEN@*/.windows["SceneWindow"].windows/*[[".windows[\"Open Space\"]",".groups.windows",".windows",".windows[\"SceneWindow\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.buttons["Navigate To..."].click()
+       
         
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

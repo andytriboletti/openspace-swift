@@ -61,25 +61,27 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
          }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as? LocationCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
         cell.backgroundColor = .green
-        var cellImage:UIImage?
-        if(indexPath.row == 0) {
-            cellImage = UIImage(named: self.locations[0]!)!
+        var cellImage: UIImage?
+        
+        if let locationName = self.locations[indexPath.row], let imageName = UIImage(named: locationName) {
+            cellImage = imageName
         }
-        else if(indexPath.row == 1) {
-            cellImage = UIImage(named: self.locations[1]!)!
-        }
-        else if(indexPath.row == 2) {
-            cellImage = UIImage(named: self.locations[2]!)!
-        }
+        
         let size = CGSize(width: 100, height: 100)
-        let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
-        cell.cellImage.image = aspectScaledToFitImage
+        if let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size) {
+            cell.cellImage.image = aspectScaledToFitImage
+        }
+        
         cell.cellLabel.text = self.locations[indexPath.row]
+        
         return cell
     }
-    
+
     
     
 
@@ -100,11 +102,14 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
         }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            _ = collectionViewLayout as! UICollectionViewFlowLayout
-            let widthPerItem = 200 //collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-
-    return CGSize(width:widthPerItem, height:widthPerItem)
+        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            let widthPerItem = 200 //collectionView.frame.width / 2 - flowLayout.minimumInteritemSpacing
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        } else {
+            return CGSize(width: 50, height: 50) // Default size if casting fails
+        }
     }
+
     
     @IBAction func cancel() {
         self.dismiss(animated: false, completion: nil)

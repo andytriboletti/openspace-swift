@@ -66,17 +66,23 @@ class WhereOnEarthSelectCollectionViewController: AlertViewController, UICollect
          }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as! LocationCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as? LocationCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
         cell.backgroundColor = .green
-        //let cellImage = UIImage(named: "rocket_1024.png")
         let cellImage = UIImage(named: "space_icon_1024.jpg")
+        
         let size = CGSize(width: 100, height: 100)
-        let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
-        cell.cellImage.image = aspectScaledToFitImage
+        if let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size) {
+            cell.cellImage.image = aspectScaledToFitImage
+        }
+        
         cell.cellLabel.text = self.locations[indexPath.row]
+        
         return cell
     }
-    
+
     
     
 
@@ -99,12 +105,15 @@ class WhereOnEarthSelectCollectionViewController: AlertViewController, UICollect
         }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-                let lay = collectionViewLayout as! UICollectionViewFlowLayout
-                let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-
-    return CGSize(width:widthPerItem, height:widthPerItem)
+        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            let widthPerItem = collectionView.frame.width / 2 - flowLayout.minimumInteritemSpacing
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        }
+        
+        // Default size if casting fails
+        return CGSize(width: 50, height: 50)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.

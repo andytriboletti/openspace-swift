@@ -161,13 +161,13 @@ class ExploreEarthSceneViewController: UIViewController {
             var zVal = Int.random(in: minValue ..< maxValue)
             //randomly do positive or negative
             if arc4random_uniform(2) == 0 {
-                xVal = xVal * -1
+                xVal *= -1
             }
             if arc4random_uniform(2) == 0 {
-                yVal = yVal * -1
+                yVal *= -1
             }
             if arc4random_uniform(2) == 0 {
-                zVal = zVal * -1
+                zVal *= -1
             }
             
             myPosition = SCNVector3(xVal, yVal, zVal)

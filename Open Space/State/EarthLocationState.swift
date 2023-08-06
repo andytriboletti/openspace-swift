@@ -25,8 +25,8 @@ public enum EarthLocationState: String, CaseIterable {
     }
 
     static func random() -> EarthLocationState {
-        var g = SystemRandomNumberGenerator()
-        return EarthLocationState.random(using: &g)
+        var srng = SystemRandomNumberGenerator()
+        return EarthLocationState.random(using: &srng)
     }
 
 
@@ -35,11 +35,23 @@ public enum EarthLocationState: String, CaseIterable {
 extension Dictionary where Key: ExpressibleByStringLiteral {
     subscript<Index: RawRepresentable>(index: Index) -> Value? where Index.RawValue == String {
         get {
-            return self[index.rawValue as! Key]
+            if let key = index.rawValue as? Key {
+                return self[key]
+            } else {
+                // Handle the case where the cast failed (e.g., return a default value or throw an error)
+                // For example:
+                // return defaultValue
+            }
+            return nil
         }
 
         set {
-            self[index.rawValue as! Key] = newValue
+            //self[index.rawValue as! Key] = newValue
+            
+            if let key = index.rawValue as? Key {
+                self[key] = newValue
+            }
+
         }
     }
 } 

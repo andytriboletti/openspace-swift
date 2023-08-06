@@ -57,7 +57,7 @@ class OpenspaceAPI {
                             // Assuming "last_location" is a key in the JSON response.
                             print("last_location: \(lastLocation)")
                             
-                            completion((lastLocation as! String), nil)
+                            completion((lastLocation as? String), nil)
                             //return lastLocation
                             //todo set game state to lastLocation
                             
