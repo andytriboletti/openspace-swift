@@ -73,7 +73,7 @@ class InventoryViewController: UIViewController {
                         } else {
                             DispatchQueue.main.async {
                                 // Update the errorLabel text when user minerals array is not found
-                                self.errorLabel.text = "User minerals array not found in response."
+                                self.errorLabel?.text = "User minerals array not found in response."
                             }
                         }
                     } catch {
