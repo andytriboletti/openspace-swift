@@ -27,8 +27,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             let mineralName = mineralDict["mineral_name"] as? String
             let kilograms = mineralDict["kilograms"] as? String
             
-            cell.textLabel?.text = "Mineral: \(mineralName ?? "")"
-            cell.detailTextLabel?.text = "Kilograms: \(kilograms ?? "")"
+            cell.textLabel?.text = "Mineral: \(mineralName ?? "")" + "  Weight: \(kilograms ?? "")" + " kg"
+            //cell.detailTextLabel?.text = "Weight: \(kilograms ?? "")"
             
             return cell
         }
@@ -41,9 +41,10 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.reloadData()
+        //? cause it may be on another tab by now
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        tableView?.reloadData()
     }
         // Your other properties and methods
         func getUserMinerals(email: String) {
@@ -81,7 +82,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
                         }
                         
                         DispatchQueue.main.async {
-                                self.tableView.reloadData()
+                                self.tableView?.reloadData()
                             }
                         
                         
