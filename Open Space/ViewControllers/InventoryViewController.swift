@@ -10,12 +10,40 @@
 import UIKit
 import Defaults
 
-class InventoryViewController: UIViewController {
+class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+    
+    @IBOutlet weak var tableView: UITableView!
+        
+        var dataArray: [[String: Any]] = [] // Your mineral data array
+  
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return dataArray.count
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
+            
+            let mineralDict = dataArray[indexPath.row]
+            let mineralName = mineralDict["mineral_name"] as? String
+            let kilograms = mineralDict["kilograms"] as? String
+            
+            cell.textLabel?.text = "Mineral: \(mineralName ?? "")"
+            cell.detailTextLabel?.text = "Kilograms: \(kilograms ?? "")"
+            
+            return cell
+        }
+    
     @IBOutlet weak var errorLabel: UILabel!
 
+    override func viewWillAppear(_ animated: Bool) {
+        getUserMinerals(email: Defaults[.email])
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserMinerals(email: Defaults[.email])
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.reloadData()
     }
         // Your other properties and methods
         func getUserMinerals(email: String) {
@@ -24,6 +52,7 @@ class InventoryViewController: UIViewController {
                 print("Invalid URL")
                 return
             }
+            print(email)
             let requestData: [String: Any] = ["email": email]
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: requestData)
@@ -42,56 +71,53 @@ class InventoryViewController: UIViewController {
                         return
                     }
                     do {
+                        
                         let responseDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                         
-                        // Check if the response contains an error message
-                        if let errorMessage = responseDict?["message"] as? String {
-                            print("Error message: \(errorMessage)")
-                            // Handle the error message here, such as displaying it to the user
-                        } else if let userMineralsArray = responseDict?["userMinerals"] as? [[String: Any]] {
-                            let userMinerals = try JSONDecoder().decode([UserMineral].self, from: JSONSerialization.data(withJSONObject: userMineralsArray))
-                            print(userMinerals)
-                            // Process the decoded user minerals array here
-                        } else {
-                            print("User minerals array not found in response.")
+                        
+                        // Assuming you have the responseDict from your network request
+                        if let userMineralsArray = responseDict?["user_minerals"] as? [[String: Any]] {
+                            self.dataArray = userMineralsArray
                         }
+                        
+                        DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        
+                        
+                        if let responseDict = responseDict,
+                           let userMineralsArray = responseDict["user_minerals"] as? [[String: Any]],
+                           let firstMineral = userMineralsArray.first,
+                           let mineralName = firstMineral["mineral_name"] as? String {
+                            print("Mineral Name:", mineralName)
+                        } else {
+                            print("Invalid JSON format or missing data")
+                        }
+
+                        
+                        
+                        
                     } catch {
                         print("Error decoding JSON: \(error)")
                     }
-                    do {
-                        let responseDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                        
-                        // Check if the response contains an error message
-                        if let errorMessage = responseDict?["error"] as? String {
-                            DispatchQueue.main.async {
-                                // Update the errorLabel text with the error message
-                                self.errorLabel.text = errorMessage
-                            }
-                        } else if let userMineralsArray = responseDict?["userMinerals"] as? [[String: Any]] {
-                            let userMinerals = try JSONDecoder().decode([UserMineral].self, from: JSONSerialization.data(withJSONObject: userMineralsArray))
-                            // Process the decoded user minerals array here
-                        } else {
-                            DispatchQueue.main.async {
-                                // Update the errorLabel text when user minerals array is not found
-                                self.errorLabel?.text = "User minerals array not found in response."
-                            }
-                        }
-                    } catch {
-                        DispatchQueue.main.async {
-                            // Update the errorLabel text with the decoding error
-                            self.errorLabel.text = "Error decoding JSON: \(error)"
-                        }
-                    }
                 }.resume()
-            } catch {
+            }
+             catch {
                 print("Error creating JSON data: \(error)")
             }
         }
 }
 
 struct UserMineral: Codable {
-    let userid: Int
-    let mineralid: Int
-    let mineralname: String
-    let kilograms: Double
+    let kilograms: String
+    let mineralId: Int
+    let mineralName: String
+    let userId: Int
+
+    enum CodingKeys: String, CodingKey {
+        case kilograms
+        case mineralId = "mineral_id"
+        case mineralName = "mineral_name"
+        case userId = "user_id"
+    }
 }

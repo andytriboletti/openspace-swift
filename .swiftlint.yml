@@ -2,3 +2,5 @@ excluded:
   - Pods/**
 type_body_length:
   warning: 500
+disabled_rules:
+  - identifier_name
