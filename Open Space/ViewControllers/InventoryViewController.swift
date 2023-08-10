@@ -72,20 +72,14 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
                         return
                     }
                     do {
-                        
                         let responseDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                        
-                        
                         // Assuming you have the responseDict from your network request
                         if let userMineralsArray = responseDict?["user_minerals"] as? [[String: Any]] {
                             self.dataArray = userMineralsArray
                         }
-                        
                         DispatchQueue.main.async {
                                 self.tableView?.reloadData()
                             }
-                        
-                        
                         if let responseDict = responseDict,
                            let userMineralsArray = responseDict["user_minerals"] as? [[String: Any]],
                            let firstMineral = userMineralsArray.first,
@@ -95,9 +89,6 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
                             print("Invalid JSON format or missing data")
                         }
 
-                        
-                        
-                        
                     } catch {
                         print("Error decoding JSON: \(error)")
                     }
