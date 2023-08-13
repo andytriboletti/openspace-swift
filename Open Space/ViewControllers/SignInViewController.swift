@@ -12,10 +12,9 @@ import FirebaseCore
 import FirebaseOAuthUI
 import Defaults
 
-//import SceneDelegate
 class SignInViewController: UIViewController, FUIAuthDelegate {
-    public var authUI:FUIAuth = FUIAuth.defaultAuthUI()!
-    var rootViewController:SignInViewController?
+    public var authUI: FUIAuth = FUIAuth.defaultAuthUI()!
+    var rootViewController: SignInViewController?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -64,66 +63,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         
         
     }
-    
-    func loginWithEmail(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
-        let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/login")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        let parameters: [String: Any] = [
-            "email": email,
-            "authToken": authToken
-        ]
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-        } catch {
-            completion(nil, error)
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(nil, error)
-                return
-            }
-            
-            guard let data = data else {
-                let error = NSError(domain: "com.openspace.error", code: -1, userInfo: nil)
-                completion(nil, error)
-                return
-            }
-            
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    // Handle the server response
-                    // Print the response or extract relevant data
-                    print(json)
-                    
-                    if let success = json["success"] as? Bool, success {
-                        if let lastLocation = json["data"] as? String {
-                            completion(lastLocation, nil)
-                            return
-                        }
-                    }
-                }
-            } catch let error {
-                print("Error description: \(error.localizedDescription)")
-                print("Actual error: \(error)")
-                completion(nil, error)
-            }
-            
-            let error = NSError(domain: "com.openspace.error", code: -1, userInfo: nil)
-            completion(nil, error)
-        }
-        
-        task.resume()
-    }
 
-
-    
-    
-    
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
       // handle user and error as necessary
         //rootViewController!.dismiss(animated: false)
@@ -188,14 +128,8 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                                 self.performSegue(withIdentifier: "goToSignedIn", sender: self)
 
                             }
-
-                            
-                            
-                            
                             }
                     }
-                    
-                    
                 } else if let error = error {
                     // Handle the error, if any occurred during the token retrieval.
                     print("Error occurred: \(error.localizedDescription)")
@@ -204,23 +138,9 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                     print("Both idToken and error are nil.")
                 }
             }
-
-            
-            //currentUser.getIDToken()
-            
-            
-            
-            
-            //self.reloadViewController()
-
-        
-
             // Use the attributes as needed
-        }
-        else {
+        } else {
             print("Successfully signed in with a user, but user data is nil.")
         }
     }
-    
-    
 }
