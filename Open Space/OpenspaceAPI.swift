@@ -253,17 +253,14 @@ class OpenspaceAPI {
     
     
     //delete user
-    
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
             let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/delete-user")!
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-            
             let parameters: [String: Any] = [
                 "email": email,
                 "authToken": authToken
             ]
-            
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
             } catch {
@@ -271,7 +268,6 @@ class OpenspaceAPI {
                 completion(nil, error)
                 return
             }
-            
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 // Handle the server response
                 if let error = error {
@@ -279,12 +275,10 @@ class OpenspaceAPI {
                     completion(nil, error)
                     return
                 }
-                
                 guard let data = data else {
                     completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                     return
                 }
-                
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         if let message = json["message"] as? String {
@@ -300,11 +294,8 @@ class OpenspaceAPI {
                     completion(nil, error)
                 }
             }
-            
             task.resume()
         }
-
-    
 }
 
 // Helper extension to encode parameters
