@@ -9,11 +9,18 @@
 import UIKit
 
 class YourSphereViewController: UIViewController {
+    @IBOutlet var inputText: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func createNewItem() {
+        print("create new item")
+        print(inputText.text)
+        
+
     }
     /*
     // MARK: - Navigation
@@ -24,5 +31,8 @@ class YourSphereViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+
+
 
 }

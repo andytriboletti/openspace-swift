@@ -12,6 +12,39 @@ import Defaults
 
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
+    var webSocketTask: URLSessionWebSocketTask?
+    func initWebsocket() {
+        
+        // Replace with your WebSocket server URL
+        let serverURL = URL(string: "wss://server2.openspace.greenrobot.com:8080")!
+        
+        let session = URLSession(configuration: .default)
+        webSocketTask = session.webSocketTask(with: serverURL)
+        
+        webSocketTask!.resume()
+        
+        // Start receiving messages
+        receiveMessages()
+    }
+    
+    func receiveMessages() {
+        webSocketTask!.receive { result in
+            switch result {
+            case .success(let message):
+                switch message {
+                case .string(let text):
+                    print("Received message: \(text)")
+                case .data(let data):
+                    if let text = String(data: data, encoding: .utf8) {
+                        print("Received message: \(text)")
+                    }
+                }
+                self.receiveMessages() // Continue listening for messages
+            case .failure(let error):
+                print("Error receiving message: \(error)")
+            }
+        }
+    }
     
     func
     loginWithEmail(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
@@ -245,14 +278,7 @@ class OpenspaceAPI {
            task.resume()
        }
 
-    
-    
-    
-    
-    
-    
-    
-    //delete user
+    // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
             let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/delete-user")!
             var request = URLRequest(url: url)
