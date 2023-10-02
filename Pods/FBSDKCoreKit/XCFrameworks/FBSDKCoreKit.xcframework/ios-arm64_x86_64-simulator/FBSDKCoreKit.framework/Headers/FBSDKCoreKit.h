@@ -13,6 +13,7 @@
 #import <FBSDKCoreKit/FBSDKAccessTokenProviding.h>
 #import <FBSDKCoreKit/FBSDKAdvertiserIDProviding.h>
 #import <FBSDKCoreKit/FBSDKAdvertisingTrackingStatus.h>
+#import <FBSDKCoreKit/FBSDKAEMManager.h>
 #import <FBSDKCoreKit/FBSDKAppAvailabilityChecker.h>
 #import <FBSDKCoreKit/FBSDKAppEventDropDetermining.h>
 #import <FBSDKCoreKit/FBSDKAppEventName.h>
@@ -65,6 +66,7 @@
 #import <FBSDKCoreKit/FBSDKAuthenticationStatusUtility.h>
 #import <FBSDKCoreKit/FBSDKAuthenticationToken.h>
 #import <FBSDKCoreKit/FBSDKAuthenticationTokenProviding.h>
+#import <FBSDKCoreKit/FBSDKAutoSetup.h>
 #import <FBSDKCoreKit/FBSDKBridgeAPIProtocol.h>
 #import <FBSDKCoreKit/FBSDKBridgeAPIProtocolType.h>
 #import <FBSDKCoreKit/FBSDKBridgeAPIRequest.h>
@@ -84,9 +86,7 @@
 #import <FBSDKCoreKit/FBSDKCrashObserver.h>
 #import <FBSDKCoreKit/FBSDKCrashShield.h>
 #import <FBSDKCoreKit/FBSDKDataProcessingOptionKey.h>
-#import <FBSDKCoreKit/FBSDKDeviceDialogView.h>
 #import <FBSDKCoreKit/FBSDKDeviceInformationProviding.h>
-#import <FBSDKCoreKit/FBSDKDeviceViewControllerBase.h>
 #import <FBSDKCoreKit/FBSDKDialogConfiguration.h>
 #import <FBSDKCoreKit/FBSDKDialogConfigurationMapBuilding.h>
 #import <FBSDKCoreKit/FBSDKDynamicFrameworkLoaderProxy.h>
@@ -171,6 +171,7 @@
 #import <FBSDKCoreKit/FBSDKServerConfigurationProviding.h>
 #import <FBSDKCoreKit/FBSDKSettingsLogging.h>
 #import <FBSDKCoreKit/FBSDKSKAdNetworkReporter.h>
+#import <FBSDKCoreKit/FBSDKSKAdNetworkReporterV2.h>
 #import <FBSDKCoreKit/FBSDKSourceApplicationTracking.h>
 #import <FBSDKCoreKit/FBSDKSuggestedEventsIndexer.h>
 #import <FBSDKCoreKit/FBSDKSuggestedEventsIndexerProtocol.h>

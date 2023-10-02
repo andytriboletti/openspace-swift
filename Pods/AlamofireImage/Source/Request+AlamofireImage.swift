@@ -1,7 +1,7 @@
 //
 //  Request+AlamofireImage.swift
 //
-//  Copyright (c) 2015 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2023 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 import Alamofire
 import Foundation
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || (swift(>=5.9) && os(visionOS))
 import UIKit
 #elseif os(watchOS)
 import UIKit
@@ -34,7 +34,7 @@ import WatchKit
 import Cocoa
 #endif
 
-public final class ImageResponseSerializer: ResponseSerializer {
+open class ImageResponseSerializer: ResponseSerializer {
     // MARK: Properties
 
     public static var deviceScreenScale: CGFloat { DataRequest.imageScale }
@@ -44,30 +44,43 @@ public final class ImageResponseSerializer: ResponseSerializer {
     public let emptyResponseCodes: Set<Int>
     public let emptyRequestMethods: Set<HTTPMethod>
 
-    static var acceptableImageContentTypes: Set<String> = {
-        var contentTypes: Set<String> = ["application/octet-stream",
-                                         "image/tiff",
-                                         "image/jpg",
-                                         "image/jpeg",
-                                         "image/jp2",
-                                         "image/gif",
-                                         "image/png",
-                                         "image/ico",
-                                         "image/x-icon",
-                                         "image/bmp",
-                                         "image/x-bmp",
-                                         "image/x-xbitmap",
-                                         "image/x-ms-bmp",
-                                         "image/x-win-bitmap"]
+    public internal(set) static var acceptableImageContentTypes: Set<String> = {
+        // Universally supported image types.
+        var contentTypes: Set<String> = [
+            "application/octet-stream", // As a fallback for things like AWS which provide no real type.
+            "image/bmp",
+            "image/gif",
+            "image/ico",
+            "image/jp2",
+            "image/jpeg",
+            "image/jpg",
+            "image/png",
+            "image/tiff",
+            "image/x-bmp",
+            "image/x-icon",
+            "image/x-ms-bmp",
+            "image/x-win-bitmap",
+            "image/x-xbitmap"
+        ]
 
-        #if os(macOS) || os(iOS) // No WebP support on tvOS or watchOS.
+        #if os(macOS) || os(iOS) || (swift(>=5.9) && os(visionOS)) // No WebP support on tvOS or watchOS.
         if #available(macOS 11, iOS 14, *) {
-            contentTypes.formUnion(["image/webp"])
+            contentTypes.insert("image/webp")
         }
         #endif
 
         if #available(macOS 10.13, iOS 11, tvOS 11, watchOS 4, *) {
             contentTypes.formUnion(["image/heic", "image/heif"])
+        }
+
+        #if !os(watchOS)
+        if #available(macOS 13.0, iOS 16.0, tvOS 16.0, *) {
+            contentTypes.insert("image/avif")
+        }
+        #endif
+
+        if #available(macOS 14.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *) {
+            contentTypes.insert("image/jxl")
         }
 
         return contentTypes
@@ -89,7 +102,7 @@ public final class ImageResponseSerializer: ResponseSerializer {
 
     // MARK: Serialization
 
-    public func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> Image {
+    open func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> Image {
         guard error == nil else { throw error! }
 
         guard let data = data, !data.isEmpty else {
@@ -97,7 +110,7 @@ public final class ImageResponseSerializer: ResponseSerializer {
                 throw AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength)
             }
 
-            print("Returning empty image!")
+            print("AlamofireImage: Returning empty image from serializer!")
             return Image()
         }
 
@@ -107,12 +120,12 @@ public final class ImageResponseSerializer: ResponseSerializer {
         return image
     }
 
-    public func serializeImage(from data: Data) throws -> Image {
+    open func serializeImage(from data: Data) throws -> Image {
         guard !data.isEmpty else {
             throw AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength)
         }
 
-        #if os(iOS) || os(tvOS) || os(watchOS)
+        #if os(iOS) || os(tvOS) || os(watchOS) || (swift(>=5.9) && os(visionOS))
         guard let image = UIImage.af.threadSafeImage(with: data, scale: imageScale) else {
             throw AFIError.imageSerializationFailed
         }
@@ -163,17 +176,19 @@ extension DataRequest {
     public class var imageScale: CGFloat {
         #if os(iOS) || os(tvOS)
         return UIScreen.main.scale
+        #elseif swift(>=5.9) && os(visionOS)
+        return 2
         #elseif os(watchOS)
         return WKInterfaceDevice.current().screenScale
         #elseif os(macOS)
-        return 1.0
+        return 1
         #endif
     }
 }
 
 // MARK: - iOS, tvOS, and watchOS
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(watchOS) || (swift(>=5.9) && os(visionOS))
 
 extension DataRequest {
     /// Adds a response handler to be called once the request has finished.
@@ -230,6 +245,44 @@ extension DataRequest {
         response(queue: queue,
                  responseSerializer: ImageResponseSerializer(inflateResponseImage: false),
                  completionHandler: completionHandler)
+    }
+}
+
+#endif
+
+#if !((os(iOS) && (arch(i386) || arch(arm))) || os(Windows) || os(Linux)) // Combine should be available.
+
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+extension DataRequest {
+    public func publishImage(queue: DispatchQueue = .main,
+                             imageScale: CGFloat = DataRequest.imageScale,
+                             inflateResponseImage: Bool = true,
+                             emptyResponseCodes: Set<Int> = ImageResponseSerializer.defaultEmptyResponseCodes,
+                             emptyRequestMethods: Set<HTTPMethod> = ImageResponseSerializer.defaultEmptyRequestMethods) -> DataResponsePublisher<Image> {
+        publishResponse(using: ImageResponseSerializer(imageScale: imageScale,
+                                                       inflateResponseImage: inflateResponseImage,
+                                                       emptyResponseCodes: emptyResponseCodes,
+                                                       emptyRequestMethods: emptyRequestMethods),
+                        on: queue)
+    }
+}
+
+#endif
+
+#if compiler(>=5.6.0) && canImport(_Concurrency)
+
+@available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+extension DataRequest {
+    public func serializingImage(automaticallyCancelling shouldAutomaticallyCancel: Bool = true,
+                                 imageScale: CGFloat = DataRequest.imageScale,
+                                 inflateResponseImage: Bool = true,
+                                 emptyResponseCodes: Set<Int> = ImageResponseSerializer.defaultEmptyResponseCodes,
+                                 emptyRequestMethods: Set<HTTPMethod> = ImageResponseSerializer.defaultEmptyRequestMethods) -> DataTask<Image> {
+        serializingResponse(using: ImageResponseSerializer(imageScale: imageScale,
+                                                           inflateResponseImage: inflateResponseImage,
+                                                           emptyResponseCodes: emptyResponseCodes,
+                                                           emptyRequestMethods: emptyRequestMethods),
+                            automaticallyCancelling: shouldAutomaticallyCancel)
     }
 }
 

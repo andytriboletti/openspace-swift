@@ -18,11 +18,11 @@
 		</data>
 		<key>Headers/FBSDKCrashHandler.h</key>
 		<data>
-		9qyZhKdBiv/2JqsnbqJjzs6JDp4=
+		CZiEDVm8gHGkALwyjZtYF2K3LGk=
 		</data>
 		<key>Headers/FBSDKCrashHandlerProtocol.h</key>
 		<data>
-		PlP4CtaRgnMKzXyn0Cd6eWV10r8=
+		vSB3Xn5mAIXVnisb8nAGwYKzAe0=
 		</data>
 		<key>Headers/FBSDKCrashObserving.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/FBSDKDataPersisting.h</key>
 		<data>
-		DWFuqIbVPgHRhEn7LwXAH88cs1g=
+		DtnVkIyBlZEE5hHK6RM8kIawq7w=
 		</data>
 		<key>Headers/FBSDKFileDataExtracting.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZY1Gds9YdXXWhmAxA/Kh6+sTfSY=
+		N/bp4jkA6ow/44oyGQzIFUtYh+A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -116,14 +116,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IVTN0V/IdMwICexRs9MiG/lIQQLOiqU/aXDP+5QfgDY=
+			3ILHiPoEMzce96plPruxswh7D9L+ptDaLZH98MYQ5rY=
 			</data>
 		</dict>
 		<key>Headers/FBSDKCrashHandlerProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			woEHrSFdQvUOUdlyH0JGdVNem49byRaZAMw+19Pe+Sc=
+			qZ25WCONiSxncOC5vN2J90QWqM9a21jnkfZjwxq0odA=
 			</data>
 		</dict>
 		<key>Headers/FBSDKCrashObserving.h</key>
@@ -137,7 +137,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OebjtkFnL0ywqbWvKN923EqquhEiUaUb2Ex9fOLH61E=
+			VcT2tlzFWSs7Ld7eUXcIezAttUSWdAIip7lZdNoZiGc=
 			</data>
 		</dict>
 		<key>Headers/FBSDKFileDataExtracting.h</key>

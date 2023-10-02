@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
 //
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(watchOS) || (swift(>=5.9) && os(visionOS))
 
 import Alamofire
 import CoreGraphics
@@ -133,12 +133,11 @@ extension AlamofireExtension where ExtendedType: UIImage {
     public var containsAlphaComponent: Bool {
         let alphaInfo = type.cgImage?.alphaInfo
 
-        return (
+        return
             alphaInfo == .first ||
-                alphaInfo == .last ||
-                alphaInfo == .premultipliedFirst ||
-                alphaInfo == .premultipliedLast
-        )
+            alphaInfo == .last ||
+            alphaInfo == .premultipliedFirst ||
+            alphaInfo == .premultipliedLast
     }
 
     /// Returns whether the image is opaque.
@@ -342,7 +341,7 @@ extension UIImage {
 
 #endif
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || (swift(>=5.9) && os(visionOS))
 
 import CoreImage
 
@@ -391,5 +390,5 @@ extension UIImage {
 // MARK: -
 
 private enum AssociatedKeys {
-    static var isInflated = "UIImage.af.isInflated"
+    static var isInflated = true
 }
