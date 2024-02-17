@@ -4,7 +4,6 @@
 //
 //  Created by Andrew Triboletti on 7/14/23.
 //  Copyright © 2023 GreenRobot LLC. All rights reserved.
-//
 
 import Foundation
 import FirebaseAuth
