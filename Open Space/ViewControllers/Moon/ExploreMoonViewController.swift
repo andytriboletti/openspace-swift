@@ -64,74 +64,62 @@ class ExploreMoonViewController: UIViewController {
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
         print("Button tapped!")
+        //
+        //claimDailyTreasure()
+        // Call to claim daily treasure
+        OpenspaceAPI.shared.claimDailyTreasure { response, error in
+            if let error = error {
+                // Handle error
+                print("Error claiming daily treasure: \(error)")
+            } else {
+                // Handle response
+                print("Response from claim daily treasure: \(String(describing: response))")
+                
+                if response == "claimed" {
+                    // Show a success message to the user on the main thread
+                    DispatchQueue.main.async {
+                        self.showSuccessMessage()
+                    }
+                } else {
+                    // Show an error message or handle any other response status accordingly on the main thread
+                    DispatchQueue.main.async {
+                        self.showError()
+                    }
+                }
+                
+            }
+            
+            
+        }
         
-        claimDailyTreasure()
     }
     
     // ...
-
     func checkDailyTreasureAvailability() {
-        let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
-        print(authToken)
-        let apiUrl = "https://server.openspace.greenrobot.com/wp-json/openspace/v1/check-daily-treasure" // Replace with the actual API URL
-
-        guard let url = URL(string: apiUrl) else {
-            // Handle invalid URL
-            return
-        }
-
-        let parameters: [String: Any] = ["email": email, "authToken": authToken]
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-        } catch {
-            // Handle JSON serialization error
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                // Handle the error case
-                print("Error checking daily treasure availability: \(error.localizedDescription)")
-                return
-            }
-
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
-                        if status == "claimed" {
-                            // Show the "Daily treasure already claimed." text on the main thread
-                            DispatchQueue.main.async {
-                                self.showClaimedText()
-                            }
-                        } else if status == "available" {
-                            // Show the "Claim Daily Treasure!" button on the main thread
-                            DispatchQueue.main.async {
-                                self.showTreasureButton()
-
-                            }
+            // Call API to check daily treasure availability
+            OpenspaceAPI.shared.checkDailyTreasureAvailability { response, error in
+                if let error = error {
+                    print("Error checking daily treasure availability: \(error)")
+                    self.showError()
+                } else {
+                    print("Response from check daily treasure availability: \(String(describing: response))")
+                    if response == "claimed" {
+                        DispatchQueue.main.async {
+                            self.showClaimedText()
+                            self.hideTreasureButton()
+                        }
+                    } else if response == "available" {
+                        DispatchQueue.main.async {
+                            self.showTreasureButton()
                         }
                     }
-                } catch {
-                    // Handle JSON parsing error on the main thread
-                    return
                 }
             }
         }
 
-        task.resume()
-    }
-
-    // ...
-
 
         func showClaimedText() {
-            addButtonToStackView()
+            //addButtonToStackView()
             // Hide the button and show the text
             treasureButton.isHidden = true
             let claimedLabel = UILabel()
@@ -141,10 +129,14 @@ class ExploreMoonViewController: UIViewController {
             stackView.addArrangedSubview(claimedLabel)
         }
 
-        func showTreasureButton() {
-            // Hide the text and show the button
-            treasureButton.isHidden = false
-        }
+    func showTreasureButton() {
+        // Hide the text and show the button
+        treasureButton.isHidden = false
+    }        
+    func hideTreasureButton() {
+        // Hide the text and show the button
+        treasureButton.isHidden = true
+    }
 //
 //        @IBAction func claimDailyTreasureAction() {
 //            // Call the function to claim the daily treasure (you need to implement this)
@@ -327,6 +319,7 @@ class ExploreMoonViewController: UIViewController {
 
     // ...
 
+    /*
     func claimDailyTreasure() {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
@@ -392,7 +385,7 @@ class ExploreMoonViewController: UIViewController {
     }
 
     // ...
-
+*/
 
 
     func showSuccessMessage() {

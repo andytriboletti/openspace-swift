@@ -8,10 +8,124 @@
 import Foundation
 import FirebaseAuth
 import Defaults
+import Foundation
+import Defaults
 
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
+    let serverURL = "https://server.openspace.greenrobot.com/wp-json/openspace/v1/"
+    
+    //static let shared = OpenspaceAPI()
     var webSocketTask: URLSessionWebSocketTask?
+    
+    // Common server URL
+    //let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
+
+    
+    
+    func checkDailyTreasureAvailability(completion: @escaping (String?, Error?) -> Void) {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+        let apiUrl = "\(serverURL)check-daily-treasure"
+
+        guard let url = URL(string: apiUrl) else {
+            completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let parameters: [String: Any] = ["email": email, "authToken": authToken]
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            completion(nil, error)
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+
+            if let data = data {
+           //     if let data = data {
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
+                            completion(status, nil)
+                            
+                        }
+                    } catch {
+                        // Handle JSON parsing error on the main thread
+                        return
+                    }
+                }
+                // Parse JSON response and handle accordingly
+                // ...
+
+                // Call completion handler with appropriate data
+                //completion(data, nil)
+            }
+        //}
+
+        task.resume()
+    }
+
+    func claimDailyTreasure(completion: @escaping (String?, Error?) -> Void) {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+        let apiUrl = "\(serverURL)claim-daily-treasure"
+
+        guard let url = URL(string: apiUrl) else {
+            completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let parameters: [String: Any] = ["email": email, "authToken": authToken]
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            completion(nil, error)
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            if let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
+                        
+                        completion(status, nil)
+                        //what is value of json
+                        
+                    }
+                } catch {
+                    completion(nil, error)
+                    // Handle JSON parsing error on the main thread
+                   //DispatchQueue.main.async {
+                    //    self.showError()
+                   // }
+                }
+            }
+            
+        }
+
+        task.resume()
+    }
+
+
     func initWebsocket() {
         
         // Replace with your WebSocket server URL
@@ -45,10 +159,12 @@ class OpenspaceAPI {
         }
     }
     
+    //if user not found, insert user into database
     func
     loginWithEmail(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
-        let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/login")!
-        var request = URLRequest(url: url)
+        let loginURL = URL(string: "\(serverURL)login")!
+        //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/login")!
+        var request = URLRequest(url: loginURL)
         request.httpMethod = "POST"
         
         let parameters: [String: Any] = [
@@ -124,8 +240,9 @@ class OpenspaceAPI {
     
     
     func saveLocation(email: String, authToken: String, location: String, completion: @escaping (String?, Error?) -> Void) {
-            let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/save-location")!
-            var request = URLRequest(url: url)
+        let saveLocationURL = URL(string: "\(serverURL)save-location")!
+        //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/save-location")!
+            var request = URLRequest(url: saveLocationURL)
             request.httpMethod = "POST"
             
             let parameters: [String: Any] = [
@@ -199,8 +316,9 @@ class OpenspaceAPI {
     
     // Get location
        func getLocation(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
-           let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-location")!
-           var request = URLRequest(url: url)
+           let getLocationURL = URL(string: "\(serverURL)get-location")!
+           //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-location")!
+           var request = URLRequest(url: getLocationURL)
            request.httpMethod = "POST"
 
            let parameters: [String: Any] = [
@@ -279,8 +397,9 @@ class OpenspaceAPI {
 
     // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
-            let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/delete-user")!
-            var request = URLRequest(url: url)
+        let deleteUserURL = URL(string: "\(serverURL)delete-user")!
+        //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/delete-user")!
+            var request = URLRequest(url: deleteUserURL)
             request.httpMethod = "POST"
             let parameters: [String: Any] = [
                 "email": email,

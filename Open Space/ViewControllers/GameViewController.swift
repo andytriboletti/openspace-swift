@@ -133,7 +133,7 @@ class GameViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        OpenspaceAPI.shared.initWebsocket()
+        //OpenspaceAPI.shared.initWebsocket()
         
         scnView.scene?.rootNode.removeFromParentNode()
 
