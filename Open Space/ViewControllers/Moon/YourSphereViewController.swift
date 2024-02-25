@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Defaults
 
 class YourSphereViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
@@ -18,10 +19,31 @@ class YourSphereViewController: UIViewController {
     }
     @IBAction func createNewItem() {
         print("create new item")
-        print(inputText.text)
-        
+        print(inputText.text!)
+        //let extractedText = "Text extracted from image prompt"
+        sendText(text: inputText.text)
 
     }
+    
+    // Example function to call the sendTextToServer function
+    func sendText(text: String) {
+            let email = Defaults[.email] // Replace with the actual email
+            let authToken = Defaults[.authToken] // Replace with the actual auth token
+
+           OpenspaceAPI.shared.sendTextToServer(email: email, authToken: authToken, text: text) { success, error in
+               if let error = error {
+                   print("Error: \(error)")
+                   // Handle error
+               } else if success {
+                   print("Text sent successfully to server")
+                   // Handle success
+               } else {
+                   print("Failed to send text to server")
+                   // Handle failure
+               }
+           }
+       }
+    
     /*
     // MARK: - Navigation
 
