@@ -22,9 +22,16 @@ class YourSphereViewController: UIViewController {
         print(inputText.text!)
         //let extractedText = "Text extracted from image prompt"
         sendText(text: inputText.text)
-
     }
-    
+    func showSuccessAlert() {
+        let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
+        
+        // Add an action (button)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+    }
     // Example function to call the sendTextToServer function
     func sendText(text: String) {
             let email = Defaults[.email] // Replace with the actual email
@@ -37,6 +44,11 @@ class YourSphereViewController: UIViewController {
                } else if success {
                    print("Text sent successfully to server")
                    // Handle success
+                   DispatchQueue.main.async {
+                       self.inputText.text=""
+                       self.showSuccessAlert()
+                   }
+
                } else {
                    print("Failed to send text to server")
                    // Handle failure

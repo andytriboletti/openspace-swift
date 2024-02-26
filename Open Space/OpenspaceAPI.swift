@@ -447,7 +447,7 @@ class OpenspaceAPI {
     func sendTextToServer(email: String, authToken: String, text: String, completion: @escaping (Bool, Error?) -> Void) {
         //let sendTextURL = URL(string: "\(serverURL)send-prompt-text")!
         
-        let sendTextURL = URL(string: "\(serverURL)send-prompt-text")! // Constructing the URL
+        let sendTextURL = URL(string: "\(serverURL)send-text")! // Constructing the URL
         
         //let parameters: [String: Any] = ["text": text]
         let parameters: [String: Any] = [
