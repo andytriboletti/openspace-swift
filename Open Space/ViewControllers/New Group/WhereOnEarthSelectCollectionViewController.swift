@@ -78,7 +78,7 @@ class WhereOnEarthSelectCollectionViewController: AlertViewController, UICollect
             cell.cellImage.image = aspectScaledToFitImage
         }
         
-        cell.cellLabel.text = self.locations[indexPath.row]
+        cell.cellLabel?.text = self.locations[indexPath.row]
         
         return cell
     }

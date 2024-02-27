@@ -126,7 +126,8 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         let size = CGSize(width: 100, height: 100)
         let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
         cell.cellImage.image = aspectScaledToFitImage
-        cell.cellLabel.text = self.locations[indexPath.row]
+        var theText = self.locations[indexPath.row]
+        cell.cellLabel?.text = theText
         
         return cell
     }

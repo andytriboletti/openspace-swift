@@ -6,6 +6,10 @@
 //  Copyright © 2023 GreenRobot LLC. All rights reserved.
 //
 
+//this class uses mock data right now, it should use the pendingModels and completedModels data once fetchData completes
+//instead. The pendingModels should use processing_model_icon.jpg as the icon. IT should have 2 sections, with headers Pending
+//and Completed.
+
 import UIKit
 import Alamofire
 import AlamofireImage
@@ -13,163 +17,125 @@ import Defaults
 
 class SphereInventoryViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var locations: Dictionary<Int, String> = [:]
+    var pendingModels: Dictionary<Int, String> = [:]
+    var completedModels: Dictionary<Int, String> = [:]
+    
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.locations.count
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth: CGFloat = 200
+        return CGSize(width: cellWidth, height: cellWidth)
+    }
+    
+    func fetchData() {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+
+        OpenspaceAPI.shared.fetchData(email: email, authToken: authToken) { [weak self] pendingModels, completedModels in
+            self?.pendingModels = pendingModels
+            self?.completedModels = completedModels
+            DispatchQueue.main.async {
+                // Perform UICollectionView layout operations here
+                self?.collectionView.reloadData() // For example, reloadData() is called on the main thread
+            }
+
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        // Two sections for pending and completed models
+        return 2
     }
-
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if (collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell) != nil {
-            // cell.backgroundColor = .green
-            
-         }
-    }
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if collectionView.cellForItem(at: indexPath) != nil {
-            //cell.contentView.backgroundColor = .red
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        if collectionView.cellForItem(at: indexPath) != nil {
-            //cell.contentView.backgroundColor = nil
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return pendingModels.count
+        } else {
+            return completedModels.count
         }
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
-        print(indexPath.row)
-        print(indexPath.section)
-        if (collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell) != nil {
-            //cell.backgroundColor = .red
-            //appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]
-            //need to travel = yes
-            var goingToLocation = LocationState.allCases[indexPath.row]
-            appDelegate.gameState.goingToLocationState = goingToLocation
-            
-            //save the location on the server
-            
-            // To get the string value of the enum, you can use a switch statement:
-            var whereString: String
-
-            //can I do this differently, so locations can be added in one place
-            switch goingToLocation {
-            case .nearEarth:
-                whereString = "nearEarth"
-            case .nearISS:
-                whereString = "nearISS"
-            case .nearMars:
-                whereString = "nearMars"
-            case .nearMoon:
-                whereString = "nearMoon"
-            case .nearNothing:
-                whereString = "nearNothing"
-            }
-
-            print(whereString) // Output: "premium"
-            
-            self.saveLocation(location: whereString)
-            self.performSegue(withIdentifier: "goToGame", sender: self)
-
-            //self.present(NavGameController(), animated: true)
-            //self.dismiss(animated: true, completion: nil)
-            
-            //self.parent?.dismiss(animated: true, completion: nil)
-         }
-    }
-    
-    //Save location of user
-    ////////////////////
-    func saveLocation(location: String) {
-        let email = Defaults[.email] // Replace with the actual email
-        let authToken = Defaults[.authToken] // Replace with the actual auth token
-
-        OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location) { [weak self] message, error in
-               if let error = error {
-                   // Handle the error
-                   print("Error: \(error.localizedDescription)")
-               } else if let message = message {
-                   // User deleted successfully
-                   print("Success: \(message)")
-
-
-               }
-           }
-       }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as? LocationCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "modelIdentifier", for: indexPath) as? ModelCollectionViewCell else {
             return UICollectionViewCell()
         }
+
+        var modelDictionary: Dictionary<Int, String> = [:]
+        var iconName: String = ""
         
-        cell.backgroundColor = .green
-        var cellImage: UIImage?
-        
-        switch indexPath.row {
-            case 0:
-                cellImage = UIImage(named: "earth.png")
-            case 1:
-                cellImage = UIImage(named: "iss.png")
-            case 2:
-                cellImage = UIImage(named: "moon.png")
-            case 3:
-                cellImage = UIImage(named: "mars.png")
-            default:
-                break
+        if indexPath.section == 0 {
+            modelDictionary = pendingModels
+            iconName = "processing_model_icon.jpg"
+        } else {
+            modelDictionary = completedModels
+            iconName = "completed_model_icon.jpg" // Assuming this is the correct icon for completed models
         }
         
-        let size = CGSize(width: 100, height: 100)
-        if let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size) {
-            cell.cellImage.image = aspectScaledToFitImage
-        }
+        // Set icon
+        cell.cellImage.image = UIImage(named: iconName)
         
-        cell.cellLabel.text = self.locations[indexPath.row]
+        // Set model name
+        cell.cellLabel?.text = modelDictionary[indexPath.row]
         
         return cell
     }
-
     
+    // Other methods...
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.fetchData()
         self.locations = [0: "Earth", 1: "ISS", 2: "Moon", 3: "Mars"]
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical //.horizontal
+        layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 20
         collectionView.setCollectionViewLayout(layout, animated: true)
-            
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)//here your custom value for spacing
-        }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            let widthPerItem = 200 //collectionView.frame.width / 2 - flowLayout.minimumInteritemSpacing
-            return CGSize(width: widthPerItem, height: widthPerItem)
-        }
         
-        return CGSize(width: 50, height: 50) // Default size if casting fails
+        // Register header views
+        //collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
+        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
+
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 0 {
+//            return "Pending"
+//        } else {
+//            return "Completed"
+//        }
+//    }
+//    
+//
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50) // Adjust height as needed
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as? HeaderView else {
+                fatalError("Failed to dequeue a reusable supplementary view of kind: \(kind) with identifier: HeaderView")
+            }
+
+            if(indexPath.section == 0) {
+                headerView.titleLabel.text = "Pending"
+            }
+            if(indexPath.section == 1) {
+                headerView.titleLabel.text = "Completed"
+            }
+            // Configure and return the header view
+            return headerView
+        } else {
+            // Handle other kinds of supplementary views
+            return UICollectionReusableView()
+        }
+    }
+
 
     
-    @IBAction func cancel() {
-        self.dismiss(animated: false, completion: nil)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        //segue.destination.viewDidDisappear(false)
-    }
-
+    // Other methods...
 }
+

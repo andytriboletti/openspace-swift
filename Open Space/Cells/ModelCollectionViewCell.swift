@@ -1,14 +1,15 @@
 //
-//  LocationCollectionViewCell.swift
+//  ModelCollectionViewCell.swift
 //  Open Space
 //
-//  Created by Andy Triboletti on 2/21/20.
-//  Copyright © 2020 GreenRobot LLC. All rights reserved.
+//  Created by Andrew Triboletti on 2/27/24.
+//  Copyright © 2024 GreenRobot LLC. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class LocationCollectionViewCell: UICollectionViewCell {
+class ModelCollectionViewCell: UICollectionViewCell {
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var cellLabel: UILabel?
     

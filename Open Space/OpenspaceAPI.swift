@@ -20,8 +20,53 @@ class OpenspaceAPI {
     
     // Common server URL
     //let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
-    
-    
+    var pendingModels: [Int: String] = [:]
+    var completedModels: [Int: String] = [:]
+    func fetchData(email: String, authToken: String, completion: @escaping ([Int: String], [Int: String]) -> Void) {
+        // Prepare JSON data
+        let jsonData: [String: Any] = [
+            "email": email,
+            "authToken": authToken
+        ]
+        
+        // Convert JSON data to Data
+        guard let postData = try? JSONSerialization.data(withJSONObject: jsonData) else {
+            print("Error converting JSON data")
+            return
+        }
+        
+        // Create URL request
+        let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-prompts-and-models")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        // Perform the request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            // Parse the response
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                if let pendingArray = json["pending"] as? [String] {
+                    self.pendingModels = Dictionary(uniqueKeysWithValues: pendingArray.enumerated().map { ($0.offset, $0.element) })
+                }
+                if let completedArray = json["completed"] as? [String] {
+                    self.completedModels = Dictionary(uniqueKeysWithValues: completedArray.enumerated().map { ($0.offset, $0.element) })
+                }
+                
+                // Call completion handler with updated dictionaries
+                completion(self.pendingModels, self.completedModels)
+            } else {
+                print("Error parsing JSON response")
+            }
+        }
+        
+        task.resume()
+    }
+
     
     func checkDailyTreasureAvailability(completion: @escaping (String?, Error?) -> Void) {
         let email = Defaults[.email]

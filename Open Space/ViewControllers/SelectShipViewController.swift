@@ -77,7 +77,7 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
             cell.cellImage.image = aspectScaledToFitImage
         }
         
-        cell.cellLabel.text = self.locations[indexPath.row]
+        cell.cellLabel?.text = self.locations[indexPath.row]
         
         return cell
     }
