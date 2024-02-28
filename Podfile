@@ -23,7 +23,7 @@ target 'Open Space' do
   pod 'FirebaseUI/OAuth'
   pod 'FirebaseUI'
   pod 'FirebaseAuthUI'
-  
+  pod 'Starscream'
   # https://stackoverflow.com/a/75729977
   post_install do |installer|
       installer.generated_projects.each do |project|

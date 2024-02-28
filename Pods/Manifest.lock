@@ -904,6 +904,7 @@ PODS:
   - SDWebImage (5.18.2):
     - SDWebImage/Core (= 5.18.2)
   - SDWebImage/Core (5.18.2)
+  - Starscream (4.0.6)
 
 DEPENDENCIES:
   - Alamofire
@@ -916,6 +917,7 @@ DEPENDENCIES:
   - FirebaseUI/OAuth
   - PopupDialog
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
+  - Starscream
 
 SPEC REPOS:
   trunk:
@@ -965,6 +967,7 @@ SPEC REPOS:
     - PromisesObjC
     - RecaptchaInterop
     - SDWebImage
+    - Starscream
 
 EXTERNAL SOURCES:
   SCLAlertView:
@@ -1023,7 +1026,8 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
   SDWebImage: c0de394d7cf7f9838aed1fd6bb6037654a4572e4
+  Starscream: fb2c4510bebf908c62bd383bcf05e673720e91fd
 
-PODFILE CHECKSUM: efc3afb3ff872214603e7ea3e0c4228dc4b510a9
+PODFILE CHECKSUM: 5021ed3a0d1a65b7df795728737ceb917c003bdf
 
 COCOAPODS: 1.13.0

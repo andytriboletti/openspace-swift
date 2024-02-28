@@ -18,6 +18,8 @@ import DynamicBlurView
 import Defaults
 
 class GameViewController: UIViewController {
+    var webSocketManager: WebSocketManager!
+
     var baseNode:SCNNode!
     var tempNode:SCNNode!
     var spaceShip:[SCNNode]!
@@ -132,6 +134,26 @@ class GameViewController: UIViewController {
         
         
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Instantiate the WebSocketManager
+        webSocketManager = WebSocketManager()
+        print("started websocket")
+    }
+    
+    
+    // Example method to send a message over the WebSocket connection
+    func sendMessage() {
+        // Replace "Hello, server!" with your message
+        webSocketManager.socket.write(string: "Hello, server!")
+    }
+
+
+      // Example method to disconnect from the WebSocket server
+      func disconnect() {
+          webSocketManager.socket.disconnect()
+      }
+    
     override func viewWillAppear(_ animated: Bool) {
         //OpenspaceAPI.shared.initWebsocket()
         
