@@ -111,6 +111,8 @@
 		7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818A2B8EA20300FB572F /* HeaderView.swift */; };
 		7221818D2B8EA2C200FB572F /* ModelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818C2B8EA2C200FB572F /* ModelCollectionViewCell.swift */; };
 		7221818F2B8FD80600FB572F /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818E2B8FD80600FB572F /* WebSocketManager.swift */; };
+		722181912B8FF1C800FB572F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181902B8FF1C800FB572F /* ChatView.swift */; };
+		722181932B8FF26200FB572F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181922B8FF26200FB572F /* ChatViewController.swift */; };
 		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
 		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
@@ -257,6 +259,8 @@
 		7221818A2B8EA20300FB572F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		7221818C2B8EA2C200FB572F /* ModelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCollectionViewCell.swift; sourceTree = "<group>"; };
 		7221818E2B8FD80600FB572F /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
+		722181902B8FF1C800FB572F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		722181922B8FF26200FB572F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
@@ -612,6 +616,8 @@
 				727718492A48C42900465B2E /* AccountViewController.swift */,
 				6F30352C240FB007006C4684 /* NavGameController.swift */,
 				72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */,
+				722181902B8FF1C800FB572F /* ChatView.swift */,
+				722181922B8FF26200FB572F /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1020,7 +1026,9 @@
 				6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */,
 				6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */,
 				6F34E311263B4C8200E67276 /* Defaults.swift in Sources */,
+				722181912B8FF1C800FB572F /* ChatView.swift in Sources */,
 				6FA3146C2401E57F009D77AB /* LocationState.swift in Sources */,
+				722181932B8FF26200FB572F /* ChatViewController.swift in Sources */,
 				6F6D845D23FF8C8800328057 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

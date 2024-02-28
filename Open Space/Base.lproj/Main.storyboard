@@ -332,6 +332,22 @@
             </objects>
             <point key="canvasLocation" x="1863" y="888"/>
         </scene>
+        <!--Chat-->
+        <scene sceneID="G6V-R5-95B">
+            <objects>
+                <viewController title="Chat" id="rto-Ri-zW7" customClass="ChatViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pe9-kP-6qh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="k7W-8i-cUo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Chat" image="message" catalog="system" id="reQ-HC-YAz" userLabel="Chat"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tcl-Ob-yRr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2665" y="1072"/>
+        </scene>
         <!--Nav Game Controller-->
         <scene sceneID="nNH-s1-tGJ">
             <objects>
@@ -457,6 +473,7 @@
                         <segue destination="zN1-Qm-r2p" kind="relationship" relationship="viewControllers" id="IVr-JJ-1Yf"/>
                         <segue destination="8yW-2I-6Lp" kind="relationship" relationship="viewControllers" id="hiX-el-6oX"/>
                         <segue destination="5fb-7X-jYJ" kind="relationship" relationship="viewControllers" id="zQn-3l-wdI"/>
+                        <segue destination="rto-Ri-zW7" kind="relationship" relationship="viewControllers" id="6KB-oj-gaP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc5-Hg-bTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1772,6 +1789,7 @@
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="folder" catalog="system" width="128" height="96"/>
+        <image name="message" catalog="system" width="128" height="116"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="quasar.png" width="1041" height="586"/>
         <image name="sun.dust" catalog="system" width="128" height="120"/>
