@@ -283,41 +283,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
                                 <rect key="frame" x="175" y="97" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
-                                <rect key="frame" x="161" y="515" width="87" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
+                                <rect key="frame" x="161" y="515" width="88" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign out"/>
                                 <connections>
                                     <action selector="signOutButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="7v7-Bc-skb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
                                 <rect key="frame" x="138" y="741" width="134" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Delete Acount"/>
                                 <connections>
                                     <action selector="deleteButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="EmC-lH-dU1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged In As:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-oO-GU7">
-                                <rect key="frame" x="152" y="195" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged In As:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-oO-GU7">
+                                <rect key="frame" x="152" y="195" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juP-iZ-amP">
+                                <rect key="frame" x="153" y="239" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEd-LW-sTz">
+                                <rect key="frame" x="133" y="268" width="150" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reset Username"/>
+                                <connections>
+                                    <action selector="showResetButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="8Zg-Px-Wpp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Kx-sv-baK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="juP-iZ-amP" firstAttribute="top" secondItem="7yY-oO-GU7" secondAttribute="bottom" constant="23" id="0VP-rm-EoT"/>
+                            <constraint firstItem="b3I-g5-iBC" firstAttribute="centerX" secondItem="ood-yR-ZiC" secondAttribute="centerX" id="3jy-qF-VOU"/>
+                            <constraint firstItem="rRb-IS-7PY" firstAttribute="centerX" secondItem="9mQ-zB-mcr" secondAttribute="centerX" id="6Pu-eU-uoC"/>
+                            <constraint firstAttribute="bottom" secondItem="ood-yR-ZiC" secondAttribute="bottom" constant="346" id="CRF-Zl-SoH"/>
+                            <constraint firstItem="ood-yR-ZiC" firstAttribute="centerX" secondItem="7yY-oO-GU7" secondAttribute="centerX" id="Dmc-pw-Ti2"/>
+                            <constraint firstItem="juP-iZ-amP" firstAttribute="leading" secondItem="3Kx-sv-baK" secondAttribute="leading" constant="153" id="PKs-HE-EZr"/>
+                            <constraint firstItem="3Kx-sv-baK" firstAttribute="trailing" secondItem="b3I-g5-iBC" secondAttribute="trailing" constant="142" id="a8h-CI-Bmv"/>
+                            <constraint firstItem="3Kx-sv-baK" firstAttribute="bottom" secondItem="b3I-g5-iBC" secondAttribute="bottom" constant="37" id="afo-It-9Xo"/>
+                            <constraint firstItem="b3I-g5-iBC" firstAttribute="leading" secondItem="3Kx-sv-baK" secondAttribute="leading" constant="138" id="fV4-UP-AjC"/>
+                            <constraint firstItem="7yY-oO-GU7" firstAttribute="leading" secondItem="3Kx-sv-baK" secondAttribute="leading" constant="152" id="imO-3s-lig"/>
+                            <constraint firstItem="7yY-oO-GU7" firstAttribute="top" secondItem="9mQ-zB-mcr" secondAttribute="top" constant="195" id="kE3-Wj-f3t"/>
+                            <constraint firstItem="7yY-oO-GU7" firstAttribute="top" secondItem="rRb-IS-7PY" secondAttribute="bottom" constant="77" id="rR6-gB-I2i"/>
+                            <constraint firstItem="ood-yR-ZiC" firstAttribute="leading" secondItem="3Kx-sv-baK" secondAttribute="leading" constant="161" id="tEa-0Q-bR1"/>
+                            <constraint firstItem="3Kx-sv-baK" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="juP-iZ-amP" secondAttribute="trailing" symbolic="YES" id="yNv-aw-vFy"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="person.crop.circle" catalog="system" id="nvD-fM-FPj">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -326,6 +353,7 @@
                         <outlet property="deleteButton" destination="b3I-g5-iBC" id="OGP-ht-bOw"/>
                         <outlet property="loggedInAs" destination="7yY-oO-GU7" id="KOd-BI-NZN"/>
                         <outlet property="signOutButton" destination="ood-yR-ZiC" id="b57-Uf-EUn"/>
+                        <outlet property="username" destination="juP-iZ-amP" id="23m-wd-rs5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZM-di-DOu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

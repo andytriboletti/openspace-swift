@@ -14,9 +14,46 @@ class AccountViewController: UIViewController {
     var rootViewController:SignInViewController?
 
     @IBOutlet weak var loggedInAs: UILabel!
+    @IBOutlet weak var username: UILabel!
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
 
+    @IBAction func showResetButtonTapped(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to reset your username?", preferredStyle: .alert)
+        
+        // OK Action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Perform action upon OK
+            print("OK tapped")
+            
+            var email = Defaults[.email]
+            OpenspaceAPI.shared.resetUsername(email: email) { error in
+                if let error = error {
+                    print("Error submitting to server: \(error.localizedDescription)")
+                } else {
+                    Defaults[.username] = ""
+                    print("Successfully reset username submitted to server")
+                    //completion(username) // Call completion with entered username
+                }
+            }
+            
+            // Add your logic here
+        }
+        alertController.addAction(okAction)
+        
+        // Cancel Action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Perform action upon Cancel
+            print("Cancel tapped")
+            // Add your logic here, if needed
+        }
+        alertController.addAction(cancelAction)
+        
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
            let confirmationAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
            confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -106,15 +143,20 @@ class AccountViewController: UIViewController {
        }
 
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewDidAppear(_ animated: Bool) {
+        
         if let user = Auth.auth().currentUser {
             if let email = user.email {
                 print("Logged-in user email: \(email)")
                 loggedInAs.text = "Logged In As: \(email)"
+                username.text = "Your Username: \(Defaults[.username])"
             }
         }
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
 
         
         // Do any additional setup after loading the view.

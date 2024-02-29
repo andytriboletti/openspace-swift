@@ -16,9 +16,11 @@ import PopupDialog
 import SCLAlertView
 import DynamicBlurView
 import Defaults
+import SwiftUI
 
 class GameViewController: UIViewController {
     var webSocketManager: WebSocketManager!
+    var errorMessage: String?
 
     var baseNode:SCNNode!
     var tempNode:SCNNode!
@@ -31,11 +33,63 @@ class GameViewController: UIViewController {
     @IBOutlet var headerButton2View: UIView!
     
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
+    var username: String? // Remove @State property wrapper
 
+    
 
     
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
+
+    
+    func presentUsernameEntryView(completion: @escaping (String) -> Void) {
+        let alertController = UIAlertController(title: "Enter Username", message: nil, preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Username"
+        }
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
+            if let username = alertController.textFields?.first?.text {
+                self.submitUsername(username: username, completion: completion)
+            }
+        }
+        alertController.addAction(submitAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func submitUsername(username: String, completion: @escaping (String) -> Void) {
+        if isValidUsername(username) {
+            // Reset error message if it was previously set
+            errorMessage = nil
+            self.username = username
+            print("Username set: \(String(describing: self.username))")
+
+            let email = Defaults[.email]
+
+            OpenspaceAPI.shared.submitToServer(username: username, email: email) { error in
+                if let error = error {
+                    print("Error submitting to server: \(error.localizedDescription)")
+                } else {
+                    Defaults[.username] = username
+                    print("Successfully submitted to server")
+                    completion(username) // Call completion with entered username
+                }
+            }
+        } else {
+            // Username is not valid, display error message
+            errorMessage = "Username must contain only letters and numbers and be between 3 and 20 characters."
+        }
+    }
+
+    func isValidUsername(_ username: String) -> Bool {
+        let usernameRegex = "^[a-zA-Z0-9]{3,20}$"
+        let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", usernameRegex)
+        return usernamePredicate.evaluate(with: username)
+    }
+
+
+    
+
+    
     func moveToPlanet() {
         for node in spaceShip {
             if(node.name == "Spaceship") {
@@ -139,6 +193,16 @@ class GameViewController: UIViewController {
         // Instantiate the WebSocketManager
         webSocketManager = WebSocketManager()
         print("started websocket")
+        
+        var myUsername = Defaults[.username]
+        print("my username:")
+        print(myUsername)
+        if myUsername == "" {
+            presentUsernameEntryView { enteredUsername in
+                // Handle the entered username here
+                self.username = enteredUsername
+            }
+        }
     }
     
     
@@ -157,8 +221,12 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //OpenspaceAPI.shared.initWebsocket()
         
-        scnView.scene?.rootNode.removeFromParentNode()
-
+        //scnView.scene?.rootNode.removeFromParentNode()
+        // Remove any child nodes or objects attached to the root node
+         scnView.scene?.rootNode.enumerateChildNodes { (node, _) in
+             node.removeFromParentNode()
+         }
+        
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         
@@ -246,53 +314,74 @@ class GameViewController: UIViewController {
         //connect to server and get current saved location
         var email = Defaults[.email]
         var authToken = Defaults[.authToken]
-        
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] location, error in
-               if let error = error {
-                   // Handle the error
-                   print("Error: \(error.localizedDescription)")
-               } else if let location = location {
-                   // User deleted successfully
-                   print("Success: \(location)")
-                   if(location == "nearEarth") {
-                       self!.appDelegate.gameState.locationState = LocationState.nearEarth
-                   }
-                   if(location == "nearISS") {
-                       self!.appDelegate.gameState.locationState = LocationState.nearISS
-                   }
-                   if(location == "nearMoon") {
-                       self!.appDelegate.gameState.locationState = LocationState.nearMoon
-                   }
-                   if(location == "nearMars") {
-                       self!.appDelegate.gameState.locationState = LocationState.nearMars
-                   }
-                   if(location == "nearNothing") {
-                       self!.appDelegate.gameState.locationState = LocationState.nearNothing
-                   }
-                   DispatchQueue.main.async {
-                       switch self!.appDelegate.gameState.locationState {
-                       case .nearEarth:
-                           self!.nearEarth()
-                           break
-                       case .nearISS:
-                           self!.nearISS()
-                           break
-                       case .nearMoon:
-                           self!.nearMoon()
-                           break
-                       case .nearMars:
-                           self!.nearMars()
-                           break
-                           
-                       case .nearNothing:
-                           self!.nearNothing()
-                           break
-                       }
-                   }
-               }
-           }
-       
-    
+        if(Defaults[.username] == nil || Defaults[.username] == "") {
+            print("need to ask for username")
+            
+            var myUsername = Defaults[.username]
+            print("my username:")
+            print(myUsername)
+            if myUsername == "" {
+                presentUsernameEntryView { enteredUsername in
+                    // Handle the entered username here
+                    self.username = enteredUsername
+                }
+            }
+            
+            return
+        }
+        else {
+            OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { (location, username, error) in
+                if let error = error {
+                    // Handle the error
+                    print("Error: \(error.localizedDescription)")
+                } else if let location = location {
+                    // User deleted successfully
+                    print("username: ")
+                    print("setting username to defaults")
+                    print(username as Any)
+                    if(username != nil) {
+                        Defaults[.username] = username!
+                    }
+                    print("Success: \(location)")
+                    if(location == "nearEarth") {
+                        self.appDelegate.gameState.locationState = LocationState.nearEarth
+                    }
+                    if(location == "nearISS") {
+                        self.appDelegate.gameState.locationState = LocationState.nearISS
+                    }
+                    if(location == "nearMoon") {
+                        self.appDelegate.gameState.locationState = LocationState.nearMoon
+                    }
+                    if(location == "nearMars") {
+                        self.appDelegate.gameState.locationState = LocationState.nearMars
+                    }
+                    if(location == "nearNothing") {
+                        self.appDelegate.gameState.locationState = LocationState.nearNothing
+                    }
+                    DispatchQueue.main.async {
+                        switch self.appDelegate.gameState.locationState {
+                        case .nearEarth:
+                            self.nearEarth()
+                            break
+                        case .nearISS:
+                            self.nearISS()
+                            break
+                        case .nearMoon:
+                            self.nearMoon()
+                            break
+                        case .nearMars:
+                            self.nearMars()
+                            break
+                            
+                        case .nearNothing:
+                            self.nearNothing()
+                            break
+                        }
+                    }
+                }
+            }
+            
+        }
         
     }
     func drawISS() {
@@ -641,3 +730,71 @@ func showToast(message : String, font: UIFont) {
         toastLabel.removeFromSuperview()
     })
 } }
+
+
+
+struct UsernameEntryView: View {
+    //@Binding var username: String?
+    var completion: (String) -> Void
+    @Binding var username: String
+    @State private var enteredUsername: String = ""
+    @State private var errorMessage: String?
+
+    var body: some View {
+        VStack {
+            TextField("Enter username", text: $enteredUsername)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+
+            if let errorMessage = errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .padding(.top, 5)
+            }
+
+            Button(action: submitUsername) {
+                Text("Submit")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+            }
+            .padding(.top, 10)
+        }
+        .padding()
+    }
+    
+    
+    func submitUsername() {
+        print("Entered username: \(enteredUsername)")
+        if isValidUsername(enteredUsername) {
+            // Reset error message if it was previously set
+            errorMessage = nil
+            username = enteredUsername
+            print("Username set: \(username)")
+
+            let email = Defaults[.email]
+
+            OpenspaceAPI.shared.submitToServer(username: username, email: email) { error in
+                if let error = error {
+                    print("Error submitting to server: \(error.localizedDescription)")
+                } else {
+                    print("Successfully submitted to server")
+                    completion(enteredUsername) // Call completion with entered username
+
+                }
+            }
+        } else {
+            // Username is not valid, display error message
+            errorMessage = "Username must contain only letters and numbers and be between 3 and 20 characters."
+        }
+    }
+
+
+
+    func isValidUsername(_ username: String) -> Bool {
+        let usernameRegex = "^[a-zA-Z0-9]{3,20}$"
+        let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", usernameRegex)
+        return usernamePredicate.evaluate(with: username)
+    }
+}

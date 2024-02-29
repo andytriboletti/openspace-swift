@@ -66,7 +66,7 @@ class OpenspaceAPI {
         
         task.resume()
     }
-
+    
     
     func checkDailyTreasureAvailability(completion: @escaping (String?, Error?) -> Void) {
         let email = Defaults[.email]
@@ -361,9 +361,8 @@ class OpenspaceAPI {
     
     
     // Get location
-    func getLocation(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
-        let getLocationURL = URL(string: "\(serverURL)get-location")!
-        //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-location")!
+    func getLocation(email: String, authToken: String, completion: @escaping (String?, String?, Error?) -> Void) {
+        let getLocationURL = URL(string: "\(serverURL)get-data")!
         var request = URLRequest(url: getLocationURL)
         request.httpMethod = "POST"
         
@@ -376,7 +375,7 @@ class OpenspaceAPI {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
             // Handle the error
-            completion(nil, error)
+            completion(nil, nil, error)
             return
         }
         
@@ -385,26 +384,27 @@ class OpenspaceAPI {
             if let error = error {
                 // Handle the error
                 DispatchQueue.main.async {
-                    completion(nil, error)
+                    completion(nil, nil, error)
                 }
                 return
             }
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+                    completion(nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                 }
                 return
             }
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    if let location = json["last_location"] as? String {
-                        // Location retrieved successfully
+                    if let location = json["last_location"] as? String, let username = json["username"] as? String? {
+                        // Location and username retrieved successfully
                         DispatchQueue.main.async {
-                            completion(location, nil)
+                            completion(location, username, nil)
                         }
-                    } else if let error = json["error"] as? String {
+                    } 
+                    else if let error = json["error"] as? String {
                         if error == "Invalid authToken." {
                             // Retry with a refreshed token
                             refreshAuthToken { (newToken, tokenError) in
@@ -413,19 +413,19 @@ class OpenspaceAPI {
                                     print(newToken)
                                     // Retry the request with the new token
                                     DispatchQueue.main.async {
-                                        self.getLocation(email: email, authToken: newToken, completion: completion)
+                                        self.getLocation(email: email, authToken: authToken, completion: completion)
                                     }
                                 } else {
                                     // Failed to refresh token or get a new token
                                     DispatchQueue.main.async {
-                                        completion(nil, tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+                                        completion(nil, nil, tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                                     }
                                 }
                             }
                         } else {
                             // Other errors from the server
                             DispatchQueue.main.async {
-                                completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
+                                completion(nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
                             }
                         }
                     }
@@ -433,13 +433,14 @@ class OpenspaceAPI {
             } catch {
                 // Handle the error
                 DispatchQueue.main.async {
-                    completion(nil, error)
+                    completion(nil, nil, error)
                 }
             }
         }
         
         task.resume()
     }
+
     
     // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
@@ -531,6 +532,135 @@ class OpenspaceAPI {
         
         task.resume()
     }
+    
+    
+    
+    
+
+    func submitToServer(username: String, email: String, completion: @escaping (Error?) -> Void) {
+        // Validate username
+        guard !username.isEmpty else {
+            let error = NSError(domain: "Validation", code: 0, userInfo: [NSLocalizedDescriptionKey: "Username cannot be empty"])
+            completion(error)
+            return
+        }
+        
+        // Call OpenspaceAPI.shared to submit to server
+        //let urlString = "https://example.com/api/submit"
+        let urlString =  "\(serverURL)save-username" // Constructing the URL
+
+        guard let url = URL(string: urlString) else {
+            let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+            completion(error)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Prepare data to send
+        let parameters: [String: Any] = [
+            "username": username,
+            "email": email,
+            "authToken": Defaults[.authToken]
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            completion(error)
+            return
+        }
+        
+        // Send the request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+                completion(error)
+                return
+            }
+            
+            if (200..<300).contains(httpResponse.statusCode) {
+                // Success
+                completion(nil)
+            } else {
+                // Server error
+                let error = NSError(domain: "Server", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "Server error"])
+                completion(error)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
+    
+
+    func resetUsername(email: String, completion: @escaping (Error?) -> Void) {
+        // Validate username
+//        guard !username.isEmpty else {
+//            let error = NSError(domain: "Validation", code: 0, userInfo: [NSLocalizedDescriptionKey: "Username cannot be empty"])
+//            completion(error)
+//            return
+//        }
+        
+        // Call OpenspaceAPI.shared to submit to server
+        //let urlString = "https://example.com/api/submit"
+        let urlString =  "\(serverURL)reset-username" // Constructing the URL
+
+        guard let url = URL(string: urlString) else {
+            let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+            completion(error)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Prepare data to send
+        let parameters: [String: Any] = [
+            "email": email,
+            "authToken": Defaults[.authToken]
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            completion(error)
+            return
+        }
+        
+        // Send the request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+                completion(error)
+                return
+            }
+            
+            if (200..<300).contains(httpResponse.statusCode) {
+                // Success
+                completion(nil)
+            } else {
+                // Server error
+                let error = NSError(domain: "Server", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "Server error"])
+                completion(error)
+            }
+        }
+        
+        task.resume()
+    }
+    
     
 }
 
