@@ -73,7 +73,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         }
         
         // Set icon
-        cell.cellImage.image = UIImage(named: iconName)
+        //cell.cellImage.image = UIImage(named: iconName)
         
         // Set model name
         cell.cellLabel?.text = modelDictionary[indexPath.row]
