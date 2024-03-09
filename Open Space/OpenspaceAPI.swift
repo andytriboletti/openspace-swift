@@ -20,53 +20,80 @@ class OpenspaceAPI {
     
     // Common server URL
     //let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
-    var pendingModels: [Int: String] = [:]
-    var completedModels: [Int: String] = [:]
-    func fetchData(email: String, authToken: String, completion: @escaping ([Int: String], [Int: String]) -> Void) {
+    var pendingModels: [Int: [String: String]] = [:]
+    var completedModels: [Int: [String: String]] = [:]
+    enum FetchDataError: Error {
+        case invalidResponse
+        case networkError(Error)
+        case jsonParsingError(Error)
+    }
+    struct PromptData: Codable {
+        let textPrompt: String
+        let completed: String
+        let videoLocation: String?
+        let meshLocation: String?
+
+        enum CodingKeys: String, CodingKey {
+            case textPrompt = "text_prompt"
+            case completed
+            case videoLocation = "video_location"
+            case meshLocation = "mesh_location"
+        }
+    }
+
+    struct ResponseData: Codable {
+        let pending: [PromptData]
+        let completed: [PromptData]
+    }
+
+    func fetchData(email: String, authToken: String, completion: @escaping (Result<(ResponseData), FetchDataError>) -> Void) {
         // Prepare JSON data
         let jsonData: [String: Any] = [
             "email": email,
             "authToken": authToken
         ]
-        
+
         // Convert JSON data to Data
         guard let postData = try? JSONSerialization.data(withJSONObject: jsonData) else {
-            print("Error converting JSON data")
+            completion(.failure(.invalidResponse))
             return
         }
-        
+
         // Create URL request
         let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-prompts-and-models")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = postData
-        
+
         // Perform the request
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+            guard error == nil else {
+                completion(.failure(.networkError(error!)))
                 return
             }
-            
-            // Parse the response
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                if let pendingArray = json["pending"] as? [String] {
-                    self.pendingModels = Dictionary(uniqueKeysWithValues: pendingArray.enumerated().map { ($0.offset, $0.element) })
-                }
-                if let completedArray = json["completed"] as? [String] {
-                    self.completedModels = Dictionary(uniqueKeysWithValues: completedArray.enumerated().map { ($0.offset, $0.element) })
-                }
-                
-                // Call completion handler with updated dictionaries
-                completion(self.pendingModels, self.completedModels)
-            } else {
-                print("Error parsing JSON response")
+
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            do {
+                let responseData = try JSONDecoder().decode(ResponseData.self, from: data)
+                completion(.success(responseData))
+            } catch {
+                completion(.failure(.jsonParsingError(error)))
             }
         }
-        
+
         task.resume()
     }
-    
+
+
     
     func checkDailyTreasureAvailability(completion: @escaping (String?, Error?) -> Void) {
         let email = Defaults[.email]
