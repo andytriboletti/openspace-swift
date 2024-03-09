@@ -50,27 +50,27 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "modelIdentifier", for: indexPath) as? ModelCollectionViewCell else {
-            return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionViewCell", for: indexPath) as? VideoCollectionViewCell else {
+            fatalError("Unexpected cell type")
         }
-        
-        var iconName: String
-        
-        if indexPath.section == 0 {
-            let promptData = pendingModels[indexPath.row]
-            cell.cellLabel?.text = promptData.textPrompt
-            iconName = "processing_model_icon.jpg"
+
+        if indexPath.section == 1 {
+            let videoURL = URL(string: completedModels[indexPath.row].videoLocation!)
+            let label = completedModels[indexPath.row].textPrompt
+            print(videoURL!)
+            cell.configure(withURL: videoURL!, labelText: label) // Customize the label text as needed
+        } else if indexPath.section == 0 {
+            let label = "Pending: \(pendingModels[indexPath.row].textPrompt)"
+            cell.configureForTextOnly(labelText: label)
         } else {
-            let promptData = completedModels[indexPath.row]
-            cell.cellLabel?.text = promptData.textPrompt
-            iconName = "completed_model_icon.jpg"
+            // Handle unexpected section or provide a default cell configuration
+            // This is a generic fallback. Adjust according to your needs.
+            cell.configureForTextOnly(labelText: "Unknown Item")
         }
-        
-        // Set the cell's icon image if needed
-        // cell.iconImageView?.image = UIImage(named: iconName)
-        
+
         return cell
     }
+
 
     func convertToDictionaryWithIntKeys(array: [[String: String]]) -> [Int: [String: String]] {
         var resultDictionary: [Int: [String: String]] = [:]

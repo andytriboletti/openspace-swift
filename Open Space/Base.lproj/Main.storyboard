@@ -1083,39 +1083,13 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="modelIdentifier" id="P38-dX-YCx" customClass="ModelCollectionViewCell" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="77" y="0.0" width="240" height="148.5"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCollectionViewCell" id="P38-dX-YCx" customClass="VideoCollectionViewCell" customModule="Open_Space" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eat-dL-SR3">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="148.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Rn-Jd-OlD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="148.5"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TtF-Xh-6od">
-                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0O-ke-Xl0">
-                                                            <rect key="frame" x="99.5" y="128" width="41.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="8Rn-Jd-OlD" secondAttribute="bottom" id="156-Wv-UtX"/>
-                                                <constraint firstItem="8Rn-Jd-OlD" firstAttribute="top" secondItem="eat-dL-SR3" secondAttribute="top" id="GQu-Ni-YwT"/>
-                                                <constraint firstAttribute="trailing" secondItem="8Rn-Jd-OlD" secondAttribute="trailing" id="OPP-bV-LCn"/>
-                                                <constraint firstItem="8Rn-Jd-OlD" firstAttribute="leading" secondItem="eat-dL-SR3" secondAttribute="leading" id="yKI-B9-sRI"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="cellImage" destination="TtF-Xh-6od" id="Hxq-wi-Qu5"/>
-                                            <outlet property="cellLabel" destination="z0O-ke-Xl0" id="fzY-QU-vFH"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
