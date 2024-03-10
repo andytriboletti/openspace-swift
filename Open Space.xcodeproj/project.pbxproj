@@ -113,9 +113,7 @@
 		7221818F2B8FD80600FB572F /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818E2B8FD80600FB572F /* WebSocketManager.swift */; };
 		722181912B8FF1C800FB572F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181902B8FF1C800FB572F /* ChatView.swift */; };
 		722181932B8FF26200FB572F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181922B8FF26200FB572F /* ChatViewController.swift */; };
-		7221819C2B953CC800FB572F /* model.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 722181992B953CC700FB572F /* model.mtl */; };
 		7221819D2B953CC800FB572F /* model.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7221819A2B953CC800FB572F /* model.obj */; };
-		7221819E2B953CC800FB572F /* texture_kd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7221819B2B953CC800FB572F /* texture_kd.jpg */; };
 		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
 		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
@@ -142,6 +140,7 @@
 		72E8C50526F2586000D5FDEB /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
 		72FC18B92B9CEF94007AF494 /* VIdeoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */; };
 		72FC18BB2B9CF08F007AF494 /* VideoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */; };
+		72FC18BD2B9D043B007AF494 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BC2B9D043B007AF494 /* ModelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,9 +265,7 @@
 		7221818E2B8FD80600FB572F /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		722181902B8FF1C800FB572F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		722181922B8FF26200FB572F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		722181992B953CC700FB572F /* model.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.mtl; sourceTree = "<group>"; };
 		7221819A2B953CC800FB572F /* model.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.obj; sourceTree = "<group>"; };
-		7221819B2B953CC800FB572F /* texture_kd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture_kd.jpg; sourceTree = "<group>"; };
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +293,7 @@
 		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
 		72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCacheManager.swift; sourceTree = "<group>"; };
+		72FC18BC2B9D043B007AF494 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -631,6 +629,7 @@
 				72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */,
 				722181902B8FF1C800FB572F /* ChatView.swift */,
 				722181922B8FF26200FB572F /* ChatViewController.swift */,
+				72FC18BC2B9D043B007AF494 /* ModelViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -699,9 +698,7 @@
 		722181982B953CB500FB572F /* gorilla */ = {
 			isa = PBXGroup;
 			children = (
-				722181992B953CC700FB572F /* model.mtl */,
 				7221819A2B953CC800FB572F /* model.obj */,
-				7221819B2B953CC800FB572F /* texture_kd.jpg */,
 			);
 			path = gorilla;
 			sourceTree = "<group>";
@@ -857,7 +854,6 @@
 				72C513222A4F710300AAD941 /* geodesic_sphere2.dae in Resources */,
 				6F636B8D24015A760070C292 /* Sun_1_1391000.usdz in Resources */,
 				6F43938E23FF56830007614D /* instantmeshstation2.scn in Resources */,
-				7221819C2B953CC800FB572F /* model.mtl in Resources */,
 				6F636B9124015CA20070C292 /* 2k_sun.jpg in Resources */,
 				6F6D845B23FF8B8E00328057 /* PIA01120orig.jpg in Resources */,
 				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
@@ -908,7 +904,6 @@
 				6FD92054259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg in Resources */,
 				6F93856624261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg in Resources */,
 				729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */,
-				7221819E2B953CC800FB572F /* texture_kd.jpg in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				72C513202A4F705100AAD941 /* geodesic_sphere.dae in Resources */,
 				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,
@@ -1043,6 +1038,7 @@
 				7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
+				72FC18BD2B9D043B007AF494 /* ModelViewController.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,
 				72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */,
 				6F96DE6623FDF93F00BAE0CF /* InventoryViewController.swift in Sources */,

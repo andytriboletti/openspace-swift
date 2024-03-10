@@ -8,6 +8,35 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let modelVC = ModelViewController()
+        // Assuming you have a way to get the file names for the obj, mtl, and jpg files for the item at the indexPath
+        modelVC.objFileName = "yourModelFileName"
+        modelVC.mtlFileName = "yourMtlFileName"
+        modelVC.textureFileName = "yourTextureFileName"
+        //self.navigationController?.pushViewController(modelVC, animated: true)
+        goToModel()
+    }
+
+    func goToModel() {
+        // Get the frame of the existing view controller's view
+            let frame = self.view.frame
+        
+        // User is not signed in
+        var rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController
+        
+        // Set the frame of the new view controller's view to match the existing view controller's frame
+        rootViewController!.view.frame = frame
+
+        // Assuming you have a reference to your app's UIWindow object
+        guard let window = UIApplication.shared.windows.first else {
+            return
+        }
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth: CGFloat = 200
         return CGSize(width: cellWidth, height: cellWidth)

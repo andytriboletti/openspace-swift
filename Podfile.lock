@@ -904,7 +904,10 @@ PODS:
   - SDWebImage (5.18.2):
     - SDWebImage/Core (= 5.18.2)
   - SDWebImage/Core (5.18.2)
+  - SSZipArchive (2.4.3)
   - Starscream (4.0.6)
+  - Zip (2.1.2)
+  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -917,7 +920,10 @@ DEPENDENCIES:
   - FirebaseUI/OAuth
   - PopupDialog
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
+  - SSZipArchive
   - Starscream
+  - Zip (~> 2.1)
+  - ZipArchive
 
 SPEC REPOS:
   trunk:
@@ -967,7 +973,10 @@ SPEC REPOS:
     - PromisesObjC
     - RecaptchaInterop
     - SDWebImage
+    - SSZipArchive
     - Starscream
+    - Zip
+    - ZipArchive
 
 EXTERNAL SOURCES:
   SCLAlertView:
@@ -1026,8 +1035,11 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
   SDWebImage: c0de394d7cf7f9838aed1fd6bb6037654a4572e4
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Starscream: fb2c4510bebf908c62bd383bcf05e673720e91fd
+  Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 5021ed3a0d1a65b7df795728737ceb917c003bdf
+PODFILE CHECKSUM: 8c764794efc894c07f24c8749c0c3272568ad271
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.15.2

@@ -24,6 +24,9 @@ target 'Open Space' do
   pod 'FirebaseUI'
   pod 'FirebaseAuthUI'
   pod 'Starscream'
+  pod 'Zip', '~> 2.1'
+  pod 'ZipArchive'
+  pod 'SSZipArchive'
   # https://stackoverflow.com/a/75729977
   post_install do |installer|
       installer.generated_projects.each do |project|

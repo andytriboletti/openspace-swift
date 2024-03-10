@@ -1217,6 +1217,58 @@
             </objects>
             <point key="canvasLocation" x="3922" y="1827"/>
         </scene>
+        <!--Model View Controller-->
+        <scene sceneID="CdG-FO-2kh">
+            <objects>
+                <viewController storyboardIdentifier="ModelViewController" id="0oZ-qm-bPz" customClass="ModelViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QxO-Yt-o1Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-P0-nKm">
+                                <rect key="frame" x="181" y="773" width="52" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Exit"/>
+                                <connections>
+                                    <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="WHQ-Wr-Nav"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-Tb-xpX" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
+                                <rect key="frame" x="29" y="48" width="356" height="80"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="TaL-YR-DIw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqy-9R-Tlp">
+                                <rect key="frame" x="0.0" y="136" width="414" height="598"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </sceneKitView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f95-lU-0ED"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f95-lU-0ED" firstAttribute="bottom" secondItem="uEN-P0-nKm" secondAttribute="bottom" constant="54" id="4Bs-vP-AsD"/>
+                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="leading" secondItem="f95-lU-0ED" secondAttribute="leading" constant="29" id="Hi1-xD-6TI"/>
+                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="top" secondItem="f95-lU-0ED" secondAttribute="top" id="IUG-cg-mE4"/>
+                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="centerX" secondItem="uEN-P0-nKm" secondAttribute="centerX" id="rY3-qh-aYo"/>
+                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="centerX" secondItem="QxO-Yt-o1Z" secondAttribute="centerX" id="teS-5K-JTg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="headerLabel" destination="MeW-Tb-xpX" id="gPH-j4-jSY"/>
+                        <outlet property="scnView" destination="dqy-9R-Tlp" id="ezb-tT-w0n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RlT-4H-l2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5028.985507246377" y="2459.5982142857142"/>
+        </scene>
         <!--Moon Sphere Base View Controller-->
         <scene sceneID="R5i-ZO-hA3">
             <objects>
@@ -1877,6 +1929,9 @@
         <designable name="Lqc-kC-xpI">
             <size key="intrinsicContentSize" width="367.5" height="29"/>
         </designable>
+        <designable name="MeW-Tb-xpX">
+            <size key="intrinsicContentSize" width="126" height="31.5"/>
+        </designable>
         <designable name="SaH-uf-KBc">
             <size key="intrinsicContentSize" width="114.5" height="29"/>
         </designable>
@@ -1885,12 +1940,13 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="yKX-Ie-zFg"/>
+        <segue reference="awi-wi-S5y"/>
         <segue reference="67b-Hk-5Ts"/>
         <segue reference="Xc6-Ax-Zhf"/>
         <segue reference="aTG-Fl-mX6"/>
+        <segue reference="WHQ-Wr-Nav"/>
         <segue reference="IdK-sq-0gW"/>
-        <segue reference="jz9-hn-pTh"/>
+        <segue reference="rQs-aG-VQ2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
@@ -1907,7 +1963,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
