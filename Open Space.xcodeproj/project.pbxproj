@@ -113,7 +113,7 @@
 		7221818F2B8FD80600FB572F /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818E2B8FD80600FB572F /* WebSocketManager.swift */; };
 		722181912B8FF1C800FB572F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181902B8FF1C800FB572F /* ChatView.swift */; };
 		722181932B8FF26200FB572F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181922B8FF26200FB572F /* ChatViewController.swift */; };
-		7221819D2B953CC800FB572F /* model.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7221819A2B953CC800FB572F /* model.obj */; };
+		7221819D2B953CC800FB572F /* model2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7221819A2B953CC800FB572F /* model2.obj */; };
 		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
 		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
@@ -265,7 +265,7 @@
 		7221818E2B8FD80600FB572F /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		722181902B8FF1C800FB572F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		722181922B8FF26200FB572F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		7221819A2B953CC800FB572F /* model.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.obj; sourceTree = "<group>"; };
+		7221819A2B953CC800FB572F /* model2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model2.obj; sourceTree = "<group>"; };
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
@@ -698,7 +698,7 @@
 		722181982B953CB500FB572F /* gorilla */ = {
 			isa = PBXGroup;
 			children = (
-				7221819A2B953CC800FB572F /* model.obj */,
+				7221819A2B953CC800FB572F /* model2.obj */,
 			);
 			path = gorilla;
 			sourceTree = "<group>";
@@ -908,7 +908,7 @@
 				72C513202A4F705100AAD941 /* geodesic_sphere.dae in Resources */,
 				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,
 				6F303531240FE382006C4684 /* moon.scn in Resources */,
-				7221819D2B953CC800FB572F /* model.obj in Resources */,
+				7221819D2B953CC800FB572F /* model2.obj in Resources */,
 				6F677BA224076EE6004A1C8B /* earth.dae in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,
 				6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */,

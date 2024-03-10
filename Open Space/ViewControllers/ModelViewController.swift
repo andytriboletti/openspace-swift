@@ -46,7 +46,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                         // Display the first .obj file
                         if let objFilePath = self.findFirstOBJFile(in: destinationUrl) {
                             DispatchQueue.main.async {
-                                self.displayOBJFile3(at: objFilePath)
+                                self.displayOBJFile4(at: objFilePath)
                             }
                         } else {
                             print("No .obj file found in the directory.")
@@ -108,7 +108,25 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         
         downloadAndUnzipFile(from: zipFileURL)
     }
-    
+    func displayOBJFile4(at objFilePath: URL) {
+        do {
+               // Directly create an SCNScene from the .obj file URL
+               let scene = try SCNScene(url: objFilePath, options: nil)
+               
+               // Set the scene to the scnView directly without casting
+               scnView.scene = scene
+               
+               // Add some basic lighting to the scene
+               scnView.autoenablesDefaultLighting = true
+               
+               // Allow the user to control the camera
+               scnView.allowsCameraControl = true
+               
+           } catch {
+               print("Failed to load the obj file: \(error)")
+           }
+    }
+
     
     func displayOBJFile3(at url: URL) {
         let objFilePath = url.appendingPathComponent("model.obj")
@@ -121,11 +139,21 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         
         // Load the scene from the source
         do {
-            let scene = try sceneSource.scene(options: nil)
+            var scene = try sceneSource.scene(options: nil)
             let shipScene = scene
             // Assuming baseNode is previously defined and accessible in this context
             let shipSceneChildNodes = shipScene.rootNode.childNodes
             for childNode in shipSceneChildNodes {
+                // Change material color to red
+                if let geometry = childNode.geometry {
+                    for material in geometry.materials {
+                        material.diffuse.contents = UIColor.red
+                        material.emission.contents = UIColor.red // Makes the color appear more vivid
+
+                    }
+                }
+
+                
                 // Add child nodes to the base node
                 baseNode.addChildNode(childNode)
             }
@@ -136,9 +164,47 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
             scnView.backgroundColor = UIColor.gray // Example background color
             scnView.scene?.rootNode.addChildNode(baseNode)
             
+            // Add ambient light to the scene
+            let ambientLight = SCNLight()
+            ambientLight.type = .ambient
+            ambientLight.color = UIColor(white: 0.3, alpha: 1.0) // Adjust brightness as needed
+            let ambientLightNode = SCNNode()
+            ambientLightNode.light = ambientLight
+            scnView.scene?.rootNode.addChildNode(ambientLightNode)
+
+            // Create an SCNScene
+            scene = SCNScene()
+                
+            // Attempt to load the model
+            let objSceneSource = SCNSceneSource(url: objFilePath, options: nil)
+                
+            // Load all scene entries as nodes
+            if let objNode = try objSceneSource?.scene(options: nil).rootNode.childNodes.first {
+                // Add the loaded node to the scene
+                scene.rootNode.addChildNode(objNode)
+            } else {
+                print("Could not load node from obj file.")
+                return
+            }
             
             
-            addObject2(name: "model.obj", position: SCNVector3(10, 10, 10), scale: SCNVector3(10, 10, 10))
+            // Assuming you have an SCNView in your storyboard or created programmatically
+            guard let scnView = self.view as? SCNView else {
+                print("SCNView not set up correctly in the view hierarchy.")
+                return
+            }
+            
+            // Set the scene to the view
+            scnView.scene = scene
+            
+            // Add some basic lighting to the scene
+            scnView.autoenablesDefaultLighting = true
+            
+            // Allow the user to control the camera
+            scnView.allowsCameraControl = true
+            
+            
+            //addObject2(name: "model.obj", position: SCNVector3(10, 10, 10), scale: SCNVector3(10, 10, 10))
             
         } catch {
             print("Error loading scene from \(objFilePath): \(error.localizedDescription)")
