@@ -9,13 +9,18 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //todo only allow clicks from completed
+
         let modelVC = ModelViewController()
         // Assuming you have a way to get the file names for the obj, mtl, and jpg files for the item at the indexPath
         modelVC.objFileName = "yourModelFileName"
         modelVC.mtlFileName = "yourMtlFileName"
         modelVC.textureFileName = "yourTextureFileName"
         //self.navigationController?.pushViewController(modelVC, animated: true)
+        var meshZipURL = completedModels[indexPath.row].meshLocation
+        Defaults[.selectedMeshLocation] = meshZipURL!
         goToModel()
+        
     }
 
     func goToModel() {

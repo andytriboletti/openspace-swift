@@ -12,6 +12,8 @@ import Zip
 import MobileCoreServices
 import UniformTypeIdentifiers
 import SSZipArchive
+import Defaults
+
 class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDelegate {
     var baseNode: SCNNode!
     @IBOutlet var scnView: SCNView!
@@ -27,7 +29,8 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
             if let tempLocalUrl = tempLocalUrl, error == nil {
                 // Temporary location where the zip file is downloaded
                 if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                    let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/gorilla")
+                   // let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/gorilla")
+                    let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/")
                     
                     // Ensure that the directory is created before unzipping
                     do {
@@ -103,8 +106,10 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         super.viewDidLoad()
         baseNode = SCNNode()
         
-        
-        let zipFileURL = URL(string: "https://server.openspace.greenrobot.com/gorilla.zip")!
+        var zipURL = Defaults[.selectedMeshLocation]
+        print(zipURL)
+        //let zipFileURL = URL(string: "https://server.openspace.greenrobot.com/gorilla.zip")!
+        let zipFileURL = URL(string: zipURL)!
         
         downloadAndUnzipFile(from: zipFileURL)
     }

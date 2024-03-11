@@ -16,5 +16,6 @@ extension Defaults.Keys {
     static let email = Key<String>("email", default: "")
     static let username = Key<String>("username", default: "")
     static let authToken = Key<String>("authToken", default: "")
+    static let selectedMeshLocation = Key<String>("selectedMeshLocation", default: "")
 
 }
