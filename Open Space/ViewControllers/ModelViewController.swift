@@ -110,9 +110,18 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
     }
     func displayOBJFile4(at objFilePath: URL) {
         do {
+            // Conversion from degrees to radians
+            let ninetyDegreesInRadians = Float.pi / 2 // 90 degrees
+            let oneEightyDegreesInRadians = Float.pi  // 180 degrees
+
+            
                // Directly create an SCNScene from the .obj file URL
                let scene = try SCNScene(url: objFilePath, options: nil)
-               
+                
+                // First, try rotating around the y-axis to face towards you
+            scene.rootNode.eulerAngles.y = oneEightyDegreesInRadians + ninetyDegreesInRadians
+            scene.rootNode.eulerAngles.z = ninetyDegreesInRadians+oneEightyDegreesInRadians
+
                // Set the scene to the scnView directly without casting
                scnView.scene = scene
                
