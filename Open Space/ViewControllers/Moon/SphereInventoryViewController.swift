@@ -76,7 +76,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 1 {
             return pendingModels.count
         } else {
             return completedModels.count
@@ -88,12 +88,12 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             fatalError("Unexpected cell type")
         }
 
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             let videoURL = URL(string: completedModels[indexPath.row].videoLocation!)
             let label = completedModels[indexPath.row].textPrompt
             print(videoURL!)
             cell.configure(withURL: videoURL!, labelText: label) // Customize the label text as needed
-        } else if indexPath.section == 0 {
+        } else if indexPath.section == 1 {
             let label = "Pending: \(pendingModels[indexPath.row].textPrompt)"
             cell.configureForTextOnly(labelText: label)
         } else {
@@ -135,7 +135,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
                 fatalError("Failed to dequeue a reusable supplementary view of kind: \(kind) with identifier: HeaderView")
             }
 
-            if indexPath.section == 0 {
+            if indexPath.section == 1 {
                 headerView.titleLabel.text = "Pending"
             } else {
                 headerView.titleLabel.text = "Completed"

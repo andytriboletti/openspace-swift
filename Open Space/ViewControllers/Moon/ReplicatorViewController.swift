@@ -1,4 +1,15 @@
 //
+//  ReplicatorViewController.swift
+//  Open Space
+//
+//  Created by Andrew Triboletti on 3/11/24.
+//  Copyright © 2024 GreenRobot LLC. All rights reserved.
+//
+
+import Foundation
+
+
+//
 //  YourSphereViewController.swift
 //  Open Space
 //
@@ -9,15 +20,47 @@
 import UIKit
 import Defaults
 
-class YourSphereViewController: UIViewController {
+class ReplicatorViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let textView = UITextView()
+        let containerView = UIView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(textView)
+
+        textView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        textView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        textView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        textView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+
+        textView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        let stackView = UIStackView(arrangedSubviews: [containerView])
+        
         // Do any additional setup after loading the view.
     }
+    func showAlert() {
+        let alert = UIAlertController(title: "Invalid Input", message: "You must type in more than 3 characters.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    @IBAction func createNewItem() {
+        print("create new item")
+        print(inputText.text!)
+        //let extractedText = "Text extracted from image prompt"
+        guard let text = inputText.text else { return }
 
+           if text.count < 3 {
+               // Text is less than 3 characters long, show an alert
+               showAlert()
+           }
+        else {
+            sendText(text: inputText.text)
+        }
+    }
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
         
