@@ -41,26 +41,31 @@ class ReplicatorViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    func showAlert() {
-        let alert = UIAlertController(title: "Invalid Input", message: "You must type in more than 3 characters.", preferredStyle: .alert)
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Invalid Input", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func createNewItem() {
         print("create new item")
-        print(inputText.text!)
-        //let extractedText = "Text extracted from image prompt"
         guard let text = inputText.text else { return }
 
-           if text.count < 3 {
-               // Text is less than 3 characters long, show an alert
-               showAlert()
-           }
-        else {
-            sendText(text: inputText.text)
+        let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. ")
+        if text.rangeOfCharacter(from: allowedCharacterSet.inverted) != nil || text.contains(":") {
+            // Text contains characters other than letters, numbers, comma, period, space, or contains ":"
+            showAlert(message: "Only letters, numbers, commas, periods, and spaces are accepted.")
+        } else if text.count < 3 {
+            // Text is less than 3 characters long, show an alert
+            showAlert(message: "Text must be at least 3 characters long.")
+        } else {
+            // Text is valid, proceed
+            sendText(text: text)
         }
     }
+
+
+    
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
         
