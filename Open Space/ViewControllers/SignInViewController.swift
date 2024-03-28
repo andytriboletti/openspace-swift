@@ -11,6 +11,8 @@ import FirebaseAuthUI
 import FirebaseCore
 import FirebaseOAuthUI
 import Defaults
+import GoogleSignIn
+import FirebaseGoogleAuthUI
 
 class SignInViewController: UIViewController, FUIAuthDelegate {
     public var authUI: FUIAuth = FUIAuth.defaultAuthUI()!
@@ -31,9 +33,15 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
             authUI!.delegate = self
             // Do any additional setup after loading the view.
             
+          
+            
+            let googleAuthProvider = FUIGoogleAuth(authUI: authUI!)
             let providers: [FUIAuthProvider] = [
-                FUIOAuth.appleAuthProvider(),
-            ]
+                            googleAuthProvider,
+                            FUIOAuth.appleAuthProvider(),
+                        ]
+                    
+            
             authUI!.providers = providers
             
             //self.authUI.providers = providers

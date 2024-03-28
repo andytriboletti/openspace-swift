@@ -92,6 +92,9 @@ class AccountViewController: UIViewController {
         do {
             try Auth.auth().signOut()
             
+            // Clear all stored values
+            Defaults.removeAll()
+            
             // Get the frame of the existing view controller's view
                 let frame = self.view.frame
             
@@ -131,6 +134,9 @@ class AccountViewController: UIViewController {
                } else if let message = message {
                    // User deleted successfully
                    print("Success: \(message)")
+                   
+                   // Clear all stored values
+                   Defaults.removeAll()
                    
                    DispatchQueue.main.async {
                        // Your UI update code or UI-related task

@@ -191,18 +191,22 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Instantiate the WebSocketManager
-        webSocketManager = WebSocketManager()
-        print("started websocket")
+        //webSocketManager = WebSocketManager()
+        //print("started websocket")
         
         var myUsername = Defaults[.username]
         print("my username:")
         print(myUsername)
-        if myUsername == "" {
-            presentUsernameEntryView { enteredUsername in
-                // Handle the entered username here
-                self.username = enteredUsername
-            }
-        }
+//        if myUsername == "" {
+//            //todonew first connect to server to see if you have a username?
+//            //if it's empty, display dialog
+//            
+//            
+//            presentUsernameEntryView { enteredUsername in
+//                // Handle the entered username here
+//                self.username = enteredUsername
+//            }
+//        }
     }
     
     
@@ -314,75 +318,84 @@ class GameViewController: UIViewController {
         //connect to server and get current saved location
         var email = Defaults[.email]
         var authToken = Defaults[.authToken]
-        if(Defaults[.username] == nil || Defaults[.username] == "") {
-            print("need to ask for username")
-            
-            var myUsername = Defaults[.username]
+        getLocation()
+        
+    }
+    func askForUserName() {
+        DispatchQueue.main.async {
+            let myUsername = Defaults[.username]
             print("my username:")
             print(myUsername)
             if myUsername == "" {
-                presentUsernameEntryView { enteredUsername in
+                self.presentUsernameEntryView { enteredUsername in
                     // Handle the entered username here
                     self.username = enteredUsername
                 }
             }
-            
-            return
         }
-        else {
-            OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { (location, username, error) in
-                if let error = error {
-                    // Handle the error
-                    print("Error: \(error.localizedDescription)")
-                } else if let location = location {
-                    // User deleted successfully
-                    print("username: ")
-                    print("setting username to defaults")
-                    print(username as Any)
-                    if(username != nil) {
-                        Defaults[.username] = username!
-                    }
-                    print("Success: \(location)")
-                    if(location == "nearEarth") {
-                        self.appDelegate.gameState.locationState = LocationState.nearEarth
-                    }
-                    if(location == "nearISS") {
-                        self.appDelegate.gameState.locationState = LocationState.nearISS
-                    }
-                    if(location == "nearMoon") {
-                        self.appDelegate.gameState.locationState = LocationState.nearMoon
-                    }
-                    if(location == "nearMars") {
-                        self.appDelegate.gameState.locationState = LocationState.nearMars
-                    }
-                    if(location == "nearNothing") {
-                        self.appDelegate.gameState.locationState = LocationState.nearNothing
-                    }
-                    DispatchQueue.main.async {
-                        switch self.appDelegate.gameState.locationState {
-                        case .nearEarth:
-                            self.nearEarth()
-                            break
-                        case .nearISS:
-                            self.nearISS()
-                            break
-                        case .nearMoon:
-                            self.nearMoon()
-                            break
-                        case .nearMars:
-                            self.nearMars()
-                            break
-                            
-                        case .nearNothing:
-                            self.nearNothing()
-                            break
-                        }
-                    }
+    }
+    func getLocation() {
+        var email = Defaults[.email]
+        var authToken = Defaults[.authToken]
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, username, error) in
+            if let error = error {
+                // Handle the error
+                print("Error: \(error.localizedDescription)")
+            } else if let location = location {
+                
+                
+                // User deleted successfully
+                print("username: ")
+                print("setting username to defaults")
+                print(username as Any)
+                if(username == nil || username == "") {
+                    askForUserName()
                 }
+                else {
+                    Defaults[.username] = username!
+                }
+                print("Success: \(location)")
+                if(location == "nearEarth") {
+                    self.appDelegate.gameState.locationState = LocationState.nearEarth
+                }
+                if(location == "nearISS") {
+                    self.appDelegate.gameState.locationState = LocationState.nearISS
+                }
+                if(location == "nearMoon") {
+                    self.appDelegate.gameState.locationState = LocationState.nearMoon
+                }
+                if(location == "nearMars") {
+                    self.appDelegate.gameState.locationState = LocationState.nearMars
+                }
+                if(location == "nearNothing") {
+                    self.appDelegate.gameState.locationState = LocationState.nearNothing
+                }
+                self.setNearFromLocationState()
             }
-            
         }
-        
+     
+    }
+    func setNearFromLocationState() {
+        DispatchQueue.main.async {
+            switch self.appDelegate.gameState.locationState {
+            case .nearEarth:
+                self.nearEarth()
+                break
+            case .nearISS:
+                self.nearISS()
+                break
+            case .nearMoon:
+                self.nearMoon()
+                break
+            case .nearMars:
+                self.nearMars()
+                break
+                
+            case .nearNothing:
+                self.nearNothing()
+                break
+            }
+        }
     }
     func drawISS() {
         addTempObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)

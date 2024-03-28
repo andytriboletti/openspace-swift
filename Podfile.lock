@@ -917,7 +917,9 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseAuthUI
   - FirebaseUI
+  - FirebaseUI/Google
   - FirebaseUI/OAuth
+  - GoogleSignIn
   - PopupDialog
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
   - SSZipArchive
@@ -1040,6 +1042,6 @@ SPEC CHECKSUMS:
   Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 8c764794efc894c07f24c8749c0c3272568ad271
+PODFILE CHECKSUM: f981d09841b68b0cc4eea836ba52c6f625703f54
 
 COCOAPODS: 1.15.2

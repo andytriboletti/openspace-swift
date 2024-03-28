@@ -12,7 +12,7 @@ import SpriteKit
 
 import DynamicBlurView
 import SceneKit
-
+import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,7 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //var containerScheme:MDCContainerScheme!
     var window: UIWindow?
 
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        // other URL handling goes here.
+        return GIDSignIn.sharedInstance.handle(url)
 
+        //return false
+        
+    }
+
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.gameState = GameState()
         

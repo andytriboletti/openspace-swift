@@ -118,9 +118,9 @@
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
 		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
 		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
-		729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 729B3C532A2E33C80053D567 /* GoogleService-Info.plist */; };
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		72A3C04E2A7DAF5C00C2A01E /* AuctionHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */; };
+		72B0B3A22BB4E79600BACE67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */; };
 		72B693B32A61BC4D005A0863 /* OpenspaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */; };
 		72BEF0BD2A313ED400F86AD9 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */; };
 		72C5131E2A4F67FF00AAD941 /* geoodesic_dome.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */; };
@@ -271,9 +271,9 @@
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		729B3C532A2E33C80053D567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionHouseViewController.swift; sourceTree = "<group>"; };
+		72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenspaceAPI.swift; sourceTree = "<group>"; };
 		72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = geoodesic_dome.dae; sourceTree = "<group>"; };
@@ -521,6 +521,7 @@
 			isa = PBXGroup;
 			children = (
 				6F82074424815CB5008C52D4 /* Open Space.entitlements */,
+				72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */,
 				6FA3146A2401E56D009D77AB /* State */,
 				6F86CC6B24003A94005AECC9 /* Cells */,
 				6FDB587D23FE5EA9004263CB /* ViewControllers */,
@@ -531,7 +532,6 @@
 				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
 				6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */,
 				6FB0EF0623FDA1A900EA28D7 /* Info.plist */,
-				729B3C532A2E33C80053D567 /* GoogleService-Info.plist */,
 				6F6D845C23FF8C8800328057 /* Utils.swift */,
 				6FA5934824001B42007C16E3 /* PaddingLabel.swift */,
 				6FD92044259B71E9008F6CA3 /* quasar.png */,
@@ -897,6 +897,7 @@
 				6FED3589268E762F002F1B12 /* moon.png in Resources */,
 				6FD92042259B71B5008F6CA3 /* quasar.png in Resources */,
 				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
+				72B0B3A22BB4E79600BACE67 /* GoogleService-Info.plist in Resources */,
 				6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				6FA5934724001043007C16E3 /* artophy.scn in Resources */,
@@ -906,7 +907,6 @@
 				6FDB588323FEB952004263CB /* mars.dae in Resources */,
 				6FD92054259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg in Resources */,
 				6F93856624261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg in Resources */,
-				729B3C542A2E33C80053D567 /* GoogleService-Info.plist in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				72C513202A4F705100AAD941 /* geodesic_sphere.dae in Resources */,
 				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,

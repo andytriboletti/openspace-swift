@@ -20,9 +20,11 @@ target 'Open Space' do
   # Add the pods for any other Firebase products you want to use in your app
   # For example, to use Firebase Authentication and Cloud Firestore
   pod 'FirebaseAuth'
+  pod 'FirebaseUI/Google'
   pod 'FirebaseUI/OAuth'
   pod 'FirebaseUI'
   pod 'FirebaseAuthUI'
+  pod 'GoogleSignIn'
   pod 'Starscream'
   pod 'Zip', '~> 2.1'
   pod 'ZipArchive'

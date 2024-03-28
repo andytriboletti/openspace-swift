@@ -425,12 +425,16 @@ class OpenspaceAPI {
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    if let location = json["last_location"] as? String, let username = json["username"] as? String? {
-                        // Location and username retrieved successfully
+                    if let location = json["last_location"] as? String {
+                        // Location retrieved successfully
+                        let username = json["username"] as? String
+                        print(location)
+                        print(username)
                         DispatchQueue.main.async {
                             completion(location, username, nil)
                         }
-                    } 
+                    }
+
                     else if let error = json["error"] as? String {
                         if error == "Invalid authToken." {
                             // Retry with a refreshed token
