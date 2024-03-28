@@ -319,7 +319,6 @@ class GameViewController: UIViewController {
         var email = Defaults[.email]
         var authToken = Defaults[.authToken]
         getLocation()
-        
     }
     func askForUserName() {
         DispatchQueue.main.async {

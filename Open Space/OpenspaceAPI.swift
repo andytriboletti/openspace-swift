@@ -13,7 +13,7 @@ import Defaults
 
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
-    let serverURL = "https://server.openspace.greenrobot.com/wp-json/openspace/v1/"
+    let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
     
     //static let shared = OpenspaceAPI()
     var webSocketTask: URLSessionWebSocketTask?
@@ -60,7 +60,7 @@ class OpenspaceAPI {
         }
 
         // Create URL request
-        let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/get-prompts-and-models")!
+        let url = URL(string: "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/get-prompts-and-models")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = postData
@@ -236,7 +236,6 @@ class OpenspaceAPI {
     func
     loginWithEmail(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
         let loginURL = URL(string: "\(serverURL)login")!
-        //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/login")!
         var request = URLRequest(url: loginURL)
         request.httpMethod = "POST"
         
@@ -314,7 +313,6 @@ class OpenspaceAPI {
     
     func saveLocation(email: String, authToken: String, location: String, completion: @escaping (String?, Error?) -> Void) {
         let saveLocationURL = URL(string: "\(serverURL)save-location")!
-        //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/save-location")!
         var request = URLRequest(url: saveLocationURL)
         request.httpMethod = "POST"
         
@@ -476,7 +474,6 @@ class OpenspaceAPI {
     // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
         let deleteUserURL = URL(string: "\(serverURL)delete-user")!
-        //let url = URL(string: "https://server.openspace.greenrobot.com/wp-json/openspace/v1/delete-user")!
         var request = URLRequest(url: deleteUserURL)
         request.httpMethod = "POST"
         let parameters: [String: Any] = [
