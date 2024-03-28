@@ -19,17 +19,18 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 ![Open Space](https://i.imgur.com/8ERjHc9.png)
 
 # TODO
-• Login, Sign in, Sign out, delete account
 
 • Ship selection screen for new users
 
-• Save last location of your ship in User Defaults so if you leave the game and come back you don't keep starting near Earth.
+• Save last location of your ship for all places. Currently only near planets is saved.
 
-• Work on Moon view
+• Work on Neighbor spheres view
 
 • Explore Mars
 
 • Speed up travel video segue
+
+• I have an Asana with a lot of tasks for this game. If you'd like to contribute, let me know.
 
 # Multiple Universes
 • If someone is interested in forking this code and creating their own universe, we could link the universes together through a worm hole kind of like a web ring. Contact me at andy@greenrobot.com to get started.
