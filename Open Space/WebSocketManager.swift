@@ -8,8 +8,6 @@
 
 import Foundation
 import Starscream
-import Foundation
-import Starscream
 
 class WebSocketManager: WebSocketDelegate {
 
@@ -34,19 +32,19 @@ class WebSocketManager: WebSocketDelegate {
             print("Disconnected from WebSocket server: \(reason) (code: \(code))")
         case .text(let string):
             print("Received text: \(string)")
-        case .ping(_):
+        case .ping:
             break
-        case .pong(_):
+        case .pong:
             break
         case .error(let error):
             print("WebSocket error: \(String(describing: error))")
-        case .viabilityChanged(_):
+        case .viabilityChanged:
             break
-        case .reconnectSuggested(_):
+        case .reconnectSuggested:
             break
         case .cancelled:
             break
-        case .binary(_):
+        case .binary:
             break
         case .peerClosed:
             break

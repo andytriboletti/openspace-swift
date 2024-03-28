@@ -12,10 +12,10 @@ import UIKit
 class ModelCollectionViewCell: UICollectionViewCell {
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var cellLabel: UILabel?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         let redView = UIView(frame: bounds)
         redView.backgroundColor = .green
         self.backgroundView = redView
@@ -24,5 +24,5 @@ class ModelCollectionViewCell: UICollectionViewCell {
         blueView.backgroundColor = .blue
         self.selectedBackgroundView = blueView
     }
-    
+
 }

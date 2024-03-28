@@ -12,7 +12,7 @@ public enum LocationState: CaseIterable {
     case nearMoon
     case nearMars
     case nearNothing
-    
+
     static func random<G: RandomNumberGenerator>(using generator: inout G) -> LocationState {
         return LocationState.allCases.randomElement(using: &generator)!
     }

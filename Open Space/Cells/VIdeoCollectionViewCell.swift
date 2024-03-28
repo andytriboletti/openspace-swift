@@ -14,17 +14,17 @@ import AVKit
 class VideoCollectionViewCell: UICollectionViewCell {
     var playerLayer: AVPlayerLayer?
     let videoLabel = UILabel()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLabel()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupLabel()
     }
-    
+
     func setupLabel() {
         // Configure the label's appearance
         videoLabel.textAlignment = .center
@@ -40,14 +40,14 @@ class VideoCollectionViewCell: UICollectionViewCell {
             videoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor) // Adjust this to position the label differently
         ])
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         playerLayer?.removeFromSuperlayer()
         playerLayer = nil
         videoLabel.isHidden = false // Ensure the label is visible for reuse
     }
-    
+
     func configureForTextOnly(labelText: String) {
         // Hide the playerLayer if it exists
         playerLayer?.removeFromSuperlayer()
@@ -61,10 +61,10 @@ class VideoCollectionViewCell: UICollectionViewCell {
         // Ensure any existing playerLayer is removed to prepare for a new video
         playerLayer?.removeFromSuperlayer()
         playerLayer = nil
-        
+
         // Set label text
         videoLabel.text = labelText
-        
+
         VideoCacheManager.shared.cacheVideo(url: url) { [weak self] cachedURL in
             guard let strongSelf = self, let cachedURL = cachedURL else { return }
             DispatchQueue.main.async {

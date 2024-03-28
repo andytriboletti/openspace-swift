@@ -26,7 +26,7 @@ class VideoCacheManager {
         }
 
         // Download and cache the video
-        let task = URLSession.shared.downloadTask(with: url) { (tempURL, response, error) in
+        let task = URLSession.shared.downloadTask(with: url) { (tempURL, _, error) in
             guard let tempURL = tempURL, error == nil else {
                 completion(nil)
                 return

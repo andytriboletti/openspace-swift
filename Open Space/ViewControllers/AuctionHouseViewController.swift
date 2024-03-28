@@ -17,51 +17,43 @@ class AuctionHouseViewController: UIViewController {
     @IBOutlet var spaceportButton: UIButton!
 
     @IBOutlet var tradingPostButton: UIButton!
-    
+
     @IBOutlet var treasureButton: UIButton!
 
     @IBOutlet var takeOffButton: UIButton!
-    
+
     @IBOutlet var headerLabel: PaddingLabel!
-    
-    var baseNode:SCNNode!
+
+    var baseNode: SCNNode!
     @IBOutlet var scnView: SCNView!
-    
-    
+
     @IBAction func takeOffAction() {
-        //self.dismiss(animated: true, completion: {
+        // self.dismiss(animated: true, completion: {
             self.performSegue(withIdentifier: "takeOffFromMoon", sender: self)
-            //self.dismiss(animated: true, completion: nil)
+            // self.dismiss(animated: true, completion: nil)
 
-        //})
-        
+        // })
+
     }
 
-    
     @objc func shipsAction(_ sender: UIBarButtonItem) {
-        
+
         self.performSegue(withIdentifier: "selectShip", sender: sender)
-        
+
     }
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         headerLabel.layer.masksToBounds = true
         headerLabel.layer.cornerRadius = 35.0
         headerLabel.layer.borderColor = UIColor.darkGray.cgColor
         headerLabel.layer.borderWidth = 3.0
-        
-        
-        
-        
+
     }
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
         }
-    
+
 }

@@ -16,11 +16,10 @@ import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    
     var gameState: GameState!
     var blurView: DynamicBlurView?
-    
-    //var containerScheme:MDCContainerScheme!
+
+    // var containerScheme:MDCContainerScheme!
     var window: UIWindow?
 
     func application(_ app: UIApplication,
@@ -29,16 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // other URL handling goes here.
         return GIDSignIn.sharedInstance.handle(url)
 
-        //return false
-        
+        // return false
+
     }
 
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.gameState = GameState()
-        
+
         FirebaseApp.configure()
-        
+
         return true
     }
 
@@ -58,11 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-
 }
 
 public extension UIBezierPath {
-    
+
     var elements: [PathElement] {
         var pathElements = [PathElement]()
         withUnsafeMutablePointer(to: &pathElements) { elementsPointer in
@@ -77,13 +74,13 @@ public extension UIBezierPath {
 }
 
 public enum PathElement {
-    
+
     case moveToPoint(CGPoint)
     case addLineToPoint(CGPoint)
     case addQuadCurveToPoint(CGPoint, CGPoint)
     case addCurveToPoint(CGPoint, CGPoint, CGPoint)
     case closeSubpath
-    
+
     init(element: CGPathElement) {
         switch element.type {
         case .moveToPoint: self = .moveToPoint(element.points[0])
@@ -100,20 +97,20 @@ public enum PathElement {
 let animationDuration = 2.0
 
 public extension SCNAction {
-    
+
     class func moveAlong(path: UIBezierPath) -> SCNAction {
-        
+
         let points = path.elements
         var actions = [SCNAction]()
-        
+
         for point in points {
-            
+
             switch point {
             case .moveToPoint(let aaa):
                 let moveAction = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
                 actions.append(moveAction)
                 break
-                
+
             case .addCurveToPoint(let aaa, let bbb, let ccc ):
                 let moveAction1 = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
                 let moveAction2 = SCNAction.move(to: SCNVector3(bbb.x, bbb.y, 0), duration: animationDuration)
@@ -122,19 +119,19 @@ public extension SCNAction {
                 actions.append(moveAction2)
                 actions.append(moveAction3)
                 break
-                
+
             case .addLineToPoint(let aaa ):
                 let moveAction = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
                 actions.append(moveAction)
                 break
-                
+
             case .addQuadCurveToPoint(let aaa, let bbb ):
                 let moveAction1 = SCNAction.move(to: SCNVector3(aaa.x, aaa.y, 0), duration: animationDuration)
                 let moveAction2 = SCNAction.move(to: SCNVector3(bbb.x, bbb.y, 0), duration: animationDuration)
                 actions.append(moveAction1)
                 actions.append(moveAction2)
                 break
-                
+
             default:
                 let moveAction = SCNAction.move(to: SCNVector3(0, 0, 0), duration: animationDuration)
                 actions.append(moveAction)
@@ -143,7 +140,7 @@ public extension SCNAction {
         }
         return SCNAction.sequence(actions)
     }
-    
+
 }
 
 extension SCNNode {
@@ -161,7 +158,7 @@ extension SCNNode {
     }
 
 }
-//extensions
+// extensions
 extension UIViewController {
     var appDelegate: AppDelegate {
         return (UIApplication.shared.delegate as? AppDelegate?)!!
@@ -169,13 +166,12 @@ extension UIViewController {
 }
 extension SCNNode {
     func getTopParent(rootNode: SCNNode) -> SCNNode {
-        if(self.parent == nil || self.parent == rootNode) {
+        if self.parent == nil || self.parent == rootNode {
             return self
-        }
-        else {
+        } else {
             return (self.parent?.getTopParent(rootNode: rootNode))!
         }
-    
+
     }
 }
 
@@ -206,4 +202,3 @@ extension UIColor {
         }
     }
 }
-

@@ -22,26 +22,22 @@ class GameViewController: UIViewController {
     var webSocketManager: WebSocketManager!
     var errorMessage: String?
 
-    var baseNode:SCNNode!
-    var tempNode:SCNNode!
-    var spaceShip:[SCNNode]!
+    var baseNode: SCNNode!
+    var tempNode: SCNNode!
+    var spaceShip: [SCNNode]!
     var tapGesture: UITapGestureRecognizer?
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var headerButton2: UIButton!
-    
+
     @IBOutlet var headerButtonView: UIView!
     @IBOutlet var headerButton2View: UIView!
-    
+
     @IBOutlet var spaceShipsButton: UIBarButtonItem!
     var username: String? // Remove @State property wrapper
 
-    
-
-    
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
 
-    
     func presentUsernameEntryView(completion: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: "Enter Username", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
@@ -86,13 +82,9 @@ class GameViewController: UIViewController {
         return usernamePredicate.evaluate(with: username)
     }
 
-
-    
-
-    
     func moveToPlanet() {
         for node in spaceShip {
-            if(node.name == "Spaceship") {
+            if node.name == "Spaceship" {
                 let toPlace = SCNVector3(x: -500, y: 0, z: -200)
                 let moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
                 node.runAction(moveAction)
@@ -101,7 +93,7 @@ class GameViewController: UIViewController {
     }
     func moveAwayFromPlanet() {
         for node in spaceShip {
-            if(node.name == "Spaceship") {
+            if node.name == "Spaceship" {
                 let toPlace = SCNVector3(x: 500, y: 0, z: 200)
                 let moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(5.0)))
                 node.runAction(moveAction)
@@ -109,73 +101,64 @@ class GameViewController: UIViewController {
         }
     }
     @IBAction func landButtonClicked() {
-        if(appDelegate.gameState.locationState == LocationState.nearEarth) {
+        if appDelegate.gameState.locationState == LocationState.nearEarth {
             print("land on earth")
             moveToPlanet()
-            
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "landOnEarth", sender: self)
             }
-        }
-        else if(appDelegate.gameState.locationState == LocationState.nearISS) {
+        } else if appDelegate.gameState.locationState == LocationState.nearISS {
                 print("land on iss")
                 moveToPlanet()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     self.performSegue(withIdentifier: "dockWithStation", sender: self)
                 }
 
-        }
-
-        else if(appDelegate.gameState.locationState == LocationState.nearMoon) {
+        } else if appDelegate.gameState.locationState == LocationState.nearMoon {
             print("land on the moon")
             moveToPlanet()
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "landOnMoon", sender: self)
             }
-        }
-        
-        else if(appDelegate.gameState.locationState == LocationState.nearMars) {
+        } else if appDelegate.gameState.locationState == LocationState.nearMars {
             print("land on mars")
             moveToPlanet()
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "landOnMars", sender: self)
             }
         }
-        
-        
+
     }
     @IBAction func navigateToClicked() {
         print("where do you want to go")
         self.performSegue(withIdentifier: "selectDestination", sender: self)
-        //self.performSegue(withIdentifier: "goToBase", sender: self)
-        
-        
+        // self.performSegue(withIdentifier: "goToBase", sender: self)
+
     }
     @IBAction func showAlertButtonTapped(_ sender: UIButton) {
-        
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let myAlert = storyboard.instantiateViewController(withIdentifier: "alert")
         myAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.present(myAlert, animated: true, completion: nil)
     }
-    
+
     @objc func shipsAction(_ sender: UIBarButtonItem) {
-        
+
         self.performSegue(withIdentifier: "selectShip", sender: sender)
-        
+
     }
-    
-    
+
     override func viewDidDisappear(_ animated: Bool) {
 
-        tempNode?.enumerateChildNodes { (node, stop) in
+        tempNode?.enumerateChildNodes { (node, _) in
             node.removeFromParentNode()
         }
         tempNode?.removeFromParentNode()
 
-        if(self.tapGesture != nil) {
+        if self.tapGesture != nil {
             scnView.removeGestureRecognizer(self.tapGesture!)
         }
         super.viewDidDisappear(animated)
@@ -184,16 +167,14 @@ class GameViewController: UIViewController {
         self.headerButton2.setTitle("Navigate To...", for: .normal)
 
         self.tabBarController?.title = "'\(appDelegate.gameState.getShipName())' Viewport"
-        
-        
-        
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Instantiate the WebSocketManager
-        //webSocketManager = WebSocketManager()
-        //print("started websocket")
-        
+        // webSocketManager = WebSocketManager()
+        // print("started websocket")
+
         var myUsername = Defaults[.username]
         print("my username:")
         print(myUsername)
@@ -208,41 +189,38 @@ class GameViewController: UIViewController {
 //            }
 //        }
     }
-    
-    
+
     // Example method to send a message over the WebSocket connection
     func sendMessage() {
         // Replace "Hello, server!" with your message
         webSocketManager.socket.write(string: "Hello, server!")
     }
 
-
       // Example method to disconnect from the WebSocket server
       func disconnect() {
           webSocketManager.socket.disconnect()
       }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        //OpenspaceAPI.shared.initWebsocket()
-        
-        //scnView.scene?.rootNode.removeFromParentNode()
+        // OpenspaceAPI.shared.initWebsocket()
+
+        // scnView.scene?.rootNode.removeFromParentNode()
         // Remove any child nodes or objects attached to the root node
          scnView.scene?.rootNode.enumerateChildNodes { (node, _) in
              node.removeFromParentNode()
          }
-        
+
         let cameraNode = SCNNode()
         let camera = SCNCamera()
-        
+
         self.baseNode = SCNNode()
         self.tempNode = SCNNode()
         let scene = SCNScene()
-        
+
         super.viewDidLoad()
-        
+
         setupHeader()
 
-        
         let backgroundFilename = "starry-sky-998641.jpg"
         let image = UIImage(named: backgroundFilename)!
         let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 0.5)
@@ -251,25 +229,24 @@ class GameViewController: UIViewController {
         _ = Utils.colorizeImage(image, with: semi)
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
-        
+
         scene.background.contents = aspectScaledToFitImage
-        
+
         scene.background.wrapS = SCNWrapMode.repeat
         scene.background.wrapT = SCNWrapMode.repeat
-        spaceShip = addObject(name: Defaults[.currentShipModel], position: nil, scale: SCNVector3(10,10,10))
+        spaceShip = addObject(name: Defaults[.currentShipModel], position: nil, scale: SCNVector3(10, 10, 10))
 
-        
         for _ in 1...50 {
             addAsteroid()
         }
-                
-        //_ = addObject(name: "b.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
-        _ = addObject(name: "a.scn", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
+
+        // _ = addObject(name: "b.dae", position: SCNVector3(5000,5000,5000), scale: SCNVector3(100,100,100))
+        _ = addObject(name: "a.scn", position: SCNVector3(5000, 5000, 5000), scale: SCNVector3(100, 100, 100))
 
         // create and add a camera to the scene
         cameraNode.camera = camera
-        //scene.rootNode.addChildNode(cameraNode)
-        
+        // scene.rootNode.addChildNode(cameraNode)
+
                 // place the camera
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
 
@@ -281,41 +258,37 @@ class GameViewController: UIViewController {
         lightNode.light!.type = .omni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
         scene.rootNode.addChildNode(lightNode)
-        
+
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = .ambient
         ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
-        
+
         refresh()
 
         scene.rootNode.addChildNode(baseNode)
         baseNode.addChildNode(tempNode)
 
-
-        
         self.scnView!.scene = scene
-        
+
         self.scnView!.allowsCameraControl = true
-        
+
         // show statistics such as fps and timing information
         self.scnView!.showsStatistics = false
         self.scnView!.autoenablesDefaultLighting=true
-        
+
         // configure the view
-        //self.scnView!.backgroundColor = UIColor.black
-        
+        // self.scnView!.backgroundColor = UIColor.black
+
         self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(self.tapGesture!)
-        
-        
 
     }
-    
+
     func refresh() {
-        //connect to server and get current saved location
+        // connect to server and get current saved location
         var email = Defaults[.email]
         var authToken = Defaults[.authToken]
         getLocation()
@@ -341,38 +314,36 @@ class GameViewController: UIViewController {
                 // Handle the error
                 print("Error: \(error.localizedDescription)")
             } else if let location = location {
-                
-                
+
                 // User deleted successfully
                 print("username: ")
                 print("setting username to defaults")
                 print(username as Any)
-                if(username == nil || username == "") {
+                if username == nil || username == "" {
                     askForUserName()
-                }
-                else {
+                } else {
                     Defaults[.username] = username!
                 }
                 print("Success: \(location)")
-                if(location == "nearEarth") {
+                if location == "nearEarth" {
                     self.appDelegate.gameState.locationState = LocationState.nearEarth
                 }
-                if(location == "nearISS") {
+                if location == "nearISS" {
                     self.appDelegate.gameState.locationState = LocationState.nearISS
                 }
-                if(location == "nearMoon") {
+                if location == "nearMoon" {
                     self.appDelegate.gameState.locationState = LocationState.nearMoon
                 }
-                if(location == "nearMars") {
+                if location == "nearMars" {
                     self.appDelegate.gameState.locationState = LocationState.nearMars
                 }
-                if(location == "nearNothing") {
+                if location == "nearNothing" {
                     self.appDelegate.gameState.locationState = LocationState.nearNothing
                 }
                 self.setNearFromLocationState()
             }
         }
-     
+
     }
     func setNearFromLocationState() {
         DispatchQueue.main.async {
@@ -389,7 +360,7 @@ class GameViewController: UIViewController {
             case .nearMars:
                 self.nearMars()
                 break
-                
+
             case .nearNothing:
                 self.nearNothing()
                 break
@@ -397,8 +368,8 @@ class GameViewController: UIViewController {
         }
     }
     func drawISS() {
-        addTempObject(name: "ISS_stationary2.usdz", position:  SCNVector3(-500,0,-200), scale: 5)
-        
+        addTempObject(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 5)
+
     }
     func drawMars() {
         addTempObject(name: "mars.scn", position: SCNVector3(-500, 0, -200), scale: 5)
@@ -412,206 +383,195 @@ class GameViewController: UIViewController {
     func showHeaderButtons() {
         self.headerButton.isHidden=false
         self.headerButton2.isHidden=false
-        
+
         self.headerButtonView.isHidden=false
         self.headerButton2View.isHidden=false
     }
-    
+
     func nearNothing() {
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is stopped in space."
-        
+
         self.headerButton.isHidden=true
         self.headerButtonView.isHidden=true
-        
+
         self.headerButton2.isHidden=false
         self.headerButton2View.isHidden=false
     }
     func nearISS() {
         self.headerButton.setTitle("Dock With Station", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the International Space Station. It is stopped."
-        
+
         showHeaderButtons()
         drawISS()
         travel()
 
     }
-    
+
     func nearEarth() {
-        
+
         self.headerButton.setTitle("Land on Earth", for: .normal)
-        //self.headerButton2.setTitle("Navigate To...", for: .normal)
+        // self.headerButton2.setTitle("Navigate To...", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Earth. It is stopped."
-        
+
         showHeaderButtons()
-        
+
         drawEarth()
         travel()
-        
-    }
-    
-    func travel() {
-        
-        if(appDelegate.gameState.goingToLocationState != nil) {
 
-            //self.view.makeToast("This is a piece of toast", style: style)
-            var travelingTo:String = ""
-            if(appDelegate.gameState.goingToLocationState == LocationState.nearEarth) {
+    }
+
+    func travel() {
+
+        if appDelegate.gameState.goingToLocationState != nil {
+
+            // self.view.makeToast("This is a piece of toast", style: style)
+            var travelingTo: String = ""
+            if appDelegate.gameState.goingToLocationState == LocationState.nearEarth {
                 travelingTo = "Earth"
-            }
-            else if(appDelegate.gameState.goingToLocationState == LocationState.nearISS) {
+            } else if appDelegate.gameState.goingToLocationState == LocationState.nearISS {
                 travelingTo = "the ISS"
-            }
-            else if(appDelegate.gameState.goingToLocationState == LocationState.nearMoon) {
+            } else if appDelegate.gameState.goingToLocationState == LocationState.nearMoon {
                 travelingTo = "the Moon"
-            }
-            else if(appDelegate.gameState.goingToLocationState == LocationState.nearMars) {
+            } else if appDelegate.gameState.goingToLocationState == LocationState.nearMars {
                 travelingTo = "Mars"
             }
-            
+
             self.showToast(message: "Traveling to \(travelingTo)", font: .systemFont(ofSize: 24.0))
 
-            //move ship
+            // move ship
             moveAwayFromPlanet()
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "travel", sender: self)
             }
-            //after 3 seconds go to travel screen then go to goingToLocationState
+            // after 3 seconds go to travel screen then go to goingToLocationState
 
         }
     }
     func nearMoon() {
-        
+
         self.headerButton.setTitle("Land on the Moon", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the Moon. It is stopped."
-                
+
         showHeaderButtons()
 
         drawMoon()
         travel()
 
     }
-    
+
     func nearMars() {
-        
+
         self.headerButton.setTitle("Land on Mars", for: .normal)
         self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Mars. It is stopped."
-        
+
         showHeaderButtons()
-        
+
         drawMars()
         travel()
 
     }
-    
-    
-    
+
     func animateAsteroid(baseNode: SCNNode) {
         let shipScenec = SCNScene(named: "a.scn")!
-        
+
         let shipSceneChildNodesc = shipScenec.rootNode.childNodes
         for childNode in shipSceneChildNodesc {
             let initialPositionX = 0
             let initialPositionY = 200
             childNode.position = SCNVector3(initialPositionX, initialPositionY, 200)
             childNode.scale = SCNVector3(100, 50, 50)
-            
+
             baseNode.addChildNode(childNode)
-            
+
             let howLongToTravel = 5000
             let toPlace = SCNVector3(x: Float(initialPositionX + howLongToTravel), y: Float(initialPositionY + howLongToTravel), z: Float(howLongToTravel))
             var moveAction = SCNAction.move(to: toPlace, duration: TimeInterval(Float(200.0)))
             childNode.runAction(moveAction)
-            
+
             let path1 = UIBezierPath()
-            path1.move(to: CGPoint(x: 1000,y: 1000))
+            path1.move(to: CGPoint(x: 1000, y: 1000))
             moveAction = SCNAction.moveAlong(path: path1)
-            
+
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 0
-            
+
             moveAction = SCNAction.moveAlong(path: path1)
-            //let repeatAction = SCNAction.repeatForever(moveAction)
-            
-            
+            // let repeatAction = SCNAction.repeatForever(moveAction)
+
             SCNTransaction.commit()
-            
-            
-            
+
         }
-        
+
     }
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
-        let scnView = self.scnView!//self.view as! SCNView
-        
+        let scnView = self.scnView!// self.view as! SCNView
+
         // check what nodes are tapped
         let gestureR = gestureRecognize.location(in: scnView)
-        //let hitResults = scnView.hitTest(p, options: [])
+        // let hitResults = scnView.hitTest(p, options: [])
         let hitResults = scnView.hitTest(gestureR, options: [SCNHitTestOption.searchMode: SCNHitTestSearchMode.all.rawValue])
-        //SCNHitTestSearchModeAll
+        // SCNHitTestSearchModeAll
         // check that we clicked on at least one object
-        //print(hitResults.count)
+        // print(hitResults.count)
         if hitResults.count > 0 {
             // retrieved the first clicked object
-            let result:SCNHitTestResult = hitResults[0]
-            
+            let result: SCNHitTestResult = hitResults[0]
+
             var node = result.node
             node = node.getTopParent(rootNode: baseNode)
-            
+
             // get its material
             highlightNode(node: node, color: .red)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.highlightNode(node: node, color: .black)
-                
+
             }
-            
-            
+
         }
     }
     func highlightNode(node: SCNNode, color: UIColor) {
         let material = node.geometry?.firstMaterial
         // highlight it
-        
+
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 0.0
-        
-        if(node.geometry != nil) {
+
+        if node.geometry != nil {
             highlightMaterial(material: material!, color: color)
-        }
-        else {
+        } else {
             highlightMaterialChildren(node: node, color: color)
         }
-        
+
         SCNTransaction.commit()
     }
     func highlightMaterialChildren(node: SCNNode, color: UIColor) {
         for childNode in node.childNodes {
-            //print(childNode)
+            // print(childNode)
             // get its material
             let material = childNode.geometry?.firstMaterial
             // highlight it
-            if(childNode.geometry != nil) {
+            if childNode.geometry != nil {
                 highlightMaterial(material: material!, color: color)
-            }
-            else {
+            } else {
                 highlightMaterialChildren(node: childNode, color: color)
             }
-            
+
         }
     }
     func highlightMaterial(material: SCNMaterial, color: UIColor) {
         material.emission.contents = color
-        
+
     }
     override var shouldAutorotate: Bool {
         return true
     }
-    
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -619,37 +579,37 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-    
+
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
-        
+
         let widthRatio  = targetSize.width  / image.size.width
         let heightRatio = targetSize.height / image.size.height
-        
+
         // Figure out what our orientation is, and use that to form the rectangle
         var newSize: CGSize
-        if(widthRatio > heightRatio) {
+        if widthRatio > heightRatio {
             newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
         } else {
-            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
         }
-        
+
         // This is the rect that we've calculated out and this is what is actually used below
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        
+
         // Actually do the resizing to the rect using the ImageContext stuff
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
         image.draw(in: rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         return newImage!
     }
-    
+
     func addAsteroid(position: SCNVector3? = nil, scale: SCNVector3? = nil) {
-        
+
         var myScale = scale
-        if(scale == nil) {
+        if scale == nil {
             let minValue = 20
             let maxValue = 100
             let xScale = Int.random(in: minValue ..< maxValue)
@@ -657,19 +617,18 @@ class GameViewController: UIViewController {
             let zScale = Int.random(in: minValue ..< maxValue)
             myScale = SCNVector3(xScale, yScale, zScale)
         }
-        
+
         var myPosition = position
-        if(position == nil) {
-            
-            //not too close, not too far
+        if position == nil {
+
+            // not too close, not too far
             let minValue = 300
             let maxValue = 5000
-            
-            
+
             var xVal = Int.random(in: minValue ..< maxValue)
             var yVal = Int.random(in: minValue ..< maxValue)
             var zVal = Int.random(in: minValue ..< maxValue)
-            //randomly do positive or negative
+            // randomly do positive or negative
             if arc4random_uniform(2) == 0 {
                 xVal *= -1
             }
@@ -679,7 +638,7 @@ class GameViewController: UIViewController {
             if arc4random_uniform(2) == 0 {
                 zVal *= -1
             }
-            
+
             myPosition = SCNVector3(xVal, yVal, zVal)
         }
         _ = addObject(name: "a.scn", position: myPosition, scale: myScale)
@@ -692,14 +651,14 @@ class GameViewController: UIViewController {
     }
     func addObject(name: String, position: SCNVector3?, scale: SCNVector3?) -> [SCNNode] {
         let shipScene = SCNScene(named: name)!
-        
+
         let shipSceneChildNodes = shipScene.rootNode.childNodes
         for childNode in shipSceneChildNodes {
             baseNode.addChildNode(childNode)
-            if(position != nil) {
+            if position != nil {
                 childNode.position = position!
             }
-            if(scale != nil) {
+            if scale != nil {
                 childNode.scale = scale!
             }
         }
@@ -707,46 +666,44 @@ class GameViewController: UIViewController {
     }
     func addTempObject(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
-        
+
         let shipSceneChildNodes = shipScene.rootNode.childNodes
         for childNode in shipSceneChildNodes {
             tempNode.addChildNode(childNode)
-            if(position != nil) {
+            if position != nil {
                 childNode.position = position!
             }
-            if(scale != nil) {
+            if scale != nil {
                 childNode.scale = scale!
             }
         }
-        //return shipScene.rootNode
+        // return shipScene.rootNode
     }
 }
 
 extension UIViewController {
 
-func showToast(message : String, font: UIFont) {
+func showToast(message: String, font: UIFont) {
 
     let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 200, y: self.view.frame.size.height-200, width: 400, height: 100))
     toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     toastLabel.textColor = UIColor.white
     toastLabel.font = font
-    toastLabel.textAlignment = .center;
+    toastLabel.textAlignment = .center
     toastLabel.text = message
     toastLabel.alpha = 1.0
-    toastLabel.layer.cornerRadius = 10;
+    toastLabel.layer.cornerRadius = 10
     toastLabel.clipsToBounds  =  true
     self.view.addSubview(toastLabel)
     UIView.animate(withDuration: 6.0, delay: 0.1, options: .curveEaseOut, animations: {
          toastLabel.alpha = 0.0
-    }, completion: {(isCompleted) in
+    }, completion: {(_) in
         toastLabel.removeFromSuperview()
     })
 } }
 
-
-
 struct UsernameEntryView: View {
-    //@Binding var username: String?
+    // @Binding var username: String?
     var completion: (String) -> Void
     @Binding var username: String
     @State private var enteredUsername: String = ""
@@ -775,8 +732,7 @@ struct UsernameEntryView: View {
         }
         .padding()
     }
-    
-    
+
     func submitUsername() {
         print("Entered username: \(enteredUsername)")
         if isValidUsername(enteredUsername) {
@@ -801,8 +757,6 @@ struct UsernameEntryView: View {
             errorMessage = "Username must contain only letters and numbers and be between 3 and 20 characters."
         }
     }
-
-
 
     func isValidUsername(_ username: String) -> Bool {
         let usernameRegex = "^[a-zA-Z0-9]{3,20}$"

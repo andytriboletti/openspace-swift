@@ -12,16 +12,14 @@ class TabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set the background color to blue
         tabBar.barTintColor = UIColor.blue
 
         // Set the tab bar buttons' color to red
         tabBar.tintColor = UIColor.blue
-        
-        
+
     }
-    
 
     /*
     // MARK: - Navigation

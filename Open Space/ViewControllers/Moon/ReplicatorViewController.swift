@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 //
 //  YourSphereViewController.swift
 //  Open Space
@@ -38,7 +37,7 @@ class ReplicatorViewController: UIViewController {
 
         textView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         let stackView = UIStackView(arrangedSubviews: [containerView])
-        
+
         // Do any additional setup after loading the view.
     }
     func showAlert(message: String) {
@@ -46,7 +45,7 @@ class ReplicatorViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
+
     @IBAction func createNewItem() {
         print("create new item")
         guard let text = inputText.text else { return }
@@ -64,14 +63,12 @@ class ReplicatorViewController: UIViewController {
         }
     }
 
-
-    
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
-        
+
         // Add an action (button)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
+
         // Present the alert controller
         self.present(alertController, animated: true, completion: nil)
     }
@@ -98,7 +95,7 @@ class ReplicatorViewController: UIViewController {
                }
            }
        }
-    
+
     /*
     // MARK: - Navigation
 
@@ -108,8 +105,5 @@ class ReplicatorViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-
-
 
 }

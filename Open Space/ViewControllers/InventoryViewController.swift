@@ -10,29 +10,29 @@
 import UIKit
 import Defaults
 
-class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-    
+class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet weak var tableView: UITableView!
-        
+
         var dataArray: [[String: Any]] = [] // Your mineral data array
-  
+
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return dataArray.count
         }
-        
+
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
-            
+
             let mineralDict = dataArray[indexPath.row]
             let mineralName = mineralDict["mineral_name"] as? String
             let kilograms = mineralDict["kilograms"] as? String
-            
+
             cell.textLabel?.text = "Mineral: \(mineralName ?? "")" + "  Weight: \(kilograms ?? "")" + " kg"
-            //cell.detailTextLabel?.text = "Weight: \(kilograms ?? "")"
-            
+            // cell.detailTextLabel?.text = "Weight: \(kilograms ?? "")"
+
             return cell
         }
-    
+
     @IBOutlet weak var errorLabel: UILabel!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +41,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //? cause it may be on another tab by now
+        // ? cause it may be on another tab by now
         tableView?.dataSource = self
         tableView?.delegate = self
         tableView?.reloadData()
@@ -93,8 +93,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
                         print("Error decoding JSON: \(error)")
                     }
                 }.resume()
-            }
-             catch {
+            } catch {
                 print("Error creating JSON data: \(error)")
             }
         }

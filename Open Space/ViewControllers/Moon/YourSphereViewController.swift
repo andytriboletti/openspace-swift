@@ -12,18 +12,12 @@ import Defaults
 class YourSphereViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
-        
+
         // Add an action (button)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
+
         // Present the alert controller
         self.present(alertController, animated: true, completion: nil)
     }
@@ -50,7 +44,7 @@ class YourSphereViewController: UIViewController {
                }
            }
        }
-    
+
     /*
     // MARK: - Navigation
 
@@ -60,8 +54,5 @@ class YourSphereViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-
-
 
 }

@@ -12,10 +12,10 @@ class ShipyardViewController: UIViewController {
 
     @IBAction func configureShipName() {
         print("configure ship name")
-        //1. Create the alert controller.
+        // 1. Create the alert controller.
         let alert = UIAlertController(title: "Ship Name", message: "Enter your Ship's Name", preferredStyle: .alert)
 
-        //2. Add the text field. You can configure it however you need.
+        // 2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
             textField.text = "Ship Name"
         }
@@ -29,18 +29,12 @@ class ShipyardViewController: UIViewController {
 
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
-        
+
     }
-    
+
     @IBAction func configureShipDesign() {
         print("configure ship design")
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
 
     /*
     // MARK: - Navigation

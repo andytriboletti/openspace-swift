@@ -7,29 +7,29 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
 
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //todo only allow clicks from completed
+        // todo only allow clicks from completed
 
         let modelVC = ModelViewController()
         // Assuming you have a way to get the file names for the obj, mtl, and jpg files for the item at the indexPath
         modelVC.objFileName = "yourModelFileName"
         modelVC.mtlFileName = "yourMtlFileName"
         modelVC.textureFileName = "yourTextureFileName"
-        //self.navigationController?.pushViewController(modelVC, animated: true)
+        // self.navigationController?.pushViewController(modelVC, animated: true)
         var meshZipURL = completedModels[indexPath.row].meshLocation
         Defaults[.selectedMeshLocation] = meshZipURL!
         goToModel()
-        
+
     }
 
     func goToModel() {
         // Get the frame of the existing view controller's view
             let frame = self.view.frame
-        
+
         // User is not signed in
         var rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController
-        
+
         // Set the frame of the new view controller's view to match the existing view controller's frame
         rootViewController!.view.frame = frame
 
@@ -40,18 +40,17 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth: CGFloat = 200
         return CGSize(width: cellWidth, height: cellWidth)
     }
-    
+
     var pendingModels: [OpenspaceAPI.PromptData] = []
     var completedModels: [OpenspaceAPI.PromptData] = []
-    
+
        // Rest of your class code...
-       
+
        func fetchData() {
            let email = Defaults[.email]
            let authToken = Defaults[.authToken]
@@ -70,11 +69,10 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
            }
        }
 
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
             return pendingModels.count
@@ -82,7 +80,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             return completedModels.count
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionViewCell", for: indexPath) as? VideoCollectionViewCell else {
             fatalError("Unexpected cell type")
@@ -105,7 +103,6 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         return cell
     }
 
-
     func convertToDictionaryWithIntKeys(array: [[String: String]]) -> [Int: [String: String]] {
         var resultDictionary: [Int: [String: String]] = [:]
         for (index, element) in array.enumerated() {
@@ -124,11 +121,11 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 50)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as? HeaderView else {

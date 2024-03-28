@@ -11,11 +11,6 @@ import UIKit
 import DynamicBlurView
 class AlertViewController: UIViewController {
     @IBOutlet var cancelButton: UIButton!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
 

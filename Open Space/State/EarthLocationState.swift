@@ -10,9 +10,9 @@ import Foundation
 
 public enum EarthLocationState: String, CaseIterable {
     //: CaseIterable {
-    case nearGreatWallofChina = "pexels-tom-fisk-1653823_great-wall.jpg";
-    case nearTajMahal = "pexels_taj-mahal-india-1603650.jpg";
-    case nearPetra = "pexels-abdullah-ghatasheh-1631665.jpg";
+    case nearGreatWallofChina = "pexels-tom-fisk-1653823_great-wall.jpg"
+    case nearTajMahal = "pexels_taj-mahal-india-1603650.jpg"
+    case nearPetra = "pexels-abdullah-ghatasheh-1631665.jpg"
     case nearMachuPichu = "pexels-pixabay-259967-machu-picchu.jpg"
     case nearChichenItza = "pexels-alex-azabache-3290068-chicken-itza.jpg"
     case nearColosseum = "pexels-chait-goli-1797161-colosseum.jpg"
@@ -28,7 +28,6 @@ public enum EarthLocationState: String, CaseIterable {
         var srng = SystemRandomNumberGenerator()
         return EarthLocationState.random(using: &srng)
     }
-
 
 }
 
@@ -46,12 +45,12 @@ extension Dictionary where Key: ExpressibleByStringLiteral {
         }
 
         set {
-            //self[index.rawValue as! Key] = newValue
-            
+            // self[index.rawValue as! Key] = newValue
+
             if let key = index.rawValue as? Key {
                 self[key] = newValue
             }
 
         }
     }
-} 
+}

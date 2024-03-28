@@ -8,18 +8,16 @@
 import Foundation
 import FirebaseAuth
 import Defaults
-import Foundation
-import Defaults
 
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
     let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
-    
-    //static let shared = OpenspaceAPI()
+
+    // static let shared = OpenspaceAPI()
     var webSocketTask: URLSessionWebSocketTask?
-    
+
     // Common server URL
-    //let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
+    // let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
     var pendingModels: [Int: [String: String]] = [:]
     var completedModels: [Int: [String: String]] = [:]
     enum FetchDataError: Error {
@@ -93,43 +91,41 @@ class OpenspaceAPI {
         task.resume()
     }
 
-
-    
     func checkDailyTreasureAvailability(completion: @escaping (String?, Error?) -> Void) {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
         let apiUrl = "\(serverURL)check-daily-treasure"
-        
+
         guard let url = URL(string: apiUrl) else {
             completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let parameters: [String: Any] = ["email": email, "authToken": authToken]
-        
+
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
             completion(nil, error)
             return
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 completion(nil, error)
                 return
             }
-            
+
             if let data = data {
                 //     if let data = data {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
                         completion(status, nil)
-                        
+
                     }
                 } catch {
                     // Handle JSON parsing error on the main thread
@@ -138,40 +134,39 @@ class OpenspaceAPI {
             }
             // Parse JSON response and handle accordingly
             // ...
-            
+
             // Call completion handler with appropriate data
-            //completion(data, nil)
+            // completion(data, nil)
         }
-        //}
-        
+        // }
+
         task.resume()
     }
-    
-    
+
     func claimDailyTreasure(completion: @escaping (String?, Error?) -> Void) {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
         let apiUrl = "\(serverURL)claim-daily-treasure"
-        
+
         guard let url = URL(string: apiUrl) else {
             completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let parameters: [String: Any] = ["email": email, "authToken": authToken]
-        
+
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
             completion(nil, error)
             return
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 completion(nil, error)
                 return
@@ -179,40 +174,39 @@ class OpenspaceAPI {
             if let data = data {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
-                        
+
                         completion(status, nil)
-                        //what is value of json
-                        
+                        // what is value of json
+
                     }
                 } catch {
                     completion(nil, error)
                     // Handle JSON parsing error on the main thread
-                    //DispatchQueue.main.async {
+                    // DispatchQueue.main.async {
                     //    self.showError()
                     // }
                 }
             }
-            
+
         }
-        
+
         task.resume()
     }
-    
-    
+
     func initWebsocket() {
-        
+
         // Replace with your WebSocket server URL
         let serverURL = URL(string: "wss://server2.openspace.greenrobot.com:8080")!
-        
+
         let session = URLSession(configuration: .default)
         webSocketTask = session.webSocketTask(with: serverURL)
-        
+
         webSocketTask!.resume()
-        
+
         // Start receiving messages
         receiveMessages()
     }
-    
+
     func receiveMessages() {
         webSocketTask!.receive { result in
             switch result {
@@ -231,14 +225,14 @@ class OpenspaceAPI {
             }
         }
     }
-    
-    //if user not found, insert user into database
+
+    // if user not found, insert user into database
     func
     loginWithEmail(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
         let loginURL = URL(string: "\(serverURL)login")!
         var request = URLRequest(url: loginURL)
         request.httpMethod = "POST"
-        
+
         let parameters: [String: Any] = [
             "email": email,
             "authToken": authToken
@@ -253,39 +247,38 @@ class OpenspaceAPI {
             completion(nil, error)
             return
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 completion(nil, error)
                 return
             }
-            
+
             guard let data = data else {
                 let error = NSError(domain: "com.openspace.error", code: -1, userInfo: nil)
                 completion(nil, error)
                 return
             }
-            
+
             if let responseString = String(data: data, encoding: .utf8) {
                 print("Server response: \(responseString)")
-                
+
                 do {
                     if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         // Assuming "data" is a dictionary at the top level of the JSON response.
-                        
+
                         if let lastLocation = jsonObject["last_location"] {
                             // Assuming "last_location" is a key in the JSON response.
                             print("last_location: \(lastLocation)")
-                            
+
                             completion((lastLocation as? String), nil)
-                            //return lastLocation
-                            //todo set game state to lastLocation
-                            
-                            //todo if lastLocation == "" set lastLocation to nearEarth
-                            
-                            //todo load game view
-                            
-                            
+                            // return lastLocation
+                            // todo set game state to lastLocation
+
+                            // todo if lastLocation == "" set lastLocation to nearEarth
+
+                            // todo load game view
+
                         } else {
                             print("last_location not found in the JSON response.")
                         }
@@ -295,27 +288,23 @@ class OpenspaceAPI {
                 } catch {
                     print("Error parsing JSON: \(error)")
                     completion(nil, error)
-                    
+
                 }
-                
-                
+
             }
-            
-            
+
         }
-        
+
         task.resume()
     }
-    
-    //save users location
-    
-    
-    
+
+    // save users location
+
     func saveLocation(email: String, authToken: String, location: String, completion: @escaping (String?, Error?) -> Void) {
         let saveLocationURL = URL(string: "\(serverURL)save-location")!
         var request = URLRequest(url: saveLocationURL)
         request.httpMethod = "POST"
-        
+
         let parameters: [String: Any] = [
             "email": email,
             "authToken": authToken,
@@ -329,20 +318,20 @@ class OpenspaceAPI {
             completion(nil, error)
             return
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
             // Handle the server response
             if let error = error {
                 // Handle the error
                 completion(nil, error)
                 return
             }
-            
+
             guard let data = data else {
                 completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                 return
             }
-            
+
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     if let message = json["message"] as? String {
@@ -358,16 +347,10 @@ class OpenspaceAPI {
                 completion(nil, error)
             }
         }
-        
+
         task.resume()
     }
-    
-    
-    
-    
-    
-    
-    
+
     // Function to refresh the Firebase auth token
     func refreshAuthToken(completion: @escaping (String?, Error?) -> Void) {
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { (token, error) in
@@ -380,22 +363,18 @@ class OpenspaceAPI {
             }
         }
     }
-    
-    
-    
-    
-    
+
     // Get location
     func getLocation(email: String, authToken: String, completion: @escaping (String?, String?, Error?) -> Void) {
         let getLocationURL = URL(string: "\(serverURL)get-data")!
         var request = URLRequest(url: getLocationURL)
         request.httpMethod = "POST"
-        
+
         let parameters: [String: Any] = [
             "email": email,
-            "authToken": authToken,
+            "authToken": authToken
         ]
-        
+
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
@@ -403,8 +382,8 @@ class OpenspaceAPI {
             completion(nil, nil, error)
             return
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { [self] (data, response, error) in
+
+        let task = URLSession.shared.dataTask(with: request) { [self] (data, _, error) in
             // Handle the server response
             if let error = error {
                 // Handle the error
@@ -413,14 +392,14 @@ class OpenspaceAPI {
                 }
                 return
             }
-            
+
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                 }
                 return
             }
-            
+
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     if let location = json["last_location"] as? String {
@@ -431,9 +410,7 @@ class OpenspaceAPI {
                         DispatchQueue.main.async {
                             completion(location, username, nil)
                         }
-                    }
-
-                    else if let error = json["error"] as? String {
+                    } else if let error = json["error"] as? String {
                         if error == "Invalid authToken." {
                             // Retry with a refreshed token
                             refreshAuthToken { (newToken, tokenError) in
@@ -466,11 +443,10 @@ class OpenspaceAPI {
                 }
             }
         }
-        
+
         task.resume()
     }
 
-    
     // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
         let deleteUserURL = URL(string: "\(serverURL)delete-user")!
@@ -487,7 +463,7 @@ class OpenspaceAPI {
             completion(nil, error)
             return
         }
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
             // Handle the server response
             if let error = error {
                 // Handle the error
@@ -515,55 +491,50 @@ class OpenspaceAPI {
         }
         task.resume()
     }
-    
-    
+
     // Function to send text to the server
     func sendTextToServer(email: String, authToken: String, text: String, completion: @escaping (Bool, Error?) -> Void) {
-        //let sendTextURL = URL(string: "\(serverURL)send-prompt-text")!
-        
+        // let sendTextURL = URL(string: "\(serverURL)send-prompt-text")!
+
         let sendTextURL = URL(string: "\(serverURL)send-text")! // Constructing the URL
-        
-        //let parameters: [String: Any] = ["text": text]
+
+        // let parameters: [String: Any] = ["text": text]
         let parameters: [String: Any] = [
             "email": email,
             "authToken": authToken,
             "text": text
         ]
-        
+
         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters) else {
             completion(false, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
             return
         }
-        
+
         var request = URLRequest(url: sendTextURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+        let task = URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 completion(false, error)
                 return
             }
-            
+
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(false, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                 return
             }
-            
+
             if (200...299).contains(httpResponse.statusCode) {
                 completion(true, nil)
             } else {
                 completion(false, NSError(domain: "com.openspace.error", code: httpResponse.statusCode, userInfo: nil))
             }
         }
-        
+
         task.resume()
     }
-    
-    
-    
-    
 
     func submitToServer(username: String, email: String, completion: @escaping (Error?) -> Void) {
         // Validate username
@@ -572,9 +543,9 @@ class OpenspaceAPI {
             completion(error)
             return
         }
-        
+
         // Call OpenspaceAPI.shared to submit to server
-        //let urlString = "https://example.com/api/submit"
+        // let urlString = "https://example.com/api/submit"
         let urlString =  "\(serverURL)save-username" // Constructing the URL
 
         guard let url = URL(string: urlString) else {
@@ -582,11 +553,11 @@ class OpenspaceAPI {
             completion(error)
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         // Prepare data to send
         let parameters: [String: Any] = [
             "username": username,
@@ -599,20 +570,20 @@ class OpenspaceAPI {
             completion(error)
             return
         }
-        
+
         // Send the request
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 completion(error)
                 return
             }
-            
+
             guard let httpResponse = response as? HTTPURLResponse else {
                 let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
                 completion(error)
                 return
             }
-            
+
             if (200..<300).contains(httpResponse.statusCode) {
                 // Success
                 completion(nil)
@@ -622,12 +593,9 @@ class OpenspaceAPI {
                 completion(error)
             }
         }
-        
+
         task.resume()
     }
-    
-    
-    
 
     func resetUsername(email: String, completion: @escaping (Error?) -> Void) {
         // Validate username
@@ -636,9 +604,9 @@ class OpenspaceAPI {
 //            completion(error)
 //            return
 //        }
-        
+
         // Call OpenspaceAPI.shared to submit to server
-        //let urlString = "https://example.com/api/submit"
+        // let urlString = "https://example.com/api/submit"
         let urlString =  "\(serverURL)reset-username" // Constructing the URL
 
         guard let url = URL(string: urlString) else {
@@ -646,11 +614,11 @@ class OpenspaceAPI {
             completion(error)
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         // Prepare data to send
         let parameters: [String: Any] = [
             "email": email,
@@ -662,20 +630,20 @@ class OpenspaceAPI {
             completion(error)
             return
         }
-        
+
         // Send the request
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 completion(error)
                 return
             }
-            
+
             guard let httpResponse = response as? HTTPURLResponse else {
                 let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
                 completion(error)
                 return
             }
-            
+
             if (200..<300).contains(httpResponse.statusCode) {
                 // Success
                 completion(nil)
@@ -685,14 +653,11 @@ class OpenspaceAPI {
                 completion(error)
             }
         }
-        
+
         task.resume()
     }
-    
-    
+
 }
-
-
 
 // Helper extension to encode parameters
 extension Dictionary {
