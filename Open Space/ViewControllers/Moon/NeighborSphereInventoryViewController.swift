@@ -130,7 +130,7 @@ class NeighborSphereInventoryViewController: UIViewController {
     func findFirstOBJFile(in directoryURL: URL) -> URL? {
         do {
             let fileManager = FileManager.default
-            let contents = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
+            // let contents = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
 
             let directoryContents = try FileManager.default.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: [])
 

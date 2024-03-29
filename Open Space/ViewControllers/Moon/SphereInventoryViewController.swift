@@ -17,7 +17,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         modelVC.mtlFileName = "yourMtlFileName"
         modelVC.textureFileName = "yourTextureFileName"
         // self.navigationController?.pushViewController(modelVC, animated: true)
-        var meshZipURL = completedModels[indexPath.row].meshLocation
+        let meshZipURL = completedModels[indexPath.row].meshLocation
         Defaults[.selectedMeshLocation] = meshZipURL!
         goToModel()
 
@@ -28,7 +28,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             let frame = self.view.frame
 
         // User is not signed in
-        var rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController
+        let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController
 
         // Set the frame of the new view controller's view to match the existing view controller's frame
         rootViewController!.view.frame = frame
