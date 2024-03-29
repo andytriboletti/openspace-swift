@@ -87,7 +87,6 @@ class OpenspaceAPI {
         task.resume()
     }
 
-    
     func fetchNeighbors(email: String, authToken: String, completion: @escaping (Result<[Neighbor], FetchDataError>) -> Void) {
         // Prepare JSON data
         let jsonData: [String: Any] = [
