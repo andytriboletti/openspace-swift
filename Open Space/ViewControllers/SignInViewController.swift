@@ -83,7 +83,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                     let uid = currentUser.uid
                     // let authToken = currentUser.refreshToken!
                     print("Email: ")
-                    print(email)
+                    print(email!)
                     print("uid: ")
                     print(uid)
                     print("IdToken: ")
@@ -105,14 +105,14 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
                             print("Successfully signed in with user: \(user!)")
 
-                            let uid = currentUser.uid
-                            // let email = currentUser.email
-                            let displayName = currentUser.displayName
-                            let photoURL = currentUser.photoURL
-                            let phoneNumber = currentUser.phoneNumber
-                            let isAnonymous = currentUser.isAnonymous
-                            let providerData = currentUser.providerData
-                            // let authToken = currentUser.refreshToken
+//                            let uid = currentUser.uid
+//                            // let email = currentUser.email
+//                            let displayName = currentUser.displayName
+//                            let photoURL = currentUser.photoURL
+//                            let phoneNumber = currentUser.phoneNumber
+//                            let isAnonymous = currentUser.isAnonymous
+//                            let providerData = currentUser.providerData
+//                            // let authToken = currentUser.refreshToken
 
                             print("Successfully signed in end with user: \(user!)")
                             // dismiss(animated: false)

@@ -175,7 +175,7 @@ class GameViewController: UIViewController {
         // webSocketManager = WebSocketManager()
         // print("started websocket")
 
-        var myUsername = Defaults[.username]
+        let myUsername = Defaults[.username]
         print("my username:")
         print(myUsername)
 //        if myUsername == "" {
@@ -289,8 +289,8 @@ class GameViewController: UIViewController {
 
     func refresh() {
         // connect to server and get current saved location
-        var email = Defaults[.email]
-        var authToken = Defaults[.authToken]
+        // var email = Defaults[.email]
+        // var authToken = Defaults[.authToken]
         getLocation()
     }
     func askForUserName() {
@@ -307,8 +307,8 @@ class GameViewController: UIViewController {
         }
     }
     func getLocation() {
-        var email = Defaults[.email]
-        var authToken = Defaults[.authToken]
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
         OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, username, error) in
             if let error = error {
                 // Handle the error
