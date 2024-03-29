@@ -20,11 +20,7 @@ class OpenspaceAPI {
     // let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
     var pendingModels: [Int: [String: String]] = [:]
     var completedModels: [Int: [String: String]] = [:]
-    enum FetchDataError: Error {
-        case invalidResponse
-        case networkError(Error)
-        case jsonParsingError(Error)
-    }
+
     struct PromptData: Codable {
         let textPrompt: String
         let completed: String
@@ -89,6 +85,77 @@ class OpenspaceAPI {
         }
 
         task.resume()
+    }
+
+    
+    func fetchNeighbors(email: String, authToken: String, completion: @escaping (Result<[Neighbor], FetchDataError>) -> Void) {
+        // Prepare JSON data
+        let jsonData: [String: Any] = [
+            "email": email,
+            "authToken": authToken
+        ]
+
+        // Convert JSON data to Data
+        guard let postData = try? JSONSerialization.data(withJSONObject: jsonData) else {
+            completion(.failure(.invalidResponse))
+            return
+        }
+
+        // Create URL request
+        let url = URL(string: "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/get-neighbor-spheres")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        // Perform the request
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                completion(.failure(.networkError(error!)))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            do {
+                let responseData = try JSONDecoder().decode(Response.self, from: data)
+                completion(.success(responseData.results))
+            } catch {
+                completion(.failure(.jsonParsingError(error)))
+            }
+        }
+
+        task.resume()
+    }
+
+    struct Neighbor: Codable {
+        let userId: String
+        let username: String
+        let itemCount: String
+
+        enum CodingKeys: String, CodingKey {
+            case userId = "user_id"
+            case username
+            case itemCount = "item_count"
+        }
+    }
+
+    struct Response: Codable {
+        let status: String
+        let results: [Neighbor]
+    }
+
+    enum FetchDataError: Error {
+        case invalidResponse
+        case networkError(Error)
+        case jsonParsingError(Error)
     }
 
     func checkDailyTreasureAvailability(completion: @escaping (String?, Error?) -> Void) {
