@@ -120,6 +120,7 @@
 		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		72A3C04E2A7DAF5C00C2A01E /* AuctionHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */; };
+		72ADF8E12BB737FE00976E4C /* NeighborSphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */; };
 		72B0B3A22BB4E79600BACE67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */; };
 		72B0B3A42BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0B3A32BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift */; };
 		72B0B3A62BB6556000BACE67 /* NeighborSphereCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0B3A52BB6556000BACE67 /* NeighborSphereCell.swift */; };
@@ -275,6 +276,7 @@
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionHouseViewController.swift; sourceTree = "<group>"; };
+		72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborSphereInventoryViewController.swift; sourceTree = "<group>"; };
 		72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		72B0B3A32BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNeighborSphereViewController.swift; sourceTree = "<group>"; };
 		72B0B3A52BB6556000BACE67 /* NeighborSphereCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborSphereCell.swift; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 				7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */,
 				72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */,
 				72B0B3A32BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift */,
+				72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */,
 			);
 			path = Moon;
 			sourceTree = "<group>";
@@ -1059,6 +1062,7 @@
 				6F86CC6A240039A1005AECC9 /* SelectLocationViewController.swift in Sources */,
 				6F43939023FF6DC60007614D /* MarsViewController.swift in Sources */,
 				6F7380AA23FEFAFF00D767E0 /* AlertViewController.swift in Sources */,
+				72ADF8E12BB737FE00976E4C /* NeighborSphereInventoryViewController.swift in Sources */,
 				6F34E311263B4C8200E67276 /* Defaults.swift in Sources */,
 				722181912B8FF1C800FB572F /* ChatView.swift in Sources */,
 				6FA3146C2401E57F009D77AB /* LocationState.swift in Sources */,

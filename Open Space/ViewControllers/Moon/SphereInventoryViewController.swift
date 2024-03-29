@@ -113,6 +113,8 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: "VideoCollectionViewCell")
+
         self.fetchData()
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

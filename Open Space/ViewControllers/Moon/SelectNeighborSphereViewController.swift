@@ -62,4 +62,9 @@ class SelectNeighborSphereViewController: UIViewController, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 50)
     }
+    // MARK: - UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         performSegue(withIdentifier: "NeighborSphereInventorySegue", sender: indexPath)
+     }
+
 }
