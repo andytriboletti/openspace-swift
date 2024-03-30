@@ -638,7 +638,7 @@ class OpenspaceAPI {
         }
 
         // Send the request
-        let task = URLSession.shared.dataTask(with: request) { _, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(error)
                 return
@@ -652,7 +652,34 @@ class OpenspaceAPI {
 
             if (200..<300).contains(httpResponse.statusCode) {
                 // Success
-                completion(nil)
+                if let data = data {
+                    do {
+                        if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                            if let success = jsonResponse["success"] as? Int {
+                                if success == 1 {
+                                    // Username saved successfully
+                                    completion(nil)
+                                } else {
+                                    // Username not saved
+                                    let errorMessage = jsonResponse["message"] as? String ?? "Unknown error"
+                                    let error = NSError(domain: "Server", code: 0, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+                                    completion(error)
+                                }
+                            } else {
+                                let error = NSError(domain: "Server", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response format"])
+                                completion(error)
+                            }
+                        } else {
+                            let error = NSError(domain: "Server", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid JSON response"])
+                            completion(error)
+                        }
+                    } catch {
+                        completion(error)
+                    }
+                } else {
+                    let error = NSError(domain: "Server", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data received"])
+                    completion(error)
+                }
             } else {
                 // Server error
                 let error = NSError(domain: "Server", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "Server error"])

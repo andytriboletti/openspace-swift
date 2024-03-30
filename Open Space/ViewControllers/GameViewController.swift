@@ -39,20 +39,45 @@ class GameViewController: UIViewController {
     @IBOutlet var headerLabel: UILabel!
 
     func presentUsernameEntryView(completion: @escaping (String) -> Void) {
-        let alertController = UIAlertController(title: "Enter Username", message: nil, preferredStyle: .alert)
-        alertController.addTextField { textField in
-            textField.placeholder = "Username"
-        }
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
-            if let username = alertController.textFields?.first?.text {
-                self.submitUsername(username: username, completion: completion)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Enter Username", message: nil, preferredStyle: .alert)
+            alertController.addTextField { textField in
+                textField.placeholder = "Username"
             }
+
+            let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
+                if let username = alertController.textFields?.first?.text {
+                    self.submitUsername(username: username) { submittedUsername, errorMessage in
+                        if let errorMessage = errorMessage {
+                            DispatchQueue.main.async {
+
+                                // Handle error message
+                                print(errorMessage)
+
+                                // Show an alert informing the user that the username is taken
+                                let errorAlert = UIAlertController(title: "Error", message: "Please select a new username. The username '\(username)' is already taken.", preferredStyle: .alert)
+                                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                                    // Reopen the alert box for username input
+                                    self.presentUsernameEntryView(completion: completion)
+                                }))
+                                self.present(errorAlert, animated: true, completion: nil)
+                            }
+                        } else if let submittedUsername = submittedUsername {
+                            // Handle success
+                            print("Username submitted successfully")
+                            // Call completion handler if needed
+                            completion(submittedUsername)
+                        }
+                    }
+                }
+            }
+
+            alertController.addAction(submitAction)
+            self.present(alertController, animated: true, completion: nil)
         }
-        alertController.addAction(submitAction)
-        present(alertController, animated: true, completion: nil)
     }
 
-    func submitUsername(username: String, completion: @escaping (String) -> Void) {
+    func submitUsername(username: String, completion: @escaping (String?, String?) -> Void) {
         if isValidUsername(username) {
             // Reset error message if it was previously set
             errorMessage = nil
@@ -64,15 +89,17 @@ class GameViewController: UIViewController {
             OpenspaceAPI.shared.submitToServer(username: username, email: email) { error in
                 if let error = error {
                     print("Error submitting to server: \(error.localizedDescription)")
+                    completion(nil, "Error submitting to server: \(error.localizedDescription)")
                 } else {
                     Defaults[.username] = username
                     print("Successfully submitted to server")
-                    completion(username) // Call completion with entered username
+                    completion(username, nil) // Call completion with entered username
                 }
             }
         } else {
             // Username is not valid, display error message
             errorMessage = "Username must contain only letters and numbers and be between 3 and 20 characters."
+            completion(nil, errorMessage)
         }
     }
 
