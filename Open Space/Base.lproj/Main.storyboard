@@ -21,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-Bc-blZ">
                                 <rect key="frame" x="0.0" y="58" width="414" height="755"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxG-s4-Txb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxG-s4-Txb">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="12"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -301,49 +301,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="102" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uN-eSr">
-                                <rect key="frame" x="0.0" y="48" width="414" height="665"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uN-eSr">
+                                <rect key="frame" x="20" y="78" width="374" height="550"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
-                                        <rect key="frame" x="175.5" y="0.0" width="63.5" height="10.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
+                                        <rect key="frame" x="155.5" y="0.0" width="63.5" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ceq-B9-21d"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Logged In As:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-oO-GU7">
-                                        <rect key="frame" x="155" y="112.5" width="104" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Logged In As:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-oO-GU7">
+                                        <rect key="frame" x="135" y="100" width="104" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="TT2-tC-YRJ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juP-iZ-amP">
-                                        <rect key="frame" x="165.5" y="235" width="83" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juP-iZ-amP">
+                                        <rect key="frame" x="145.5" y="200" width="83" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2Vf-CB-2Fz"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEd-LW-sTz">
-                                        <rect key="frame" x="132" y="357.5" width="150" height="34.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEd-LW-sTz">
+                                        <rect key="frame" x="112" y="300" width="150" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="EwM-oI-C5O"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Reset Username"/>
                                         <connections>
-                                            <action selector="showResetButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="8Zg-Px-Wpp"/>
+                                            <action selector="showResetButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="mRq-qQ-TGj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
-                                        <rect key="frame" x="163.5" y="494" width="87" height="34.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
+                                        <rect key="frame" x="143.5" y="400" width="87" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="PiU-Fl-dhR"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Sign out"/>
                                         <connections>
-                                            <action selector="signOutButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="7v7-Bc-skb"/>
+                                            <action selector="signOutButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="0A5-cJ-RYV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
-                                        <rect key="frame" x="141" y="630.5" width="132" height="34.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
+                                        <rect key="frame" x="121" y="500" width="132" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="nlq-bq-Gwt"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Delete Acount"/>
                                         <connections>
-                                            <action selector="deleteButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="EmC-lH-dU1"/>
+                                            <action selector="deleteButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="Ewa-68-aSz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -352,10 +370,9 @@
                         <viewLayoutGuide key="safeArea" id="3Kx-sv-baK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="3Kx-sv-baK" firstAttribute="trailing" secondItem="f3I-uN-eSr" secondAttribute="trailing" id="fq6-eO-WXU"/>
-                            <constraint firstItem="3Kx-sv-baK" firstAttribute="bottom" secondItem="f3I-uN-eSr" secondAttribute="bottom" constant="100" id="lmx-RT-has"/>
-                            <constraint firstItem="f3I-uN-eSr" firstAttribute="top" secondItem="3Kx-sv-baK" secondAttribute="top" id="oFc-z6-gnX"/>
-                            <constraint firstItem="f3I-uN-eSr" firstAttribute="leading" secondItem="3Kx-sv-baK" secondAttribute="leading" id="src-zz-7PA"/>
+                            <constraint firstItem="f3I-uN-eSr" firstAttribute="leading" secondItem="3Kx-sv-baK" secondAttribute="leading" constant="20" id="cLI-xn-VD1"/>
+                            <constraint firstItem="f3I-uN-eSr" firstAttribute="top" secondItem="3Kx-sv-baK" secondAttribute="top" constant="30" id="crz-DE-Als"/>
+                            <constraint firstItem="3Kx-sv-baK" firstAttribute="trailing" secondItem="f3I-uN-eSr" secondAttribute="trailing" constant="20" id="tje-1d-JdK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="person.crop.circle" catalog="system" id="nvD-fM-FPj">
@@ -546,10 +563,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-cN-zkr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="836"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="792"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="22" y="20" width="370.5" height="220"/>
+                                <rect key="frame" x="22" y="64" width="370.5" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="370.5" height="80"/>
@@ -2114,12 +2131,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="mCm-fZ-9HZ"/>
         <segue reference="mn8-YF-6UY"/>
-        <segue reference="R0G-66-DuO"/>
+        <segue reference="67b-Hk-5Ts"/>
         <segue reference="Olt-Xz-tpo"/>
         <segue reference="tEX-l7-IDV"/>
         <segue reference="WHQ-Wr-Nav"/>
-        <segue reference="G6a-xv-v4e"/>
-        <segue reference="Brq-sk-l5G"/>
+        <segue reference="IdK-sq-0gW"/>
+        <segue reference="jz9-hn-pTh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>

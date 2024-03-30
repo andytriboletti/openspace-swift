@@ -73,6 +73,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
             print(whereString) // Output: "premium"
 
             self.saveLocation(location: whereString)
+            Defaults[.traveling]="true"
             self.performSegue(withIdentifier: "goToGame", sender: self)
 
             // self.present(NavGameController(), animated: true)
