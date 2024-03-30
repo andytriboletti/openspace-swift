@@ -435,7 +435,6 @@ class GameViewController: UIViewController {
     func nearISS() {
 
         self.headerButton.setTitle("Dock With Station", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the International Space Station. It is stopped."
 
         var traveling = Defaults[.traveling]
 
@@ -443,10 +442,12 @@ class GameViewController: UIViewController {
             travel()
             Defaults[.traveling]="false'"
             hideHeaderButtons()
+            self.headerLabel.text = ""
 
         } else {
             drawISS()
             showHeaderButtons()
+            self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the International Space Station. It is stopped."
 
         }
 
@@ -455,17 +456,18 @@ class GameViewController: UIViewController {
     func nearEarth() {
         self.headerButton.setTitle("Land on Earth", for: .normal)
         // self.headerButton2.setTitle("Navigate To...", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Earth. It is stopped."
 
         let traveling = Defaults[.traveling]
 
         if traveling == "true" {
             Defaults[.traveling]="false"
             hideHeaderButtons()
+            self.headerLabel.text = ""
             travel()
         } else {
             drawEarth()
             showHeaderButtons()
+            self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Earth. It is stopped."
 
         }
 
@@ -501,7 +503,6 @@ class GameViewController: UIViewController {
     func nearMoon() {
 
         self.headerButton.setTitle("Land on the Moon", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the Moon. It is stopped."
 
         let traveling = Defaults[.traveling]
 
@@ -509,10 +510,12 @@ class GameViewController: UIViewController {
             travel()
             Defaults[.traveling]="false"
             hideHeaderButtons()
+            self.headerLabel.text = ""
 
         } else {
             drawMoon()
             showHeaderButtons()
+            self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near the Moon. It is stopped."
 
         }
 
@@ -520,7 +523,6 @@ class GameViewController: UIViewController {
 
     func nearMars() {
         self.headerButton.setTitle("Land on Mars", for: .normal)
-        self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Mars. It is stopped."
 
         showHeaderButtons()
         let traveling = Defaults[.traveling]
@@ -529,10 +531,12 @@ class GameViewController: UIViewController {
             travel()
             Defaults[.traveling]="false"
             hideHeaderButtons()
+            self.headerLabel.text = ""
 
         } else {
             drawMars()
             showHeaderButtons()
+            self.headerLabel.text = "Your ship '\(appDelegate.gameState.getShipName())' is near Mars. It is stopped."
 
         }
 
