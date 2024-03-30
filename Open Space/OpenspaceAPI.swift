@@ -157,7 +157,7 @@ class OpenspaceAPI {
         case jsonParsingError(Error)
     }
 
-    func checkDailyTreasureAvailability(completion: @escaping (String?, Error?) -> Void) {
+    func checkDailyTreasureAvailability(planet: String, completion: @escaping (String?, Error?) -> Void) {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
         let apiUrl = "\(serverURL)check-daily-treasure"
@@ -171,7 +171,7 @@ class OpenspaceAPI {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let parameters: [String: Any] = ["email": email, "authToken": authToken]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "planet": planet]
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
@@ -209,7 +209,7 @@ class OpenspaceAPI {
         task.resume()
     }
 
-    func claimDailyTreasure(completion: @escaping (String?, Error?) -> Void) {
+    func claimDailyTreasure(planet: String, completion: @escaping (String?, Error?) -> Void) {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
         let apiUrl = "\(serverURL)claim-daily-treasure"
@@ -223,7 +223,7 @@ class OpenspaceAPI {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let parameters: [String: Any] = ["email": email, "authToken": authToken]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "planet": planet]
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])

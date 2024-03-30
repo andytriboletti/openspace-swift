@@ -64,7 +64,7 @@ class ExploreMoonViewController: UIViewController {
         //
         // claimDailyTreasure()
         // Call to claim daily treasure
-        OpenspaceAPI.shared.claimDailyTreasure { response, error in
+        OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { response, error in
             if let error = error {
                 // Handle error
                 print("Error claiming daily treasure: \(error)")
@@ -93,7 +93,7 @@ class ExploreMoonViewController: UIViewController {
     // ...
     func checkDailyTreasureAvailability() {
             // Call API to check daily treasure availability
-            OpenspaceAPI.shared.checkDailyTreasureAvailability { response, error in
+        OpenspaceAPI.shared.checkDailyTreasureAvailability(planet: "moon") { response, error in
                 if let error = error {
                     print("Error checking daily treasure availability: \(error)")
                     self.showError()
@@ -132,11 +132,6 @@ class ExploreMoonViewController: UIViewController {
         // Hide the text and show the button
         treasureButton.isHidden = true
     }
-//
-//        @IBAction func claimDailyTreasureAction() {
-//            // Call the function to claim the daily treasure (you need to implement this)
-//            claimDailyTreasure()
-//        }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -210,12 +205,6 @@ class ExploreMoonViewController: UIViewController {
         scnView.backgroundColor = UIColor.black
         // add a tap gesture recognizer
            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-           scnView.addGestureRecognizer(tapGesture)
-
-         // TODO add Ships button and allow to change ships on mars.
-
-        // let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
-        // self.navigationItem.leftBarButtonItem = shipButton
 
         addObject(name: "flagcool.scn", position: SCNVector3(1, 1, 1), scale: nil)
 
@@ -295,76 +284,6 @@ class ExploreMoonViewController: UIViewController {
         }
         addObject(name: "a.scn", position: myPosition, scale: myScale)
     }
-
-    // ...
-
-    /*
-    func claimDailyTreasure() {
-        let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
-
-        let apiUrl = "https://server.openspace.greenrobot.com/wp-json/openspace/v1/claim-daily-treasure" // Replace with the actual API URL
-
-        guard let url = URL(string: apiUrl) else {
-            // Handle invalid URL
-            return
-        }
-
-        let parameters: [String: Any] = ["email": email, "authToken": authToken]
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-        } catch {
-            // Handle JSON serialization error
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                // Handle the error case
-                print("Error claiming daily treasure: \(error.localizedDescription)")
-                DispatchQueue.main.async {
-                    self.showError()
-                }
-                return
-            }
-
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
-                        
-                        
-                        //what is value of json
-                        if status == "claimed" {
-                            // Show a success message to the user on the main thread
-                            DispatchQueue.main.async {
-                                self.showSuccessMessage()
-                            }
-                        } else {
-                            // Show an error message or handle any other response status accordingly on the main thread
-                            DispatchQueue.main.async {
-                                self.showError()
-                            }
-                        }
-                    }
-                } catch {
-                    // Handle JSON parsing error on the main thread
-                    DispatchQueue.main.async {
-                        self.showError()
-                    }
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    // ...
-*/
 
     func showSuccessMessage() {
         // Show a success message to the user (e.g., an alert or a label)

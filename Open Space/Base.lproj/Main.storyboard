@@ -131,10 +131,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HM-3k-odO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-0C-Fzj">
-                                <rect key="frame" x="0.0" y="64" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="23" y="0.0" width="368.5" height="80"/>
@@ -154,6 +154,9 @@
                                             <constraint firstAttribute="height" constant="50" id="aOD-yr-mIh"/>
                                         </constraints>
                                         <state key="normal" title="EXPLORE MARS"/>
+                                        <connections>
+                                            <segue destination="3P0-Yo-Sdy" kind="presentation" modalPresentationStyle="fullScreen" id="mz6-TB-ZIG"/>
+                                        </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP9-IT-vpA">
                                         <rect key="frame" x="28" y="150" width="358" height="50"/>
@@ -1325,7 +1328,7 @@
         <scene sceneID="R5i-ZO-hA3">
             <objects>
                 <viewController id="U1y-oS-a8q" customClass="MoonSphereBaseViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="odf-nf-Ubq">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="odf-nf-Ubq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2095,6 +2098,76 @@
             </objects>
             <point key="canvasLocation" x="6504.347826086957" y="1259.5982142857142"/>
         </scene>
+        <!--Exploring Mars-->
+        <scene sceneID="Ygc-bl-tZW">
+            <objects>
+                <viewController title="Exploring Mars" id="3P0-Yo-Sdy" customClass="ExploreMarsViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VwZ-a8-zvR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlk-JT-Q1w">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </sceneKitView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-kf-t8U">
+                                <rect key="frame" x="28" y="816" width="358" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ey1-z9-uPx"/>
+                                </constraints>
+                                <state key="normal" title="GO TO MARS BASE"/>
+                                <connections>
+                                    <segue destination="Tx7-Uf-egN" kind="presentation" identifier="takeOffFromMars" modalPresentationStyle="fullScreen" id="MVd-TG-9WI"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vrS-oR-Fre">
+                                <rect key="frame" x="0.0" y="20" width="414" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring Mars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV1-av-DId" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
+                                        <rect key="frame" x="149" y="0.0" width="116" height="80"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="mUu-c9-8kp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PV1-av-DId" firstAttribute="centerX" secondItem="vrS-oR-Fre" secondAttribute="centerX" id="eOz-T2-gDk"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gxv-kd-rbY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xlk-JT-Q1w" firstAttribute="leading" secondItem="Gxv-kd-rbY" secondAttribute="leading" id="1pT-Vk-PWN"/>
+                            <constraint firstItem="Gxv-kd-rbY" firstAttribute="bottom" secondItem="xlk-JT-Q1w" secondAttribute="bottom" id="9Ms-QH-16t"/>
+                            <constraint firstItem="Gxv-kd-rbY" firstAttribute="trailing" secondItem="xlk-JT-Q1w" secondAttribute="trailing" id="DPl-S2-E8U"/>
+                            <constraint firstItem="Gxv-kd-rbY" firstAttribute="trailing" secondItem="vrS-oR-Fre" secondAttribute="trailing" id="Lhh-Ex-a8r"/>
+                            <constraint firstItem="xlk-JT-Q1w" firstAttribute="centerX" secondItem="VwZ-a8-zvR" secondAttribute="centerX" id="ZdH-xm-y4O"/>
+                            <constraint firstItem="vrS-oR-Fre" firstAttribute="top" secondItem="Gxv-kd-rbY" secondAttribute="top" constant="20" id="eMZ-S5-czz"/>
+                            <constraint firstItem="XNS-kf-t8U" firstAttribute="leading" secondItem="Gxv-kd-rbY" secondAttribute="leading" constant="28" id="erZ-07-PmQ"/>
+                            <constraint firstItem="XNS-kf-t8U" firstAttribute="centerX" secondItem="xlk-JT-Q1w" secondAttribute="centerX" id="paa-qu-4jf"/>
+                            <constraint firstItem="xlk-JT-Q1w" firstAttribute="top" secondItem="Gxv-kd-rbY" secondAttribute="top" id="t5k-kM-lTt"/>
+                            <constraint firstItem="vrS-oR-Fre" firstAttribute="leading" secondItem="Gxv-kd-rbY" secondAttribute="leading" id="xMq-Qf-qnP"/>
+                            <constraint firstItem="Gxv-kd-rbY" firstAttribute="bottom" secondItem="XNS-kf-t8U" secondAttribute="bottom" constant="20" id="zbR-v8-Q9U"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Moon" id="tqi-s3-T1h"/>
+                    <connections>
+                        <outlet property="headerLabel" destination="PV1-av-DId" id="nHw-tR-UxK"/>
+                        <outlet property="scnView" destination="xlk-JT-Q1w" id="0PR-kF-UOh"/>
+                        <outlet property="stackView" destination="vrS-oR-Fre" id="hMu-sc-ytR"/>
+                        <outlet property="takeOffButton" destination="XNS-kf-t8U" id="aLK-ls-CUA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yih-Bu-qSY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4020" y="-2192"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
@@ -2115,6 +2188,9 @@
         <designable name="MeW-Tb-xpX">
             <size key="intrinsicContentSize" width="126" height="31.5"/>
         </designable>
+        <designable name="PV1-av-DId">
+            <size key="intrinsicContentSize" width="116" height="29"/>
+        </designable>
         <designable name="SaH-uf-KBc">
             <size key="intrinsicContentSize" width="114.5" height="29"/>
         </designable>
@@ -2123,14 +2199,15 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="mCm-fZ-9HZ"/>
-        <segue reference="mn8-YF-6UY"/>
+        <segue reference="yUZ-Q9-T5m"/>
+        <segue reference="awi-wi-S5y"/>
         <segue reference="67b-Hk-5Ts"/>
-        <segue reference="Olt-Xz-tpo"/>
+        <segue reference="Xc6-Ax-Zhf"/>
         <segue reference="tEX-l7-IDV"/>
-        <segue reference="WHQ-Wr-Nav"/>
+        <segue reference="e01-Ue-bDj"/>
         <segue reference="IdK-sq-0gW"/>
-        <segue reference="jz9-hn-pTh"/>
+        <segue reference="rQs-aG-VQ2"/>
+        <segue reference="MVd-TG-9WI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
