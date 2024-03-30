@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import Alamofire
 import Defaults
+import GoogleMobileAds
 
 class ExploreMoonViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
@@ -19,13 +20,31 @@ class ExploreMoonViewController: UIViewController {
     @IBOutlet var tradingPostButton: UIButton!
 
     @IBOutlet var treasureButton: UIButton!
+    @IBOutlet var rewardedButton: UIButton!
 
     @IBOutlet var takeOffButton: UIButton!
 
     @IBOutlet var headerLabel: PaddingLabel!
 
+    var rewardedAd: GADRewardedAd?
+
     var baseNode: SCNNode!
     @IBOutlet var scnView: SCNView!
+
+    func loadRewardedAd() async {
+        do {
+            print("user id is")
+            print(Defaults[.userId])
+
+          rewardedAd = try await GADRewardedAd.load(
+            withAdUnitID: "ca-app-pub-8840903285420889/2588345097", request: GADRequest())
+            let serverSideVerificationOptions = GADServerSideVerificationOptions()
+            serverSideVerificationOptions.userIdentifier = Defaults[.userId]
+            rewardedAd?.serverSideVerificationOptions = serverSideVerificationOptions
+        } catch {
+          print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+        }
+      }
 
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
@@ -57,7 +76,39 @@ class ExploreMoonViewController: UIViewController {
         treasureButton.translatesAutoresizingMaskIntoConstraints = false
         treasureButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
+    func addRewardedButtonToStackView() {
+            // Create a new UIButton instance
+            rewardedButton = UIButton(type: .system)
+        rewardedButton.setTitle("Watch a Video Ad To Claim Treasure Now", for: .normal)
+        rewardedButton.addTarget(self, action: #selector(buttonTappedRewarded), for: .touchUpInside)
 
+            // Add any additional customization to the button (e.g., setting background color, text color, etc.)
+
+            // Add the button to the stack view
+            stackView.addArrangedSubview(rewardedButton)
+
+            // Optionally, you can set constraints for the button if needed
+        rewardedButton.translatesAutoresizingMaskIntoConstraints = false
+        rewardedButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+
+    func show() {
+      guard let rewardedAd = rewardedAd else {
+        return print("Ad wasn't ready.")
+      }
+
+      // The UIViewController parameter is an optional.
+      rewardedAd.present(fromRootViewController: nil) {
+        let reward = rewardedAd.adReward
+        print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+        // TODO: Reward the user.
+      }
+    }
+
+    @objc func buttonTappedRewarded() {
+        print("rewarded tap")
+        show()
+    }
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
         print("Button tapped!")
@@ -92,37 +143,54 @@ class ExploreMoonViewController: UIViewController {
 
     // ...
     func checkDailyTreasureAvailability() {
-            // Call API to check daily treasure availability
+        // Call API to check daily treasure availability
         OpenspaceAPI.shared.checkDailyTreasureAvailability(planet: "moon") { response, error in
-                if let error = error {
-                    print("Error checking daily treasure availability: \(error)")
-                    self.showError()
-                } else {
-                    print("Response from check daily treasure availability: \(String(describing: response))")
-                    if response == "claimed" {
-                        DispatchQueue.main.async {
-                            self.showClaimedText()
-                            self.hideTreasureButton()
+            if let error = error {
+                print("Error checking daily treasure availability: \(error)")
+                self.showError()
+            } else {
+                print("Response from check daily treasure availability: \(String(describing: response))")
+                if response == "claimed" {
+                    DispatchQueue.main.async {
+                        self.showClaimedText()
+                        self.hideTreasureButton()
+                        self.showRewardedButton()
+                        // Call loadAdAwait within a DispatchQueue.main.async block
+                        Task {
+                            await self.loadAdAwait()
                         }
-                    } else if response == "available" {
-                        DispatchQueue.main.async {
-                            self.showTreasureButton()
-                        }
+                    }
+
+                } else if response == "available" {
+                    DispatchQueue.main.async {
+                        self.showTreasureButton()
                     }
                 }
             }
         }
+    }
+    var claimedLabel: UILabel?
 
-        func showClaimedText() {
-            // addButtonToStackView()
-            // Hide the button and show the text
-            treasureButton.isHidden = true
-            let claimedLabel = UILabel()
-            claimedLabel.text = "Hourly treasure already claimed."
-            claimedLabel.textAlignment = .center
-            claimedLabel.textColor = .white
-            stackView.addArrangedSubview(claimedLabel)
+    func showClaimedText() {
+        // Check if claimedLabel has already been added
+        guard claimedLabel == nil else {
+            return
         }
+
+        // Hide the button and show the text
+        treasureButton.isHidden = true
+
+        // Create the claimedLabel if it hasn't been created yet
+        claimedLabel = UILabel()
+        claimedLabel?.text = "Hourly treasure already claimed."
+        claimedLabel?.textAlignment = .center
+        claimedLabel?.textColor = .white
+
+        // Add the claimedLabel to the stackView
+        if let label = claimedLabel {
+            stackView.addArrangedSubview(label)
+        }
+    }
 
     func showTreasureButton() {
         // Hide the text and show the button
@@ -133,12 +201,25 @@ class ExploreMoonViewController: UIViewController {
         treasureButton.isHidden = true
     }
 
+    func showRewardedButton() {
+        // Hide the text and show the button
+        rewardedButton.isHidden = false
+    }
+    func hideRewardedButton() {
+        // Hide the text and show the button
+        rewardedButton.isHidden = true
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        // Call the function to check if the daily treasure is available for the user
+         checkDailyTreasureAvailability()
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addButtonToStackView()
-
-        // Call the function to check if the daily treasure is available for the user
-         checkDailyTreasureAvailability()
+        self.addRewardedButtonToStackView()
 
         headerLabel.layer.masksToBounds = true
         headerLabel.layer.cornerRadius = 35.0
@@ -213,6 +294,17 @@ class ExploreMoonViewController: UIViewController {
         }
 
     }
+    func loadAdAwait() async {
+        do {
+            // Perform the loading of the rewarded ad asynchronously
+            try await loadRewardedAd()
+            // Handle successful loading
+        } catch {
+            // Handle any errors that occur during loading
+            print("Error loading rewarded ad: \(error)")
+        }
+    }
+
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
@@ -290,6 +382,8 @@ class ExploreMoonViewController: UIViewController {
         let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your hourly treasure.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
+        checkDailyTreasureAvailability()
+
         present(alertController, animated: true, completion: nil)
     }
 

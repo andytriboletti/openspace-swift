@@ -532,6 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */,
+				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
+				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
 				6F82074424815CB5008C52D4 /* Open Space.entitlements */,
 				72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */,
 				6FA3146A2401E56D009D77AB /* State */,
@@ -540,8 +542,6 @@
 				6F96DE6223FDDE3800BAE0CF /* images */,
 				6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */,
 				6F895FA32606B4C200378FA7 /* videos */,
-				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
-				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
 				6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */,
 				6FB0EF0623FDA1A900EA28D7 /* Info.plist */,
 				6F6D845C23FF8C8800328057 /* Utils.swift */,
@@ -783,6 +783,7 @@
 				88EA40E22F21EE23DD50742A /* [CP] Embed Pods Frameworks */,
 				6FD92067259BC653008F6CA3 /* ShellScript */,
 				72A3C04F2A80113A00C2A01E /* ShellScript */,
+				89CBD050177385D0690EC14A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1032,6 +1033,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89CBD050177385D0690EC14A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

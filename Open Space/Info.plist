@@ -71,5 +71,7 @@
 	<true/>
 	<key>com.apple.security.files.user-selected.read-write</key>
 	<true/>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-8840903285420889~2528635340</string>
 </dict>
 </plist>

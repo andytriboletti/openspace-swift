@@ -333,12 +333,21 @@ class OpenspaceAPI {
                     if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         // Assuming "data" is a dictionary at the top level of the JSON response.
 
-                        if let lastLocation = jsonObject["last_location"] {
+                        if let lastLocation = jsonObject["last_location"] as? String {
                             // Assuming "last_location" is a key in the JSON response.
                             print("last_location: \(lastLocation)")
 
-                            completion((lastLocation as? String), nil)
-                            // return lastLocation
+                            if let userId = jsonObject["id"] as? String {
+                                Defaults[.userId] = userId
+                                print("setting userid")
+                                print(userId)
+                            } else {
+                                print("Error: Unable to retrieve userId from JSON.")
+                                // Handle the case where userId is not present or not of type String.
+                                // Optionally, you can set a default value for userId or handle the error appropriately.
+                            }
+
+                            completion(lastLocation, nil)
                             // todo set game state to lastLocation
 
                             // todo if lastLocation == "" set lastLocation to nearEarth

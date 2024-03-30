@@ -782,6 +782,8 @@ PODS:
     - FirebasePhoneAuthUI (~> 13.0)
   - FirebaseUI/Storage (13.1.0):
     - FirebaseStorageUI (~> 13.0)
+  - Google-Mobile-Ads-SDK (11.2.0):
+    - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (10.15.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.15.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -806,6 +808,7 @@ PODS:
     - AppAuth (~> 1.5)
     - GTMAppAuth (~> 1.3)
     - GTMSessionFetcher/Core (< 3.0, >= 1.1)
+  - GoogleUserMessagingPlatform (2.3.0)
   - GoogleUtilities/AppDelegateSwizzler (7.11.5):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -919,6 +922,7 @@ DEPENDENCIES:
   - FirebaseUI
   - FirebaseUI/Google
   - FirebaseUI/OAuth
+  - Google-Mobile-Ads-SDK
   - GoogleSignIn
   - PopupDialog
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
@@ -962,8 +966,10 @@ SPEC REPOS:
     - FirebaseStorage
     - FirebaseStorageUI
     - FirebaseUI
+    - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleSignIn
+    - GoogleUserMessagingPlatform
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
@@ -1023,8 +1029,10 @@ SPEC CHECKSUMS:
   FirebaseStorage: 1d4be239ea32fb3c0f3680a6f2b706d6cabe37f2
   FirebaseStorageUI: 5db14fc4c251fdbe3b706eb1a9dddc55bc51b414
   FirebaseUI: d3e0d3f81f5c464554945195a6133a3ab905b6a7
+  Google-Mobile-Ads-SDK: 5a6d005a6cb5b5e8f4c7b69ca05cdea79c181139
   GoogleAppMeasurement: 722db6550d1e6d552b08398b69a975ac61039338
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
+  GoogleUserMessagingPlatform: b1ad7bb1ee3ce64749d4fec24f667b36e45c396c
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   "gRPC-C++": 0968bace703459fd3e5dcb0b2bed4c573dbff046
   gRPC-Core: 17108291d84332196d3c8466b48f016fc17d816d
@@ -1042,6 +1050,6 @@ SPEC CHECKSUMS:
   Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: f981d09841b68b0cc4eea836ba52c6f625703f54
+PODFILE CHECKSUM: 60ac76f284cbf209afb2742a949807256d9ae704
 
 COCOAPODS: 1.15.2

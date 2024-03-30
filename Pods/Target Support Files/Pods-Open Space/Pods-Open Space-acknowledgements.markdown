@@ -5751,6 +5751,10 @@ FirestoreEncoder
    limitations under the License.
 
 
+## Google-Mobile-Ads-SDK
+
+Copyright 2024 Google LLC
+
 ## GoogleAppMeasurement
 
 Copyright 2022 Google
@@ -5960,6 +5964,10 @@ Copyright 2022 Google
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## GoogleUserMessagingPlatform
+
+Copyright 2024 Google LLC
 
 ## GoogleUtilities
 

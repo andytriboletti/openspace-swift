@@ -29,6 +29,8 @@ target 'Open Space' do
   pod 'Zip', '~> 2.1'
   pod 'ZipArchive'
   pod 'SSZipArchive'
+  pod 'Google-Mobile-Ads-SDK'
+  
   # https://stackoverflow.com/a/75729977
   post_install do |installer|
       installer.generated_projects.each do |project|
