@@ -377,7 +377,6 @@
 		6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6FB0EEFF23FDA1A800EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FB0EF0423FDA1A900EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6FB0EF0623FDA1A900EA28D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipb.dae; sourceTree = "<group>"; };
 		6FCCF110260297E000514899 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6FD0296423FEC8620082209D /* space_icon_200.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_200.jpg; sourceTree = "<group>"; };
@@ -706,7 +705,6 @@
 				6FB0EF0D23FDA1D000EA28D7 /* 3dmodels */,
 				6F895FA32606B4C200378FA7 /* videos */,
 				6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */,
-				6FB0EF0623FDA1A900EA28D7 /* Info.plist */,
 				6F6D845C23FF8C8800328057 /* Utils.swift */,
 				6FA5934824001B42007C16E3 /* PaddingLabel.swift */,
 				6FD92044259B71E9008F6CA3 /* quasar.png */,
