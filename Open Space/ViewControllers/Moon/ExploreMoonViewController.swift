@@ -120,24 +120,22 @@ class ExploreMoonViewController: UIViewController {
         print("rewarded tap")
         show()
     }
+
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
         print("Button tapped!")
-        //
-        // claimDailyTreasure()
-        // Call to claim daily treasure
-        OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { response, error in
+        OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { status, mineral, amount, error in
             if let error = error {
                 // Handle error
                 print("Error claiming daily treasure: \(error)")
             } else {
                 // Handle response
-                print("Response from claim daily treasure: \(String(describing: response))")
+                print("Response from claim daily treasure: \(String(describing: status))")
 
-                if response == "claimed" {
+                if status == "claimed" {
                     // Show a success message to the user on the main thread
                     DispatchQueue.main.async {
-                        self.showSuccessMessage()
+                        self.showSuccessMessage(mineral: mineral, amount: amount)
                     }
                 } else {
                     // Show an error message or handle any other response status accordingly on the main thread
@@ -145,13 +143,9 @@ class ExploreMoonViewController: UIViewController {
                         self.showError()
                     }
                 }
-
             }
-
         }
-
     }
-
     // ...
     func checkDailyTreasureAvailability() {
         // Call API to check daily treasure availability
@@ -397,13 +391,17 @@ class ExploreMoonViewController: UIViewController {
         addObject(name: "a.scn", position: myPosition, scale: myScale)
     }
 
-    func showSuccessMessage() {
+    func showSuccessMessage(mineral: String?, amount: Int?) {
         // Show a success message to the user (e.g., an alert or a label)
-        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your hourly treasure.", preferredStyle: .alert)
+        guard let mineral = mineral, let amount = amount else {
+            // Handle the case where mineral or amount is nil
+            return
+        }
+
+        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your daily treasure of \(amount) \(mineral).", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         checkDailyTreasureAvailability()
-
         present(alertController, animated: true, completion: nil)
     }
 

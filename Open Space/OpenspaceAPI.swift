@@ -209,13 +209,13 @@ class OpenspaceAPI {
         task.resume()
     }
 
-    func claimDailyTreasure(planet: String, completion: @escaping (String?, Error?) -> Void) {
+    func claimDailyTreasure(planet: String, completion: @escaping (String?, String?, Int?, Error?) -> Void) {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
         let apiUrl = "\(serverURL)claim-daily-treasure"
 
         guard let url = URL(string: apiUrl) else {
-            completion(nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+            completion(nil, nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
             return
         }
 
@@ -228,32 +228,27 @@ class OpenspaceAPI {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
-            completion(nil, error)
+            completion(nil, nil, nil, error)
             return
         }
 
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
-                completion(nil, error)
+                completion(nil, nil, nil, error)
                 return
             }
             if let data = data {
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let status = json["status"] as? String {
-
-                        completion(status, nil)
-                        // what is value of json
-
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let status = json["status"] as? String,
+                       let mineral = json["mineral"] as? String,
+                       let amount = json["amount"] as? Int {
+                        completion(status, mineral, amount, nil)
                     }
                 } catch {
-                    completion(nil, error)
-                    // Handle JSON parsing error on the main thread
-                    // DispatchQueue.main.async {
-                    //    self.showError()
-                    // }
+                    completion(nil, nil, nil, error)
                 }
             }
-
         }
 
         task.resume()

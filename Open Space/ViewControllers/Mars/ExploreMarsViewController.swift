@@ -58,37 +58,31 @@ class ExploreMarsViewController: UIViewController {
             treasureButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
 
-        @objc func buttonTapped() {
-            // Action to be performed when the button is tapped
-            print("Button tapped!")
-            //
-            // claimDailyTreasure()
-            // Call to claim daily treasure
-            OpenspaceAPI.shared.claimDailyTreasure(planet: "mars") { response, error in
-                if let error = error {
-                    // Handle error
-                    print("Error claiming daily treasure: \(error)")
-                } else {
-                    // Handle response
-                    print("Response from claim daily treasure: \(String(describing: response))")
+    @objc func buttonTapped() {
+        // Action to be performed when the button is tapped
+        print("Button tapped!")
+        OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { status, mineral, amount, error in
+            if let error = error {
+                // Handle error
+                print("Error claiming daily treasure: \(error)")
+            } else {
+                // Handle response
+                print("Response from claim daily treasure: \(String(describing: status))")
 
-                    if response == "claimed" {
-                        // Show a success message to the user on the main thread
-                        DispatchQueue.main.async {
-                            self.showSuccessMessage()
-                        }
-                    } else {
-                        // Show an error message or handle any other response status accordingly on the main thread
-                        DispatchQueue.main.async {
-                            self.showError()
-                        }
+                if status == "claimed" {
+                    // Show a success message to the user on the main thread
+                    DispatchQueue.main.async {
+                        self.showSuccessMessage(mineral: mineral, amount: amount)
                     }
-
+                } else {
+                    // Show an error message or handle any other response status accordingly on the main thread
+                    DispatchQueue.main.async {
+                        self.showError()
+                    }
                 }
-
             }
-
         }
+    }
 
         // ...
         func checkDailyTreasureAvailability() {
@@ -285,13 +279,19 @@ class ExploreMarsViewController: UIViewController {
             addObject(name: "a.scn", position: myPosition, scale: myScale)
         }
 
-        func showSuccessMessage() {
-            // Show a success message to the user (e.g., an alert or a label)
-            let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your hourly treasure.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(okAction)
-            present(alertController, animated: true, completion: nil)
+    func showSuccessMessage(mineral: String?, amount: Int?) {
+        // Show a success message to the user (e.g., an alert or a label)
+        guard let mineral = mineral, let amount = amount else {
+            // Handle the case where mineral or amount is nil
+            return
         }
+
+        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your daily treasure of \(amount) \(mineral).", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        checkDailyTreasureAvailability()
+        present(alertController, animated: true, completion: nil)
+    }
 
         func showError() {
             // Show an error message to the user (e.g., an alert or a label)

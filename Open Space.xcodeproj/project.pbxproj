@@ -667,8 +667,6 @@
 		6FB0EEEC23FDA1A800EA28D7 = {
 			isa = PBXGroup;
 			children = (
-				72C5132A2A51ED7200AAD941 /* GameScene.scn */,
-				6FCCF110260297E000514899 /* README.md */,
 				6FB0EEF723FDA1A800EA28D7 /* Open Space */,
 				72D19A22270DF62800175BD9 /* Open SpaceUITests */,
 				6FB0EEF623FDA1A800EA28D7 /* Products */,
@@ -692,11 +690,13 @@
 		6FB0EEF723FDA1A800EA28D7 /* Open Space */ = {
 			isa = PBXGroup;
 			children = (
+				6FCCF110260297E000514899 /* README.md */,
 				72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */,
 				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
 				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
 				6F82074424815CB5008C52D4 /* Open Space.entitlements */,
 				72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */,
+				72C5132A2A51ED7200AAD941 /* GameScene.scn */,
 				6FA3146A2401E56D009D77AB /* State */,
 				6F86CC6B24003A94005AECC9 /* Cells */,
 				6FDB587D23FE5EA9004263CB /* ViewControllers */,
