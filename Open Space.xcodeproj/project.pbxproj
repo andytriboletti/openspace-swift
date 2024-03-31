@@ -246,6 +246,8 @@
 		721AB60F2BB918F400E68231 /* iss006e48523orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294566240B1F7F008328FC /* iss006e48523orig.jpg */; };
 		721AB6102BB918F400E68231 /* anderik.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3282640E9F600E67276 /* anderik.scn */; };
 		721AB6112BB918F400E68231 /* iss045e166104.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */; };
+		721BF29E2BB9CF310046E7E7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF29D2BB9CF310046E7E7 /* Info.plist */; };
+		721BF2A02BB9CF3E0046E7E7 /* Open Space Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */; };
 		722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722102D32BB905D7008F431C /* LeaderboardViewController.swift */; };
 		722181892B8E90D500FB572F /* processing_model_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 722181882B8E90D500FB572F /* processing_model_icon.jpg */; };
 		7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818A2B8EA20300FB572F /* HeaderView.swift */; };
@@ -408,9 +410,9 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
-		721AB5802BB90FD100E68231 /* Open Space copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Open Space copy-Info.plist"; path = "/Users/andrewtriboletti/Documents/GitHub/openspace-swift/Open Space copy-Info.plist"; sourceTree = "<absolute>"; };
 		721AB6192BB918F400E68231 /* Open Space Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		721AB61A2BB918F800E68231 /* Open Space copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Open Space copy2-Info.plist"; path = "/Users/andrewtriboletti/Documents/GitHub/openspace-swift/Open Space copy2-Info.plist"; sourceTree = "<absolute>"; };
+		721BF29D2BB9CF310046E7E7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		722102D32BB905D7008F431C /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		722181882B8E90D500FB572F /* processing_model_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = processing_model_icon.jpg; sourceTree = "<group>"; };
 		7221818A2B8EA20300FB572F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -672,8 +674,6 @@
 				6FB0EEF623FDA1A800EA28D7 /* Products */,
 				4A6CA5CD975451981FEB3438 /* Pods */,
 				35D7EF5FCFAD97927D9DE97E /* Frameworks */,
-				721AB5802BB90FD100E68231 /* Open Space copy-Info.plist */,
-				721AB61A2BB918F800E68231 /* Open Space copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -690,6 +690,8 @@
 		6FB0EEF723FDA1A800EA28D7 /* Open Space */ = {
 			isa = PBXGroup;
 			children = (
+				721BF29D2BB9CF310046E7E7 /* Info.plist */,
+				721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */,
 				6FCCF110260297E000514899 /* README.md */,
 				72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */,
 				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
@@ -1089,6 +1091,7 @@
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
 				6F34E32D2641A52100E67276 /* eleuz.scn in Resources */,
 				72C513362A5375AE00AAD941 /* moon_surface.png in Resources */,
+				721BF2A02BB9CF3E0046E7E7 /* Open Space Mac-Info.plist in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
 				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
@@ -1132,6 +1135,7 @@
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 				6F34E3292640E9F600E67276 /* anderik.scn in Resources */,
 				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
+				721BF29E2BB9CF310046E7E7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
