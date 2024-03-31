@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="354.5" height="80"/>
+                                        <rect key="frame" x="23" y="0.0" width="368.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -485,24 +485,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ship Cargo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX7-hh-kF9">
-                                <rect key="frame" x="165" y="78" width="85" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ship Cargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX7-hh-kF9">
+                                <rect key="frame" x="0.0" y="94" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fdf-tY-MB3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Resources:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZs-PK-06h">
-                                <rect key="frame" x="20" y="165" width="374" height="112"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Resources:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZs-PK-06h">
+                                <rect key="frame" x="0.0" y="48" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="pTY-ci-zpA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-le-RyT">
-                                <rect key="frame" x="0.0" y="261" width="414" height="535"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-le-RyT">
+                                <rect key="frame" x="0.0" y="277" width="414" height="536"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="536" id="D5S-Hd-PRy"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CargoCell" rowHeight="102" id="8mf-UB-ZMz">
                                         <rect key="frame" x="0.0" y="50" width="414" height="102"/>
@@ -511,14 +517,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="673-Vb-6UV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="673-Vb-6UV">
                                                     <rect key="frame" x="53" y="11" width="0.0" height="0.0"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="673-Vb-6UV" firstAttribute="leading" secondItem="xXj-qc-93C" secondAttribute="leadingMargin" constant="33" id="dki-45-bAj"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="673-Vb-6UV" secondAttribute="trailing" constant="20" symbolic="YES" id="tNw-wt-2Tk"/>
+                                                <constraint firstItem="673-Vb-6UV" firstAttribute="top" secondItem="xXj-qc-93C" secondAttribute="topMargin" id="ujd-Li-e0h"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -526,6 +536,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WtJ-zT-3Yc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KX7-hh-kF9" firstAttribute="top" secondItem="WtJ-zT-3Yc" secondAttribute="top" constant="46" id="P7y-zj-pvV"/>
+                            <constraint firstItem="KX7-hh-kF9" firstAttribute="centerX" secondItem="kGT-le-RyT" secondAttribute="centerX" id="SoX-UQ-gy0"/>
+                            <constraint firstItem="kGT-le-RyT" firstAttribute="leading" secondItem="WtJ-zT-3Yc" secondAttribute="leading" id="ToG-oO-QUj"/>
+                            <constraint firstItem="QZs-PK-06h" firstAttribute="leading" secondItem="WtJ-zT-3Yc" secondAttribute="leading" id="Wqw-EZ-1Aq"/>
+                            <constraint firstItem="QZs-PK-06h" firstAttribute="top" secondItem="WtJ-zT-3Yc" secondAttribute="top" id="b6m-82-1u2"/>
+                            <constraint firstItem="KX7-hh-kF9" firstAttribute="leading" secondItem="WtJ-zT-3Yc" secondAttribute="leading" id="hdT-7k-Lfu"/>
+                            <constraint firstItem="KX7-hh-kF9" firstAttribute="centerX" secondItem="QZs-PK-06h" secondAttribute="centerX" id="rzz-DX-Ax1"/>
+                            <constraint firstItem="kGT-le-RyT" firstAttribute="bottom" secondItem="WtJ-zT-3Yc" secondAttribute="bottom" id="wbl-3B-BR6"/>
+                            <constraint firstItem="KX7-hh-kF9" firstAttribute="centerX" secondItem="COF-xq-3BM" secondAttribute="centerX" id="xSd-4K-PaP"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cargo" image="book" catalog="system" id="Lvh-hK-yeB"/>
                     <connections>
@@ -535,7 +556,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chd-Uk-fYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-878" y="958"/>
+            <point key="canvasLocation" x="-878.26086956521749" y="957.58928571428567"/>
+        </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="5uZ-1G-VO6">
+            <objects>
+                <viewController id="8AS-f1-fXV" customClass="LeaderboardViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2ng-NF-G61">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="sRM-Kf-ajj">
+                                <rect key="frame" x="100" y="48" width="214" height="448"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmd-QV-GK1">
+                                        <rect key="frame" x="58.5" y="0.0" width="97" height="199"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlg-z7-Jrt">
+                                        <rect key="frame" x="0.0" y="249" width="214" height="199"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="View Top Richest Players"/>
+                                        <connections>
+                                            <action selector="showLeaderboard" destination="8AS-f1-fXV" eventType="touchDown" id="SGV-Yx-TLP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="u9j-vU-H2D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sRM-Kf-ajj" firstAttribute="centerX" secondItem="2ng-NF-G61" secondAttribute="centerX" id="MEu-iG-HJr"/>
+                            <constraint firstItem="sRM-Kf-ajj" firstAttribute="top" secondItem="u9j-vU-H2D" secondAttribute="top" id="SQX-cd-wIJ"/>
+                            <constraint firstAttribute="bottom" secondItem="sRM-Kf-ajj" secondAttribute="bottom" constant="400" id="yAh-3T-Vh2"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="awn-nf-ju5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v8M-mN-MZm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114.49275362318842" y="1638.6160714285713"/>
         </scene>
         <!--Ship A-->
         <scene sceneID="AtW-Wt-eXI">
@@ -553,6 +616,7 @@
                         <segue destination="zN1-Qm-r2p" kind="relationship" relationship="viewControllers" id="IVr-JJ-1Yf"/>
                         <segue destination="8yW-2I-6Lp" kind="relationship" relationship="viewControllers" id="hiX-el-6oX"/>
                         <segue destination="5fb-7X-jYJ" kind="relationship" relationship="viewControllers" id="zQn-3l-wdI"/>
+                        <segue destination="8AS-f1-fXV" kind="relationship" relationship="viewControllers" id="Jc0-tT-dR6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc5-Hg-bTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -589,10 +653,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="792"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="29" y="64" width="356.5" height="220"/>
+                                <rect key="frame" x="22" y="64" width="370.5" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="356.5" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="370.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -604,7 +668,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="296.5" height="50"/>
+                                        <rect key="frame" x="30" y="100" width="310.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="enX-y6-AST"/>
                                         </constraints>
@@ -614,7 +678,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="170" width="296.5" height="50"/>
+                                        <rect key="frame" x="30" y="170" width="310.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="qIu-9i-fdI"/>
                                         </constraints>
@@ -869,7 +933,7 @@
                                 <rect key="frame" x="20" y="0.0" width="374" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="7.5" y="0.0" width="359.5" height="100"/>
+                                        <rect key="frame" x="0.5" y="0.0" width="373.5" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1350,10 +1414,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cCj-gM-4oO">
-                                <rect key="frame" x="24" y="42" width="400" height="719"/>
+                                <rect key="frame" x="24" y="42" width="400" height="729"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSy-lL-kHv" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="23.5" y="0.0" width="353.5" height="19"/>
+                                        <rect key="frame" x="16.5" y="0.0" width="367.5" height="29"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1362,7 +1426,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-1d-pQe">
-                                        <rect key="frame" x="28" y="39" width="344" height="30"/>
+                                        <rect key="frame" x="28" y="49" width="344" height="30"/>
                                         <state key="normal" title="ENTER YOUR SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="QqY-nA-6q0"/>
@@ -1370,7 +1434,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeA-vo-8pC">
-                                        <rect key="frame" x="97" y="89" width="206" height="30"/>
+                                        <rect key="frame" x="97" y="99" width="206" height="30"/>
                                         <state key="normal" title="EXPLORE NEIGHBOR SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="cJK-o9-3ny"/>
@@ -1378,14 +1442,14 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0i-9f-WcI">
-                                        <rect key="frame" x="28" y="129" width="344" height="50"/>
+                                        <rect key="frame" x="28" y="139" width="344" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="33N-pD-Gaf"/>
                                         </constraints>
                                         <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
                                     </button>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lkg-jM-MWz">
-                                        <rect key="frame" x="0.0" y="139" width="400" height="500"/>
+                                        <rect key="frame" x="0.0" y="149" width="400" height="500"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" id="0W1-cc-a7V"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="9tL-Y4-HqZ"/>
@@ -1393,14 +1457,14 @@
                                         </constraints>
                                     </sceneKitView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rL8-m9-NBo">
-                                        <rect key="frame" x="28" y="649" width="344" height="50"/>
+                                        <rect key="frame" x="28" y="659" width="344" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="b6i-T2-ZWq"/>
                                         </constraints>
                                         <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPa-Gp-Lb1">
-                                        <rect key="frame" x="130.5" y="659" width="139" height="60"/>
+                                        <rect key="frame" x="130.5" y="669" width="139" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="7ob-zk-Phx"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="I0I-f0-Kpi"/>
@@ -1688,7 +1752,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqc-kC-xpI" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="30.5" y="0.0" width="353.5" height="80"/>
+                                        <rect key="frame" x="23.5" y="0.0" width="367.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1798,7 +1862,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring The Moon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-Z8-8O1" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="138.5" y="0.0" width="137" height="80"/>
+                                        <rect key="frame" x="131.5" y="0.0" width="151" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1864,7 +1928,7 @@
                                 <rect key="frame" x="0.0" y="68" width="414" height="214.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auction House" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SaH-uf-KBc" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="157" y="0.0" width="100.5" height="80"/>
+                                        <rect key="frame" x="150" y="0.0" width="114.5" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2140,7 +2204,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring Mars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV1-av-DId" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="156" y="0.0" width="102" height="80"/>
+                                        <rect key="frame" x="149" y="0.0" width="116" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2188,31 +2252,31 @@
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
-            <size key="intrinsicContentSize" width="456" height="21.5"/>
+            <size key="intrinsicContentSize" width="470" height="31.5"/>
         </designable>
         <designable name="3Nd-Z8-8O1">
-            <size key="intrinsicContentSize" width="137" height="19"/>
+            <size key="intrinsicContentSize" width="151" height="29"/>
         </designable>
         <designable name="IT3-M6-xxO">
-            <size key="intrinsicContentSize" width="356.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="370.5" height="31.5"/>
         </designable>
         <designable name="KSy-lL-kHv">
-            <size key="intrinsicContentSize" width="353.5" height="19"/>
+            <size key="intrinsicContentSize" width="367.5" height="29"/>
         </designable>
         <designable name="Lqc-kC-xpI">
-            <size key="intrinsicContentSize" width="353.5" height="19"/>
+            <size key="intrinsicContentSize" width="367.5" height="29"/>
         </designable>
         <designable name="MeW-Tb-xpX">
-            <size key="intrinsicContentSize" width="112" height="21.5"/>
+            <size key="intrinsicContentSize" width="126" height="31.5"/>
         </designable>
         <designable name="PV1-av-DId">
-            <size key="intrinsicContentSize" width="102" height="19"/>
+            <size key="intrinsicContentSize" width="116" height="29"/>
         </designable>
         <designable name="SaH-uf-KBc">
-            <size key="intrinsicContentSize" width="100.5" height="19"/>
+            <size key="intrinsicContentSize" width="114.5" height="29"/>
         </designable>
         <designable name="XeF-ym-5aq">
-            <size key="intrinsicContentSize" width="354.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="368.5" height="31.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
