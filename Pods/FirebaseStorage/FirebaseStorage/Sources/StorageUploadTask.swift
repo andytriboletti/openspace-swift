@@ -22,10 +22,13 @@ import Foundation
 
 /**
  * `StorageUploadTask` implements resumable uploads to a file in Firebase Storage.
+ *
  * Uploads can be returned on completion with a completion callback, and can be monitored
  * by attaching observers, or controlled by calling `pause()`, `resume()`,
  * or `cancel()`.
+ *
  * Uploads can be initialized from `Data` in memory, or a URL to a file on disk.
+ *
  * Uploads are performed on a background queue, and callbacks are raised on the developer
  * specified `callbackQueue` in Storage, or the main queue if unspecified.
  */
@@ -192,16 +195,16 @@ import Foundation
   private var uploadMetadata: StorageMetadata
   private var uploadData: Data?
   // Hold completion in object to force it to be retained until completion block is called.
-  internal var completionMetadata: ((StorageMetadata?, Error?) -> Void)?
+  var completionMetadata: ((StorageMetadata?, Error?) -> Void)?
 
   // MARK: - Internal Implementations
 
-  internal init(reference: StorageReference,
-                service: GTMSessionFetcherService,
-                queue: DispatchQueue,
-                file: URL? = nil,
-                data: Data? = nil,
-                metadata: StorageMetadata) {
+  init(reference: StorageReference,
+       service: GTMSessionFetcherService,
+       queue: DispatchQueue,
+       file: URL? = nil,
+       data: Data? = nil,
+       metadata: StorageMetadata) {
     uploadMetadata = metadata
     uploadData = data
     super.init(reference: reference, service: service, queue: queue, file: file)
@@ -234,7 +237,7 @@ import Foundation
     )
   }
 
-  internal func finishTaskWithStatus(status: StorageTaskStatus, snapshot: StorageTaskSnapshot) {
+  func finishTaskWithStatus(status: StorageTaskStatus, snapshot: StorageTaskSnapshot) {
     fire(for: status, snapshot: snapshot)
     removeAllObservers()
     fetcherCompletion = nil

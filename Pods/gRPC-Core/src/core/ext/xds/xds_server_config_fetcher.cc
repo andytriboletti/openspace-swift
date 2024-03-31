@@ -51,7 +51,7 @@
 #include "src/core/ext/filters/server_config_selector/server_config_selector.h"
 #include "src/core/ext/filters/server_config_selector/server_config_selector_filter.h"
 #include "src/core/ext/xds/certificate_provider_store.h"
-#include "src/core/ext/xds/xds_bootstrap_grpc.h"
+#include "src/core/ext/xds/xds_bootstrap.h"
 #include "src/core/ext/xds/xds_certificate_provider.h"
 #include "src/core/ext/xds/xds_channel_stack_modifier.h"
 #include "src/core/ext/xds/xds_client_grpc.h"
@@ -502,8 +502,7 @@ void XdsServerConfigFetcher::StartWatch(
   XdsListenerResourceType::StartWatch(
       xds_client_.get(),
       ListenerResourceName(
-          static_cast<const GrpcXdsBootstrap&>(xds_client_->bootstrap())
-              .server_listener_resource_name_template(),
+          xds_client_->bootstrap().server_listener_resource_name_template(),
           listening_address),
       std::move(listener_watcher));
   MutexLock lock(&mu_);
@@ -519,8 +518,7 @@ void XdsServerConfigFetcher::CancelWatch(
     XdsListenerResourceType::CancelWatch(
         xds_client_.get(),
         ListenerResourceName(
-            static_cast<const GrpcXdsBootstrap&>(xds_client_->bootstrap())
-                .server_listener_resource_name_template(),
+            xds_client_->bootstrap().server_listener_resource_name_template(),
             it->second->listening_address()),
         it->second, false /* delay_unsubscription */);
     listener_watchers_.erase(it);
@@ -1346,8 +1344,8 @@ grpc_server_config_fetcher* grpc_server_config_fetcher_xds_create(
             xds_client.status().ToString().c_str());
     return nullptr;
   }
-  if (static_cast<const grpc_core::GrpcXdsBootstrap&>(
-          (*xds_client)->bootstrap())
+  if ((*xds_client)
+          ->bootstrap()
           .server_listener_resource_name_template()
           .empty()) {
     gpr_log(GPR_ERROR,

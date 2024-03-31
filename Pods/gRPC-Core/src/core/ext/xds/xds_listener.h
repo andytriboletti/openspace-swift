@@ -30,6 +30,7 @@
 #include <string>
 #include <vector>
 
+#include "absl/status/statusor.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
 #include "envoy/config/listener/v3/listener.upbdefs.h"
@@ -209,9 +210,9 @@ class XdsListenerResourceType
     return "envoy.api.v2.Listener";
   }
 
-  DecodeResult Decode(const XdsResourceType::DecodeContext& context,
-                      absl::string_view serialized_resource,
-                      bool is_v2) const override;
+  absl::StatusOr<DecodeResult> Decode(
+      const XdsResourceType::DecodeContext& context,
+      absl::string_view serialized_resource, bool is_v2) const override;
 
   bool AllResourcesRequiredInSotW() const override { return true; }
 

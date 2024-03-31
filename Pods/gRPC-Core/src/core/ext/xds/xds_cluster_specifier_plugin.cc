@@ -33,7 +33,6 @@
 
 #include <grpc/support/log.h>
 
-#include "src/core/lib/config/core_configuration.h"
 #include "src/core/lib/json/json.h"
 #include "src/core/lib/load_balancing/lb_policy_registry.h"
 #include "src/proto/grpc/lookup/v1/rls_config.upb.h"
@@ -98,8 +97,7 @@ XdsRouteLookupClusterSpecifierPlugin::GenerateLoadBalancingPolicyConfig(
   // the gRPC LB policy registry instead of requiring each plugin to do that
   // itself.
   auto config =
-      CoreConfiguration::Get().lb_policy_registry().ParseLoadBalancingConfig(
-          lb_policy_config);
+      LoadBalancingPolicyRegistry::ParseLoadBalancingConfig(lb_policy_config);
   if (!config.ok()) {
     return absl::InvalidArgumentError(absl::StrCat(
         kXdsRouteLookupClusterSpecifierPluginConfigName,

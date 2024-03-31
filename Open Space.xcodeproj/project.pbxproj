@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */; };
+		01375227D64229611EAB4026 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		193C316310F965AF215A1933 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */; };
 		6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */; };
 		6F022424240250A60035F7E4 /* mtwashington.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F022423240250A60035F7E4 /* mtwashington.scn */; };
@@ -107,6 +108,144 @@
 		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
 		6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
+		721AB5842BB918F400E68231 /* ExploreMarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E52BB896CA00976E4C /* ExploreMarsViewController.swift */; };
+		721AB5852BB918F400E68231 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
+		721AB5862BB918F400E68231 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F895FA72606B51500378FA7 /* TravelViewController.swift */; };
+		721AB5872BB918F400E68231 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E22BB782C200976E4C /* AboutViewController.swift */; };
+		721AB5882BB918F400E68231 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
+		721AB5892BB918F400E68231 /* SelectShipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDADF242644D1BF00F7878C /* SelectShipViewController.swift */; };
+		721AB58A2BB918F400E68231 /* ShipyardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F91EC9A260F9A700058B9F5 /* ShipyardViewController.swift */; };
+		721AB58B2BB918F400E68231 /* NeighborSphereCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0B3A52BB6556000BACE67 /* NeighborSphereCell.swift */; };
+		721AB58C2BB918F400E68231 /* NavGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F30352C240FB007006C4684 /* NavGameController.swift */; };
+		721AB58D2BB918F400E68231 /* SelectNeighborSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0B3A32BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift */; };
+		721AB58E2BB918F400E68231 /* EarthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6146F024224F2F000DFACC /* EarthViewController.swift */; };
+		721AB58F2BB918F400E68231 /* MoonSphereBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */; };
+		721AB5902BB918F400E68231 /* WhereOnEarthSelectCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */; };
+		721AB5912BB918F400E68231 /* ExploreEarthSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */; };
+		721AB5922BB918F400E68231 /* EarthLocationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9385612425A249001BE3F6 /* EarthLocationState.swift */; };
+		721AB5932BB918F400E68231 /* SpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */; };
+		721AB5942BB918F400E68231 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
+		721AB5952BB918F400E68231 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818E2B8FD80600FB572F /* WebSocketManager.swift */; };
+		721AB5962BB918F400E68231 /* AuctionHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */; };
+		721AB5972BB918F400E68231 /* ModelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818C2B8EA2C200FB572F /* ModelCollectionViewCell.swift */; };
+		721AB5982BB918F400E68231 /* MoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C513252A4FC29700AAD941 /* MoonViewController.swift */; };
+		721AB5992BB918F400E68231 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818A2B8EA20300FB572F /* HeaderView.swift */; };
+		721AB59A2BB918F400E68231 /* VideoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */; };
+		721AB59B2BB918F400E68231 /* OpenspaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */; };
+		721AB59C2BB918F400E68231 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
+		721AB59D2BB918F400E68231 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA4D33323FFB2CB0088B4A4 /* GameState.swift */; };
+		721AB59E2BB918F400E68231 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */; };
+		721AB59F2BB918F400E68231 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BC2B9D043B007AF494 /* ModelViewController.swift */; };
+		721AB5A02BB918F400E68231 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC6C24003AB3005AECC9 /* LocationCollectionViewCell.swift */; };
+		721AB5A12BB918F400E68231 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
+		721AB5A22BB918F400E68231 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */; };
+		721AB5A32BB918F400E68231 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BEF0BC2A313ED400F86AD9 /* TabViewController.swift */; };
+		721AB5A42BB918F400E68231 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */; };
+		721AB5A52BB918F400E68231 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5934824001B42007C16E3 /* PaddingLabel.swift */; };
+		721AB5A62BB918F400E68231 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */; };
+		721AB5A72BB918F400E68231 /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43938F23FF6DC60007614D /* MarsViewController.swift */; };
+		721AB5A82BB918F400E68231 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */; };
+		721AB5A92BB918F400E68231 /* NeighborSphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */; };
+		721AB5AA2BB918F400E68231 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34E310263B4C8200E67276 /* Defaults.swift */; };
+		721AB5AB2BB918F400E68231 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181902B8FF1C800FB572F /* ChatView.swift */; };
+		721AB5AC2BB918F400E68231 /* LocationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3146B2401E57F009D77AB /* LocationState.swift */; };
+		721AB5AD2BB918F400E68231 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181922B8FF26200FB572F /* ChatViewController.swift */; };
+		721AB5AE2BB918F400E68231 /* ReplicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */; };
+		721AB5AF2BB918F400E68231 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D845C23FF8C8800328057 /* Utils.swift */; };
+		721AB5B02BB918F400E68231 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722102D32BB905D7008F431C /* LeaderboardViewController.swift */; };
+		721AB5B12BB918F400E68231 /* VIdeoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */; };
+		721AB5B62BB918F400E68231 /* mtrushmore.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E272402458B00757B99 /* mtrushmore.scn */; };
+		721AB5B72BB918F400E68231 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513312A53750B00AAD941 /* moon_surface.jpg */; };
+		721AB5B82BB918F400E68231 /* pexels-pixabay-262786-pyramid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9D2530DBCB001164E4 /* pexels-pixabay-262786-pyramid.jpg */; };
+		721AB5B92BB918F400E68231 /* b.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FA52B1C23FE335500B16480 /* b.dae */; };
+		721AB5BA2BB918F400E68231 /* Metal_Weave_003_basecolor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4AD6A223FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg */; };
+		721AB5BB2BB918F400E68231 /* PIA15415orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911FA23FF435500255491 /* PIA15415orig.jpg */; };
+		721AB5BC2BB918F400E68231 /* lroc_color_poles_8k.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513372A53A96700AAD941 /* lroc_color_poles_8k.jpg */; };
+		721AB5BD2BB918F400E68231 /* starcrumpled.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296823FECDD20082209D /* starcrumpled.dae */; };
+		721AB5BE2BB918F400E68231 /* mtwashington.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F022423240250A60035F7E4 /* mtwashington.scn */; };
+		721AB5BF2BB918F400E68231 /* spaceshipa.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3262640E9E500E67276 /* spaceshipa.dae */; };
+		721AB5C02BB918F400E68231 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */; };
+		721AB5C12BB918F400E68231 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9C2530DBCB001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg */; };
+		721AB5C22BB918F400E68231 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F5A252E1B4100147723 /* pexels-tom-fisk-1653823_great-wall.jpg */; };
+		721AB5C32BB918F400E68231 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */; };
+		721AB5C42BB918F400E68231 /* EXPORT_GOOGLE_SAT_WM.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B8E252402458B00757B99 /* EXPORT_GOOGLE_SAT_WM.png */; };
+		721AB5C52BB918F400E68231 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
+		721AB5C62BB918F400E68231 /* sunlowres.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9224015CEE0070C292 /* sunlowres.scn */; };
+		721AB5C72BB918F400E68231 /* a.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C596323FE1BDF00808386 /* a.dae */; };
+		721AB5C82BB918F400E68231 /* geodesic_sphere2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72C513232A4FC1C500AAD941 /* geodesic_sphere2.scn */; };
+		721AB5C92BB918F400E68231 /* PIA12348orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F96DE6323FDE0DA00BAE0CF /* PIA12348orig.jpg */; };
+		721AB5CA2BB918F400E68231 /* moon.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F30352E240FC3C0006C4684 /* moon.dae */; };
+		721AB5CB2BB918F400E68231 /* space_icon_200.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296423FEC8620082209D /* space_icon_200.jpg */; };
+		721AB5CC2BB918F400E68231 /* geodesic_sphere2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C513212A4F710300AAD941 /* geodesic_sphere2.dae */; };
+		721AB5CD2BB918F400E68231 /* Sun_1_1391000.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B8C24015A760070C292 /* Sun_1_1391000.usdz */; };
+		721AB5CE2BB918F400E68231 /* instantmeshstation2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F43938D23FF56830007614D /* instantmeshstation2.scn */; };
+		721AB5CF2BB918F400E68231 /* 2k_sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F636B9024015CA10070C292 /* 2k_sun.jpg */; };
+		721AB5D02BB918F400E68231 /* PIA01120orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D845A23FF8B8E00328057 /* PIA01120orig.jpg */; };
+		721AB5D12BB918F400E68231 /* 14648179676_db2001e0fa_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92050259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg */; };
+		721AB5D22BB918F400E68231 /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
+		721AB5D32BB918F400E68231 /* spaceshipc.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E32A2641A51200E67276 /* spaceshipc.dae */; };
+		721AB5D42BB918F400E68231 /* moonbackgroundwithearth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72C513282A50DF2800AAD941 /* moonbackgroundwithearth.jpg */; };
+		721AB5D52BB918F400E68231 /* yellowstar100.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588823FEBAEF004263CB /* yellowstar100.dae */; };
+		721AB5D62BB918F400E68231 /* PIA13005orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FE911F823FF427B00255491 /* PIA13005orig.jpg */; };
+		721AB5D72BB918F400E68231 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9E2530DBCB001164E4 /* pexels-chait-goli-1797161-colosseum.jpg */; };
+		721AB5D82BB918F400E68231 /* allgreentree.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB587623FE4BA7004263CB /* allgreentree.dae */; };
+		721AB5D92BB918F400E68231 /* 2k_earth_daymap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA324076FF4004A1C8B /* 2k_earth_daymap.jpg */; };
+		721AB5DA2BB918F400E68231 /* earth.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA5240772F3004A1C8B /* earth.scn */; };
+		721AB5DB2BB918F400E68231 /* flagcool.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F6D845723FF87E300328057 /* flagcool.dae */; };
+		721AB5DC2BB918F400E68231 /* earth.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3586268E762F002F1B12 /* earth.png */; };
+		721AB5DD2BB918F400E68231 /* pexels-abdullah-ghatasheh-1631665.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F4A3F5E252E40A800147723 /* pexels-abdullah-ghatasheh-1631665.jpg */; };
+		721AB5DE2BB918F400E68231 /* PIA04921orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA9240776F1004A1C8B /* PIA04921orig.jpg */; };
+		721AB5DF2BB918F400E68231 /* flagcool.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F988A9823FF944100F7ED73 /* flagcool.scn */; };
+		721AB5E02BB918F400E68231 /* GameScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72C5132A2A51ED7200AAD941 /* GameScene.scn */; };
+		721AB5E12BB918F400E68231 /* planetveg.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296A23FED5270082209D /* planetveg.dae */; };
+		721AB5E22BB918F400E68231 /* iss.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3583268E762E002F1B12 /* iss.png */; };
+		721AB5E32BB918F400E68231 /* ISS_stationary2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6F158182240167E60005A00E /* ISS_stationary2.usdz */; };
+		721AB5E42BB918F400E68231 /* iss044e045215_lrg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204C259B87A2008F6CA3 /* iss044e045215_lrg.jpg */; };
+		721AB5E52BB918F400E68231 /* eleuz.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E32C2641A52100E67276 /* eleuz.scn */; };
+		721AB5E62BB918F400E68231 /* moon_surface.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C513352A5375AD00AAD941 /* moon_surface.png */; };
+		721AB5E72BB918F400E68231 /* yellowstar.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588623FEB9B8004263CB /* yellowstar.dae */; };
+		721AB5E82BB918F400E68231 /* instantmeshstation2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FECC4D023FEE96000B46D91 /* instantmeshstation2.dae */; };
+		721AB5E92BB918F400E68231 /* lightspeed_PexelsVideos2757709.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6F895FA42606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 */; };
+		721AB5EA2BB918F400E68231 /* pexels-fly-rj-2818895-christ.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9B2530DBCB001164E4 /* pexels-fly-rj-2818895-christ.jpg */; };
+		721AB5EB2BB918F400E68231 /* processing_model_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 722181882B8E90D500FB572F /* processing_model_icon.jpg */; };
+		721AB5EC2BB918F400E68231 /* starry-sky-998641.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F303534240FEA66006C4684 /* starry-sky-998641.jpg */; };
+		721AB5ED2BB918F400E68231 /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
+		721AB5EE2BB918F400E68231 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */; };
+		721AB5EF2BB918F400E68231 /* starregular.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588A23FEBE06004263CB /* starregular.dae */; };
+		721AB5F02BB918F400E68231 /* 2k_mars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296C23FED5A80082209D /* 2k_mars.jpg */; };
+		721AB5F12BB918F400E68231 /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F894C9E24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg */; };
+		721AB5F22BB918F400E68231 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
+		721AB5F32BB918F400E68231 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3584268E762E002F1B12 /* mars.png */; };
+		721AB5F42BB918F400E68231 /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FED3585268E762F002F1B12 /* moon.png */; };
+		721AB5F52BB918F400E68231 /* quasar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92041259B71B5008F6CA3 /* quasar.png */; };
+		721AB5F62BB918F400E68231 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F643E9F2530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg */; };
+		721AB5F72BB918F400E68231 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */; };
+		721AB5F82BB918F400E68231 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204E259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg */; };
+		721AB5F92BB918F400E68231 /* PIA09653orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA72407742F004A1C8B /* PIA09653orig.jpg */; };
+		721AB5FA2BB918F400E68231 /* artophy.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6FA5934624001043007C16E3 /* artophy.scn */; };
+		721AB5FB2BB918F400E68231 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
+		721AB5FC2BB918F400E68231 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */; };
+		721AB5FD2BB918F400E68231 /* geoodesic_dome.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C5131D2A4F67FF00AAD941 /* geoodesic_dome.dae */; };
+		721AB5FE2BB918F400E68231 /* mars.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB588123FEB952004263CB /* mars.dae */; };
+		721AB5FF2BB918F400E68231 /* 30509478486_5fff4559ab_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204D259B87A2008F6CA3 /* 30509478486_5fff4559ab_o.jpg */; };
+		721AB6002BB918F400E68231 /* pexels_taj-mahal-india-1603650.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F93856524261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg */; };
+		721AB6012BB918F400E68231 /* spaceshipb.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */; };
+		721AB6022BB918F400E68231 /* geodesic_sphere.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72C5131F2A4F705100AAD941 /* geodesic_sphere.dae */; };
+		721AB6032BB918F400E68231 /* PIA17563orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FA314682401945D009D77AB /* PIA17563orig.jpg */; };
+		721AB6042BB918F400E68231 /* moon.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F303530240FE382006C4684 /* moon.scn */; };
+		721AB6052BB918F400E68231 /* model2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7221819A2B953CC800FB572F /* model2.obj */; };
+		721AB6062BB918F400E68231 /* earth.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6F677BA124076EE6004A1C8B /* earth.dae */; };
+		721AB6072BB918F400E68231 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */; };
+		721AB6082BB918F400E68231 /* space_icon_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */; };
+		721AB6092BB918F400E68231 /* florence.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92051259B87A2008F6CA3 /* florence.jpg */; };
+		721AB60A2BB918F400E68231 /* d.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FA52B1E23FE3D3100B16480 /* d.dae */; };
+		721AB60B2BB918F400E68231 /* 24609260915_a840b027e5_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92052259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg */; };
+		721AB60C2BB918F400E68231 /* GSFC_20171208_Archive_e001359orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294564240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg */; };
+		721AB60D2BB918F400E68231 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F81A27B24155C4300D79494 /* Assets.xcassets */; };
+		721AB60E2BB918F400E68231 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6FCCF110260297E000514899 /* README.md */; };
+		721AB60F2BB918F400E68231 /* iss006e48523orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294566240B1F7F008328FC /* iss006e48523orig.jpg */; };
+		721AB6102BB918F400E68231 /* anderik.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3282640E9F600E67276 /* anderik.scn */; };
+		721AB6112BB918F400E68231 /* iss045e166104.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */; };
 		722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722102D32BB905D7008F431C /* LeaderboardViewController.swift */; };
 		722181892B8E90D500FB572F /* processing_model_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 722181882B8E90D500FB572F /* processing_model_icon.jpg */; };
 		7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818A2B8EA20300FB572F /* HeaderView.swift */; };
@@ -148,6 +287,7 @@
 		72FC18B92B9CEF94007AF494 /* VIdeoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */; };
 		72FC18BB2B9CF08F007AF494 /* VideoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */; };
 		72FC18BD2B9D043B007AF494 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BC2B9D043B007AF494 /* ModelViewController.swift */; };
+		B29B9EF18546AE29C2AFD4C8 /* Pods_Open_Space_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD51EB4792D8ADE5B058294 /* Pods_Open_Space_Mac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,7 +302,9 @@
 
 /* Begin PBXFileReference section */
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
+		17F24065F56C1765D7958738 /* Pods-Open Space Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Mac.release.xcconfig"; path = "Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac.release.xcconfig"; sourceTree = "<group>"; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
+		692FFF75F55F2C48E4781280 /* Pods-Open Space Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Mac.debug.xcconfig"; path = "Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EXPORT_GOOGLE_SAT_WM-mtwashington.png"; sourceTree = "<group>"; };
 		6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEarthSceneViewController.swift; sourceTree = "<group>"; };
 		6F022423240250A60035F7E4 /* mtwashington.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mtwashington.scn; sourceTree = "<group>"; };
@@ -266,6 +408,9 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
+		721AB5802BB90FD100E68231 /* Open Space copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Open Space copy-Info.plist"; path = "/Users/andrewtriboletti/Documents/GitHub/openspace-swift/Open Space copy-Info.plist"; sourceTree = "<absolute>"; };
+		721AB6192BB918F400E68231 /* Open Space Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		721AB61A2BB918F800E68231 /* Open Space copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Open Space copy2-Info.plist"; path = "/Users/andrewtriboletti/Documents/GitHub/openspace-swift/Open Space copy2-Info.plist"; sourceTree = "<absolute>"; };
 		722102D32BB905D7008F431C /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		722181882B8E90D500FB572F /* processing_model_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = processing_model_icon.jpg; sourceTree = "<group>"; };
 		7221818A2B8EA20300FB572F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -308,7 +453,7 @@
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
 		72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCacheManager.swift; sourceTree = "<group>"; };
 		72FC18BC2B9D043B007AF494 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
-		E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD51EB4792D8ADE5B058294 /* Pods_Open_Space_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,7 +461,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				193C316310F965AF215A1933 /* Pods_Open_Space.framework in Frameworks */,
+				193C316310F965AF215A1933 /* (null) in Frameworks */,
+				01375227D64229611EAB4026 /* (null) in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		721AB5B22BB918F400E68231 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B29B9EF18546AE29C2AFD4C8 /* Pods_Open_Space_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +487,7 @@
 		35D7EF5FCFAD97927D9DE97E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E1C8C2A5759B0325181F8EC4 /* Pods_Open_Space.framework */,
+				7AD51EB4792D8ADE5B058294 /* Pods_Open_Space_Mac.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -343,6 +497,8 @@
 			children = (
 				018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */,
 				2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */,
+				692FFF75F55F2C48E4781280 /* Pods-Open Space Mac.debug.xcconfig */,
+				17F24065F56C1765D7958738 /* Pods-Open Space Mac.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -518,6 +674,8 @@
 				6FB0EEF623FDA1A800EA28D7 /* Products */,
 				4A6CA5CD975451981FEB3438 /* Pods */,
 				35D7EF5FCFAD97927D9DE97E /* Frameworks */,
+				721AB5802BB90FD100E68231 /* Open Space copy-Info.plist */,
+				721AB61A2BB918F800E68231 /* Open Space copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -526,6 +684,7 @@
 			children = (
 				6FB0EEF523FDA1A800EA28D7 /* Open Space.app */,
 				72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */,
+				721AB6192BB918F400E68231 /* Open Space Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -797,6 +956,27 @@
 			productReference = 6FB0EEF523FDA1A800EA28D7 /* Open Space.app */;
 			productType = "com.apple.product-type.application";
 		};
+		721AB5812BB918F400E68231 /* Open Space Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 721AB6162BB918F400E68231 /* Build configuration list for PBXNativeTarget "Open Space Mac" */;
+			buildPhases = (
+				721AB5822BB918F400E68231 /* [CP] Check Pods Manifest.lock */,
+				721AB5832BB918F400E68231 /* Sources */,
+				721AB5B22BB918F400E68231 /* Frameworks */,
+				721AB5B52BB918F400E68231 /* Resources */,
+				721AB6122BB918F400E68231 /* [CP] Embed Pods Frameworks */,
+				721AB6132BB918F400E68231 /* ShellScript */,
+				721AB6142BB918F400E68231 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Open Space Mac";
+			productName = "Open Space";
+			productReference = 721AB6192BB918F400E68231 /* Open Space Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		72D19A20270DF62800175BD9 /* Open SpaceUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72D19A2B270DF62800175BD9 /* Build configuration list for PBXNativeTarget "Open SpaceUITests" */;
@@ -850,6 +1030,7 @@
 			targets = (
 				6FB0EEF423FDA1A800EA28D7 /* Open Space */,
 				72D19A20270DF62800175BD9 /* Open SpaceUITests */,
+				721AB5812BB918F400E68231 /* Open Space Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -954,6 +1135,105 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		721AB5B52BB918F400E68231 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				721AB5B62BB918F400E68231 /* mtrushmore.scn in Resources */,
+				721AB5B72BB918F400E68231 /* moon_surface.jpg in Resources */,
+				721AB5B82BB918F400E68231 /* pexels-pixabay-262786-pyramid.jpg in Resources */,
+				721AB5B92BB918F400E68231 /* b.dae in Resources */,
+				721AB5BA2BB918F400E68231 /* Metal_Weave_003_basecolor.jpg in Resources */,
+				721AB5BB2BB918F400E68231 /* PIA15415orig.jpg in Resources */,
+				721AB5BC2BB918F400E68231 /* lroc_color_poles_8k.jpg in Resources */,
+				721AB5BD2BB918F400E68231 /* starcrumpled.dae in Resources */,
+				721AB5BE2BB918F400E68231 /* mtwashington.scn in Resources */,
+				721AB5BF2BB918F400E68231 /* spaceshipa.dae in Resources */,
+				721AB5C02BB918F400E68231 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
+				721AB5C12BB918F400E68231 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
+				721AB5C22BB918F400E68231 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
+				721AB5C32BB918F400E68231 /* LaunchScreen.storyboard in Resources */,
+				721AB5C42BB918F400E68231 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
+				721AB5C52BB918F400E68231 /* Artophy.png in Resources */,
+				721AB5C62BB918F400E68231 /* sunlowres.scn in Resources */,
+				721AB5C72BB918F400E68231 /* a.dae in Resources */,
+				721AB5C82BB918F400E68231 /* geodesic_sphere2.scn in Resources */,
+				721AB5C92BB918F400E68231 /* PIA12348orig.jpg in Resources */,
+				721AB5CA2BB918F400E68231 /* moon.dae in Resources */,
+				721AB5CB2BB918F400E68231 /* space_icon_200.jpg in Resources */,
+				721AB5CC2BB918F400E68231 /* geodesic_sphere2.dae in Resources */,
+				721AB5CD2BB918F400E68231 /* Sun_1_1391000.usdz in Resources */,
+				721AB5CE2BB918F400E68231 /* instantmeshstation2.scn in Resources */,
+				721AB5CF2BB918F400E68231 /* 2k_sun.jpg in Resources */,
+				721AB5D02BB918F400E68231 /* PIA01120orig.jpg in Resources */,
+				721AB5D12BB918F400E68231 /* 14648179676_db2001e0fa_o.jpg in Resources */,
+				721AB5D22BB918F400E68231 /* a.scn in Resources */,
+				721AB5D32BB918F400E68231 /* spaceshipc.dae in Resources */,
+				721AB5D42BB918F400E68231 /* moonbackgroundwithearth.jpg in Resources */,
+				721AB5D52BB918F400E68231 /* yellowstar100.dae in Resources */,
+				721AB5D62BB918F400E68231 /* PIA13005orig.jpg in Resources */,
+				721AB5D72BB918F400E68231 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
+				721AB5D82BB918F400E68231 /* allgreentree.dae in Resources */,
+				721AB5D92BB918F400E68231 /* 2k_earth_daymap.jpg in Resources */,
+				721AB5DA2BB918F400E68231 /* earth.scn in Resources */,
+				721AB5DB2BB918F400E68231 /* flagcool.dae in Resources */,
+				721AB5DC2BB918F400E68231 /* earth.png in Resources */,
+				721AB5DD2BB918F400E68231 /* pexels-abdullah-ghatasheh-1631665.jpg in Resources */,
+				721AB5DE2BB918F400E68231 /* PIA04921orig.jpg in Resources */,
+				721AB5DF2BB918F400E68231 /* flagcool.scn in Resources */,
+				721AB5E02BB918F400E68231 /* GameScene.scn in Resources */,
+				721AB5E12BB918F400E68231 /* planetveg.dae in Resources */,
+				721AB5E22BB918F400E68231 /* iss.png in Resources */,
+				721AB5E32BB918F400E68231 /* ISS_stationary2.usdz in Resources */,
+				721AB5E42BB918F400E68231 /* iss044e045215_lrg.jpg in Resources */,
+				721AB5E52BB918F400E68231 /* eleuz.scn in Resources */,
+				721AB5E62BB918F400E68231 /* moon_surface.png in Resources */,
+				721AB5E72BB918F400E68231 /* yellowstar.dae in Resources */,
+				721AB5E82BB918F400E68231 /* instantmeshstation2.dae in Resources */,
+				721AB5E92BB918F400E68231 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
+				721AB5EA2BB918F400E68231 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
+				721AB5EB2BB918F400E68231 /* processing_model_icon.jpg in Resources */,
+				721AB5EC2BB918F400E68231 /* starry-sky-998641.jpg in Resources */,
+				721AB5ED2BB918F400E68231 /* mars.scn in Resources */,
+				721AB5EE2BB918F400E68231 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
+				721AB5EF2BB918F400E68231 /* starregular.dae in Resources */,
+				721AB5F02BB918F400E68231 /* 2k_mars.jpg in Resources */,
+				721AB5F12BB918F400E68231 /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
+				721AB5F22BB918F400E68231 /* Eleuz.png in Resources */,
+				721AB5F32BB918F400E68231 /* mars.png in Resources */,
+				721AB5F42BB918F400E68231 /* moon.png in Resources */,
+				721AB5F52BB918F400E68231 /* quasar.png in Resources */,
+				721AB5F62BB918F400E68231 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
+				721AB5F72BB918F400E68231 /* GoogleService-Info.plist in Resources */,
+				721AB5F82BB918F400E68231 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */,
+				721AB5F92BB918F400E68231 /* PIA09653orig.jpg in Resources */,
+				721AB5FA2BB918F400E68231 /* artophy.scn in Resources */,
+				721AB5FB2BB918F400E68231 /* Anderik.png in Resources */,
+				721AB5FC2BB918F400E68231 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */,
+				721AB5FD2BB918F400E68231 /* geoodesic_dome.dae in Resources */,
+				721AB5FE2BB918F400E68231 /* mars.dae in Resources */,
+				721AB5FF2BB918F400E68231 /* 30509478486_5fff4559ab_o.jpg in Resources */,
+				721AB6002BB918F400E68231 /* pexels_taj-mahal-india-1603650.jpg in Resources */,
+				721AB6012BB918F400E68231 /* spaceshipb.dae in Resources */,
+				721AB6022BB918F400E68231 /* geodesic_sphere.dae in Resources */,
+				721AB6032BB918F400E68231 /* PIA17563orig.jpg in Resources */,
+				721AB6042BB918F400E68231 /* moon.scn in Resources */,
+				721AB6052BB918F400E68231 /* model2.obj in Resources */,
+				721AB6062BB918F400E68231 /* earth.dae in Resources */,
+				721AB6072BB918F400E68231 /* Main.storyboard in Resources */,
+				721AB6082BB918F400E68231 /* space_icon_1024.jpg in Resources */,
+				721AB6092BB918F400E68231 /* florence.jpg in Resources */,
+				721AB60A2BB918F400E68231 /* d.dae in Resources */,
+				721AB60B2BB918F400E68231 /* 24609260915_a840b027e5_o.jpg in Resources */,
+				721AB60C2BB918F400E68231 /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
+				721AB60D2BB918F400E68231 /* Assets.xcassets in Resources */,
+				721AB60E2BB918F400E68231 /* README.md in Resources */,
+				721AB60F2BB918F400E68231 /* iss006e48523orig.jpg in Resources */,
+				721AB6102BB918F400E68231 /* anderik.scn in Resources */,
+				721AB6112BB918F400E68231 /* iss045e166104.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72D19A1F270DF62800175BD9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1003,6 +1283,80 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "xattr -cr ~/Library/Developer/Xcode/DerivedData || echo Clear\n";
+		};
+		721AB5822BB918F400E68231 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Open Space Mac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		721AB6122BB918F400E68231 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		721AB6132BB918F400E68231 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xattr -cr ~/Library/Developer/Xcode/DerivedData || echo Clear\n";
+		};
+		721AB6142BB918F400E68231 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		72A3C04F2A80113A00C2A01E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1108,6 +1462,59 @@
 				6F6D845D23FF8C8800328057 /* Utils.swift in Sources */,
 				722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */,
 				72FC18B92B9CEF94007AF494 /* VIdeoCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		721AB5832BB918F400E68231 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				721AB5842BB918F400E68231 /* ExploreMarsViewController.swift in Sources */,
+				721AB5852BB918F400E68231 /* SignInViewController.swift in Sources */,
+				721AB5862BB918F400E68231 /* TravelViewController.swift in Sources */,
+				721AB5872BB918F400E68231 /* AboutViewController.swift in Sources */,
+				721AB5882BB918F400E68231 /* AccountViewController.swift in Sources */,
+				721AB5892BB918F400E68231 /* SelectShipViewController.swift in Sources */,
+				721AB58A2BB918F400E68231 /* ShipyardViewController.swift in Sources */,
+				721AB58B2BB918F400E68231 /* NeighborSphereCell.swift in Sources */,
+				721AB58C2BB918F400E68231 /* NavGameController.swift in Sources */,
+				721AB58D2BB918F400E68231 /* SelectNeighborSphereViewController.swift in Sources */,
+				721AB58E2BB918F400E68231 /* EarthViewController.swift in Sources */,
+				721AB58F2BB918F400E68231 /* MoonSphereBaseViewController.swift in Sources */,
+				721AB5902BB918F400E68231 /* WhereOnEarthSelectCollectionViewController.swift in Sources */,
+				721AB5912BB918F400E68231 /* ExploreEarthSceneViewController.swift in Sources */,
+				721AB5922BB918F400E68231 /* EarthLocationState.swift in Sources */,
+				721AB5932BB918F400E68231 /* SpaceStationViewController.swift in Sources */,
+				721AB5942BB918F400E68231 /* SphereInventoryViewController.swift in Sources */,
+				721AB5952BB918F400E68231 /* WebSocketManager.swift in Sources */,
+				721AB5962BB918F400E68231 /* AuctionHouseViewController.swift in Sources */,
+				721AB5972BB918F400E68231 /* ModelCollectionViewCell.swift in Sources */,
+				721AB5982BB918F400E68231 /* MoonViewController.swift in Sources */,
+				721AB5992BB918F400E68231 /* HeaderView.swift in Sources */,
+				721AB59A2BB918F400E68231 /* VideoCacheManager.swift in Sources */,
+				721AB59B2BB918F400E68231 /* OpenspaceAPI.swift in Sources */,
+				721AB59C2BB918F400E68231 /* ExploreMoonViewController.swift in Sources */,
+				721AB59D2BB918F400E68231 /* GameState.swift in Sources */,
+				721AB59E2BB918F400E68231 /* GameViewController.swift in Sources */,
+				721AB59F2BB918F400E68231 /* ModelViewController.swift in Sources */,
+				721AB5A02BB918F400E68231 /* LocationCollectionViewCell.swift in Sources */,
+				721AB5A12BB918F400E68231 /* YourSphereViewController.swift in Sources */,
+				721AB5A22BB918F400E68231 /* InventoryViewController.swift in Sources */,
+				721AB5A32BB918F400E68231 /* TabViewController.swift in Sources */,
+				721AB5A42BB918F400E68231 /* AppDelegate.swift in Sources */,
+				721AB5A52BB918F400E68231 /* PaddingLabel.swift in Sources */,
+				721AB5A62BB918F400E68231 /* SelectLocationViewController.swift in Sources */,
+				721AB5A72BB918F400E68231 /* MarsViewController.swift in Sources */,
+				721AB5A82BB918F400E68231 /* AlertViewController.swift in Sources */,
+				721AB5A92BB918F400E68231 /* NeighborSphereInventoryViewController.swift in Sources */,
+				721AB5AA2BB918F400E68231 /* Defaults.swift in Sources */,
+				721AB5AB2BB918F400E68231 /* ChatView.swift in Sources */,
+				721AB5AC2BB918F400E68231 /* LocationState.swift in Sources */,
+				721AB5AD2BB918F400E68231 /* ChatViewController.swift in Sources */,
+				721AB5AE2BB918F400E68231 /* ReplicatorViewController.swift in Sources */,
+				721AB5AF2BB918F400E68231 /* Utils.swift in Sources */,
+				721AB5B02BB918F400E68231 /* LeaderboardViewController.swift in Sources */,
+				721AB5B12BB918F400E68231 /* VIdeoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,6 +1733,66 @@
 			};
 			name = Release;
 		};
+		721AB6172BB918F400E68231 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 692FFF75F55F2C48E4781280 /* Pods-Open Space Mac.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = 779S839979;
+				INFOPLIST_FILE = "Open Space Mac-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		721AB6182BB918F400E68231 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17F24065F56C1765D7958738 /* Pods-Open Space Mac.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = 779S839979;
+				INFOPLIST_FILE = "Open Space Mac-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Release;
+		};
 		72D19A29270DF62800175BD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1391,6 +1858,15 @@
 			buildConfigurations = (
 				6FB0EF0A23FDA1A900EA28D7 /* Debug */,
 				6FB0EF0B23FDA1A900EA28D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		721AB6162BB918F400E68231 /* Build configuration list for PBXNativeTarget "Open Space Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				721AB6172BB918F400E68231 /* Debug */,
+				721AB6182BB918F400E68231 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

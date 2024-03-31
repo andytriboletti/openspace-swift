@@ -25,7 +25,6 @@
 #include <grpc/support/time.h>
 
 #include "src/core/lib/iomgr/exec_ctx.h"
-#include "src/core/lib/iomgr/iomgr_fwd.h"
 
 extern grpc_core::DebugOnlyTraceFlag grpc_trace_fd_refcount;
 
@@ -36,6 +35,7 @@ extern grpc_core::DebugOnlyTraceFlag grpc_trace_fd_refcount;
     - a completion queue might keep a pollset with an entry for each transport
       that is servicing a call that it's tracking */
 
+typedef struct grpc_pollset grpc_pollset;
 typedef struct grpc_pollset_worker grpc_pollset_worker;
 
 typedef struct grpc_pollset_vtable {

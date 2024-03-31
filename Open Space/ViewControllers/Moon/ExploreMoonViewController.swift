@@ -10,7 +10,12 @@ import UIKit
 import SceneKit
 import Alamofire
 import Defaults
+
+#if targetEnvironment(macCatalyst)
+// Exclude GoogleMobileAds for Mac Catalyst
+#else
 import GoogleMobileAds
+#endif
 
 class ExploreMoonViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
@@ -25,26 +30,31 @@ class ExploreMoonViewController: UIViewController {
     @IBOutlet var takeOffButton: UIButton!
 
     @IBOutlet var headerLabel: PaddingLabel!
-
-    var rewardedAd: GADRewardedAd?
+    #if !targetEnvironment(macCatalyst)
+        var rewardedAd: GADRewardedAd?
+    #endif
 
     var baseNode: SCNNode!
     @IBOutlet var scnView: SCNView!
 
     func loadRewardedAd() async {
+        #if !targetEnvironment(macCatalyst)
+
         do {
             print("user id is")
             print(Defaults[.userId])
 
-          rewardedAd = try await GADRewardedAd.load(
-            withAdUnitID: "ca-app-pub-8840903285420889/2588345097", request: GADRequest())
+            rewardedAd = try await GADRewardedAd.load(
+                withAdUnitID: "ca-app-pub-8840903285420889/2588345097", request: GADRequest())
             let serverSideVerificationOptions = GADServerSideVerificationOptions()
             serverSideVerificationOptions.userIdentifier = Defaults[.userId]
             rewardedAd?.serverSideVerificationOptions = serverSideVerificationOptions
         } catch {
-          print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
         }
-      }
+
+        #endif
+    }
 
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
@@ -93,16 +103,17 @@ class ExploreMoonViewController: UIViewController {
     }
 
     func show() {
-      guard let rewardedAd = rewardedAd else {
+    #if !targetEnvironment(macCatalyst)
+        guard let rewardedAd = rewardedAd else {
         return print("Ad wasn't ready.")
       }
 
-      // The UIViewController parameter is an optional.
-      rewardedAd.present(fromRootViewController: nil) {
-        let reward = rewardedAd.adReward
-        print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
-        // TODO: Reward the user.
+        // The UIViewController parameter is an optional.
+        rewardedAd.present(fromRootViewController: nil) {
+            let reward = rewardedAd.adReward
+            print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
       }
+    #endif
     }
 
     @objc func buttonTappedRewarded() {
@@ -202,12 +213,18 @@ class ExploreMoonViewController: UIViewController {
     }
 
     func showRewardedButton() {
-        // Hide the text and show the button
-        rewardedButton.isHidden = false
+        #if !targetEnvironment(macCatalyst)
+            // Hide the text and show the button
+            rewardedButton.isHidden = false
+        #endif
     }
+
     func hideRewardedButton() {
-        // Hide the text and show the button
-        rewardedButton.isHidden = true
+        #if !targetEnvironment(macCatalyst)
+            // Hide the text and show the button
+            rewardedButton.isHidden = true
+        #endif
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -219,7 +236,10 @@ class ExploreMoonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addButtonToStackView()
-        self.addRewardedButtonToStackView()
+
+        #if !targetEnvironment(macCatalyst)
+            self.addRewardedButtonToStackView()
+        #endif
 
         headerLabel.layer.masksToBounds = true
         headerLabel.layer.cornerRadius = 35.0

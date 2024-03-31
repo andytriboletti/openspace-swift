@@ -26,6 +26,7 @@
 #include "absl/base/attributes.h"
 #include "absl/status/status.h"
 #include "absl/types/optional.h"
+#include "absl/utility/utility.h"
 
 #include <grpc/impl/codegen/grpc_types.h>
 
@@ -129,7 +130,7 @@ ArenaPromise<ServerMetadataHandle> HttpServerFilter::MakeCallPromise(
 
   auto* read_latch = GetContext<Arena>()->New<Latch<ServerMetadata*>>();
   auto* write_latch =
-      std::exchange(call_args.server_initial_metadata, read_latch);
+      absl::exchange(call_args.server_initial_metadata, read_latch);
 
   return CallPushPull(Seq(next_promise_factory(std::move(call_args)),
                           [](ServerMetadataHandle md) -> ServerMetadataHandle {

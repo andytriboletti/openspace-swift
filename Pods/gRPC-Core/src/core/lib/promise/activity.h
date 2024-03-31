@@ -28,6 +28,7 @@
 #include "absl/status/status.h"
 #include "absl/types/optional.h"
 #include "absl/types/variant.h"
+#include "absl/utility/utility.h"
 
 #include <grpc/support/log.h>
 
@@ -99,7 +100,7 @@ class Waker {
   friend class AtomicWaker;
 
   Wakeable* Take() {
-    return std::exchange(wakeable_, activity_detail::unwakeable());
+    return absl::exchange(wakeable_, activity_detail::unwakeable());
   }
 
   Wakeable* wakeable_;
@@ -314,7 +315,7 @@ class FreestandingActivity : public Activity, private Wakeable {
   // Check if we got an internal wakeup since the last time this function was
   // called.
   ActionDuringRun GotActionDuringRun() ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_) {
-    return std::exchange(action_during_run_, ActionDuringRun::kNone);
+    return absl::exchange(action_during_run_, ActionDuringRun::kNone);
   }
 
   // Implementors of Wakeable::Wakeup should call this after the wakeup has

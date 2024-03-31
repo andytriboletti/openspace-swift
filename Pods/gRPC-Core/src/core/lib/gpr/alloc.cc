@@ -24,7 +24,10 @@
 #include <grpc/support/alloc.h>
 #include <grpc/support/log.h>
 
+#include "src/core/lib/profiling/timers.h"
+
 void* gpr_malloc(size_t size) {
+  GPR_TIMER_SCOPE("gpr_malloc", 0);
   void* p;
   if (size == 0) return nullptr;
   p = malloc(size);
@@ -35,6 +38,7 @@ void* gpr_malloc(size_t size) {
 }
 
 void* gpr_zalloc(size_t size) {
+  GPR_TIMER_SCOPE("gpr_zalloc", 0);
   void* p;
   if (size == 0) return nullptr;
   p = calloc(size, 1);
@@ -44,9 +48,13 @@ void* gpr_zalloc(size_t size) {
   return p;
 }
 
-void gpr_free(void* p) { free(p); }
+void gpr_free(void* p) {
+  GPR_TIMER_SCOPE("gpr_free", 0);
+  free(p);
+}
 
 void* gpr_realloc(void* p, size_t size) {
+  GPR_TIMER_SCOPE("gpr_realloc", 0);
   if ((size == 0) && (p == nullptr)) return nullptr;
   p = realloc(p, size);
   if (!p) {

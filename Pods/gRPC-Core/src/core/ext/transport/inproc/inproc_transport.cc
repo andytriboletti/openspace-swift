@@ -33,6 +33,7 @@
 #include "absl/strings/str_cat.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
+#include "absl/utility/utility.h"
 
 #include <grpc/grpc.h>
 #include <grpc/impl/codegen/connectivity_state.h>
@@ -53,6 +54,7 @@
 #include "src/core/lib/iomgr/error.h"
 #include "src/core/lib/iomgr/exec_ctx.h"
 #include "src/core/lib/iomgr/iomgr_fwd.h"
+#include "src/core/lib/iomgr/pollset.h"
 #include "src/core/lib/resource_quota/arena.h"
 #include "src/core/lib/slice/slice.h"
 #include "src/core/lib/slice/slice_buffer.h"
@@ -84,7 +86,7 @@ void fill_in_metadata(inproc_stream* s, const grpc_metadata_batch* metadata,
                       grpc_metadata_batch* out_md, bool* markfilled);
 
 void ResetSendMessage(grpc_transport_stream_op_batch* batch) {
-  std::exchange(batch->payload->send_message.send_message, nullptr)->Clear();
+  absl::exchange(batch->payload->send_message.send_message, nullptr)->Clear();
 }
 
 struct shared_mu {

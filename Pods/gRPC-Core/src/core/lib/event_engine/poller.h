@@ -16,7 +16,8 @@
 
 #include <grpc/support/port_platform.h>
 
-#include "absl/functional/function_ref.h"
+#include "absl/container/inlined_vector.h"
+#include "absl/types/variant.h"
 
 #include <grpc/event_engine/event_engine.h>
 
@@ -29,23 +30,20 @@ namespace experimental {
 // Work(...).
 class Poller {
  public:
-  enum class WorkResult { kOk, kDeadlineExceeded, kKicked };
+  // This initial vector size may need to be tuned
+  using Events = absl::InlinedVector<EventEngine::Closure*, 5>;
+  struct DeadlineExceeded {};
+  struct Kicked {};
+  using WorkResult = absl::variant<Events, DeadlineExceeded, Kicked>;
 
   virtual ~Poller() = default;
-  // Poll once for events and process received events. The callback function
-  // "schedule_poll_again" is expected to be run synchronously prior to
-  // processing received events. The callback's responsibility primarily is to
-  // schedule Poller::Work asynchronously again. This would ensure that the next
-  // polling cycle would run as quickly as possible to ensure continuous
-  // polling.
+  // Poll once for events, returning a collection of Closures to be executed.
   //
   // Returns:
-  //  * Poller::WorkResult::kKicked if it was Kicked.
-  //  * Poller::WorkResult::kDeadlineExceeded if timeout occurred
-  //  * Poller::WorkResult::kOk, otherwise indicating that the callback function
-  //  was run synchonously before some events were processed.
-  virtual WorkResult Work(EventEngine::Duration timeout,
-                          absl::FunctionRef<void()> schedule_poll_again) = 0;
+  //  * absl::AbortedError if it was Kicked.
+  //  * absl::DeadlineExceeded if timeout occurred
+  //  * A collection of closures to execute, otherwise
+  virtual WorkResult Work(EventEngine::Duration timeout) = 0;
   // Trigger the threads executing Work(..) to break out as soon as possible.
   virtual void Kick() = 0;
 };

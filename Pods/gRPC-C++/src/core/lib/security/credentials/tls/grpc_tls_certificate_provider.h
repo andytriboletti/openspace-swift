@@ -19,8 +19,6 @@
 
 #include <grpc/support/port_platform.h>
 
-#include <stdint.h>
-
 #include <map>
 #include <string>
 
@@ -141,7 +139,7 @@ class FileWatcherCertificateProvider final
   FileWatcherCertificateProvider(std::string private_key_path,
                                  std::string identity_certificate_path,
                                  std::string root_cert_path,
-                                 int64_t refresh_interval_sec);
+                                 unsigned int refresh_interval_sec);
 
   ~FileWatcherCertificateProvider() override;
 
@@ -178,7 +176,7 @@ class FileWatcherCertificateProvider final
   std::string private_key_path_;
   std::string identity_certificate_path_;
   std::string root_cert_path_;
-  int64_t refresh_interval_sec_ = 0;
+  unsigned int refresh_interval_sec_ = 0;
 
   RefCountedPtr<grpc_tls_certificate_distributor> distributor_;
   Thread refresh_thread_;

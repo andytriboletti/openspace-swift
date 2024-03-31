@@ -22,7 +22,6 @@
 #include <stddef.h>
 
 #include <deque>
-#include <functional>
 #include <map>
 #include <string>
 
@@ -279,19 +278,11 @@ class Subchannel : public DualRefCounted<Subchannel> {
   // We do not hold refs to the data producer; the implementation is
   // expected to register itself upon construction and remove itself
   // upon destruction.
-  //
-  // Looks up the current data producer for type and invokes get_or_add()
-  // with a pointer to that producer in the map.  The get_or_add() function
-  // can modify the pointed-to value to update the map.  This provides a
-  // way to either re-use an existing producer or register a new one in
-  // a non-racy way.
-  void GetOrAddDataProducer(
-      UniqueTypeName type,
-      std::function<void(DataProducerInterface**)> get_or_add)
+  void AddDataProducer(DataProducerInterface* data_producer)
       ABSL_LOCKS_EXCLUDED(mu_);
-  // Removes the data producer from the map, if the current producer for
-  // this type is the specified producer.
   void RemoveDataProducer(DataProducerInterface* data_producer)
+      ABSL_LOCKS_EXCLUDED(mu_);
+  DataProducerInterface* GetDataProducer(UniqueTypeName type)
       ABSL_LOCKS_EXCLUDED(mu_);
 
  private:

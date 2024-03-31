@@ -26,9 +26,8 @@
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
 
+#include "src/core/ext/filters/client_channel/proxy_mapper.h"
 #include "src/core/lib/channel/channel_args.h"
-#include "src/core/lib/config/core_configuration.h"
-#include "src/core/lib/handshaker/proxy_mapper.h"
 #include "src/core/lib/iomgr/resolved_address.h"
 
 namespace grpc_core {
@@ -45,7 +44,7 @@ class HttpProxyMapper : public ProxyMapperInterface {
   }
 };
 
-void RegisterHttpProxyMapper(CoreConfiguration::Builder* builder);
+void RegisterHttpProxyMapper();
 
 }  // namespace grpc_core
 

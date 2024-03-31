@@ -55,12 +55,14 @@ class RefCountedPtr {
 
   // Move assignment.
   RefCountedPtr& operator=(RefCountedPtr&& other) noexcept {
-    reset(std::exchange(other.value_, nullptr));
+    reset(other.value_);
+    other.value_ = nullptr;
     return *this;
   }
   template <typename Y>
   RefCountedPtr& operator=(RefCountedPtr<Y>&& other) noexcept {
-    reset(std::exchange(other.value_, nullptr));
+    reset(other.value_);
+    other.value_ = nullptr;
     return *this;
   }
 
@@ -106,32 +108,39 @@ class RefCountedPtr {
 
   // If value is non-null, we take ownership of a ref to it.
   void reset(T* value = nullptr) {
-    T* old_value = std::exchange(value_, value);
-    if (old_value != nullptr) old_value->Unref();
+    if (value_ != nullptr) value_->Unref();
+    value_ = value;
   }
   void reset(const DebugLocation& location, const char* reason,
              T* value = nullptr) {
-    T* old_value = std::exchange(value_, value);
-    if (old_value != nullptr) old_value->Unref(location, reason);
+    if (value_ != nullptr) value_->Unref(location, reason);
+    value_ = value;
   }
   template <typename Y>
   void reset(Y* value = nullptr) {
     static_assert(std::has_virtual_destructor<T>::value,
                   "T does not have a virtual dtor");
-    reset(static_cast<T*>(value));
+    if (value_ != nullptr) value_->Unref();
+    value_ = static_cast<T*>(value);
   }
   template <typename Y>
   void reset(const DebugLocation& location, const char* reason,
              Y* value = nullptr) {
     static_assert(std::has_virtual_destructor<T>::value,
                   "T does not have a virtual dtor");
-    reset(location, reason, static_cast<T*>(value));
+    if (value_ != nullptr) value_->Unref(location, reason);
+    value_ = static_cast<T*>(value);
   }
 
-  // This method is mostly useful for interoperating with C code.
-  // Eventually use within core should be banned, except at the surface API
-  // boundaries.
-  T* release() { return std::exchange(value_, nullptr); }
+  // TODO(roth): This method exists solely as a transition mechanism to allow
+  // us to pass a ref to idiomatic C code that does not use RefCountedPtr<>.
+  // Once all of our code has been converted to idiomatic C++, this
+  // method should go away.
+  T* release() {
+    T* value = value_;
+    value_ = nullptr;
+    return value;
+  }
 
   T* get() const { return value_; }
 
@@ -198,12 +207,14 @@ class WeakRefCountedPtr {
 
   // Move assignment.
   WeakRefCountedPtr& operator=(WeakRefCountedPtr&& other) noexcept {
-    reset(std::exchange(other.value_, nullptr));
+    reset(other.value_);
+    other.value_ = nullptr;
     return *this;
   }
   template <typename Y>
   WeakRefCountedPtr& operator=(WeakRefCountedPtr<Y>&& other) noexcept {
-    reset(std::exchange(other.value_, nullptr));
+    reset(other.value_);
+    other.value_ = nullptr;
     return *this;
   }
 
@@ -249,26 +260,28 @@ class WeakRefCountedPtr {
 
   // If value is non-null, we take ownership of a ref to it.
   void reset(T* value = nullptr) {
-    T* old_value = std::exchange(value_, value);
-    if (old_value != nullptr) old_value->WeakUnref();
+    if (value_ != nullptr) value_->WeakUnref();
+    value_ = value;
   }
   void reset(const DebugLocation& location, const char* reason,
              T* value = nullptr) {
-    T* old_value = std::exchange(value_, value);
-    if (old_value != nullptr) old_value->WeakUnref(location, reason);
+    if (value_ != nullptr) value_->WeakUnref(location, reason);
+    value_ = value;
   }
   template <typename Y>
   void reset(Y* value = nullptr) {
     static_assert(std::has_virtual_destructor<T>::value,
                   "T does not have a virtual dtor");
-    reset(static_cast<T*>(value));
+    if (value_ != nullptr) value_->WeakUnref();
+    value_ = static_cast<T*>(value);
   }
   template <typename Y>
   void reset(const DebugLocation& location, const char* reason,
              Y* value = nullptr) {
     static_assert(std::has_virtual_destructor<T>::value,
                   "T does not have a virtual dtor");
-    reset(location, reason, static_cast<T*>(value));
+    if (value_ != nullptr) value_->WeakUnref(location, reason);
+    value_ = static_cast<T*>(value);
   }
 
   // TODO(roth): This method exists solely as a transition mechanism to allow

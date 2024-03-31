@@ -28,6 +28,7 @@
 #include "absl/status/status.h"
 #include "absl/status/statusor.h"
 #include "absl/strings/str_cat.h"
+#include "absl/strings/str_join.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
 
@@ -38,7 +39,7 @@
 
 #include "src/core/ext/filters/client_channel/lb_policy/outlier_detection/outlier_detection.h"
 #include "src/core/ext/xds/certificate_provider_store.h"
-#include "src/core/ext/xds/xds_bootstrap_grpc.h"
+#include "src/core/ext/xds/xds_bootstrap.h"
 #include "src/core/ext/xds/xds_certificate_provider.h"
 #include "src/core/ext/xds/xds_client.h"
 #include "src/core/ext/xds/xds_client_grpc.h"
@@ -46,7 +47,6 @@
 #include "src/core/ext/xds/xds_common_types.h"
 #include "src/core/ext/xds/xds_resource_type_impl.h"
 #include "src/core/lib/channel/channel_args.h"
-#include "src/core/lib/config/core_configuration.h"
 #include "src/core/lib/debug/trace.h"
 #include "src/core/lib/gprpp/debug_location.h"
 #include "src/core/lib/gprpp/orphanable.h"
@@ -57,8 +57,6 @@
 #include "src/core/lib/iomgr/error.h"
 #include "src/core/lib/iomgr/pollset_set.h"
 #include "src/core/lib/json/json.h"
-#include "src/core/lib/json/json_args.h"
-#include "src/core/lib/json/json_object_loader.h"
 #include "src/core/lib/load_balancing/lb_policy.h"
 #include "src/core/lib/load_balancing/lb_policy_factory.h"
 #include "src/core/lib/load_balancing/lb_policy_registry.h"
@@ -84,23 +82,9 @@ constexpr int kMaxAggregateClusterRecursionDepth = 16;
 // Config for this LB policy.
 class CdsLbConfig : public LoadBalancingPolicy::Config {
  public:
-  CdsLbConfig() = default;
-
-  CdsLbConfig(const CdsLbConfig&) = delete;
-  CdsLbConfig& operator=(const CdsLbConfig&) = delete;
-
-  CdsLbConfig(CdsLbConfig&& other) = delete;
-  CdsLbConfig& operator=(CdsLbConfig&& other) = delete;
-
+  explicit CdsLbConfig(std::string cluster) : cluster_(std::move(cluster)) {}
   const std::string& cluster() const { return cluster_; }
   absl::string_view name() const override { return kCds; }
-
-  static const JsonLoaderInterface* JsonLoader(const JsonArgs&) {
-    static const auto* loader = JsonObjectLoader<CdsLbConfig>()
-                                    .Field("cluster", &CdsLbConfig::cluster_)
-                                    .Finish();
-    return loader;
-  }
 
  private:
   std::string cluster_;
@@ -113,7 +97,7 @@ class CdsLb : public LoadBalancingPolicy {
 
   absl::string_view name() const override { return kCds; }
 
-  absl::Status UpdateLocked(UpdateArgs args) override;
+  void UpdateLocked(UpdateArgs args) override;
   void ResetBackoffLocked() override;
   void ExitIdleLocked() override;
 
@@ -325,7 +309,7 @@ void CdsLb::ExitIdleLocked() {
   if (child_policy_ != nullptr) child_policy_->ExitIdleLocked();
 }
 
-absl::Status CdsLb::UpdateLocked(UpdateArgs args) {
+void CdsLb::UpdateLocked(UpdateArgs args) {
   // Update config.
   auto old_config = std::move(config_);
   config_ = std::move(args.config);
@@ -353,7 +337,6 @@ absl::Status CdsLb::UpdateLocked(UpdateArgs args) {
     XdsClusterResourceType::StartWatch(xds_client_.get(), config_->cluster(),
                                        std::move(watcher));
   }
-  return absl::OkStatus();
 }
 
 // Generates the discovery mechanism config for the specified cluster name.
@@ -534,9 +517,7 @@ void CdsLb::OnClusterChanged(const std::string& name,
               this, json_str.c_str());
     }
     grpc_error_handle error = GRPC_ERROR_NONE;
-    auto config =
-        CoreConfiguration::Get().lb_policy_registry().ParseLoadBalancingConfig(
-            json);
+    auto config = LoadBalancingPolicyRegistry::ParseLoadBalancingConfig(json);
     if (!config.ok()) {
       OnError(name, absl::UnavailableError(config.status().message()));
       return;
@@ -547,10 +528,8 @@ void CdsLb::OnClusterChanged(const std::string& name,
       args.work_serializer = work_serializer();
       args.args = args_;
       args.channel_control_helper = absl::make_unique<Helper>(Ref());
-      child_policy_ =
-          CoreConfiguration::Get()
-              .lb_policy_registry()
-              .CreateLoadBalancingPolicy((*config)->name(), std::move(args));
+      child_policy_ = LoadBalancingPolicyRegistry::CreateLoadBalancingPolicy(
+          (*config)->name(), std::move(args));
       if (child_policy_ == nullptr) {
         OnError(name, absl::UnavailableError("failed to create child policy"));
         return;
@@ -570,9 +549,7 @@ void CdsLb::OnClusterChanged(const std::string& name,
     } else {
       args.args = args_;
     }
-    // TODO(roth): If the child policy reports an error with the update,
-    // we need to propagate the error to the resolver somehow.
-    (void)child_policy_->UpdateLocked(std::move(args));
+    child_policy_->UpdateLocked(std::move(args));
   }
   // Remove entries in watchers_ for any clusters not in clusters_added
   for (auto it = watchers_.begin(); it != watchers_.end();) {
@@ -757,16 +734,38 @@ class CdsLbFactory : public LoadBalancingPolicyFactory {
           "field:loadBalancingPolicy error:cds policy requires configuration. "
           "Please use loadBalancingConfig field of service config instead.");
     }
-    return LoadRefCountedFromJson<CdsLbConfig>(
-        json, JsonArgs(), "errors validating cds LB policy config");
+    std::vector<std::string> errors;
+    // cluster name.
+    std::string cluster;
+    auto it = json.object_value().find("cluster");
+    if (it == json.object_value().end()) {
+      errors.emplace_back("required field 'cluster' not present");
+    } else if (it->second.type() != Json::Type::STRING) {
+      errors.emplace_back("field:cluster error:type should be string");
+    } else {
+      cluster = it->second.string_value();
+    }
+    if (!errors.empty()) {
+      return absl::InvalidArgumentError(
+          absl::StrCat("errors parsing CDS LB policy config: [",
+                       absl::StrJoin(errors, "; "), "]"));
+    }
+    return MakeRefCounted<CdsLbConfig>(std::move(cluster));
   }
 };
 
 }  // namespace
 
-void RegisterCdsLbPolicy(CoreConfiguration::Builder* builder) {
-  builder->lb_policy_registry()->RegisterLoadBalancingPolicyFactory(
-      absl::make_unique<CdsLbFactory>());
+}  // namespace grpc_core
+
+//
+// Plugin registration
+//
+
+void grpc_lb_policy_cds_init() {
+  grpc_core::LoadBalancingPolicyRegistry::Builder::
+      RegisterLoadBalancingPolicyFactory(
+          absl::make_unique<grpc_core::CdsLbFactory>());
 }
 
-}  // namespace grpc_core
+void grpc_lb_policy_cds_shutdown() {}

@@ -43,7 +43,6 @@
 
 #include "src/core/ext/xds/upb_utils.h"
 #include "src/core/ext/xds/xds_common_types.h"
-#include "src/core/lib/config/core_configuration.h"
 #include "src/core/lib/load_balancing/lb_policy_registry.h"
 
 namespace grpc_core {
@@ -239,9 +238,8 @@ absl::StatusOr<Json::Array> XdsLbPolicyRegistry::ConvertXdsLbPolicyConfig(
     } else if (type->typed_struct != nullptr) {
       // Custom lb policy config
       std::string custom_type = std::string(type->type);
-      if (!CoreConfiguration::Get()
-               .lb_policy_registry()
-               .LoadBalancingPolicyExists(custom_type.c_str(), nullptr)) {
+      if (!LoadBalancingPolicyRegistry::LoadBalancingPolicyExists(
+              custom_type.c_str(), nullptr)) {
         // Skip unsupported custom lb policy.
         continue;
       }

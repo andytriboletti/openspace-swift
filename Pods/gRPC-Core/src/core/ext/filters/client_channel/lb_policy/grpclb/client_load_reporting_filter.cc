@@ -31,6 +31,7 @@
 #include "src/core/lib/gprpp/ref_counted_ptr.h"
 #include "src/core/lib/iomgr/closure.h"
 #include "src/core/lib/iomgr/error.h"
+#include "src/core/lib/profiling/timers.h"
 #include "src/core/lib/transport/metadata_batch.h"
 #include "src/core/lib/transport/transport.h"
 
@@ -101,6 +102,7 @@ static void clr_destroy_call_elem(grpc_call_element* elem,
 static void clr_start_transport_stream_op_batch(
     grpc_call_element* elem, grpc_transport_stream_op_batch* batch) {
   call_data* calld = static_cast<call_data*>(elem->call_data);
+  GPR_TIMER_SCOPE("clr_start_transport_stream_op_batch", 0);
   // Handle send_initial_metadata.
   if (batch->send_initial_metadata) {
     // Grab client stats object from metadata.

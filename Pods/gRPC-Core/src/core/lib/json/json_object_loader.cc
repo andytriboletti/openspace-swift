@@ -16,17 +16,53 @@
 
 #include "src/core/lib/json/json_object_loader.h"
 
+#include <algorithm>
 #include <utility>
 
+#include "absl/status/status.h"
 #include "absl/strings/ascii.h"
 #include "absl/strings/str_cat.h"
+#include "absl/strings/str_join.h"
 #include "absl/strings/strip.h"
 
 namespace grpc_core {
+
+void ErrorList::PushField(absl::string_view ext) {
+  // Skip leading '.' for top-level field names.
+  if (fields_.empty()) absl::ConsumePrefix(&ext, ".");
+  fields_.emplace_back(std::string(ext));
+}
+
+void ErrorList::PopField() { fields_.pop_back(); }
+
+void ErrorList::AddError(absl::string_view error) {
+  field_errors_[absl::StrJoin(fields_, "")].emplace_back(error);
+}
+
+bool ErrorList::FieldHasErrors() const {
+  return field_errors_.find(absl::StrJoin(fields_, "")) != field_errors_.end();
+}
+
+absl::Status ErrorList::status() const {
+  if (field_errors_.empty()) return absl::OkStatus();
+  std::vector<std::string> errors;
+  for (const auto& p : field_errors_) {
+    if (p.second.size() > 1) {
+      errors.emplace_back(absl::StrCat("field:", p.first, " errors:[",
+                                       absl::StrJoin(p.second, "; "), "]"));
+    } else {
+      errors.emplace_back(
+          absl::StrCat("field:", p.first, " error:", p.second[0]));
+    }
+  }
+  return absl::InvalidArgumentError(absl::StrCat(
+      "errors validating JSON: [", absl::StrJoin(errors, "; "), "]"));
+}
+
 namespace json_detail {
 
 void LoadScalar::LoadInto(const Json& json, const JsonArgs& /*args*/, void* dst,
-                          ValidationErrors* errors) const {
+                          ErrorList* errors) const {
   // We accept either STRING or NUMBER for numeric values, as per
   // https://developers.google.com/protocol-buffers/docs/proto3#json.
   if (json.type() != Json::Type::STRING &&
@@ -41,14 +77,14 @@ void LoadScalar::LoadInto(const Json& json, const JsonArgs& /*args*/, void* dst,
 bool LoadString::IsNumber() const { return false; }
 
 void LoadString::LoadInto(const std::string& value, void* dst,
-                          ValidationErrors*) const {
+                          ErrorList*) const {
   *static_cast<std::string*>(dst) = value;
 }
 
 bool LoadDuration::IsNumber() const { return false; }
 
 void LoadDuration::LoadInto(const std::string& value, void* dst,
-                            ValidationErrors* errors) const {
+                            ErrorList* errors) const {
   absl::string_view buf(value);
   if (!absl::ConsumeSuffix(&buf, "s")) {
     errors->AddError("Not a duration (no s suffix)");
@@ -85,7 +121,7 @@ void LoadDuration::LoadInto(const std::string& value, void* dst,
 bool LoadNumber::IsNumber() const { return true; }
 
 void LoadBool::LoadInto(const Json& json, const JsonArgs&, void* dst,
-                        ValidationErrors* errors) const {
+                        ErrorList* errors) const {
   if (json.type() == Json::Type::JSON_TRUE) {
     *static_cast<bool*>(dst) = true;
   } else if (json.type() == Json::Type::JSON_FALSE) {
@@ -96,8 +132,7 @@ void LoadBool::LoadInto(const Json& json, const JsonArgs&, void* dst,
 }
 
 void LoadUnprocessedJsonObject::LoadInto(const Json& json, const JsonArgs&,
-                                         void* dst,
-                                         ValidationErrors* errors) const {
+                                         void* dst, ErrorList* errors) const {
   if (json.type() != Json::Type::OBJECT) {
     errors->AddError("is not an object");
     return;
@@ -106,7 +141,7 @@ void LoadUnprocessedJsonObject::LoadInto(const Json& json, const JsonArgs&,
 }
 
 void LoadVector::LoadInto(const Json& json, const JsonArgs& args, void* dst,
-                          ValidationErrors* errors) const {
+                          ErrorList* errors) const {
   if (json.type() != Json::Type::ARRAY) {
     errors->AddError("is not an array");
     return;
@@ -114,7 +149,7 @@ void LoadVector::LoadInto(const Json& json, const JsonArgs& args, void* dst,
   const auto& array = json.array_value();
   const LoaderInterface* element_loader = ElementLoader();
   for (size_t i = 0; i < array.size(); ++i) {
-    ValidationErrors::ScopedField field(errors, absl::StrCat("[", i, "]"));
+    ScopedField field(errors, absl::StrCat("[", i, "]"));
     void* element = EmplaceBack(dst);
     element_loader->LoadInto(array[i], args, element, errors);
   }
@@ -122,7 +157,7 @@ void LoadVector::LoadInto(const Json& json, const JsonArgs& args, void* dst,
 
 void AutoLoader<std::vector<bool>>::LoadInto(const Json& json,
                                              const JsonArgs& args, void* dst,
-                                             ValidationErrors* errors) const {
+                                             ErrorList* errors) const {
   if (json.type() != Json::Type::ARRAY) {
     errors->AddError("is not an array");
     return;
@@ -131,7 +166,7 @@ void AutoLoader<std::vector<bool>>::LoadInto(const Json& json,
   const LoaderInterface* element_loader = LoaderForType<bool>();
   std::vector<bool>* vec = static_cast<std::vector<bool>*>(dst);
   for (size_t i = 0; i < array.size(); ++i) {
-    ValidationErrors::ScopedField field(errors, absl::StrCat("[", i, "]"));
+    ScopedField field(errors, absl::StrCat("[", i, "]"));
     bool elem = false;
     element_loader->LoadInto(array[i], args, &elem, errors);
     vec->push_back(elem);
@@ -139,31 +174,28 @@ void AutoLoader<std::vector<bool>>::LoadInto(const Json& json,
 }
 
 void LoadMap::LoadInto(const Json& json, const JsonArgs& args, void* dst,
-                       ValidationErrors* errors) const {
+                       ErrorList* errors) const {
   if (json.type() != Json::Type::OBJECT) {
     errors->AddError("is not an object");
     return;
   }
   const LoaderInterface* element_loader = ElementLoader();
   for (const auto& pair : json.object_value()) {
-    ValidationErrors::ScopedField field(errors,
-                                        absl::StrCat("[\"", pair.first, "\"]"));
+    ScopedField field(errors, absl::StrCat("[\"", pair.first, "\"]"));
     void* element = Insert(pair.first, dst);
     element_loader->LoadInto(pair.second, args, element, errors);
   }
 }
 
 void LoadOptional::LoadInto(const Json& json, const JsonArgs& args, void* dst,
-                            ValidationErrors* errors) const {
+                            ErrorList* errors) const {
   if (json.type() == Json::Type::JSON_NULL) return;
   void* element = Emplace(dst);
-  size_t starting_error_size = errors->size();
   ElementLoader()->LoadInto(json, args, element, errors);
-  if (errors->size() > starting_error_size) Reset(dst);
 }
 
 bool LoadObject(const Json& json, const JsonArgs& args, const Element* elements,
-                size_t num_elements, void* dst, ValidationErrors* errors) {
+                size_t num_elements, void* dst, ErrorList* errors) {
   if (json.type() != Json::Type::OBJECT) {
     errors->AddError("is not an object");
     return false;
@@ -173,8 +205,7 @@ bool LoadObject(const Json& json, const JsonArgs& args, const Element* elements,
     if (element.enable_key != nullptr && !args.IsEnabled(element.enable_key)) {
       continue;
     }
-    ValidationErrors::ScopedField field(errors,
-                                        absl::StrCat(".", element.name));
+    ScopedField field(errors, absl::StrCat(".", element.name));
     const auto& it = json.object_value().find(element.name);
     if (it == json.object_value().end()) {
       if (element.optional) continue;
@@ -188,8 +219,8 @@ bool LoadObject(const Json& json, const JsonArgs& args, const Element* elements,
 }
 
 const Json* GetJsonObjectField(const Json::Object& json,
-                               absl::string_view field,
-                               ValidationErrors* errors, bool required) {
+                               absl::string_view field, ErrorList* errors,
+                               bool required) {
   auto it = json.find(std::string(field));
   if (it == json.end()) {
     if (required) errors->AddError("field not present");
