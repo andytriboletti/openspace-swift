@@ -211,6 +211,9 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         // Determine the number of owned spheres
         let numOwnedSpheres = yourSpheres!.count
 
+        // Determine the number of neighbor spheres
+        let numNeighborSpheres = yourSpheres!.count // Assuming you calculate this correctly
+
         for row in 0..<numRows {
             for column in 0..<numColumns {
                 let sphere = SCNSphere(radius: sphereSize)
@@ -219,6 +222,9 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
                 if row * numColumns + column < numOwnedSpheres {
                     // Green color for owned spheres
                     sphere.firstMaterial?.diffuse.contents = UIColor.green
+                } else if row * numColumns + column < numOwnedSpheres + numNeighborSpheres {
+                    // Blue color for neighbor spheres
+                    sphere.firstMaterial?.diffuse.contents = UIColor.blue
                 } else {
                     // Red color for unowned spheres
                     sphere.firstMaterial?.diffuse.contents = UIColor.red
