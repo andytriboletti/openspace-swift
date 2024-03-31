@@ -333,45 +333,57 @@ class GameViewController: UIViewController {
             }
         }
     }
+
     func getLocation() {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, username, error) in
-            if let error = error {
-                // Handle the error
-                print("Error: \(error.localizedDescription)")
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, username, yourSpheres, neighborSpheres, error) in
+            if let error = error as? [[String: Any]], !error.isEmpty {
+                // Handle error related to yourSpheres or neighborSpheres
+                print("Error parsing spheres: \(error)")
             } else if let location = location {
-
-                // User deleted successfully
-                print("username: ")
-                print("setting username to defaults")
-                print(username as Any)
-                if username == nil || username == "" {
-                    askForUserName()
+                // Save username to Defaults
+                if let username = username, !username.isEmpty {
+                    Defaults[.username] = username
                 } else {
-                    Defaults[.username] = username!
+                    askForUserName()
                 }
-                print("Success: \(location)")
-                if location == "nearEarth" {
+
+                // Convert yourSpheres and neighborSpheres to Data
+                if let yourSpheresData = try? JSONSerialization.data(withJSONObject: yourSpheres ?? []),
+                   let neighborSpheresData = try? JSONSerialization.data(withJSONObject: neighborSpheres ?? []) {
+                    // Save your_spheres and neighbor_spheres to Defaults
+                    Defaults[.yourSpheres] = yourSpheresData
+                    Defaults[.neighborSpheres] = neighborSpheresData
+                } else {
+                    // Handle data conversion error
+                    print("Error converting data")
+                    // You can perform additional error handling here
+                }
+
+                // Handle location
+                switch location {
+                case "nearEarth":
                     self.appDelegate.gameState.locationState = LocationState.nearEarth
-                }
-                if location == "nearISS" {
+                case "nearISS":
                     self.appDelegate.gameState.locationState = LocationState.nearISS
-                }
-                if location == "nearMoon" {
+                case "nearMoon":
                     self.appDelegate.gameState.locationState = LocationState.nearMoon
-                }
-                if location == "nearMars" {
+                case "nearMars":
                     self.appDelegate.gameState.locationState = LocationState.nearMars
-                }
-                if location == "nearNothing" {
+                case "nearNothing":
                     self.appDelegate.gameState.locationState = LocationState.nearNothing
+                default:
+                    // Handle unknown location
+                    print("Unknown location: \(location)")
+                    // You can perform additional error handling here
                 }
-                self.setNearFromLocationState()
+
+                setNearFromLocationState()
             }
         }
-
     }
+
     func setNearFromLocationState() {
 
         DispatchQueue.main.async {

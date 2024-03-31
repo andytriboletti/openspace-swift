@@ -1,10 +1,18 @@
 import UIKit
 import SceneKit
+import Defaults
 
 class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     @IBOutlet var headerLabel: PaddingLabel!
     @IBOutlet var sceneView: SCNView!
 
+    @IBOutlet var enterYourSphereButton: UIButton!
+    @IBOutlet var exploreNeighborSphere: UIButton!
+    var noNeighborSpheresLabel: UILabel?
+
+    var yourSpheres: [[String: Any]]?
+     var neighborSpheres: [[String: Any]]?
+    var scene = SCNScene()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +27,6 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         sceneView.allowsCameraControl = true
 
         // Create a new SceneKit scene
-        let scene = SCNScene()
 
         // Set the background image
         scene.background.contents = UIImage(named: "starry-sky-998641.jpg")
@@ -27,9 +34,6 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         // Add the floor node to the scene
         let floorNode = createFloorNode()
         scene.rootNode.addChildNode(floorNode)
-
-        // Add the spheres on the floor
-        createSpheresOnFloor(scene: scene)
 
         // Set the scene on the sceneView
         sceneView.scene = scene
@@ -39,8 +43,51 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         headerLabel.textColor = UIColor.white
         headerLabel.backgroundColor = UIColor.black
 
+        // Check if neighborSpheres is empty
+
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        getLocation()
+
+    }
+
+    func refresh() {
+        getLocation()
+
+    }
+    func setupNeighbor() {
+        // Check if neighborSpheres is empty
+        if let neighborSpheresData = Defaults[.neighborSpheres] as? Data {
+            // Attempt to convert data to [[String: Any]]
+            do {
+                if let neighborSpheres = try JSONSerialization.jsonObject(with: neighborSpheresData, options: []) as? [[String: Any]], neighborSpheres.isEmpty {
+                    // Handle the case when neighborSpheres is empty
+                    // Create and add the label
+                    let label = UILabel()
+                    label.text = "No neighbor spheres found"
+                    label.textColor = .white
+                    label.textAlignment = .center
+                    label.translatesAutoresizingMaskIntoConstraints = false
+                    view.addSubview(label)
+                    noNeighborSpheresLabel = label
+
+                    // Position the label at the center of the view
+                    NSLayoutConstraint.activate([
+                        label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                        label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+                    ])
+
+                    // Hide the exploreNeighborSphere button
+                    exploreNeighborSphere.isHidden = true
+                }
+            } catch {
+                // Handle JSON serialization error
+                print("Error: \(error)")
+            }
+        }
+
+    }
     override var prefersStatusBarHidden: Bool {
         return true // Hide the status bar
     }
@@ -54,6 +101,104 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
         return floorNode
     }
+    func setupYourSpheres() {
+        // Remove any existing targets
+        enterYourSphereButton.removeTarget(nil, action: nil, for: .touchUpInside)
+
+        if yourSpheres?.count == 0 {
+            enterYourSphereButton.setTitle("Claim Your First Sphere", for: .normal)
+            enterYourSphereButton.addTarget(self, action: #selector(claimFirstSphere), for: .touchUpInside)
+        } else {
+            // it's not empty set the action to go to the sphere view
+            enterYourSphereButton.setTitle("ENTER YOUR SPHERE", for: .normal)
+            enterYourSphereButton.addTarget(self, action: #selector(goToSphereView), for: .touchUpInside)
+        }
+    }
+
+    @objc func goToSphereView() {
+        print("go to sphere")
+        self.performSegue(withIdentifier: "goToSphereView", sender: self)
+
+    }
+    @objc func claimFirstSphere() {
+        let alertController = UIAlertController(title: "Name Your Sphere", message: "Please enter a name for your sphere:", preferredStyle: .alert)
+
+        alertController.addTextField { textField in
+            textField.placeholder = "Sphere Name"
+        }
+
+        let createAction = UIAlertAction(title: "Create", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            if let sphereName = alertController.textFields?.first?.text {
+                // Call OpenSpaceAPI function to create the sphere
+                self.createSphere(with: sphereName)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alertController.addAction(createAction)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true)
+    }
+
+    func createSphere(with name: String) {
+        // Call the OpenSpaceAPI function to create the sphere with the provided name
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+        OpenspaceAPI.shared.createSphere(email: email, authToken: authToken, sphereName: name) { [self] result in
+            switch result {
+            case .success:
+                print("Sphere created successfully")
+                refresh()
+                // Handle success, if needed
+            case .failure(let error):
+                print("Error creating sphere: \(error)")
+                // Handle error, if needed
+            }
+        }
+    }
+    func getLocation() {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, _, yourSpheres, neighborSpheres, error) in
+            if let error = error {
+                // Handle error
+                print("Error: \(error)")
+            } else if let location = location {
+                // Save your_spheres and neighbor_spheres
+                self.yourSpheres = yourSpheres
+                self.neighborSpheres = neighborSpheres
+
+                // Check if yourSpheres is of the correct type
+                if let yourSpheresArray = yourSpheres as? [[String: String]] {
+                    self.yourSpheres = yourSpheresArray
+                } else {
+                    // Handle the case where yourSpheres is not of the correct type or empty
+                    self.yourSpheres = []
+                }
+
+                // Check if neighborSpheres is of the correct type
+                if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
+                    self.neighborSpheres = neighborSpheresArray
+                } else {
+                    // Handle the case where neighborSpheres is not of the correct type or empty
+                    self.neighborSpheres = []
+                }
+
+                setupYourSpheres()
+                setupNeighbor()
+
+                // Add the spheres on the floor
+                createSpheresOnFloor(scene: scene)
+
+            } else {
+                // Handle data conversion error
+                print("Error converting data")
+                // You can perform additional error handling here
+            }
+        }
+    }
 
     func createSpheresOnFloor(scene: SCNScene) {
         let numRows = 5
@@ -63,10 +208,21 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         let startX = -(CGFloat(numColumns - 1) * spacing) / 2.0
         let startZ = -(CGFloat(numRows - 1) * spacing) / 2.0
 
+        // Determine the number of owned spheres
+        let numOwnedSpheres = yourSpheres!.count
+
         for row in 0..<numRows {
             for column in 0..<numColumns {
                 let sphere = SCNSphere(radius: sphereSize)
-                sphere.firstMaterial?.diffuse.contents = UIColor.red
+
+                // Set the color based on the ownership
+                if row * numColumns + column < numOwnedSpheres {
+                    // Green color for owned spheres
+                    sphere.firstMaterial?.diffuse.contents = UIColor.green
+                } else {
+                    // Red color for unowned spheres
+                    sphere.firstMaterial?.diffuse.contents = UIColor.red
+                }
 
                 let sphereNode = SCNNode(geometry: sphere)
                 sphereNode.position = SCNVector3(startX + CGFloat(column) * spacing, 0, startZ + CGFloat(row) * spacing)
@@ -75,4 +231,5 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
+
 }

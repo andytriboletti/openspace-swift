@@ -650,10 +650,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-cN-zkr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="792"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="836"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="22" y="64" width="370.5" height="220"/>
+                                <rect key="frame" x="22" y="20" width="370.5" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="370.5" height="80"/>
@@ -1434,7 +1434,6 @@
                                         <state key="normal" title="ENTER YOUR SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="QqY-nA-6q0"/>
-                                            <segue destination="WR1-6C-qgV" kind="presentation" identifier="goToSphere" modalPresentationStyle="fullScreen" id="tEX-l7-IDV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeA-vo-8pC">
@@ -1504,8 +1503,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="enterYourSphereButton" destination="8Hq-1d-pQe" id="aUr-iI-g8L"/>
+                        <outlet property="exploreNeighborSphere" destination="yeA-vo-8pC" id="9Gv-Jv-cV5"/>
                         <outlet property="headerLabel" destination="KSy-lL-kHv" id="KmS-5B-5wj"/>
                         <outlet property="sceneView" destination="Lkg-jM-MWz" id="ynK-wP-nep"/>
+                        <segue destination="WR1-6C-qgV" kind="presentation" identifier="goToSphereView" modalPresentationStyle="fullScreen" id="fiu-Wn-O7o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLg-d9-fLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2286,13 +2288,13 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="mCm-fZ-9HZ"/>
+        <segue reference="yUZ-Q9-T5m"/>
         <segue reference="yKX-Ie-zFg"/>
         <segue reference="67b-Hk-5Ts"/>
-        <segue reference="6XQ-gR-cEl"/>
-        <segue reference="tEX-l7-IDV"/>
-        <segue reference="WHQ-Wr-Nav"/>
-        <segue reference="IdK-sq-0gW"/>
+        <segue reference="Xc6-Ax-Zhf"/>
+        <segue reference="fiu-Wn-O7o"/>
+        <segue reference="e01-Ue-bDj"/>
+        <segue reference="G6a-xv-v4e"/>
         <segue reference="XCF-Mg-a4A"/>
         <segue reference="MVd-TG-9WI"/>
     </inferredMetricsTieBreakers>
