@@ -11,7 +11,13 @@ import Defaults
 
 class YourSphereViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
+    @IBOutlet var headerLabel: UILabel!
 
+    override func viewDidLoad() {
+        let selectedSphereName = Defaults[.selectedSphereName]
+        self.headerLabel.text = "Viewing your sphere: \(selectedSphereName)"
+
+    }
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
 
