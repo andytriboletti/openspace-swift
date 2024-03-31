@@ -19,5 +19,5 @@ extension Defaults.Keys {
     static let selectedMeshLocation = Key<String>("selectedMeshLocation", default: "")
     static let traveling = Key<String>("traveling", default: "false")
     static let userId = Key<String>("userId", default: "0")
-
+    static let neighborUsername = Key<String>("neighborUsername", default: "")
 }

@@ -2134,8 +2134,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R9e-Tc-MSI">
                                 <rect key="frame" x="0.0" y="95" width="414" height="696"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bm2-t0-PNE">
-                                        <rect key="frame" x="186.5" y="0.0" width="41.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bm2-t0-PNE">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2158,6 +2158,8 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bm2-t0-PNE" secondAttribute="trailing" id="EON-ze-XKj"/>
+                                    <constraint firstItem="bm2-t0-PNE" firstAttribute="leading" secondItem="R9e-Tc-MSI" secondAttribute="leading" id="mrP-ES-HRM"/>
                                     <constraint firstAttribute="trailing" secondItem="3o6-Dw-Jmk" secondAttribute="trailing" id="odZ-ER-543"/>
                                     <constraint firstItem="3o6-Dw-Jmk" firstAttribute="leading" secondItem="R9e-Tc-MSI" secondAttribute="leading" id="oxN-rg-pHK"/>
                                 </constraints>
@@ -2175,7 +2177,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerLabel" destination="bm2-t0-PNE" id="TYW-nc-PMb"/>
+                        <outlet property="headerLabel" destination="bm2-t0-PNE" id="gtc-Jc-anv"/>
                         <outlet property="scnView" destination="3o6-Dw-Jmk" id="bis-PR-po2"/>
                     </connections>
                 </viewController>
@@ -2284,7 +2286,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="yUZ-Q9-T5m"/>
+        <segue reference="mCm-fZ-9HZ"/>
         <segue reference="yKX-Ie-zFg"/>
         <segue reference="67b-Hk-5Ts"/>
         <segue reference="6XQ-gR-cEl"/>

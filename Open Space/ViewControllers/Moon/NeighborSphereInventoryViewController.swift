@@ -22,11 +22,13 @@ class NeighborSphereInventoryViewController: UIViewController {
        var zipFileURLs: [URL] = []
 
     override func viewDidLoad() {
-          super.viewDidLoad()
-          baseNode = SCNNode()
+        super.viewDidLoad()
+        baseNode = SCNNode()
+        let neighborUsername = Defaults[.neighborUsername]
+        headerLabel.text = "Viewing \(neighborUsername)'s sphere"
 
-          // Example: Download zip file URLs dynamically
-          downloadZipFileURLs()
+        // Example: Download zip file URLs dynamically
+        downloadZipFileURLs()
 
           // Download and unzip all files
           for (index, zipFileURL) in zipFileURLs.enumerated() {

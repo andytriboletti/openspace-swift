@@ -64,7 +64,8 @@ class SelectNeighborSphereViewController: UIViewController, UICollectionViewData
     }
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         performSegue(withIdentifier: "NeighborSphereInventorySegue", sender: indexPath)
+        Defaults[.neighborUsername]=neighbors[indexPath.item].username
+        performSegue(withIdentifier: "NeighborSphereInventorySegue", sender: indexPath)
      }
 
 }
