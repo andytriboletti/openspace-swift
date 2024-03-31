@@ -246,8 +246,8 @@
 		721AB60F2BB918F400E68231 /* iss006e48523orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294566240B1F7F008328FC /* iss006e48523orig.jpg */; };
 		721AB6102BB918F400E68231 /* anderik.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3282640E9F600E67276 /* anderik.scn */; };
 		721AB6112BB918F400E68231 /* iss045e166104.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */; };
-		721BF29E2BB9CF310046E7E7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF29D2BB9CF310046E7E7 /* Info.plist */; };
 		721BF2A02BB9CF3E0046E7E7 /* Open Space Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */; };
+		721BF2A62BB9D09D0046E7E7 /* Open Space-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */; };
 		722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722102D32BB905D7008F431C /* LeaderboardViewController.swift */; };
 		722181892B8E90D500FB572F /* processing_model_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 722181882B8E90D500FB572F /* processing_model_icon.jpg */; };
 		7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818A2B8EA20300FB572F /* HeaderView.swift */; };
@@ -411,8 +411,8 @@
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
 		721AB6192BB918F400E68231 /* Open Space Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		721BF29D2BB9CF310046E7E7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
+		721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space-Info.plist"; sourceTree = SOURCE_ROOT; };
 		722102D32BB905D7008F431C /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		722181882B8E90D500FB572F /* processing_model_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = processing_model_icon.jpg; sourceTree = "<group>"; };
 		7221818A2B8EA20300FB572F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -690,8 +690,8 @@
 		6FB0EEF723FDA1A800EA28D7 /* Open Space */ = {
 			isa = PBXGroup;
 			children = (
-				721BF29D2BB9CF310046E7E7 /* Info.plist */,
 				721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */,
+				721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */,
 				6FCCF110260297E000514899 /* README.md */,
 				72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */,
 				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
@@ -1046,6 +1046,7 @@
 				72C513322A53750B00AAD941 /* moon_surface.jpg in Resources */,
 				6F643EA22530DBCC001164E4 /* pexels-pixabay-262786-pyramid.jpg in Resources */,
 				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
+				721BF2A62BB9D09D0046E7E7 /* Open Space-Info.plist in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				72C513382A53A96700AAD941 /* lroc_color_poles_8k.jpg in Resources */,
@@ -1135,7 +1136,6 @@
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 				6F34E3292640E9F600E67276 /* anderik.scn in Resources */,
 				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
-				721BF29E2BB9CF310046E7E7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1688,7 +1688,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 779S839979;
-				INFOPLIST_FILE = "Open Space/Info.plist";
+				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
@@ -1718,7 +1718,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 779S839979;
-				INFOPLIST_FILE = "Open Space/Info.plist";
+				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
