@@ -78,7 +78,6 @@
 		6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */; };
 		6FB0EF0523FDA1A900EA28D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0323FDA1A900EA28D7 /* LaunchScreen.storyboard */; };
 		6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */; };
-		6FCCF111260297E000514899 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6FCCF110260297E000514899 /* README.md */; };
 		6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296423FEC8620082209D /* space_icon_200.jpg */; };
 		6FD0296723FEC9FF0082209D /* space_icon_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */; };
 		6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */ = {isa = PBXBuildFile; fileRef = 6FD0296823FECDD20082209D /* starcrumpled.dae */; };
@@ -242,7 +241,6 @@
 		721AB60B2BB918F400E68231 /* 24609260915_a840b027e5_o.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD92052259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg */; };
 		721AB60C2BB918F400E68231 /* GSFC_20171208_Archive_e001359orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294564240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg */; };
 		721AB60D2BB918F400E68231 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F81A27B24155C4300D79494 /* Assets.xcassets */; };
-		721AB60E2BB918F400E68231 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6FCCF110260297E000514899 /* README.md */; };
 		721AB60F2BB918F400E68231 /* iss006e48523orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294566240B1F7F008328FC /* iss006e48523orig.jpg */; };
 		721AB6102BB918F400E68231 /* anderik.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3282640E9F600E67276 /* anderik.scn */; };
 		721AB6112BB918F400E68231 /* iss045e166104.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */; };
@@ -250,6 +248,7 @@
 		721BF2A62BB9D09D0046E7E7 /* Open Space-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */; };
 		721BF2A82BBB020C0046E7E7 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721BF2A72BBB020B0046E7E7 /* IAPManager.swift */; };
 		721BF2AA2BBB0FCC0046E7E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721BF2A92BBB0FCB0046E7E7 /* Constants.swift */; };
+		721BF2AC2BBB2AAC0046E7E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 721BF2AB2BBB2AAC0046E7E7 /* README.md */; };
 		722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722102D32BB905D7008F431C /* LeaderboardViewController.swift */; };
 		722181892B8E90D500FB572F /* processing_model_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 722181882B8E90D500FB572F /* processing_model_icon.jpg */; };
 		7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818A2B8EA20300FB572F /* HeaderView.swift */; };
@@ -380,7 +379,6 @@
 		6FB0EEFF23FDA1A800EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FB0EF0423FDA1A900EA28D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FB0EF0F23FDA1F500EA28D7 /* spaceshipb.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = spaceshipb.dae; sourceTree = "<group>"; };
-		6FCCF110260297E000514899 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6FD0296423FEC8620082209D /* space_icon_200.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_200.jpg; sourceTree = "<group>"; };
 		6FD0296623FEC9FF0082209D /* space_icon_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_icon_1024.jpg; sourceTree = "<group>"; };
 		6FD0296823FECDD20082209D /* starcrumpled.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = starcrumpled.dae; sourceTree = "<group>"; };
@@ -416,6 +414,7 @@
 		721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space-Info.plist"; sourceTree = SOURCE_ROOT; };
 		721BF2A72BBB020B0046E7E7 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		721BF2A92BBB0FCB0046E7E7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		721BF2AB2BBB2AAC0046E7E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		722102D32BB905D7008F431C /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		722181882B8E90D500FB572F /* processing_model_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = processing_model_icon.jpg; sourceTree = "<group>"; };
 		7221818A2B8EA20300FB572F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -672,6 +671,7 @@
 		6FB0EEEC23FDA1A800EA28D7 = {
 			isa = PBXGroup;
 			children = (
+				721BF2AB2BBB2AAC0046E7E7 /* README.md */,
 				6FB0EEF723FDA1A800EA28D7 /* Open Space */,
 				72D19A22270DF62800175BD9 /* Open SpaceUITests */,
 				6FB0EEF623FDA1A800EA28D7 /* Products */,
@@ -695,7 +695,6 @@
 			children = (
 				721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */,
 				721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */,
-				6FCCF110260297E000514899 /* README.md */,
 				72B693B22A61BC4D005A0863 /* OpenspaceAPI.swift */,
 				6FB0EEF823FDA1A800EA28D7 /* AppDelegate.swift */,
 				6FB0EEFE23FDA1A800EA28D7 /* Main.storyboard */,
@@ -1104,6 +1103,7 @@
 				722181892B8E90D500FB572F /* processing_model_icon.jpg in Resources */,
 				6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */,
 				72E8C50326F257FF00D5FDEB /* mars.scn in Resources */,
+				721BF2AC2BBB2AAC0046E7E7 /* README.md in Resources */,
 				6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
 				6FDB588B23FEBE06004263CB /* starregular.dae in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
@@ -1136,7 +1136,6 @@
 				6FD92059259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg in Resources */,
 				6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
 				6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */,
-				6FCCF111260297E000514899 /* README.md in Resources */,
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 				6F34E3292640E9F600E67276 /* anderik.scn in Resources */,
 				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
@@ -1235,7 +1234,6 @@
 				721AB60B2BB918F400E68231 /* 24609260915_a840b027e5_o.jpg in Resources */,
 				721AB60C2BB918F400E68231 /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
 				721AB60D2BB918F400E68231 /* Assets.xcassets in Resources */,
-				721AB60E2BB918F400E68231 /* README.md in Resources */,
 				721AB60F2BB918F400E68231 /* iss006e48523orig.jpg in Resources */,
 				721AB6102BB918F400E68231 /* anderik.scn in Resources */,
 				721AB6112BB918F400E68231 /* iss045e166104.jpg in Resources */,
