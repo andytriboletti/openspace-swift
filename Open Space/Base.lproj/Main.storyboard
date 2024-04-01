@@ -1212,16 +1212,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ABJ-iN-BfM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replicator: Type in something you want to create" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0L-IA-0dQ">
-                                        <rect key="frame" x="22" y="0.0" width="370" height="139"/>
+                                        <rect key="frame" x="22" y="0.0" width="370" height="136.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iee-e7-whr">
-                                        <rect key="frame" x="7" y="149" width="400" height="300"/>
+                                        <rect key="frame" x="7" y="146.5" width="400" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="JSU-Kj-Z04"/>
@@ -1234,26 +1234,25 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This creation will be shown in your sphere" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WN-7w-4jI">
-                                        <rect key="frame" x="48.5" y="459" width="317" height="139"/>
+                                        <rect key="frame" x="48.5" y="456.5" width="317" height="136.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkD-8P-7QA">
-                                        <rect key="frame" x="169.5" y="608" width="75" height="139"/>
+                                        <rect key="frame" x="169.5" y="603" width="75" height="136.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Create"/>
                                         <connections>
                                             <action selector="createNewItem" destination="nQ1-Kh-9oZ" eventType="touchDown" id="8nO-Na-uED"/>
-                                            <action selector="createNewItem" destination="WR1-6C-qgV" eventType="touchDown" id="IpU-4o-TXE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgX-v4-T8c">
-                                        <rect key="frame" x="125" y="757" width="164.5" height="139"/>
+                                        <rect key="frame" x="125" y="749.5" width="164.5" height="136.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Exit Create Screen"/>
                                         <connections>
-                                            <segue destination="WR1-6C-qgV" kind="presentation" modalPresentationStyle="fullScreen" id="K0X-1L-HJs"/>
+                                            <segue destination="WR1-6C-qgV" kind="presentation" identifier="goToYourSphere" modalPresentationStyle="fullScreen" id="K0X-1L-HJs"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1271,7 +1270,6 @@
                             <constraint firstItem="ABJ-iN-BfM" firstAttribute="leading" secondItem="cJe-hB-15c" secondAttribute="leading" id="B8X-TX-DfR"/>
                             <constraint firstItem="ABJ-iN-BfM" firstAttribute="centerY" secondItem="NgB-UB-ady" secondAttribute="centerY" id="Kxv-4p-Te0"/>
                             <constraint firstItem="ABJ-iN-BfM" firstAttribute="centerX" secondItem="NgB-UB-ady" secondAttribute="centerX" id="NRc-WJ-t2A"/>
-                            <constraint firstItem="cJe-hB-15c" firstAttribute="bottom" secondItem="ABJ-iN-BfM" secondAttribute="bottom" id="gP6-rR-k66"/>
                             <constraint firstItem="ABJ-iN-BfM" firstAttribute="top" secondItem="cJe-hB-15c" secondAttribute="top" id="sjZ-4j-rHe"/>
                         </constraints>
                     </view>
@@ -1330,7 +1328,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Create a new item using minerals"/>
                                         <connections>
-                                            <segue destination="nQ1-Kh-9oZ" kind="presentation" modalPresentationStyle="fullScreen" id="OT8-pY-TU1"/>
+                                            <action selector="createNewButton" destination="WR1-6C-qgV" eventType="touchDown" id="BbU-lI-YO9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agd-eM-rfX">
@@ -1372,6 +1370,7 @@
                     <connections>
                         <outlet property="headerLabel" destination="n38-j8-Xoy" id="Vr5-j4-QwR"/>
                         <outlet property="numberOfObjectsInSphere" destination="Ojd-Yk-xSx" id="hFP-Zf-bw3"/>
+                        <segue destination="nQ1-Kh-9oZ" kind="presentation" identifier="goToReplicator" id="x6C-YO-ED4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7e-jW-5ay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

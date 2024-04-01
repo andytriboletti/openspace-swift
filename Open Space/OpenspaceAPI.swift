@@ -40,11 +40,12 @@ class OpenspaceAPI {
         let completed: [PromptData]
     }
 
-    func fetchData(email: String, authToken: String, completion: @escaping (Result<(ResponseData), FetchDataError>) -> Void) {
+    func fetchData(email: String, authToken: String, sphereId: String, completion: @escaping (Result<(ResponseData), FetchDataError>) -> Void) {
         // Prepare JSON data
         let jsonData: [String: Any] = [
             "email": email,
-            "authToken": authToken
+            "authToken": authToken,
+            "sphereId": sphereId
         ]
 
         // Convert JSON data to Data
@@ -561,7 +562,7 @@ class OpenspaceAPI {
     }
 
     // Function to send text to the server
-    func sendTextToServer(email: String, authToken: String, text: String, completion: @escaping (Bool, Error?) -> Void) {
+    func sendTextToServer(email: String, authToken: String, text: String, sphereId: String, completion: @escaping (Bool, Error?) -> Void) {
         // let sendTextURL = URL(string: "\(serverURL)send-prompt-text")!
 
         let sendTextURL = URL(string: "\(serverURL)send-text")! // Constructing the URL
@@ -570,7 +571,8 @@ class OpenspaceAPI {
         let parameters: [String: Any] = [
             "email": email,
             "authToken": authToken,
-            "text": text
+            "text": text,
+            "sphereId": sphereId // Added sphereId to the parameters
         ]
 
         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters) else {

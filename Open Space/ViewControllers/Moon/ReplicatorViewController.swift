@@ -72,14 +72,22 @@ class ReplicatorViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
         // Present the alert controller
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true) {
+            // go to MoonSphereBaseController
+            // Dismiss the alert controller first
+            alertController.dismiss(animated: true) {
+                // Perform segue to your desired destination
+                self.performSegue(withIdentifier: "goToYourSphere", sender: self)
+            }
+
+        }
     }
     // Example function to call the sendTextToServer function
     func sendText(text: String) {
             let email = Defaults[.email] // Replace with the actual email
             let authToken = Defaults[.authToken] // Replace with the actual auth token
-
-           OpenspaceAPI.shared.sendTextToServer(email: email, authToken: authToken, text: text) { success, error in
+        let yourSphereId = Defaults[.selectedSphereId]
+        OpenspaceAPI.shared.sendTextToServer(email: email, authToken: authToken, text: text, sphereId: yourSphereId) { success, error in
                if let error = error {
                    print("Error: \(error)")
                    // Handle error

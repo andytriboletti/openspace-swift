@@ -13,14 +13,60 @@ class YourSphereViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var numberOfObjectsInSphere: UILabel!
+    // @IBOutlet var createNewButton: UIButton!
     override func viewDidLoad() {
         let selectedSphereName = Defaults[.selectedSphereName]
         self.headerLabel.text = "Viewing your sphere: \(selectedSphereName)"
 
         // todo get sphere items
-        self.numberOfObjectsInSphere.text = "You have 4 items in your sphere, out of a max of 4."
+        // self.numberOfObjectsInSphere.text = "You have 4 items in your sphere, out of a max of 4."
+    }
+    var count = 0
+    override func viewDidAppear(_ animated: Bool) {
+        fetchData()
+    }
+
+    @IBAction func createNewButton() {
+        if count > 3 {
+            // show alert
+            let myMessage = "Your sphere can hold 4 items and you've already created 4 items. Coming soon ability to claim new spheres and delete objects."
+            let alertController = UIAlertController(title: "Max items created", message: myMessage, preferredStyle: .alert)
+
+            // Add an action (button)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+            // Present the alert controller
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            // show segue
+            self.performSegue(withIdentifier: "goToReplicator", sender: self)
+
+        }
 
     }
+    func fetchData() {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+        let yourSphereId = Defaults[.selectedSphereId]
+
+        OpenspaceAPI.shared.fetchData(email: email, authToken: authToken, sphereId: yourSphereId) { result in
+            switch result {
+            case .success(let responseData):
+                self.count = responseData.pending.count + responseData.completed.count
+                DispatchQueue.main.async {
+                    if self.count == 1 {
+                        self.numberOfObjectsInSphere.text = "You have \(self.count) item in your sphere, out of a max of 4."
+                    } else {
+                        self.numberOfObjectsInSphere.text = "You have \(self.count) items in your sphere, out of a max of 4."
+
+                    }
+                }
+            case .failure(let error):
+                print("Error fetching data: \(error)")
+            }
+        }
+    }
+
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
 
@@ -31,28 +77,6 @@ class YourSphereViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     // Example function to call the sendTextToServer function
-    func sendText(text: String) {
-            let email = Defaults[.email] // Replace with the actual email
-            let authToken = Defaults[.authToken] // Replace with the actual auth token
-
-           OpenspaceAPI.shared.sendTextToServer(email: email, authToken: authToken, text: text) { success, error in
-               if let error = error {
-                   print("Error: \(error)")
-                   // Handle error
-               } else if success {
-                   print("Text sent successfully to server")
-                   // Handle success
-                   DispatchQueue.main.async {
-                       self.inputText.text=""
-                       self.showSuccessAlert()
-                   }
-
-               } else {
-                   print("Failed to send text to server")
-                   // Handle failure
-               }
-           }
-       }
 
     /*
     // MARK: - Navigation

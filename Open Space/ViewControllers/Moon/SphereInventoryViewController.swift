@@ -54,8 +54,9 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
        func fetchData() {
            let email = Defaults[.email]
            let authToken = Defaults[.authToken]
+           let yourSphereId = Defaults[.selectedSphereId]
 
-           OpenspaceAPI.shared.fetchData(email: email, authToken: authToken) { result in
+           OpenspaceAPI.shared.fetchData(email: email, authToken: authToken, sphereId: yourSphereId) { result in
                switch result {
                case .success(let responseData):
                    self.pendingModels = responseData.pending

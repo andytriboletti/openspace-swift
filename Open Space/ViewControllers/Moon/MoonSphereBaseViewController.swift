@@ -200,7 +200,9 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         print("go to sphere")
         if let firstSphere = yourSpheres?.first, let sphereName = firstSphere["sphere_name"] as? String {
             print("The sphereName from the first object in yourSpheres is: \(sphereName)")
+            let sphereId = firstSphere["sphere_id"] as? String
             Defaults[.selectedSphereName] = sphereName
+            Defaults[.selectedSphereId] = sphereId!
             self.performSegue(withIdentifier: "goToSphereView", sender: self)
 
         } else {
