@@ -8,6 +8,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
     @IBOutlet var enterYourSphereButton: UIButton!
     @IBOutlet var exploreNeighborSphere: UIButton!
+    @IBOutlet var keyLabel: UILabel!
     var noNeighborSpheresLabel: UILabel?
 
     var yourSpheres: [[String: Any]]?
@@ -15,6 +16,21 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     var scene = SCNScene()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let labelText = "Your Spheres: Green     Neighbor Spheres: Blue     Unoccupied Spheres: Red"
+
+        let attributedText = NSMutableAttributedString(string: labelText)
+
+        // Set color for "Your Spheres: Green"
+        attributedText.addAttribute(.foregroundColor, value: UIColor.green, range: NSRange(location: 0, length: 19))
+
+        // Set color for "Neighbor Spheres: Blue"
+        attributedText.addAttribute(.foregroundColor, value: UIColor.blue, range: NSRange(location: 20, length: 26))
+
+        // Set color for "Unoccupied Spheres: Red"
+        attributedText.addAttribute(.foregroundColor, value: UIColor.red, range: NSRange(location: 50, length: 24))
+
+        // Assign attributedText to your UILabel
+        keyLabel.attributedText = attributedText
 
         // Create a full-screen SCNView
         // sceneView = SCNView(frame: view.bounds)

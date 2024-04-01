@@ -1427,15 +1427,15 @@
         <scene sceneID="R5i-ZO-hA3">
             <objects>
                 <viewController id="U1y-oS-a8q" customClass="MoonSphereBaseViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="odf-nf-Ubq">
+                    <view key="view" contentMode="scaleToFill" id="odf-nf-Ubq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cCj-gM-4oO">
-                                <rect key="frame" x="24" y="42" width="400" height="719"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="796"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSy-lL-kHv" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="23.5" y="0.0" width="353.5" height="19"/>
+                                        <rect key="frame" x="30.5" y="0.0" width="353.5" height="19"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1444,14 +1444,14 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-1d-pQe">
-                                        <rect key="frame" x="28" y="39" width="344" height="30"/>
+                                        <rect key="frame" x="130.5" y="39" width="153" height="46"/>
                                         <state key="normal" title="ENTER YOUR SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="QqY-nA-6q0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeA-vo-8pC">
-                                        <rect key="frame" x="97" y="89" width="206" height="30"/>
+                                        <rect key="frame" x="104" y="105" width="206" height="30"/>
                                         <state key="normal" title="EXPLORE NEIGHBOR SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="cJK-o9-3ny"/>
@@ -1459,29 +1459,30 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0i-9f-WcI">
-                                        <rect key="frame" x="28" y="129" width="344" height="50"/>
+                                        <rect key="frame" x="28" y="145" width="358" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="33N-pD-Gaf"/>
                                         </constraints>
                                         <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
                                     </button>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lkg-jM-MWz">
-                                        <rect key="frame" x="0.0" y="139" width="400" height="500"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" id="0W1-cc-a7V"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="9tL-Y4-HqZ"/>
-                                            <constraint firstAttribute="width" constant="400" id="nux-5v-5Kg"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="155" width="414" height="500"/>
                                     </sceneKitView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Spheres: Green     Neighbor Spheres: Blue Unoccupied Spheres: Red" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKZ-Ew-kE4">
+                                        <rect key="frame" x="0.0" y="675" width="414" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rL8-m9-NBo">
-                                        <rect key="frame" x="28" y="649" width="344" height="50"/>
+                                        <rect key="frame" x="28" y="726" width="358" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="b6i-T2-ZWq"/>
                                         </constraints>
                                         <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPa-Gp-Lb1">
-                                        <rect key="frame" x="130.5" y="659" width="139" height="60"/>
+                                        <rect key="frame" x="137.5" y="736" width="139" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="7ob-zk-Phx"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="I0I-f0-Kpi"/>
@@ -1495,15 +1496,22 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="rL8-m9-NBo" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" constant="28" id="1Yy-NY-OJw"/>
+                                    <constraint firstItem="OKZ-Ew-kE4" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="42c-gp-8Fl"/>
+                                    <constraint firstAttribute="trailing" secondItem="OKZ-Ew-kE4" secondAttribute="trailing" id="51K-Zc-UZL"/>
+                                    <constraint firstItem="Lkg-jM-MWz" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="6fH-s6-lPo"/>
                                     <constraint firstAttribute="trailing" secondItem="rL8-m9-NBo" secondAttribute="trailing" constant="28" id="CLc-IN-KpD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lkg-jM-MWz" secondAttribute="trailing" id="DmS-er-3Zi"/>
                                     <constraint firstItem="KSy-lL-kHv" firstAttribute="top" secondItem="cCj-gM-4oO" secondAttribute="top" id="EsR-SV-JSa"/>
                                     <constraint firstAttribute="trailing" secondItem="x0i-9f-WcI" secondAttribute="trailing" constant="28" id="FRH-RO-jHV"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Hq-1d-pQe" secondAttribute="trailing" constant="28" id="HSh-uW-Vdj"/>
                                     <constraint firstItem="KSy-lL-kHv" firstAttribute="top" secondItem="cCj-gM-4oO" secondAttribute="top" id="He2-Mw-Jkv"/>
+                                    <constraint firstItem="Lkg-jM-MWz" firstAttribute="centerX" secondItem="cCj-gM-4oO" secondAttribute="centerX" id="Hvj-BN-dsj"/>
+                                    <constraint firstItem="OKZ-Ew-kE4" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="VsX-sd-d9l"/>
+                                    <constraint firstItem="Lkg-jM-MWz" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="ZJc-Nm-L3w"/>
                                     <constraint firstAttribute="trailing" secondItem="x0i-9f-WcI" secondAttribute="trailing" constant="28" id="cVf-it-WpX"/>
                                     <constraint firstItem="x0i-9f-WcI" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" constant="28" id="d1e-vJ-Srb"/>
                                     <constraint firstItem="x0i-9f-WcI" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" constant="28" id="fTp-4R-E3f"/>
-                                    <constraint firstItem="8Hq-1d-pQe" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" constant="28" id="hDH-fq-xGh"/>
+                                    <constraint firstAttribute="trailing" secondItem="OKZ-Ew-kE4" secondAttribute="trailing" id="jp2-HP-JQ6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lkg-jM-MWz" secondAttribute="trailing" id="lFc-wP-QWx"/>
                                     <constraint firstItem="KSy-lL-kHv" firstAttribute="centerX" secondItem="cCj-gM-4oO" secondAttribute="centerX" id="mf0-RO-JcE"/>
                                 </constraints>
                             </stackView>
@@ -1511,22 +1519,28 @@
                         <viewLayoutGuide key="safeArea" id="Lju-gd-tzJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cCj-gM-4oO" firstAttribute="leading" secondItem="Lju-gd-tzJ" secondAttribute="leading" constant="24" id="PPm-3U-ZyT"/>
+                            <constraint firstAttribute="trailing" secondItem="cCj-gM-4oO" secondAttribute="trailing" id="24Q-xT-uEj"/>
+                            <constraint firstItem="cCj-gM-4oO" firstAttribute="leading" secondItem="Lju-gd-tzJ" secondAttribute="leading" id="2m4-gc-hMf"/>
+                            <constraint firstItem="cCj-gM-4oO" firstAttribute="leading" secondItem="Lju-gd-tzJ" secondAttribute="leading" id="GAv-0g-XeN"/>
+                            <constraint firstItem="cCj-gM-4oO" firstAttribute="trailing" secondItem="Lju-gd-tzJ" secondAttribute="trailing" id="Rys-tP-d3s"/>
+                            <constraint firstItem="cCj-gM-4oO" firstAttribute="top" secondItem="Lju-gd-tzJ" secondAttribute="top" constant="50" id="Sk7-0k-Q4a"/>
                             <constraint firstItem="cCj-gM-4oO" firstAttribute="centerX" secondItem="odf-nf-Ubq" secondAttribute="centerX" id="aah-TZ-jBR"/>
-                            <constraint firstItem="cCj-gM-4oO" firstAttribute="top" secondItem="Lju-gd-tzJ" secondAttribute="top" constant="42" id="s75-Qv-C1R"/>
+                            <constraint firstItem="Lju-gd-tzJ" firstAttribute="bottom" secondItem="cCj-gM-4oO" secondAttribute="bottom" constant="50" id="i8I-mH-Txa"/>
+                            <constraint firstItem="cCj-gM-4oO" firstAttribute="top" secondItem="Lju-gd-tzJ" secondAttribute="top" constant="50" id="kHY-x8-d8y"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="enterYourSphereButton" destination="8Hq-1d-pQe" id="aUr-iI-g8L"/>
                         <outlet property="exploreNeighborSphere" destination="yeA-vo-8pC" id="9Gv-Jv-cV5"/>
                         <outlet property="headerLabel" destination="KSy-lL-kHv" id="KmS-5B-5wj"/>
+                        <outlet property="keyLabel" destination="OKZ-Ew-kE4" id="zzz-Kl-iSH"/>
                         <outlet property="sceneView" destination="Lkg-jM-MWz" id="ynK-wP-nep"/>
                         <segue destination="WR1-6C-qgV" kind="presentation" identifier="goToSphereView" modalPresentationStyle="fullScreen" id="fiu-Wn-O7o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLg-d9-fLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4896" y="1469"/>
+            <point key="canvasLocation" x="4895.652173913044" y="1468.5267857142856"/>
         </scene>
         <!--Shipyard View Controller-->
         <scene sceneID="L7F-ck-QNe">
