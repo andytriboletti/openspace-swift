@@ -12,10 +12,13 @@ import Defaults
 class YourSphereViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
     @IBOutlet var headerLabel: UILabel!
-
+    @IBOutlet var numberOfObjectsInSphere: UILabel!
     override func viewDidLoad() {
         let selectedSphereName = Defaults[.selectedSphereName]
         self.headerLabel.text = "Viewing your sphere: \(selectedSphereName)"
+
+        // todo get sphere items
+        self.numberOfObjectsInSphere.text = "You have 4 items in your sphere, out of a max of 4."
 
     }
     func showSuccessAlert() {

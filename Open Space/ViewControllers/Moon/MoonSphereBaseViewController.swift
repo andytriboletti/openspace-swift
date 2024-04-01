@@ -8,6 +8,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
     @IBOutlet var enterYourSphereButton: UIButton!
     @IBOutlet var exploreNeighborSphere: UIButton!
+    @IBOutlet var claimAnotherSphereButton: UIButton!
     @IBOutlet var keyLabel: UILabel!
     var noNeighborSpheresLabel: UILabel?
 
@@ -60,7 +61,68 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         headerLabel.backgroundColor = UIColor.black
 
         // Check if neighborSpheres is empty
+        claimAnotherSphereButton.addTarget(self, action: #selector(claimAnotherSphereMethod), for: .touchUpInside)
 
+    }
+
+    func displayAlert() {
+        // Create the UIAlertController
+        let alertController = UIAlertController(title: "Functionality Coming Soon",
+                                                message: "This functionality will be available soon.",
+                                                preferredStyle: .alert)
+
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Handle OK button tap if needed
+        }
+
+        // Add the OK action to the alert controller
+        alertController.addAction(okAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+    }
+    @objc func claimAnotherSphereMethod() {
+        displayAlert()
+
+//
+//        print("claim another sphere")
+//        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
+//                   showPurchaseAlert(price: price)
+//               } else {
+//                   showPurchaseAlert(price: "$0.99")
+//
+//                   print("Product price not available")
+//               }
+    }
+
+    func showPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase the ability to claim a new sphere for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Claim Another Sphere", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseNewSphere()
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
+
+    // Call this method to initiate the purchase flow
+    func purchaseNewSphere() {
+        if let product = IAPManager.shared.products.first {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.newSphere)
+        } else {
+            print("Product not available")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -122,12 +184,15 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         enterYourSphereButton.removeTarget(nil, action: nil, for: .touchUpInside)
 
         if yourSpheres?.count == 0 {
-            enterYourSphereButton.setTitle("Claim Your First Sphere", for: .normal)
+            enterYourSphereButton.setTitle("CLAIM YOUR FIRST SPHERE", for: .normal)
             enterYourSphereButton.addTarget(self, action: #selector(claimFirstSphere), for: .touchUpInside)
+            claimAnotherSphereButton.isHidden=true
+
         } else {
             // it's not empty set the action to go to the sphere view
             enterYourSphereButton.setTitle("ENTER YOUR SPHERE", for: .normal)
             enterYourSphereButton.addTarget(self, action: #selector(goToSphereView), for: .touchUpInside)
+            claimAnotherSphereButton.isHidden=false
         }
     }
 

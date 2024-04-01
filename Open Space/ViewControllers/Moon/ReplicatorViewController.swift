@@ -21,7 +21,7 @@ import Defaults
 
 class ReplicatorViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
-
+    @IBOutlet var labelForSphere: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +38,8 @@ class ReplicatorViewController: UIViewController {
         textView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         let stackView = UIStackView(arrangedSubviews: [containerView])
 
+        let sphereName = Defaults[.selectedSphereName]
+        labelForSphere.text = "This creation will be shown in your sphere \(sphereName)"
         // Do any additional setup after loading the view.
     }
     func showAlert(message: String) {

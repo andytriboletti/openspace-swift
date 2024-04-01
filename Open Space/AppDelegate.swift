@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.gameState = GameState()
 
         FirebaseApp.configure()
+        IAPManager.shared.requestProducts()
 
         return true
     }
