@@ -1,0 +1,13 @@
+${PODS_ROOT}/Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAnonymousAuthUI/FirebaseAnonymousAuthUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuthUI/FirebaseAuthUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension/FirebaseCoreExtension_Privacy.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseEmailAuthUI/FirebaseEmailAuthUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFacebookAuthUI/FirebaseFacebookAuthUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseGoogleAuthUI/FirebaseGoogleAuthUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseOAuthUI/FirebaseOAuthUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebasePhoneAuthUI/FirebasePhoneAuthUI.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/GoogleSignIn/GoogleSignIn.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb_Privacy.bundle

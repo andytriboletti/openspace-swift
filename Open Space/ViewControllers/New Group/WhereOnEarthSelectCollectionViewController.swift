@@ -10,9 +10,6 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-import Alamofire
-import AlamofireImage
-
 class WhereOnEarthSelectCollectionViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var locations: [Int: String] = [:]
     @IBOutlet var collectionView: UICollectionView!

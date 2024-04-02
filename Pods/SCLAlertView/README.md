@@ -4,7 +4,7 @@ SCLAlertView
 [![Version](https://img.shields.io/cocoapods/v/SCLAlertView.svg?style=flat)](http://cocoadocs.org/docsets/SCLAlertView/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-Animated Alert View written in Swift, which can be used as a `UIAlertView` or `UIAlertController` replacement with nice customization features. 
+Animated Alert View written in Swift, which can be used as a `UIAlertView` or `UIAlertController` replacement. Since `UIAlertView` is deprecated and `UIAlertController` only works on iOS 8.x or above, if you have a Swift project where you want to support iOS 7.x too, SCLAlertView is an ideal substitution.
 
 ![BackgroundImage](https://raw.githubusercontent.com/vikmeup/SCPopUpView/master/successScreenshot.png)_
 ![BackgroundImage](https://raw.githubusercontent.com/vikmeup/SCPopUpView/master/editScreenshot.png)
@@ -49,8 +49,8 @@ SCLAlertView().showTitle(
     duration: 2.0, // Duration to show before closing automatically, default: 0.0
     completeText: "Done", // Optional button value, default: ""
     style: .success, // Styles - see below.
-    colorStyle: UIColorFromRGB(0xA429FF),
-    colorTextButton: .white
+    colorStyle: 0xA429FF,
+    colorTextButton: 0xFFFFFF
 )
 ```
 
@@ -141,60 +141,53 @@ alert.showEdit("Edit View", subTitle: "This alert view shows a text box")
 #### Use a custom subview instead of a subtitle
 ```swift
 // Example of using the view to add two text fields to the alert
-// Create custom Appearance Configuration
+// Create the subview
 let appearance = SCLAlertView.SCLAppearance(
     kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
     kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
     kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
-    showCloseButton: false,
-    dynamicAnimatorActive: true
+    showCloseButton: false
 )
 
 // Initialize SCLAlertView using custom Appearance
 let alert = SCLAlertView(appearance: appearance)
 
 // Creat the subview
-let subview = UIView(frame: CGRect(x: 0,y: 0,width: 216,height: 70))
+let subview = UIView(frame: CGRectMake(0,0,216,70))
 let x = (subview.frame.width - 180) / 2
 
 // Add textfield 1
-let textfield1 = UITextField(frame: CGRect(x: x,y: 10,width: 180,height: 25))
-textfield1.layer.borderColor = UIColor.green.cgColor
+let textfield1 = UITextField(frame: CGRectMake(x,10,180,25))
+textfield1.layer.borderColor = UIColor.greenColor().CGColor
 textfield1.layer.borderWidth = 1.5
 textfield1.layer.cornerRadius = 5
 textfield1.placeholder = "Username"
-textfield1.textAlignment = NSTextAlignment.center
+textfield1.textAlignment = NSTextAlignment.Center
 subview.addSubview(textfield1)
 
 // Add textfield 2
-let textfield2 = UITextField(frame: CGRect(x: x,y: textfield1.frame.maxY + 10,width: 180,height: 25))
-textfield2.isSecureTextEntry = true
-textfield2.layer.borderColor = UIColor.blue.cgColor
+let textfield2 = UITextField(frame: CGRectMake(x,textfield1.frame.maxY + 10,180,25))
+textfield2.secureTextEntry = true
+textfield2.layer.borderColor = UIColor.blueColor().CGColor
 textfield2.layer.borderWidth = 1.5
 textfield2.layer.cornerRadius = 5
-textfield1.layer.borderColor = UIColor.blue.cgColor
+textfield1.layer.borderColor = UIColor.blueColor().CGColor
 textfield2.placeholder = "Password"
-textfield2.textAlignment = NSTextAlignment.center
+textfield2.textAlignment = NSTextAlignment.Center
 subview.addSubview(textfield2)
 
 // Add the subview to the alert's UI property
 alert.customSubview = subview
-_ = alert.addButton("Login") {
+alert.addButton("Login") {
     print("Logged in")
 }
 
-// Add Button with visible timeout and custom Colors
-let showTimeout = SCLButton.ShowTimeoutConfiguration(prefix: "(", suffix: " s)")
-_ = alert.addButton("Timeout Button", backgroundColor: UIColor.brown, textColor: UIColor.yellow, showTimeout: showTimeout) {
-    print("Timeout Button tapped")
+// Add Button with Duration Status and custom Colors
+alert.addButton("Duration Button", backgroundColor: UIColor.brownColor(), textColor: UIColor.yellowColor(), showDurationStatus: true) {
+    print("Duration Button tapped")
 }
 
-let timeoutValue: TimeInterval = 10.0
-let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
-    print("Timeout occurred")
-}
-
-_ = alert.showInfo("Login", subTitle: "", timeout: SCLAlertView.SCLTimeoutConfiguration(timeoutValue: timeoutValue, timeoutAction: timeoutAction))
+alert.showInfo("Login", subTitle: "", duration: 10)
 ```
 
 

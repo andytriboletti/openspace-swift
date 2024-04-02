@@ -893,6 +893,7 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.3.0)
+  - IQKeyboardManagerSwift (6.5.16)
   - leveldb-library (1.22.4)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
@@ -924,6 +925,7 @@ DEPENDENCIES:
   - FirebaseUI/OAuth
   - Google-Mobile-Ads-SDK
   - GoogleSignIn
+  - IQKeyboardManagerSwift
   - PopupDialog
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
   - SSZipArchive
@@ -975,6 +977,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
     - PopupDialog
@@ -1038,6 +1041,7 @@ SPEC CHECKSUMS:
   gRPC-Core: a21a60aefc08c68c247b439a9ef97174b0c54f96
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
+  IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   leveldb-library: 06a69cc7582d64b29424a63e085e683cc188230a
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
@@ -1050,6 +1054,6 @@ SPEC CHECKSUMS:
   Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 456013a7da784ec55e335a1a83c493c74a609eaa
+PODFILE CHECKSUM: 02fd7013e4717d9747d037324d5e71208b472c90
 
 COCOAPODS: 1.15.2

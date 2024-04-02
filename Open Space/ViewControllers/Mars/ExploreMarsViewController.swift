@@ -8,7 +8,6 @@
 
 import UIKit
 import SceneKit
-import Alamofire
 import Defaults
 
 class ExploreMarsViewController: UIViewController {

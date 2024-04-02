@@ -1,6 +1,5 @@
 import UIKit
-import Alamofire
-import AlamofireImage
+
 import Defaults
 
 class SphereInventoryViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

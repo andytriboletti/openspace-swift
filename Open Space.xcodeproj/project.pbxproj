@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01375227D64229611EAB4026 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		193C316310F965AF215A1933 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		06B2F3133C6AD49503053087 /* Pods_Open_Space_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D3C7B29D225C460696E12C /* Pods_Open_Space_Mac.framework */; };
+		1522AE7C17624B8C391058D1 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9CB837A5233888377302EC /* Pods_Open_Space.framework */; };
 		6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */; };
 		6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */; };
 		6F022424240250A60035F7E4 /* mtwashington.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F022423240250A60035F7E4 /* mtwashington.scn */; };
@@ -244,11 +244,11 @@
 		721AB60F2BB918F400E68231 /* iss006e48523orig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F294566240B1F7F008328FC /* iss006e48523orig.jpg */; };
 		721AB6102BB918F400E68231 /* anderik.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F34E3282640E9F600E67276 /* anderik.scn */; };
 		721AB6112BB918F400E68231 /* iss045e166104.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9204F259B87A2008F6CA3 /* iss045e166104.jpg */; };
-		721BF2A02BB9CF3E0046E7E7 /* Open Space Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */; };
-		721BF2A62BB9D09D0046E7E7 /* Open Space-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */; };
 		721BF2A82BBB020C0046E7E7 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721BF2A72BBB020B0046E7E7 /* IAPManager.swift */; };
 		721BF2AA2BBB0FCC0046E7E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721BF2A92BBB0FCB0046E7E7 /* Constants.swift */; };
 		721BF2AC2BBB2AAC0046E7E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 721BF2AB2BBB2AAC0046E7E7 /* README.md */; };
+		721BF2AD2BBB73F10046E7E7 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721BF2A72BBB020B0046E7E7 /* IAPManager.swift */; };
+		721BF2AE2BBB740E0046E7E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721BF2A92BBB0FCB0046E7E7 /* Constants.swift */; };
 		722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722102D32BB905D7008F431C /* LeaderboardViewController.swift */; };
 		722181892B8E90D500FB572F /* processing_model_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 722181882B8E90D500FB572F /* processing_model_icon.jpg */; };
 		7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221818A2B8EA20300FB572F /* HeaderView.swift */; };
@@ -290,7 +290,6 @@
 		72FC18B92B9CEF94007AF494 /* VIdeoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */; };
 		72FC18BB2B9CF08F007AF494 /* VideoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */; };
 		72FC18BD2B9D043B007AF494 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BC2B9D043B007AF494 /* ModelViewController.swift */; };
-		B29B9EF18546AE29C2AFD4C8 /* Pods_Open_Space_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD51EB4792D8ADE5B058294 /* Pods_Open_Space_Mac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +306,7 @@
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
 		17F24065F56C1765D7958738 /* Pods-Open Space Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Mac.release.xcconfig"; path = "Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac.release.xcconfig"; sourceTree = "<group>"; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
+		64D3C7B29D225C460696E12C /* Pods_Open_Space_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FFF75F55F2C48E4781280 /* Pods-Open Space Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Mac.debug.xcconfig"; path = "Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EXPORT_GOOGLE_SAT_WM-mtwashington.png"; sourceTree = "<group>"; };
 		6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEarthSceneViewController.swift; sourceTree = "<group>"; };
@@ -457,7 +457,7 @@
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
 		72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCacheManager.swift; sourceTree = "<group>"; };
 		72FC18BC2B9D043B007AF494 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
-		7AD51EB4792D8ADE5B058294 /* Pods_Open_Space_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E9CB837A5233888377302EC /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,8 +465,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				193C316310F965AF215A1933 /* (null) in Frameworks */,
-				01375227D64229611EAB4026 /* (null) in Frameworks */,
+				1522AE7C17624B8C391058D1 /* Pods_Open_Space.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +473,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B29B9EF18546AE29C2AFD4C8 /* Pods_Open_Space_Mac.framework in Frameworks */,
+				06B2F3133C6AD49503053087 /* Pods_Open_Space_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +490,8 @@
 		35D7EF5FCFAD97927D9DE97E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7AD51EB4792D8ADE5B058294 /* Pods_Open_Space_Mac.framework */,
+				9E9CB837A5233888377302EC /* Pods_Open_Space.framework */,
+				64D3C7B29D225C460696E12C /* Pods_Open_Space_Mac.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -947,10 +947,10 @@
 				6FB0EEF123FDA1A800EA28D7 /* Sources */,
 				6FB0EEF223FDA1A800EA28D7 /* Frameworks */,
 				6FB0EEF323FDA1A800EA28D7 /* Resources */,
-				88EA40E22F21EE23DD50742A /* [CP] Embed Pods Frameworks */,
 				6FD92067259BC653008F6CA3 /* ShellScript */,
 				72A3C04F2A80113A00C2A01E /* ShellScript */,
 				89CBD050177385D0690EC14A /* [CP] Copy Pods Resources */,
+				E07BE5E69B75FCC3ECB8740B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1049,7 +1049,6 @@
 				72C513322A53750B00AAD941 /* moon_surface.jpg in Resources */,
 				6F643EA22530DBCC001164E4 /* pexels-pixabay-262786-pyramid.jpg in Resources */,
 				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
-				721BF2A62BB9D09D0046E7E7 /* Open Space-Info.plist in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				72C513382A53A96700AAD941 /* lroc_color_poles_8k.jpg in Resources */,
@@ -1095,7 +1094,6 @@
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
 				6F34E32D2641A52100E67276 /* eleuz.scn in Resources */,
 				72C513362A5375AE00AAD941 /* moon_surface.png in Resources */,
-				721BF2A02BB9CF3E0046E7E7 /* Open Space Mac-Info.plist in Resources */,
 				6FDB588723FEB9B8004263CB /* yellowstar.dae in Resources */,
 				6FECC4D123FEE96000B46D91 /* instantmeshstation2.dae in Resources */,
 				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
@@ -1381,23 +1379,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		88EA40E22F21EE23DD50742A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		89CBD050177385D0690EC14A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1413,6 +1394,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E07BE5E69B75FCC3ECB8740B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space/Pods-Open Space-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1500,6 +1498,7 @@
 				721AB5982BB918F400E68231 /* MoonViewController.swift in Sources */,
 				721AB5992BB918F400E68231 /* HeaderView.swift in Sources */,
 				721AB59A2BB918F400E68231 /* VideoCacheManager.swift in Sources */,
+				721BF2AE2BBB740E0046E7E7 /* Constants.swift in Sources */,
 				721AB59B2BB918F400E68231 /* OpenspaceAPI.swift in Sources */,
 				721AB59C2BB918F400E68231 /* ExploreMoonViewController.swift in Sources */,
 				721AB59D2BB918F400E68231 /* GameState.swift in Sources */,
@@ -1519,6 +1518,7 @@
 				721AB5AB2BB918F400E68231 /* ChatView.swift in Sources */,
 				721AB5AC2BB918F400E68231 /* LocationState.swift in Sources */,
 				721AB5AD2BB918F400E68231 /* ChatViewController.swift in Sources */,
+				721BF2AD2BBB73F10046E7E7 /* IAPManager.swift in Sources */,
 				721AB5AE2BB918F400E68231 /* ReplicatorViewController.swift in Sources */,
 				721AB5AF2BB918F400E68231 /* Utils.swift in Sources */,
 				721AB5B02BB918F400E68231 /* LeaderboardViewController.swift in Sources */,
@@ -1690,7 +1690,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
@@ -1720,7 +1720,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
@@ -1750,7 +1750,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space Mac-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
@@ -1780,7 +1780,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = "Open Space Mac-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";

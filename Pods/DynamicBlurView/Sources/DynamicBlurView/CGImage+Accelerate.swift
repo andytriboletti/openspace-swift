@@ -41,9 +41,9 @@ extension CGImage {
         let tempData = malloc(tempSize)
 
         defer {
-            free(inData!)
-            free(outData!)
-            free(tempData!)
+            free(inData)
+            free(outData)
+            free(tempData)
         }
 
         let source = CFDataGetBytePtr(providerData)

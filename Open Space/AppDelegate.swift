@@ -13,6 +13,8 @@ import SpriteKit
 import DynamicBlurView
 import SceneKit
 import GoogleSignIn
+import IQKeyboardManagerSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -37,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
         IAPManager.shared.requestProducts()
+        IQKeyboardManager.shared.enable = true
 
         return true
     }
