@@ -29,7 +29,7 @@ target 'Open Space' do
 
 end
 
-target 'Open Space Mac' do
+target 'Open Space Desktop' do
   # Exclude GoogleMobileAds for Mac Catalyst
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!

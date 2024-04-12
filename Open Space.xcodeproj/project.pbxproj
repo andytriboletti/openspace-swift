@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06B2F3133C6AD49503053087 /* Pods_Open_Space_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D3C7B29D225C460696E12C /* Pods_Open_Space_Mac.framework */; };
 		1522AE7C17624B8C391058D1 /* Pods_Open_Space.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9CB837A5233888377302EC /* Pods_Open_Space.framework */; };
+		3063D485CA5084449BF4D98D /* Pods_Open_Space_Desktop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2BB76DA96DC6A0F10D2081 /* Pods_Open_Space_Desktop.framework */; };
 		6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */; };
 		6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */; };
 		6F022424240250A60035F7E4 /* mtwashington.scn in Resources */ = {isa = PBXBuildFile; fileRef = 6F022423240250A60035F7E4 /* mtwashington.scn */; };
@@ -305,8 +305,8 @@
 /* Begin PBXFileReference section */
 		018CCEA1CF96B34CE59FB14B /* Pods-Open Space.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.debug.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.debug.xcconfig"; sourceTree = "<group>"; };
 		17F24065F56C1765D7958738 /* Pods-Open Space Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Mac.release.xcconfig"; path = "Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac.release.xcconfig"; sourceTree = "<group>"; };
+		1A2BB76DA96DC6A0F10D2081 /* Pods_Open_Space_Desktop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space_Desktop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space.release.xcconfig"; path = "Target Support Files/Pods-Open Space/Pods-Open Space.release.xcconfig"; sourceTree = "<group>"; };
-		64D3C7B29D225C460696E12C /* Pods_Open_Space_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		692FFF75F55F2C48E4781280 /* Pods-Open Space Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Mac.debug.xcconfig"; path = "Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		6F022419240248240035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EXPORT_GOOGLE_SAT_WM-mtwashington.png"; sourceTree = "<group>"; };
 		6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEarthSceneViewController.swift; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
-		721AB6192BB918F400E68231 /* Open Space Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		721AB6192BB918F400E68231 /* Open Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space-Info.plist"; sourceTree = SOURCE_ROOT; };
 		721BF2A72BBB020B0046E7E7 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
@@ -457,7 +457,9 @@
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
 		72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCacheManager.swift; sourceTree = "<group>"; };
 		72FC18BC2B9D043B007AF494 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
+		96D3D53EEE12123E04BF36FC /* Pods-Open Space Desktop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Desktop.release.xcconfig"; path = "Target Support Files/Pods-Open Space Desktop/Pods-Open Space Desktop.release.xcconfig"; sourceTree = "<group>"; };
 		9E9CB837A5233888377302EC /* Pods_Open_Space.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Open_Space.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0071BCF275D14FE3FF05B4C /* Pods-Open Space Desktop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Open Space Desktop.debug.xcconfig"; path = "Target Support Files/Pods-Open Space Desktop/Pods-Open Space Desktop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,7 +475,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06B2F3133C6AD49503053087 /* Pods_Open_Space_Mac.framework in Frameworks */,
+				3063D485CA5084449BF4D98D /* Pods_Open_Space_Desktop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				9E9CB837A5233888377302EC /* Pods_Open_Space.framework */,
-				64D3C7B29D225C460696E12C /* Pods_Open_Space_Mac.framework */,
+				1A2BB76DA96DC6A0F10D2081 /* Pods_Open_Space_Desktop.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -503,6 +505,8 @@
 				2D46924F239A33D2301DCC36 /* Pods-Open Space.release.xcconfig */,
 				692FFF75F55F2C48E4781280 /* Pods-Open Space Mac.debug.xcconfig */,
 				17F24065F56C1765D7958738 /* Pods-Open Space Mac.release.xcconfig */,
+				C0071BCF275D14FE3FF05B4C /* Pods-Open Space Desktop.debug.xcconfig */,
+				96D3D53EEE12123E04BF36FC /* Pods-Open Space Desktop.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -685,7 +689,7 @@
 			children = (
 				6FB0EEF523FDA1A800EA28D7 /* Open Space.app */,
 				72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */,
-				721AB6192BB918F400E68231 /* Open Space Mac.app */,
+				721AB6192BB918F400E68231 /* Open Space.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -961,9 +965,9 @@
 			productReference = 6FB0EEF523FDA1A800EA28D7 /* Open Space.app */;
 			productType = "com.apple.product-type.application";
 		};
-		721AB5812BB918F400E68231 /* Open Space Mac */ = {
+		721AB5812BB918F400E68231 /* Open Space Desktop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 721AB6162BB918F400E68231 /* Build configuration list for PBXNativeTarget "Open Space Mac" */;
+			buildConfigurationList = 721AB6162BB918F400E68231 /* Build configuration list for PBXNativeTarget "Open Space Desktop" */;
 			buildPhases = (
 				721AB5822BB918F400E68231 /* [CP] Check Pods Manifest.lock */,
 				721AB5832BB918F400E68231 /* Sources */,
@@ -977,9 +981,9 @@
 			);
 			dependencies = (
 			);
-			name = "Open Space Mac";
+			name = "Open Space Desktop";
 			productName = "Open Space";
-			productReference = 721AB6192BB918F400E68231 /* Open Space Mac.app */;
+			productReference = 721AB6192BB918F400E68231 /* Open Space.app */;
 			productType = "com.apple.product-type.application";
 		};
 		72D19A20270DF62800175BD9 /* Open SpaceUITests */ = {
@@ -1035,7 +1039,7 @@
 			targets = (
 				6FB0EEF423FDA1A800EA28D7 /* Open Space */,
 				72D19A20270DF62800175BD9 /* Open SpaceUITests */,
-				721AB5812BB918F400E68231 /* Open Space Mac */,
+				721AB5812BB918F400E68231 /* Open Space Desktop */,
 			);
 		};
 /* End PBXProject section */
@@ -1303,7 +1307,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Open Space Mac-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Open Space Desktop-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1316,15 +1320,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space Desktop/Pods-Open Space Desktop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Open Space Desktop/Pods-Open Space Desktop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space Mac/Pods-Open Space Mac-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Open Space Desktop/Pods-Open Space Desktop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		721AB6132BB918F400E68231 /* ShellScript */ = {
@@ -1743,7 +1747,7 @@
 		};
 		721AB6172BB918F400E68231 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 692FFF75F55F2C48E4781280 /* Pods-Open Space Mac.debug.xcconfig */;
+			baseConfigurationReference = C0071BCF275D14FE3FF05B4C /* Pods-Open Space Desktop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
@@ -1762,7 +1766,7 @@
 				);
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open Space";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
@@ -1773,7 +1777,7 @@
 		};
 		721AB6182BB918F400E68231 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17F24065F56C1765D7958738 /* Pods-Open Space Mac.release.xcconfig */;
+			baseConfigurationReference = 96D3D53EEE12123E04BF36FC /* Pods-Open Space Desktop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Open Space/Open Space.entitlements";
@@ -1792,7 +1796,7 @@
 				);
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenrobot.openspace;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open Space";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
@@ -1870,7 +1874,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		721AB6162BB918F400E68231 /* Build configuration list for PBXNativeTarget "Open Space Mac" */ = {
+		721AB6162BB918F400E68231 /* Build configuration list for PBXNativeTarget "Open Space Desktop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				721AB6172BB918F400E68231 /* Debug */,
