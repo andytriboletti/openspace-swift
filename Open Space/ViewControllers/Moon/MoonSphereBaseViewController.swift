@@ -302,7 +302,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         let numOwnedSpheres = yourSpheres!.count
 
         // Determine the number of neighbor spheres
-        let numNeighborSpheres = yourSpheres!.count // Assuming you calculate this correctly
+        let numNeighborSpheres = neighborSpheres!.count // Assuming you calculate this correctly
 
         for row in 0..<numRows {
             for column in 0..<numColumns {
