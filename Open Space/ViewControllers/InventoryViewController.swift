@@ -48,7 +48,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
         // Your other properties and methods
         func getUserMinerals(email: String) {
-            let myUrl = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/get-user-minerals"
+            let myUrl = "https://server3.openspace.greenrobot.com/wp-json/openspace/v1/get-user-minerals"
             guard let url = URL(string: myUrl) else {
                 print("Invalid URL")
                 return

@@ -11,13 +11,12 @@ import Defaults
 
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
-    let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
+    let serverURL = "https://server3.openspace.greenrobot.com/wp-json/openspace/v1/"
 
     // static let shared = OpenspaceAPI()
     var webSocketTask: URLSessionWebSocketTask?
 
     // Common server URL
-    // let serverURL = "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/"
     var pendingModels: [Int: [String: String]] = [:]
     var completedModels: [Int: [String: String]] = [:]
 
@@ -55,7 +54,7 @@ class OpenspaceAPI {
         }
 
         // Create URL request
-        let url = URL(string: "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/get-prompts-and-models")!
+        let url = URL(string: "https://server3.openspace.greenrobot.com/wp-json/openspace/v1/get-prompts-and-models")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = postData
@@ -102,7 +101,7 @@ class OpenspaceAPI {
         }
 
         // Create URL request
-        let url = URL(string: "https://server2.openspace.greenrobot.com/wp-json/openspace/v1/get-neighbor-spheres")!
+        let url = URL(string: "https://server3.openspace.greenrobot.com/wp-json/openspace/v1/get-neighbor-spheres")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = postData
@@ -258,7 +257,7 @@ class OpenspaceAPI {
     func initWebsocket() {
 
         // Replace with your WebSocket server URL
-        let serverURL = URL(string: "wss://server2.openspace.greenrobot.com:8080")!
+        let serverURL = URL(string: "wss://server3.openspace.greenrobot.com:8080")!
 
         let session = URLSession(configuration: .default)
         webSocketTask = session.webSocketTask(with: serverURL)

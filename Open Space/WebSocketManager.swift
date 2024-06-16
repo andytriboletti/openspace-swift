@@ -14,7 +14,7 @@ class WebSocketManager: WebSocketDelegate {
     var socket: WebSocket!
 
     init() {
-        let url = URL(string: "wss://server2.openspace.greenrobot.com:8080")!
+        let url = URL(string: "wss://server3.openspace.greenrobot.com:8080")!
         // Create a URLRequest with the URL
         var request = URLRequest(url: url)
         // Set additional headers if needed
