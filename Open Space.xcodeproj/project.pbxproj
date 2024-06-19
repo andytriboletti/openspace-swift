@@ -264,6 +264,7 @@
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		72A3C04E2A7DAF5C00C2A01E /* AuctionHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */; };
 		72AA23182C1F6B5A00001448 /* ConfigureSpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */; };
+		72AA231E2C21F1D600001448 /* ConfigureSpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */; };
 		72ADF8E12BB737FE00976E4C /* NeighborSphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */; };
 		72ADF8E32BB782C200976E4C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E22BB782C200976E4C /* AboutViewController.swift */; };
 		72ADF8E62BB896CA00976E4C /* ExploreMarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E52BB896CA00976E4C /* ExploreMarsViewController.swift */; };
@@ -1498,6 +1499,7 @@
 				721AB5902BB918F400E68231 /* WhereOnEarthSelectCollectionViewController.swift in Sources */,
 				721AB5912BB918F400E68231 /* ExploreEarthSceneViewController.swift in Sources */,
 				721AB5922BB918F400E68231 /* EarthLocationState.swift in Sources */,
+				72AA231E2C21F1D600001448 /* ConfigureSpaceStationViewController.swift in Sources */,
 				721AB5932BB918F400E68231 /* SpaceStationViewController.swift in Sources */,
 				721AB5942BB918F400E68231 /* SphereInventoryViewController.swift in Sources */,
 				721AB5952BB918F400E68231 /* WebSocketManager.swift in Sources */,
@@ -1763,7 +1765,8 @@
 				INFOPLIST_FILE = "Open Space Mac-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1793,7 +1796,8 @@
 				INFOPLIST_FILE = "Open Space Mac-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
