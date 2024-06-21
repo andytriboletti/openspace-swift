@@ -1705,6 +1705,7 @@
 				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1735,6 +1736,7 @@
 				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
