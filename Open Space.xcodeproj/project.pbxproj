@@ -431,7 +431,7 @@
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionHouseViewController.swift; sourceTree = "<group>"; };
-		72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSpaceStationViewController.swift; sourceTree = "<group>"; };
+		72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSpaceStationViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborSphereInventoryViewController.swift; sourceTree = "<group>"; };
 		72ADF8E22BB782C200976E4C /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		72ADF8E52BB896CA00976E4C /* ExploreMarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMarsViewController.swift; sourceTree = "<group>"; };
