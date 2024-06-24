@@ -796,6 +796,57 @@ class OpenspaceAPI {
 
         task.resume()
     }
+
+    func createSpaceStation(email: String, authToken: String, configJson: String, spaceStationName: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let urlString = "\(serverURL)create-space-station"
+
+        guard let url = URL(string: urlString) else {
+            let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+            completion(.failure(error))
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let parameters: [String: Any] = [
+            "email": email,
+            "authToken": authToken,
+            "configJson": configJson,
+            "spaceStationName": spaceStationName
+        ]
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            completion(.failure(error))
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                let error = NSError(domain: "Networking", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+                completion(.failure(error))
+                return
+            }
+
+            if (200..<300).contains(httpResponse.statusCode) {
+                completion(.success(()))
+            } else {
+                let error = NSError(domain: "Server", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "Server error"])
+                completion(.failure(error))
+            }
+        }
+
+        task.resume()
+    }
+
 }
 
 // Helper extension to encode parameters

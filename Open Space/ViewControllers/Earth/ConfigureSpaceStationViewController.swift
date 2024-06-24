@@ -1,7 +1,36 @@
 import UIKit
 import Defaults
 
-struct SpaceStationConfig {
+struct CodableColor: Codable {
+    let red: CGFloat
+    let green: CGFloat
+    let blue: CGFloat
+    let alpha: CGFloat
+
+    init(color: UIColor) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.alpha = alpha
+    }
+
+    var uiColor: UIColor {
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+    }
+}
+
+extension UIColor {
+    var codableColor: CodableColor {
+        return CodableColor(color: self)
+    }
+}
+
+struct SpaceStationConfig: Codable {
     var name: String
     var parts: Int
     var torusMajor: Double
@@ -10,8 +39,8 @@ struct SpaceStationConfig {
     var cylinder: Double
     var cylinderHeight: Double
     var storage: Double
-    var color1: UIColor
-    var color2: UIColor
+    var color1: CodableColor
+    var color2: CodableColor
 
     static func generateRandomConfig() -> SpaceStationConfig {
         return SpaceStationConfig(
@@ -23,8 +52,8 @@ struct SpaceStationConfig {
             cylinder: Double.random(in: 0.5...3.0),
             cylinderHeight: Double.random(in: 0.3...1.0),
             storage: Double.random(in: 0.5...1.0),
-            color1: .random,
-            color2: .random
+            color1: UIColor.random.codableColor,
+            color2: UIColor.random.codableColor
         )
     }
 }
@@ -51,8 +80,8 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         cylinder: 0.5,
         cylinderHeight: 0.3,
         storage: 0.5,
-        color1: .lightGray,
-        color2: .lightGray
+        color1: UIColor.lightGray.codableColor,
+        color2: UIColor.lightGray.codableColor
     )
 
     let scrollView = UIScrollView()
@@ -60,6 +89,8 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
     let color1Button = UIButton(type: .system)
     let color2Button = UIButton(type: .system)
+
+    var colorPickerCompletion: ((UIColor) -> Void)?
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -199,7 +230,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
         let color1Label = createPaddedLabel(text: "Color 1:")
         color1Button.setTitle("Select Color 1", for: .normal)
-        color1Button.backgroundColor = config.color1
+        color1Button.backgroundColor = config.color1.uiColor
         color1Button.setTitleColor(.white, for: .normal)
         color1Button.layer.cornerRadius = 10
         color1Button.translatesAutoresizingMaskIntoConstraints = false
@@ -207,7 +238,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
         let color2Label = createPaddedLabel(text: "Color 2:")
         color2Button.setTitle("Select Color 2", for: .normal)
-        color2Button.backgroundColor = config.color2
+        color2Button.backgroundColor = config.color2.uiColor
         color2Button.setTitleColor(.white, for: .normal)
         color2Button.layer.cornerRadius = 10
         color2Button.translatesAutoresizingMaskIntoConstraints = false
@@ -332,7 +363,34 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
     }
 
     @objc func createSpaceStation() {
-        // Add your creation logic here
+        // Convert config to JSON string
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        guard let configJsonData = try? encoder.encode(config),
+              let configJson = String(data: configJsonData, encoding: .utf8) else {
+            print("Failed to encode config to JSON")
+            return
+        }
+
+        // Retrieve email and authToken
+        let email = Defaults[.email] ?? ""
+        let authToken = Defaults[.authToken] ?? ""
+
+        // Call the API to create the space station
+        OpenspaceAPI.shared.createSpaceStation(email: email, authToken: authToken, configJson: configJson, spaceStationName: config.name) { result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    // Handle success (e.g., show a success message)
+                    print("Space station created successfully")
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    // Handle error (e.g., show an error message)
+                    print("Failed to create space station: \(error.localizedDescription)")
+                }
+            }
+        }
     }
 
     @objc func goBack() {
@@ -340,36 +398,38 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
     }
 
     @objc func selectColor1() {
-        presentColorPicker(for: &config.color1, button: color1Button)
+        colorPickerCompletion = { selectedColor in
+            self.config.color1 = selectedColor.codableColor
+            self.color1Button.backgroundColor = selectedColor
+        }
+        presentColorPicker(for: config.color1.uiColor)
     }
 
     @objc func selectColor2() {
-        presentColorPicker(for: &config.color2, button: color2Button)
+        colorPickerCompletion = { selectedColor in
+            self.config.color2 = selectedColor.codableColor
+            self.color2Button.backgroundColor = selectedColor
+        }
+        presentColorPicker(for: config.color2.uiColor)
     }
 
-    func presentColorPicker(for color: inout UIColor, button: UIButton) {
+    func presentColorPicker(for color: UIColor) {
         let colorPicker = UIColorPickerViewController()
         colorPicker.selectedColor = color
         colorPicker.delegate = self
         colorPicker.modalPresentationStyle = .popover
-        colorPicker.popoverPresentationController?.sourceView = button
-        colorPicker.popoverPresentationController?.sourceRect = button.bounds
+        colorPicker.popoverPresentationController?.sourceView = self.view
+        colorPicker.popoverPresentationController?.sourceRect = self.view.bounds
         colorPicker.popoverPresentationController?.permittedArrowDirections = .up
         self.present(colorPicker, animated: true, completion: nil)
     }
 
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        if viewController.popoverPresentationController?.sourceView == color1Button {
-            config.color1 = viewController.selectedColor
-            color1Button.backgroundColor = config.color1
-        } else if viewController.popoverPresentationController?.sourceView == color2Button {
-            config.color2 = viewController.selectedColor
-            color2Button.backgroundColor = config.color2
-        }
-        viewController.dismiss(animated: true, completion: nil)
+        colorPickerCompletion?(viewController.selectedColor)
     }
 
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        viewController.dismiss(animated: true, completion: nil)
+        colorPickerCompletion?(viewController.selectedColor)
+        colorPickerCompletion = nil
     }
 }
