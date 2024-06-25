@@ -279,6 +279,8 @@ class OpenspaceAPI {
                     if let text = String(data: data, encoding: .utf8) {
                         print("Received message: \(text)")
                     }
+                @unknown default:
+                    fatalError()
                 }
                 self.receiveMessages() // Continue listening for messages
             case .failure(let error):
@@ -434,6 +436,7 @@ class OpenspaceAPI {
         }
     }
 
+
     func getLocation(email: String, authToken: String, completion: @escaping (String?, String?, [[String: Any]]?, [[String: Any]]?, Error?) -> Void) {
         let getLocationURL = URL(string: "\(serverURL)get-data")!
         var request = URLRequest(url: getLocationURL)
@@ -446,16 +449,17 @@ class OpenspaceAPI {
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            print("Request body created successfully")
         } catch {
-            // Handle the error
+            print("Failed to create request body: \(error.localizedDescription)")
             completion(nil, nil, nil, nil, error)
             return
         }
 
-        let task = URLSession.shared.dataTask(with: request) { [self] (data, _, error) in
+        let task = URLSession.shared.dataTask(with: request) { [self] (data, response, error) in
             // Handle the server response
             if let error = error {
-                // Handle the error
+                print("Request failed with error: \(error.localizedDescription)")
                 DispatchQueue.main.async {
                     completion(nil, nil, nil, nil, error)
                 }
@@ -463,6 +467,7 @@ class OpenspaceAPI {
             }
 
             guard let data = data else {
+                print("No data received from the server")
                 DispatchQueue.main.async {
                     completion(nil, nil, nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                 }
@@ -471,6 +476,7 @@ class OpenspaceAPI {
 
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    print("JSON response received: \(json)")
                     if let location = json["last_location"] as? String {
                         // Location retrieved successfully
                         let username = json["username"] as? String
@@ -480,16 +486,19 @@ class OpenspaceAPI {
                             completion(location, username, yourSpheres, neighborSpheres, nil)
                         }
                     } else if let error = json["error"] as? String {
+                        print("Server returned error: \(error)")
                         if error == "Invalid authToken." {
                             // Retry with a refreshed token
                             refreshAuthToken { (newToken, tokenError) in
                                 if let newToken = newToken {
+                                    print("Token refreshed successfully")
                                     Defaults[.authToken] = newToken
                                     // Retry the request with the new token
                                     DispatchQueue.main.async {
-                                        self.getLocation(email: email, authToken: authToken, completion: completion)
+                                        self.getLocation(email: email, authToken: newToken, completion: completion)
                                     }
                                 } else {
+                                    print("Failed to refresh token: \(tokenError?.localizedDescription ?? "Unknown error")")
                                     // Failed to refresh token or get a new token
                                     DispatchQueue.main.async {
                                         completion(nil, nil, nil, nil, tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
@@ -505,6 +514,7 @@ class OpenspaceAPI {
                     }
                 }
             } catch {
+                print("Failed to parse JSON response: \(error.localizedDescription)")
                 // Handle the error
                 DispatchQueue.main.async {
                     completion(nil, nil, nil, nil, error)
@@ -512,8 +522,10 @@ class OpenspaceAPI {
             }
         }
 
+        print("Starting the request")
         task.resume()
     }
+
 
     // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {

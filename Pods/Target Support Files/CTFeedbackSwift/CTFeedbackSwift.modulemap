@@ -1,0 +1,6 @@
+framework module CTFeedbackSwift {
+  umbrella header "CTFeedbackSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

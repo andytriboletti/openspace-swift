@@ -373,8 +373,8 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         }
 
         // Retrieve email and authToken
-        let email = Defaults[.email] ?? ""
-        let authToken = Defaults[.authToken] ?? ""
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
 
         // Call the API to create the space station
         OpenspaceAPI.shared.createSpaceStation(email: email, authToken: authToken, configJson: configJson, spaceStationName: config.name) { result in

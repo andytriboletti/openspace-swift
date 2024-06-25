@@ -34,6 +34,18 @@ class MoonViewController: UIViewController {
 
     }
 
+    @IBAction func goToGridHack(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "MainGridHack", bundle: nil)
+
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "GridHackViewControllerIdentifier") as? LobbyViewController {
+            viewController.modalPresentationStyle = .fullScreen
+            self.present(viewController, animated: true, completion: nil)
+        } else {
+            print("Failed to instantiate LobbyViewController from MainGridHack storyboard")
+        }
+
+     }
+
     @IBAction func exploreAction() {
         self.performSegue(withIdentifier: "goToExploreMoon", sender: self)
     }

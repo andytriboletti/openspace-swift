@@ -19,6 +19,16 @@ def shared_pods
   pod 'ZipArchive'
   pod 'SSZipArchive'
   pod 'IQKeyboardManagerSwift'
+  
+  #pods from gridhack
+  pod 'SwiftyUserDefaults'
+  pod 'SwiftyJSON'
+  pod 'Firebase'
+  pod 'CTFeedbackSwift' , :git => 'https://github.com/greenrobotllc/CTFeedbackSwift'
+  pod 'ShowTime', '~> 2'
+  pod 'MaterialComponents/Buttons+Theming'
+  pod 'MaterialComponents/Buttons'
+  pod 'Toast-Swift', '~> 5.0.1'
 end
 
 target 'Open Space' do

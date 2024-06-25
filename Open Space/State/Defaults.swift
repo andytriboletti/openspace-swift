@@ -26,4 +26,5 @@ extension Defaults.Keys {
     static let neighborSpheres = Key<Data>("neighborSpheres", default: Data())
     static let selectedSphereName = Key<String>("selectedSphereName", default: "")
     static let selectedSphereId = Key<String>("selectedSphereId", default: "")
+    static let team = Key<String>("team", default: "bernie")
 }

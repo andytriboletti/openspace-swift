@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YIc-Ax-HUe">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Grid Hack Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="GridHackGameViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <sceneKitView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </sceneKitView>
+                    <navigationItem key="navigationItem" id="AZd-BG-XUJ"/>
+                    <connections>
+                        <segue destination="04G-0Y-h1t" kind="presentation" identifier="goToResults" modalPresentationStyle="fullScreen" id="Jqy-L3-aOw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2259" y="-1266"/>
+        </scene>
+        <!--Game Result View Controller-->
+        <scene sceneID="is0-JF-aD2">
+            <objects>
+                <viewController id="04G-0Y-h1t" customClass="GameResultViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n82-Zq-36m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="98" translatesAutoresizingMaskIntoConstraints="NO" id="ek5-uH-B0F">
+                                <rect key="frame" x="97" y="249.5" width="181.5" height="168"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nE-he-Z2A">
+                                        <rect key="frame" x="0.0" y="0.0" width="181.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qc-wL-EUT">
+                                        <rect key="frame" x="0.0" y="127" width="181.5" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Back To Lobby"/>
+                                        <connections>
+                                            <segue destination="PYG-hQ-rYk" kind="presentation" modalPresentationStyle="fullScreen" id="hRU-Hx-v6S"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Qa-mh-WHv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ek5-uH-B0F" firstAttribute="centerX" secondItem="n82-Zq-36m" secondAttribute="centerX" id="FpY-4e-n6T"/>
+                            <constraint firstItem="ek5-uH-B0F" firstAttribute="centerY" secondItem="n82-Zq-36m" secondAttribute="centerY" id="g0L-Hi-bw3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="4nE-he-Z2A" id="AjO-ue-jVA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xq9-xd-LUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3086.9565217391305" y="-1573.6607142857142"/>
+        </scene>
+        <!--Wait For Opponent View Controller-->
+        <scene sceneID="uAR-FY-yzi">
+            <objects>
+                <viewController id="nt5-G8-01o" customClass="WaitForOpponentViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rq2-b7-Q51">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="98" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-cn-HKn">
+                                <rect key="frame" x="13" y="249" width="349" height="169"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting For Opponent...." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGc-dz-oX2">
+                                        <rect key="frame" x="0.0" y="0.0" width="349" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1O-Yz-dqy">
+                                        <rect key="frame" x="150.5" y="139" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="clickCancel" destination="nt5-G8-01o" eventType="touchUpInside" id="eOI-SQ-HPs"/>
+                                            <segue destination="PYG-hQ-rYk" kind="presentation" identifier="clickCancel" modalPresentationStyle="fullScreen" id="Bnm-UN-U3m"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CZs-vK-6OX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RW1-cn-HKn" firstAttribute="centerX" secondItem="rq2-b7-Q51" secondAttribute="centerX" id="5ZX-th-Tle"/>
+                            <constraint firstItem="RW1-cn-HKn" firstAttribute="centerY" secondItem="rq2-b7-Q51" secondAttribute="centerY" id="N2B-l3-2t7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="MzH-R9-bQk" kind="presentation" identifier="goToGameFromWaiting" modalPresentationStyle="fullScreen" id="VtG-kk-IYg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3c-dE-Lr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2876.811594202899" y="-485.49107142857139"/>
+        </scene>
+        <!--Lobby View Controller-->
+        <scene sceneID="d2a-on-nq6">
+            <objects>
+                <viewController storyboardIdentifier="GridHackViewControllerIdentifier" id="PYG-hQ-rYk" customClass="LobbyViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OBt-IY-PsC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="top" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nJp-5o-XNt">
+                                <rect key="frame" x="37.5" y="50" width="300" height="694"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Bernie Vs Trump Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHF-Rg-JxX">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Team: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXV-RI-lSF">
+                                        <rect key="frame" x="0.0" y="46" width="300" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcz-Ht-bxr" customClass="MDCButton">
+                                        <rect key="frame" x="0.0" y="92" width="300" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="dLY-JM-PRS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <state key="normal" title="Play Single Player"/>
+                                        <connections>
+                                            <action selector="startSinglePlayer" destination="PYG-hQ-rYk" eventType="touchUpInside" id="Srb-37-ZEP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kct-Zz-0yX" customClass="MDCButton">
+                                        <rect key="frame" x="0.0" y="162" width="300" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="pji-oq-UDo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <state key="normal" title="Join Multiplayer Game"/>
+                                        <connections>
+                                            <action selector="startMultiplayer" destination="PYG-hQ-rYk" eventType="touchUpInside" id="3du-1V-7Kw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-9b-lKf" customClass="MDCButton">
+                                        <rect key="frame" x="0.0" y="232" width="300" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="fw5-IX-qam"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="How To Play"/>
+                                        <connections>
+                                            <segue destination="yor-94-FCs" kind="show" id="lpN-cV-hP7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTX-Ag-S65" customClass="MDCButton">
+                                        <rect key="frame" x="0.0" y="290" width="300" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="k35-Zb-QDY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Switch Party"/>
+                                        <connections>
+                                            <action selector="switchParty" destination="PYG-hQ-rYk" eventType="touchUpInside" id="HvX-lg-eZm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkC-pc-Ios" customClass="MDCButton">
+                                        <rect key="frame" x="0.0" y="348" width="300" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="90A-EM-q9Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Account / Support"/>
+                                        <connections>
+                                            <segue destination="wxi-nT-71N" kind="show" id="J2F-J0-ux3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ND-O7-Fah" customClass="MDCButton">
+                                        <rect key="frame" x="0.0" y="406" width="300" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="kH9-N7-quF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Go Back To Moon"/>
+                                        <connections>
+                                            <action selector="goBack" destination="PYG-hQ-rYk" eventType="touchDown" id="vea-Tz-XIW"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36k-23-2hJ">
+                                        <rect key="frame" x="0.0" y="464" width="300" height="230"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="sNg-Rv-DRV"/>
+                                            <constraint firstAttribute="height" constant="230" id="vdE-2D-y1w"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="36k-23-2hJ" firstAttribute="centerX" secondItem="nJp-5o-XNt" secondAttribute="centerX" id="x4Y-oV-SBY"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="feq-zk-Ge7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nJp-5o-XNt" firstAttribute="centerX" secondItem="OBt-IY-PsC" secondAttribute="centerX" id="XzS-Sa-eet"/>
+                            <constraint firstItem="nJp-5o-XNt" firstAttribute="top" secondItem="feq-zk-Ge7" secondAttribute="top" constant="50" id="up0-47-rgU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="howToPlayButton" destination="qHw-9b-lKf" id="m14-kP-WkW"/>
+                        <outlet property="iconView" destination="36k-23-2hJ" id="Sli-kA-DXf"/>
+                        <outlet property="joinMultiplayerGameButton" destination="kct-Zz-0yX" id="v9D-IC-hyd"/>
+                        <outlet property="multiButton" destination="kct-Zz-0yX" id="sX5-F2-7aB"/>
+                        <outlet property="profileButton" destination="no2-zP-bvL" id="mx5-Pc-5VO"/>
+                        <outlet property="settingsButton" destination="MkC-pc-Ios" id="d8y-T0-Nr2"/>
+                        <outlet property="singleButton" destination="lcz-Ht-bxr" id="HtU-QV-euC"/>
+                        <outlet property="switchPartyButton" destination="LTX-Ag-S65" id="ZiA-rS-mK1"/>
+                        <outlet property="teamLabel" destination="WXV-RI-lSF" id="ChS-WW-8gA"/>
+                        <segue destination="DCy-6t-tDy" kind="presentation" identifier="goToRegistrationFromLobby" modalPresentationStyle="fullScreen" id="Wo9-Vs-4Za"/>
+                        <segue destination="WfQ-qy-uIQ" kind="presentation" identifier="goToLoginFromLobby" modalPresentationStyle="fullScreen" id="VlP-Vx-CP0"/>
+                        <segue destination="FcT-5w-S1u" kind="presentation" identifier="goToPickPartyFromLobby" modalPresentationStyle="fullScreen" id="U9H-J2-ADM"/>
+                        <segue destination="MzH-R9-bQk" kind="presentation" identifier="goToGame" modalPresentationStyle="fullScreen" id="HYn-Jf-ncS"/>
+                        <segue destination="nt5-G8-01o" kind="presentation" identifier="goToWaiting" modalPresentationStyle="fullScreen" id="9Ey-1t-K3h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zGc-Wg-2WI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="103" y="203"/>
+        </scene>
+        <!--How To Play-->
+        <scene sceneID="s1b-4O-TMx">
+            <objects>
+                <viewController id="FLy-TX-mif" customClass="HelpViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YUd-bb-KCA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x3-F9-ffi">
+                                <rect key="frame" x="20" y="80" width="335" height="487"/>
+                                <string key="text">Pick a side and get ready for the US Election!
+
+The goal of the game is to capture the majority of the grid by tapping on unselected gray squares and using instigator, protester, and independent units.
+
+The three types of units all have different abilities.
+
+•Instigators go after squares in the grid that you have selected and turn them to your control. 
+
+•Protesters go after your opponent's units and make them go away.
+
+•Independents turn squares your opponent controls back to neutral. 
+
+There is a max of 3 instigators, 3 protesters, and 3 independents that each side controls in play at once.</string>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tY5-gx-tV6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9x3-F9-ffi" firstAttribute="centerY" secondItem="YUd-bb-KCA" secondAttribute="centerY" id="Mrh-8O-NuY"/>
+                            <constraint firstItem="9x3-F9-ffi" firstAttribute="centerX" secondItem="YUd-bb-KCA" secondAttribute="centerX" id="RDU-26-gJ6"/>
+                            <constraint firstItem="9x3-F9-ffi" firstAttribute="leading" secondItem="YUd-bb-KCA" secondAttribute="leading" constant="20" id="UOL-y3-gHQ"/>
+                            <constraint firstAttribute="right" secondItem="9x3-F9-ffi" secondAttribute="right" constant="20" id="WkE-Un-lNG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="How To Play" id="whq-eE-FXT">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="fqG-Rb-wkP">
+                            <connections>
+                                <action selector="dismissView" destination="FLy-TX-mif" id="GVZ-46-tLm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTX-xY-XPG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2501.449275362319" y="298.66071428571428"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="aaS-3o-CVu">
+            <objects>
+                <viewController id="DCy-6t-tDy" customClass="RegisterViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="99d-LV-fmp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xzW-d8-TF4">
+                                <rect key="frame" x="95.5" y="20" width="184" height="144.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please pick a username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDi-wR-P5I">
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwl-ya-mdY">
+                                        <rect key="frame" x="0.0" y="50.5" width="184" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yo7-gR-Gen">
+                                        <rect key="frame" x="63.5" y="114.5" width="57" height="30"/>
+                                        <state key="normal" title="Register"/>
+                                        <connections>
+                                            <action selector="register" destination="DCy-6t-tDy" eventType="touchUpInside" id="z3P-5O-hKn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="dwl-ya-mdY" secondAttribute="trailing" id="6yt-Ak-Ip8"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OFU-XI-9pH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xzW-d8-TF4" firstAttribute="centerX" secondItem="99d-LV-fmp" secondAttribute="centerX" id="1Ew-bp-bzv"/>
+                            <constraint firstItem="xzW-d8-TF4" firstAttribute="top" secondItem="OFU-XI-9pH" secondAttribute="top" constant="20" id="ged-n0-pYQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pleasePick" destination="xDi-wR-P5I" id="bIO-UE-AdR"/>
+                        <outlet property="username" destination="dwl-ya-mdY" id="MY1-eb-FqR"/>
+                        <segue destination="PYG-hQ-rYk" kind="presentation" identifier="goToLobbyFromRegister" modalPresentationStyle="fullScreen" id="7vf-4P-ROe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Mi-CA-ZZr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983" y="1099"/>
+        </scene>
+        <!--Login View Controller Mac-->
+        <scene sceneID="DOT-UM-Mp0">
+            <objects>
+                <viewController id="5lb-3m-cs0" customClass="LoginViewControllerMac" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HbF-rG-IzC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Si7-V9-0bL">
+                                <rect key="frame" x="10" y="10" width="355" height="353"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Bernie Vs Trump" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xP-md-5X1">
+                                        <rect key="frame" x="29.5" y="0.0" width="296" height="86"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hpO-37-wnE">
+                                        <rect key="frame" x="0.0" y="126" width="355" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <state key="normal" title="Click here to enter your email."/>
+                                        <connections>
+                                            <action selector="clickedGetStartedEmail" destination="5lb-3m-cs0" eventType="touchUpInside" id="OgD-H6-xpR"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you forget your password, you will be able to reset it using your email." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-QS-vkw">
+                                        <rect key="frame" x="0.0" y="219" width="355" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="INc-IJ-W6D">
+                                        <rect key="frame" x="0.0" y="300" width="355" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <state key="normal" title="Or click here to skip login."/>
+                                        <connections>
+                                            <action selector="clickedSkip" destination="5lb-3m-cs0" eventType="touchUpInside" id="hmv-8e-YzM"/>
+                                            <segue destination="DCy-6t-tDy" kind="presentation" modalPresentationStyle="fullScreen" id="FCz-nM-8bO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7N8-2F-jCS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Si7-V9-0bL" firstAttribute="centerX" secondItem="HbF-rG-IzC" secondAttribute="centerX" id="g5s-X3-djh"/>
+                            <constraint firstItem="Si7-V9-0bL" firstAttribute="leading" secondItem="HbF-rG-IzC" secondAttribute="leading" constant="10" id="okJ-jd-WDJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Si7-V9-0bL" secondAttribute="trailing" constant="10" id="qZ4-xO-m0Q"/>
+                            <constraint firstItem="Si7-V9-0bL" firstAttribute="centerX" secondItem="HbF-rG-IzC" secondAttribute="centerX" id="yG9-xd-UnY"/>
+                            <constraint firstItem="Si7-V9-0bL" firstAttribute="top" secondItem="7N8-2F-jCS" secondAttribute="top" constant="10" id="zkG-St-zyg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="DCy-6t-tDy" kind="presentation" identifier="goToRegisterFromLogin" modalPresentationStyle="fullScreen" id="VHe-sY-lTi"/>
+                        <segue destination="PYG-hQ-rYk" kind="presentation" identifier="goToLobbyFromLogin" modalPresentationStyle="fullScreen" id="ElE-JU-Fhn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSY-HX-2nr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1009" y="1873"/>
+        </scene>
+        <!--Login View Mac Or Phone Controller-->
+        <scene sceneID="tEQ-HY-4QZ">
+            <objects>
+                <viewController id="WfQ-qy-uIQ" customClass="LoginViewMacOrPhoneController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qdc-yP-kqG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bkp-d9-aOX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <segue destination="5lb-3m-cs0" kind="presentation" identifier="goToMacLogin" modalPresentationStyle="fullScreen" id="nre-XK-Jqm"/>
+                        <segue destination="O54-b8-2m1" kind="presentation" identifier="goToPhoneLogin" modalPresentationStyle="fullScreen" id="7ew-4D-jPk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhm-dD-AzS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1326" y="968"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Lxh-Id-jsy">
+            <objects>
+                <viewController id="O54-b8-2m1" customClass="LoginViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dnP-0E-g5P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Oja-Go-bCO">
+                                <rect key="frame" x="15" y="15" width="345" height="472"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Bernie Vs Trump" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psg-pL-U07">
+                                        <rect key="frame" x="40.5" y="0.0" width="264.5" height="76.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="yGh-0X-Zbs">
+                                        <rect key="frame" x="0.0" y="96.5" width="345" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Tap here to enter your cell number."/>
+                                        <connections>
+                                            <action selector="clickedGetStarted" destination="WfQ-qy-uIQ" eventType="touchUpInside" id="LrG-fP-Zzw"/>
+                                            <action selector="clickedGetStarted" destination="O54-b8-2m1" eventType="touchUpInside" id="siZ-cz-1dM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code will be sent to the number you enter." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyM-Rw-ZEe">
+                                        <rect key="frame" x="1.5" y="157.5" width="342.5" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzc-bj-LwI">
+                                        <rect key="frame" x="157.5" y="216" width="30" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="blb-HB-eyD">
+                                        <rect key="frame" x="28" y="262.5" width="289" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Tap here to enter your email."/>
+                                        <connections>
+                                            <action selector="clickedGetStartedEmail" destination="WfQ-qy-uIQ" eventType="touchUpInside" id="I80-fb-QWT"/>
+                                            <action selector="clickedGetStartedEmail" destination="O54-b8-2m1" eventType="touchUpInside" id="RpK-f0-RIg"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you forget your password, you'll be able to retrieve your account using your email." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWH-Xi-sns">
+                                        <rect key="frame" x="10" y="323.5" width="325" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKX-5z-PB6">
+                                        <rect key="frame" x="156.5" y="382" width="32.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="66V-PV-aCA">
+                                        <rect key="frame" x="61" y="431" width="223" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Tap here to skip login."/>
+                                        <connections>
+                                            <action selector="clickedSkip" destination="O54-b8-2m1" eventType="touchUpInside" id="r6a-Dd-39f"/>
+                                            <segue destination="DCy-6t-tDy" kind="presentation" modalPresentationStyle="fullScreen" id="10g-fK-IN4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5KH-2P-mH4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5KH-2P-mH4" firstAttribute="trailing" secondItem="Oja-Go-bCO" secondAttribute="trailing" constant="15" id="2n4-Qm-uXG"/>
+                            <constraint firstItem="Oja-Go-bCO" firstAttribute="top" secondItem="5KH-2P-mH4" secondAttribute="top" constant="15" id="46L-pd-OMV"/>
+                            <constraint firstItem="Oja-Go-bCO" firstAttribute="leading" secondItem="5KH-2P-mH4" secondAttribute="leading" constant="15" id="uJE-Zm-kzL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="DCy-6t-tDy" kind="presentation" identifier="goToRegisterFromLogin" modalPresentationStyle="fullScreen" id="dN0-pU-Rh3"/>
+                        <segue destination="PYG-hQ-rYk" kind="presentation" identifier="goToLobbyFromLogin" modalPresentationStyle="fullScreen" id="HQe-ri-u7J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64g-QM-me5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="1873"/>
+        </scene>
+        <!--Pick Party View Controller-->
+        <scene sceneID="06n-9D-L2u">
+            <objects>
+                <viewController id="FcT-5w-S1u" customClass="PickPartyViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NWO-Fe-HoA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="tQV-cr-3fp">
+                                <rect key="frame" x="115.5" y="235.5" width="144" height="196"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD1-oX-313">
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Pick Bernie"/>
+                                        <connections>
+                                            <action selector="bernie" destination="FcT-5w-S1u" eventType="touchUpInside" id="Q48-bQ-8ap"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hh-OC-Qyh">
+                                        <rect key="frame" x="0.0" y="148" width="144" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Pick Trump"/>
+                                        <connections>
+                                            <action selector="trump" destination="FcT-5w-S1u" eventType="touchUpInside" id="IZp-uc-cEx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vPr-co-aMa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tQV-cr-3fp" firstAttribute="centerY" secondItem="NWO-Fe-HoA" secondAttribute="centerY" id="Dn0-9d-Aem"/>
+                            <constraint firstItem="tQV-cr-3fp" firstAttribute="centerX" secondItem="NWO-Fe-HoA" secondAttribute="centerX" id="LK3-Xd-0aH"/>
+                            <constraint firstItem="tQV-cr-3fp" firstAttribute="centerX" secondItem="NWO-Fe-HoA" secondAttribute="centerX" id="U4i-5Y-wdY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="PYG-hQ-rYk" kind="presentation" identifier="goToLobbyFromPickParty" modalPresentationStyle="fullScreen" id="kbb-iY-V3V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gde-ZI-sUq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1814.4927536231885" y="68.973214285714278"/>
+        </scene>
+        <!--Entry View Controller-->
+        <scene sceneID="d86-qR-oYV">
+            <objects>
+                <viewController id="YIc-Ax-HUe" customClass="EntryViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZoS-Ja-b1i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sys-FD-z3r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <segue destination="WfQ-qy-uIQ" kind="presentation" identifier="goToLogin" id="wYj-4e-HKW"/>
+                        <segue destination="PYG-hQ-rYk" kind="presentation" identifier="goToLobby" modalPresentationStyle="fullScreen" id="Vk8-TK-gta"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCT-tI-NZd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-894" y="114"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="haT-6O-Skp">
+            <objects>
+                <viewController id="cHk-mp-T6y" customClass="ProfileViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lzv-up-2JH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuB-Fv-bAZ">
+                                <rect key="frame" x="146" y="313.5" width="83" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BCP-cf-g30"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SuB-Fv-bAZ" firstAttribute="centerY" secondItem="Lzv-up-2JH" secondAttribute="centerY" id="Go6-sP-VNI"/>
+                            <constraint firstItem="SuB-Fv-bAZ" firstAttribute="centerX" secondItem="Lzv-up-2JH" secondAttribute="centerX" id="TU8-Em-DGA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="cGk-TO-t5C">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Gfc-ui-7dI">
+                            <connections>
+                                <action selector="dismissView" destination="cHk-mp-T6y" id="gkB-Gd-B93"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="usernameLabel" destination="SuB-Fv-bAZ" id="bhi-Yj-1sj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmA-QP-mK5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2.8985507246376816" y="-613.39285714285711"/>
+        </scene>
+        <!--Bernie Vs Trump Navigation-->
+        <scene sceneID="Hrd-ba-4hl">
+            <objects>
+                <navigationController title="Bernie Vs Trump Navigation" automaticallyAdjustsScrollViewInsets="NO" id="MzH-R9-bQk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HdB-rH-crw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="YvV-FA-22a"/>
+                        <segue destination="PYG-hQ-rYk" kind="presentation" identifier="goToLobbyFromGame" modalPresentationStyle="fullScreen" id="eVK-1e-kxa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iip-FN-nO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084.0579710144928" y="-946.20535714285711"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="6Rq-cM-vjc">
+            <objects>
+                <viewController id="Rqe-y7-voa" customClass="SettingsViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hxV-n3-qdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pFl-uD-zLJ">
+                                <rect key="frame" x="120" y="209" width="135" height="229"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="no2-zP-bvL">
+                                        <rect key="frame" x="46.5" y="0.0" width="42" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Profile"/>
+                                        <connections>
+                                            <segue destination="oCg-r9-Nru" kind="show" id="JEa-Fw-veh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyf-Xd-hmD">
+                                        <rect key="frame" x="42.5" y="49" width="50" height="30"/>
+                                        <state key="normal" title="Credits"/>
+                                        <connections>
+                                            <action selector="aboutButtonAction" destination="Rqe-y7-voa" eventType="touchUpInside" id="3A6-4R-sbL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMy-2K-e1A">
+                                        <rect key="frame" x="0.0" y="99" width="135" height="30"/>
+                                        <state key="normal" title="Feedback / Support"/>
+                                        <connections>
+                                            <action selector="feedbackButtonAction" destination="Rqe-y7-voa" eventType="touchUpInside" id="5oV-ZI-dx0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ah1-Cw-q8x">
+                                        <rect key="frame" x="40" y="149" width="55" height="30"/>
+                                        <state key="normal" title="Log Out"/>
+                                        <connections>
+                                            <action selector="logout" destination="Rqe-y7-voa" eventType="touchUpInside" id="7TS-o3-RjE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tff-Pu-boh">
+                                        <rect key="frame" x="15" y="199" width="105" height="30"/>
+                                        <state key="normal" title="Delete Account"/>
+                                        <connections>
+                                            <action selector="deleteAccount" destination="Rqe-y7-voa" eventType="touchUpInside" id="vsk-Hc-wus"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="F5z-ZC-EEf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pFl-uD-zLJ" firstAttribute="centerX" secondItem="hxV-n3-qdC" secondAttribute="centerX" id="bX9-Of-c4N"/>
+                            <constraint firstItem="pFl-uD-zLJ" firstAttribute="centerY" secondItem="hxV-n3-qdC" secondAttribute="centerY" id="taW-6V-OdA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="oaM-P4-US4">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="G8B-UC-xMi">
+                            <connections>
+                                <action selector="dismissView" destination="Rqe-y7-voa" id="6pO-HT-zaD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="aboutButton" destination="tyf-Xd-hmD" id="GSp-CN-PLJ"/>
+                        <outlet property="feedbackButton" destination="iMy-2K-e1A" id="ZMS-oI-VxI"/>
+                        <segue destination="WfQ-qy-uIQ" kind="presentation" identifier="goToLoginFromSettings" id="P12-8e-CAO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xc-3z-pIq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2928.985507246377" y="1098.8839285714284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0E5-HZ-1fG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yor-94-FCs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="4yQ-Yp-hcy"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9OO-dC-TBz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FLy-TX-mif" kind="relationship" relationship="rootViewController" id="Rhv-52-s9c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqi-F4-NdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1591.304347826087" y="298.66071428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MDd-wO-P9D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oCg-r9-Nru" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="p90-je-ejI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JAH-r6-Y4w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cHk-mp-T6y" kind="relationship" relationship="rootViewController" id="1vY-n6-rBh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Da-dF-I0H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-907.24637681159425" y="-613.39285714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YHU-IL-fTb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wxi-nT-71N" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hpM-zP-Wrl"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U3x-Dz-ShB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rqe-y7-voa" kind="relationship" relationship="rootViewController" id="D0I-2W-EO8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y86-aY-XDR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2018.840579710145" y="1098.8839285714284"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HYn-Jf-ncS"/>
+        <segue reference="VlP-Vx-CP0"/>
+        <segue reference="Wo9-Vs-4Za"/>
+        <segue reference="7vf-4P-ROe"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
