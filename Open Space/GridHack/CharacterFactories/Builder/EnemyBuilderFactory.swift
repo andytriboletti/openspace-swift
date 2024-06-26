@@ -4,7 +4,6 @@ import SpriteKit
 import UIKit
 
 class EnemyBuilderFactory: FactoryFactory {
-
     static func spawnEnemyBuilder(character: MyCharacter?) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             print("Unable to get AppDelegate")
@@ -12,6 +11,10 @@ class EnemyBuilderFactory: FactoryFactory {
         }
         guard let gridHackGameState = appDelegate.gridHackGameState else {
             print("GridHackGameState is nil")
+            return
+        }
+        guard let scene = appDelegate.scene else {
+            print("Scene is nil")
             return
         }
 
@@ -30,7 +33,8 @@ class EnemyBuilderFactory: FactoryFactory {
             myBoxNode = boxNode
         }
 
-        let path1 = UIBezierPath()
+        scene.rootNode.addChildNode(myBoxNode) // Ensure the node is added to the scene
+
         if myCharacter == nil {
             myCharacter = createEnemyCharacter(location: myBuilderLocation, boxNode: myBoxNode)
             gridHackGameState.enemies?.append(myCharacter!)
