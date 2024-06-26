@@ -323,8 +323,6 @@
 		72A99C132C29D14F00D96813 /* builder.png in Resources */ = {isa = PBXBuildFile; fileRef = 72A99B9C2C29D14E00D96813 /* builder.png */; };
 		72A99C142C29D14F00D96813 /* hacker.png in Resources */ = {isa = PBXBuildFile; fileRef = 72A99B9D2C29D14E00D96813 /* hacker.png */; };
 		72A99C152C29D14F00D96813 /* hacker.png in Resources */ = {isa = PBXBuildFile; fileRef = 72A99B9D2C29D14E00D96813 /* hacker.png */; };
-		72A99C162C29D14F00D96813 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72A99B9F2C29D14E00D96813 /* Info.plist */; };
-		72A99C172C29D14F00D96813 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72A99B9F2C29D14E00D96813 /* Info.plist */; };
 		72A99C182C29D14F00D96813 /* sm_Protester_Bernie.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72A99BA12C29D14E00D96813 /* sm_Protester_Bernie.dae */; };
 		72A99C192C29D14F00D96813 /* sm_Protester_Bernie.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72A99BA12C29D14E00D96813 /* sm_Protester_Bernie.dae */; };
 		72A99C1A2C29D14F00D96813 /* sm_Protester_Trump.dae in Resources */ = {isa = PBXBuildFile; fileRef = 72A99BA22C29D14E00D96813 /* sm_Protester_Trump.dae */; };
@@ -613,7 +611,6 @@
 		72A99B9B2C29D14E00D96813 /* attacker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attacker.png; sourceTree = "<group>"; };
 		72A99B9C2C29D14E00D96813 /* builder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = builder.png; sourceTree = "<group>"; };
 		72A99B9D2C29D14E00D96813 /* hacker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hacker.png; sourceTree = "<group>"; };
-		72A99B9F2C29D14E00D96813 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72A99BA12C29D14E00D96813 /* sm_Protester_Bernie.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = sm_Protester_Bernie.dae; sourceTree = "<group>"; };
 		72A99BA22C29D14E00D96813 /* sm_Protester_Trump.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = sm_Protester_Trump.dae; sourceTree = "<group>"; };
 		72A99BA42C29D14E00D96813 /* t_Protestors_Bernie_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t_Protestors_Bernie_BaseColor.png; sourceTree = "<group>"; };
@@ -1256,7 +1253,6 @@
 			isa = PBXGroup;
 			children = (
 				72A99B9E2C29D14E00D96813 /* images */,
-				72A99B9F2C29D14E00D96813 /* Info.plist */,
 			);
 			path = GridHack;
 			sourceTree = "<group>";
@@ -1522,7 +1518,6 @@
 				72A99C102C29D14F00D96813 /* attacker.png in Resources */,
 				6F34E32B2641A51200E67276 /* spaceshipc.dae in Resources */,
 				72A99C6C2C29D14F00D96813 /* SceneKit Scene.scn in Resources */,
-				72A99C162C29D14F00D96813 /* Info.plist in Resources */,
 				72C513292A50DF2800AAD941 /* moonbackgroundwithearth.jpg in Resources */,
 				72A99BF62C29D14F00D96813 /* donkeyWithEyes.dae in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
@@ -1631,7 +1626,6 @@
 				721AB5C12BB918F400E68231 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
 				721AB5C22BB918F400E68231 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
 				721AB5C32BB918F400E68231 /* LaunchScreen.storyboard in Resources */,
-				72A99C172C29D14F00D96813 /* Info.plist in Resources */,
 				721AB5C42BB918F400E68231 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
 				721AB5C52BB918F400E68231 /* Artophy.png in Resources */,
 				72A99C112C29D14F00D96813 /* attacker.png in Resources */,

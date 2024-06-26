@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     #if targetEnvironment(macCatalyst)
     #else
-        var interstitial: GADInterstitial!
+        // var interstitial: GADInterstitial!
     #endif
     let animationDuration = 2.0
 
@@ -73,8 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         #if targetEnvironment(macCatalyst)
         #else
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-            interstitial = createAndLoadInterstitial()
+        //    GADMobileAds.sharedInstance().start(completionHandler: nil)
+        //    interstitial = createAndLoadInterstitial()
         #endif
 
         initializeNodes()
@@ -110,16 +110,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     #if targetEnvironment(macCatalyst)
     #else
-        func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-            interstitial = createAndLoadInterstitial()
-        }
-
-        func createAndLoadInterstitial() -> GADInterstitial {
-            interstitial = GADInterstitial(adUnitID: Common.interstitialAdmobId)
-            interstitial.delegate = self
-            interstitial.load(GADRequest())
-            return interstitial
-        }
+//        func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+//            interstitial = createAndLoadInterstitial()
+//        }
+//
+//        func createAndLoadInterstitial() -> GADInterstitial {
+//            interstitial = GADInterstitial(adUnitID: Common.interstitialAdmobId)
+//            interstitial.delegate = self
+//            interstitial.load(GADRequest())
+//            return interstitial
+//        }
     #endif
 
     func applicationWillResignActive(_ application: UIApplication) {

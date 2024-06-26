@@ -569,10 +569,9 @@ class GridHackUtils {
     }
 
     func pickPartyNoNetwork(party: String, delegate: PartyDelegate) {
-        if(party == "bernie") {
+        if party == "bernie" {
             Defaults[.team] = "bernie"
-        }
-        else if(party == "trump") {
+        } else if party == "trump" {
             Defaults[.team] = "trump"
         }
         delegate.updatedParty()

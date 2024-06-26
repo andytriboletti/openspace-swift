@@ -29,8 +29,8 @@ class LobbyViewController: UIViewController, PartyDelegate {
     var sceneView: SCNView?
     @IBOutlet var iconView: UIView!
     @IBOutlet var joinMultiplayerGameButton: UIButton!
-    
-    @IBAction @objc func goBack() {
+
+    @IBAction func goBack() {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
@@ -45,7 +45,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
 
     func updatedParty() {
         print("updated party")
-        //refresh
+        // refresh
         refreshNoNetwork()
     }
 
@@ -63,19 +63,16 @@ class LobbyViewController: UIViewController, PartyDelegate {
 
     @IBAction func switchParty() {
         print("switch party")
-        if(Defaults[.team] == "bernie") {
+        if Defaults[.team] == "bernie" {
             self.sceneView!.scene = appDelegate.elephantScene
             Defaults[.team] = "trump"
-        }
-        else if(Defaults[.team] == "trump") {
+        } else if Defaults[.team] == "trump" {
             Defaults[.team] = "bernie"
             self.sceneView!.scene = appDelegate.donkeyScene
-
 
         }
 
         refreshNoNetwork()
-
 
         //        if appDelegate.team == "bernie" {
         //            self.sceneView!.scene = appDelegate.elephantScene
@@ -88,12 +85,11 @@ class LobbyViewController: UIViewController, PartyDelegate {
         refreshNoNetwork()
     }
 
-
     func refreshNoNetwork() {
 
-        //self.appDelegate.team = "bernie" //json["user"]["party"].stringValue
+        // self.appDelegate.team = "bernie" //json["user"]["party"].stringValue
 
-        if(Defaults[.team] == "bernie") {
+        if Defaults[.team] == "bernie" {
             self.sceneView!.scene = self.appDelegate.donkeyScene
 
             self.colorButtonsBlue()
@@ -103,7 +99,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
             self.colorButtonsRed()
         }
 
-        //self.appDelegate.username = json["user"]["username"].stringValue
+        // self.appDelegate.username = json["user"]["username"].stringValue
         self.teamLabel!.text = "Team: " +
             self.appDelegate.team!.firstUppercased
 
@@ -143,7 +139,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
                 }
 
                 print("enter lobby success")
-                
+
                 self.appDelegate.team = json["user"]["party"].stringValue
 
                 if self.appDelegate.team == "bernie" {
@@ -301,11 +297,11 @@ class LobbyViewController: UIViewController, PartyDelegate {
         self.iconView.addSubview(sceneView!)
 
         // get data from server
-        //refresh()
-        refreshNoNetwork();
+        // refresh()
+        refreshNoNetwork()
 
         // show ads
-        //showAds()
+        // showAds()
 
     }
 
@@ -315,11 +311,11 @@ class LobbyViewController: UIViewController, PartyDelegate {
         #if targetEnvironment(macCatalyst)
         #else
 
-            if appDelegate.interstitial.isReady && number == 0 {
-                appDelegate.interstitial.present(fromRootViewController: self)
-            } else {
-              print("Ad wasn't ready")
-            }
+//            if appDelegate.interstitial.isReady && number == 0 {
+//                appDelegate.interstitial.present(fromRootViewController: self)
+//            } else {
+//              print("Ad wasn't ready")
+//            }
 
         #endif
     }

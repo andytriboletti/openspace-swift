@@ -436,7 +436,6 @@ class OpenspaceAPI {
         }
     }
 
-
     func getLocation(email: String, authToken: String, completion: @escaping (String?, String?, [[String: Any]]?, [[String: Any]]?, Error?) -> Void) {
         let getLocationURL = URL(string: "\(serverURL)get-data")!
         var request = URLRequest(url: getLocationURL)
@@ -456,7 +455,7 @@ class OpenspaceAPI {
             return
         }
 
-        let task = URLSession.shared.dataTask(with: request) { [self] (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { [self] (data, _, error) in
             // Handle the server response
             if let error = error {
                 print("Request failed with error: \(error.localizedDescription)")
@@ -525,7 +524,6 @@ class OpenspaceAPI {
         print("Starting the request")
         task.resume()
     }
-
 
     // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {
