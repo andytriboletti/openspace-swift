@@ -73,6 +73,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
         }
 
         refreshNoNetwork()
+        setTeam()
 
         //        if appDelegate.team == "bernie" {
         //            self.sceneView!.scene = appDelegate.elephantScene
@@ -82,7 +83,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
         //
         //            GridHackUtils().pickPartyNoNetwork(party: "bernie", delegate: self)
         //        }
-        refreshNoNetwork()
+        // refreshNoNetwork()
     }
 
     func refreshNoNetwork() {
@@ -99,11 +100,22 @@ class LobbyViewController: UIViewController, PartyDelegate {
             self.colorButtonsRed()
         }
 
-        // self.appDelegate.username = json["user"]["username"].stringValue
-        self.teamLabel!.text = "Team: " +
-            self.appDelegate.team!.firstUppercased
+        setTeam()
 
     }
+    func setTeam() {
+
+        var teamName: String = ""
+        if Defaults[.team] == "bernie" {
+            teamName = "biden"
+        } else {
+            teamName = "trump"
+        }
+        // self.appDelegate.username = json["user"]["username"].stringValue
+        self.teamLabel!.text = "Team: " +
+            teamName.firstUppercased
+    }
+
     func refresh() {
 
         let url = Common.baseUrl + "enter_lobby.php"
@@ -153,8 +165,8 @@ class LobbyViewController: UIViewController, PartyDelegate {
                 }
 
                 self.appDelegate.username = json["user"]["username"].stringValue
-                self.teamLabel!.text = "Team: " +
-                    self.appDelegate.team!.firstUppercased
+                self.setTeam()
+
             }
         })
     }
