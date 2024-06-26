@@ -60,7 +60,7 @@ class ExploreMarsViewController: UIViewController {
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
         print("Button tapped!")
-        OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { status, mineral, amount, error in
+        OpenspaceAPI.shared.claimDailyTreasure(planet: "mars") { status, mineral, amount, error in
             if let error = error {
                 // Handle error
                 print("Error claiming daily treasure: \(error)")
