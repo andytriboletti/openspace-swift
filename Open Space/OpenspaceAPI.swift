@@ -436,7 +436,7 @@ class OpenspaceAPI {
         }
     }
 
-    func getLocation(email: String, authToken: String, completion: @escaping (String?, String?, [[String: Any]]?, [[String: Any]]?, Error?) -> Void) {
+    func getLocation(email: String, authToken: String, completion: @escaping (String?, String?, [[String: Any]]?, [[String: Any]]?, [String: Any]?, Error?) -> Void) {
         let getLocationURL = URL(string: "\(serverURL)get-data")!
         var request = URLRequest(url: getLocationURL)
         request.httpMethod = "POST"
@@ -451,7 +451,7 @@ class OpenspaceAPI {
             print("Request body created successfully")
         } catch {
             print("Failed to create request body: \(error.localizedDescription)")
-            completion(nil, nil, nil, nil, error)
+            completion(nil, nil, nil, nil, nil, error)
             return
         }
 
@@ -460,7 +460,7 @@ class OpenspaceAPI {
             if let error = error {
                 print("Request failed with error: \(error.localizedDescription)")
                 DispatchQueue.main.async {
-                    completion(nil, nil, nil, nil, error)
+                    completion(nil, nil, nil, nil, nil, error)
                 }
                 return
             }
@@ -468,7 +468,7 @@ class OpenspaceAPI {
             guard let data = data else {
                 print("No data received from the server")
                 DispatchQueue.main.async {
-                    completion(nil, nil, nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+                    completion(nil, nil, nil, nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                 }
                 return
             }
@@ -481,8 +481,9 @@ class OpenspaceAPI {
                         let username = json["username"] as? String
                         let yourSpheres = json["your_spheres"] as? [[String: Any]]
                         let neighborSpheres = json["neighbor_spheres"] as? [[String: Any]]
+                        let spaceStation = json["your_space_station"] as? [String: Any]
                         DispatchQueue.main.async {
-                            completion(location, username, yourSpheres, neighborSpheres, nil)
+                            completion(location, username, yourSpheres, neighborSpheres, spaceStation, nil)
                         }
                     } else if let error = json["error"] as? String {
                         print("Server returned error: \(error)")
@@ -500,14 +501,14 @@ class OpenspaceAPI {
                                     print("Failed to refresh token: \(tokenError?.localizedDescription ?? "Unknown error")")
                                     // Failed to refresh token or get a new token
                                     DispatchQueue.main.async {
-                                        completion(nil, nil, nil, nil, tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
+                                        completion(nil, nil, nil, nil, nil, tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil))
                                     }
                                 }
                             }
                         } else {
                             // Other errors from the server
                             DispatchQueue.main.async {
-                                completion(nil, nil, nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
+                                completion(nil, nil, nil, nil, nil, NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: error]))
                             }
                         }
                     }
@@ -516,7 +517,7 @@ class OpenspaceAPI {
                 print("Failed to parse JSON response: \(error.localizedDescription)")
                 // Handle the error
                 DispatchQueue.main.async {
-                    completion(nil, nil, nil, nil, error)
+                    completion(nil, nil, nil, nil, nil, error)
                 }
             }
         }
@@ -524,6 +525,7 @@ class OpenspaceAPI {
         print("Starting the request")
         task.resume()
     }
+
 
     // delete user
     func deleteUser(email: String, authToken: String, completion: @escaping (String?, Error?) -> Void) {

@@ -413,6 +413,8 @@
 		72A99C752C29D14F00D96813 /* GridHackUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99BD52C29D14E00D96813 /* GridHackUtils.swift */; };
 		72A99C762C29D14F00D96813 /* WaitForOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99BD62C29D14E00D96813 /* WaitForOpponentViewController.swift */; };
 		72A99C772C29D14F00D96813 /* WaitForOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99BD62C29D14E00D96813 /* WaitForOpponentViewController.swift */; };
+		72A99C792C324BFF00D96813 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C782C324BFE00D96813 /* StationViewController.swift */; };
+		72A99C7A2C324BFF00D96813 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C782C324BFE00D96813 /* StationViewController.swift */; };
 		72AA23182C1F6B5A00001448 /* ConfigureSpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */; };
 		72AA231E2C21F1D600001448 /* ConfigureSpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */; };
 		72ADF8E12BB737FE00976E4C /* NeighborSphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */; };
@@ -657,6 +659,7 @@
 		72A99BD42C29D14E00D96813 /* Trump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trump.swift; sourceTree = "<group>"; };
 		72A99BD52C29D14E00D96813 /* GridHackUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridHackUtils.swift; sourceTree = "<group>"; };
 		72A99BD62C29D14E00D96813 /* WaitForOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitForOpponentViewController.swift; sourceTree = "<group>"; };
+		72A99C782C324BFE00D96813 /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSpaceStationViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborSphereInventoryViewController.swift; sourceTree = "<group>"; };
 		72ADF8E22BB782C200976E4C /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -1046,6 +1049,7 @@
 				72FC18BC2B9D043B007AF494 /* ModelViewController.swift */,
 				72ADF8E22BB782C200976E4C /* AboutViewController.swift */,
 				722102D32BB905D7008F431C /* LeaderboardViewController.swift */,
+				72A99C782C324BFE00D96813 /* StationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1958,6 +1962,7 @@
 				72A99C502C29D14F00D96813 /* InfoOverlayScene.swift in Sources */,
 				6F34E311263B4C8200E67276 /* Defaults.swift in Sources */,
 				72A99BEC2C29D14F00D96813 /* EnemyBuilderFactory.swift in Sources */,
+				72A99C792C324BFF00D96813 /* StationViewController.swift in Sources */,
 				722181912B8FF1C800FB572F /* ChatView.swift in Sources */,
 				6FA3146C2401E57F009D77AB /* LocationState.swift in Sources */,
 				722181932B8FF26200FB572F /* ChatViewController.swift in Sources */,
@@ -2052,6 +2057,7 @@
 				72A99C512C29D14F00D96813 /* InfoOverlayScene.swift in Sources */,
 				721AB5A92BB918F400E68231 /* NeighborSphereInventoryViewController.swift in Sources */,
 				72A99BED2C29D14F00D96813 /* EnemyBuilderFactory.swift in Sources */,
+				72A99C7A2C324BFF00D96813 /* StationViewController.swift in Sources */,
 				721AB5AA2BB918F400E68231 /* Defaults.swift in Sources */,
 				721AB5AB2BB918F400E68231 /* ChatView.swift in Sources */,
 				721AB5AC2BB918F400E68231 /* LocationState.swift in Sources */,

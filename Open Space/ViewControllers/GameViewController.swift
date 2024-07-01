@@ -334,10 +334,11 @@ class GameViewController: UIViewController {
         }
     }
 
+    
     func getLocation() {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, username, yourSpheres, neighborSpheres, error) in
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, username, yourSpheres, neighborSpheres, spaceStation, error) in
             if let error = error as? [[String: Any]], !error.isEmpty {
                 // Handle error related to yourSpheres or neighborSpheres
                 print("Error parsing spheres: \(error)")
@@ -359,6 +360,18 @@ class GameViewController: UIViewController {
                     // Handle data conversion error
                     print("Error converting data")
                     // You can perform additional error handling here
+                }
+
+                // Save space station data to Defaults
+                if let spaceStation = spaceStation,
+                   let meshLocation = spaceStation["mesh_location"] as? String,
+                   let previewLocation = spaceStation["preview_location"] as? String,
+                   let stationName = spaceStation["spacestation_name"] as? String,
+                   let stationId = spaceStation["station_id"] as? String {
+                    Defaults[.stationMeshLocation] = meshLocation
+                    Defaults[.stationPreviewLocation] = previewLocation
+                    Defaults[.stationName] = stationName
+                    Defaults[.stationId] = stationId
                 }
 
                 // Handle location
@@ -383,6 +396,7 @@ class GameViewController: UIViewController {
             }
         }
     }
+
 
     func setNearFromLocationState() {
 
