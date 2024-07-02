@@ -415,6 +415,18 @@
 		72A99C772C29D14F00D96813 /* WaitForOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99BD62C29D14E00D96813 /* WaitForOpponentViewController.swift */; };
 		72A99C792C324BFF00D96813 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C782C324BFE00D96813 /* StationViewController.swift */; };
 		72A99C7A2C324BFF00D96813 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C782C324BFE00D96813 /* StationViewController.swift */; };
+		72A99C7C2C3349E300D96813 /* UsernameEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C7B2C3349E300D96813 /* UsernameEntryView.swift */; };
+		72A99C7D2C3349E300D96813 /* UsernameEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C7B2C3349E300D96813 /* UsernameEntryView.swift */; };
+		72A99C7F2C334A0300D96813 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C7E2C334A0300D96813 /* UIViewController+Toast.swift */; };
+		72A99C802C334A0300D96813 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C7E2C334A0300D96813 /* UIViewController+Toast.swift */; };
+		72A99C832C334B4A00D96813 /* GameViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C822C334B4A00D96813 /* GameViewController+Utils.swift */; };
+		72A99C842C334B4A00D96813 /* GameViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C822C334B4A00D96813 /* GameViewController+Utils.swift */; };
+		72A99C862C334B6A00D96813 /* GameViewController+UIActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C852C334B6A00D96813 /* GameViewController+UIActions.swift */; };
+		72A99C872C334B6A00D96813 /* GameViewController+UIActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C852C334B6A00D96813 /* GameViewController+UIActions.swift */; };
+		72A99C892C334B8700D96813 /* GameViewController+Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C882C334B8700D96813 /* GameViewController+Scene.swift */; };
+		72A99C8A2C334B8700D96813 /* GameViewController+Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C882C334B8700D96813 /* GameViewController+Scene.swift */; };
+		72A99C8C2C334BA000D96813 /* GameViewController+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C8B2C334BA000D96813 /* GameViewController+API.swift */; };
+		72A99C8D2C334BA000D96813 /* GameViewController+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A99C8B2C334BA000D96813 /* GameViewController+API.swift */; };
 		72AA23182C1F6B5A00001448 /* ConfigureSpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */; };
 		72AA231E2C21F1D600001448 /* ConfigureSpaceStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */; };
 		72ADF8E12BB737FE00976E4C /* NeighborSphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */; };
@@ -660,6 +672,12 @@
 		72A99BD52C29D14E00D96813 /* GridHackUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridHackUtils.swift; sourceTree = "<group>"; };
 		72A99BD62C29D14E00D96813 /* WaitForOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitForOpponentViewController.swift; sourceTree = "<group>"; };
 		72A99C782C324BFE00D96813 /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
+		72A99C7B2C3349E300D96813 /* UsernameEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameEntryView.swift; sourceTree = "<group>"; };
+		72A99C7E2C334A0300D96813 /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
+		72A99C822C334B4A00D96813 /* GameViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+Utils.swift"; sourceTree = "<group>"; };
+		72A99C852C334B6A00D96813 /* GameViewController+UIActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+UIActions.swift"; sourceTree = "<group>"; };
+		72A99C882C334B8700D96813 /* GameViewController+Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+Scene.swift"; sourceTree = "<group>"; };
+		72A99C8B2C334BA000D96813 /* GameViewController+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+API.swift"; sourceTree = "<group>"; };
 		72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureSpaceStationViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborSphereInventoryViewController.swift; sourceTree = "<group>"; };
 		72ADF8E22BB782C200976E4C /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -1028,11 +1046,12 @@
 		6FDB587D23FE5EA9004263CB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				72A99C812C334B2200D96813 /* GameViewController */,
 				72ADF8E42BB896A300976E4C /* Mars */,
 				7243A82F2A796C1A0054E261 /* Earth */,
 				7243A82E2A796BFA0054E261 /* Moon */,
 				72C513272A4FC2A500AAD941 /* PlanetViews */,
-				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
+				72A99C7B2C3349E300D96813 /* UsernameEntryView.swift */,
 				6F96DE6523FDF93F00BAE0CF /* InventoryViewController.swift */,
 				6F7380A923FEFAFF00D767E0 /* AlertViewController.swift */,
 				6F86CC69240039A1005AECC9 /* SelectLocationViewController.swift */,
@@ -1050,6 +1069,7 @@
 				72ADF8E22BB782C200976E4C /* AboutViewController.swift */,
 				722102D32BB905D7008F431C /* LeaderboardViewController.swift */,
 				72A99C782C324BFE00D96813 /* StationViewController.swift */,
+				72A99C7E2C334A0300D96813 /* UIViewController+Toast.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1342,6 +1362,18 @@
 				72A99BD62C29D14E00D96813 /* WaitForOpponentViewController.swift */,
 			);
 			path = GridHack;
+			sourceTree = "<group>";
+		};
+		72A99C812C334B2200D96813 /* GameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FB0EEFC23FDA1A800EA28D7 /* GameViewController.swift */,
+				72A99C822C334B4A00D96813 /* GameViewController+Utils.swift */,
+				72A99C852C334B6A00D96813 /* GameViewController+UIActions.swift */,
+				72A99C882C334B8700D96813 /* GameViewController+Scene.swift */,
+				72A99C8B2C334BA000D96813 /* GameViewController+API.swift */,
+			);
+			path = GameViewController;
 			sourceTree = "<group>";
 		};
 		72ADF8E42BB896A300976E4C /* Mars */ = {
@@ -1902,14 +1934,17 @@
 				72A99C2C2C29D14F00D96813 /* AttributeProtocol.swift in Sources */,
 				72ADF8E32BB782C200976E4C /* AboutViewController.swift in Sources */,
 				72A99C482C29D14F00D96813 /* GridHackGameState.swift in Sources */,
+				72A99C8C2C334BA000D96813 /* GameViewController+API.swift in Sources */,
 				7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */,
 				6FDADF252644D1BF00F7878C /* SelectShipViewController.swift in Sources */,
 				6F91EC9B260F9A700058B9F5 /* ShipyardViewController.swift in Sources */,
 				72A99C602C29D14F00D96813 /* MultiplayerProtocol.swift in Sources */,
 				72B0B3A62BB6556000BACE67 /* NeighborSphereCell.swift in Sources */,
+				72A99C7F2C334A0300D96813 /* UIViewController+Toast.swift in Sources */,
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
 				72A99C682C29D14F00D96813 /* ProfileViewController.swift in Sources */,
 				72B0B3A42BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift in Sources */,
+				72A99C7C2C3349E300D96813 /* UsernameEntryView.swift in Sources */,
 				72A99C702C29D14F00D96813 /* Troll.swift in Sources */,
 				72A99C4E2C29D14F00D96813 /* HelpViewController.swift in Sources */,
 				6F6146F124224F2F000DFACC /* EarthViewController.swift in Sources */,
@@ -1928,6 +1963,7 @@
 				72A3C04E2A7DAF5C00C2A01E /* AuctionHouseViewController.swift in Sources */,
 				72A99C382C29D14F00D96813 /* DumbAI.swift in Sources */,
 				72A99C762C29D14F00D96813 /* WaitForOpponentViewController.swift in Sources */,
+				72A99C892C334B8700D96813 /* GameViewController+Scene.swift in Sources */,
 				72A99C722C29D14F00D96813 /* Trump.swift in Sources */,
 				7221818D2B8EA2C200FB572F /* ModelCollectionViewCell.swift in Sources */,
 				72A99C642C29D14F00D96813 /* PartyDelegate.swift in Sources */,
@@ -1944,6 +1980,7 @@
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				72FC18BD2B9D043B007AF494 /* ModelViewController.swift in Sources */,
+				72A99C832C334B4A00D96813 /* GameViewController+Utils.swift in Sources */,
 				72A99C3A2C29D14F00D96813 /* Enemy.swift in Sources */,
 				72A99C742C29D14F00D96813 /* GridHackUtils.swift in Sources */,
 				72A99BEE2C29D14F00D96813 /* FriendlyBuilderFactory.swift in Sources */,
@@ -1972,6 +2009,7 @@
 				72A99C542C29D14F00D96813 /* LobbyViewController.swift in Sources */,
 				72A99C322C29D14F00D96813 /* Common.swift in Sources */,
 				6F6D845D23FF8C8800328057 /* Utils.swift in Sources */,
+				72A99C862C334B6A00D96813 /* GameViewController+UIActions.swift in Sources */,
 				72A99C442C29D14F00D96813 /* GameScene.swift in Sources */,
 				72AA23182C1F6B5A00001448 /* ConfigureSpaceStationViewController.swift in Sources */,
 				722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */,
@@ -1997,14 +2035,17 @@
 				72A99C2D2C29D14F00D96813 /* AttributeProtocol.swift in Sources */,
 				721AB5872BB918F400E68231 /* AboutViewController.swift in Sources */,
 				72A99C492C29D14F00D96813 /* GridHackGameState.swift in Sources */,
+				72A99C8D2C334BA000D96813 /* GameViewController+API.swift in Sources */,
 				721AB5882BB918F400E68231 /* AccountViewController.swift in Sources */,
 				721AB5892BB918F400E68231 /* SelectShipViewController.swift in Sources */,
 				721AB58A2BB918F400E68231 /* ShipyardViewController.swift in Sources */,
 				72A99C612C29D14F00D96813 /* MultiplayerProtocol.swift in Sources */,
 				721AB58B2BB918F400E68231 /* NeighborSphereCell.swift in Sources */,
+				72A99C802C334A0300D96813 /* UIViewController+Toast.swift in Sources */,
 				721AB58C2BB918F400E68231 /* NavGameController.swift in Sources */,
 				72A99C692C29D14F00D96813 /* ProfileViewController.swift in Sources */,
 				721AB58D2BB918F400E68231 /* SelectNeighborSphereViewController.swift in Sources */,
+				72A99C7D2C3349E300D96813 /* UsernameEntryView.swift in Sources */,
 				72A99C712C29D14F00D96813 /* Troll.swift in Sources */,
 				72A99C4F2C29D14F00D96813 /* HelpViewController.swift in Sources */,
 				721AB58E2BB918F400E68231 /* EarthViewController.swift in Sources */,
@@ -2023,6 +2064,7 @@
 				721AB5952BB918F400E68231 /* WebSocketManager.swift in Sources */,
 				72A99C392C29D14F00D96813 /* DumbAI.swift in Sources */,
 				72A99C772C29D14F00D96813 /* WaitForOpponentViewController.swift in Sources */,
+				72A99C8A2C334B8700D96813 /* GameViewController+Scene.swift in Sources */,
 				72A99C732C29D14F00D96813 /* Trump.swift in Sources */,
 				721AB5962BB918F400E68231 /* AuctionHouseViewController.swift in Sources */,
 				72A99C652C29D14F00D96813 /* PartyDelegate.swift in Sources */,
@@ -2039,6 +2081,7 @@
 				721AB59C2BB918F400E68231 /* ExploreMoonViewController.swift in Sources */,
 				721AB59D2BB918F400E68231 /* GameState.swift in Sources */,
 				721AB59E2BB918F400E68231 /* GameViewController.swift in Sources */,
+				72A99C842C334B4A00D96813 /* GameViewController+Utils.swift in Sources */,
 				72A99C3B2C29D14F00D96813 /* Enemy.swift in Sources */,
 				72A99C752C29D14F00D96813 /* GridHackUtils.swift in Sources */,
 				72A99BEF2C29D14F00D96813 /* FriendlyBuilderFactory.swift in Sources */,
@@ -2067,6 +2110,7 @@
 				72A99C552C29D14F00D96813 /* LobbyViewController.swift in Sources */,
 				72A99C332C29D14F00D96813 /* Common.swift in Sources */,
 				721AB5AE2BB918F400E68231 /* ReplicatorViewController.swift in Sources */,
+				72A99C872C334B6A00D96813 /* GameViewController+UIActions.swift in Sources */,
 				72A99C452C29D14F00D96813 /* GameScene.swift in Sources */,
 				721AB5AF2BB918F400E68231 /* Utils.swift in Sources */,
 				721AB5B02BB918F400E68231 /* LeaderboardViewController.swift in Sources */,

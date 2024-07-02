@@ -1,11 +1,3 @@
-//
-//  AccountViewController.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 6/25/23.
-//  Copyright © 2023 GreenRobot LLC. All rights reserved.
-//
-
 import UIKit
 import FirebaseAuth
 import Defaults
@@ -26,14 +18,22 @@ class AccountViewController: UIViewController {
             // Perform action upon OK
             print("OK tapped")
 
-            var email = Defaults[.email]
+            let email = Defaults[.email]
             OpenspaceAPI.shared.resetUsername(email: email) { error in
                 if let error = error {
                     print("Error submitting to server: \(error.localizedDescription)")
                 } else {
-                    Defaults[.username] = ""
-                    print("Successfully reset username submitted to server")
-                    // completion(username) // Call completion with entered username
+                    DispatchQueue.main.async {
+                        Defaults[.username] = ""
+                        print("Successfully reset username submitted to server")
+
+                        // Use the Utils class to present the username entry
+                        Utils.presentUsernameEntry(from: self) { enteredUsername in
+                            Defaults[.username] = enteredUsername
+                            print("New username entered: \(enteredUsername)")
+                            self.updateUsernameLabel()
+                        }
+                    }
                 }
             }
 
@@ -87,6 +87,7 @@ class AccountViewController: UIViewController {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
+
     @IBAction func signOutButtonTapped(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
@@ -145,15 +146,15 @@ class AccountViewController: UIViewController {
        }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateUsernameLabel()
+    }
 
-        if let user = Auth.auth().currentUser {
-            if let email = user.email {
-                print("Logged-in user email: \(email)")
-                loggedInAs.text = "Logged In As: \(email)"
-                username.text = "Your Username: \(Defaults[.username])"
-            }
+    func updateUsernameLabel() {
+        if let user = Auth.auth().currentUser, let email = user.email {
+            loggedInAs.text = "Logged In As: \(email)"
+            username.text = "Your Username: \(Defaults[.username])"
         }
-
     }
 
     /*
@@ -165,5 +166,4 @@ class AccountViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
