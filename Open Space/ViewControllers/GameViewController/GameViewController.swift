@@ -8,8 +8,11 @@ import SCLAlertView
 import DynamicBlurView
 import Defaults
 import SwiftUI
+import SSZipArchive
 
 class GameViewController: UIViewController {
+    var stationFilePaths: [URL] = []
+
     var webSocketManager: WebSocketManager!
     var errorMessage: String?
 

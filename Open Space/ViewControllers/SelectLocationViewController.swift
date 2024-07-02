@@ -41,10 +41,10 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
 
         if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
             // Handle space station selection
-            if indexPath.row == locations.count - 1, let meshLocation = Defaults[.stationMeshLocation] as? String, !meshLocation.isEmpty {
-                goToStationViewController()
-                return
-            }
+//            if indexPath.row == locations.count - 1, let meshLocation = Defaults[.stationMeshLocation] as? String, !meshLocation.isEmpty {
+//                goToStationViewController()
+//                return
+//            }
 
             // Regular location selection handling
             var goingToLocation = LocationState.allCases[indexPath.row]
@@ -61,8 +61,12 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
                 whereString = "nearMars"
             case .nearMoon:
                 whereString = "nearMoon"
+            case .nearYourSpaceStation:
+                whereString = "nearYourSpaceStation"
             case .nearNothing:
                 whereString = "nearNothing"
+
+
             }
 
             print(whereString) // Output: "premium"
