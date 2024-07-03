@@ -92,6 +92,16 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
     var colorPickerCompletion: ((UIColor) -> Void)?
 
+    // TextField references
+    var nameTextField: UITextField!
+    var partsTextField: UITextField!
+    var torusMajorTextField: UITextField!
+    var torusMinorTextField: UITextField!
+    var bevelboxTextField: UITextField!
+    var cylinderTextField: UITextField!
+    var cylinderHeightTextField: UITextField!
+    var storageTextField: UITextField!
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setGradientBackground()
@@ -127,11 +137,10 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
         scrollView.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .clear // Keep the content view transparent
+        contentView.backgroundColor = .clear
         contentView.layer.cornerRadius = 20
         contentView.layer.masksToBounds = true
 
-        // Add some padding to the content view
         let contentViewPadding: CGFloat = 20
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: contentViewPadding),
@@ -193,40 +202,39 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textColor = .darkGray
-        titleLabel.backgroundColor = .white // Set background color to white
+        titleLabel.backgroundColor = .white
         titleLabel.layer.cornerRadius = 10
         titleLabel.layer.masksToBounds = true
         titleLabel.layer.borderWidth = 1
         titleLabel.layer.borderColor = UIColor.lightGray.cgColor
-        titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical) // Ensure the label resizes correctly
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return titleLabel
     }
 
     func createFormStackView() -> UIStackView {
         let nameLabel = createPaddedLabel(text: "SpaceStation Name:")
-        let nameTextField = createTextField(placeholder: "Enter name", value: config.name)
-        nameTextField.addTarget(self, action: #selector(nameChanged(_:)), for: .editingChanged)
+        nameTextField = createTextField(placeholder: "Enter name", value: config.name)
 
         let partsLabel = createPaddedLabel(text: "Number of Parts:")
-        let partsTextField = createTextField(placeholder: "Parts", value: "\(config.parts)")
+        partsTextField = createTextField(placeholder: "Parts", value: "\(config.parts)")
 
         let torusMajorLabel = createPaddedLabel(text: "Torus Major:")
-        let torusMajorTextField = createTextField(placeholder: "Torus Major", value: String(format: "%.2f", config.torusMajor))
+        torusMajorTextField = createTextField(placeholder: "Torus Major", value: String(format: "%.2f", config.torusMajor))
 
         let torusMinorLabel = createPaddedLabel(text: "Torus Minor:")
-        let torusMinorTextField = createTextField(placeholder: "Torus Minor", value: String(format: "%.2f", config.torusMinor))
+        torusMinorTextField = createTextField(placeholder: "Torus Minor", value: String(format: "%.2f", config.torusMinor))
 
         let bevelboxLabel = createPaddedLabel(text: "Bevel Box Size:")
-        let bevelboxTextField = createTextField(placeholder: "Bevel Box", value: String(format: "%.2f", config.bevelbox))
+        bevelboxTextField = createTextField(placeholder: "Bevel Box", value: String(format: "%.2f", config.bevelbox))
 
         let cylinderLabel = createPaddedLabel(text: "Cylinder Diameter:")
-        let cylinderTextField = createTextField(placeholder: "Cylinder Diameter", value: String(format: "%.2f", config.cylinder))
+        cylinderTextField = createTextField(placeholder: "Cylinder Diameter", value: String(format: "%.2f", config.cylinder))
 
         let cylinderHeightLabel = createPaddedLabel(text: "Cylinder Height:")
-        let cylinderHeightTextField = createTextField(placeholder: "Cylinder Height", value: String(format: "%.2f", config.cylinderHeight))
+        cylinderHeightTextField = createTextField(placeholder: "Cylinder Height", value: String(format: "%.2f", config.cylinderHeight))
 
         let storageLabel = createPaddedLabel(text: "Storage Capacity:")
-        let storageTextField = createTextField(placeholder: "Storage Capacity", value: String(format: "%.2f", config.storage))
+        storageTextField = createTextField(placeholder: "Storage Capacity", value: String(format: "%.2f", config.storage))
 
         let color1Label = createPaddedLabel(text: "Color 1:")
         color1Button.setTitle("Select Color 1", for: .normal)
@@ -343,7 +351,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
         if isFullWidth {
             NSLayoutConstraint.activate([
-                textField.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -10) // Full width minus padding
+                textField.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -10)
             ])
         } else {
             label.widthAnchor.constraint(equalToConstant: 150).isActive = true
@@ -353,16 +361,22 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         return stackView
     }
 
-    @objc func nameChanged(_ textField: UITextField) {
-        config.name = textField.text ?? ""
-    }
-
     @objc func generateRandomValues() {
         config = SpaceStationConfig.generateRandomConfig()
         setupForm()
     }
 
     @objc func createSpaceStation() {
+        // Gather data from text fields
+        config.name = nameTextField.text ?? ""
+        config.parts = Int(partsTextField.text ?? "") ?? 0
+        config.torusMajor = Double(torusMajorTextField.text ?? "") ?? 0.0
+        config.torusMinor = Double(torusMinorTextField.text ?? "") ?? 0.0
+        config.bevelbox = Double(bevelboxTextField.text ?? "") ?? 0.0
+        config.cylinder = Double(cylinderTextField.text ?? "") ?? 0.0
+        config.cylinderHeight = Double(cylinderHeightTextField.text ?? "") ?? 0.0
+        config.storage = Double(storageTextField.text ?? "") ?? 0.0
+
         // Convert config to JSON string
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -371,6 +385,8 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
             print("Failed to encode config to JSON")
             return
         }
+
+        print("Sending config: \(configJson)")
 
         // Retrieve email and authToken
         let email = Defaults[.email]
