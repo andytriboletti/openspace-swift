@@ -89,16 +89,18 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         let email = Defaults[.email] // Replace with the actual email
         let authToken = Defaults[.authToken] // Replace with the actual auth token
 
-        OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location) { [weak self] message, error in
-            if let error = error {
+        OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location) { [weak self] result in
+            switch result {
+            case .success(let message):
+                // Location saved successfully
+                print("Success: \(message)")
+            case .failure(let error):
                 // Handle the error
                 print("Error: \(error.localizedDescription)")
-            } else if let message = message {
-                // User deleted successfully
-                print("Success: \(message)")
             }
         }
     }
+
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as? LocationCollectionViewCell else {

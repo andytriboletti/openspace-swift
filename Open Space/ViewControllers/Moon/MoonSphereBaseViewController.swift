@@ -248,15 +248,15 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
-    
     func getLocation() {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [self] (location, _, yourSpheres, neighborSpheres, spaceStation, error) in
-            if let error = error {
-                // Handle error
-                print("Error: \(error)")
-            } else if let location = location {
+
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .success(let (location, username, yourSpheres, neighborSpheres, spaceStation)):
                 // Save your_spheres and neighbor_spheres
                 self.yourSpheres = yourSpheres
                 self.neighborSpheres = neighborSpheres
@@ -287,18 +287,20 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
                     Defaults[.stationId] = stationId
                 }
 
-                setupYourSpheres()
-                setupNeighbor()
+                self.setupYourSpheres()
+                self.setupNeighbor()
 
                 // Add the spheres on the floor
-                createSpheresOnFloor(scene: scene)
-            } else {
-                // Handle data conversion error
-                print("Error converting data")
-                // You can perform additional error handling here
+                self.createSpheresOnFloor(scene: self.scene)
+
+            case .failure(let error):
+                // Handle error
+                print("Error: \(error.localizedDescription)")
             }
         }
     }
+
+
 
 
     func createSpheresOnFloor(scene: SCNScene) {

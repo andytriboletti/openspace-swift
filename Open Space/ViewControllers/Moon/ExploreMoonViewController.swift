@@ -124,13 +124,11 @@ class ExploreMoonViewController: UIViewController {
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
         print("Button tapped!")
-        OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { status, mineral, amount, error in
-            if let error = error {
-                // Handle error
-                print("Error claiming daily treasure: \(error)")
-            } else {
+        OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { result in
+            switch result {
+            case .success(let (status, mineral, amount)):
                 // Handle response
-                print("Response from claim daily treasure: \(String(describing: status))")
+                print("Response from claim daily treasure: \(status)")
 
                 if status == "claimed" {
                     // Show a success message to the user on the main thread
@@ -143,37 +141,37 @@ class ExploreMoonViewController: UIViewController {
                         self.showError()
                     }
                 }
+            case .failure(let error):
+                // Handle error
+                print("Error claiming daily treasure: \(error.localizedDescription)")
             }
         }
     }
+
     // ...
     func checkDailyTreasureAvailability() {
         // Call API to check daily treasure availability
-        OpenspaceAPI.shared.checkDailyTreasureAvailability(planet: "moon") { response, error in
-            if let error = error {
-                print("Error checking daily treasure availability: \(error)")
-                self.showError()
-            } else {
-                print("Response from check daily treasure availability: \(String(describing: response))")
+        OpenspaceAPI.shared.checkDailyTreasureAvailability(planet: "moon") { result in
+            switch result {
+            case .success(let response):
+                print("Response from check daily treasure availability: \(response)")
                 if response == "claimed" {
                     DispatchQueue.main.async {
                         self.showClaimedText()
                         self.hideTreasureButton()
-                        self.showRewardedButton()
-                        // Call loadAdAwait within a DispatchQueue.main.async block
-                        Task {
-                            await self.loadAdAwait()
-                        }
                     }
-
                 } else if response == "available" {
                     DispatchQueue.main.async {
                         self.showTreasureButton()
                     }
                 }
+            case .failure(let error):
+                print("Error checking daily treasure availability: \(error.localizedDescription)")
+                self.showError()
             }
         }
     }
+
     var claimedLabel: UILabel?
 
     func showClaimedText() {

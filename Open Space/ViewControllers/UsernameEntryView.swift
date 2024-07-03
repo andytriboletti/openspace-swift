@@ -41,14 +41,15 @@ struct UsernameEntryView: View {
 
             let email = Defaults[.email]
 
-            OpenspaceAPI.shared.submitToServer(username: username, email: email) { error in
+            OpenspaceAPI.shared.submitToServer(username: username, email: email) { result in
                 DispatchQueue.main.async {
-                    if let error = error {
-                        print("Error submitting to server: \(error.localizedDescription)")
-                    } else {
+                    switch result {
+                    case .success:
                         print("Successfully submitted to server")
                         completion(enteredUsername)
                         presentationMode.wrappedValue.dismiss()  // Dismiss the view
+                    case .failure(let error):
+                        print("Error submitting to server: \(error.localizedDescription)")
                     }
                 }
             }
@@ -56,6 +57,7 @@ struct UsernameEntryView: View {
             errorMessage = "Username must contain only letters and numbers and be between 3 and 20 characters."
         }
     }
+
 
     func isValidUsername(_ username: String) -> Bool {
         let usernameRegex = "^[a-zA-Z0-9]{3,20}$"

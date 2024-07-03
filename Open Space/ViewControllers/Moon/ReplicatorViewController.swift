@@ -82,29 +82,31 @@ class ReplicatorViewController: UIViewController {
 
         }
     }
-    // Example function to call the sendTextToServer function
     func sendText(text: String) {
-            let email = Defaults[.email] // Replace with the actual email
-            let authToken = Defaults[.authToken] // Replace with the actual auth token
+        let email = Defaults[.email] // Replace with the actual email
+        let authToken = Defaults[.authToken] // Replace with the actual auth token
         let yourSphereId = Defaults[.selectedSphereId]
-        OpenspaceAPI.shared.sendTextToServer(email: email, authToken: authToken, text: text, sphereId: yourSphereId) { success, error in
-               if let error = error {
-                   print("Error: \(error)")
-                   // Handle error
-               } else if success {
-                   print("Text sent successfully to server")
-                   // Handle success
-                   DispatchQueue.main.async {
-                       self.inputText.text=""
-                       self.showSuccessAlert()
-                   }
 
-               } else {
-                   print("Failed to send text to server")
-                   // Handle failure
-               }
-           }
-       }
+        OpenspaceAPI.shared.sendTextToServer(email: email, authToken: authToken, text: text, sphereId: yourSphereId) { result in
+            switch result {
+            case .success(let success):
+                if success {
+                    print("Text sent successfully to server")
+                    // Handle success
+                    DispatchQueue.main.async {
+                        self.inputText.text = ""
+                        self.showSuccessAlert()
+                    }
+                } else {
+                    print("Failed to send text to server")
+                    // Handle failure
+                }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                // Handle error
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

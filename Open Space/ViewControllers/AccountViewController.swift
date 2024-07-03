@@ -19,10 +19,9 @@ class AccountViewController: UIViewController {
             print("OK tapped")
 
             let email = Defaults[.email]
-            OpenspaceAPI.shared.resetUsername(email: email) { error in
-                if let error = error {
-                    print("Error submitting to server: \(error.localizedDescription)")
-                } else {
+            OpenspaceAPI.shared.resetUsername(email: email) { result in
+                switch result {
+                case .success:
                     DispatchQueue.main.async {
                         Defaults[.username] = ""
                         print("Successfully reset username submitted to server")
@@ -34,10 +33,10 @@ class AccountViewController: UIViewController {
                             self.updateUsernameLabel()
                         }
                     }
+                case .failure(let error):
+                    print("Error submitting to server: \(error.localizedDescription)")
                 }
             }
-
-            // Add your logic here
         }
         alertController.addAction(okAction)
 
@@ -52,6 +51,7 @@ class AccountViewController: UIViewController {
         // Present the alert controller
         self.present(alertController, animated: true, completion: nil)
     }
+
 
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
            let confirmationAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
@@ -120,30 +120,30 @@ class AccountViewController: UIViewController {
 
     // Delete user
     ////////////////////
+    ///
     func deleteUser() {
         let email = Defaults[.email] // Replace with the actual email
         let authToken = Defaults[.authToken] // Replace with the actual auth token
 
-           OpenspaceAPI.shared.deleteUser(email: email, authToken: authToken) { [weak self] message, error in
-               if let error = error {
-                   // Handle the error
-                   print("Error: \(error.localizedDescription)")
-               } else if let message = message {
-                   // User deleted successfully
-                   print("Success: \(message)")
+        OpenspaceAPI.shared.deleteUser(email: email, authToken: authToken) { [weak self] result in
+            switch result {
+            case .success(let message):
+                // User deleted successfully
+                print("Success: \(message)")
 
-                   // Clear all stored values
-                   Defaults.removeAll()
+                // Clear all stored values
+                Defaults.removeAll()
 
-                   DispatchQueue.main.async {
-                       // Your UI update code or UI-related task
-                       self!.goToSignIn()
-
-                   }
-
-               }
-           }
-       }
+                DispatchQueue.main.async {
+                    // Your UI update code or UI-related task
+                    self?.goToSignIn()
+                }
+            case .failure(let error):
+                // Handle the error
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
