@@ -36,11 +36,18 @@ extension GameViewController {
                        let meshLocation = spaceStation["mesh_location"] as? String,
                        let previewLocation = spaceStation["preview_location"] as? String,
                        let stationName = spaceStation["spacestation_name"] as? String,
-                       let stationId = spaceStation["station_id"] as? String {
+                       let stationId = spaceStation["station_id"] as? String,
+                       let currency = spaceStation["currency"] as? Int,
+                       let currentEnergy = spaceStation["current_energy"] as? Int,
+                       let totalEnergy = spaceStation["total_energy"] as? Int {
+
                         Defaults[.stationMeshLocation] = meshLocation
                         Defaults[.stationPreviewLocation] = previewLocation
                         Defaults[.stationName] = stationName
                         Defaults[.stationId] = stationId
+                        Defaults[.currency] = currency
+                        Defaults[.currentEnergy] = currentEnergy
+                        Defaults[.totalEnergy] = totalEnergy
                     }
 
                     switch location {
@@ -61,6 +68,7 @@ extension GameViewController {
                     }
 
                     self.setNearFromLocationState()
+                    self.setCurrencyAndEnergyLabels()
 
                 case .failure(let error):
                     print("Error fetching location: \(error.localizedDescription)")
@@ -68,7 +76,6 @@ extension GameViewController {
             }
         }
     }
-
 
     func submitUsername(username: String, completion: @escaping (String?, String?) -> Void) {
         if isValidUsername(username) {
@@ -94,7 +101,6 @@ extension GameViewController {
             completion(nil, errorMessage)
         }
     }
-
 
     func isValidUsername(_ username: String) -> Bool {
         let usernameRegex = "^[a-zA-Z0-9]{3,20}$"

@@ -84,7 +84,6 @@ class ExploreMarsViewController: UIViewController {
         }
     }
 
-
     func checkDailyTreasureAvailability() {
         // Call API to check daily treasure availability
         OpenspaceAPI.shared.checkDailyTreasureAvailability(planet: "mars") { result in
@@ -107,7 +106,6 @@ class ExploreMarsViewController: UIViewController {
             }
         }
     }
-
 
             func showClaimedText() {
                 // addButtonToStackView()

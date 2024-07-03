@@ -300,9 +300,6 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         }
     }
 
-
-
-
     func createSpheresOnFloor(scene: SCNScene) {
         let numRows = 5
         let numColumns = 4

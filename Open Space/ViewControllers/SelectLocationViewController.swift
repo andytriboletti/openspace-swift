@@ -66,7 +66,6 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
             case .nearNothing:
                 whereString = "nearNothing"
 
-
             }
 
             print(whereString) // Output: "premium"
@@ -100,7 +99,6 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
             }
         }
     }
-
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as? LocationCollectionViewCell else {

@@ -17,10 +17,10 @@ import FirebaseGoogleAuthUI
 class SignInViewController: UIViewController, FUIAuthDelegate {
     public var authUI: FUIAuth = FUIAuth.defaultAuthUI()!
     var rootViewController: SignInViewController?
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         if let user = Auth.auth().currentUser {
             if let email = user.email {
                 print("Logged-in user email: \(email)")
@@ -31,15 +31,15 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
             // You need to adopt a FUIAuthDelegate protocol to receive callback
             authUI!.delegate = self
             // Do any additional setup after loading the view.
-            
+
             let googleAuthProvider = FUIGoogleAuth(authUI: authUI!)
             let providers: [FUIAuthProvider] = [
                 googleAuthProvider,
                 FUIOAuth.appleAuthProvider()
             ]
-            
+
             authUI!.providers = providers
-            
+
             // self.authUI.providers = providers
             let authViewController = authUI!.authViewController()
             // present(authViewController, animated: true, completion: nil)
@@ -50,7 +50,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
             authViewController.modalTransitionStyle = .crossDissolve
             // self.window.rootViewController = signInViewController
             // present(authViewController, animated: true, completion: nil)
-            
+
             let frame = self.view.frame
             let authController = authUI!.authViewController()
             authController.view.frame = frame
@@ -58,25 +58,25 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
             authController.modalPresentationStyle = .fullScreen
             present(authController, animated: true, completion: nil)
         }
-        
+
     }
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         // Handle user and error as necessary
         // rootViewController!.dismiss(animated: false)
-        
+
         if let error = error {
             // Handle sign-in error
             print("Sign-in error: \(error.localizedDescription)")
             return
         }
-        
+
         if let currentUser = user {
             // Call the method with a completion block
             currentUser.getIDTokenForcingRefresh(true) { (idToken, error) in
                 if let idToken = idToken {
                     // The ID token is successfully obtained. You can use it here.
                     print("ID token: \(idToken)")
-                    
+
                     let email = currentUser.email
                     let uid = currentUser.uid
                     // let authToken = currentUser.refreshToken!
@@ -94,13 +94,13 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                         case .success(let lastLocation):
                             // Use the last_location
                             print("Last Location: \(lastLocation)")
-                            
+
                             // Save email and authToken in Defaults
                             Defaults[.email] = email!
                             Defaults[.authToken] = idToken
-                            
+
                             print("Successfully signed in with user: \(user!)")
-                            
+
                             DispatchQueue.main.async {
                                 // Perform UI-related updates here
                                 // For example, updating UI elements like labels, buttons, etc.

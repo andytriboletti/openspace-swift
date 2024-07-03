@@ -28,6 +28,21 @@ extension GameViewController {
         UIGraphicsEndImageContext()
         return newImage!
     }
+    func setCurrencyAndEnergyLabels() {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current // Use the current locale for currency formatting
+
+        if let formattedCurrency = currencyFormatter.string(from: NSNumber(value: Defaults[.currency])) {
+            self.currencyLabel.text = "Cash: \(formattedCurrency)"
+        } else {
+            self.currencyLabel.text = "Cash: \(Defaults[.currency])"
+        }
+
+        self.energyLabel.text = "Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])"
+    }
+
+
 
     func setNearFromLocationState() {
         DispatchQueue.main.async {
@@ -54,12 +69,12 @@ extension GameViewController {
             return
         }
         print(stationMeshLocation)
-        //if stationMeshLocation.lowercased().hasSuffix(".usdz") {
+        // if stationMeshLocation.lowercased().hasSuffix(".usdz") {
             downloadAndDisplayUSDZ(from: stationMeshLocation)
        // } else {
             addTempObject(name: stationMeshLocation, position: SCNVector3(-500, 0, -200), scale: 30) // Adjusted scale to 20
        // }
-        //setupBackground()
+        // setupBackground()
     }
 
     func downloadAndDisplayUSDZ(from urlString: String) {
@@ -81,7 +96,7 @@ extension GameViewController {
             }
         }
 
-        URLSession.shared.downloadTask(with: url) { (location, response, error) in
+        URLSession.shared.downloadTask(with: url) { (location, _, error) in
             guard let location = location, error == nil else {
                 print("Download error: \(error?.localizedDescription ?? "Unknown error")")
                 return
@@ -102,7 +117,7 @@ extension GameViewController {
             let scene = try SCNScene(url: fileURL, options: nil)
             let stationNode = scene.rootNode.clone()
             stationNode.position = SCNVector3(-500, 0, -200)
-            //stationNode.scale = SCNVector3(20, 20, 20) // Adjusted scale to 20
+            // stationNode.scale = SCNVector3(20, 20, 20) // Adjusted scale to 20
             stationNode.scale = SCNVector3(60, 60, 60)
             // Add stationNode to the scene
             self.scnView.scene?.rootNode.addChildNode(stationNode)
@@ -130,8 +145,6 @@ extension GameViewController {
             }
         }
     }
-
-
 
 //    func setupBackground() {
 //        let background = SCNMaterial()
@@ -283,7 +296,7 @@ extension GameViewController {
 
     func drawISS() {
         addTempObject(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20) // Adjusted scale to 20
-        //setupBackground()
+        // setupBackground()
     }
 
     func drawMars() {
@@ -296,7 +309,7 @@ extension GameViewController {
 
     func drawEarth() {
         addTempObject(name: "earth.scn", position: SCNVector3(-500, 0, -200), scale: 5)
-        //setupBackground()
+        // setupBackground()
     }
 
     func addTempObject(name: String, position: SCNVector3, scale: Float) {

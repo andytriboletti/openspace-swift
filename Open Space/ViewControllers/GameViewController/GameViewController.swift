@@ -20,7 +20,11 @@ class GameViewController: UIViewController {
     var tempNode: SCNNode!
     var spaceShip: [SCNNode]!
     var tapGesture: UITapGestureRecognizer?
+    @IBOutlet var currencyLabel: UILabel!
+    @IBOutlet var energyLabel: UILabel!
+
     @IBOutlet var headerButton: UIButton!
+
     @IBOutlet var headerButton2: UIButton!
     @IBOutlet var headerButtonView: UIView!
     @IBOutlet var headerButton2View: UIView!

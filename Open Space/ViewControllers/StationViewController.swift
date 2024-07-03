@@ -34,7 +34,7 @@ class StationViewController: UIViewController {
 
     func loadPreviewImage(from url: URL) {
         // Use URLSession to load the image data
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             if let data = data, error == nil {
                 DispatchQueue.main.async {
                     self.previewImageView.image = UIImage(data: data)
@@ -43,4 +43,3 @@ class StationViewController: UIViewController {
         }.resume()
     }
 }
-

@@ -233,7 +233,6 @@ class OpenspaceAPI {
         task.resume()
     }
 
-
     // MARK: - WebSocket
 
     func initWebsocket() {

@@ -58,7 +58,6 @@ struct UsernameEntryView: View {
         }
     }
 
-
     func isValidUsername(_ username: String) -> Bool {
         let usernameRegex = "^[a-zA-Z0-9]{3,20}$"
         let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", usernameRegex)

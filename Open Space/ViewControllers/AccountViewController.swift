@@ -52,7 +52,6 @@ class AccountViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
-
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
            let confirmationAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
            confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

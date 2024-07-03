@@ -31,5 +31,8 @@ extension Defaults.Keys {
     static let stationPreviewLocation = Key<String>("stationPreviewLocation", default: "")
     static let stationName = Key<String>("stationName", default: "")
     static let stationId = Key<String>("stationId", default: "")
+    static let currency = Key<Int>("currency", default: 1000)
+    static let currentEnergy = Key<Int>("currentEnergy", default: 5)
+    static let totalEnergy = Key<Int>("totalEnergy", default: 5)
 
 }
