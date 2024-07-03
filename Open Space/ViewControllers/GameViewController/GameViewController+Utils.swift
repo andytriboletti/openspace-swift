@@ -57,7 +57,7 @@ extension GameViewController {
         //if stationMeshLocation.lowercased().hasSuffix(".usdz") {
             downloadAndDisplayUSDZ(from: stationMeshLocation)
        // } else {
-            addTempObject(name: stationMeshLocation, position: SCNVector3(-500, 0, -200), scale: 20) // Adjusted scale to 20
+            addTempObject(name: stationMeshLocation, position: SCNVector3(-500, 0, -200), scale: 30) // Adjusted scale to 20
        // }
         //setupBackground()
     }
@@ -102,8 +102,8 @@ extension GameViewController {
             let scene = try SCNScene(url: fileURL, options: nil)
             let stationNode = scene.rootNode.clone()
             stationNode.position = SCNVector3(-500, 0, -200)
-            stationNode.scale = SCNVector3(20, 20, 20) // Adjusted scale to 20
-
+            //stationNode.scale = SCNVector3(20, 20, 20) // Adjusted scale to 20
+            stationNode.scale = SCNVector3(60, 60, 60)
             // Add stationNode to the scene
             self.scnView.scene?.rootNode.addChildNode(stationNode)
 
