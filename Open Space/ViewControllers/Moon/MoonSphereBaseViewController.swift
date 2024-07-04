@@ -180,19 +180,22 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         return floorNode
     }
     func setupYourSpheres() {
-        // Remove any existing targets
-        enterYourSphereButton.removeTarget(nil, action: nil, for: .touchUpInside)
+        DispatchQueue.main.async { [self] in
 
-        if yourSpheres?.count == 0 {
-            enterYourSphereButton.setTitle("CLAIM YOUR FIRST SPHERE", for: .normal)
-            enterYourSphereButton.addTarget(self, action: #selector(claimFirstSphere), for: .touchUpInside)
-            claimAnotherSphereButton.isHidden=true
+            // Remove any existing targets
+            self.enterYourSphereButton.removeTarget(nil, action: nil, for: .touchUpInside)
 
-        } else {
-            // it's not empty set the action to go to the sphere view
-            enterYourSphereButton.setTitle("ENTER YOUR SPHERE", for: .normal)
-            enterYourSphereButton.addTarget(self, action: #selector(goToSphereView), for: .touchUpInside)
-            claimAnotherSphereButton.isHidden=false
+            if yourSpheres?.count == 0 {
+                self.enterYourSphereButton.setTitle("CLAIM YOUR FIRST SPHERE", for: .normal)
+                self.enterYourSphereButton.addTarget(self, action: #selector(claimFirstSphere), for: .touchUpInside)
+                self.claimAnotherSphereButton.isHidden=true
+
+            } else {
+                // it's not empty set the action to go to the sphere view
+                self.enterYourSphereButton.setTitle("ENTER YOUR SPHERE", for: .normal)
+                self.enterYourSphereButton.addTarget(self, action: #selector(goToSphereView), for: .touchUpInside)
+                self.claimAnotherSphereButton.isHidden=false
+            }
         }
     }
 

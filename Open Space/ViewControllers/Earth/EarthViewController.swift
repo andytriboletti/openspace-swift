@@ -33,6 +33,15 @@ class EarthViewController: UIViewController {
         // })
 
     }
+
+    @IBAction func quests() {
+        // self.dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "goToQuests", sender: self)
+            // self.dismiss(animated: true, completion: nil)
+
+        // })
+
+    }
     @objc func shipsAction(_ sender: UIBarButtonItem) {
 
         self.performSegue(withIdentifier: "selectShip", sender: sender)

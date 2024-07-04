@@ -42,8 +42,6 @@ extension GameViewController {
         self.energyLabel.text = "Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])"
     }
 
-
-
     func setNearFromLocationState() {
         DispatchQueue.main.async {
             switch self.appDelegate.gameState.locationState {

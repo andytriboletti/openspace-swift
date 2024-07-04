@@ -1,11 +1,3 @@
-//
-//  OpenspaceAPI.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 7/14/23.
-//  Copyright © 2023 GreenRobot LLC. All rights reserved.
-//
-
 import Foundation
 import FirebaseAuth
 import Defaults
@@ -51,14 +43,14 @@ class OpenspaceAPI {
         }
     }
 
-    struct Response: Codable {
+    struct NeighborsResponse: Codable {
         let status: String
         let results: [Neighbor]
     }
 
     enum FetchDataError: Error {
-        case invalidResponse
         case networkError(Error)
+        case invalidResponse
         case jsonParsingError(Error)
     }
 
@@ -88,7 +80,14 @@ class OpenspaceAPI {
             completion(.failure(.invalidResponse))
             return
         }
-        performRequest(request: request, completion: completion)
+        performRequest(request: request) { (result: Result<NeighborsResponse, FetchDataError>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     func checkDailyTreasureAvailability(planet: String, completion: @escaping (Result<String, Error>) -> Void) {

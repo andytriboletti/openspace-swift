@@ -1,11 +1,3 @@
-//
-//  SelectNeighborSphereViewController.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 3/28/24.
-//  Copyright © 2024 GreenRobot LLC. All rights reserved.
-//
-
 import UIKit
 import Defaults
 
@@ -13,8 +5,19 @@ class SelectNeighborSphereViewController: UIViewController, UICollectionViewData
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    // var data = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
     var neighbors: [OpenspaceAPI.Neighbor] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
+        // Register the cell class with the identifier
+        collectionView.register(NeighborSphereCell.self, forCellWithReuseIdentifier: "neighborSphereCell")
+
+        fetchData()
+    }
 
     func fetchData() {
         let email = Defaults[.email]
@@ -22,8 +25,8 @@ class SelectNeighborSphereViewController: UIViewController, UICollectionViewData
 
         OpenspaceAPI.shared.fetchNeighbors(email: email, authToken: authToken) { result in
             switch result {
-            case .success(let responseData):
-                self.neighbors = responseData
+            case .success(let neighbors):
+                self.neighbors = neighbors
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -33,17 +36,11 @@ class SelectNeighborSphereViewController: UIViewController, UICollectionViewData
         }
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        collectionView.dataSource = self
-        collectionView.delegate = self
-
-        collectionView.register(NeighborSphereCell.self, forCellWithReuseIdentifier: "neighborSphereCell")
-        fetchData()
-    }
-
     // MARK: - UICollectionViewDataSource
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1 // Assuming there's always one section
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return neighbors.count
@@ -51,10 +48,17 @@ class SelectNeighborSphereViewController: UIViewController, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "neighborSphereCell", for: indexPath) as? NeighborSphereCell else {
-                    fatalError("Failed to dequeue NeighborSphereCell.")
-                }
-        cell.titleLabel.text = neighbors[indexPath.item].username
-                return cell
+            fatalError("Failed to dequeue NeighborSphereCell.")
+        }
+
+        // Ensure the index is within bounds
+        if indexPath.item < neighbors.count {
+            cell.titleLabel.text = neighbors[indexPath.item].username
+        } else {
+            cell.titleLabel.text = ""
+        }
+
+        return cell
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -62,10 +66,14 @@ class SelectNeighborSphereViewController: UIViewController, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 50)
     }
-    // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Defaults[.neighborUsername]=neighbors[indexPath.item].username
-        performSegue(withIdentifier: "NeighborSphereInventorySegue", sender: indexPath)
-     }
 
+    // MARK: - UICollectionViewDelegate
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Ensure the index is within bounds
+        if indexPath.item < neighbors.count {
+            Defaults[.neighborUsername] = neighbors[indexPath.item].username
+            performSegue(withIdentifier: "NeighborSphereInventorySegue", sender: indexPath)
+        }
+    }
 }
