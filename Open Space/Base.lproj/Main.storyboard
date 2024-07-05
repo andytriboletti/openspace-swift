@@ -158,10 +158,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HM-3k-odO">
-                                <rect key="frame" x="0.0" y="38" width="800" height="562"/>
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-0C-Fzj">
-                                <rect key="frame" x="0.0" y="58" width="800" height="150"/>
+                                <rect key="frame" x="0.0" y="20" width="800" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="217" y="0.0" width="367" height="80"/>
@@ -643,10 +643,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-cN-zkr">
-                                <rect key="frame" x="0.0" y="38" width="800" height="502"/>
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="540"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="215" y="58" width="369.5" height="400"/>
+                                <rect key="frame" x="215" y="20" width="369.5" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="369.5" height="80"/>
@@ -2302,14 +2302,14 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="yUZ-Q9-T5m"/>
-        <segue reference="awi-wi-S5y"/>
-        <segue reference="67b-Hk-5Ts"/>
-        <segue reference="Olt-Xz-tpo"/>
+        <segue reference="yKX-Ie-zFg"/>
+        <segue reference="R0G-66-DuO"/>
+        <segue reference="6XQ-gR-cEl"/>
         <segue reference="fiu-Wn-O7o"/>
-        <segue reference="e01-Ue-bDj"/>
-        <segue reference="IdK-sq-0gW"/>
-        <segue reference="XCF-Mg-a4A"/>
-        <segue reference="YOT-JB-gTc"/>
+        <segue reference="WHQ-Wr-Nav"/>
+        <segue reference="ULg-O7-lmG"/>
+        <segue reference="jz9-hn-pTh"/>
+        <segue reference="MVd-TG-9WI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
@@ -2319,16 +2319,16 @@
         <image name="quasar.png" width="1041" height="586"/>
         <image name="sun.dust" catalog="system" width="128" height="120"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.34901960784313724" green="0.67843137254901964" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
