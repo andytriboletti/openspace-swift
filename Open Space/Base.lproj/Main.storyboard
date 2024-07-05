@@ -2040,76 +2040,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cen-mk-PQK">
-                                <rect key="frame" x="0.0" y="100" width="1032" height="1176"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Neighbor Sphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRb-7a-oJv">
-                                        <rect key="frame" x="425.5" y="0.0" width="181.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eph-zV-oIm">
-                                        <rect key="frame" x="0.0" y="28.5" width="1032" height="1089.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZpI-jp-nai">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="neighborSphereCell" id="D7o-v6-OC9">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tzC-xy-CyO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </collectionViewCellContentView>
-                                                <connections>
-                                                    <segue destination="zqF-l6-reB" kind="presentation" identifier="NeighborSphereInventorySegue" modalPresentationStyle="fullScreen" id="wzz-vu-mLf"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOM-xQ-MOH">
-                                        <rect key="frame" x="441.5" y="1126" width="149.5" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="3qR-yl-ZzB"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="bZq-5d-Cio"/>
-                                            <constraint firstAttribute="height" constant="50" id="gNi-aH-UNu"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Exit Your Sphere"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Neighbor Sphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRb-7a-oJv">
+                                <rect key="frame" x="673" y="-508" width="188" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eph-zV-oIm">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="500"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZpI-jp-nai">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="neighborSphereCell" id="D7o-v6-OC9">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tzC-xy-CyO">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
                                         <connections>
-                                            <segue destination="U1y-oS-a8q" kind="presentation" modalPresentationStyle="fullScreen" id="Olt-Xz-tpo"/>
+                                            <segue destination="zqF-l6-reB" kind="presentation" identifier="NeighborSphereInventorySegue" modalPresentationStyle="fullScreen" id="wzz-vu-mLf"/>
                                         </connections>
-                                    </button>
-                                </subviews>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOM-xQ-MOH">
+                                <rect key="frame" x="331" y="500" width="139" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="eph-zV-oIm" secondAttribute="trailing" id="4oK-Yi-a6e"/>
-                                    <constraint firstItem="eph-zV-oIm" firstAttribute="leading" secondItem="cen-mk-PQK" secondAttribute="leading" id="g47-E9-pS8"/>
+                                    <constraint firstAttribute="height" constant="100" id="cG0-XC-KrF"/>
                                 </constraints>
-                            </stackView>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Exit Neighbor Spheres"/>
+                                <connections>
+                                    <segue destination="U1y-oS-a8q" kind="presentation" modalPresentationStyle="fullScreen" id="Olt-Xz-tpo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yY1-LB-7EX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="yY1-LB-7EX" firstAttribute="trailing" secondItem="cen-mk-PQK" secondAttribute="trailing" id="4Yh-RI-s8V"/>
-                            <constraint firstItem="cen-mk-PQK" firstAttribute="leading" secondItem="yY1-LB-7EX" secondAttribute="leading" id="BlF-ct-t8a"/>
-                            <constraint firstAttribute="bottom" secondItem="cen-mk-PQK" secondAttribute="bottom" constant="100" id="gSg-Po-DXq"/>
-                            <constraint firstItem="cen-mk-PQK" firstAttribute="top" secondItem="yY1-LB-7EX" secondAttribute="top" constant="100" id="tOH-we-3JK"/>
-                            <constraint firstItem="cen-mk-PQK" firstAttribute="leading" secondItem="yY1-LB-7EX" secondAttribute="leading" id="vHf-Ug-LHb"/>
-                            <constraint firstItem="cen-mk-PQK" firstAttribute="trailing" secondItem="yY1-LB-7EX" secondAttribute="trailing" id="y1d-0d-5XN"/>
+                            <constraint firstItem="cRb-7a-oJv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="amg-Ie-a73" secondAttribute="leading" constant="20" symbolic="YES" id="7Ie-Fq-InF"/>
+                            <constraint firstItem="cRb-7a-oJv" firstAttribute="top" secondItem="amg-Ie-a73" secondAttribute="top" constant="-508" id="MDY-SP-ziX"/>
+                            <constraint firstItem="yY1-LB-7EX" firstAttribute="trailing" secondItem="eph-zV-oIm" secondAttribute="trailing" id="YtB-gD-SK9"/>
+                            <constraint firstAttribute="bottom" secondItem="eph-zV-oIm" secondAttribute="bottom" constant="100" id="aL2-qY-rdA"/>
+                            <constraint firstItem="yY1-LB-7EX" firstAttribute="bottom" secondItem="qOM-xQ-MOH" secondAttribute="bottom" id="i7x-ZV-LKi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cRb-7a-oJv" secondAttribute="trailing" constant="-80.666666666666686" id="iMb-Bm-smE"/>
+                            <constraint firstItem="qOM-xQ-MOH" firstAttribute="centerX" secondItem="amg-Ie-a73" secondAttribute="centerX" id="mXK-ek-Djf"/>
+                            <constraint firstItem="eph-zV-oIm" firstAttribute="leading" secondItem="yY1-LB-7EX" secondAttribute="leading" id="x2c-Nl-RPR"/>
+                            <constraint firstItem="eph-zV-oIm" firstAttribute="top" secondItem="yY1-LB-7EX" secondAttribute="top" id="x4V-9y-FX5"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="eph-zV-oIm" id="czK-EI-DBK"/>
+                        <outlet property="collectionView" destination="eph-zV-oIm" id="OYi-0p-m82"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDC-SW-HfA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5560.8695652173919" y="1348.6607142857142"/>
+            <point key="canvasLocation" x="5560.4651162790697" y="1347.4248927038627"/>
         </scene>
         <!--Neighbor Sphere Inventory View Controller-->
         <scene sceneID="Jm9-xo-DPx">
@@ -2310,9 +2302,9 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="yUZ-Q9-T5m"/>
-        <segue reference="yKX-Ie-zFg"/>
+        <segue reference="awi-wi-S5y"/>
         <segue reference="67b-Hk-5Ts"/>
-        <segue reference="Xc6-Ax-Zhf"/>
+        <segue reference="Olt-Xz-tpo"/>
         <segue reference="fiu-Wn-O7o"/>
         <segue reference="e01-Ue-bDj"/>
         <segue reference="IdK-sq-0gW"/>
@@ -2327,16 +2319,16 @@
         <image name="quasar.png" width="1041" height="586"/>
         <image name="sun.dust" catalog="system" width="128" height="120"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34901960784313724" green="0.67843137254901964" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
