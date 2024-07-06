@@ -155,23 +155,32 @@ class ExploreMoonViewController: UIViewController {
             switch result {
             case .success(let response):
                 print("Response from check daily treasure availability: \(response)")
-                if response == "claimed" {
-                    DispatchQueue.main.async {
-                        self.showClaimedText()
-                        self.hideTreasureButton()
+
+                // Assuming response is a JSON string and converting it to a dictionary
+                if let data = response.data(using: .utf8),
+                   let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let status = jsonResponse["status"] as? String {
+                    if status == "claimed" {
+                        DispatchQueue.main.async {
+                            self.showClaimedText()
+                            self.hideTreasureButton()
+                        }
+                    } else if status == "available" {
+                        DispatchQueue.main.async {
+                            self.showTreasureButton()
+                        }
                     }
-                } else if response == "available" {
-                    DispatchQueue.main.async {
-                        self.showTreasureButton()
-                    }
+                } else {
+                    print("Unexpected response format")
+                    self.showError()
                 }
+
             case .failure(let error):
                 print("Error checking daily treasure availability: \(error.localizedDescription)")
                 self.showError()
             }
         }
     }
-
     var claimedLabel: UILabel?
 
     func showClaimedText() {

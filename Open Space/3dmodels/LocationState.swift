@@ -11,12 +11,11 @@ public enum LocationState: CaseIterable {
     case nearISS
     case nearMoon
     case nearMars
+    case nearYourSpaceStation
     case onEarth
     case onISS
     case onMoon
     case onMars
-    case nearYourSpaceStation
-    
     case nearNothing
 
     static func random<G: RandomNumberGenerator>(using generator: inout G) -> LocationState {
