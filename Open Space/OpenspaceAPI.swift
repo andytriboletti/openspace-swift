@@ -151,6 +151,7 @@ class OpenspaceAPI {
         performSimpleRequest(request: request, completion: completion)
     }
 
+
     func loginWithEmail(email: String, authToken: String, completion: @escaping (Result<String, Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": authToken]
         guard let request = createPostRequest(urlString: "\(serverURL)login", parameters: parameters) else {
@@ -334,6 +335,7 @@ class OpenspaceAPI {
         }
         task.resume()
     }
+    
     private func performSimpleRequest<T>(request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -365,11 +367,11 @@ class OpenspaceAPI {
                     let responseString = String(data: data, encoding: .utf8)
                     completion(.success(responseString as! T))
                 } else if T.self == (String, String, Int).self {
-                    let components = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                    if let message = components?["message"] as? String,
-                       let currency = components?["currency"] as? String,
-                       let totalEnergy = components?["total_energy"] as? Int {
-                        completion(.success((message, currency, totalEnergy) as! T))
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    if let status = json?["status"] as? String,
+                       let mineral = json?["mineral"] as? String,
+                       let amount = json?["amount"] as? Int {
+                        completion(.success((status, mineral, amount) as! T))
                     } else {
                         completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse response"])))
                     }
@@ -382,6 +384,7 @@ class OpenspaceAPI {
         }
         task.resume()
     }
+
     // Function to refresh the Firebase auth token
     func refreshAuthToken(completion: @escaping (String?, Error?) -> Void) {
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { (token, error) in
