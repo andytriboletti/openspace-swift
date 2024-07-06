@@ -185,8 +185,27 @@ class OpenspaceAPI {
             completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
             return
         }
-        performSimpleRequest(request: request, completion: completion)
+
+        // Logging the request parameters
+        print("Request parameters: \(parameters)")
+
+        performSimpleRequest(request: request) { (result: Result<[String: Any], Error>) in
+            switch result {
+            case .success(let response):
+                print("Server response: \(response)")
+                if let message = response["message"] as? String, message == "Inserted text prompt successfully." {
+                    completion(.success(true))
+                } else {
+                    let errorMessage = response["error"] as? String ?? "Unknown error"
+                    completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
+
+
 
     func submitToServer(username: String, email: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let parameters: [String: Any] = ["username": username, "email": email, "authToken": Defaults[.authToken]]
@@ -336,6 +355,7 @@ class OpenspaceAPI {
         task.resume()
     }
     
+
     private func performSimpleRequest<T>(request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {

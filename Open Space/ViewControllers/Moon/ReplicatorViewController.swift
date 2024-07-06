@@ -86,6 +86,10 @@ class ReplicatorViewController: UIViewController {
         let email = Defaults[.email] // Replace with the actual email
         let authToken = Defaults[.authToken] // Replace with the actual auth token
         let yourSphereId = Defaults[.selectedSphereId]
+        //print(email)
+        //print(authToken)
+        //print(text)
+        //print(yourSphereId)
 
         OpenspaceAPI.shared.sendTextToServer(email: email, authToken: authToken, text: text, sphereId: yourSphereId) { result in
             switch result {
