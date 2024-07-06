@@ -48,4 +48,31 @@ class Utils {
             viewController.present(hostingController, animated: true, completion: nil)
         }
     }
+    // Save location of user
+    
+    public func saveLocation(location: String, usesEnergy: String) {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+
+        guard !email.isEmpty, !authToken.isEmpty else {
+            print("Error: Email or Auth token is empty")
+            return
+        }
+
+        OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location, usesEnergy: usesEnergy) { result in
+            switch result {
+            case .success(let response):
+                print("openspace: success savign location")
+               // print("Success: \(response.message)")
+                //print("Current Energy: \(response.currentEnergy)")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                if let nsError = error as NSError? {
+                    print("Error Domain: \(nsError.domain)")
+                    print("Error Code: \(nsError.code)")
+                    print("Error UserInfo: \(nsError.userInfo)")
+                }
+            }
+        }
+    }
 }

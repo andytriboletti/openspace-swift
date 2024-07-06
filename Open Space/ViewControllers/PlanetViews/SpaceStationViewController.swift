@@ -44,6 +44,7 @@ class SpaceStationViewController: UIViewController {
     }
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
+        Utils().saveLocation(location: "nearISS", usesEnergy: "0")
         self.performSegue(withIdentifier: "takeOff", sender: self)
         // self.dismiss(animated: true, completion: nil)
 

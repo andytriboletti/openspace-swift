@@ -160,8 +160,8 @@ class OpenspaceAPI {
         performSimpleRequest(request: request, completion: completion)
     }
 
-    func saveLocation(email: String, authToken: String, location: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "location": location]
+    func saveLocation(email: String, authToken: String, location: String, usesEnergy: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "location": location, "usesEnergy": usesEnergy]
         guard let request = createPostRequest(urlString: "\(serverURL)save-location", parameters: parameters) else {
             completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
             return
@@ -334,31 +334,47 @@ class OpenspaceAPI {
         }
         task.resume()
     }
-
     private func performSimpleRequest<T>(request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response type"])))
                 return
             }
+
+            if httpResponse.statusCode != 200 {
+                let errorMessage = "HTTP status code: \(httpResponse.statusCode)"
+                completion(.failure(NSError(domain: "com.openspace.error", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+                return
+            }
+
             guard let data = data else {
-                completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+                completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
                 return
             }
 
             do {
-                if T.self == Void.self {
-                    completion(.success(() as! T))
-                } else if T.self == Bool.self {
-                    completion(.success(true as! T))
-                } else if let responseData = try JSONSerialization.jsonObject(with: data, options: []) as? T {
-                    completion(.success(responseData))
+                if T.self == [String: Any].self {
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    completion(.success(json as! T))
+                } else if T.self == String.self {
+                    let responseString = String(data: data, encoding: .utf8)
+                    completion(.success(responseString as! T))
+                } else if T.self == (String, String, Int).self {
+                    let components = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    if let message = components?["message"] as? String,
+                       let currency = components?["currency"] as? String,
+                       let totalEnergy = components?["total_energy"] as? Int {
+                        completion(.success((message, currency, totalEnergy) as! T))
+                    } else {
+                        completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse response"])))
+                    }
                 } else {
-                    completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+                    completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unsupported response type"])))
                 }
             } catch {
                 completion(.failure(error))
@@ -366,7 +382,6 @@ class OpenspaceAPI {
         }
         task.resume()
     }
-
     // Function to refresh the Firebase auth token
     func refreshAuthToken(completion: @escaping (String?, Error?) -> Void) {
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { (token, error) in

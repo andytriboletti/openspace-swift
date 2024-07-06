@@ -62,6 +62,14 @@ extension GameViewController {
                         self.appDelegate.gameState.locationState = .nearMars
                     case "nearYourSpaceStation":
                         self.appDelegate.gameState.locationState = .nearYourSpaceStation
+                    case "onEarth":
+                        self.appDelegate.gameState.locationState = .onEarth
+                    case "onISS":
+                        self.appDelegate.gameState.locationState = .onISS
+                    case "onMoon":
+                        self.appDelegate.gameState.locationState = .onMoon
+                    case "onMars":
+                        self.appDelegate.gameState.locationState = .onMars
                     case "nearNothing":
                         self.appDelegate.gameState.locationState = .nearNothing
                     default:

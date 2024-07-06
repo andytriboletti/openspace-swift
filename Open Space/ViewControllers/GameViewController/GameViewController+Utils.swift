@@ -44,6 +44,7 @@ extension GameViewController {
 
     func setNearFromLocationState() {
         DispatchQueue.main.async {
+            //todo add onEarth, onISS, onMoon, onMars
             switch self.appDelegate.gameState.locationState {
             case .nearEarth:
                 self.nearEarth()
@@ -55,10 +56,30 @@ extension GameViewController {
                 self.nearMars()
             case .nearYourSpaceStation: // Updated this case
                 self.nearYourSpaceStation()
+            case .onEarth:
+                self.onEarth()
+            case .onISS:
+                self.onISS()
+            case .onMoon:
+                self.onMoon();
+            case .onMars:
+                self.onMars();
             case .nearNothing:
                 self.nearNothing()
             }
         }
+    }
+    func onEarth() {
+        self.performSegue(withIdentifier: "landOnEarth", sender: self)
+    }
+    func onISS() {
+        self.performSegue(withIdentifier: "dockWithStation", sender: self)
+    }
+    func onMoon() {
+        self.performSegue(withIdentifier: "landOnMoon", sender: self)
+    }
+    func onMars() {
+        self.performSegue(withIdentifier: "landOnMars", sender: self)
     }
 
     func drawYourSpaceStation() {

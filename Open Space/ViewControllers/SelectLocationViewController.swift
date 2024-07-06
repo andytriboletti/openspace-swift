@@ -80,12 +80,19 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
                     whereString = "nearYourSpaceStation"
                 case .nearNothing:
                     whereString = "nearNothing"
-
+                case .onEarth:
+                    whereString = "nearNothing"
+                case .onISS:
+                    whereString = "nearNothing"
+                case .onMoon:
+                    whereString = "nearNothing"
+                case .onMars:
+                    whereString = "nearNothing"
                 }
                 
                 print(whereString) // Output: "premium"
-
-                self.saveLocation(location: whereString)
+                
+                Utils().saveLocation(location: whereString, usesEnergy: "1")
                 Defaults[.traveling] = "true"
                 self.performSegue(withIdentifier: "goToGame", sender: self)
             }
@@ -99,22 +106,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         }
     }
 
-    // Save location of user
-    func saveLocation(location: String) {
-        let email = Defaults[.email] // Replace with the actual email
-        let authToken = Defaults[.authToken] // Replace with the actual auth token
 
-        OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location) { [weak self] result in
-            switch result {
-            case .success(let message):
-                // Location saved successfully
-                print("Success: \(message)")
-            case .failure(let error):
-                // Handle the error
-                print("Error: \(error.localizedDescription)")
-            }
-        }
-    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as? LocationCollectionViewCell else {

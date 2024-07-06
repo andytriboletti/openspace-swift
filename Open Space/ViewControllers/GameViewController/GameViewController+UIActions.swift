@@ -44,6 +44,8 @@ extension GameViewController {
     @IBAction func landButtonClicked() {
         if appDelegate.gameState.locationState == LocationState.nearEarth {
             print("land on earth")
+            Utils().saveLocation(location: "onEarth", usesEnergy: "0")
+
             moveToPlanet()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -52,6 +54,8 @@ extension GameViewController {
         } else if appDelegate.gameState.locationState == LocationState.nearISS {
             print("land on iss")
             moveToPlanet()
+            Utils().saveLocation(location: "onISS", usesEnergy: "0")
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "dockWithStation", sender: self)
             }
@@ -59,12 +63,16 @@ extension GameViewController {
         } else if appDelegate.gameState.locationState == LocationState.nearMoon {
             print("land on the moon")
             moveToPlanet()
+            Utils().saveLocation(location: "onMoon", usesEnergy: "0")
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "landOnMoon", sender: self)
             }
         } else if appDelegate.gameState.locationState == LocationState.nearMars {
             print("land on mars")
             moveToPlanet()
+            Utils().saveLocation(location: "onMars", usesEnergy: "0")
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.performSegue(withIdentifier: "landOnMars", sender: self)
             }

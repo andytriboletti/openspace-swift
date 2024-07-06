@@ -27,6 +27,8 @@ class EarthViewController: UIViewController {
 
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
+            Utils().saveLocation(location: "nearEarth", usesEnergy: "0")
+
             self.performSegue(withIdentifier: "takeOff", sender: self)
             // self.dismiss(animated: true, completion: nil)
 
