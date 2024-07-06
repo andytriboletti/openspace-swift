@@ -54,7 +54,50 @@ class OpenspaceAPI {
         case jsonParsingError(Error)
     }
 
+    struct UserMineral: Codable {
+        let userId: String
+        let mineralId: String
+        let mineralName: String
+        let kilograms: String
+
+        enum CodingKeys: String, CodingKey {
+            case userId = "user_id"
+            case mineralId = "mineral_id"
+            case mineralName = "mineral_name"
+            case kilograms
+        }
+    }
+
+
+    struct UserMineralsResponse: Codable {
+           let userMinerals: [UserMineral]
+
+           enum CodingKeys: String, CodingKey {
+               case userMinerals = "user_minerals"
+           }
+       }
+    
     // MARK: - API Requests
+
+
+    func fetchUserMinerals(email: String, completion: @escaping (Result<[UserMineral], FetchDataError>) -> Void) {
+        let parameters: [String: Any] = ["email": email]
+        guard let request = createPostRequest(urlString: "\(serverURL)get-user-minerals", parameters: parameters) else {
+            completion(.failure(.invalidResponse))
+            return
+        }
+        performRequest(request: request) { (result: Result<UserMineralsResponse, FetchDataError>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response.userMinerals))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+
+
 
     private func createPostRequest(urlString: String, parameters: [String: Any]) -> URLRequest? {
         guard let url = URL(string: urlString) else { return nil }
