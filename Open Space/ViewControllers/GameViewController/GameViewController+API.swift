@@ -10,6 +10,7 @@ import UIKit
 import Defaults
 
 extension GameViewController {
+    
     func getLocation() {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
@@ -17,7 +18,9 @@ extension GameViewController {
         OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let (location, username, yourSpheres, neighborSpheres, spaceStation)):
+                case .success(let data):
+                    let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy) = data
+
                     if let username = username, !username.isEmpty {
                         Defaults[.username] = username
                     } else {
@@ -29,40 +32,38 @@ extension GameViewController {
                         Defaults[.yourSpheres] = yourSpheresData
                         Defaults[.neighborSpheres] = neighborSpheresData
                     } else {
-                        print("Error converting data")
+                        print("Error converting spheres data")
                     }
 
                     if let spaceStation = spaceStation,
                        let meshLocation = spaceStation["mesh_location"] as? String,
                        let previewLocation = spaceStation["preview_location"] as? String,
                        let stationName = spaceStation["spacestation_name"] as? String,
-                       let stationId = spaceStation["station_id"] as? String,
-                       let currency = spaceStation["currency"] as? Int,
-                       let currentEnergy = spaceStation["current_energy"] as? Int,
-                       let totalEnergy = spaceStation["total_energy"] as? Int {
+                       let stationId = spaceStation["station_id"] as? String {
 
                         Defaults[.stationMeshLocation] = meshLocation
                         Defaults[.stationPreviewLocation] = previewLocation
                         Defaults[.stationName] = stationName
                         Defaults[.stationId] = stationId
-                        Defaults[.currency] = currency
-                        Defaults[.currentEnergy] = currentEnergy
-                        Defaults[.totalEnergy] = totalEnergy
                     }
+
+                    Defaults[.currency] = currency
+                    Defaults[.currentEnergy] = currentEnergy
+                    Defaults[.totalEnergy] = totalEnergy
 
                     switch location {
                     case "nearEarth":
-                        self.appDelegate.gameState.locationState = LocationState.nearEarth
+                        self.appDelegate.gameState.locationState = .nearEarth
                     case "nearISS":
-                        self.appDelegate.gameState.locationState = LocationState.nearISS
+                        self.appDelegate.gameState.locationState = .nearISS
                     case "nearMoon":
-                        self.appDelegate.gameState.locationState = LocationState.nearMoon
+                        self.appDelegate.gameState.locationState = .nearMoon
                     case "nearMars":
-                        self.appDelegate.gameState.locationState = LocationState.nearMars
+                        self.appDelegate.gameState.locationState = .nearMars
                     case "nearYourSpaceStation":
-                        self.appDelegate.gameState.locationState = LocationState.nearYourSpaceStation
+                        self.appDelegate.gameState.locationState = .nearYourSpaceStation
                     case "nearNothing":
-                        self.appDelegate.gameState.locationState = LocationState.nearNothing
+                        self.appDelegate.gameState.locationState = .nearNothing
                     default:
                         print("Unknown location: \(location)")
                     }

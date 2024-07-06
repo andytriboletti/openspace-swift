@@ -180,7 +180,7 @@ class OpenspaceAPI {
         performSimpleRequest(request: request, completion: completion)
     }
 
-    func getLocation(email: String, authToken: String, completion: @escaping (Result<(String, String?, [[String: Any]]?, [[String: Any]]?, [String: Any]?), Error>) -> Void) {
+    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int), Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": authToken]
         guard let request = createPostRequest(urlString: "\(serverURL)get-data", parameters: parameters) else {
             completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
@@ -203,12 +203,15 @@ class OpenspaceAPI {
 
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    if let location = json["last_location"] as? String {
+                    if let location = json["last_location"] as? String,
+                       let currency = json["currency"] as? Int,
+                       let currentEnergy = json["current_energy"] as? Int,
+                       let totalEnergy = json["total_energy"] as? Int {
                         let username = json["username"] as? String
                         let yourSpheres = json["your_spheres"] as? [[String: Any]]
                         let neighborSpheres = json["neighbor_spheres"] as? [[String: Any]]
                         let spaceStation = json["your_space_station"] as? [String: Any]
-                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation)))
+                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy)))
                     } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
                         self.refreshAuthToken { newToken, tokenError in
                             if let newToken = newToken {

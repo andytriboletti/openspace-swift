@@ -38,41 +38,57 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         print("selected")
         print(indexPath.row)
         print(indexPath.section)
+        var energy = Defaults[.currentEnergy]
+        if(energy == 0) {
 
-        if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
-            // Handle space station selection
-//            if indexPath.row == locations.count - 1, let meshLocation = Defaults[.stationMeshLocation] as? String, !meshLocation.isEmpty {
-//                goToStationViewController()
-//                return
-//            }
+            let alert = UIAlertController(title: "Not enough energy to travel",
+                                          message: "You don't have enough energy to travel. Energy recharges by 1 every 10 minutes by solar energy.", preferredStyle: .alert)
 
-            // Regular location selection handling
-            var goingToLocation = LocationState.allCases[indexPath.row]
-            appDelegate.gameState.goingToLocationState = goingToLocation
+            //alert.addAction(UIAlertAction(title: "Leave", style: .destructive, handler: {(_: UIAlertAction!) in
+            //    self.reallyLeave()
+            //}))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(_: UIAlertAction!) in
 
-            var whereString: String
+            }))
+            self.present(alert, animated: false)
 
-            switch goingToLocation {
-            case .nearEarth:
-                whereString = "nearEarth"
-            case .nearISS:
-                whereString = "nearISS"
-            case .nearMars:
-                whereString = "nearMars"
-            case .nearMoon:
-                whereString = "nearMoon"
-            case .nearYourSpaceStation:
-                whereString = "nearYourSpaceStation"
-            case .nearNothing:
-                whereString = "nearNothing"
+        }
+        else {
+            if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
+                // Handle space station selection
+                //            if indexPath.row == locations.count - 1, let meshLocation = Defaults[.stationMeshLocation] as? String, !meshLocation.isEmpty {
+                //                goToStationViewController()
+                //                return
+                //            }
 
+                // Regular location selection handling
+                var goingToLocation = LocationState.allCases[indexPath.row]
+                appDelegate.gameState.goingToLocationState = goingToLocation
+
+                var whereString: String
+
+                switch goingToLocation {
+                case .nearEarth:
+                    whereString = "nearEarth"
+                case .nearISS:
+                    whereString = "nearISS"
+                case .nearMars:
+                    whereString = "nearMars"
+                case .nearMoon:
+                    whereString = "nearMoon"
+                case .nearYourSpaceStation:
+                    whereString = "nearYourSpaceStation"
+                case .nearNothing:
+                    whereString = "nearNothing"
+
+                }
+                
+                print(whereString) // Output: "premium"
+
+                self.saveLocation(location: whereString)
+                Defaults[.traveling] = "true"
+                self.performSegue(withIdentifier: "goToGame", sender: self)
             }
-
-            print(whereString) // Output: "premium"
-
-            self.saveLocation(location: whereString)
-            Defaults[.traveling] = "true"
-            self.performSegue(withIdentifier: "goToGame", sender: self)
         }
     }
 

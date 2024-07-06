@@ -251,6 +251,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
+    
     func getLocation() {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
@@ -259,12 +260,10 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             guard let self = self else { return }
 
             switch result {
-            case .success(let (location, username, yourSpheres, neighborSpheres, spaceStation)):
-                // Save your_spheres and neighbor_spheres
-                self.yourSpheres = yourSpheres
-                self.neighborSpheres = neighborSpheres
+            case .success(let data):
+                let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy) = data
 
-                // Check if yourSpheres is of the correct type
+                // Save your_spheres and neighbor_spheres
                 if let yourSpheresArray = yourSpheres as? [[String: String]] {
                     self.yourSpheres = yourSpheresArray
                 } else {
@@ -272,7 +271,6 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
                     self.yourSpheres = []
                 }
 
-                // Check if neighborSpheres is of the correct type
                 if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
                     self.neighborSpheres = neighborSpheresArray
                 } else {
@@ -288,6 +286,16 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
                     Defaults[.stationMeshLocation] = meshLocation
                     Defaults[.stationName] = stationName
                     Defaults[.stationId] = stationId
+                }
+
+                // Save currency and energy data to Defaults
+                Defaults[.currency] = currency
+                Defaults[.currentEnergy] = currentEnergy
+                Defaults[.totalEnergy] = totalEnergy
+
+                // Save username if provided
+                if let username = username, !username.isEmpty {
+                    Defaults[.username] = username
                 }
 
                 self.setupYourSpheres()
