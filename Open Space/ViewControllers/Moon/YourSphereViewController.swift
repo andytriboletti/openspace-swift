@@ -28,7 +28,7 @@ class YourSphereViewController: UIViewController {
     @IBAction func createNewButton() {
         if count > 5 {
             // show alert
-            let myMessage = "Your sphere can hold 6 items and you've already created 4 items. Coming soon ability to claim new spheres and delete objects."
+            let myMessage = "Your sphere can hold 6 items and you've already created 6 items. Coming soon ability to claim new spheres and delete objects."
             let alertController = UIAlertController(title: "Max items created", message: myMessage, preferredStyle: .alert)
 
             // Add an action (button)
