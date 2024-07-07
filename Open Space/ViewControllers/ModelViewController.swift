@@ -1,10 +1,3 @@
-//
-//  ModelViewController.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 3/9/24.
-//  Copyright © 2024 GreenRobot LLC. All rights reserved.
-//
 import Foundation
 import UIKit
 import SceneKit
@@ -24,13 +17,28 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
     var mtlFileName: String = ""
     var textureFileName: String = ""
 
-    func downloadAndUnzipFile(from url: URL) {
-        let task = URLSession.shared.downloadTask(with: url) { (tempLocalUrl, _, error) in
-            if let tempLocalUrl = tempLocalUrl, error == nil {
-                // Temporary location where the zip file is downloaded
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        baseNode = SCNNode()
+
+        let zipURLString = Defaults[.selectedMeshLocation]
+        if let zipFileURL = URL(string: zipURLString) {
+            cacheOrDownloadAndUnzipFile(from: zipFileURL)
+        } else {
+            print("Invalid URL string for selected mesh location.")
+        }
+    }
+
+    func cacheOrDownloadAndUnzipFile(from url: URL) {
+        FileDownloader.shared.downloadFile(from: url) { cachedURL in
+            guard let cachedURL = cachedURL else {
+                print("Failed to download or cache the file from: \(url)")
+                return
+            }
+
+            DispatchQueue.global(qos: .background).async {
                 if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                   // let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/gorilla")
-                    let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/")
+                    let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder")
 
                     // Ensure that the directory is created before unzipping
                     do {
@@ -41,7 +49,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                     }
 
                     // Unzip the downloaded file
-                    let success = SSZipArchive.unzipFile(atPath: tempLocalUrl.path, toDestination: destinationUrl.path)
+                    let success = SSZipArchive.unzipFile(atPath: cachedURL.path, toDestination: destinationUrl.path)
 
                     if success {
                         print("Files unzipped successfully at \(destinationUrl.path)")
@@ -49,20 +57,17 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                         // Display the first .obj file
                         if let objFilePath = self.findFirstOBJFile(in: destinationUrl) {
                             DispatchQueue.main.async {
-                                self.displayOBJFile4(at: objFilePath)
+                                self.displayOBJFile(at: objFilePath)
                             }
                         } else {
                             print("No .obj file found in the directory.")
                         }
                     } else {
-                        print("Failed to unzip the file at \(tempLocalUrl.path)")
+                        print("Failed to unzip the file at \(cachedURL.path)")
                     }
                 }
-            } else {
-                print("Error downloading or unzipping the file: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
-        task.resume()
     }
 
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
@@ -77,9 +82,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
     func findFirstOBJFile(in directoryURL: URL) -> URL? {
         do {
             let fileManager = FileManager.default
-            let contents = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
-
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: [])
+            let directoryContents = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: [])
 
             print("Contents of directory at \(directoryURL.path): \(directoryContents)")
 
@@ -94,42 +97,31 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         return nil
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        baseNode = SCNNode()
-
-        var zipURL = Defaults[.selectedMeshLocation]
-        print(zipURL)
-        // let zipFileURL = URL(string: "https://server.openspace.greenrobot.com/gorilla.zip")!
-        let zipFileURL = URL(string: zipURL)!
-
-        downloadAndUnzipFile(from: zipFileURL)
-    }
-    func displayOBJFile4(at objFilePath: URL) {
+    func displayOBJFile(at objFilePath: URL) {
         do {
             // Conversion from degrees to radians
             let ninetyDegreesInRadians = Float.pi / 2 // 90 degrees
             let oneEightyDegreesInRadians = Float.pi  // 180 degrees
 
-               // Directly create an SCNScene from the .obj file URL
-               let scene = try SCNScene(url: objFilePath, options: nil)
+            // Directly create an SCNScene from the .obj file URL
+            let scene = try SCNScene(url: objFilePath, options: nil)
 
-                // First, try rotating around the y-axis to face towards you
+            // First, try rotating around the y-axis to face towards you
             scene.rootNode.eulerAngles.y = oneEightyDegreesInRadians + ninetyDegreesInRadians
-            scene.rootNode.eulerAngles.z = ninetyDegreesInRadians+oneEightyDegreesInRadians
+            scene.rootNode.eulerAngles.z = ninetyDegreesInRadians + oneEightyDegreesInRadians
 
-               // Set the scene to the scnView directly without casting
-               scnView.scene = scene
+            // Set the scene to the scnView directly without casting
+            scnView.scene = scene
 
-               // Add some basic lighting to the scene
-               scnView.autoenablesDefaultLighting = true
+            // Add some basic lighting to the scene
+            scnView.autoenablesDefaultLighting = true
 
-               // Allow the user to control the camera
-               scnView.allowsCameraControl = true
+            // Allow the user to control the camera
+            scnView.allowsCameraControl = true
 
-           } catch {
-               print("Failed to load the obj file: \(error)")
-           }
+        } catch {
+            print("Failed to load the obj file: \(error)")
+        }
     }
 
     func displayOBJFile3(at url: URL) {
@@ -153,7 +145,6 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                     for material in geometry.materials {
                         material.diffuse.contents = UIColor.red
                         material.emission.contents = UIColor.red // Makes the color appear more vivid
-
                     }
                 }
 
@@ -204,12 +195,11 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
             // Allow the user to control the camera
             scnView.allowsCameraControl = true
 
-            // addObject2(name: "model.obj", position: SCNVector3(10, 10, 10), scale: SCNVector3(10, 10, 10))
-
         } catch {
             print("Error loading scene from \(objFilePath): \(error.localizedDescription)")
         }
     }
+
     func addObject2(name: String, position: SCNVector3?, scale: SCNVector3?) {
         let shipScene = SCNScene(named: name)!
         var _: SCNAnimationPlayer! = nil

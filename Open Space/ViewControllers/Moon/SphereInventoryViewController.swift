@@ -1,5 +1,4 @@
 import UIKit
-
 import Defaults
 
 class SphereInventoryViewController: AlertViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -24,7 +23,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
 
     func goToModel() {
         // Get the frame of the existing view controller's view
-            let frame = self.view.frame
+        let frame = self.view.frame
 
         // User is not signed in
         let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController
@@ -48,26 +47,26 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
     var pendingModels: [OpenspaceAPI.PromptData] = []
     var completedModels: [OpenspaceAPI.PromptData] = []
 
-       // Rest of your class code...
+    // Rest of your class code...
 
-       func fetchData() {
-           let email = Defaults[.email]
-           let authToken = Defaults[.authToken]
-           let yourSphereId = Defaults[.selectedSphereId]
+    func fetchData() {
+        let email = Defaults[.email]
+        let authToken = Defaults[.authToken]
+        let yourSphereId = Defaults[.selectedSphereId]
 
-           OpenspaceAPI.shared.fetchData(email: email, authToken: authToken, sphereId: yourSphereId) { result in
-               switch result {
-               case .success(let responseData):
-                   self.pendingModels = responseData.pending
-                   self.completedModels = responseData.completed
-                   DispatchQueue.main.async {
-                       self.collectionView.reloadData()
-                   }
-               case .failure(let error):
-                   print("Error fetching data: \(error)")
-               }
-           }
-       }
+        OpenspaceAPI.shared.fetchData(email: email, authToken: authToken, sphereId: yourSphereId) { result in
+            switch result {
+            case .success(let responseData):
+                self.pendingModels = responseData.pending
+                self.completedModels = responseData.completed
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print("Error fetching data: \(error)")
+            }
+        }
+    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -90,7 +89,17 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             let videoURL = URL(string: completedModels[indexPath.row].videoLocation!)
             let label = completedModels[indexPath.row].textPrompt
             print(videoURL!)
-            cell.configure(withURL: videoURL!, labelText: label) // Customize the label text as needed
+
+            // Use the FileDownloader to cache the video file
+            FileDownloader.shared.downloadFile(from: videoURL!) { cachedURL in
+                DispatchQueue.main.async {
+                    if let cachedURL = cachedURL {
+                        cell.configure(withURL: cachedURL, labelText: label)
+                    } else {
+                        cell.configure(withURL: videoURL!, labelText: label) // Fallback to original URL if caching fails
+                    }
+                }
+            }
         } else if indexPath.section == 1 {
             let label = "Pending: \(pendingModels[indexPath.row].textPrompt)"
             cell.configureForTextOnly(labelText: label)
