@@ -1,10 +1,10 @@
-//
 //  NeighborSphereInventoryViewController.swift
 //  Open Space
 //
 //  Created by Andrew Triboletti on 3/29/24.
 //  Copyright © 2024 GreenRobot LLC. All rights reserved.
 //
+
 import Foundation
 import UIKit
 import SceneKit
@@ -19,7 +19,7 @@ class NeighborSphereInventoryViewController: UIViewController {
     var objFilePaths: [URL] = []
 
     // Define zipFileURLs as a variable
-       var zipFileURLs: [URL] = []
+    var zipFileURLs: [URL] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,12 @@ class NeighborSphereInventoryViewController: UIViewController {
         // Example: Download zip file URLs dynamically
         downloadZipFileURLs()
 
-          // Download and unzip all files
-          for (index, zipFileURL) in zipFileURLs.enumerated() {
-              downloadAndUnzipFile(from: zipFileURL, into: "zip\(index + 1)")
-          }
-      }
+        // Download and unzip all files
+        for (index, zipFileURL) in zipFileURLs.enumerated() {
+            cacheOrDownloadAndUnzipFile(from: zipFileURL, into: "zip\(index + 1)")
+        }
+    }
+
     // Method to dynamically download zip file URLs
     func downloadZipFileURLs() {
         // Example: Download zip file URLs dynamically
@@ -47,10 +48,14 @@ class NeighborSphereInventoryViewController: UIViewController {
         ]
     }
 
-    func downloadAndUnzipFile(from url: URL, into directory: String) {
-        let task = URLSession.shared.downloadTask(with: url) { (tempLocalUrl, _, error) in
-            if let tempLocalUrl = tempLocalUrl, error == nil {
-                // Temporary location where the zip file is downloaded
+    func cacheOrDownloadAndUnzipFile(from url: URL, into directory: String) {
+        FileDownloader.shared.downloadFile(from: url) { cachedURL in
+            guard let cachedURL = cachedURL else {
+                print("Failed to download or cache the file from: \(url)")
+                return
+            }
+
+            DispatchQueue.global(qos: .background).async {
                 if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                     // Directory to extract the zip contents
                     let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/\(directory)")
@@ -64,7 +69,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                     }
 
                     // Unzip the downloaded file
-                    let success = SSZipArchive.unzipFile(atPath: tempLocalUrl.path, toDestination: destinationUrl.path)
+                    let success = SSZipArchive.unzipFile(atPath: cachedURL.path, toDestination: destinationUrl.path)
 
                     if success {
                         print("Files unzipped successfully at \(destinationUrl.path)")
@@ -81,14 +86,11 @@ class NeighborSphereInventoryViewController: UIViewController {
                             }
                         }
                     } else {
-                        print("Failed to unzip the file at \(tempLocalUrl.path)")
+                        print("Failed to unzip the file at \(cachedURL.path)")
                     }
                 }
-            } else {
-                print("Error downloading or unzipping the file: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
-        task.resume()
     }
 
     func displayOBJFiles() {

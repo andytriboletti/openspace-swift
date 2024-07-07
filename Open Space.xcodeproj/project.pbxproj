@@ -258,6 +258,8 @@
 		722181932B8FF26200FB572F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181922B8FF26200FB572F /* ChatViewController.swift */; };
 		7221819D2B953CC800FB572F /* model2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7221819A2B953CC800FB572F /* model2.obj */; };
 		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
+		723A0F5B2C3AFB1500F11350 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */; };
+		723A0F5C2C3AFB1500F11350 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */; };
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
 		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
 		727693932C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
@@ -592,6 +594,7 @@
 		722181922B8FF26200FB572F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		7221819A2B953CC800FB572F /* model2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model2.obj; sourceTree = "<group>"; };
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
+		723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
 		727693922C3654B000372B7E /* QuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsViewController.swift; sourceTree = "<group>"; };
@@ -975,6 +978,7 @@
 				72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */,
 				721BF2A72BBB020B0046E7E7 /* IAPManager.swift */,
 				721BF2A92BBB0FCB0046E7E7 /* Constants.swift */,
+				723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -1920,6 +1924,7 @@
 				6F93856024259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift in Sources */,
 				6F022420240248CB0035F7E4 /* ExploreEarthSceneViewController.swift in Sources */,
 				72A99BE82C29D14F00D96813 /* EnemyAttackerFactory.swift in Sources */,
+				723A0F5B2C3AFB1500F11350 /* FileDownloader.swift in Sources */,
 				72A99BF02C29D14F00D96813 /* EnemyHackerFactory.swift in Sources */,
 				6F9385622425A249001BE3F6 /* EarthLocationState.swift in Sources */,
 				72A99C622C29D14F00D96813 /* MyCharacter.swift in Sources */,
@@ -2022,6 +2027,7 @@
 				721AB5902BB918F400E68231 /* WhereOnEarthSelectCollectionViewController.swift in Sources */,
 				721AB5912BB918F400E68231 /* ExploreEarthSceneViewController.swift in Sources */,
 				72A99BE92C29D14F00D96813 /* EnemyAttackerFactory.swift in Sources */,
+				723A0F5C2C3AFB1500F11350 /* FileDownloader.swift in Sources */,
 				72A99BF12C29D14F00D96813 /* EnemyHackerFactory.swift in Sources */,
 				721AB5922BB918F400E68231 /* EarthLocationState.swift in Sources */,
 				72A99C632C29D14F00D96813 /* MyCharacter.swift in Sources */,

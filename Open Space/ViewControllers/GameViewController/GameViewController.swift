@@ -103,6 +103,28 @@ class GameViewController: UIViewController {
 
         self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(self.tapGesture!)
+
+        cacheFiles()
+    }
+
+    func cacheFiles() {
+        let fileURLs = [
+            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
+            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
+            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!
+
+        ]
+
+        for fileURL in fileURLs {
+            FileDownloader.shared.downloadFile(from: fileURL) { cachedURL in
+                if let cachedURL = cachedURL {
+                    print("File downloaded and cached at: \(cachedURL.path)")
+                } else {
+                    print("Failed to download file from: \(fileURL)")
+                }
+            }
+        }
+
     }
 
     override func viewDidDisappear(_ animated: Bool) {
