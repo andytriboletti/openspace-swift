@@ -34,9 +34,6 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 
 • I have an Asana with a lot of tasks for this game. If you'd like to contribute, let me know.
 
-# Multiple Universes
-• If someone is interested in forking this code and creating their own universe, we could link the universes together through a worm hole kind of like a web ring. Contact me at andy@greenrobot.com to get started.
-
 # Info
 •All assets in this repository are copyright their respective owners.
 
