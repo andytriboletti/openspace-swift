@@ -1,6 +1,8 @@
 # openspace-swift
 
-If you find any bugs or defects email me at info@greenrobot.com or you can submit a pull request.
+If you find any bugs or defects email me at info@greenrobot.com or you can submit a pull request. 
+
+I made the code open source so users could contribute to the game by making pull requests, not so someone can take the code using my server and release it as their own game. Please don't do that. Send me an email if you have any questions.
 
 
 # Free Download
@@ -31,9 +33,6 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 • Speed up travel video segue
 
 • I have an Asana with a lot of tasks for this game. If you'd like to contribute, let me know.
-
-# Multiple Universes
-• If someone is interested in forking this code and creating their own universe, we could link the universes together through a worm hole kind of like a web ring. Contact me at andy@greenrobot.com to get started.
 
 # Info
 •All assets in this repository are copyright their respective owners.
