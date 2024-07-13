@@ -2,7 +2,7 @@
 
 If you find any bugs or defects email me at info@greenrobot.com or you can submit a pull request. 
 
-I made the code open source so users could contribute to the game, not so someone can take the code using my server and release it as their own game. Please don't do that. Send me an email if you have any questions.
+I made the code open source so users could contribute to the game by making pull requests, not so someone can take the code using my server and release it as their own game. Please don't do that. Send me an email if you have any questions.
 
 
 # Free Download
