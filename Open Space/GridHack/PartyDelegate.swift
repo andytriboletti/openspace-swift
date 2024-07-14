@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PartyDelegate: class {
+protocol PartyDelegate: AnyObject {
     func updatedParty()
 
 }

@@ -24,7 +24,8 @@ class LunarLoungeViewController: UIViewController, WKNavigationDelegate, WKUIDel
 
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
-        webConfiguration.preferences.javaScriptEnabled = true
+        //unneeded javascript enabled by default
+        //webConfiguration.preferences.javaScriptEnabled = true
         webConfiguration.websiteDataStore = WKWebsiteDataStore.default()
 
         let contentController = WKUserContentController()

@@ -38,7 +38,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         print("selected")
         print(indexPath.row)
         print(indexPath.section)
-        var energy = Defaults[.currentEnergy]
+        let energy = Defaults[.currentEnergy]
         if(energy == 0) {
 
             let alert = UIAlertController(title: "Not enough energy to travel",
@@ -54,7 +54,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
 
         }
         else {
-            if let cell = collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell {
+            if collectionView.cellForItem(at: indexPath) is LocationCollectionViewCell {
                 // Handle space station selection
                 //            if indexPath.row == locations.count - 1, let meshLocation = Defaults[.stationMeshLocation] as? String, !meshLocation.isEmpty {
                 //                goToStationViewController()
@@ -62,7 +62,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
                 //            }
 
                 // Regular location selection handling
-                var goingToLocation = LocationState.allCases[indexPath.row]
+                let goingToLocation = LocationState.allCases[indexPath.row]
                 appDelegate.gameState.goingToLocationState = goingToLocation
 
                 var whereString: String
@@ -163,7 +163,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+        if collectionViewLayout is UICollectionViewFlowLayout {
             let widthPerItem = 200 // collectionView.frame.width / 2 - flowLayout.minimumInteritemSpacing
             return CGSize(width: widthPerItem, height: widthPerItem)
         }

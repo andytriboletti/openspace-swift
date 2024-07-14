@@ -59,7 +59,8 @@ class GameViewController: UIViewController {
         let backgroundFilename = "starry-sky-998641.jpg"
         let image = UIImage(named: backgroundFilename)!
         let rose = UIColor(red: 1.000, green: 0.314, blue: 0.314, alpha: 0.5)
-        let semi = rose.withAlphaComponent(0.1)
+        //semi
+        _ = rose.withAlphaComponent(0.1)
         let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         let aspectScaledToFitImage = image.af.imageAspectScaled(toFill: size)
 

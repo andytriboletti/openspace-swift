@@ -61,7 +61,7 @@ class Utils {
 
         OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location, usesEnergy: usesEnergy) { result in
             switch result {
-            case .success(let response):
+            case .success(_):
                 print("openspace: success savign location")
                // print("Success: \(response.message)")
                 //print("Current Energy: \(response.currentEnergy)")

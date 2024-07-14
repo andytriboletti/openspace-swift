@@ -29,7 +29,8 @@ class FriendlyAttackerFactory: FactoryFactory {
                 return // or continue, or handle the error appropriately
             }
 
-            let maxCoord = gs.points.count
+            //maxCoord
+            _ = gs.points.count
 
             myBuilderLocation = CGPoint(x: 1, y: 1)
         } else {

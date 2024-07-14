@@ -7,7 +7,7 @@
 //
 
 import Foundation
-protocol MultiplayerProtocol: class {
+protocol MultiplayerProtocol: AnyObject {
     func opponentFound()
     func endGame()
     func connectionNotEstablished()
