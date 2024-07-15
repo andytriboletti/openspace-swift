@@ -41,8 +41,9 @@ struct SpaceStationConfig: Codable {
     var storage: Double
     var color1: CodableColor
     var color2: CodableColor
+    var location: String
 
-    static func generateRandomConfig() -> SpaceStationConfig {
+    static func generateRandomConfig(locations: [String]) -> SpaceStationConfig {
         return SpaceStationConfig(
             name: Defaults[.username] + "'s SpaceStation",
             parts: Int.random(in: 3...8),
@@ -53,7 +54,8 @@ struct SpaceStationConfig: Codable {
             cylinderHeight: Double.random(in: 0.3...1.0),
             storage: Double.random(in: 0.5...1.0),
             color1: UIColor.random.codableColor,
-            color2: UIColor.random.codableColor
+            color2: UIColor.random.codableColor,
+            location: locations.randomElement() ?? "Low Earth Orbit (LEO)"
         )
     }
 }
@@ -81,7 +83,8 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         cylinderHeight: 0.3,
         storage: 0.5,
         color1: UIColor.lightGray.codableColor,
-        color2: UIColor.lightGray.codableColor
+        color2: UIColor.lightGray.codableColor,
+        location: "Low Earth Orbit (LEO)"
     )
 
     let scrollView = UIScrollView()
@@ -92,6 +95,8 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
     var colorPickerCompletion: ((UIColor) -> Void)?
 
+    let locations = ["Low Earth Orbit (LEO)", "Geostationary Orbit (GEO)", "Lunar Orbit", "Lagrange Point (L1)", "Lagrange Point (L2)", "Mars Orbit", "Asteroid Belt", "Deep Space", "Jupiter's Moon (Europa)", "Jupiter's Moon (Ganymede)"]
+
     // TextField references
     var nameTextField: UITextField!
     var partsTextField: UITextField!
@@ -101,6 +106,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
     var cylinderTextField: UITextField!
     var cylinderHeightTextField: UITextField!
     var storageTextField: UITextField!
+    var locationPopupButton: UIButton!
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -170,7 +176,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor            , constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             formStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
@@ -252,6 +258,9 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         color2Button.translatesAutoresizingMaskIntoConstraints = false
         color2Button.addTarget(self, action: #selector(selectColor2), for: .touchUpInside)
 
+        let locationLabel = createPaddedLabel(text: "Location:")
+        locationPopupButton = createLocationPopupButton(locations: locations)
+
         let formStackView = UIStackView(arrangedSubviews: [
             createHorizontalStackView(label: nameLabel, textField: nameTextField, isFullWidth: true),
             createHorizontalStackView(label: partsLabel, textField: partsTextField),
@@ -262,7 +271,8 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
             createHorizontalStackView(label: cylinderHeightLabel, textField: cylinderHeightTextField),
             createHorizontalStackView(label: storageLabel, textField: storageTextField),
             createHorizontalStackView(label: color1Label, textField: color1Button),
-            createHorizontalStackView(label: color2Label, textField: color2Button)
+            createHorizontalStackView(label: color2Label, textField: color2Button),
+            createHorizontalStackView(label: locationLabel, textField: locationPopupButton)
         ])
         formStackView.axis = .vertical
         formStackView.spacing = 20
@@ -355,15 +365,16 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
             ])
         } else {
             label.widthAnchor.constraint(equalToConstant: 150).isActive = true
-            textField.widthAnchor.constraint(equalToConstant: 250).isActive = true
         }
 
         return stackView
     }
 
     @objc func generateRandomValues() {
-        config = SpaceStationConfig.generateRandomConfig()
+        config = SpaceStationConfig.generateRandomConfig(locations: locations)
         setupForm()
+        locationPopupButton.setTitle(config.location, for: .normal)
+        locationPopupButton.tag = locations.firstIndex(of: config.location) ?? 0
     }
 
     @objc func createSpaceStation() {
@@ -376,6 +387,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         config.cylinder = Double(cylinderTextField.text ?? "") ?? 0.0
         config.cylinderHeight = Double(cylinderHeightTextField.text ?? "") ?? 0.0
         config.storage = Double(storageTextField.text ?? "") ?? 0.0
+        config.location = locations[locationPopupButton.tag]
 
         // Convert config to JSON string
         let encoder = JSONEncoder()
@@ -448,4 +460,36 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         colorPickerCompletion?(viewController.selectedColor)
         colorPickerCompletion = nil
     }
+
+    func createLocationPopupButton(locations: [String]) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle("Select Location", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showLocationMenu), for: .touchUpInside)
+        return button
+    }
+
+    @objc func showLocationMenu() {
+        let alertController = UIAlertController(title: "Select Location", message: nil, preferredStyle: .actionSheet)
+
+        for (index, location) in locations.enumerated() {
+            let action = UIAlertAction(title: location, style: .default) { _ in
+                self.locationPopupButton.setTitle(location, for: .normal)
+                self.locationPopupButton.tag = index
+                self.config.location = location
+            }
+            alertController.addAction(action)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = locationPopupButton
+            popoverController.sourceRect = locationPopupButton.bounds
+        }
+
+        present(alertController, animated: true, completion: nil)
+    }
 }
+
