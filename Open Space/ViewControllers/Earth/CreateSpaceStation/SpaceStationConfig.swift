@@ -24,8 +24,9 @@ struct SpaceStationConfig: Codable {
     var location: String
 
     static func generateRandomConfig(locations: [String]) -> SpaceStationConfig {
+        let randomNumber = Int.random(in: 1000...9999)
         return SpaceStationConfig(
-            name: Defaults[.username] + "'s SpaceStation",
+            name: Defaults[.username] + "'s SpaceStation " + String(randomNumber),
             parts: Int.random(in: 3...8),
             torusMajor: Double.random(in: 2.0...5.0),
             torusMinor: Double.random(in: 0.1...0.5),
@@ -38,4 +39,5 @@ struct SpaceStationConfig: Codable {
             location: locations.randomElement() ?? "Low Earth Orbit (LEO)"
         )
     }
+
 }
