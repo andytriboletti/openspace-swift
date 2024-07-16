@@ -262,6 +262,12 @@
 		723A0F5C2C3AFB1500F11350 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */; };
 		723A0F5E2C3CEC8F00F11350 /* LunarLoungeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */; };
 		723A0F5F2C3CEC8F00F11350 /* LunarLoungeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */; };
+		723A0F812C45F71700F11350 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F802C45F71700F11350 /* UIComponents.swift */; };
+		723A0F822C45F71700F11350 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F802C45F71700F11350 /* UIComponents.swift */; };
+		723A0F842C45F72E00F11350 /* SpaceStationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F832C45F72E00F11350 /* SpaceStationConfig.swift */; };
+		723A0F852C45F72E00F11350 /* SpaceStationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F832C45F72E00F11350 /* SpaceStationConfig.swift */; };
+		723A0F872C45F74000F11350 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F862C45F74000F11350 /* CodableColor.swift */; };
+		723A0F882C45F74000F11350 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F862C45F74000F11350 /* CodableColor.swift */; };
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
 		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
 		727693932C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
@@ -598,6 +604,9 @@
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
 		723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarLoungeViewController.swift; sourceTree = "<group>"; };
+		723A0F802C45F71700F11350 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
+		723A0F832C45F72E00F11350 /* SpaceStationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceStationConfig.swift; sourceTree = "<group>"; };
+		723A0F862C45F74000F11350 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
 		727693922C3654B000372B7E /* QuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsViewController.swift; sourceTree = "<group>"; };
@@ -1153,6 +1162,17 @@
 			path = gorilla;
 			sourceTree = "<group>";
 		};
+		723A0F892C45F7B200F11350 /* CreateSpaceStation */ = {
+			isa = PBXGroup;
+			children = (
+				72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */,
+				723A0F802C45F71700F11350 /* UIComponents.swift */,
+				723A0F832C45F72E00F11350 /* SpaceStationConfig.swift */,
+				723A0F862C45F74000F11350 /* CodableColor.swift */,
+			);
+			path = CreateSpaceStation;
+			sourceTree = "<group>";
+		};
 		7243A82E2A796BFA0054E261 /* Moon */ = {
 			isa = PBXGroup;
 			children = (
@@ -1172,10 +1192,10 @@
 		7243A82F2A796C1A0054E261 /* Earth */ = {
 			isa = PBXGroup;
 			children = (
+				723A0F892C45F7B200F11350 /* CreateSpaceStation */,
 				6F93855F24259CB8001BE3F6 /* WhereOnEarthSelectCollectionViewController.swift */,
 				6F6146F024224F2F000DFACC /* EarthViewController.swift */,
 				6F02241F240248CB0035F7E4 /* ExploreEarthSceneViewController.swift */,
-				72AA23172C1F6B5900001448 /* ConfigureSpaceStationViewController.swift */,
 				727693922C3654B000372B7E /* QuestsViewController.swift */,
 			);
 			path = Earth;
@@ -1908,6 +1928,7 @@
 				72A99C4A2C29D14F00D96813 /* GridHackGameViewController.swift in Sources */,
 				72A99C2C2C29D14F00D96813 /* AttributeProtocol.swift in Sources */,
 				72ADF8E32BB782C200976E4C /* AboutViewController.swift in Sources */,
+				723A0F872C45F74000F11350 /* CodableColor.swift in Sources */,
 				72A99C482C29D14F00D96813 /* GridHackGameState.swift in Sources */,
 				72A99C8C2C334BA000D96813 /* GameViewController+API.swift in Sources */,
 				7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */,
@@ -1919,6 +1940,7 @@
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
 				727693932C3654B100372B7E /* QuestsViewController.swift in Sources */,
 				72A99C682C29D14F00D96813 /* ProfileViewController.swift in Sources */,
+				723A0F842C45F72E00F11350 /* SpaceStationConfig.swift in Sources */,
 				72B0B3A42BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift in Sources */,
 				72A99C7C2C3349E300D96813 /* UsernameEntryView.swift in Sources */,
 				72A99C702C29D14F00D96813 /* Troll.swift in Sources */,
@@ -1945,6 +1967,7 @@
 				7221818D2B8EA2C200FB572F /* ModelCollectionViewCell.swift in Sources */,
 				72A99C642C29D14F00D96813 /* PartyDelegate.swift in Sources */,
 				72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */,
+				723A0F812C45F71700F11350 /* UIComponents.swift in Sources */,
 				7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */,
 				72FC18BB2B9CF08F007AF494 /* VideoCacheManager.swift in Sources */,
 				721BF2AA2BBB0FCC0046E7E7 /* Constants.swift in Sources */,
@@ -2012,6 +2035,7 @@
 				72A99C4B2C29D14F00D96813 /* GridHackGameViewController.swift in Sources */,
 				72A99C2D2C29D14F00D96813 /* AttributeProtocol.swift in Sources */,
 				721AB5872BB918F400E68231 /* AboutViewController.swift in Sources */,
+				723A0F882C45F74000F11350 /* CodableColor.swift in Sources */,
 				72A99C492C29D14F00D96813 /* GridHackGameState.swift in Sources */,
 				72A99C8D2C334BA000D96813 /* GameViewController+API.swift in Sources */,
 				721AB5882BB918F400E68231 /* AccountViewController.swift in Sources */,
@@ -2023,6 +2047,7 @@
 				721AB58C2BB918F400E68231 /* NavGameController.swift in Sources */,
 				727693942C3654B100372B7E /* QuestsViewController.swift in Sources */,
 				72A99C692C29D14F00D96813 /* ProfileViewController.swift in Sources */,
+				723A0F852C45F72E00F11350 /* SpaceStationConfig.swift in Sources */,
 				721AB58D2BB918F400E68231 /* SelectNeighborSphereViewController.swift in Sources */,
 				72A99C7D2C3349E300D96813 /* UsernameEntryView.swift in Sources */,
 				72A99C712C29D14F00D96813 /* Troll.swift in Sources */,
@@ -2049,6 +2074,7 @@
 				721AB5962BB918F400E68231 /* AuctionHouseViewController.swift in Sources */,
 				72A99C652C29D14F00D96813 /* PartyDelegate.swift in Sources */,
 				721AB5972BB918F400E68231 /* ModelCollectionViewCell.swift in Sources */,
+				723A0F822C45F71700F11350 /* UIComponents.swift in Sources */,
 				721AB5982BB918F400E68231 /* MoonViewController.swift in Sources */,
 				721AB5992BB918F400E68231 /* HeaderView.swift in Sources */,
 				721AB59A2BB918F400E68231 /* VideoCacheManager.swift in Sources */,

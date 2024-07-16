@@ -1,76 +1,6 @@
 import UIKit
 import Defaults
 
-struct CodableColor: Codable {
-    let red: CGFloat
-    let green: CGFloat
-    let blue: CGFloat
-    let alpha: CGFloat
-
-    init(color: UIColor) {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        self.red = red
-        self.green = green
-        self.blue = blue
-        self.alpha = alpha
-    }
-
-    var uiColor: UIColor {
-        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
-    }
-}
-
-extension UIColor {
-    var codableColor: CodableColor {
-        return CodableColor(color: self)
-    }
-}
-
-struct SpaceStationConfig: Codable {
-    var name: String
-    var parts: Int
-    var torusMajor: Double
-    var torusMinor: Double
-    var bevelbox: Double
-    var cylinder: Double
-    var cylinderHeight: Double
-    var storage: Double
-    var color1: CodableColor
-    var color2: CodableColor
-    var location: String
-
-    static func generateRandomConfig(locations: [String]) -> SpaceStationConfig {
-        return SpaceStationConfig(
-            name: Defaults[.username] + "'s SpaceStation",
-            parts: Int.random(in: 3...8),
-            torusMajor: Double.random(in: 2.0...5.0),
-            torusMinor: Double.random(in: 0.1...0.5),
-            bevelbox: Double.random(in: 0.2...0.5),
-            cylinder: Double.random(in: 0.5...3.0),
-            cylinderHeight: Double.random(in: 0.3...1.0),
-            storage: Double.random(in: 0.5...1.0),
-            color1: UIColor.random.codableColor,
-            color2: UIColor.random.codableColor,
-            location: locations.randomElement() ?? "Low Earth Orbit (LEO)"
-        )
-    }
-}
-
-extension UIColor {
-    static var random: UIColor {
-        return UIColor(
-            red: CGFloat.random(in: 0...1),
-            green: CGFloat.random(in: 0...1),
-            blue: CGFloat.random(in: 0...1),
-            alpha: 1.0
-        )
-    }
-}
-
 class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewControllerDelegate {
 
     var config = SpaceStationConfig(
@@ -164,9 +94,9 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
         let titleLabel = createTitleLabel()
         let formStackView = createFormStackView()
-        let generateButton = createGenerateButton()
-        let createButton = createCreateButton()
-        let backButton = createBackButton()
+        let generateButton = createGenerateButton(target: self, action: #selector(generateRandomValues))
+        let createButton = createCreateButton(target: self, action: #selector(createSpaceStation))
+        let backButton = createBackButton(target: self, action: #selector(goBack))
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(formStackView)
@@ -176,7 +106,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor            , constant: padding),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             formStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
@@ -259,7 +189,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         color2Button.addTarget(self, action: #selector(selectColor2), for: .touchUpInside)
 
         let locationLabel = createPaddedLabel(text: "Location:")
-        locationPopupButton = createLocationPopupButton(locations: locations)
+        locationPopupButton = createLocationPopupButton(target: self, action: #selector(showLocationMenu))
 
         let formStackView = UIStackView(arrangedSubviews: [
             createHorizontalStackView(label: nameLabel, textField: nameTextField, isFullWidth: true),
@@ -280,94 +210,6 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         formStackView.translatesAutoresizingMaskIntoConstraints = false
 
         return formStackView
-    }
-
-    func createGenerateButton() -> UIButton {
-        let generateButton = UIButton(type: .system)
-        generateButton.setTitle("Generate Random Values", for: .normal)
-        generateButton.backgroundColor = .orange
-        generateButton.setTitleColor(.white, for: .normal)
-        generateButton.layer.cornerRadius = 10
-        generateButton.translatesAutoresizingMaskIntoConstraints = false
-        generateButton.addTarget(self, action: #selector(generateRandomValues), for: .touchUpInside)
-        return generateButton
-    }
-
-    func createCreateButton() -> UIButton {
-        let createButton = UIButton(type: .system)
-        createButton.setTitle("Create Space Station", for: .normal)
-        createButton.backgroundColor = .green
-        createButton.setTitleColor(.white, for: .normal)
-        createButton.layer.cornerRadius = 10
-        createButton.translatesAutoresizingMaskIntoConstraints = false
-        createButton.addTarget(self, action: #selector(createSpaceStation), for: .touchUpInside)
-        return createButton
-    }
-
-    func createBackButton() -> UIButton {
-        let backButton = UIButton(type: .system)
-        backButton.setTitle("Back", for: .normal)
-        backButton.backgroundColor = .blue
-        backButton.setTitleColor(.white, for: .normal)
-        backButton.layer.cornerRadius = 10
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
-        return backButton
-    }
-
-    func createPaddedLabel(text: String) -> UIView {
-        let container = UIView()
-        container.backgroundColor = .white
-        container.layer.cornerRadius = 10
-        container.layer.borderWidth = 1
-        container.layer.borderColor = UIColor.lightGray.cgColor
-        container.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        container.translatesAutoresizingMaskIntoConstraints = false
-
-        let label = UILabel()
-        label.text = text
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = .darkGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        container.addSubview(label)
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: container.layoutMarginsGuide.topAnchor),
-            label.bottomAnchor.constraint(equalTo: container.layoutMarginsGuide.bottomAnchor),
-            label.leadingAnchor.constraint(equalTo: container.layoutMarginsGuide.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: container.layoutMarginsGuide.trailingAnchor)
-        ])
-
-        return container
-    }
-
-    func createTextField(placeholder: String, value: String) -> UITextField {
-        let textField = UITextField()
-        textField.placeholder = placeholder
-        textField.text = value
-        textField.borderStyle = .roundedRect
-        textField.backgroundColor = .white
-        textField.textColor = .black
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }
-
-    func createHorizontalStackView(label: UIView, textField: UIView, isFullWidth: Bool = false) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: [label, textField])
-        stackView.axis = .horizontal
-        stackView.spacing = 10
-        stackView.alignment = .center
-        stackView.distribution = .fill
-
-        if isFullWidth {
-            NSLayoutConstraint.activate([
-                textField.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -10)
-            ])
-        } else {
-            label.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        }
-
-        return stackView
     }
 
     @objc func generateRandomValues() {
@@ -461,14 +303,6 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         colorPickerCompletion = nil
     }
 
-    func createLocationPopupButton(locations: [String]) -> UIButton {
-        let button = UIButton(type: .system)
-        button.setTitle("Select Location", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(showLocationMenu), for: .touchUpInside)
-        return button
-    }
-
     @objc func showLocationMenu() {
         let alertController = UIAlertController(title: "Select Location", message: nil, preferredStyle: .actionSheet)
 
@@ -492,4 +326,3 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         present(alertController, animated: true, completion: nil)
     }
 }
-
