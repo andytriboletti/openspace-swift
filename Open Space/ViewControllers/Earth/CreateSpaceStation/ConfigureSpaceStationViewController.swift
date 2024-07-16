@@ -254,7 +254,14 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
             case .success:
                 DispatchQueue.main.async {
                     // Handle success (e.g., show a success message)
+                    let alert = UIAlertController(title: "Success", message: "You created a space station. It will take a few minutes to build.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                     print("Space station created successfully")
+
+
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
