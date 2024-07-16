@@ -1,5 +1,6 @@
 import UIKit
 import Defaults
+import Alamofire
 
 class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewControllerDelegate {
 
@@ -219,6 +220,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         locationPopupButton.tag = locations.firstIndex(of: config.location) ?? 0
     }
 
+
     @objc func createSpaceStation() {
         // Gather data from text fields
         config.name = nameTextField.text ?? ""
@@ -247,7 +249,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         let authToken = Defaults[.authToken]
 
         // Call the API to create the space station
-        OpenspaceAPI.shared.createSpaceStation(email: email, authToken: authToken, configJson: configJson, spaceStationName: config.name) { result in
+        OpenspaceAPI.shared.createSpaceStation(email: email, authToken: authToken, configJson: configJson, spaceStationName: config.name, spaceStationLocation: config.location) { result in
             switch result {
             case .success:
                 DispatchQueue.main.async {
@@ -256,12 +258,23 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    // Handle error (e.g., show an error message)
+                    if error is OpenspaceAPI.DuplicateEntryError {
+                        let alert = UIAlertController(title: "Error", message: "Space station name already exists. Please choose a different name.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        let alert = UIAlertController(title: "Error", message: "Failed to create space station: \(error.localizedDescription)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                     print("Failed to create space station: \(error.localizedDescription)")
                 }
             }
         }
     }
+
+
+
 
     @objc func goBack() {
         self.dismiss(animated: true, completion: nil)

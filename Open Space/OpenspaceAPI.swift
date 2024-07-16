@@ -1,6 +1,7 @@
 import Foundation
 import FirebaseAuth
 import Defaults
+import Alamofire
 
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
@@ -233,15 +234,38 @@ class OpenspaceAPI {
         }
         performSimpleRequest(request: request, completion: completion)
     }
+    func createSpaceStation(email: String, authToken: String, configJson: String, spaceStationName: String, spaceStationLocation: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "email": email,
+            "authToken": authToken,
+            "configJson": configJson,
+            "spaceStationName": spaceStationName,
+            "spaceStationLocation": spaceStationLocation
+        ]
 
-    func createSpaceStation(email: String, authToken: String, configJson: String, spaceStationName: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "configJson": configJson, "spaceStationName": spaceStationName]
-        guard let request = createPostRequest(urlString: "\(serverURL)create-space-station", parameters: parameters) else {
-            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-            return
-        }
-        performSimpleRequest(request: request, completion: completion)
+        let url = "\(serverURL)create-space-station"
+
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    completion(.success(()))
+                case .failure(let error):
+                    if let data = response.data, let errorMessage = String(data: data, encoding: .utf8), errorMessage.contains("Duplicate entry") {
+                        completion(.failure(DuplicateEntryError()))
+                    } else {
+                        completion(.failure(error))
+                    }
+                }
+            }
     }
+
+    struct DuplicateEntryError: Error {}
+
+
+
+
 
     func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int), Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": authToken]
