@@ -1390,43 +1390,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-P0-nKm">
-                                <rect key="frame" x="387" y="530" width="27" height="16"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Exit"/>
-                                <connections>
-                                    <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="WHQ-Wr-Nav"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-Tb-xpX" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                <rect key="frame" x="29" y="0.0" width="742" height="80"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PL9-P7-NXt">
+                                <rect key="frame" x="-33" y="0.0" width="814" height="630"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-Tb-xpX" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
+                                        <rect key="frame" x="349" y="0.0" width="116" height="80"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="TaL-YR-DIw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqy-9R-Tlp">
+                                        <rect key="frame" x="0.0" y="90" width="814" height="430"/>
+                                    </sceneKitView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="u6j-CT-eht">
+                                        <rect key="frame" x="0.0" y="530" width="814" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-P0-nKm">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="nCP-9l-ldS"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Exit"/>
+                                                <connections>
+                                                    <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="WHQ-Wr-Nav"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ui-bR-Qxs">
+                                                <rect key="frame" x="432" y="0.0" width="382" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="OOV-wC-drK"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Delete This Objject"/>
+                                                <connections>
+                                                    <action selector="delete" destination="0oZ-qm-bPz" eventType="touchDown" id="0UN-XI-Au5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="9Ui-bR-Qxs" firstAttribute="height" secondItem="uEN-P0-nKm" secondAttribute="height" id="Ri0-kw-x1b"/>
+                                            <constraint firstItem="9Ui-bR-Qxs" firstAttribute="centerY" secondItem="u6j-CT-eht" secondAttribute="centerY" id="XH1-CV-fao"/>
+                                            <constraint firstItem="uEN-P0-nKm" firstAttribute="centerY" secondItem="u6j-CT-eht" secondAttribute="centerY" id="dgb-2G-KwG"/>
+                                            <constraint firstAttribute="height" constant="100" id="ktU-T7-WSp"/>
+                                            <constraint firstItem="9Ui-bR-Qxs" firstAttribute="width" secondItem="uEN-P0-nKm" secondAttribute="width" id="wXO-Q5-Tvv"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="TaL-YR-DIw"/>
+                                    <constraint firstItem="u6j-CT-eht" firstAttribute="leading" secondItem="PL9-P7-NXt" secondAttribute="leading" id="6VD-l4-4s3"/>
+                                    <constraint firstItem="u6j-CT-eht" firstAttribute="centerX" secondItem="PL9-P7-NXt" secondAttribute="centerX" id="Lzs-dD-gED"/>
+                                    <constraint firstItem="u6j-CT-eht" firstAttribute="leading" secondItem="PL9-P7-NXt" secondAttribute="leading" id="U6x-On-e5s"/>
+                                    <constraint firstAttribute="trailing" secondItem="u6j-CT-eht" secondAttribute="trailing" id="UV2-xB-HSi"/>
+                                    <constraint firstItem="dqy-9R-Tlp" firstAttribute="leading" secondItem="PL9-P7-NXt" secondAttribute="leadingMargin" id="gdq-mW-Qds"/>
+                                    <constraint firstAttribute="trailing" secondItem="u6j-CT-eht" secondAttribute="trailing" id="kXF-4J-P0B"/>
+                                    <constraint firstAttribute="bottom" secondItem="u6j-CT-eht" secondAttribute="bottom" id="rDh-bb-c5R"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
-                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqy-9R-Tlp">
-                                <rect key="frame" x="0.0" y="90" width="800" height="430"/>
-                            </sceneKitView>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="f95-lU-0ED"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="f95-lU-0ED" firstAttribute="bottom" secondItem="uEN-P0-nKm" secondAttribute="bottom" constant="54" id="4Bs-vP-AsD"/>
-                            <constraint firstItem="dqy-9R-Tlp" firstAttribute="top" secondItem="MeW-Tb-xpX" secondAttribute="bottom" constant="10" id="GYs-lX-lGO"/>
-                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="leading" secondItem="f95-lU-0ED" secondAttribute="leading" constant="29" id="Hi1-xD-6TI"/>
-                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="top" secondItem="f95-lU-0ED" secondAttribute="top" id="IUG-cg-mE4"/>
-                            <constraint firstItem="uEN-P0-nKm" firstAttribute="top" secondItem="dqy-9R-Tlp" secondAttribute="bottom" constant="10" id="SB5-KZ-WxA"/>
-                            <constraint firstItem="dqy-9R-Tlp" firstAttribute="trailing" secondItem="f95-lU-0ED" secondAttribute="trailing" id="f3h-rP-Gnc"/>
-                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="centerX" secondItem="uEN-P0-nKm" secondAttribute="centerX" id="rY3-qh-aYo"/>
-                            <constraint firstItem="dqy-9R-Tlp" firstAttribute="centerX" secondItem="QxO-Yt-o1Z" secondAttribute="centerX" id="rcb-eC-gNo"/>
-                            <constraint firstItem="MeW-Tb-xpX" firstAttribute="centerX" secondItem="QxO-Yt-o1Z" secondAttribute="centerX" id="teS-5K-JTg"/>
-                            <constraint firstItem="dqy-9R-Tlp" firstAttribute="leading" secondItem="f95-lU-0ED" secondAttribute="leading" id="vGv-8T-uzZ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="PL9-P7-NXt" secondAttribute="bottom" constant="-30" id="WKd-cC-dGu"/>
+                            <constraint firstItem="PL9-P7-NXt" firstAttribute="top" secondItem="f95-lU-0ED" secondAttribute="top" id="hBb-ut-rln"/>
+                            <constraint firstItem="f95-lU-0ED" firstAttribute="trailing" secondItem="PL9-P7-NXt" secondAttribute="trailing" constant="19" id="sYA-kY-uUG"/>
                         </constraints>
                     </view>
                     <connections>

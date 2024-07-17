@@ -1084,7 +1084,6 @@
 				72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */,
 				722181902B8FF1C800FB572F /* ChatView.swift */,
 				722181922B8FF26200FB572F /* ChatViewController.swift */,
-				72FC18BC2B9D043B007AF494 /* ModelViewController.swift */,
 				72ADF8E22BB782C200976E4C /* AboutViewController.swift */,
 				722102D32BB905D7008F431C /* LeaderboardViewController.swift */,
 				72A99C782C324BFE00D96813 /* StationViewController.swift */,
@@ -1173,17 +1172,26 @@
 			path = CreateSpaceStation;
 			sourceTree = "<group>";
 		};
+		723A0F8A2C473FBB00F11350 /* SphereBase */ = {
+			isa = PBXGroup;
+			children = (
+				72FC18BC2B9D043B007AF494 /* ModelViewController.swift */,
+				7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */,
+				72301FA02A579D1A00898D50 /* YourSphereViewController.swift */,
+				72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */,
+				72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */,
+				72B0B3A32BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift */,
+			);
+			path = SphereBase;
+			sourceTree = "<group>";
+		};
 		7243A82E2A796BFA0054E261 /* Moon */ = {
 			isa = PBXGroup;
 			children = (
+				723A0F8A2C473FBB00F11350 /* SphereBase */,
 				72C513252A4FC29700AAD941 /* MoonViewController.swift */,
-				72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */,
-				72301FA02A579D1A00898D50 /* YourSphereViewController.swift */,
-				7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */,
 				7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */,
 				72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */,
-				72B0B3A32BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift */,
-				72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */,
 				723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */,
 			);
 			path = Moon;

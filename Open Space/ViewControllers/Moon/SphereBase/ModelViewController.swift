@@ -29,6 +29,16 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         }
     }
 
+    @IBAction func exit() {
+        print("exit")
+
+        self.dismiss(animated: false, completion: nil)
+    }
+
+    @IBAction func delete() {
+        print("delete todo")
+    }
+
     func cacheOrDownloadAndUnzipFile(from url: URL) {
         FileDownloader.shared.downloadFile(from: url) { cachedURL in
             guard let cachedURL = cachedURL else {
