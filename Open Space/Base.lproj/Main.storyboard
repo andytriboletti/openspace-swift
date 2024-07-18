@@ -1391,10 +1391,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PL9-P7-NXt">
-                                <rect key="frame" x="-33" y="0.0" width="814" height="630"/>
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-Tb-xpX" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="349" y="0.0" width="116" height="80"/>
+                                        <rect key="frame" x="342" y="0.0" width="116" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1406,13 +1406,13 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqy-9R-Tlp">
-                                        <rect key="frame" x="0.0" y="90" width="814" height="430"/>
+                                        <rect key="frame" x="0.0" y="90" width="800" height="400"/>
                                     </sceneKitView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="u6j-CT-eht">
-                                        <rect key="frame" x="0.0" y="530" width="814" height="100"/>
+                                        <rect key="frame" x="0.0" y="500" width="800" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-P0-nKm">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="nCP-9l-ldS"/>
                                                 </constraints>
@@ -1423,7 +1423,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ui-bR-Qxs">
-                                                <rect key="frame" x="432" y="0.0" width="382" height="100"/>
+                                                <rect key="frame" x="425" y="0.0" width="375" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="OOV-wC-drK"/>
                                                 </constraints>
@@ -1457,9 +1457,11 @@
                         <viewLayoutGuide key="safeArea" id="f95-lU-0ED"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="PL9-P7-NXt" secondAttribute="bottom" constant="-30" id="WKd-cC-dGu"/>
+                            <constraint firstItem="PL9-P7-NXt" firstAttribute="leading" secondItem="QxO-Yt-o1Z" secondAttribute="leading" id="a5d-RU-ji7"/>
+                            <constraint firstItem="f95-lU-0ED" firstAttribute="trailing" secondItem="PL9-P7-NXt" secondAttribute="trailing" id="dXa-Jw-Svh"/>
                             <constraint firstItem="PL9-P7-NXt" firstAttribute="top" secondItem="f95-lU-0ED" secondAttribute="top" id="hBb-ut-rln"/>
-                            <constraint firstItem="f95-lU-0ED" firstAttribute="trailing" secondItem="PL9-P7-NXt" secondAttribute="trailing" constant="19" id="sYA-kY-uUG"/>
+                            <constraint firstItem="PL9-P7-NXt" firstAttribute="top" secondItem="f95-lU-0ED" secondAttribute="top" id="jM8-J8-RiH"/>
+                            <constraint firstAttribute="bottom" secondItem="PL9-P7-NXt" secondAttribute="bottom" id="rcS-fR-svf"/>
                         </constraints>
                     </view>
                     <connections>
