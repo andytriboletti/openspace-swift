@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Grid Hack Game View Controller-->
+        <!--Grid Hack-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GridHackGameViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </sceneKitView>
-                    <navigationItem key="navigationItem" id="AZd-BG-XUJ"/>
+                    <navigationItem key="navigationItem" title="Grid Hack" id="AZd-BG-XUJ">
+                        <barButtonItem key="backBarButtonItem" title="Grid Hack" id="mM1-OT-gh1"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="04G-0Y-h1t" kind="presentation" identifier="goToResults" modalPresentationStyle="fullScreen" id="Jqy-L3-aOw"/>
                     </connections>

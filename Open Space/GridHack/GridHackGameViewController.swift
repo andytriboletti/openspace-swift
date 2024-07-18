@@ -39,6 +39,29 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
         appDelegate.gridHackGameState = GridHackGameState()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
+        navigationItem.leftBarButtonItem?.tintColor = .systemBlue  // or any color that contrasts well with the background
+        #if targetEnvironment(macCatalyst)
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white // Set the navigation bar background color to white
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black] // Set the title color if needed
+
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+
+            // Ensure the bar button item tint color is set
+            navigationItem.leftBarButtonItem?.tintColor = .systemBlue
+        } else {
+            // Fallback on earlier versions
+            navigationController?.navigationBar.barTintColor = .white
+            navigationController?.navigationBar.tintColor = .systemBlue
+        }
+        #endif
+
+
+
         if appDelegate.isMultiplayer == false {
             navigationItem.title = "Bernie Vs Trump - Single Player"
         } else {
