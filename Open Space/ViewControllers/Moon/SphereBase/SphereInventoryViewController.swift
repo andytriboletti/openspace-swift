@@ -7,19 +7,26 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // todo only allow clicks from completed
-
-        let modelVC = ModelViewController()
-        // Assuming you have a way to get the file names for the obj, mtl, and jpg files for the item at the indexPath
-        modelVC.objFileName = "yourModelFileName"
-        modelVC.mtlFileName = "yourMtlFileName"
-        modelVC.textureFileName = "yourTextureFileName"
-        // self.navigationController?.pushViewController(modelVC, animated: true)
-        let meshZipURL = completedModels[indexPath.row].meshLocation
-        let modelPrompt = completedModels[indexPath.row].textPrompt
-        Defaults[.selectedMeshLocation] = meshZipURL!
-        Defaults[.selectedMeshPrompt] = modelPrompt
-        goToModel()
+        if(indexPath.section == 0) {
+            let meshZipURL = completedModels[indexPath.row].meshLocation
+            let modelPrompt = completedModels[indexPath.row].textPrompt
+            print("mesh zip url")
+            print(meshZipURL as Any)
+            print("end mesh zip url")
+            Defaults[.selectedMeshLocation] = meshZipURL!
+            Defaults[.selectedMeshPrompt] = modelPrompt
+            goToModel()
+        }
+        else if(indexPath.section == 1) {
+            let meshZipURL = pendingModels[indexPath.row].meshLocation
+            let modelPrompt = pendingModels[indexPath.row].textPrompt
+            print("pending mesh zip url")
+            print(meshZipURL as Any)
+            print("pending end mesh zip url")
+            Defaults[.selectedMeshLocation] = "" //meshZipURL!
+            Defaults[.selectedMeshPrompt] = modelPrompt
+            goToModel()
+        }
 
     }
 

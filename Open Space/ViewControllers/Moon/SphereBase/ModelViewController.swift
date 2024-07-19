@@ -22,12 +22,17 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         baseNode = SCNNode()
         headerLabel.text = Defaults[.selectedMeshPrompt]
         let zipURLString = Defaults[.selectedMeshLocation]
-        if let zipFileURL = URL(string: zipURLString) {
+
+        if zipURLString == "" {
+            headerLabel.text = "Pending: " + Defaults[.selectedMeshPrompt]
+            print("pending model")
+        } else if let zipFileURL = URL(string: zipURLString) {
             cacheOrDownloadAndUnzipFile(from: zipFileURL)
         } else {
             print("Invalid URL string for selected mesh location.")
         }
     }
+
 
     @IBAction func exit() {
         print("exit")
