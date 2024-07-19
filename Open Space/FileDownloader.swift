@@ -1,4 +1,3 @@
-//
 //  FileDownloader.swift
 //  Open Space
 //
@@ -7,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class FileDownloader {
     static let shared = FileDownloader()
@@ -34,21 +34,19 @@ class FileDownloader {
             return
         }
 
-        // Download the file
-        let task = URLSession.shared.downloadTask(with: url) { (location, response, error) in
-            guard let location = location, error == nil else {
-                completion(nil)
-                return
-            }
-
-            do {
-                // Move downloaded file to cache directory
-                try self.fileManager.moveItem(at: location, to: destinationURL)
-                completion(destinationURL)
-            } catch {
+        // Download the file using Alamofire
+        AF.download(url).responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    try data.write(to: destinationURL)
+                    completion(destinationURL)
+                } catch {
+                    completion(nil)
+                }
+            case .failure:
                 completion(nil)
             }
         }
-        task.resume()
     }
 }
