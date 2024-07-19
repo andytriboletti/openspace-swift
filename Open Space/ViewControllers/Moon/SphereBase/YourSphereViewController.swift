@@ -26,9 +26,9 @@ class YourSphereViewController: UIViewController {
     }
 
     @IBAction func createNewButton() {
-        if count > 5 {
+        if count > 50 {
             // show alert
-            let myMessage = "Your sphere can hold 6 items and you've already created 6 items. Coming soon ability to claim new spheres and delete objects."
+            let myMessage = "Your sphere can hold 50 items and you've already created 50 items. Coming soon ability to claim new spheres and delete objects."
             let alertController = UIAlertController(title: "Max items created", message: myMessage, preferredStyle: .alert)
 
             // Add an action (button)
@@ -54,9 +54,9 @@ class YourSphereViewController: UIViewController {
                 self.count = responseData.pending.count + responseData.completed.count
                 DispatchQueue.main.async {
                     if self.count == 1 {
-                        self.numberOfObjectsInSphere.text = "You have \(self.count) item in your sphere, out of a max of 6."
+                        self.numberOfObjectsInSphere.text = "You have \(self.count) item in your sphere, out of a max of 50."
                     } else {
-                        self.numberOfObjectsInSphere.text = "You have \(self.count) items in your sphere, out of a max of 6."
+                        self.numberOfObjectsInSphere.text = "You have \(self.count) items in your sphere, out of a max of 50."
 
                     }
                 }

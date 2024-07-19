@@ -20,7 +20,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         baseNode = SCNNode()
-
+        headerLabel.text = Defaults[.selectedMeshPrompt]
         let zipURLString = Defaults[.selectedMeshLocation]
         if let zipFileURL = URL(string: zipURLString) {
             cacheOrDownloadAndUnzipFile(from: zipFileURL)

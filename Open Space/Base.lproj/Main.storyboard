@@ -1428,7 +1428,7 @@
                                                     <constraint firstAttribute="height" constant="100" id="OOV-wC-drK"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Delete This Objject"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Delete This Object"/>
                                                 <connections>
                                                     <action selector="delete" destination="0oZ-qm-bPz" eventType="touchDown" id="0UN-XI-Au5"/>
                                                 </connections>

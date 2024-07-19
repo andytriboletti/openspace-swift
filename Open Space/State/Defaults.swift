@@ -17,6 +17,7 @@ extension Defaults.Keys {
     static let username = Key<String>("username", default: "")
     static let authToken = Key<String>("authToken", default: "")
     static let selectedMeshLocation = Key<String>("selectedMeshLocation", default: "")
+    static let selectedMeshPrompt = Key<String>("selectedMeshPrompt", default: "")
     static let traveling = Key<String>("traveling", default: "false")
     static let userId = Key<String>("userId", default: "0")
     static let neighborUsername = Key<String>("neighborUsername", default: "")

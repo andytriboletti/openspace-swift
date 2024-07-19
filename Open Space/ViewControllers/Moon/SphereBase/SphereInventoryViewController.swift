@@ -16,7 +16,9 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         modelVC.textureFileName = "yourTextureFileName"
         // self.navigationController?.pushViewController(modelVC, animated: true)
         let meshZipURL = completedModels[indexPath.row].meshLocation
+        let modelPrompt = completedModels[indexPath.row].textPrompt
         Defaults[.selectedMeshLocation] = meshZipURL!
+        Defaults[.selectedMeshPrompt] = modelPrompt
         goToModel()
 
     }
