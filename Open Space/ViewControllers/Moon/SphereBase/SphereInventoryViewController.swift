@@ -10,21 +10,26 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         if(indexPath.section == 0) {
             let meshZipURL = completedModels[indexPath.row].meshLocation
             let modelPrompt = completedModels[indexPath.row].textPrompt
+            let modelId = completedModels[indexPath.row].meshId
             print("mesh zip url")
             print(meshZipURL as Any)
             print("end mesh zip url")
             Defaults[.selectedMeshLocation] = meshZipURL!
             Defaults[.selectedMeshPrompt] = modelPrompt
+            Defaults[.selectedMeshId] = modelId
             goToModel()
         }
         else if(indexPath.section == 1) {
             let meshZipURL = pendingModels[indexPath.row].meshLocation
             let modelPrompt = pendingModels[indexPath.row].textPrompt
+            let modelId = pendingModels[indexPath.row].meshId
+
             print("pending mesh zip url")
             print(meshZipURL as Any)
             print("pending end mesh zip url")
             Defaults[.selectedMeshLocation] = "" //meshZipURL!
             Defaults[.selectedMeshPrompt] = modelPrompt
+            Defaults[.selectedMeshId] = modelId
             goToModel()
         }
 

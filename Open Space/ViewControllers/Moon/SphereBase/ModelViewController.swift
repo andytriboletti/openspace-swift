@@ -41,7 +41,48 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
     }
 
     @IBAction func delete() {
-        print("delete todo")
+        let meshId = Defaults[.selectedMeshId]
+        print("delete todo seletedMeshId:")
+        print(meshId)
+        print("end mesh id")
+
+        let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+
+        // OK Action
+        let okAction = UIAlertAction(title: "Delete", style: .default) { _ in
+            // Perform action upon OK
+            print("OK tapped. todo delete")
+
+
+            let email = Defaults[.email]
+            let meshId = Defaults[.selectedMeshId]
+            OpenspaceAPI.shared.deleteItemFromSphere(email: email, meshId: meshId) { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        //Defaults[.username] = ""
+                        print("Successfully deleted item submitted to server")
+
+                    }
+                case .failure(let error):
+                    print("Error submitting delete item to server: \(error.localizedDescription)")
+                }
+            }
+        }
+        alertController.addAction(okAction)
+
+        // Cancel Action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Perform action upon Cancel
+            print("Cancel tapped")
+            // Add your logic here, if needed
+        }
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+
+
     }
 
     func cacheOrDownloadAndUnzipFile(from url: URL) {

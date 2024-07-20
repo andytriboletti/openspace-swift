@@ -18,12 +18,14 @@ class OpenspaceAPI {
         let completed: String
         let videoLocation: String?
         let meshLocation: String?
+        let meshId: Int
 
         enum CodingKeys: String, CodingKey {
             case textPrompt = "text_prompt"
             case completed
             case videoLocation = "video_location"
             case meshLocation = "mesh_location"
+            case meshId = "mesh_id"
         }
     }
 
@@ -225,6 +227,23 @@ class OpenspaceAPI {
         }
         performSimpleRequest(request: request, completion: completion)
     }
+    func deleteItemFromSphere(email: String, meshId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
+        let parameters: [String: Any] = ["email": email, "authToken": Defaults[.authToken], "mesh_id": meshId]
+        let urlString = "\(serverURL)delete-item-from-sphere"
+
+        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate()
+            .response { response in
+                switch response.result {
+                case .success:
+                    completion(.success(()))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+
+    
 
     func createSphere(email: String, authToken: String, sphereName: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereName": sphereName]
