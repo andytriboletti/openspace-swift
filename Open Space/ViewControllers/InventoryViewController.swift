@@ -4,7 +4,10 @@ import Defaults
 class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var errorLabel: UILabel!
+    //@IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var passengerLabel1: UILabel!
+    @IBOutlet weak var passengerLabel2: UILabel!
+    @IBOutlet weak var cargoLabel1: UILabel!
 
     var minerals: [OpenspaceAPI.UserMineral] = []  // Use the fully qualified name
 
@@ -17,6 +20,9 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        passengerLabel1.text="Ship Passengers - Max: 4 Passengers"
+        passengerLabel2.text="4 Passengers onboard, headed to ISS"
+        cargoLabel1.text="Ship Cargo - Max 5,000 kg"
     }
 
     func getUserMinerals(email: String) {
@@ -26,13 +32,13 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
                 self?.minerals = userMinerals
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
-                    self?.errorLabel.isHidden = true
+                    //self?.errorLabel.isHidden = true
                 }
             case .failure(let error):
                 print("Error fetching user minerals: \(error)")
                 DispatchQueue.main.async {
-                    self?.errorLabel.text = "Error fetching minerals"
-                    self?.errorLabel.isHidden = false
+                    //self?.errorLabel.text = "Error fetching minerals"
+                    //self?.errorLabel.isHidden = false
                 }
             }
         }
