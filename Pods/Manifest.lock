@@ -994,6 +994,12 @@ PODS:
     - DynamicBlurView (~> 4.0)
   - PromisesObjC (2.3.1)
   - RecaptchaInterop (100.0.0)
+  - RxCocoa (6.7.1):
+    - RxRelay (= 6.7.1)
+    - RxSwift (= 6.7.1)
+  - RxRelay (6.7.1):
+    - RxSwift (= 6.7.1)
+  - RxSwift (6.7.1)
   - SCLAlertView (0.8.1)
   - SDWebImage (5.19.0):
     - SDWebImage/Core (= 5.19.0)
@@ -1025,6 +1031,8 @@ DEPENDENCIES:
   - MaterialComponents/Buttons
   - "MaterialComponents/Buttons+Theming"
   - PopupDialog
+  - RxCocoa (~> 6.0)
+  - RxSwift (~> 6.0)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
   - ShowTime (~> 2)
   - SSZipArchive
@@ -1089,6 +1097,9 @@ SPEC REPOS:
     - PopupDialog
     - PromisesObjC
     - RecaptchaInterop
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SDWebImage
     - ShowTime
     - SSZipArchive
@@ -1167,6 +1178,9 @@ SPEC CHECKSUMS:
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
+  RxRelay: 4151ba01152436b08271e08410135e099880eae5
+  RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
   SDWebImage: 981fd7e860af070920f249fd092420006014c3eb
   ShowTime: 06cc9dc79886274b21041fe19b79c9eff59b9714
@@ -1178,6 +1192,6 @@ SPEC CHECKSUMS:
   Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: ca78a24c9f176fdfe6f4bfb413256d40956bc90e
+PODFILE CHECKSUM: 6de614407db801d8413dd34b62fbc50d6933c3ae
 
 COCOAPODS: 1.15.2

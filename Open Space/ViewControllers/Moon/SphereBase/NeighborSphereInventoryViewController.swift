@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 import SceneKit
 import SSZipArchive
@@ -11,13 +10,18 @@ class NeighborSphereInventoryViewController: UIViewController {
 
     var loadingIndicator: UIActivityIndicatorView!
     var loadingLabel: UILabel!
+    var progressView: UIProgressView!
 
     var objFilePaths: [URL] = []
     var isLoading = false
     var isLoaded = false
+    private var isDisplaying = false
 
     var zipFileURLs: [URL] = []
     var downloadStatus: [Bool] = []
+    var completedDownloads = 0
+
+    let serialQueue = DispatchQueue(label: "com.greenrobot.openspace.serialQueue")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +32,22 @@ class NeighborSphereInventoryViewController: UIViewController {
         setupLoadingIndicatorAndLabel()
         loadingIndicator.startAnimating()
 
-        // Example: Download zip file URLs dynamically
         downloadZipFileURLs()
 
-        // Initialize download status array
         downloadStatus = Array(repeating: false, count: zipFileURLs.count)
+        completedDownloads = 0
+        updateLoadingLabel()
+        loadingLabel.isHidden = false
+        isLoaded = false
+        isDisplaying = false
 
-        // Download and unzip all files on a background thread
         if !isLoading {
             isLoading = true
             DispatchQueue.global(qos: .background).async {
                 for (index, zipFileURL) in self.zipFileURLs.enumerated() {
-                    self.cacheOrDownloadAndUnzipFile(from: zipFileURL, into: "zip\(index + 1)", index: index)
+                    self.cacheOrDownloadAndUnzipFile(from: zipFileURL, into: "zip\(index + 1)", index: index) {
+                        self.checkAllDownloadsCompleted()
+                    }
                 }
             }
         }
@@ -66,45 +74,57 @@ class NeighborSphereInventoryViewController: UIViewController {
         loadingLabel.textAlignment = .center
         view.addSubview(loadingLabel)
 
+        progressView = UIProgressView(progressViewStyle: .default)
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(progressView)
+
         NSLayoutConstraint.activate([
             loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             loadingLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: 8),
-            loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+            progressView.topAnchor.constraint(equalTo: loadingLabel.bottomAnchor, constant: 8),
+            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
 
     func downloadZipFileURLs() {
         zipFileURLs = [
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-            URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!
-        ]
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
+                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!
+                    ]
     }
 
-    func cacheOrDownloadAndUnzipFile(from url: URL, into directory: String, index: Int) {
+    func cacheOrDownloadAndUnzipFile(from url: URL, into directory: String, index: Int, completion: @escaping () -> Void) {
         FileDownloader.shared.downloadFile(from: url) { cachedURL in
             guard let cachedURL = cachedURL else {
                 print("Failed to download or cache the file from: \(url)")
-                self.updateLoadingLabel(failure: true)
+                self.handleDownloadFailure(index: index)
+                DispatchQueue.main.async {
+                    self.updateLoadingLabel()
+                    completion()
+                }
                 return
             }
 
@@ -115,7 +135,9 @@ class NeighborSphereInventoryViewController: UIViewController {
                     if FileManager.default.fileExists(atPath: destinationUrl.path) {
                         print("Directory already exists: \(destinationUrl.path)")
                         if let objFilePath = self.findFirstOBJFile(in: destinationUrl) {
-                            self.objFilePaths.append(objFilePath)
+                            self.serialQueue.sync {
+                                self.objFilePaths.append(objFilePath)
+                            }
                         }
                         self.markDownloadComplete(index: index)
                     } else {
@@ -123,7 +145,11 @@ class NeighborSphereInventoryViewController: UIViewController {
                             try FileManager.default.createDirectory(at: destinationUrl, withIntermediateDirectories: true, attributes: nil)
                         } catch let createDirectoryError {
                             print("Error creating directory: \(createDirectoryError)")
-                            self.updateLoadingLabel(failure: true)
+                            self.handleDownloadFailure(index: index)
+                            DispatchQueue.main.async {
+                                self.updateLoadingLabel()
+                                completion()
+                            }
                             return
                         }
 
@@ -131,90 +157,128 @@ class NeighborSphereInventoryViewController: UIViewController {
 
                         if success {
                             print("Files unzipped successfully at \(destinationUrl.path)")
-
                             if let objFilePath = self.findFirstOBJFile(in: destinationUrl) {
-                                self.objFilePaths.append(objFilePath)
+                                self.serialQueue.sync {
+                                    self.objFilePaths.append(objFilePath)
+                                }
                             }
                             self.markDownloadComplete(index: index)
                         } else {
                             print("Failed to unzip the file at \(cachedURL.path)")
-                            self.updateLoadingLabel(failure: true)
+                            self.handleDownloadFailure(index: index)
                         }
                     }
+                }
+                DispatchQueue.main.async {
+                    self.updateLoadingLabel()
+                    completion()
                 }
             }
         }
     }
-    func updateLoadingLabel(failure: Bool = false) {
+
+    func updateLoadingLabel() {
         DispatchQueue.main.async {
-            let count = self.objFilePaths.count + (failure ? 1 : 0)
-            self.loadingLabel.text = "Loading \(count) / \(self.zipFileURLs.count)"
-            print("Updated loading label: \(self.loadingLabel.text ?? "")")
+            self.loadingLabel.text = "Loading \(self.completedDownloads) / \(self.zipFileURLs.count)"
+            let progress = Float(self.completedDownloads) / Float(self.zipFileURLs.count)
+            self.progressView.setProgress(progress, animated: true)
         }
     }
 
     func markDownloadComplete(index: Int) {
-        DispatchQueue.main.async {
-            self.downloadStatus[index] = true
-            print("Marked download complete for index: \(index)")
-            self.updateLoadingLabel()
+        serialQueue.async {
+            if !self.downloadStatus[index] {
+                self.downloadStatus[index] = true
+                self.completedDownloads += 1
+                DispatchQueue.main.async {
+                    self.updateLoadingLabel()
+                }
+            }
+        }
+    }
 
-            if self.downloadStatus.allSatisfy({ $0 }) {
-                print("All downloads complete. Calling displayOBJFiles()")
-                self.displayOBJFiles()
+    func handleDownloadFailure(index: Int) {
+        serialQueue.async {
+            self.downloadStatus[index] = false
+            DispatchQueue.main.async {
+                self.updateLoadingLabel()
+            }
+        }
+    }
+
+    func checkAllDownloadsCompleted() {
+        serialQueue.async {
+            if self.completedDownloads == self.zipFileURLs.count && !self.isDisplaying {
+                self.isDisplaying = true
+                DispatchQueue.main.async {
+                    self.progressView.setProgress(0, animated: false)
+                    self.loadingLabel.text = "Preparing to display objects..."
+                    self.displayOBJFiles()
+                }
             }
         }
     }
 
 
-
-
     func displayOBJFiles() {
-            guard objFilePaths.count > 0 else {
-                print("Not enough OBJ files to display")
-                return
-            }
+        guard !isLoaded && objFilePaths.count > 0 else {
+            print("Not enough OBJ files to display or already displayed")
+            return
+        }
 
-            print("Starting to display OBJ files")
+        print("Starting to display OBJ files")
 
-            let scene = SCNScene()
-            let rootNode = scene.rootNode
-            let objectsPerRow = 10
-            let objectSpacing: Float = 1.0
-            let rowSpacing: Float = 2.0
+        let scene = SCNScene()
+        let rootNode = scene.rootNode
+        let objectsPerRow = 10
+        let objectSpacing: Float = 1.0
+        let rowSpacing: Float = 2.0
 
-            // Add ambient light
-            let ambientLight = SCNNode()
-            ambientLight.light = SCNLight()
-            ambientLight.light!.type = .ambient
-            ambientLight.light!.intensity = 100
-            rootNode.addChildNode(ambientLight)
+        // Add ambient light
+        let ambientLight = SCNNode()
+        ambientLight.light = SCNLight()
+        ambientLight.light!.type = .ambient
+        ambientLight.light!.intensity = 100
+        rootNode.addChildNode(ambientLight)
 
-            // Add directional light
-            let directionalLight = SCNNode()
-            directionalLight.light = SCNLight()
-            directionalLight.light!.type = .directional
-            directionalLight.light!.intensity = 1000
-            directionalLight.position = SCNVector3(x: 0, y: 10, z: 10)
-            rootNode.addChildNode(directionalLight)
+        // Add directional light
+        let directionalLight = SCNNode()
+        directionalLight.light = SCNLight()
+        directionalLight.light!.type = .directional
+        directionalLight.light!.intensity = 1000
+        directionalLight.position = SCNVector3(x: 0, y: 10, z: 10)
+        rootNode.addChildNode(directionalLight)
 
-            for (index, objFilePath) in objFilePaths.enumerated() {
-                do {
-                    let objScene = try SCNScene(url: objFilePath, options: [.createNormalsIfAbsent: true])
-                    let rowIndex = index / objectsPerRow
-                    let columnIndex = index % objectsPerRow
+        let totalObjects = objFilePaths.count
+        var objectsAdded = 0
 
-                    let positionX: Float = Float(columnIndex) * objectSpacing
-                    let positionY: Float = Float(rowIndex) * rowSpacing
+        DispatchQueue.global(qos: .userInitiated).async {
+            for (index, objFilePath) in self.objFilePaths.enumerated() {
+                autoreleasepool {
+                    do {
+                        let objScene = try SCNScene(url: objFilePath, options: [.createNormalsIfAbsent: true])
+                        let rowIndex = index / objectsPerRow
+                        let columnIndex = index % objectsPerRow
 
-                    for childNode in objScene.rootNode.childNodes {
-                        let objectNode = childNode.clone()
-                        objectNode.position = SCNVector3(positionX, positionY, 0)
-                        rootNode.addChildNode(objectNode)
+                        let positionX: Float = Float(columnIndex) * objectSpacing
+                        let positionY: Float = Float(rowIndex) * rowSpacing
+
+                        for childNode in objScene.rootNode.childNodes {
+                            let objectNode = childNode.clone()
+                            objectNode.position = SCNVector3(positionX, positionY, 0)
+                            rootNode.addChildNode(objectNode)
+                        }
+                        objectsAdded += 1
+                        print("Added object at index \(index) to the scene")
+
+                        DispatchQueue.main.async {
+                            let progress = Float(objectsAdded) / Float(totalObjects)
+                            self.progressView.setProgress(progress, animated: true)
+                            self.loadingLabel.text = "Displaying \(objectsAdded) / \(totalObjects)"
+                        }
+                    } catch {
+                        print("Failed to load OBJ file at index \(index): \(error.localizedDescription)")
                     }
-                    print("Added object at index \(index) to the scene")
-                } catch {
-                    print("Failed to load OBJ file at index \(index): \(error.localizedDescription)")
                 }
             }
 
@@ -223,53 +287,26 @@ class NeighborSphereInventoryViewController: UIViewController {
                 self.scnView.autoenablesDefaultLighting = true
                 self.scnView.allowsCameraControl = true
 
-                print("Scene setup complete")
-
-                // Stop the loading indicator and hide the loading label
                 self.loadingIndicator.stopAnimating()
                 self.loadingLabel.isHidden = true
+                self.progressView.isHidden = true
                 self.isLoaded = true
+                self.isDisplaying = false
 
-                // Force UI update
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
 
-                // Check if the loading indicator is still visible
-                if self.loadingIndicator.isAnimating {
-                    print("WARNING: Loading indicator is still animating after being stopped")
-                }
-
-                if !self.loadingIndicator.isHidden {
-                    print("WARNING: Loading indicator is still visible after being stopped")
-                    self.loadingIndicator.isHidden = true
-                }
-
-                // Check for any ongoing animations
-                if let layers = self.loadingIndicator.layer.sublayers {
-                    for layer in layers {
-                        if let animationKeys = layer.animationKeys(), !animationKeys.isEmpty {
-                            print("WARNING: Layer still has ongoing animations: \(animationKeys)")
-                            layer.removeAllAnimations()
-                        }
-                    }
-                }
-
-                // As a last resort, remove the loading indicator from the view hierarchy
                 self.loadingIndicator.removeFromSuperview()
 
-                print("Loading indicator stopped, removed from view, label hidden, and isLoaded set to true")
+                print("Scene setup complete")
             }
         }
-
-
-    
+    }
 
     func findFirstOBJFile(in directoryURL: URL) -> URL? {
         do {
             let fileManager = FileManager.default
             let directoryContents = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: [])
-
-            print("Contents of directory at \(directoryURL.path): \(directoryContents)")
 
             for fileURL in directoryContents {
                 if fileURL.pathExtension.lowercased() == "obj" {

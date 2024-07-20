@@ -20,6 +20,11 @@ def shared_pods
   pod 'SSZipArchive'
   pod 'IQKeyboardManagerSwift'
   
+  pod 'RxSwift', '~> 6.0'
+  pod 'RxCocoa', '~> 6.0'
+  
+  
+  
   #pods from gridhack
   pod 'SwiftyUserDefaults'
   pod 'SwiftyJSON'
@@ -29,6 +34,7 @@ def shared_pods
   pod 'MaterialComponents/Buttons+Theming'
   pod 'MaterialComponents/Buttons'
   pod 'Toast-Swift', '~> 5.0.1'
+  
 end
 
 target 'Open Space' do
