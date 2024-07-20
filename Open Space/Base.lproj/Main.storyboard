@@ -1419,7 +1419,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Exit"/>
                                                 <connections>
-                                                    <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="WHQ-Wr-Nav"/>
+                                                    <segue destination="4p8-gd-aBJ" kind="presentation" identifier="goToSphereInventory" modalPresentationStyle="fullScreen" id="WHQ-Wr-Nav"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ui-bR-Qxs">
@@ -1467,6 +1467,7 @@
                     <connections>
                         <outlet property="headerLabel" destination="MeW-Tb-xpX" id="gPH-j4-jSY"/>
                         <outlet property="scnView" destination="dqy-9R-Tlp" id="ezb-tT-w0n"/>
+                        <segue destination="4p8-gd-aBJ" kind="presentation" id="f65-O9-SAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RlT-4H-l2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -60,8 +60,19 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                 switch result {
                 case .success:
                     DispatchQueue.main.async {
-                        //Defaults[.username] = ""
+                        //popup an alert saying "Successfully deleted item. After clicking OK, you are taken to the previous view controller
                         print("Successfully deleted item submitted to server")
+                        let successAlert = UIAlertController(title: "Success", message: "Successfully deleted item.", preferredStyle: .alert)
+                            let okSuccessAction = UIAlertAction(title: "OK", style: .default) { _ in
+                                // Navigate to the previous view controller
+                                //self.navigationController?.popViewController(animated: true)
+                                //self.dismiss(animated: true, completion: nil)
+                                // Perform the segue to navigate back
+                                self.performSegue(withIdentifier: "goToSphereInventory", sender: self)
+
+                            }
+                            successAlert.addAction(okSuccessAction)
+                            self.present(successAlert, animated: true, completion: nil)
 
                     }
                 case .failure(let error):
