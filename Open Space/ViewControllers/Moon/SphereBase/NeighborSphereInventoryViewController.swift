@@ -8,6 +8,7 @@ class NeighborSphereInventoryViewController: UIViewController {
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
 
+    var loadingContainerView: UIView!
     var loadingIndicator: UIActivityIndicatorView!
     var loadingLabel: UILabel!
     var progressView: UIProgressView!
@@ -29,15 +30,13 @@ class NeighborSphereInventoryViewController: UIViewController {
         let neighborUsername = Defaults[.neighborUsername]
         headerLabel.text = "Viewing \(neighborUsername)'s sphere"
 
-        setupLoadingIndicatorAndLabel()
-        loadingIndicator.startAnimating()
+        setupLoadingViews()
+        startLoading()
 
         downloadZipFileURLs()
 
         downloadStatus = Array(repeating: false, count: zipFileURLs.count)
         completedDownloads = 0
-        updateLoadingLabel()
-        loadingLabel.isHidden = false
         isLoaded = false
         isDisplaying = false
 
@@ -64,31 +63,65 @@ class NeighborSphereInventoryViewController: UIViewController {
         isLoading = false
     }
 
-    func setupLoadingIndicatorAndLabel() {
+    func setupLoadingViews() {
+        loadingContainerView = UIView()
+        loadingContainerView.translatesAutoresizingMaskIntoConstraints = false
+        loadingContainerView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+        view.addSubview(loadingContainerView)
+
         loadingIndicator = UIActivityIndicatorView(style: .large)
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loadingIndicator)
+        loadingContainerView.addSubview(loadingIndicator)
 
         loadingLabel = UILabel()
         loadingLabel.translatesAutoresizingMaskIntoConstraints = false
         loadingLabel.textAlignment = .center
-        view.addSubview(loadingLabel)
+        loadingLabel.numberOfLines = 0
+        loadingContainerView.addSubview(loadingLabel)
 
         progressView = UIProgressView(progressViewStyle: .default)
         progressView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(progressView)
+        loadingContainerView.addSubview(progressView)
 
         NSLayoutConstraint.activate([
-            loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loadingContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loadingContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            loadingContainerView.heightAnchor.constraint(equalToConstant: 120),
+
+            loadingIndicator.topAnchor.constraint(equalTo: loadingContainerView.topAnchor, constant: 16),
+            loadingIndicator.centerXAnchor.constraint(equalTo: loadingContainerView.centerXAnchor),
 
             loadingLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: 8),
-            loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingLabel.leadingAnchor.constraint(equalTo: loadingContainerView.leadingAnchor, constant: 16),
+            loadingLabel.trailingAnchor.constraint(equalTo: loadingContainerView.trailingAnchor, constant: -16),
 
             progressView.topAnchor.constraint(equalTo: loadingLabel.bottomAnchor, constant: 8),
-            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            progressView.leadingAnchor.constraint(equalTo: loadingContainerView.leadingAnchor, constant: 16),
+            progressView.trailingAnchor.constraint(equalTo: loadingContainerView.trailingAnchor, constant: -16),
+            progressView.bottomAnchor.constraint(equalTo: loadingContainerView.bottomAnchor, constant: -16)
         ])
+    }
+
+    func startLoading() {
+        loadingContainerView.isHidden = false
+        loadingIndicator.startAnimating()
+        loadingLabel.text = "Preparing..."
+        progressView.progress = 0
+    }
+
+    func updateLoadingProgress(current: Int, total: Int, phase: String) {
+        DispatchQueue.main.async {
+            self.loadingLabel.text = "\(phase) \(current) / \(total)"
+            self.progressView.progress = Float(current) / Float(total)
+        }
+    }
+
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.loadingContainerView.isHidden = true
+            self.loadingIndicator.stopAnimating()
+        }
     }
 
     func downloadZipFileURLs() {
@@ -122,7 +155,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                 print("Failed to download or cache the file from: \(url)")
                 self.handleDownloadFailure(index: index)
                 DispatchQueue.main.async {
-                    self.updateLoadingLabel()
+                    self.updateLoadingProgress(current: self.completedDownloads, total: self.zipFileURLs.count, phase: "Downloading")
                     completion()
                 }
                 return
@@ -147,7 +180,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                             print("Error creating directory: \(createDirectoryError)")
                             self.handleDownloadFailure(index: index)
                             DispatchQueue.main.async {
-                                self.updateLoadingLabel()
+                                self.updateLoadingProgress(current: self.completedDownloads, total: self.zipFileURLs.count, phase: "Downloading")
                                 completion()
                             }
                             return
@@ -170,18 +203,10 @@ class NeighborSphereInventoryViewController: UIViewController {
                     }
                 }
                 DispatchQueue.main.async {
-                    self.updateLoadingLabel()
+                    self.updateLoadingProgress(current: self.completedDownloads, total: self.zipFileURLs.count, phase: "Downloading")
                     completion()
                 }
             }
-        }
-    }
-
-    func updateLoadingLabel() {
-        DispatchQueue.main.async {
-            self.loadingLabel.text = "Loading \(self.completedDownloads) / \(self.zipFileURLs.count)"
-            let progress = Float(self.completedDownloads) / Float(self.zipFileURLs.count)
-            self.progressView.setProgress(progress, animated: true)
         }
     }
 
@@ -190,9 +215,6 @@ class NeighborSphereInventoryViewController: UIViewController {
             if !self.downloadStatus[index] {
                 self.downloadStatus[index] = true
                 self.completedDownloads += 1
-                DispatchQueue.main.async {
-                    self.updateLoadingLabel()
-                }
             }
         }
     }
@@ -200,9 +222,6 @@ class NeighborSphereInventoryViewController: UIViewController {
     func handleDownloadFailure(index: Int) {
         serialQueue.async {
             self.downloadStatus[index] = false
-            DispatchQueue.main.async {
-                self.updateLoadingLabel()
-            }
         }
     }
 
@@ -211,14 +230,12 @@ class NeighborSphereInventoryViewController: UIViewController {
             if self.completedDownloads == self.zipFileURLs.count && !self.isDisplaying {
                 self.isDisplaying = true
                 DispatchQueue.main.async {
-                    self.progressView.setProgress(0, animated: false)
-                    self.loadingLabel.text = "Preparing to display objects..."
+                    self.updateLoadingProgress(current: 0, total: self.objFilePaths.count, phase: "Preparing to display")
                     self.displayOBJFiles()
                 }
             }
         }
     }
-
 
     func displayOBJFiles() {
         guard !isLoaded && objFilePaths.count > 0 else {
@@ -250,7 +267,6 @@ class NeighborSphereInventoryViewController: UIViewController {
         rootNode.addChildNode(directionalLight)
 
         let totalObjects = objFilePaths.count
-        var objectsAdded = 0
 
         DispatchQueue.global(qos: .userInitiated).async {
             for (index, objFilePath) in self.objFilePaths.enumerated() {
@@ -268,13 +284,10 @@ class NeighborSphereInventoryViewController: UIViewController {
                             objectNode.position = SCNVector3(positionX, positionY, 0)
                             rootNode.addChildNode(objectNode)
                         }
-                        objectsAdded += 1
                         print("Added object at index \(index) to the scene")
 
                         DispatchQueue.main.async {
-                            let progress = Float(objectsAdded) / Float(totalObjects)
-                            self.progressView.setProgress(progress, animated: true)
-                            self.loadingLabel.text = "Displaying \(objectsAdded) / \(totalObjects)"
+                            self.updateLoadingProgress(current: index + 1, total: totalObjects, phase: "Displaying")
                         }
                     } catch {
                         print("Failed to load OBJ file at index \(index): \(error.localizedDescription)")
@@ -287,16 +300,12 @@ class NeighborSphereInventoryViewController: UIViewController {
                 self.scnView.autoenablesDefaultLighting = true
                 self.scnView.allowsCameraControl = true
 
-                self.loadingIndicator.stopAnimating()
-                self.loadingLabel.isHidden = true
-                self.progressView.isHidden = true
+                self.stopLoading()
                 self.isLoaded = true
                 self.isDisplaying = false
 
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
-
-                self.loadingIndicator.removeFromSuperview()
 
                 print("Scene setup complete")
             }
