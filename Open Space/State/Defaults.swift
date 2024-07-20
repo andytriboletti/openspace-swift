@@ -22,6 +22,7 @@ extension Defaults.Keys {
     static let traveling = Key<String>("traveling", default: "false")
     static let userId = Key<String>("userId", default: "0")
     static let neighborUsername = Key<String>("neighborUsername", default: "")
+    static let neighborSphereId = Key<Int>("neighborSphereId", default: -1)
     // New keys for your_spheres and neighbor_spheres
     // New keys for your_spheres and neighbor_spheres
     static let yourSpheres = Key<Data>("yourSpheres", default: Data())

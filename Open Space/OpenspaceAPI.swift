@@ -35,14 +35,16 @@ class OpenspaceAPI {
     }
 
     struct Neighbor: Codable {
-        let userId: String
+        let userId: Int
         let username: String
-        let itemCount: String
+        let itemCount: Int
+        let sphereId: Int
 
         enum CodingKeys: String, CodingKey {
             case userId = "user_id"
             case username
             case itemCount = "item_count"
+            case sphereId = "sphere_id"
         }
     }
 
@@ -82,7 +84,35 @@ class OpenspaceAPI {
     
     // MARK: - API Requests
 
+    struct SphereDetailsResponse: Codable {
+        struct Result: Codable {
+            let id: String
+            let mesh_location: String
+        }
 
+        let status: String
+        let results: [Result]
+    }
+
+    func fetchSphereDetails(email: String, authToken: String, sphereId: Int, completion: @escaping (Result<[URL], FetchDataError>) -> Void) {
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereId": sphereId]
+        let urlString = "\(serverURL)get-sphere-details"
+
+        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodable(of: SphereDetailsResponse.self) { response in
+                switch response.result {
+                case .success(let responseData):
+                    let zipFileURLs = responseData.results.compactMap { URL(string: $0.mesh_location) }
+                    completion(.success(zipFileURLs))
+                case .failure(let error):
+                    completion(.failure(.networkError(error)))
+                }
+            }
+    }
+
+
+    
     func fetchUserMinerals(email: String, completion: @escaping (Result<[UserMineral], FetchDataError>) -> Void) {
         let parameters: [String: Any] = ["email": email]
         guard let request = createPostRequest(urlString: "\(serverURL)get-user-minerals", parameters: parameters) else {
@@ -461,6 +491,7 @@ class OpenspaceAPI {
         }
     }
 }
+
 
 // Helper extension to encode parameters
 extension Dictionary {

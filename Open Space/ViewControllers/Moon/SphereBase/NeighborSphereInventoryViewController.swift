@@ -2,6 +2,7 @@ import UIKit
 import SceneKit
 import SSZipArchive
 import Defaults
+import Alamofire
 
 class NeighborSphereInventoryViewController: UIViewController {
     var baseNode: SCNNode!
@@ -33,23 +34,7 @@ class NeighborSphereInventoryViewController: UIViewController {
         setupLoadingViews()
         startLoading()
 
-        downloadZipFileURLs()
-
-        downloadStatus = Array(repeating: false, count: zipFileURLs.count)
-        completedDownloads = 0
-        isLoaded = false
-        isDisplaying = false
-
-        if !isLoading {
-            isLoading = true
-            DispatchQueue.global(qos: .background).async {
-                for (index, zipFileURL) in self.zipFileURLs.enumerated() {
-                    self.cacheOrDownloadAndUnzipFile(from: zipFileURL, into: "zip\(index + 1)", index: index) {
-                        self.checkAllDownloadsCompleted()
-                    }
-                }
-            }
-        }
+        fetchZipFileURLs()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -124,30 +109,36 @@ class NeighborSphereInventoryViewController: UIViewController {
         }
     }
 
-    func downloadZipFileURLs() {
-        zipFileURLs = [
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_20-49-37.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_19-21-18.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!,
-                        URL(string: "https://wordcraft3d.s3.amazonaws.com/modified_2024-03-11_16-23-17.zip")!
-                    ]
+    func fetchZipFileURLs() {
+        let email = Defaults[.email]
+        let authToken = "123todo"
+        let sphereId = Defaults[.neighborSphereId]
+
+        OpenspaceAPI.shared.fetchSphereDetails(email: email, authToken: authToken, sphereId: sphereId) { result in
+            switch result {
+            case .success(let zipFileURLs):
+                self.zipFileURLs = zipFileURLs
+                self.downloadStatus = Array(repeating: false, count: self.zipFileURLs.count)
+                self.completedDownloads = 0
+                self.isLoaded = false
+                self.isDisplaying = false
+
+                if !self.isLoading {
+                    self.isLoading = true
+                    DispatchQueue.global(qos: .background).async {
+                        for (index, zipFileURL) in self.zipFileURLs.enumerated() {
+                            self.cacheOrDownloadAndUnzipFile(from: zipFileURL, into: "zip\(index + 1)", index: index) {
+                                self.checkAllDownloadsCompleted()
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("Failed to fetch zip file URLs: \(error)")
+            }
+        }
     }
+
 
     func cacheOrDownloadAndUnzipFile(from url: URL, into directory: String, index: Int, completion: @escaping () -> Void) {
         FileDownloader.shared.downloadFile(from: url) { cachedURL in
@@ -161,9 +152,16 @@ class NeighborSphereInventoryViewController: UIViewController {
                 return
             }
 
+            // Extract the modification time from the filename
+            let filename = cachedURL.lastPathComponent
+            let modificationTime = filename.components(separatedBy: "_").last?.components(separatedBy: ".").first ?? "unknown"
+
+            // Create the directory name with the extracted modification time
+            let directoryName = "\(directory)_\(modificationTime)"
+
             DispatchQueue.global(qos: .background).async {
                 if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                    let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/\(directory)")
+                    let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/\(directoryName)")
 
                     if FileManager.default.fileExists(atPath: destinationUrl.path) {
                         print("Directory already exists: \(destinationUrl.path)")
@@ -209,6 +207,11 @@ class NeighborSphereInventoryViewController: UIViewController {
             }
         }
     }
+
+
+
+
+
 
     func markDownloadComplete(index: Int) {
         serialQueue.async {
