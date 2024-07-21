@@ -327,11 +327,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-QK-2md">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-QK-2md">
                                 <rect key="frame" x="0.0" y="59" width="430" height="790"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uN-eSr">
-                                        <rect key="frame" x="0.0" y="20" width="430" height="870"/>
+                                        <rect key="frame" x="0.0" y="20" width="430" height="980"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
                                                 <rect key="frame" x="183.33333333333334" y="0.0" width="63.333333333333343" height="100"/>
@@ -388,8 +388,16 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Refill Energy By Watching a Video Ad"/>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-sM-a37">
+                                                <rect key="frame" x="123" y="660" width="184" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="xQv-db-Hr1"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Upgrade Max Energy"/>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
-                                                <rect key="frame" x="171.66666666666666" y="660" width="87" height="100"/>
+                                                <rect key="frame" x="171.66666666666666" y="770" width="86.999999999999972" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="TAl-Sq-MQX"/>
                                                 </constraints>
@@ -400,7 +408,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
-                                                <rect key="frame" x="144.66666666666669" y="770" width="140.66666666666669" height="100"/>
+                                                <rect key="frame" x="144.66666666666669" y="880" width="140.66666666666669" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="LqU-Uv-0KZ"/>
                                                 </constraints>
@@ -417,6 +425,8 @@
                                     <constraint firstItem="f3I-uN-eSr" firstAttribute="bottom" secondItem="TG1-QK-2md" secondAttribute="bottom" constant="-20" id="new-bottom-constraint"/>
                                     <constraint firstItem="f3I-uN-eSr" firstAttribute="top" secondItem="TG1-QK-2md" secondAttribute="top" constant="20" id="new-top-constraint"/>
                                     <constraint firstItem="f3I-uN-eSr" firstAttribute="centerX" secondItem="TG1-QK-2md" secondAttribute="centerX" id="ntG-an-qDx"/>
+                                    <constraint firstItem="f3I-uN-eSr" firstAttribute="leading" secondItem="TG1-QK-2md" secondAttribute="leading" id="stack-view-leading"/>
+                                    <constraint firstItem="f3I-uN-eSr" firstAttribute="trailing" secondItem="TG1-QK-2md" secondAttribute="trailing" id="stack-view-trailing"/>
                                     <constraint firstItem="f3I-uN-eSr" firstAttribute="width" secondItem="TG1-QK-2md" secondAttribute="width" id="stack-view-width"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="yH5-7s-l2I"/>
