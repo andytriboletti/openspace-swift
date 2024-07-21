@@ -549,8 +549,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upgradeButton">
+                                <rect key="frame" x="20" y="303" width="390" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="upgradeButtonHeight"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Upgrade Passenger or Cargo Limit"/>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-le-RyT">
-                                <rect key="frame" x="0.0" y="303" width="430" height="546"/>
+                                <rect key="frame" x="0.0" y="353" width="430" height="496"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CargoCell" id="bT9-sR-pl2">
@@ -575,7 +583,7 @@
                             <constraint firstItem="QZs-PK-06h" firstAttribute="leading" secondItem="WtJ-zT-3Yc" secondAttribute="leading" id="Ucq-cZ-ZSD"/>
                             <constraint firstItem="passengersLabel1" firstAttribute="leading" secondItem="WtJ-zT-3Yc" secondAttribute="leading" constant="1" id="Zwz-fl-Sov"/>
                             <constraint firstAttribute="trailing" secondItem="passengersLabel2" secondAttribute="trailing" id="aQ4-VB-DOE"/>
-                            <constraint firstItem="kGT-le-RyT" firstAttribute="top" secondItem="KX7-hh-kF9" secondAttribute="bottom" constant="10" id="cargoTableTop"/>
+                            <constraint firstItem="kGT-le-RyT" firstAttribute="top" secondItem="upgradeButton" secondAttribute="bottom" constant="10" id="cargoTableTop"/>
                             <constraint firstItem="passengersLabel2" firstAttribute="leading" secondItem="WtJ-zT-3Yc" secondAttribute="leading" id="d19-Wg-1hR"/>
                             <constraint firstItem="KX7-hh-kF9" firstAttribute="centerX" secondItem="COF-xq-3BM" secondAttribute="centerX" id="for-Uz-lCo"/>
                             <constraint firstItem="kGT-le-RyT" firstAttribute="bottom" secondItem="WtJ-zT-3Yc" secondAttribute="bottom" id="kGT-le-RyTBottom"/>
@@ -585,6 +593,9 @@
                             <constraint firstItem="KX7-hh-kF9" firstAttribute="top" secondItem="passengersLabel2" secondAttribute="bottom" constant="10" id="passengersLabel2ToCargo"/>
                             <constraint firstItem="passengersLabel2" firstAttribute="top" secondItem="passengersLabel1" secondAttribute="bottom" constant="1" id="passengersLabel2Top"/>
                             <constraint firstItem="passengersLabel2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WtJ-zT-3Yc" secondAttribute="leading" id="txY-wL-TRs"/>
+                            <constraint firstItem="upgradeButton" firstAttribute="leading" secondItem="WtJ-zT-3Yc" secondAttribute="leading" constant="20" id="upgradeButtonLeading"/>
+                            <constraint firstItem="upgradeButton" firstAttribute="top" secondItem="KX7-hh-kF9" secondAttribute="bottom" constant="10" id="upgradeButtonTop"/>
+                            <constraint firstItem="WtJ-zT-3Yc" firstAttribute="trailing" secondItem="upgradeButton" secondAttribute="trailing" constant="20" id="upgradeButtonTrailing"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cargo" image="book" catalog="system" id="Lvh-hK-yeB"/>
@@ -593,6 +604,7 @@
                         <outlet property="passengerLabel1" destination="passengersLabel1" id="Zt5-Xv-og2"/>
                         <outlet property="passengerLabel2" destination="passengersLabel2" id="hCb-Yx-U6q"/>
                         <outlet property="tableView" destination="kGT-le-RyT" id="jj6-bE-cRY"/>
+                        <outlet property="upgradeButton" destination="upgradeButton" id="upgradeButtonOutlet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chd-Uk-fYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -702,10 +714,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="872"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="29.666666666666657" y="20" width="370.66666666666674" height="400"/>
+                                <rect key="frame" x="36.666666666666657" y="20" width="356.66666666666674" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="370.66666666666669" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="356.66666666666669" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -717,7 +729,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="310.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="100" width="296.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="h5S-tH-Ymy"/>
                                         </constraints>
@@ -727,7 +739,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="180" width="310.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="180" width="296.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vt4-Ug-hXH"/>
                                         </constraints>
@@ -737,7 +749,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvS-4b-iaH">
-                                        <rect key="frame" x="62.333333333333314" y="260" width="246" height="60"/>
+                                        <rect key="frame" x="55.333333333333343" y="260" width="246.00000000000003" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="xRl-ga-FCP"/>
                                         </constraints>
@@ -747,7 +759,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-0A-1Qt">
-                                        <rect key="frame" x="102.33333333333331" y="340" width="166" height="60"/>
+                                        <rect key="frame" x="95.333333333333343" y="340" width="166.00000000000003" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vZK-tQ-Xf1"/>
                                         </constraints>
@@ -1003,7 +1015,7 @@
                                 <rect key="frame" x="20" y="0.0" width="390" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="8.3333333333333428" y="0.0" width="373.33333333333326" height="100"/>
+                                        <rect key="frame" x="15.333333333333343" y="0.0" width="359.33333333333326" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2094,7 +2106,7 @@
                                 <rect key="frame" x="0.0" y="20" width="430" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring The Moon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-Z8-8O1" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="139.66666666666669" y="0.0" width="150.66666666666669" height="80"/>
+                                        <rect key="frame" x="146.66666666666669" y="0.0" width="136.66666666666669" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2385,7 +2397,7 @@
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
-            <size key="intrinsicContentSize" width="469.66666666666669" height="31.333333333333332"/>
+            <size key="intrinsicContentSize" width="455.66666666666669" height="21.333333333333332"/>
         </designable>
         <designable name="3Nd-Z8-8O1">
             <size key="intrinsicContentSize" width="150.66666666666666" height="29"/>

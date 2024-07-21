@@ -8,6 +8,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var passengerLabel1: UILabel!
     @IBOutlet weak var passengerLabel2: UILabel!
     @IBOutlet weak var cargoLabel1: UILabel!
+    @IBOutlet weak var upgradeButton: UIButton!
 
     var minerals: [OpenspaceAPI.UserMineral] = []  // Use the fully qualified name
 
