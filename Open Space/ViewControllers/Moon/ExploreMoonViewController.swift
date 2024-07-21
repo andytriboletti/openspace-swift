@@ -238,6 +238,9 @@ class ExploreMoonViewController: UIViewController {
         super.viewDidLoad()
         self.addButtonToStackView()
 
+        Task {
+            await loadRewardedAd()
+        }
         #if !targetEnvironment(macCatalyst)
             self.addRewardedButtonToStackView()
         #endif

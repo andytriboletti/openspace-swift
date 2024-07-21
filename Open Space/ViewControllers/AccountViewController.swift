@@ -149,6 +149,9 @@ class AccountViewController: UIViewController {
         rewardedAd.present(fromRootViewController: nil) {
             let reward = rewardedAd.adReward
             print("Refill Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+            //update energy label
+            self.energyLabel.text = "Energy: \(Defaults[.totalEnergy]) out of \(Defaults[.totalEnergy])"
+
       }
     #endif
     }
