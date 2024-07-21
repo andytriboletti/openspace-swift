@@ -1015,7 +1015,7 @@
                                 <rect key="frame" x="20" y="0.0" width="390" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="15.333333333333343" y="0.0" width="359.33333333333326" height="100"/>
+                                        <rect key="frame" x="8.3333333333333428" y="0.0" width="373.33333333333326" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2397,7 +2397,7 @@
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
-            <size key="intrinsicContentSize" width="455.66666666666669" height="21.333333333333332"/>
+            <size key="intrinsicContentSize" width="469.66666666666669" height="31.333333333333332"/>
         </designable>
         <designable name="3Nd-Z8-8O1">
             <size key="intrinsicContentSize" width="150.66666666666666" height="29"/>
