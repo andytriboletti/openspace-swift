@@ -19,20 +19,22 @@ extension GameViewController {
             return
         }
 
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { result in
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?), Error>) in
+            guard let self = self else { return }
+
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
                     self.handleLocationSuccess(data: data)
                 case .failure(let error):
-                    print("Error fetching location: \(error.localizedDescription)")
+                    print("Error: \(error.localizedDescription)")
                 }
             }
         }
     }
 
-    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?)) {
-        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit) = data
+    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?)) {
+        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId) = data
 
         if let username = username, !username.isEmpty {
             Defaults[.username] = username
@@ -73,6 +75,10 @@ extension GameViewController {
             Defaults[.cargoLimit] = cargoLimit
         }
 
+        if let userId = userId {
+            Defaults[.userId] = userId
+        }
+
         switch location {
         case "nearEarth":
             self.appDelegate.gameState.locationState = .nearEarth
@@ -101,6 +107,7 @@ extension GameViewController {
         self.setNearFromLocationState()
         self.setCurrencyAndEnergyLabels()
     }
+
 
 
     func submitUsername(username: String, completion: @escaping (String?, String?) -> Void) {

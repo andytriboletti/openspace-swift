@@ -47,7 +47,7 @@ class ExploreMoonViewController: UIViewController {
             rewardedAd = try await GADRewardedAd.load(
                 withAdUnitID: "ca-app-pub-8840903285420889/2588345097", request: GADRequest())
             let serverSideVerificationOptions = GADServerSideVerificationOptions()
-            serverSideVerificationOptions.userIdentifier = Defaults[.userId]
+            serverSideVerificationOptions.userIdentifier = Defaults[.userId].description
             rewardedAd?.serverSideVerificationOptions = serverSideVerificationOptions
         } catch {
             print("Rewarded ad failed to load with error: \(error.localizedDescription)")

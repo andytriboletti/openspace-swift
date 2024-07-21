@@ -251,7 +251,6 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
-
     func getLocation() {
         guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
             print("Email or authToken is missing")
@@ -261,64 +260,90 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] result in
             guard let self = self else { return }
 
-            switch result {
-            case .success(let data):
-                let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit) = data
-
-                // Save your_spheres and neighbor_spheres
-                if let yourSpheresArray = yourSpheres as? [[String: String]] {
-                    self.yourSpheres = yourSpheresArray
-                } else {
-                    self.yourSpheres = []
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.handleLocationSuccess(data: data)
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
                 }
-
-                if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
-                    self.neighborSpheres = neighborSpheresArray
-                } else {
-                    self.neighborSpheres = []
-                }
-
-                // Save space station data to Defaults
-                if let spaceStation = spaceStation,
-                   let meshLocation = spaceStation["mesh_location"] as? String,
-                   let stationName = spaceStation["spacestation_name"] as? String,
-                   let stationId = spaceStation["station_id"] as? String {
-                    Defaults[.stationMeshLocation] = meshLocation
-                    Defaults[.stationName] = stationName
-                    Defaults[.stationId] = stationId
-                }
-
-                // Save currency and energy data to Defaults
-                Defaults[.currency] = currency
-                Defaults[.currentEnergy] = currentEnergy
-                Defaults[.totalEnergy] = totalEnergy
-
-                // Save passenger and cargo limits to Defaults
-                if let passengerLimit = passengerLimit {
-                    Defaults[.passengerLimit] = passengerLimit
-                }
-
-                if let cargoLimit = cargoLimit {
-                    Defaults[.cargoLimit] = cargoLimit
-                }
-
-                // Save username if provided
-                if let username = username, !username.isEmpty {
-                    Defaults[.username] = username
-                }
-
-                self.setupYourSpheres()
-                self.setupNeighbor()
-
-                // Add the spheres on the floor
-                self.createSpheresOnFloor(scene: self.scene)
-
-            case .failure(let error):
-                // Handle error
-                print("Error: \(error.localizedDescription)")
             }
         }
     }
+
+
+    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?)) {
+        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId) = data
+
+//        if let username = username, !username.isEmpty {
+//            Defaults[.username] = username
+//        } else {
+//            self.askForUserName()
+//        }
+
+        do {
+            let yourSpheresData = try JSONSerialization.data(withJSONObject: yourSpheres ?? [])
+            let neighborSpheresData = try JSONSerialization.data(withJSONObject: neighborSpheres ?? [])
+            Defaults[.yourSpheres] = yourSpheresData
+            Defaults[.neighborSpheres] = neighborSpheresData
+        } catch {
+            print("Error converting spheres data: \(error)")
+        }
+
+        if let spaceStation = spaceStation,
+           let meshLocation = spaceStation["mesh_location"] as? String,
+           let previewLocation = spaceStation["preview_location"] as? String,
+           let stationName = spaceStation["spacestation_name"] as? String,
+           let stationId = spaceStation["station_id"] as? String {
+
+            Defaults[.stationMeshLocation] = meshLocation
+            Defaults[.stationPreviewLocation] = previewLocation
+            Defaults[.stationName] = stationName
+            Defaults[.stationId] = stationId
+        }
+
+        Defaults[.currency] = currency
+        Defaults[.currentEnergy] = currentEnergy
+        Defaults[.totalEnergy] = totalEnergy
+
+        if let passengerLimit = passengerLimit {
+            Defaults[.passengerLimit] = passengerLimit
+        }
+
+        if let cargoLimit = cargoLimit {
+            Defaults[.cargoLimit] = cargoLimit
+        }
+
+        switch location {
+        case "nearEarth":
+            self.appDelegate.gameState.locationState = .nearEarth
+        case "nearISS":
+            self.appDelegate.gameState.locationState = .nearISS
+        case "nearMoon":
+            self.appDelegate.gameState.locationState = .nearMoon
+        case "nearMars":
+            self.appDelegate.gameState.locationState = .nearMars
+        case "nearYourSpaceStation":
+            self.appDelegate.gameState.locationState = .nearYourSpaceStation
+        case "onEarth":
+            self.appDelegate.gameState.locationState = .onEarth
+        case "onISS":
+            self.appDelegate.gameState.locationState = .onISS
+        case "onMoon":
+            self.appDelegate.gameState.locationState = .onMoon
+        case "onMars":
+            self.appDelegate.gameState.locationState = .onMars
+        case "nearNothing":
+            self.appDelegate.gameState.locationState = .nearNothing
+        default:
+            print("Unknown location: \(location)")
+        }
+
+        //self.setNearFromLocationState()
+        //self.setCurrencyAndEnergyLabels()
+    }
+
+
 
 
     func createSpheresOnFloor(scene: SCNScene) {

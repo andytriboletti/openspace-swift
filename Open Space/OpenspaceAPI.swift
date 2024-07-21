@@ -331,7 +331,7 @@ class OpenspaceAPI {
 
 
 
-    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?), Error>) -> Void) {
+    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?), Error>) -> Void) {
             let parameters: [String: Any] = ["email": email, "authToken": authToken]
             let url = "\(serverURL)get-data"
 
@@ -353,7 +353,8 @@ class OpenspaceAPI {
                         let spaceStation = json["your_space_station"] as? [String: Any]
                         let passengerLimit = json["passenger_limit"] as? Int
                         let cargoLimit = json["cargo_limit"] as? Int
-                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit)))
+                        let userId = json["user_id"] as? Int
+                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId)))
                     } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
                         self.refreshAuthToken { newToken, tokenError in
                             if let newToken = newToken {
