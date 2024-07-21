@@ -239,24 +239,40 @@ class OpenspaceAPI {
     }
 
 
-
     func submitToServer(username: String, email: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let parameters: [String: Any] = ["username": username, "email": email, "authToken": Defaults[.authToken]]
-        guard let request = createPostRequest(urlString: "\(serverURL)save-username", parameters: parameters) else {
-            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-            return
-        }
-        performSimpleRequest(request: request, completion: completion)
-    }
 
+        let urlString = "\(serverURL)save-username"
+
+        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate()
+            .response { response in
+                switch response.result {
+                case .success:
+                    completion(.success(()))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
     func resetUsername(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": Defaults[.authToken]]
-        guard let request = createPostRequest(urlString: "\(serverURL)reset-username", parameters: parameters) else {
-            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-            return
-        }
-        performSimpleRequest(request: request, completion: completion)
+
+        let urlString = "\(serverURL)reset-username"
+
+        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate()
+            .response { response in
+                switch response.result {
+                case .success:
+                    completion(.success(()))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
     }
+
     func deleteItemFromSphere(email: String, meshId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": Defaults[.authToken], "mesh_id": meshId]
         let urlString = "\(serverURL)delete-item-from-sphere"

@@ -1,6 +1,12 @@
 import UIKit
 import Defaults
 
+#if targetEnvironment(macCatalyst)
+// Exclude GoogleMobileAds for Mac Catalyst
+#else
+import GoogleMobileAds
+#endif
+
 class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -9,6 +15,10 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var passengerLabel2: UILabel!
     @IBOutlet weak var cargoLabel1: UILabel!
     @IBOutlet weak var upgradeButton: UIButton!
+
+#if !targetEnvironment(macCatalyst)
+    var rewardedAd: GADRewardedAd?
+#endif
 
     var minerals: [OpenspaceAPI.UserMineral] = []  // Use the fully qualified name
 
@@ -19,6 +29,10 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
 
     internal func numberOfSections(in tableView: UITableView) -> Int {
        return 2
+    }
+
+    @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
+        print("upgrade max cargo button clicked")
     }
 
     override func viewDidLoad() {

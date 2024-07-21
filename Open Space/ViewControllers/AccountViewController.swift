@@ -1,6 +1,11 @@
 import UIKit
 import FirebaseAuth
 import Defaults
+#if targetEnvironment(macCatalyst)
+// Exclude GoogleMobileAds for Mac Catalyst
+#else
+import GoogleMobileAds
+#endif
 
 class AccountViewController: UIViewController {
     var rootViewController: SignInViewController?
@@ -9,6 +14,60 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var energyLabel: UILabel!
+    #if !targetEnvironment(macCatalyst)
+    var rewardedAd: GADRewardedAd?
+    #endif
+
+
+
+    @IBAction func upgradeMaxEnergyButtonTapped(_ sender: UIButton) {
+          let alert = UIAlertController(title: "Upgrade Max Energy", message: "Purchase Max Energy +1 Upgrade For $0.99", preferredStyle: .alert)
+          let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
+              // Handle purchase action
+              print("purchase max energy upgrade")
+          })
+          alert.addAction(purchaseAction)
+
+          let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+          alert.addAction(cancelAction)
+
+          self.present(alert, animated: true, completion: nil)
+      }
+
+
+    @IBAction func refillEnergyButtonTapped(_ sender: UIButton) {
+           let alert: UIAlertController
+
+           #if targetEnvironment(macCatalyst)
+           alert = UIAlertController(title: "Purchase Energy Refill", message: "Purchase Energy Refill To Max For $0.99", preferredStyle: .alert)
+           let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
+               // Handle purchase action
+               print("purchase energy refill")
+           })
+           alert.addAction(purchaseAction)
+           #else
+           alert = UIAlertController(title: "Refill Energy", message: "Watch a Rewarded Ad to Refill Energy or Purchase Energy Refill To Max For $0.99", preferredStyle: .alert)
+           let watchAdAction = UIAlertAction(title: "Watch Ad", style: .default, handler: { _ in
+               // Handle watch ad action
+               print("watch ad to refill energy")
+               self.show()
+           })
+           let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
+               // Handle purchase action
+               print("purchase energy refill")
+           })
+           alert.addAction(watchAdAction)
+           alert.addAction(purchaseAction)
+           #endif
+
+           let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+           alert.addAction(cancelAction)
+
+           self.present(alert, animated: true, completion: nil)
+       }
+    
+
 
     @IBAction func showResetButtonTapped(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to reset your username?", preferredStyle: .alert)
@@ -51,6 +110,53 @@ class AccountViewController: UIViewController {
         // Present the alert controller
         self.present(alertController, animated: true, completion: nil)
     }
+
+    func loadAdAwait() async {
+        do {
+            // Perform the loading of the rewarded ad asynchronously
+            try await loadRewardedAd()
+            // Handle successful loading
+        } catch {
+            // Handle any errors that occur during loading
+            print("Error loading rewarded ad: \(error)")
+        }
+    }
+    func loadRewardedAd() async {
+        #if !targetEnvironment(macCatalyst)
+
+        do {
+            print("user id is")
+            print(Defaults[.userId])
+
+            rewardedAd = try await GADRewardedAd.load(
+                withAdUnitID: "ca-app-pub-8840903285420889/7482113898", request: GADRequest())
+            let serverSideVerificationOptions = GADServerSideVerificationOptions()
+            serverSideVerificationOptions.userIdentifier = Defaults[.userId]
+            rewardedAd?.serverSideVerificationOptions = serverSideVerificationOptions
+        } catch {
+            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+        }
+
+        #endif
+    }
+    func show() {
+    #if !targetEnvironment(macCatalyst)
+        guard let rewardedAd = rewardedAd else {
+        return print("Ad wasn't ready.")
+      }
+
+        // The UIViewController parameter is an optional.
+        rewardedAd.present(fromRootViewController: nil) {
+            let reward = rewardedAd.adReward
+            print("Refill Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+      }
+    #endif
+    }
+
+//    @objc func buttonTappedRewarded() {
+//        print("rewarded tap")
+//        show()
+//    }
 
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
            let confirmationAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
@@ -147,6 +253,10 @@ class AccountViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateUsernameLabel()
+        self.energyLabel.text = "Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])"
+        Task {
+            await loadRewardedAd()
+        }
     }
 
     func updateUsernameLabel() {

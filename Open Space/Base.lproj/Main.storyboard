@@ -381,12 +381,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G46-vk-o0t">
-                                                <rect key="frame" x="63" y="550" width="304.33333333333331" height="100"/>
+                                                <rect key="frame" x="156" y="550" width="118.33333333333331" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="rRJ-uY-vre"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Refill Energy By Watching a Video Ad"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Refill Energy"/>
+                                                <connections>
+                                                    <action selector="refillEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="c5M-Db-r1s"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-sM-a37">
                                                 <rect key="frame" x="123" y="660" width="184" height="100"/>
@@ -395,6 +398,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Upgrade Max Energy"/>
+                                                <connections>
+                                                    <action selector="upgradeMaxEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="4lQ-8Z-rkW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
                                                 <rect key="frame" x="171.66666666666666" y="770" width="86.999999999999972" height="100"/>
@@ -447,6 +453,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="deleteButton" destination="b3I-g5-iBC" id="OGP-ht-bOw"/>
+                        <outlet property="energyLabel" destination="u3N-LV-ksW" id="JfE-gR-tSX"/>
                         <outlet property="loggedInAs" destination="7yY-oO-GU7" id="KOd-BI-NZN"/>
                         <outlet property="signOutButton" destination="ood-yR-ZiC" id="b57-Uf-EUn"/>
                         <outlet property="username" destination="juP-iZ-amP" id="23m-wd-rs5"/>
@@ -556,6 +563,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Upgrade Passenger or Cargo Limit"/>
+                                <connections>
+                                    <action selector="upgradeMaxCargoButtonTapped:" destination="5fb-7X-jYJ" eventType="touchDown" id="HJ9-RB-Aar"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-le-RyT">
                                 <rect key="frame" x="0.0" y="353" width="430" height="496"/>
@@ -714,10 +724,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="872"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="36.666666666666657" y="20" width="356.66666666666674" height="400"/>
+                                <rect key="frame" x="29.666666666666657" y="20" width="370.66666666666674" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="356.66666666666669" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="370.66666666666669" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -729,7 +739,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="296.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="100" width="310.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="h5S-tH-Ymy"/>
                                         </constraints>
@@ -739,7 +749,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="180" width="296.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="180" width="310.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vt4-Ug-hXH"/>
                                         </constraints>
@@ -749,7 +759,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvS-4b-iaH">
-                                        <rect key="frame" x="55.333333333333343" y="260" width="246.00000000000003" height="60"/>
+                                        <rect key="frame" x="62.333333333333314" y="260" width="246" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="xRl-ga-FCP"/>
                                         </constraints>
@@ -759,7 +769,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-0A-1Qt">
-                                        <rect key="frame" x="95.333333333333343" y="340" width="166.00000000000003" height="60"/>
+                                        <rect key="frame" x="102.33333333333331" y="340" width="166" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vZK-tQ-Xf1"/>
                                         </constraints>
@@ -2106,7 +2116,7 @@
                                 <rect key="frame" x="0.0" y="20" width="430" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring The Moon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-Z8-8O1" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="146.66666666666669" y="0.0" width="136.66666666666669" height="80"/>
+                                        <rect key="frame" x="139.66666666666669" y="0.0" width="150.66666666666669" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
