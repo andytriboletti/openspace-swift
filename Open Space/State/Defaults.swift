@@ -37,5 +37,7 @@ extension Defaults.Keys {
     static let currency = Key<Int>("currency", default: 1000)
     static let currentEnergy = Key<Int>("currentEnergy", default: 5)
     static let totalEnergy = Key<Int>("totalEnergy", default: 5)
+    static let passengerLimit = Key<Int>("passengerLimit", default: 0)
+    static let cargoLimit = Key<Int>("cargoLimit", default: 0)
 
 }

@@ -315,30 +315,18 @@ class OpenspaceAPI {
 
 
 
+    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?), Error>) -> Void) {
+            let parameters: [String: Any] = ["email": email, "authToken": authToken]
+            let url = "\(serverURL)get-data"
 
-    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int), Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken]
-        guard let request = createPostRequest(urlString: "\(serverURL)get-data", parameters: parameters) else {
-            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-            return
-        }
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    guard let json = value as? [String: Any] else {
+                        completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+                        return
+                    }
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-                return
-            }
-            guard let data = data else {
-                completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-                return
-            }
-
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     if let location = json["last_location"] as? String,
                        let currency = json["currency"] as? Int,
                        let currentEnergy = json["current_energy"] as? Int,
@@ -347,7 +335,9 @@ class OpenspaceAPI {
                         let yourSpheres = json["your_spheres"] as? [[String: Any]]
                         let neighborSpheres = json["neighbor_spheres"] as? [[String: Any]]
                         let spaceStation = json["your_space_station"] as? [String: Any]
-                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy)))
+                        let passengerLimit = json["passenger_limit"] as? Int
+                        let cargoLimit = json["cargo_limit"] as? Int
+                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit)))
                     } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
                         self.refreshAuthToken { newToken, tokenError in
                             if let newToken = newToken {
@@ -360,16 +350,13 @@ class OpenspaceAPI {
                     } else {
                         completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
                     }
-                } else {
-                    completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
-            } catch {
-                completion(.failure(error))
             }
         }
 
-        task.resume()
-    }
+
 
     // MARK: - WebSocket
 

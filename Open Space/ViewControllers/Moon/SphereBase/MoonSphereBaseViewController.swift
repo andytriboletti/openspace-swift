@@ -251,30 +251,30 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
-    
+
     func getLocation() {
-        let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
+        guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
+            print("Email or authToken is missing")
+            return
+        }
 
         OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case .success(let data):
-                let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy) = data
+                let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit) = data
 
                 // Save your_spheres and neighbor_spheres
                 if let yourSpheresArray = yourSpheres as? [[String: String]] {
                     self.yourSpheres = yourSpheresArray
                 } else {
-                    // Handle the case where yourSpheres is not of the correct type or empty
                     self.yourSpheres = []
                 }
 
                 if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
                     self.neighborSpheres = neighborSpheresArray
                 } else {
-                    // Handle the case where neighborSpheres is not of the correct type or empty
                     self.neighborSpheres = []
                 }
 
@@ -293,6 +293,15 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
                 Defaults[.currentEnergy] = currentEnergy
                 Defaults[.totalEnergy] = totalEnergy
 
+                // Save passenger and cargo limits to Defaults
+                if let passengerLimit = passengerLimit {
+                    Defaults[.passengerLimit] = passengerLimit
+                }
+
+                if let cargoLimit = cargoLimit {
+                    Defaults[.cargoLimit] = cargoLimit
+                }
+
                 // Save username if provided
                 if let username = username, !username.isEmpty {
                     Defaults[.username] = username
@@ -310,6 +319,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
+
 
     func createSpheresOnFloor(scene: SCNScene) {
         let numRows = 5

@@ -16,13 +16,20 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         getUserMinerals(email: Defaults[.email])
     }
 
+    internal func numberOfSections(in tableView: UITableView) -> Int {
+       return 2
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        passengerLabel1.text="Ship Passengers - Max: 4 Passengers"
+        let maxPassengers = Defaults[.passengerLimit]
+        let cargoLimit = Defaults[.cargoLimit]
+
+        passengerLabel1.text="Ship Passengers - Max: \(maxPassengers) Passengers"
         passengerLabel2.text="4 Passengers onboard, headed to ISS"
-        cargoLabel1.text="Ship Cargo - Max 5,000 kg"
+        cargoLabel1.text="Ship Cargo - Max \(cargoLimit) kg"
     }
 
     func getUserMinerals(email: String) {
@@ -46,16 +53,27 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
 
     // UITableViewDataSource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of rows: \(minerals.count)")
-        return minerals.count
+        if(section == 1) {
+            return 1
+        }
+        else {
+            print("Number of rows: \(minerals.count)")
+            return minerals.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
 
-        let mineral = minerals[indexPath.row]
-        cell.textLabel?.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"
+        if(indexPath.section == 1) {
+            let weight = 1000
 
+            cell.textLabel?.text = "Mission Supplies headed to ISS - Weight: \(weight) kg"
+        }
+        else {
+            let mineral = minerals[indexPath.row]
+            cell.textLabel?.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"
+        }
         return cell
     }
 }
