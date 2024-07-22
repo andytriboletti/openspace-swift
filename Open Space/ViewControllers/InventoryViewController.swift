@@ -32,7 +32,36 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
-        print("upgrade max cargo button clicked")
+        // Create an alert controller
+        let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
+
+        // Add the "Upgrade Passenger Limit" action
+        let upgradePassengerAction = UIAlertAction(title: "Upgrade Passenger Limit +1", style: .default) { action in
+            // Handle the upgrade passenger limit action
+            print("Upgrade Passenger Limit +1 selected")
+            // Add your code to upgrade passenger limit here
+        }
+
+        // Add the "Upgrade Cargo Limit" action
+        let upgradeCargoAction = UIAlertAction(title: "Upgrade Cargo Limit +1,000kg", style: .default) { action in
+            // Handle the upgrade cargo limit action
+            print("Upgrade Cargo Limit +1000kg selected")
+            // Add your code to upgrade cargo limit here
+        }
+
+        // Add the "Cancel" action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            // Handle the cancel action
+            print("Cancel selected")
+        }
+
+        // Add actions to the alert controller
+        alertController.addAction(upgradePassengerAction)
+        alertController.addAction(upgradeCargoAction)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {

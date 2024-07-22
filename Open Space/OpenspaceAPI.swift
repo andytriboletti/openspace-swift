@@ -293,12 +293,26 @@ class OpenspaceAPI {
 
     func createSphere(email: String, authToken: String, sphereName: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereName": sphereName]
-        guard let request = createPostRequest(urlString: "\(serverURL)create-sphere", parameters: parameters) else {
-            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-            return
-        }
-        performSimpleRequest(request: request, completion: completion)
+
+        AF.request("\(serverURL)create-sphere", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    completion(.success(()))
+                case .failure:
+                    if let data = response.data,
+                       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let message = json["message"] as? String {
+                        let error = NSError(domain: "", code: 400, userInfo: [NSLocalizedDescriptionKey: message])
+                        completion(.failure(error))
+                    } else {
+                        completion(.failure(response.error!))
+                    }
+                }
+            }
     }
+
     func createSpaceStation(email: String, authToken: String, configJson: String, spaceStationName: String, spaceStationLocation: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let parameters: [String: Any] = [
             "email": email,

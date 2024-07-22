@@ -236,21 +236,29 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
     func createSphere(with name: String) {
-        // Call the OpenSpaceAPI function to create the sphere with the provided name
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
-        OpenspaceAPI.shared.createSphere(email: email, authToken: authToken, sphereName: name) { [self] result in
+
+        OpenspaceAPI.shared.createSphere(email: email, authToken: authToken, sphereName: name) { [weak self] result in
             switch result {
             case .success:
                 print("Sphere created successfully")
-                refresh()
-                // Handle success, if needed
+                self?.refresh()
             case .failure(let error):
-                print("Error creating sphere: \(error)")
-                // Handle error, if needed
+                print("Error creating sphere: \(error.localizedDescription)")
+                self?.showAlert(with: "Error", message: error.localizedDescription)
             }
         }
     }
+
+
+    private func showAlert(with title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
     func getLocation() {
         guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
             print("Email or authToken is missing")
@@ -274,6 +282,19 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
     private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?)) {
         let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId) = data
+
+        // Save your_spheres and neighbor_spheres
+         if let yourSpheresArray = yourSpheres as? [[String: String]] {
+             self.yourSpheres = yourSpheresArray
+         } else {
+             self.yourSpheres = []
+         }
+
+         if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
+             self.neighborSpheres = neighborSpheresArray
+         } else {
+             self.neighborSpheres = []
+         }
 
 //        if let username = username, !username.isEmpty {
 //            Defaults[.username] = username
@@ -314,31 +335,13 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             Defaults[.cargoLimit] = cargoLimit
         }
 
-        switch location {
-        case "nearEarth":
-            self.appDelegate.gameState.locationState = .nearEarth
-        case "nearISS":
-            self.appDelegate.gameState.locationState = .nearISS
-        case "nearMoon":
-            self.appDelegate.gameState.locationState = .nearMoon
-        case "nearMars":
-            self.appDelegate.gameState.locationState = .nearMars
-        case "nearYourSpaceStation":
-            self.appDelegate.gameState.locationState = .nearYourSpaceStation
-        case "onEarth":
-            self.appDelegate.gameState.locationState = .onEarth
-        case "onISS":
-            self.appDelegate.gameState.locationState = .onISS
-        case "onMoon":
-            self.appDelegate.gameState.locationState = .onMoon
-        case "onMars":
-            self.appDelegate.gameState.locationState = .onMars
-        case "nearNothing":
-            self.appDelegate.gameState.locationState = .nearNothing
-        default:
-            print("Unknown location: \(location)")
-        }
 
+
+        self.setupYourSpheres()
+        self.setupNeighbor()
+
+        // Add the spheres on the floor
+        self.createSpheresOnFloor(scene: self.scene)
         //self.setNearFromLocationState()
         //self.setCurrencyAndEnergyLabels()
     }
