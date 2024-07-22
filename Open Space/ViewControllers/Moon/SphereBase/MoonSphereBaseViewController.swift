@@ -63,7 +63,27 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
         // Check if neighborSpheres is empty
         claimAnotherSphereButton.addTarget(self, action: #selector(claimAnotherSphereMethod), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
 
+    }
+    func refreshLabels() {
+        //self.setupYourSpheres()
+        //self.setupNeighbor()
+        getLocation()
+    }
+    @objc func handlePurchaseCompletion(_ notification: Notification) {
+          print("handlePurchaseCompletion called")
+          // Refresh Defaults and labels
+        Utils.shared.getLocation() {
+              print("Refreshing labels after location update")
+              DispatchQueue.main.async {
+                  self.refreshLabels()
+              }
+          }
+      }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .purchaseCompleted, object: nil)
     }
 
     func displayAlert() {
