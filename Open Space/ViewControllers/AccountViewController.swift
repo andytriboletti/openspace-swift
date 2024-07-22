@@ -16,11 +16,17 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var energyLabel: UILabel!
     @IBOutlet weak var accountTypeLabel: UILabel!
+    @IBOutlet weak var upgradeToPremium: UIButton!
+
     #if !targetEnvironment(macCatalyst)
     var rewardedAd: GADRewardedAd?
     #endif
 
-    @IBAction func upgradeToPremium(_ sender: UIButton) {
+//    @IBAction func upgradeToPremium(_ sender: UIButton) {
+//            upgrade()
+//      }
+
+    @objc func upgrade() {
         print("upgrade to premium")
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
             showPremiumPurchaseAlert(price: price)
@@ -28,8 +34,7 @@ class AccountViewController: UIViewController {
             showPremiumPurchaseAlert(price: "$4.99")
             print("Product price not available")
         }
-      }
-
+    }
     func showPremiumPurchaseAlert(price: String) {
         // Create the alert controller with the price
         let msgText = "Do you want to purchase an upgrade to Premium without ads for \(price)?"
@@ -351,6 +356,25 @@ class AccountViewController: UIViewController {
             }
         }
     }
+    // Define the callback method with @objc attribute
+      @objc func upgradeAction() {
+          // Handle the button tap event
+          print("Upgrade button tapped")
+          // Add your custom logic here
+      }
+    // Define the callback method with @objc attribute
+      @objc func manageAction() {
+          // Handle the button tap event
+          print("Manage Your Account button tapped")
+          // Add your custom logic here
+          showSubscriptionManagement()
+
+      }
+    func showSubscriptionManagement() {
+        if let url = URL(string: "https://support.apple.com/en-us/HT202039") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -359,6 +383,12 @@ class AccountViewController: UIViewController {
         var accountType = "Basic"
         if(Defaults[.premium] == 1) {
             accountType = "Premium"
+            self.upgradeToPremium.setTitle("Manage Your Account", for: .normal)
+            self.upgradeToPremium.addTarget(self, action: #selector(manageAction), for: .touchUpInside)
+        }
+        else {
+            self.upgradeToPremium.setTitle("Upgrade To Premium. Remove Ads.", for: .normal)
+            self.upgradeToPremium.addTarget(self, action: #selector(upgrade), for: .touchUpInside)
         }
         self.accountTypeLabel.text = "Account Type: \(accountType)"
         Task {

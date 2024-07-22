@@ -145,6 +145,9 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
         let maxPassengers = Defaults[.passengerLimit]
         let cargoLimit = Defaults[.cargoLimit]
 
