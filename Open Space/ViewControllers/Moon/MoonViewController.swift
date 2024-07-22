@@ -27,7 +27,7 @@ class MoonViewController: UIViewController {
 
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
-        Utils().saveLocation(location: "nearMoon", usesEnergy: "0")
+        Utils.shared.saveLocation(location: "nearMoon", usesEnergy: "0")
 
         self.performSegue(withIdentifier: "takeOffFromMoon", sender: self)
             // self.dismiss(animated: true, completion: nil)

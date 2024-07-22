@@ -92,7 +92,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
                 
                 print(whereString) // Output: "premium"
                 
-                Utils().saveLocation(location: whereString, usesEnergy: "1")
+                Utils.shared.saveLocation(location: whereString, usesEnergy: "1")
                 Defaults[.traveling] = "true"
                 self.performSegue(withIdentifier: "goToGame", sender: self)
             }

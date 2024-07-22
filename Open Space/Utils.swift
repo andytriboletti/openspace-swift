@@ -4,6 +4,10 @@ import UIKit
 import Defaults
 
 class Utils {
+    static let shared = Utils()
+
+    private init() {}
+
     class func colorizeImage(_ image: UIImage?, with color: UIColor?) -> UIImage? {
         // existing method
         UIGraphicsBeginImageContextWithOptions(image?.size ?? CGSize.zero, _: false, _: image?.scale ?? 0.0)
@@ -48,8 +52,93 @@ class Utils {
             viewController.present(hostingController, animated: true, completion: nil)
         }
     }
-    // Save location of user
-    
+    public func getLocation(completion: (() -> Void)? = nil) {
+        guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
+            print("Email or authToken is missing")
+            completion?()
+            return
+        }
+        print("in Utils.getLocation() with email: \(email) and authToken: \(authToken)")
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?), Error>) in
+            print("API call completed")
+            guard let self = self else {
+                print("Self is nil, returning early")
+                return
+            }
+            print("inside getLocation 123")
+
+            print(result)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    print("calling handleLocationSuccess with data: \(data)")
+                    self.handleLocationSuccess(data: data)
+                    completion?()
+                case .failure(let error):
+                    print("Error in getLocation: \(error.localizedDescription)")
+                    completion?()
+                }
+            }
+        }
+    }
+
+    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?)) {
+        print("handleLocationSuccess called with data: \(data)")
+        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed) = data
+
+        if let username = username, !username.isEmpty {
+            Defaults[.username] = username
+        } else {
+            print("no username?")
+        }
+
+        do {
+            let yourSpheresData = try JSONSerialization.data(withJSONObject: yourSpheres ?? [])
+            let neighborSpheresData = try JSONSerialization.data(withJSONObject: neighborSpheres ?? [])
+            Defaults[.yourSpheres] = yourSpheresData
+            Defaults[.neighborSpheres] = neighborSpheresData
+        } catch {
+            print("Error converting spheres data: \(error)")
+        }
+
+        if let spaceStation = spaceStation,
+           let meshLocation = spaceStation["mesh_location"] as? String,
+           let previewLocation = spaceStation["preview_location"] as? String,
+           let stationName = spaceStation["spacestation_name"] as? String,
+           let stationId = spaceStation["station_id"] as? String {
+
+            Defaults[.stationMeshLocation] = meshLocation
+            Defaults[.stationPreviewLocation] = previewLocation
+            Defaults[.stationName] = stationName
+            Defaults[.stationId] = stationId
+        }
+
+        Defaults[.currency] = currency
+        Defaults[.currentEnergy] = currentEnergy
+        Defaults[.totalEnergy] = totalEnergy
+
+        if let passengerLimit = passengerLimit {
+            Defaults[.passengerLimit] = passengerLimit
+        }
+
+        if let cargoLimit = cargoLimit {
+            Defaults[.cargoLimit] = cargoLimit
+        }
+
+        if let userId = userId {
+            Defaults[.userId] = userId
+        }
+
+        if let premium = premium {
+            Defaults[.premium] = premium
+        }
+        if let spheresAllowed = spheresAllowed {
+            Defaults[.spheresAllowed] = spheresAllowed
+        }
+
+        print("handleLocationSuccess completed")
+    }
+
     public func saveLocation(location: String, usesEnergy: String) {
         let email = Defaults[.email]
         let authToken = Defaults[.authToken]
@@ -63,8 +152,6 @@ class Utils {
             switch result {
             case .success(_):
                 print("openspace: success savign location")
-               // print("Success: \(response.message)")
-                //print("Current Energy: \(response.currentEnergy)")
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
                 if let nsError = error as NSError? {

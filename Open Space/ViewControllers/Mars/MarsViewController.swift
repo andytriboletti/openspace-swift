@@ -27,7 +27,7 @@ class MarsViewController: UIViewController {
 
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
-        Utils().saveLocation(location: "nearMars", usesEnergy: "0")
+        Utils.shared.saveLocation(location: "nearMars", usesEnergy: "0")
         self.performSegue(withIdentifier: "takeOff", sender: self)
             // self.dismiss(animated: true, completion: nil)
 

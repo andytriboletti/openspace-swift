@@ -376,6 +376,48 @@ class AccountViewController: UIViewController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .purchaseCompleted, object: nil)
+    }
+
+    @objc func handlePurchaseCompletion(_ notification: Notification) {
+          print("handlePurchaseCompletion called")
+          // Refresh Defaults and labels
+        Utils.shared.getLocation() {
+              print("Refreshing labels after location update")
+              DispatchQueue.main.async {
+                  self.refreshLabels()
+              }
+          }
+      }
+
+      func refreshLabels() {
+          print("refreshing labels")
+          self.energyLabel.text = "Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])"
+          self.updateUsernameLabel()
+          self.updateAccountTypeLabel()
+      }
+
+      func updateAccountTypeLabel() {
+          var accountType = "Basic"
+          if Defaults[.premium] == 1 {
+              accountType = "Premium"
+              self.upgradeToPremium.setTitle("Manage Your Account", for: .normal)
+              self.upgradeToPremium.removeTarget(self, action: #selector(upgrade), for: .touchUpInside)
+              self.upgradeToPremium.addTarget(self, action: #selector(manageAction), for: .touchUpInside)
+          } else {
+              self.upgradeToPremium.setTitle("Upgrade To Premium. Remove Ads.", for: .normal)
+              self.upgradeToPremium.removeTarget(self, action: #selector(manageAction), for: .touchUpInside)
+              self.upgradeToPremium.addTarget(self, action: #selector(upgrade), for: .touchUpInside)
+          }
+          self.accountTypeLabel.text = "Account Type: \(accountType)"
+      }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateUsernameLabel()

@@ -338,3 +338,6 @@ extension SCNNode {
 //        preloadInterstitialAd()
 //    }
 //}
+extension Notification.Name {
+    static let purchaseCompleted = Notification.Name("purchaseCompleted")
+}

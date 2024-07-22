@@ -86,39 +86,43 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
         }
         return receiptData.base64EncodedString(options: [])
     }
-
     private func completeTransaction(_ transaction: SKPaymentTransaction) {
-           // Perform any actions necessary upon successful purchase
-           if let receipt = fetchReceipt() {
-               OpenspaceAPI.shared.sendReceiptToServer(receipt: receipt, productIdentifier: transaction.payment.productIdentifier) { result in
-                   switch result {
-                   case .success:
-                       print("Receipt successfully sent to server")
+        // Perform any actions necessary upon successful purchase
+        if let receipt = fetchReceipt() {
+            OpenspaceAPI.shared.sendReceiptToServer(receipt: receipt, productIdentifier: transaction.payment.productIdentifier) { result in
+                switch result {
+                case .success:
+                    print("Receipt successfully sent to server")
 
-                       // Check if the product identifier is for the premium subscription
-                       if transaction.payment.productIdentifier == ProductIdentifiers.premiumSubscription {
-                           // Get the original_transaction_id from the transaction
-                           let originalTransactionId = transaction.original?.transactionIdentifier ?? transaction.transactionIdentifier ?? ""
+                    // Check if the product identifier is for the premium subscription
+                    if transaction.payment.productIdentifier == ProductIdentifiers.premiumSubscription {
+                        // Get the original_transaction_id from the transaction
+                        let originalTransactionId = transaction.original?.transactionIdentifier ?? transaction.transactionIdentifier ?? ""
 
-                           // Send the original_transaction_id and user_id to the server
-                           let currentUserId = Defaults[.userId] // Ensure this retrieves the current user ID correctly
-                           OpenspaceAPI.shared.addSubscription(userId: currentUserId, originalTransactionId: originalTransactionId) { result in
-                               switch result {
-                               case .success:
-                                   print("Subscription successfully added to server")
-                               case .failure(let error):
-                                   print("Failed to add subscription to server: \(error)")
-                               }
-                           }
-                       }
+                        // Send the original_transaction_id and user_id to the server
+                        let currentUserId = Defaults[.userId] // Ensure this retrieves the current user ID correctly
+                        OpenspaceAPI.shared.addSubscription(userId: currentUserId, originalTransactionId: originalTransactionId) { result in
+                            switch result {
+                            case .success:
+                                print("Subscription successfully added to server")
+                            case .failure(let error):
+                                print("Failed to add subscription to server: \(error)")
+                            }
+                        }
+                    }
 
-                   case .failure(let error):
-                       print("Failed to send receipt to server: \(error)")
-                   }
-               }
-           }
-           SKPaymentQueue.default().finishTransaction(transaction)
-       }
+                    // Post a notification to inform about the successful purchase
+                    NotificationCenter.default.post(name: .purchaseCompleted, object: nil, userInfo: ["productIdentifier": transaction.payment.productIdentifier])
+                    print("posting purchase copmleted notification")
+
+                case .failure(let error):
+                    print("Failed to send receipt to server: \(error)")
+                }
+            }
+        }
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+
 
     private func failedTransaction(_ transaction: SKPaymentTransaction) {
         if let error = transaction.error as? SKError {

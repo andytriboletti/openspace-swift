@@ -412,52 +412,61 @@ class OpenspaceAPI {
 
     struct DuplicateEntryError: Error {}
 
-
-
-
     func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?), Error>) -> Void) {
-            let parameters: [String: Any] = ["email": email, "authToken": authToken]
-            let url = "\(serverURL)get-data"
+        let parameters: [String: Any] = ["email": email, "authToken": authToken]
+        let url = "\(serverURL)get-data"
 
-            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    guard let json = value as? [String: Any] else {
-                        completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-                        return
-                    }
+        print("Requesting location with parameters: \(parameters)")
 
-                    if let location = json["last_location"] as? String,
-                       let currency = json["currency"] as? Int,
-                       let currentEnergy = json["current_energy"] as? Int,
-                       let totalEnergy = json["total_energy"] as? Int {
-                        let username = json["username"] as? String
-                        let yourSpheres = json["your_spheres"] as? [[String: Any]]
-                        let neighborSpheres = json["neighbor_spheres"] as? [[String: Any]]
-                        let spaceStation = json["your_space_station"] as? [String: Any]
-                        let passengerLimit = json["passenger_limit"] as? Int
-                        let cargoLimit = json["cargo_limit"] as? Int
-                        let userId = json["user_id"] as? Int
-                        let premium = json["premium"] as? Int
-                        let spheresAllowed = json["spheres_allowed"] as? Int
-                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed)))
-                    } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
-                        self.refreshAuthToken { newToken, tokenError in
-                            if let newToken = newToken {
-                                Defaults[.authToken] = newToken
-                                self.getLocation(email: email, authToken: newToken, completion: completion)
-                            } else {
-                                completion(.failure(tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-                            }
-                        }
-                    } else {
-                        completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-                    }
-                case .failure(let error):
-                    completion(.failure(error))
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            print("Received response: \(response)")
+
+            switch response.result {
+            case .success(let value):
+                guard let json = value as? [String: Any] else {
+                    print("Invalid JSON format")
+                    completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+                    return
                 }
+
+                print("Parsed JSON: \(json)")
+
+                if let location = json["last_location"] as? String,
+                   let currency = json["currency"] as? Int,
+                   let currentEnergy = json["current_energy"] as? Int,
+                   let totalEnergy = json["total_energy"] as? Int {
+                    let username = json["username"] as? String
+                    let yourSpheres = json["your_spheres"] as? [[String: Any]]
+                    let neighborSpheres = json["neighbor_spheres"] as? [[String: Any]]
+                    let spaceStation = json["your_space_station"] as? [String: Any]
+                    let passengerLimit = json["passenger_limit"] as? Int
+                    let cargoLimit = json["cargo_limit"] as? Int
+                    let userId = json["user_id"] as? Int
+                    let premium = json["premium"] as? Int
+                    let spheresAllowed = json["spheres_allowed"] as? Int
+                    print("Successfully parsed location data")
+                    completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed)))
+                } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
+                    print("Invalid authToken, refreshing token")
+                    self.refreshAuthToken { newToken, tokenError in
+                        if let newToken = newToken {
+                            Defaults[.authToken] = newToken
+                            self.getLocation(email: email, authToken: newToken, completion: completion)
+                        } else {
+                            print("Failed to refresh authToken")
+                            completion(.failure(tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+                        }
+                    }
+                } else {
+                    print("Required fields missing in JSON response")
+                    completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+                }
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                completion(.failure(error))
             }
         }
+    }
 
 
 
