@@ -10,6 +10,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     @IBOutlet var exploreNeighborSphere: UIButton!
     @IBOutlet var claimAnotherSphereButton: UIButton!
     @IBOutlet var keyLabel: UILabel!
+    @IBOutlet var youHaveNumberOfSpheres: UILabel!
     var noNeighborSpheresLabel: UILabel?
 
     var yourSpheres: [[String: Any]]?
@@ -83,17 +84,25 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     @objc func claimAnotherSphereMethod() {
-        displayAlert()
+        //displayAlert()
+        if(Defaults[.spheresAllowed] > yourSpheres!.count) {
+            //name that sphere
+            alertToCreateSphere()
+        }
+        else {
+            //in app purchase
 
-//
-//        print("claim another sphere")
-//        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
-//                   showPurchaseAlert(price: price)
-//               } else {
-//                   showPurchaseAlert(price: "$0.99")
-//
-//                   print("Product price not available")
-//               }
+            print("claim another sphere")
+            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
+                       showPurchaseAlert(price: price)
+                   } else {
+                       showPurchaseAlert(price: "$0.99")
+
+                       print("Product price for sphere not available")
+                   }
+
+        }
+
     }
 
     func showPurchaseAlert(price: String) {
@@ -195,25 +204,63 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
                 self.enterYourSphereButton.setTitle("ENTER YOUR SPHERE", for: .normal)
                 self.enterYourSphereButton.addTarget(self, action: #selector(goToSphereView), for: .touchUpInside)
                 self.claimAnotherSphereButton.isHidden=false
+                if(Defaults[.spheresAllowed] > yourSpheres!.count) {
+                    //CLAIM ANOTHER SPHERE
+                    self.claimAnotherSphereButton.setTitle("CLAIM ANOTHER SPHERE", for: .normal)
+
+                }
+                else {
+                    //INCREASE YOUR SPHERE LIMIT
+                    self.claimAnotherSphereButton.setTitle("INCREASE YOUR SPHERE LIMIT", for: .normal)
+
+                }
+            }
+
+
+            if(Defaults[.spheresAllowed] > yourSpheres!.count) {
+                //pop up an alert that they can claim another sphere by naming it
+                print("pop up an alert that they can claim another sphere by naming it")
+                alertToCreateSphere()
             }
         }
     }
+    func presentSphereSelectionPopup() {
+        let alertController = UIAlertController(title: "Select a Sphere", message: "Please choose a sphere to view.", preferredStyle: .alert)
+
+        guard let spheres = self.yourSpheres else {
+            print("No spheres available.")
+            return
+        }
+
+        for sphere in spheres {
+            if let sphereName = sphere["sphere_name"] as? String, let sphereId = sphere["sphere_id"] as? String {
+                let action = UIAlertAction(title: sphereName, style: .default) { _ in
+                    Defaults[.selectedSphereName] = sphereName
+                    Defaults[.selectedSphereId] = sphereId
+                    self.performSegue(withIdentifier: "goToSphereView", sender: self)
+                }
+                alertController.addAction(action)
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+
 
     @objc func goToSphereView() {
         print("go to sphere")
-        if let firstSphere = yourSpheres?.first, let sphereName = firstSphere["sphere_name"] as? String {
-            print("The sphereName from the first object in yourSpheres is: \(sphereName)")
-            let sphereId = firstSphere["sphere_id"] as? String
-            Defaults[.selectedSphereName] = sphereName
-            Defaults[.selectedSphereId] = sphereId!
-            self.performSegue(withIdentifier: "goToSphereView", sender: self)
-
-        } else {
-            print("Unable to retrieve sphere_name from the first object in yourSpheres.")
-        }
-
+        presentSphereSelectionPopup()
     }
+
+
     @objc func claimFirstSphere() {
+        alertToCreateSphere()
+    }
+
+    func alertToCreateSphere() {
         let alertController = UIAlertController(title: "Name Your Sphere", message: "Please enter a name for your sphere:", preferredStyle: .alert)
 
         alertController.addTextField { textField in
@@ -279,28 +326,37 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         }
     }
 
-
-    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?)) {
-        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium) = data
+    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?)) {
+        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed) = data
 
         // Save your_spheres and neighbor_spheres
-         if let yourSpheresArray = yourSpheres as? [[String: String]] {
-             self.yourSpheres = yourSpheresArray
-         } else {
-             self.yourSpheres = []
-         }
+        if let yourSpheresArray = yourSpheres as? [[String: String]] {
+            self.yourSpheres = yourSpheresArray
+        } else {
+            self.yourSpheres = []
+        }
 
-         if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
-             self.neighborSpheres = neighborSpheresArray
-         } else {
-             self.neighborSpheres = []
-         }
+        if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
+            self.neighborSpheres = neighborSpheresArray
+        } else {
+            self.neighborSpheres = []
+        }
 
-//        if let username = username, !username.isEmpty {
-//            Defaults[.username] = username
-//        } else {
-//            self.askForUserName()
-//        }
+        let sphereCount = self.yourSpheres?.count ?? 0
+        let allowedSpheres = spheresAllowed ?? 0
+
+        if sphereCount == 1 {
+            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Sphere. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")"
+        } else {
+            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Spheres. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")"
+        }
+
+        // Uncomment and use this if you need to handle the username
+        // if let username = username, !username.isEmpty {
+        //     Defaults[.username] = username
+        // } else {
+        //     self.askForUserName()
+        // }
 
         do {
             let yourSpheresData = try JSONSerialization.data(withJSONObject: yourSpheres ?? [])
@@ -339,7 +395,9 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             Defaults[.premium] = premium
         }
 
-
+        if let spheresAllowed = spheresAllowed {
+            Defaults[.spheresAllowed] = spheresAllowed
+        }
 
         self.setupYourSpheres()
         self.setupNeighbor()
@@ -351,11 +409,9 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
 
-
-
     func createSpheresOnFloor(scene: SCNScene) {
-        let numRows = 5
-        let numColumns = 4
+        let numRows = 10
+        let numColumns = 10
         let sphereSize: CGFloat = 1.0
         let spacing: CGFloat = 2.0
         let startX = -(CGFloat(numColumns - 1) * spacing) / 2.0

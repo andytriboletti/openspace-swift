@@ -1589,15 +1589,21 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Have X Sphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEy-Kt-4mP">
+                                        <rect key="frame" x="142.33333333333337" y="70" width="145.66666666666663" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-1d-pQe">
-                                        <rect key="frame" x="138.66666666666666" y="70" width="152.99999999999997" height="50"/>
+                                        <rect key="frame" x="138.66666666666666" y="110.33333333333334" width="152.99999999999997" height="50"/>
                                         <state key="normal" title="ENTER YOUR SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="QqY-nA-6q0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeA-vo-8pC">
-                                        <rect key="frame" x="112" y="140" width="206" height="50"/>
+                                        <rect key="frame" x="112" y="180.33333333333334" width="206" height="50"/>
                                         <state key="normal" title="EXPLORE NEIGHBOR SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="cJK-o9-3ny"/>
@@ -1605,21 +1611,21 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVD-fD-zMB">
-                                        <rect key="frame" x="125" y="210" width="180" height="50"/>
+                                        <rect key="frame" x="125" y="250.33333333333331" width="180" height="50"/>
                                         <state key="normal" title="CLAIM ANOTHER SPHERE"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="eWr-4H-GBQ"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0i-9f-WcI">
-                                        <rect key="frame" x="28" y="270" width="374" height="50"/>
+                                        <rect key="frame" x="28" y="310.33333333333331" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="33N-pD-Gaf"/>
                                         </constraints>
                                         <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
                                     </button>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lkg-jM-MWz">
-                                        <rect key="frame" x="0.0" y="280" width="430" height="411.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="320.33333333333331" width="430" height="370.99999999999994"/>
                                     </sceneKitView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Spheres: Green     Neighbor Spheres: Blue Unoccupied Spheres: Red" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKZ-Ew-kE4">
                                         <rect key="frame" x="0.0" y="711.33333333333337" width="430" height="40.666666666666629"/>
@@ -1693,6 +1699,7 @@
                         <outlet property="headerLabel" destination="KSy-lL-kHv" id="KmS-5B-5wj"/>
                         <outlet property="keyLabel" destination="OKZ-Ew-kE4" id="zzz-Kl-iSH"/>
                         <outlet property="sceneView" destination="Lkg-jM-MWz" id="ynK-wP-nep"/>
+                        <outlet property="youHaveNumberOfSpheres" destination="bEy-Kt-4mP" id="zh5-DU-R7K"/>
                         <segue destination="WR1-6C-qgV" kind="presentation" identifier="goToSphereView" modalPresentationStyle="fullScreen" id="fiu-Wn-O7o"/>
                     </connections>
                 </viewController>
@@ -2451,11 +2458,11 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="mCm-fZ-9HZ"/>
+        <segue reference="yUZ-Q9-T5m"/>
         <segue reference="yKX-Ie-zFg"/>
         <segue reference="R0G-66-DuO"/>
         <segue reference="6XQ-gR-cEl"/>
-        <segue reference="aTG-Fl-mX6"/>
+        <segue reference="fiu-Wn-O7o"/>
         <segue reference="f65-O9-SAt"/>
         <segue reference="ULg-O7-lmG"/>
         <segue reference="Brq-sk-l5G"/>
