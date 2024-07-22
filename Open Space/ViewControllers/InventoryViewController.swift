@@ -145,15 +145,35 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
     }
-    override func viewDidAppear(_ animated: Bool) {
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .purchaseCompleted, object: nil)
+    }
+
+
+    @objc func handlePurchaseCompletion(_ notification: Notification) {
+          print("handlePurchaseCompletion called")
+          // Refresh Defaults and labels
+        Utils.shared.getLocation() {
+              print("Refreshing labels after location update")
+              DispatchQueue.main.async {
+                  self.refreshLabels()
+              }
+          }
+      }
+
+    func refreshLabels() {
         let maxPassengers = Defaults[.passengerLimit]
         let cargoLimit = Defaults[.cargoLimit]
 
         passengerLabel1.text="Ship Passengers - Max: \(maxPassengers) Passengers"
         passengerLabel2.text="4 Passengers onboard, headed to ISS"
         cargoLabel1.text="Ship Cargo - Max \(cargoLimit) kg"
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        refreshLabels()
     }
 
     func getUserMinerals(email: String) {
