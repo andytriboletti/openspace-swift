@@ -24,20 +24,44 @@ class AccountViewController: UIViewController {
           print("todo upgrade to premium")
       }
 
+    func showPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase an upgrade to max energy +1 for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Upgrade Max Energy", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseUpgradeMaxEnergy()
+            print("purchase upgrade max energy")
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func purchaseUpgradeMaxEnergy() {
+        if let product = IAPManager.shared.products.first {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeMaxEnergy)
+        } else {
+            print("Product not available")
+        }
+    }
 
     @IBAction func upgradeMaxEnergyButtonTapped(_ sender: UIButton) {
-          let alert = UIAlertController(title: "Upgrade Max Energy", message: "Purchase Max Energy +1 Upgrade For $0.99", preferredStyle: .alert)
-          let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
-              // Handle purchase action
-              print("purchase max energy upgrade")
-          })
-          alert.addAction(purchaseAction)
-
-          let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-          alert.addAction(cancelAction)
-
-          self.present(alert, animated: true, completion: nil)
-      }
+        print("purchaseUpgradeMaxEnergy")
+        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeMaxEnergy) {
+            showPurchaseAlert(price: price)
+        } else {
+            showPurchaseAlert(price: "$0.99")
+            print("Product price not available")
+        }
+    }
 
 
     @IBAction func refillEnergyButtonTapped(_ sender: UIButton) {

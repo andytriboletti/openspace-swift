@@ -79,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         initializeNodes()
 
+        IAPManager.shared.requestProducts()
+
         return true
     }
 

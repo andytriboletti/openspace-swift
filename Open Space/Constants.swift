@@ -11,4 +11,9 @@ import Foundation
 
 struct ProductIdentifiers {
     static let newSphere = "com.greenrobot.openspace.new_sphere"
+    static let refillEnergy = "com.greenrobot.openspace.refill_energy"
+    static let upgradeCargoLimit = "com.greenrobot.openspace.upgrade_cargo_limit"
+    static let upgradeMaxEnergy = "com.greenrobot.openspace.upgrade_max_energy"
+    static let upgradePassengerLimit = "com.greenrobot.openspace.upgrade_passenger_limit"
+    static let premiumSubscription = "com.greenrobot.openspace.premium_subscription"
 }

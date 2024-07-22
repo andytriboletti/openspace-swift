@@ -16,7 +16,15 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     private var productsRequest: SKProductsRequest?
 
     func requestProducts() {
-        let productIdentifiers: Set<String> = [ProductIdentifiers.newSphere]
+        let productIdentifiers: Set<String> = [
+            ProductIdentifiers.newSphere,
+            ProductIdentifiers.refillEnergy,
+            ProductIdentifiers.upgradeCargoLimit,
+            ProductIdentifiers.upgradeMaxEnergy,
+            ProductIdentifiers.upgradePassengerLimit,
+            ProductIdentifiers.premiumSubscription
+        ]
+
         productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
         productsRequest?.delegate = self
         productsRequest?.start()

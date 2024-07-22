@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Defaults
 
 class ProfileViewController: UIViewController {
 
@@ -17,7 +18,8 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameLabel!.text = "Username: \(appDelegate.username!)"
+        let username = Defaults[.username]
+        usernameLabel!.text = "Username: \(username)"
         // Do any additional setup after loading the view.
     }
 
