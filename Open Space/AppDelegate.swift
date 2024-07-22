@@ -13,8 +13,20 @@ import GoogleSignIn
 import IQKeyboardManagerSwift
 import StoreKit
 
+#if !targetEnvironment(macCatalyst)
+
+import GoogleMobileAds
+#endif
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    #if !targetEnvironment(macCatalyst)
+
+    var interstitial: GADInterstitialAd?
+
+    #endif
+
     var containerSchemeBlue: MDCContainerScheme!
     var containerSchemeRed: MDCContainerScheme!
 
@@ -84,8 +96,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add IAPManager as a transaction observer
         SKPaymentQueue.default().add(IAPManager.shared)
 
+        #if !targetEnvironment(macCatalyst)
+
+        // Initialize Google Mobile Ads SDK
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+
+        // Preload the interstitial ad
+        preloadInterstitialAd()
+
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7650f474f6d6bc3a6b6a069fe06b8248" ]
+        
+        #endif
+
         return true
     }
+
+    #if !targetEnvironment(macCatalyst)
+
+    func preloadInterstitialAd() {
+        GADInterstitialAd.load(withAdUnitID: MyData.travelInterstitialAd, request: GADRequest()) { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            self?.interstitial = ad
+            print("Interstitial ad loaded successfully.")
+        }
+    }
+    #endif
 
     func initializeNodes() {
         donkeyNode = SCNNode()
@@ -283,3 +321,20 @@ extension SCNNode {
 
     }
 }
+
+
+//extension AppDelegate: GADFullScreenContentDelegate {
+//    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+//        print("Interstitial ad failed to present with error: \(error.localizedDescription)")
+//    }
+//
+////    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+////        print("Interstitial ad did present.")
+////    }
+//
+//    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//        print("Interstitial ad did dismiss.")
+//        // Preload another ad after the current one is dismissed
+//        preloadInterstitialAd()
+//    }
+//}

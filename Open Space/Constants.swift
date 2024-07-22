@@ -17,3 +17,8 @@ struct ProductIdentifiers {
     static let upgradePassengerLimit = "com.greenrobot.openspace.upgrade_passenger_limit"
     static let premiumSubscription = "com.greenrobot.openspace.premium_subscription"
 }
+
+struct MyData {
+    static let travelInterstitialAd = "ca-app-pub-8840903285420889/3173303416"
+
+}
