@@ -121,6 +121,7 @@ class ExploreMoonViewController: UIViewController {
         show()
     }
 
+   
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
         print("Button tapped!")
@@ -135,6 +136,11 @@ class ExploreMoonViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.showSuccessMessage(mineral: mineral, amount: amount)
                     }
+                } else if status == "over_limit" {
+                    // Show a specific message for over limit error
+                    DispatchQueue.main.async {
+                        self.showOverLimitMessage()
+                    }
                 } else {
                     // Show an error message or handle any other response status accordingly on the main thread
                     DispatchQueue.main.async {
@@ -146,6 +152,11 @@ class ExploreMoonViewController: UIViewController {
                 print("Error claiming daily treasure: \(error.localizedDescription)")
             }
         }
+    }
+    func showOverLimitMessage() {
+        let alertController = UIAlertController(title: "Cargo Limit Exceeded", message: "Not enough cargo space on the ship to claim the minerals.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 
     // ...

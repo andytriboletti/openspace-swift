@@ -71,6 +71,11 @@ class ExploreMarsViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.showSuccessMessage(mineral: mineral, amount: amount)
                     }
+                } else if status == "over_limit" {
+                    // Show a specific message for over limit error
+                    DispatchQueue.main.async {
+                        self.showOverLimitMessage()
+                    }
                 } else {
                     // Show an error message or handle any other response status accordingly on the main thread
                     DispatchQueue.main.async {
@@ -83,6 +88,12 @@ class ExploreMarsViewController: UIViewController {
             }
         }
     }
+    func showOverLimitMessage() {
+        let alertController = UIAlertController(title: "Cargo Limit Exceeded", message: "Not enough cargo space on the ship to claim the minerals.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+
     
     func checkDailyTreasureAvailability() {
         // Call API to check daily treasure availability

@@ -228,13 +228,31 @@ class OpenspaceAPI {
     }
 
     func claimDailyTreasure(planet: String, completion: @escaping (Result<(String, String, Int), Error>) -> Void) {
-        let parameters: [String: Any] = ["email": Defaults[.email], "authToken": Defaults[.authToken], "planet": planet]
-        guard let request = createPostRequest(urlString: "\(serverURL)claim-daily-treasure", parameters: parameters) else {
-            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
-            return
-        }
-        performSimpleRequest(request: request, completion: completion)
-    }
+           let parameters: [String: Any] = ["email": Defaults[.email], "authToken": Defaults[.authToken], "planet": planet]
+           AF.request("\(serverURL)claim-daily-treasure", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+               .validate()
+               .responseJSON { response in
+                   switch response.result {
+                   case .success(let value):
+                       if let json = value as? [String: Any],
+                          let status = json["status"] as? String {
+                           if status == "claimed",
+                              let mineral = json["mineral"] as? String,
+                              let amount = json["amount"] as? Int {
+                               completion(.success((status, mineral, amount)))
+                           } else if status == "over_limit" {
+                               completion(.success((status, "", 0)))
+                           } else {
+                               completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: json["error"] as? String ?? "Unknown error"])))
+                           }
+                       } else {
+                           completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response format"])))
+                       }
+                   case .failure(let error):
+                       completion(.failure(error))
+                   }
+               }
+       }
 
 
     func loginWithEmail(email: String, authToken: String, completion: @escaping (Result<String, Error>) -> Void) {
