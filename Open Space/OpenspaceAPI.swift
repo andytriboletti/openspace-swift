@@ -114,6 +114,7 @@ class OpenspaceAPI {
     }
 
 
+    
     func sendReceiptToServer(receipt: String, productIdentifier: String, completion: @escaping (Result<Void, FetchDataError>) -> Void) {
         #if DEBUG
         let urlString = "\(serverURL)verifyReceiptSandbox"
@@ -145,6 +146,24 @@ class OpenspaceAPI {
                 }
             }
     }
+    func addSubscription(userId: Int, originalTransactionId: String, completion: @escaping (Result<Void, FetchDataError>) -> Void) {
+           let urlString = "\(serverURL)addSubscription"
+           let parameters: [String: Any] = [
+               "user_id": userId,
+               "original_transaction_id": originalTransactionId
+           ]
+
+           AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+               .validate()
+               .responseJSON { response in
+                   switch response.result {
+                   case .success:
+                       completion(.success(()))
+                   case .failure(let error):
+                       completion(.failure(.networkError(error)))
+                   }
+               }
+       }
 
     func fetchUserMinerals(email: String, completion: @escaping (Result<[UserMineral], FetchDataError>) -> Void) {
         let parameters: [String: Any] = ["email": email]
