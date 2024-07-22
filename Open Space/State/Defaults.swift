@@ -21,6 +21,7 @@ extension Defaults.Keys {
     static let selectedMeshId = Key<Int>("selectedMeshId", default: 0)
     static let traveling = Key<String>("traveling", default: "false")
     static let userId = Key<Int>("userId", default: 0)
+    static let premium = Key<Int>("premium", default: 0)
     static let neighborUsername = Key<String>("neighborUsername", default: "")
     static let neighborSphereId = Key<Int>("neighborSphereId", default: -1)
     // New keys for your_spheres and neighbor_spheres

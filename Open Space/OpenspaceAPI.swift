@@ -55,6 +55,7 @@ class OpenspaceAPI {
 
     enum FetchDataError: Error {
         case networkError(Error)
+        case missingUserId
         case invalidResponse
         case jsonParsingError(Error)
     }
@@ -94,6 +95,7 @@ class OpenspaceAPI {
         let results: [Result]
     }
 
+
     func fetchSphereDetails(email: String, authToken: String, sphereId: Int, completion: @escaping (Result<[URL], FetchDataError>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereId": sphereId]
         let urlString = "\(serverURL)get-sphere-details"
@@ -112,7 +114,38 @@ class OpenspaceAPI {
     }
 
 
-    
+    func sendReceiptToServer(receipt: String, productIdentifier: String, completion: @escaping (Result<Void, FetchDataError>) -> Void) {
+        #if DEBUG
+        let urlString = "\(serverURL)verifyReceiptSandbox"
+        #else
+        let urlString = "\(serverURL)verifyReceipt"
+        #endif
+
+        // Retrieve the user ID from Defaults, ensuring it is optional
+        guard let userId = Defaults[.userId] as Int? else {
+            completion(.failure(.missingUserId))
+            return
+        }
+
+        // Include the user ID in the parameters
+        let parameters: [String: Any] = [
+            "receipt-data": receipt,
+            "productIdentifier": productIdentifier,
+            "userId": userId
+        ]
+
+        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    completion(.success(()))
+                case .failure(let error):
+                    completion(.failure(.networkError(error)))
+                }
+            }
+    }
+
     func fetchUserMinerals(email: String, completion: @escaping (Result<[UserMineral], FetchDataError>) -> Void) {
         let parameters: [String: Any] = ["email": email]
         guard let request = createPostRequest(urlString: "\(serverURL)get-user-minerals", parameters: parameters) else {
@@ -345,7 +378,7 @@ class OpenspaceAPI {
 
 
 
-    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?), Error>) -> Void) {
+    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?), Error>) -> Void) {
             let parameters: [String: Any] = ["email": email, "authToken": authToken]
             let url = "\(serverURL)get-data"
 
@@ -368,7 +401,8 @@ class OpenspaceAPI {
                         let passengerLimit = json["passenger_limit"] as? Int
                         let cargoLimit = json["cargo_limit"] as? Int
                         let userId = json["user_id"] as? Int
-                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId)))
+                        let premium = json["premium"] as? Int
+                        completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium)))
                     } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
                         self.refreshAuthToken { newToken, tokenError in
                             if let newToken = newToken {

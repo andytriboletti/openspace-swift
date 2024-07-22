@@ -31,6 +31,70 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
        return 2
     }
 
+    func showSubscriptionManagement() {
+        if let url = URL(string: "https://support.apple.com/en-us/HT202039") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    func purchaseUpgradePassengerLimit() {
+        if IAPManager.shared.products.first != nil {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradePassengerLimit)
+        } else {
+            print("Product upgradePassengerLimit not available")
+        }
+    }
+    func purchaseUpgradeCargoLimit() {
+        if IAPManager.shared.products.first != nil {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeCargoLimit)
+        } else {
+            print("Product upgradeCargoLimit not available")
+        }
+    }
+
+    func showUpgradePassengerPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase an upgrade to Passenger limit +1 for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Upgrade To Passenger Limit", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseUpgradePassengerLimit()
+            print("purchase upgrade premium")
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
+
+
+    func showUpgradeCargoPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase an upgrade to Cargo Limit +1,000kg for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Upgrade To Cargo Limit", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseUpgradeCargoLimit()
+            print("purchase upgrade premium")
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
+
     @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
         // Create an alert controller
         let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
@@ -39,6 +103,13 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         let upgradePassengerAction = UIAlertAction(title: "Upgrade Passenger Limit +1", style: .default) { action in
             // Handle the upgrade passenger limit action
             print("Upgrade Passenger Limit +1 selected")
+            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradePassengerLimit) {
+                self.showUpgradePassengerPurchaseAlert(price: price)
+            } else {
+                self.showUpgradePassengerPurchaseAlert(price: "$0.99")
+                print("Product price not available")
+            }
+            //self.showUpgradePassengerPurchaseAlert()
             // Add your code to upgrade passenger limit here
         }
 
@@ -46,6 +117,12 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         let upgradeCargoAction = UIAlertAction(title: "Upgrade Cargo Limit +1,000kg", style: .default) { action in
             // Handle the upgrade cargo limit action
             print("Upgrade Cargo Limit +1000kg selected")
+            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeCargoLimit) {
+                self.showUpgradeCargoPurchaseAlert(price: price)
+            } else {
+                self.showUpgradeCargoPurchaseAlert(price: "$0.99")
+                print("Product price not available")
+            }
             // Add your code to upgrade cargo limit here
         }
 

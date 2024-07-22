@@ -11,6 +11,7 @@ import SpriteKit
 import DynamicBlurView
 import GoogleSignIn
 import IQKeyboardManagerSwift
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -80,6 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializeNodes()
 
         IAPManager.shared.requestProducts()
+        // Add IAPManager as a transaction observer
+        SKPaymentQueue.default().add(IAPManager.shared)
 
         return true
     }

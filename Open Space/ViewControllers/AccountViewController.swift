@@ -21,9 +21,56 @@ class AccountViewController: UIViewController {
     #endif
 
     @IBAction func upgradeToPremium(_ sender: UIButton) {
-          print("todo upgrade to premium")
+        print("upgrade to premium")
+        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
+            showPremiumPurchaseAlert(price: price)
+        } else {
+            showPremiumPurchaseAlert(price: "$4.99")
+            print("Product price not available")
+        }
       }
 
+    func showPremiumPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase an upgrade to Premium without ads for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Upgrade To Premium Subscription", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseUpgradePremium()
+            print("purchase upgrade premium")
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func showEnergyRefillPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase an energy refill for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Energy Refill", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseEnergyRefill()
+            print("purchase refill energy")
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
     func showPurchaseAlert(price: String) {
         // Create the alert controller with the price
         let msgText = "Do you want to purchase an upgrade to max energy +1 for \(price)?"
@@ -46,12 +93,28 @@ class AccountViewController: UIViewController {
     }
 
     func purchaseUpgradeMaxEnergy() {
-        if let product = IAPManager.shared.products.first {
+        if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeMaxEnergy)
         } else {
-            print("Product not available")
+            print("Product purchaseUpgradeMaxEnergy not available")
         }
     }
+
+    func purchaseUpgradePremium() {
+        if IAPManager.shared.products.first != nil {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.premiumSubscription)
+        } else {
+            print("Product purchaseUpgradePremium not available")
+        }
+    }
+    func purchaseEnergyRefill() {
+        if IAPManager.shared.products.first != nil {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.refillEnergy)
+        } else {
+            print("Product purchaseEnergyRefill not available")
+        }
+    }
+
 
     @IBAction func upgradeMaxEnergyButtonTapped(_ sender: UIButton) {
         print("purchaseUpgradeMaxEnergy")
@@ -75,7 +138,7 @@ class AccountViewController: UIViewController {
            })
            alert.addAction(purchaseAction)
            #else
-           alert = UIAlertController(title: "Refill Energy", message: "Watch a Rewarded Ad to Refill Energy or Purchase Energy Refill To Max For $0.99", preferredStyle: .alert)
+           alert = UIAlertController(title: "Refill Energy", message: "Watch a Rewarded Ad to Refill Energy or Purchase Energy Refill To Max", preferredStyle: .alert)
            let watchAdAction = UIAlertAction(title: "Watch Ad", style: .default, handler: { _ in
                // Handle watch ad action
                print("watch ad to refill energy")
@@ -84,6 +147,14 @@ class AccountViewController: UIViewController {
            let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
                // Handle purchase action
                print("purchase energy refill")
+               if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.refillEnergy) {
+                   self.showEnergyRefillPurchaseAlert(price: price)
+               } else {
+                   self.showEnergyRefillPurchaseAlert(price: "$0.99")
+                   print("Product refill energy price not available")
+               }
+
+
            })
            alert.addAction(watchAdAction)
            alert.addAction(purchaseAction)
@@ -285,6 +356,11 @@ class AccountViewController: UIViewController {
         super.viewDidAppear(animated)
         updateUsernameLabel()
         self.energyLabel.text = "Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])"
+        var accountType = "Basic"
+        if(Defaults[.premium] == 1) {
+            accountType = "Premium"
+        }
+        self.accountTypeLabel.text = "Account Type: \(accountType)"
         Task {
             await loadRewardedAd()
         }

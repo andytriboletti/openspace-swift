@@ -280,8 +280,8 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
 
-    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?)) {
-        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId) = data
+    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?)) {
+        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium) = data
 
         // Save your_spheres and neighbor_spheres
          if let yourSpheresArray = yourSpheres as? [[String: String]] {
@@ -333,6 +333,10 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
         if let cargoLimit = cargoLimit {
             Defaults[.cargoLimit] = cargoLimit
+        }
+
+        if let premium = premium {
+            Defaults[.premium] = premium
         }
 
 

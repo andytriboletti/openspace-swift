@@ -19,7 +19,7 @@ extension GameViewController {
             return
         }
 
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?), Error>) in
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?), Error>) in
             guard let self = self else { return }
 
             DispatchQueue.main.async {
@@ -33,8 +33,8 @@ extension GameViewController {
         }
     }
 
-    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?)) {
-        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId) = data
+    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?)) {
+        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium) = data
 
         if let username = username, !username.isEmpty {
             Defaults[.username] = username
@@ -77,6 +77,10 @@ extension GameViewController {
 
         if let userId = userId {
             Defaults[.userId] = userId
+        }
+
+        if let premium = premium {
+            Defaults[.premium] = premium
         }
 
         switch location {

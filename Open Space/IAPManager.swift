@@ -1,11 +1,3 @@
-//
-//  IAPManager.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 4/1/24.
-//  Copyright © 2024 GreenRobot LLC. All rights reserved.
-//
-
 import Foundation
 import StoreKit
 
@@ -14,6 +6,14 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
 
     var products: [SKProduct] = []
     private var productsRequest: SKProductsRequest?
+
+    func startObserving() {
+        SKPaymentQueue.default().add(self)
+    }
+
+    func stopObserving() {
+        SKPaymentQueue.default().remove(self)
+    }
 
     func requestProducts() {
         let productIdentifiers: Set<String> = [
@@ -34,7 +34,6 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
         print(products.description)
-
     }
 
     // Method to get the price of a product
@@ -52,13 +51,13 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
 
     // Method to initiate the purchase
     func purchaseProduct(with productIdentifier: String) {
-        if let product = products.first(where: { $0.productIdentifier == productIdentifier }) {
-            let payment = SKPayment(product: product)
-            SKPaymentQueue.default().add(self)
-            SKPaymentQueue.default().add(payment)
-        } else {
+        guard let product = products.first(where: { $0.productIdentifier == productIdentifier }) else {
             print("Product not found")
+            return
         }
+
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
     }
 
     // SKPaymentTransactionObserver methods
@@ -79,8 +78,26 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
         }
     }
 
+    private func fetchReceipt() -> String? {
+        guard let receiptURL = Bundle.main.appStoreReceiptURL,
+              let receiptData = try? Data(contentsOf: receiptURL) else {
+            return nil
+        }
+        return receiptData.base64EncodedString(options: [])
+    }
+
     private func completeTransaction(_ transaction: SKPaymentTransaction) {
         // Perform any actions necessary upon successful purchase
+        if let receipt = fetchReceipt() {
+            OpenspaceAPI.shared.sendReceiptToServer(receipt: receipt, productIdentifier: transaction.payment.productIdentifier) { result in
+                switch result {
+                case .success:
+                    print("Receipt successfully sent to server")
+                case .failure(let error):
+                    print("Failed to send receipt to server: \(error)")
+                }
+            }
+        }
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 
