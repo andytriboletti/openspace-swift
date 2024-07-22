@@ -331,7 +331,7 @@
                                 <rect key="frame" x="0.0" y="59" width="430" height="790"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uN-eSr">
-                                        <rect key="frame" x="0.0" y="20" width="430" height="980"/>
+                                        <rect key="frame" x="0.0" y="20" width="430" height="1200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
                                                 <rect key="frame" x="183.33333333333334" y="0.0" width="63.333333333333343" height="100"/>
@@ -351,8 +351,28 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Account Type: Basic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-4I-Wae">
+                                                <rect key="frame" x="137.66666666666669" y="220" width="154.66666666666669" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="YVL-ve-XkV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH8-HO-ZEx">
+                                                <rect key="frame" x="68.666666666666686" y="330" width="293" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="Bvn-Vb-oN9"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Upgrade To Premium. Remove Ads."/>
+                                                <connections>
+                                                    <action selector="upgradeToPremium:" destination="8yW-2I-6Lp" eventType="touchDown" id="30o-Vc-APL"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Username:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juP-iZ-amP">
-                                                <rect key="frame" x="173.66666666666666" y="220" width="83" height="100"/>
+                                                <rect key="frame" x="173.66666666666666" y="440" width="82.999999999999972" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="kan-2I-qhm"/>
                                                 </constraints>
@@ -361,7 +381,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEd-LW-sTz">
-                                                <rect key="frame" x="140" y="330" width="150" height="100"/>
+                                                <rect key="frame" x="140" y="550" width="150" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="XOL-g9-DkN"/>
                                                 </constraints>
@@ -372,7 +392,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energy: x out of 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3N-LV-ksW">
-                                                <rect key="frame" x="148" y="440" width="134" height="100"/>
+                                                <rect key="frame" x="148" y="660" width="134" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="FEf-fc-ZWB"/>
                                                 </constraints>
@@ -381,7 +401,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G46-vk-o0t">
-                                                <rect key="frame" x="156" y="550" width="118.33333333333331" height="100"/>
+                                                <rect key="frame" x="156" y="770" width="118.33333333333331" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="rRJ-uY-vre"/>
                                                 </constraints>
@@ -392,7 +412,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-sM-a37">
-                                                <rect key="frame" x="123" y="660" width="184" height="100"/>
+                                                <rect key="frame" x="123" y="880" width="184" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="xQv-db-Hr1"/>
                                                 </constraints>
@@ -403,7 +423,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
-                                                <rect key="frame" x="171.66666666666666" y="770" width="86.999999999999972" height="100"/>
+                                                <rect key="frame" x="171.66666666666666" y="990" width="86.999999999999972" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="TAl-Sq-MQX"/>
                                                 </constraints>
@@ -414,7 +434,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
-                                                <rect key="frame" x="144.66666666666669" y="880" width="140.66666666666669" height="100"/>
+                                                <rect key="frame" x="144.66666666666669" y="1100" width="140.66666666666669" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="LqU-Uv-0KZ"/>
                                                 </constraints>
@@ -452,6 +472,7 @@
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="accountTypeLabel" destination="TMa-4I-Wae" id="Ifi-Sp-lwb"/>
                         <outlet property="deleteButton" destination="b3I-g5-iBC" id="OGP-ht-bOw"/>
                         <outlet property="energyLabel" destination="u3N-LV-ksW" id="JfE-gR-tSX"/>
                         <outlet property="loggedInAs" destination="7yY-oO-GU7" id="KOd-BI-NZN"/>

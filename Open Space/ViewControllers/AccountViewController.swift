@@ -15,10 +15,14 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var energyLabel: UILabel!
+    @IBOutlet weak var accountTypeLabel: UILabel!
     #if !targetEnvironment(macCatalyst)
     var rewardedAd: GADRewardedAd?
     #endif
 
+    @IBAction func upgradeToPremium(_ sender: UIButton) {
+          print("todo upgrade to premium")
+      }
 
 
     @IBAction func upgradeMaxEnergyButtonTapped(_ sender: UIButton) {
