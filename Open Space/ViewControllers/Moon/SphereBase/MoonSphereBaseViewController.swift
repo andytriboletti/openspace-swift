@@ -253,7 +253,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         }
 
         for sphere in spheres {
-            if let sphereName = sphere["sphere_name"] as? String, let sphereId = sphere["id"] as? String {
+            if let sphereName = sphere["sphere_name"] as? String, let sphereId = sphere["sphere_id"] as? String {
                 let action = UIAlertAction(title: sphereName, style: .default) { _ in
                     Defaults[.selectedSphereName] = sphereName
                     Defaults[.selectedSphereId] = sphereId
