@@ -145,6 +145,7 @@
                         <segue destination="0yc-aj-Qry" kind="presentation" identifier="dockWithStation" modalPresentationStyle="fullScreen" id="3LN-Fm-zIv"/>
                         <segue destination="VzB-dU-ig3" kind="presentation" identifier="travel" modalPresentationStyle="fullScreen" id="OTN-eM-VNw"/>
                         <segue destination="tZW-om-ASc" kind="presentation" identifier="landOnMoon" modalPresentationStyle="fullScreen" id="dqS-xb-ODl"/>
+                        <segue destination="coN-Ma-RTJ" kind="presentation" identifier="goToSignIn" id="A1I-2U-Iqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -489,7 +490,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1782,7 +1783,7 @@
             <objects>
                 <viewController storyboardIdentifier="SignInViewController" id="coN-Ma-RTJ" customClass="SignInViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DsB-S2-Mrh">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="1P8-zw-qb2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2460,12 +2461,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="yUZ-Q9-T5m"/>
         <segue reference="yKX-Ie-zFg"/>
-        <segue reference="R0G-66-DuO"/>
+        <segue reference="67b-Hk-5Ts"/>
         <segue reference="6XQ-gR-cEl"/>
         <segue reference="fiu-Wn-O7o"/>
         <segue reference="f65-O9-SAt"/>
         <segue reference="ULg-O7-lmG"/>
-        <segue reference="Brq-sk-l5G"/>
+        <segue reference="XLF-8k-sj0"/>
         <segue reference="MVd-TG-9WI"/>
     </inferredMetricsTieBreakers>
     <resources>

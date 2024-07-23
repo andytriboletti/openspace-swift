@@ -10,7 +10,7 @@ import UIKit
 import Defaults
 
 extension GameViewController {
-    
+
     //import Alamofire
 
     func getLocation() {
@@ -20,18 +20,20 @@ extension GameViewController {
         }
 
         OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?), Error>) in
-            guard let self = self else { return }
+                guard let self = self else { return }
 
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    self.handleLocationSuccess(data: data)
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let data):
+                        self.handleLocationSuccess(data: data)
+                    case .failure(let error):
+                        print("Error: \(error.localizedDescription)")
+                    }
                 }
             }
         }
-    }
+    
+
 
     private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?)) {
         let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed) = data

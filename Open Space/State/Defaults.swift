@@ -41,5 +41,6 @@ extension Defaults.Keys {
     static let passengerLimit = Key<Int>("passengerLimit", default: 0)
     static let cargoLimit = Key<Int>("cargoLimit", default: 0)
     static let spheresAllowed = Key<Int>("spheresAllowed", default: 0)
+    static let appToken = Key<String>("appToken", default: "")
 
 }

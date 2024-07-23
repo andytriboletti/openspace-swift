@@ -308,7 +308,7 @@ class AccountViewController: UIViewController {
             Defaults.removeAll()
 
             // Get the frame of the existing view controller's view
-                let frame = self.view.frame
+            let frame = self.view.frame
 
             // User is not signed in
             rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController
@@ -328,6 +328,7 @@ class AccountViewController: UIViewController {
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError.localizedDescription)")
         }
+
     }
 
     // Delete user
