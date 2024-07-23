@@ -101,7 +101,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
 
                         // Send the original_transaction_id and user_id to the server
                         let currentUserId = Defaults[.userId] // Ensure this retrieves the current user ID correctly
-                        OpenspaceAPI.shared.addSubscription(userId: currentUserId, originalTransactionId: originalTransactionId) { result in
+                        OpenspaceAPI.shared.addSubscription(userId: currentUserId, originalTransactionId: originalTransactionId, productIdentifier: transaction.payment.productIdentifier) { result in
                             switch result {
                             case .success:
                                 print("Subscription successfully added to server")

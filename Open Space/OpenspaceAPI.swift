@@ -146,11 +146,12 @@ class OpenspaceAPI {
                 }
             }
     }
-    func addSubscription(userId: Int, originalTransactionId: String, completion: @escaping (Result<Void, FetchDataError>) -> Void) {
+    func addSubscription(userId: Int, originalTransactionId: String, productIdentifier: String, completion: @escaping (Result<Void, FetchDataError>) -> Void) {
            let urlString = "\(serverURL)addSubscription"
            let parameters: [String: Any] = [
                "user_id": userId,
-               "original_transaction_id": originalTransactionId
+               "original_transaction_id": originalTransactionId,
+               "product_identifier": productIdentifier
            ]
 
            AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
