@@ -13,40 +13,42 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     var imageTimer: Timer?
 
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+          super.viewDidAppear(animated)
 
-        if let user = Auth.auth().currentUser {
-            if let email = user.email {
-                print("Logged-in user email: \(email)")
-                dismiss(animated: false)
-            }
-        } else {
-            let authUI = FUIAuth.defaultAuthUI()
-            authUI!.delegate = self
-            let googleAuthProvider = FUIGoogleAuth(authUI: authUI!)
-            let providers: [FUIAuthProvider] = [
-                googleAuthProvider,
-                FUIOAuth.appleAuthProvider()
-            ]
+          if let user = Auth.auth().currentUser {
+              if let email = user.email {
+                  print("Logged-in user email: \(email)")
+                  dismiss(animated: false)
+              }
+          } else {
+              let authUI = FUIAuth.defaultAuthUI()
+              authUI!.delegate = self
+              let googleAuthProvider = FUIGoogleAuth(authUI: authUI!)
+              let providers: [FUIAuthProvider] = [
+                  googleAuthProvider,
+                  FUIOAuth.appleAuthProvider()
+              ]
 
-            authUI!.providers = providers
+              authUI!.providers = providers
 
-            let authViewController = authUI!.authViewController()
-            authViewController.modalPresentationStyle = .fullScreen
-            authViewController.modalTransitionStyle = .crossDissolve
+              let authViewController = authUI!.authViewController()
+              authViewController.modalPresentationStyle = .fullScreen
+              authViewController.modalTransitionStyle = .crossDissolve
 
-            let frame = self.view.frame
-            let authController = authUI!.authViewController()
-            authController.view.frame = frame
-            authController.preferredContentSize = frame.size
-            authController.modalPresentationStyle = .fullScreen
+              let frame = self.view.frame
+              let authController = authUI!.authViewController()
+              authController.view.frame = frame
+              authController.preferredContentSize = frame.size
+              authController.modalPresentationStyle = .fullScreen
 
-            // Customizing authController view
-            customizeAuthControllerView(authController.view)
+              // Customizing authController view
+              customizeAuthControllerView(authController.view)
 
-            present(authController, animated: true, completion: nil)
-        }
-    }
+              present(authController, animated: true, completion: nil)
+          }
+      }
+
+
 
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if let error = error {
@@ -99,10 +101,18 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
     private func customizeAuthControllerView(_ authView: UIView) {
         // Set up the image view
-        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300) // Increase the size of the image view
+        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         imageView.contentMode = .scaleAspectFit
-        imageView.center = authView.center
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         authView.addSubview(imageView)
+
+        // Center the imageView
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: authView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: authView.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 300),
+            imageView.heightAnchor.constraint(equalToConstant: 300)
+        ])
 
         // Load a random image initially
         loadRandomImage()
@@ -110,9 +120,14 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         // Set up the label
         let titleLabel = UILabel()
         titleLabel.text = "Open Space"
-        titleLabel.textColor = .white
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        // Use dynamic color that adapts to light/dark mode
+        titleLabel.textColor = UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? .white : .black
+        }
+
         authView.addSubview(titleLabel)
 
         // Center the label horizontally and place it a bit lower
@@ -129,5 +144,18 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         let randomIndex = Int.random(in: 1...10)
         let imageName = "login\(randomIndex)"
         imageView.image = UIImage(named: imageName)
+    }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateLabelColor()
+        }
+    }
+
+    private func updateLabelColor() {
+        if let titleLabel = view.subviews.first(where: { $0 is UILabel }) as? UILabel {
+            titleLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
+        }
     }
 }

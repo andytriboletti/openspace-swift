@@ -127,6 +127,8 @@
 		720F5BD92C50B3910073A488 /* login9.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC52C50B3900073A488 /* login9.png */; };
 		720F5BDA2C50B3910073A488 /* login10.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC62C50B3900073A488 /* login10.png */; };
 		720F5BDB2C50B3910073A488 /* login10.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC62C50B3900073A488 /* login10.png */; };
+		720F5BDD2C5158C90073A488 /* AuthCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F5BDC2C5158C80073A488 /* AuthCustomView.swift */; };
+		720F5BDE2C5158C90073A488 /* AuthCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F5BDC2C5158C80073A488 /* AuthCustomView.swift */; };
 		721AB5842BB918F400E68231 /* ExploreMarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E52BB896CA00976E4C /* ExploreMarsViewController.swift */; };
 		721AB5852BB918F400E68231 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		721AB5862BB918F400E68231 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F895FA72606B51500378FA7 /* TravelViewController.swift */; };
@@ -617,6 +619,7 @@
 		720F5BC42C50B3900073A488 /* login8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login8.png; sourceTree = "<group>"; };
 		720F5BC52C50B3900073A488 /* login9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login9.png; sourceTree = "<group>"; };
 		720F5BC62C50B3900073A488 /* login10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login10.png; sourceTree = "<group>"; };
+		720F5BDC2C5158C80073A488 /* AuthCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCustomView.swift; sourceTree = "<group>"; };
 		721AB6192BB918F400E68231 /* Open Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -1022,6 +1025,7 @@
 				721BF2A72BBB020B0046E7E7 /* IAPManager.swift */,
 				721BF2A92BBB0FCB0046E7E7 /* Constants.swift */,
 				723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */,
+				720F5BDC2C5158C80073A488 /* AuthCustomView.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -2089,6 +2093,7 @@
 				72A99C862C334B6A00D96813 /* GameViewController+UIActions.swift in Sources */,
 				72A99C442C29D14F00D96813 /* GameScene.swift in Sources */,
 				72AA23182C1F6B5A00001448 /* ConfigureSpaceStationViewController.swift in Sources */,
+				720F5BDD2C5158C90073A488 /* AuthCustomView.swift in Sources */,
 				722102D42BB905D7008F431C /* LeaderboardViewController.swift in Sources */,
 				72A99C6A2C29D14F00D96813 /* RegisterViewController.swift in Sources */,
 				72A99C2E2C29D14F00D96813 /* Bernie.swift in Sources */,
@@ -2196,6 +2201,7 @@
 				72A99C872C334B6A00D96813 /* GameViewController+UIActions.swift in Sources */,
 				72A99C452C29D14F00D96813 /* GameScene.swift in Sources */,
 				721AB5AF2BB918F400E68231 /* Utils.swift in Sources */,
+				720F5BDE2C5158C90073A488 /* AuthCustomView.swift in Sources */,
 				721AB5B02BB918F400E68231 /* LeaderboardViewController.swift in Sources */,
 				72A99C6B2C29D14F00D96813 /* RegisterViewController.swift in Sources */,
 				72A99C2F2C29D14F00D96813 /* Bernie.swift in Sources */,
