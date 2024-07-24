@@ -490,7 +490,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JlS-ao-B5o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WdS-nO-eor">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -785,7 +785,7 @@
                                         </constraints>
                                         <state key="normal" title="Configure and launch spacestations"/>
                                         <connections>
-                                            <segue destination="0Bi-po-kge" kind="presentation" modalPresentationStyle="fullScreen" id="E9F-sG-ITD"/>
+                                            <action selector="configureAndLaunchSpaceStationsAction" destination="J0M-22-PC3" eventType="touchDown" id="P8f-lt-nyN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-0A-1Qt">
@@ -835,6 +835,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bXp-Tq-Jga"/>
                     <connections>
+                        <outlet property="configureAndLaunchSpacestations" destination="XvS-4b-iaH" id="4Fs-mR-Xcx"/>
                         <outlet property="exploreButton" destination="QOQ-Lg-Woz" id="AEG-to-COx"/>
                         <outlet property="headerLabel" destination="IT3-M6-xxO" id="AFP-OC-rZR"/>
                         <outlet property="scnView" destination="3Z3-cN-zkr" id="WBK-Hx-jhW"/>
@@ -2473,6 +2474,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
+        <segue reference="eY4-gS-ctz"/>
         <segue reference="yUZ-Q9-T5m"/>
         <segue reference="yKX-Ie-zFg"/>
         <segue reference="67b-Hk-5Ts"/>
@@ -2480,7 +2482,7 @@
         <segue reference="K0X-1L-HJs"/>
         <segue reference="f65-O9-SAt"/>
         <segue reference="ULg-O7-lmG"/>
-        <segue reference="XLF-8k-sj0"/>
+        <segue reference="XCF-Mg-a4A"/>
         <segue reference="MVd-TG-9WI"/>
     </inferredMetricsTieBreakers>
     <resources>

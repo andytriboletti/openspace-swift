@@ -20,11 +20,33 @@ class EarthViewController: UIViewController {
 
     @IBOutlet var takeOffButton: UIButton!
 
+    @IBOutlet var configureAndLaunchSpacestations: UIButton!
+
     @IBOutlet var headerLabel: PaddingLabel!
 
     var baseNode: SCNNode!
     @IBOutlet var scnView: SCNView!
+    @IBAction func configureAndLaunchSpaceStationsAction() {
+        displayAlert()
+    }
 
+    func displayAlert() {
+        // Create the UIAlertController
+        let alertController = UIAlertController(title: "Functionality Coming Soon",
+                                                message: "This functionality will be available soon.",
+                                                preferredStyle: .alert)
+
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Handle OK button tap if needed
+        }
+
+        // Add the OK action to the alert controller
+        alertController.addAction(okAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+    }
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
         Utils.shared.saveLocation(location: "nearEarth", usesEnergy: "0")
