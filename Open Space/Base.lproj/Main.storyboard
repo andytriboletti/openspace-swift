@@ -1327,13 +1327,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replicator: Type in something you want to create" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0L-IA-0dQ">
-                                        <rect key="frame" x="30" y="0.0" width="370" height="148"/>
+                                        <rect key="frame" x="30" y="0.0" width="370" height="122.66666666666667"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iee-e7-whr">
-                                        <rect key="frame" x="15" y="158" width="400" height="300"/>
+                                        <rect key="frame" x="15" y="132.66666666666663" width="400" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="JSU-Kj-Z04"/>
@@ -1346,13 +1346,25 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This creation will be shown in your sphere" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WN-7w-4jI">
-                                        <rect key="frame" x="56.666666666666657" y="468" width="316.66666666666674" height="148"/>
+                                        <rect key="frame" x="56.666666666666657" y="442.66666666666669" width="316.66666666666674" height="122.66666666666669"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating this object will cost 10 kg each of: Regolith, Water Ice, Helium-3, Silicate, Jarosite, Hematite, Goethite, and Opal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWf-6q-yZn">
+                                        <rect key="frame" x="15" y="575.33333333333337" width="400.33333333333331" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eG-Oy-BEN">
+                                        <rect key="frame" x="184.66666666666666" y="646.33333333333337" width="60.666666666666657" height="20.333333333333371"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkD-8P-7QA">
-                                        <rect key="frame" x="177.66666666666666" y="626" width="74.666666666666657" height="148"/>
+                                        <rect key="frame" x="177.66666666666666" y="676.66666666666663" width="74.666666666666657" height="122.66666666666663"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Create"/>
                                         <connections>
@@ -1360,7 +1372,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgX-v4-T8c">
-                                        <rect key="frame" x="132.66666666666669" y="784" width="164.66666666666669" height="148"/>
+                                        <rect key="frame" x="132.66666666666669" y="809.33333333333337" width="164.66666666666669" height="122.66666666666663"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Exit Create Screen"/>
                                         <connections>
@@ -1386,6 +1398,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="createNewItemButton" destination="hkD-8P-7QA" id="JGn-aH-sWn"/>
+                        <outlet property="doYouHaveEnoughMinerals" destination="6eG-Oy-BEN" id="nJo-G6-DeC"/>
                         <outlet property="inputText" destination="iee-e7-whr" id="E5z-I6-MnK"/>
                         <outlet property="labelForSphere" destination="3WN-7w-4jI" id="65m-uy-Mnh"/>
                     </connections>
@@ -2463,7 +2477,7 @@
         <segue reference="yKX-Ie-zFg"/>
         <segue reference="67b-Hk-5Ts"/>
         <segue reference="6XQ-gR-cEl"/>
-        <segue reference="fiu-Wn-O7o"/>
+        <segue reference="K0X-1L-HJs"/>
         <segue reference="f65-O9-SAt"/>
         <segue reference="ULg-O7-lmG"/>
         <segue reference="XLF-8k-sj0"/>

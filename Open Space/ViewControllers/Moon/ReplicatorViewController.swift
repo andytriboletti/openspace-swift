@@ -22,6 +22,8 @@ import Defaults
 class ReplicatorViewController: UIViewController {
     @IBOutlet var inputText: UITextView!
     @IBOutlet var labelForSphere: UILabel!
+    @IBOutlet var doYouHaveEnoughMinerals: UILabel!
+    @IBOutlet var createNewItemButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +43,79 @@ class ReplicatorViewController: UIViewController {
         let sphereName = Defaults[.selectedSphereName]
         labelForSphere.text = "This creation will be shown in your sphere \(sphereName)"
         // Do any additional setup after loading the view.
+
+        updateMineralStatus()
+
     }
+    func updateMineralStatus() {
+          // Retrieve the stored mineral amounts
+          let regolith = Defaults[.regolithCargoAmount]
+          let waterIce = Defaults[.waterIceCargoAmount]
+          let helium3 = Defaults[.helium3CargoAmount]
+          let silicate = Defaults[.silicateCargoAmount]
+          let jarosite = Defaults[.jarositeCargoAmount]
+          let hematite = Defaults[.hematiteCargoAmount]
+          let goethite = Defaults[.goethiteCargoAmount]
+          let opal = Defaults[.opalCargoAmount]
+
+          // Required amount of each mineral
+          let requiredAmount = 10
+
+          // Check if all minerals meet the required amount
+          if regolith >= requiredAmount && waterIce >= requiredAmount && helium3 >= requiredAmount &&
+             silicate >= requiredAmount && jarosite >= requiredAmount && hematite >= requiredAmount &&
+             goethite >= requiredAmount && opal >= requiredAmount {
+              // Success case
+              doYouHaveEnoughMinerals.text = "You have all the needed minerals to create this object."
+              doYouHaveEnoughMinerals.textColor = UIColor.green
+              createNewItemButton.isEnabled = true
+          } else {
+              // Build the missing minerals message
+              var missingMineralsMessage = "You need:"
+              if regolith < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - regolith) kg of Regolith,"
+              }
+              if waterIce < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - waterIce) kg of Water Ice,"
+              }
+              if helium3 < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - helium3) kg of Helium-3,"
+              }
+              if silicate < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - silicate) kg of Silicate,"
+              }
+              if jarosite < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - jarosite) kg of Jarosite,"
+              }
+              if hematite < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - hematite) kg of Hematite,"
+              }
+              if goethite < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - goethite) kg of Goethite,"
+              }
+              if opal < requiredAmount {
+                  missingMineralsMessage += " \(requiredAmount - opal) kg of Opal,"
+              }
+
+              // Remove the last comma
+              if missingMineralsMessage.last == "," {
+                  missingMineralsMessage.removeLast()
+              }
+
+              missingMineralsMessage += "\nYou can find minerals on the Moon and Mars, or buy a mineral pack from the Account tab."
+
+              // Update the label
+              doYouHaveEnoughMinerals.text = missingMineralsMessage
+              doYouHaveEnoughMinerals.textColor = UIColor.red
+              createNewItemButton.isEnabled = false
+          }
+
+          // Add black background around the text
+          doYouHaveEnoughMinerals.backgroundColor = UIColor.black
+          doYouHaveEnoughMinerals.layer.masksToBounds = true
+    }
+
+
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Invalid Input", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
