@@ -1,11 +1,3 @@
-//
-//  SignInViewController.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 6/5/23.
-//  Copyright © 2023 GreenRobot LLC. All rights reserved.
-//
-
 import UIKit
 import FirebaseAuthUI
 import FirebaseCore
@@ -17,6 +9,8 @@ import FirebaseGoogleAuthUI
 class SignInViewController: UIViewController, FUIAuthDelegate {
     public var authUI: FUIAuth = FUIAuth.defaultAuthUI()!
     var rootViewController: SignInViewController?
+    let imageView = UIImageView()
+    var imageTimer: Timer?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,10 +22,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
             }
         } else {
             let authUI = FUIAuth.defaultAuthUI()
-            // You need to adopt a FUIAuthDelegate protocol to receive callback
             authUI!.delegate = self
-            // Do any additional setup after loading the view.
-
             let googleAuthProvider = FUIGoogleAuth(authUI: authUI!)
             let providers: [FUIAuthProvider] = [
                 googleAuthProvider,
@@ -40,46 +31,36 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
             authUI!.providers = providers
 
-            // self.authUI.providers = providers
             let authViewController = authUI!.authViewController()
-            // present(authViewController, animated: true, completion: nil)
-            // navigationController!.pushViewController(authViewController, animated: true)
-            // self.present(authViewController, animated: true)
-            // let signInViewController = SignInViewController()
             authViewController.modalPresentationStyle = .fullScreen
             authViewController.modalTransitionStyle = .crossDissolve
-            // self.window.rootViewController = signInViewController
-            // present(authViewController, animated: true, completion: nil)
 
             let frame = self.view.frame
             let authController = authUI!.authViewController()
             authController.view.frame = frame
             authController.preferredContentSize = frame.size
             authController.modalPresentationStyle = .fullScreen
+
+            // Customizing authController view
+            customizeAuthControllerView(authController.view)
+
             present(authController, animated: true, completion: nil)
         }
-
     }
-    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-        // Handle user and error as necessary
-        // rootViewController!.dismiss(animated: false)
 
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if let error = error {
-            // Handle sign-in error
             print("Sign-in error: \(error.localizedDescription)")
             return
         }
 
         if let currentUser = user {
-            // Call the method with a completion block
             currentUser.getIDTokenForcingRefresh(true) { (idToken, error) in
                 if let idToken = idToken {
-                    // The ID token is successfully obtained. You can use it here.
                     print("ID token: \(idToken)")
 
                     let email = currentUser.email
                     let uid = currentUser.uid
-                    // let authToken = currentUser.refreshToken!
                     print("Email: ")
                     print(email!)
                     print("uid: ")
@@ -88,41 +69,65 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                     print(idToken)
                     Defaults[.email] = email!
                     Defaults[.authToken] = idToken
-                    // Call the OpenspaceAPI to retrieve the last_location
+
                     OpenspaceAPI.shared.loginWithEmail(email: email!, authToken: idToken) { result in
                         switch result {
                         case .success(let lastLocation):
-                            // Use the last_location
                             print("Last Location: \(lastLocation)")
-
-                            // Save email and authToken in Defaults
                             Defaults[.email] = email!
                             Defaults[.authToken] = idToken
 
                             print("Successfully signed in with user: \(user!)")
 
                             DispatchQueue.main.async {
-                                // Perform UI-related updates here
-                                // For example, updating UI elements like labels, buttons, etc.
-                                // e.g., myLabel.text = "Updated text"
                                 self.performSegue(withIdentifier: "goToSignedIn", sender: self)
                             }
                         case .failure(let error):
-                            // Handle the error
                             print("Error: \(error.localizedDescription)")
                         }
                     }
                 } else if let error = error {
-                    // Handle the error, if any occurred during the token retrieval.
                     print("Error occurred: \(error.localizedDescription)")
                 } else {
-                    // This block will be executed if both idToken and error are nil.
                     print("Both idToken and error are nil.")
                 }
             }
-            // Use the attributes as needed
         } else {
             print("Successfully signed in with a user, but user data is nil.")
         }
+    }
+
+    private func customizeAuthControllerView(_ authView: UIView) {
+        // Set up the image view
+        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300) // Increase the size of the image view
+        imageView.contentMode = .scaleAspectFit
+        imageView.center = authView.center
+        authView.addSubview(imageView)
+
+        // Load a random image initially
+        loadRandomImage()
+
+        // Set up the label
+        let titleLabel = UILabel()
+        titleLabel.text = "Open Space"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        authView.addSubview(titleLabel)
+
+        // Center the label horizontally and place it a bit lower
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: authView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: authView.topAnchor, constant: 100)
+        ])
+
+        // Start the timer to change the image every 10 seconds
+        imageTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(loadRandomImage), userInfo: nil, repeats: true)
+    }
+
+    @objc private func loadRandomImage() {
+        let randomIndex = Int.random(in: 1...10)
+        let imageName = "login\(randomIndex)"
+        imageView.image = UIImage(named: imageName)
     }
 }
