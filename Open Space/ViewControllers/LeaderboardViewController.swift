@@ -10,6 +10,23 @@ import UIKit
 import GameKit
 
 class LeaderboardViewController: UIViewController, GKGameCenterControllerDelegate {
+    func displayAlert() {
+        // Create the UIAlertController
+        let alertController = UIAlertController(title: "Functionality Coming Soon",
+                                                message: "This functionality will be available soon.",
+                                                preferredStyle: .alert)
+
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Handle OK button tap if needed
+        }
+
+        // Add the OK action to the alert controller
+        alertController.addAction(okAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
            gameCenterViewController.dismiss(animated: true, completion: nil)
@@ -17,11 +34,13 @@ class LeaderboardViewController: UIViewController, GKGameCenterControllerDelegat
 
     // Function to display leaderboard
     @IBAction func showLeaderboard() {
-          let gameCenterVC = GKGameCenterViewController()
-          gameCenterVC.gameCenterDelegate = self
-          gameCenterVC.viewState = .leaderboards
-          gameCenterVC.leaderboardIdentifier = "com.greenrobot.openspace.top_cash"
-          present(gameCenterVC, animated: true, completion: nil)
+        displayAlert()
+
+//          let gameCenterVC = GKGameCenterViewController()
+//          gameCenterVC.gameCenterDelegate = self
+//          gameCenterVC.viewState = .leaderboards
+//          gameCenterVC.leaderboardIdentifier = "com.greenrobot.openspace.top_cash"
+//          present(gameCenterVC, animated: true, completion: nil)
       }
     /*
     // MARK: - Navigation
