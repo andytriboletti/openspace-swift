@@ -16,6 +16,25 @@ struct LocationData {
     let userId: Int?
     let premium: Int?
     let spheresAllowed: Int?
+    let regolithCargoAmount: Int
+    let waterIceCargoAmount: Int
+    let helium3CargoAmount: Int
+    let silicateCargoAmount: Int
+    let jarositeCargoAmount: Int
+    let hematiteCargoAmount: Int
+    let goethiteCargoAmount: Int
+    let opalCargoAmount: Int
+
+
+//    static let regolithCargoAmount = Key<Int>("regolithCargoAmount", default: 0)
+//    static let waterIceCargoAmount = Key<Int>("waterIceCargoAmount", default: 0)
+//    static let helium3CargoAmount = Key<Int>("helium3CargoAmount", default: 0)
+//    static let silicateCargoAmount = Key<Int>("silicateCargoAmount", default: 0)
+//    static let jarositeCargoAmount = Key<Int>("jarositeCargoAmount", default: 0)
+//    static let hematiteCargoAmount = Key<Int>("hematiteCargoAmount", default: 0)
+//    static let goethiteCargoAmount = Key<Int>("goethiteCargoAmount", default: 0)
+//    static let opalCargoAmount = Key<Int>("opalCargoAmount", default: 0)
+
 }
 
 class Utils {

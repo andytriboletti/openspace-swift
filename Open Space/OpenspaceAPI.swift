@@ -437,7 +437,8 @@ class OpenspaceAPI {
     func getLocation(email: String, authToken: String, completion: @escaping (Result<LocationData, Error>) -> Void) {
         if Defaults[.appToken] == "" {
             print("App Token Null")
-            //todo go to sign in to get appToken
+            // TODO: go to sign in to get appToken
+            return
         }
 
         let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": Defaults[.appToken]]
@@ -461,7 +462,25 @@ class OpenspaceAPI {
                 if let location = json["last_location"] as? String,
                    let currency = json["currency"] as? Int,
                    let currentEnergy = json["current_energy"] as? Int,
-                   let totalEnergy = json["total_energy"] as? Int {
+                   let totalEnergy = json["total_energy"] as? Int,
+                   let regolithCargoAmount = json["regolith_cargo_amount"] as? Int,
+                   let waterIceCargoAmount = json["water_ice_cargo_amount"] as? Int,
+                   let helium3CargoAmount = json["helium3_cargo_amount"] as? Int,
+                   let silicateCargoAmount = json["silicate_cargo_amount"] as? Int,
+                   let jarositeCargoAmount = json["jarosite_cargo_amount"] as? Int,
+                   let hematiteCargoAmount = json["hematite_cargo_amount"] as? Int,
+                   let goethiteCargoAmount = json["goethite_cargo_amount"] as? Int,
+                   let opalCargoAmount = json["opal_cargo_amount"] as? Int {
+
+                    Defaults[.regolithCargoAmount] = regolithCargoAmount
+                    Defaults[.waterIceCargoAmount] = waterIceCargoAmount
+                    Defaults[.helium3CargoAmount] = helium3CargoAmount
+                    Defaults[.silicateCargoAmount] = silicateCargoAmount
+                    Defaults[.jarositeCargoAmount] = jarositeCargoAmount
+                    Defaults[.hematiteCargoAmount] = hematiteCargoAmount
+                    Defaults[.goethiteCargoAmount] = goethiteCargoAmount
+                    Defaults[.opalCargoAmount] = opalCargoAmount
+
 
                     let locationData = LocationData(
                         location: location,
@@ -476,7 +495,15 @@ class OpenspaceAPI {
                         cargoLimit: json["cargo_limit"] as? Int,
                         userId: json["user_id"] as? Int,
                         premium: json["premium"] as? Int,
-                        spheresAllowed: json["spheres_allowed"] as? Int
+                        spheresAllowed: json["spheres_allowed"] as? Int,
+                        regolithCargoAmount: regolithCargoAmount,
+                        waterIceCargoAmount: waterIceCargoAmount,
+                        helium3CargoAmount: helium3CargoAmount,
+                        silicateCargoAmount: silicateCargoAmount,
+                        jarositeCargoAmount: jarositeCargoAmount,
+                        hematiteCargoAmount: hematiteCargoAmount,
+                        goethiteCargoAmount: goethiteCargoAmount,
+                        opalCargoAmount: opalCargoAmount
                     )
 
                     print("Successfully parsed location data")
@@ -503,8 +530,6 @@ class OpenspaceAPI {
             }
         }
     }
-
-
 
 
     // MARK: - WebSocket
