@@ -2,6 +2,21 @@ import Foundation
 import SwiftUI
 import UIKit
 import Defaults
+struct LocationData {
+    let location: String
+    let username: String?
+    let yourSpheres: [[String: Any]]?
+    let neighborSpheres: [[String: Any]]?
+    let spaceStation: [String: Any]?
+    let currency: Int
+    let currentEnergy: Int
+    let totalEnergy: Int
+    let passengerLimit: Int?
+    let cargoLimit: Int?
+    let userId: Int?
+    let premium: Int?
+    let spheresAllowed: Int?
+}
 
 class Utils {
     static let shared = Utils()
@@ -52,6 +67,7 @@ class Utils {
             viewController.present(hostingController, animated: true, completion: nil)
         }
     }
+    
     public func getLocation(completion: (() -> Void)? = nil) {
         guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
             print("Email or authToken is missing")
@@ -59,14 +75,13 @@ class Utils {
             return
         }
         print("in Utils.getLocation() with email: \(email) and authToken: \(authToken)")
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?), Error>) in
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<LocationData, Error>) in
             print("API call completed")
             guard let self = self else {
                 print("Self is nil, returning early")
                 return
             }
             print("inside getLocation 123")
-
             print(result)
             DispatchQueue.main.async {
                 switch result {
@@ -82,26 +97,25 @@ class Utils {
         }
     }
 
-    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?)) {
+    private func handleLocationSuccess(data: LocationData) {
         print("handleLocationSuccess called with data: \(data)")
-        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed) = data
 
-        if let username = username, !username.isEmpty {
+        if let username = data.username, !username.isEmpty {
             Defaults[.username] = username
         } else {
             print("no username?")
         }
 
         do {
-            let yourSpheresData = try JSONSerialization.data(withJSONObject: yourSpheres ?? [])
-            let neighborSpheresData = try JSONSerialization.data(withJSONObject: neighborSpheres ?? [])
+            let yourSpheresData = try JSONSerialization.data(withJSONObject: data.yourSpheres ?? [])
+            let neighborSpheresData = try JSONSerialization.data(withJSONObject: data.neighborSpheres ?? [])
             Defaults[.yourSpheres] = yourSpheresData
             Defaults[.neighborSpheres] = neighborSpheresData
         } catch {
             print("Error converting spheres data: \(error)")
         }
 
-        if let spaceStation = spaceStation,
+        if let spaceStation = data.spaceStation,
            let meshLocation = spaceStation["mesh_location"] as? String,
            let previewLocation = spaceStation["preview_location"] as? String,
            let stationName = spaceStation["spacestation_name"] as? String,
@@ -113,31 +127,33 @@ class Utils {
             Defaults[.stationId] = stationId
         }
 
-        Defaults[.currency] = currency
-        Defaults[.currentEnergy] = currentEnergy
-        Defaults[.totalEnergy] = totalEnergy
+        Defaults[.currency] = data.currency
+        Defaults[.currentEnergy] = data.currentEnergy
+        Defaults[.totalEnergy] = data.totalEnergy
 
-        if let passengerLimit = passengerLimit {
+        if let passengerLimit = data.passengerLimit {
             Defaults[.passengerLimit] = passengerLimit
         }
 
-        if let cargoLimit = cargoLimit {
+        if let cargoLimit = data.cargoLimit {
             Defaults[.cargoLimit] = cargoLimit
         }
 
-        if let userId = userId {
+        if let userId = data.userId {
             Defaults[.userId] = userId
         }
 
-        if let premium = premium {
+        if let premium = data.premium {
             Defaults[.premium] = premium
         }
-        if let spheresAllowed = spheresAllowed {
+
+        if let spheresAllowed = data.spheresAllowed {
             Defaults[.spheresAllowed] = spheresAllowed
         }
 
         print("handleLocationSuccess completed")
     }
+
 
     public func saveLocation(location: String, usesEnergy: String) {
         let email = Defaults[.email]

@@ -8,10 +8,7 @@
 
 import UIKit
 import Defaults
-
 extension GameViewController {
-
-    //import Alamofire
 
     func getLocation() {
         guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
@@ -19,41 +16,39 @@ extension GameViewController {
             return
         }
 
-        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?), Error>) in
-                guard let self = self else { return }
+        OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<LocationData, Error>) in
+            guard let self = self else { return }
 
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let data):
-                        self.handleLocationSuccess(data: data)
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
-                    }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.handleLocationSuccess(data: data)
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
                 }
             }
         }
-    
+    }
 
+    private func handleLocationSuccess(data: LocationData) {
+        print("handleLocationSuccess called with data: \(data)")
 
-    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?)) {
-        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed) = data
-
-        if let username = username, !username.isEmpty {
+        if let username = data.username, !username.isEmpty {
             Defaults[.username] = username
         } else {
             self.askForUserName()
         }
 
         do {
-            let yourSpheresData = try JSONSerialization.data(withJSONObject: yourSpheres ?? [])
-            let neighborSpheresData = try JSONSerialization.data(withJSONObject: neighborSpheres ?? [])
+            let yourSpheresData = try JSONSerialization.data(withJSONObject: data.yourSpheres ?? [])
+            let neighborSpheresData = try JSONSerialization.data(withJSONObject: data.neighborSpheres ?? [])
             Defaults[.yourSpheres] = yourSpheresData
             Defaults[.neighborSpheres] = neighborSpheresData
         } catch {
             print("Error converting spheres data: \(error)")
         }
 
-        if let spaceStation = spaceStation,
+        if let spaceStation = data.spaceStation,
            let meshLocation = spaceStation["mesh_location"] as? String,
            let previewLocation = spaceStation["preview_location"] as? String,
            let stationName = spaceStation["spacestation_name"] as? String,
@@ -65,30 +60,30 @@ extension GameViewController {
             Defaults[.stationId] = stationId
         }
 
-        Defaults[.currency] = currency
-        Defaults[.currentEnergy] = currentEnergy
-        Defaults[.totalEnergy] = totalEnergy
+        Defaults[.currency] = data.currency
+        Defaults[.currentEnergy] = data.currentEnergy
+        Defaults[.totalEnergy] = data.totalEnergy
 
-        if let passengerLimit = passengerLimit {
+        if let passengerLimit = data.passengerLimit {
             Defaults[.passengerLimit] = passengerLimit
         }
 
-        if let cargoLimit = cargoLimit {
+        if let cargoLimit = data.cargoLimit {
             Defaults[.cargoLimit] = cargoLimit
         }
 
-        if let userId = userId {
+        if let userId = data.userId {
             Defaults[.userId] = userId
         }
 
-        if let premium = premium {
+        if let premium = data.premium {
             Defaults[.premium] = premium
         }
-        if let spheresAllowed = spheresAllowed {
+        if let spheresAllowed = data.spheresAllowed {
             Defaults[.spheresAllowed] = spheresAllowed
         }
 
-        switch location {
+        switch data.location {
         case "nearEarth":
             self.appDelegate.gameState.locationState = .nearEarth
         case "nearISS":
@@ -110,13 +105,12 @@ extension GameViewController {
         case "nearNothing":
             self.appDelegate.gameState.locationState = .nearNothing
         default:
-            print("Unknown location: \(location)")
+            print("Unknown location: \(data.location)")
         }
 
         self.setNearFromLocationState()
         self.setCurrencyAndEnergyLabels()
     }
-
 
 
     func submitUsername(username: String, completion: @escaping (String?, String?) -> Void) {

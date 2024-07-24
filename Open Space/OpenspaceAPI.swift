@@ -434,12 +434,13 @@ class OpenspaceAPI {
 
     struct DuplicateEntryError: Error {}
 
-    func getLocation(email: String, authToken: String, completion: @escaping (Result<(location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?), Error>) -> Void) {
-        if(Defaults[.appToken] == "") {
+    func getLocation(email: String, authToken: String, completion: @escaping (Result<LocationData, Error>) -> Void) {
+        if Defaults[.appToken] == "" {
             print("App Token Null")
             //todo go to sign in to get appToken
         }
-        let parameters: [String: Any] = ["email": email, "authToken": "authToken", "appToken": Defaults[.appToken]]
+
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": Defaults[.appToken]]
         let url = "\(serverURL)get-data"
 
         print("Requesting location with parameters: \(parameters)")
@@ -461,17 +462,26 @@ class OpenspaceAPI {
                    let currency = json["currency"] as? Int,
                    let currentEnergy = json["current_energy"] as? Int,
                    let totalEnergy = json["total_energy"] as? Int {
-                    let username = json["username"] as? String
-                    let yourSpheres = json["your_spheres"] as? [[String: Any]]
-                    let neighborSpheres = json["neighbor_spheres"] as? [[String: Any]]
-                    let spaceStation = json["your_space_station"] as? [String: Any]
-                    let passengerLimit = json["passenger_limit"] as? Int
-                    let cargoLimit = json["cargo_limit"] as? Int
-                    let userId = json["user_id"] as? Int
-                    let premium = json["premium"] as? Int
-                    let spheresAllowed = json["spheres_allowed"] as? Int
+
+                    let locationData = LocationData(
+                        location: location,
+                        username: json["username"] as? String,
+                        yourSpheres: json["your_spheres"] as? [[String: Any]],
+                        neighborSpheres: json["neighbor_spheres"] as? [[String: Any]],
+                        spaceStation: json["your_space_station"] as? [String: Any],
+                        currency: currency,
+                        currentEnergy: currentEnergy,
+                        totalEnergy: totalEnergy,
+                        passengerLimit: json["passenger_limit"] as? Int,
+                        cargoLimit: json["cargo_limit"] as? Int,
+                        userId: json["user_id"] as? Int,
+                        premium: json["premium"] as? Int,
+                        spheresAllowed: json["spheres_allowed"] as? Int
+                    )
+
                     print("Successfully parsed location data")
-                    completion(.success((location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed)))
+                    completion(.success(locationData))
+
                 } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
                     print("Invalid authToken, refreshing token")
                     self.refreshAuthToken { newToken, tokenError in
@@ -493,6 +503,7 @@ class OpenspaceAPI {
             }
         }
     }
+
 
 
 

@@ -237,7 +237,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
 
 
-            if(Defaults[.spheresAllowed] > yourSpheres!.count) {
+            if(Defaults[.spheresAllowed] > yourSpheres!.count && yourSpheres!.count != 0) {
                 //pop up an alert that they can claim another sphere by naming it
                 print("pop up an alert that they can claim another sphere by naming it")
                 alertToCreateSphere()
@@ -346,24 +346,24 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         }
     }
 
-    private func handleLocationSuccess(data: (location: String, username: String?, yourSpheres: [[String: Any]]?, neighborSpheres: [[String: Any]]?, spaceStation: [String: Any]?, currency: Int, currentEnergy: Int, totalEnergy: Int, passengerLimit: Int?, cargoLimit: Int?, userId: Int?, premium: Int?, spheresAllowed: Int?)) {
-        let (location, username, yourSpheres, neighborSpheres, spaceStation, currency, currentEnergy, totalEnergy, passengerLimit, cargoLimit, userId, premium, spheresAllowed) = data
+    private func handleLocationSuccess(data: LocationData) {
+        print("handleLocationSuccess called with data: \(data)")
 
         // Save your_spheres and neighbor_spheres
-        if let yourSpheresArray = yourSpheres as? [[String: String]] {
+        if let yourSpheresArray = data.yourSpheres as? [[String: String]] {
             self.yourSpheres = yourSpheresArray
         } else {
             self.yourSpheres = []
         }
 
-        if let neighborSpheresArray = neighborSpheres as? [[String: String]] {
+        if let neighborSpheresArray = data.neighborSpheres as? [[String: String]] {
             self.neighborSpheres = neighborSpheresArray
         } else {
             self.neighborSpheres = []
         }
 
         let sphereCount = self.yourSpheres?.count ?? 0
-        let allowedSpheres = spheresAllowed ?? 0
+        let allowedSpheres = data.spheresAllowed ?? 0
 
         if sphereCount == 1 {
             self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Sphere. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")"
@@ -372,22 +372,22 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         }
 
         // Uncomment and use this if you need to handle the username
-        // if let username = username, !username.isEmpty {
+        // if let username = data.username, !username.isEmpty {
         //     Defaults[.username] = username
         // } else {
         //     self.askForUserName()
         // }
 
         do {
-            let yourSpheresData = try JSONSerialization.data(withJSONObject: yourSpheres ?? [])
-            let neighborSpheresData = try JSONSerialization.data(withJSONObject: neighborSpheres ?? [])
+            let yourSpheresData = try JSONSerialization.data(withJSONObject: data.yourSpheres ?? [])
+            let neighborSpheresData = try JSONSerialization.data(withJSONObject: data.neighborSpheres ?? [])
             Defaults[.yourSpheres] = yourSpheresData
             Defaults[.neighborSpheres] = neighborSpheresData
         } catch {
             print("Error converting spheres data: \(error)")
         }
 
-        if let spaceStation = spaceStation,
+        if let spaceStation = data.spaceStation,
            let meshLocation = spaceStation["mesh_location"] as? String,
            let previewLocation = spaceStation["preview_location"] as? String,
            let stationName = spaceStation["spacestation_name"] as? String,
@@ -399,23 +399,23 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             Defaults[.stationId] = stationId
         }
 
-        Defaults[.currency] = currency
-        Defaults[.currentEnergy] = currentEnergy
-        Defaults[.totalEnergy] = totalEnergy
+        Defaults[.currency] = data.currency
+        Defaults[.currentEnergy] = data.currentEnergy
+        Defaults[.totalEnergy] = data.totalEnergy
 
-        if let passengerLimit = passengerLimit {
+        if let passengerLimit = data.passengerLimit {
             Defaults[.passengerLimit] = passengerLimit
         }
 
-        if let cargoLimit = cargoLimit {
+        if let cargoLimit = data.cargoLimit {
             Defaults[.cargoLimit] = cargoLimit
         }
 
-        if let premium = premium {
+        if let premium = data.premium {
             Defaults[.premium] = premium
         }
 
-        if let spheresAllowed = spheresAllowed {
+        if let spheresAllowed = data.spheresAllowed {
             Defaults[.spheresAllowed] = spheresAllowed
         }
 
@@ -427,6 +427,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         //self.setNearFromLocationState()
         //self.setCurrencyAndEnergyLabels()
     }
+
 
 
     func createSpheresOnFloor(scene: SCNScene) {
