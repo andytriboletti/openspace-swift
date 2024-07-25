@@ -23,7 +23,9 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
             ProductIdentifiers.upgradeCargoLimit,
             ProductIdentifiers.upgradeMaxEnergy,
             ProductIdentifiers.upgradePassengerLimit,
-            ProductIdentifiers.premiumSubscription
+            ProductIdentifiers.premiumSubscription,
+            ProductIdentifiers.smallMineralPack,
+            ProductIdentifiers.largeMineralPack
         ]
 
         productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)

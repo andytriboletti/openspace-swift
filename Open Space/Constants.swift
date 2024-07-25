@@ -16,6 +16,8 @@ struct ProductIdentifiers {
     static let upgradeMaxEnergy = "com.greenrobot.openspace.upgrade_max_energy"
     static let upgradePassengerLimit = "com.greenrobot.openspace.upgrade_passenger_limit"
     static let premiumSubscription = "com.greenrobot.openspace.premium_subscription"
+    static let smallMineralPack = "com.greenrobot.openspace.small_mineral_pack"
+    static let largeMineralPack = "com.greenrobot.openspace.large_mineral_pack"
 }
 
 struct MyData {

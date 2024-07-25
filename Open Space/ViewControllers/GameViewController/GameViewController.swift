@@ -45,11 +45,13 @@ class GameViewController: UIViewController {
     @IBOutlet var scnView: SCNView!
     @IBOutlet var headerLabel: UILabel!
 
+    var googleAdLoaded: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         let myUsername = Defaults[.username]
         print("my username:")
         print(myUsername)
+        self.googleAdLoaded = 0
 
         //let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
 
@@ -58,28 +60,7 @@ class GameViewController: UIViewController {
             // GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth if you prefer to load an ad of a
             // particular orientation,
             //let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
-#if targetEnvironment(macCatalyst)
 
-#else
-
-        let isPremium = Defaults[.premium]
-        if(isPremium == 0) {
-            bannerView = GADBannerView(adSize: GADAdSizeBanner)
-            bannerView.adSize = GADAdSizeBanner
-            addBannerViewToView(bannerView)
-            //  Set the ad unit ID and view controller that contains the GADBannerView.
-            bannerView.adUnitID = MyData.testBannerAd
-#if DEBUG
-            bannerView.adUnitID = MyData.testBannerAd
-#else
-            bannerView.adUnitID = MyData.bannerAd
-#endif
-            bannerView.rootViewController = self
-
-            bannerView.load(GADRequest())
-        }
-
-#endif
 
     }
 
@@ -149,6 +130,7 @@ class GameViewController: UIViewController {
         scnView.addGestureRecognizer(self.tapGesture!)
 
         //cacheFiles()
+
     }
 
 //    func cacheFiles() {

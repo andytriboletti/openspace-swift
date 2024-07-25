@@ -96,12 +96,66 @@ class AccountViewController: UIViewController {
         // Present the alert controller
         present(alertController, animated: true, completion: nil)
     }
+    func showMineralPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase a small mineral pack with 20 of each type of mineral for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Small Energy Pack", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseSmallMineral()
+            print("purchase small Mineral")
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
+    func showLargeMineralPurchaseAlert(price: String) {
+        // Create the alert controller with the price
+        let msgText = "Do you want to purchase a large mineral pack with 150 of each type of mineral for \(price)?"
+        let alertController = UIAlertController(title: "Confirm Purchase: Large Mineral Pack", message: msgText, preferredStyle: .alert)
+
+        // Create OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call your method to initiate the purchase here
+            self.purchaseLargeMineral()
+            print("purchase small Mineral")
+        }
+        alertController.addAction(okAction)
+
+        // Create Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
 
     func purchaseUpgradeMaxEnergy() {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeMaxEnergy)
         } else {
             print("Product purchaseUpgradeMaxEnergy not available")
+        }
+    }
+    func purchaseSmallMineral() {
+        if IAPManager.shared.products.first != nil {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.smallMineralPack)
+        } else {
+            print("Product smallMineralPack not available")
+        }
+    }
+    func purchaseLargeMineral() {
+        if IAPManager.shared.products.first != nil {
+            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.largeMineralPack)
+        } else {
+            print("Product largeMineralPack not available")
         }
     }
 
@@ -131,6 +185,28 @@ class AccountViewController: UIViewController {
         }
     }
 
+    @IBAction func buySmallMineralPack(_ sender: UIButton) {
+        print("buysmallMineralPack")
+
+        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.smallMineralPack) {
+            showMineralPurchaseAlert(price: price)
+        } else {
+            showMineralPurchaseAlert(price: "$0.99")
+            print("Product smallMineralPack price not available")
+        }
+    }
+    @IBAction func buyLargeMineralPack(_ sender: UIButton) {
+        print("buyLargeMineralPack")
+
+        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.largeMineralPack) {
+            showLargeMineralPurchaseAlert(price: price)
+        } else {
+            showLargeMineralPurchaseAlert(price: "$2.99")
+            print("Product largeMineralPack price not available")
+        }
+    }
+
+    
 
     @IBAction func refillEnergyButtonTapped(_ sender: UIButton) {
            let alert: UIAlertController

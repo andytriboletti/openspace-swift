@@ -8,6 +8,13 @@
 
 import UIKit
 import Defaults
+
+#if targetEnvironment(macCatalyst)
+
+#else
+import GoogleMobileAds
+#endif
+
 extension GameViewController {
 
     func getLocation() {
@@ -110,6 +117,34 @@ extension GameViewController {
 
         self.setNearFromLocationState()
         self.setCurrencyAndEnergyLabels()
+
+#if targetEnvironment(macCatalyst)
+
+#else
+
+        
+        let isPremium = Defaults[.premium]
+        if(isPremium == 0 && googleAdLoaded == 0) {
+            bannerView = GADBannerView(adSize: GADAdSizeBanner)
+            bannerView.adSize = GADAdSizeBanner
+            addBannerViewToView(bannerView)
+            //  Set the ad unit ID and view controller that contains the GADBannerView.
+            bannerView.adUnitID = MyData.testBannerAd
+#if DEBUG
+            bannerView.adUnitID = MyData.testBannerAd
+#else
+            bannerView.adUnitID = MyData.bannerAd
+#endif
+            bannerView.rootViewController = self
+
+            bannerView.load(GADRequest())
+            
+            self.googleAdLoaded=1
+
+        }
+
+#endif
+        
     }
 
 
