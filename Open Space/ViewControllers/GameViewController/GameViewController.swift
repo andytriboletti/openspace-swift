@@ -10,8 +10,20 @@ import Defaults
 import SwiftUI
 import SSZipArchive
 
+#if targetEnvironment(macCatalyst)
+
+#else
+import GoogleMobileAds
+#endif
+
 class GameViewController: UIViewController {
     var stationFilePaths: [URL] = []
+
+#if targetEnvironment(macCatalyst)
+
+#else
+    var bannerView: GADBannerView!
+#endif
 
     var webSocketManager: WebSocketManager!
     var errorMessage: String?
@@ -38,6 +50,37 @@ class GameViewController: UIViewController {
         let myUsername = Defaults[.username]
         print("my username:")
         print(myUsername)
+
+        //let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
+
+            // Here the current interface orientation is used. Use
+            // GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth or
+            // GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth if you prefer to load an ad of a
+            // particular orientation,
+            //let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+#if targetEnvironment(macCatalyst)
+
+#else
+
+        let isPremium = Defaults[.premium]
+        if(isPremium == 0) {
+            bannerView = GADBannerView(adSize: GADAdSizeBanner)
+            bannerView.adSize = GADAdSizeBanner
+            addBannerViewToView(bannerView)
+            //  Set the ad unit ID and view controller that contains the GADBannerView.
+            bannerView.adUnitID = MyData.testBannerAd
+#if DEBUG
+            bannerView.adUnitID = MyData.testBannerAd
+#else
+            bannerView.adUnitID = MyData.bannerAd
+#endif
+            bannerView.rootViewController = self
+
+            bannerView.load(GADRequest())
+        }
+
+#endif
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -159,4 +202,34 @@ class GameViewController: UIViewController {
             return .all
         }
     }
+
+
+
+#if targetEnvironment(macCatalyst)
+
+#else
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+       bannerView.translatesAutoresizingMaskIntoConstraints = false
+       view.addSubview(bannerView)
+       view.addConstraints(
+         [NSLayoutConstraint(item: bannerView,
+                             attribute: .bottom,
+                             relatedBy: .equal,
+                             toItem: view.safeAreaLayoutGuide,
+                             attribute: .bottom,
+                             multiplier: 1,
+                             constant: 0),
+          NSLayoutConstraint(item: bannerView,
+                             attribute: .centerX,
+                             relatedBy: .equal,
+                             toItem: view,
+                             attribute: .centerX,
+                             multiplier: 1,
+                             constant: 0)
+         ])
+      }
+#endif
+
+
+    
 }

@@ -20,5 +20,7 @@ struct ProductIdentifiers {
 
 struct MyData {
     static let travelInterstitialAd = "ca-app-pub-8840903285420889/3173303416"
-
+    static let bannerAd = "ca-app-pub-8840903285420889/4245253069"
+    static let testBannerAd = "ca-app-pub-3940256099942544/2435281174"
 }
+
