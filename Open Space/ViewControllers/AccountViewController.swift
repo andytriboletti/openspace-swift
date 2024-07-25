@@ -17,6 +17,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var energyLabel: UILabel!
     @IBOutlet weak var accountTypeLabel: UILabel!
     @IBOutlet weak var upgradeToPremium: UIButton!
+    @IBOutlet weak var yourAccountIsEarning: UILabel!
 
     #if !targetEnvironment(macCatalyst)
     var rewardedAd: GADRewardedAd?
@@ -512,6 +513,20 @@ class AccountViewController: UIViewController {
         self.accountTypeLabel.text = "Account Type: \(accountType)"
         Task {
             await loadRewardedAd()
+        }
+
+        let amount = Defaults[.earningFromSpheresDaily]
+
+        if(amount == 10) {
+            self.yourAccountIsEarning.text = "Earning virtual $\(amount) per day from your sphere."
+
+        }
+        else if(amount == 0) {
+            self.yourAccountIsEarning.text = "Earning virtual $\(amount) per day. Create a sphere to earn."
+
+        }
+        else {
+            self.yourAccountIsEarning.text = "Earning virtual $\(amount) per day from your spheres."
         }
     }
 

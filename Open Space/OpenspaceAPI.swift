@@ -470,7 +470,8 @@ class OpenspaceAPI {
                    let jarositeCargoAmount = json["jarosite_cargo_amount"] as? Int,
                    let hematiteCargoAmount = json["hematite_cargo_amount"] as? Int,
                    let goethiteCargoAmount = json["goethite_cargo_amount"] as? Int,
-                   let opalCargoAmount = json["opal_cargo_amount"] as? Int {
+                   let opalCargoAmount = json["opal_cargo_amount"] as? Int,
+                   let earningFromSpheresDaily = json["earning_from_spheres_daily"] as? Int {
 
                     Defaults[.regolithCargoAmount] = regolithCargoAmount
                     Defaults[.waterIceCargoAmount] = waterIceCargoAmount
@@ -480,6 +481,7 @@ class OpenspaceAPI {
                     Defaults[.hematiteCargoAmount] = hematiteCargoAmount
                     Defaults[.goethiteCargoAmount] = goethiteCargoAmount
                     Defaults[.opalCargoAmount] = opalCargoAmount
+                    Defaults[.earningFromSpheresDaily] = earningFromSpheresDaily
 
 
                     let locationData = LocationData(
@@ -503,7 +505,8 @@ class OpenspaceAPI {
                         jarositeCargoAmount: jarositeCargoAmount,
                         hematiteCargoAmount: hematiteCargoAmount,
                         goethiteCargoAmount: goethiteCargoAmount,
-                        opalCargoAmount: opalCargoAmount
+                        opalCargoAmount: opalCargoAmount,
+                        earningFromSpheresDaily: earningFromSpheresDaily
                     )
 
                     print("Successfully parsed location data")

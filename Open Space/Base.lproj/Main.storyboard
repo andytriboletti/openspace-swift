@@ -338,7 +338,7 @@
                                 <rect key="frame" x="0.0" y="59" width="430" height="790"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uN-eSr">
-                                        <rect key="frame" x="0.0" y="20" width="430" height="1420"/>
+                                        <rect key="frame" x="0.0" y="20" width="430" height="1530"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
                                                 <rect key="frame" x="183.33333333333334" y="0.0" width="63.333333333333343" height="100"/>
@@ -448,8 +448,17 @@
                                                     <action selector="buyLargeMineralPack:" destination="8yW-2I-6Lp" eventType="touchDown" id="7gH-ZA-m8z"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earning virtual $10 per day from your Sphere." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-CL-mox">
+                                                <rect key="frame" x="43.333333333333343" y="1210" width="343.66666666666663" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="rdk-Ml-OCz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
-                                                <rect key="frame" x="171.66666666666666" y="1210" width="86.999999999999972" height="100"/>
+                                                <rect key="frame" x="171.66666666666666" y="1320" width="86.999999999999972" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="TAl-Sq-MQX"/>
                                                 </constraints>
@@ -460,7 +469,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
-                                                <rect key="frame" x="144.66666666666669" y="1320" width="140.66666666666669" height="100"/>
+                                                <rect key="frame" x="144.66666666666669" y="1430" width="140.66666666666669" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="LqU-Uv-0KZ"/>
                                                 </constraints>
@@ -505,6 +514,7 @@
                         <outlet property="signOutButton" destination="ood-yR-ZiC" id="b57-Uf-EUn"/>
                         <outlet property="upgradeToPremium" destination="ZH8-HO-ZEx" id="6Bu-NC-1tt"/>
                         <outlet property="username" destination="juP-iZ-amP" id="23m-wd-rs5"/>
+                        <outlet property="yourAccountIsEarning" destination="pnz-CL-mox" id="boP-uQ-I0c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZM-di-DOu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
