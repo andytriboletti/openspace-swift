@@ -169,7 +169,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         let cargoLimit = Defaults[.cargoLimit]
 
         passengerLabel1.text="Ship Passengers - Max: \(maxPassengers) Passengers"
-        passengerLabel2.text="4 Passengers onboard, headed to ISS"
+        //passengerLabel2.text="4 Passengers onboard, headed to ISS"
+        passengerLabel2.text = "Coming soon: Ability to carry passengers."
         cargoLabel1.text="Ship Cargo - Max \(cargoLimit) kg"
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -212,7 +213,9 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         if(indexPath.section == 1) {
             let weight = 1000
 
-            cell.textLabel?.text = "Mission Supplies headed to ISS - Weight: \(weight) kg"
+            //cell.textLabel?.text = "Mission Supplies headed to ISS - Weight: \(weight) kg"
+            cell.textLabel?.text = "Coming soon: Ability to carry mission supplies."
+
         }
         else {
             let mineral = minerals[indexPath.row]
