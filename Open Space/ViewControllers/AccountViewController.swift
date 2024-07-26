@@ -18,6 +18,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var accountTypeLabel: UILabel!
     @IBOutlet weak var upgradeToPremium: UIButton!
     @IBOutlet weak var yourAccountIsEarning: UILabel!
+    @IBOutlet weak var yourAccountIsEarningObjects: UILabel!
 
     #if !targetEnvironment(macCatalyst)
     var rewardedAd: GADRewardedAd?
@@ -515,19 +516,39 @@ class AccountViewController: UIViewController {
             await loadRewardedAd()
         }
 
-        let amount = Defaults[.earningFromSpheresDaily]
+        let amountFromSpheres = Defaults[.earningFromSpheresDaily]
+        let amountFromObjects = Defaults[.earningFromObjectsDaily]
+        let sphereCount = Defaults[.numberOfSpheres]
+        let objectCount = Defaults[.theNumberOfObjects]
 
-        if(amount == 10) {
-            self.yourAccountIsEarning.text = "Earning virtual $\(amount) per day from your sphere."
+
+        //spheres
+        if(amountFromSpheres == 10) {
+            self.yourAccountIsEarning.text = "Earning virtual $\(amountFromSpheres) per day from \(sphereCount) sphere."
 
         }
-        else if(amount == 0) {
-            self.yourAccountIsEarning.text = "Earning virtual $\(amount) per day. Create a sphere to earn."
+        else if(amountFromSpheres == 0) {
+            self.yourAccountIsEarning.text = "Earning virtual $\(amountFromSpheres) per day. Create a sphere to earn."
 
         }
         else {
-            self.yourAccountIsEarning.text = "Earning virtual $\(amount) per day from your spheres."
+            self.yourAccountIsEarning.text = "Earning virtual $\(amountFromSpheres) per day from \(sphereCount) spheres."
         }
+
+        //objects
+        if(amountFromObjects == 5) {
+            self.yourAccountIsEarningObjects.text = "Earning virtual $\(amountFromObjects) per day from \(objectCount) object."
+
+        }
+        else if(amountFromSpheres == 0) {
+            self.yourAccountIsEarningObjects.text = "Earning virtual $\(amountFromObjects) per day. Create a object to earn."
+
+        }
+        else {
+            self.yourAccountIsEarningObjects.text = "Earning virtual $\(amountFromObjects) per day from \(objectCount) objects."
+        }
+
+
     }
 
     func updateUsernameLabel() {

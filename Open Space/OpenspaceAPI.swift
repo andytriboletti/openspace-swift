@@ -471,7 +471,11 @@ class OpenspaceAPI {
                    let hematiteCargoAmount = json["hematite_cargo_amount"] as? Int,
                    let goethiteCargoAmount = json["goethite_cargo_amount"] as? Int,
                    let opalCargoAmount = json["opal_cargo_amount"] as? Int,
-                   let earningFromSpheresDaily = json["earning_from_spheres_daily"] as? Int {
+                   let earningFromSpheresDaily = json["earning_from_spheres_daily"] as? Int,
+                   let numberOfSpheres = json["number_of_spheres"] as? Int ,
+                   let earningFromObjectsDaily = json["earning_from_objects_daily"] as? Int ,
+                   let theNumberOfObjects = json["number_of_objects"] as? Int {
+
 
                     Defaults[.regolithCargoAmount] = regolithCargoAmount
                     Defaults[.waterIceCargoAmount] = waterIceCargoAmount
@@ -482,6 +486,9 @@ class OpenspaceAPI {
                     Defaults[.goethiteCargoAmount] = goethiteCargoAmount
                     Defaults[.opalCargoAmount] = opalCargoAmount
                     Defaults[.earningFromSpheresDaily] = earningFromSpheresDaily
+                    Defaults[.numberOfSpheres] = numberOfSpheres
+                    Defaults[.earningFromObjectsDaily] = earningFromObjectsDaily
+                    Defaults[.theNumberOfObjects] = theNumberOfObjects
 
 
                     let locationData = LocationData(
@@ -506,7 +513,10 @@ class OpenspaceAPI {
                         hematiteCargoAmount: hematiteCargoAmount,
                         goethiteCargoAmount: goethiteCargoAmount,
                         opalCargoAmount: opalCargoAmount,
-                        earningFromSpheresDaily: earningFromSpheresDaily
+                        earningFromSpheresDaily: earningFromSpheresDaily,
+                        numberOfSpheres: numberOfSpheres,
+                        earningFromObjectsDaily: earningFromObjectsDaily,
+                        theNumberOfObjects: theNumberOfObjects
                     )
 
                     print("Successfully parsed location data")

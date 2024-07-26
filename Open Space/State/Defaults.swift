@@ -53,5 +53,8 @@ extension Defaults.Keys {
     static let goethiteCargoAmount = Key<Int>("goethiteCargoAmount", default: 0)
     static let opalCargoAmount = Key<Int>("opalCargoAmount", default: 0)
     static let earningFromSpheresDaily = Key<Int>("earningFromSpheresDaily", default: 0)
+    static let numberOfSpheres = Key<Int>("numberOfSpheres", default: 0)
+    static let earningFromObjectsDaily = Key<Int>("earningFromObjectsDaily", default: 0)
+    static let theNumberOfObjects = Key<Int>("theNumberOfObjects", default: 0)
 
 }

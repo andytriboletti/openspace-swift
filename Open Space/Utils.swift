@@ -25,6 +25,9 @@ struct LocationData {
     let goethiteCargoAmount: Int
     let opalCargoAmount: Int
     let earningFromSpheresDaily: Int
+    let numberOfSpheres: Int
+    let earningFromObjectsDaily: Int
+    let theNumberOfObjects: Int
 }
 
 class Utils {
