@@ -23,6 +23,12 @@ class AboutViewController: UIViewController {
         }
     }
 
+    @IBAction func openHelp() {
+        if let url = URL(string: "https://openspace.greenrobot.com/openspace-faq-and-help/") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Load the URL
