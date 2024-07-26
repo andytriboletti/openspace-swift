@@ -433,6 +433,12 @@ class OpenspaceAPI {
     }
 
     struct DuplicateEntryError: Error {}
+    
+    func submitScore() {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.submitScore()
+        }
+    }
 
     func getLocation(email: String, authToken: String, completion: @escaping (Result<LocationData, Error>) -> Void) {
         if Defaults[.appToken] == "" {
@@ -476,6 +482,8 @@ class OpenspaceAPI {
                    let earningFromObjectsDaily = json["earning_from_objects_daily"] as? Int ,
                    let theNumberOfObjects = json["number_of_objects"] as? Int {
 
+                    Defaults[.currency] = currency
+                    self.submitScore()
 
                     Defaults[.regolithCargoAmount] = regolithCargoAmount
                     Defaults[.waterIceCargoAmount] = waterIceCargoAmount

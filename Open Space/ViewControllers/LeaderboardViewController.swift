@@ -34,13 +34,13 @@ class LeaderboardViewController: UIViewController, GKGameCenterControllerDelegat
 
     // Function to display leaderboard
     @IBAction func showLeaderboard() {
-        displayAlert()
+        //displayAlert()
 
-//          let gameCenterVC = GKGameCenterViewController()
-//          gameCenterVC.gameCenterDelegate = self
-//          gameCenterVC.viewState = .leaderboards
-//          gameCenterVC.leaderboardIdentifier = "com.greenrobot.openspace.top_cash"
-//          present(gameCenterVC, animated: true, completion: nil)
+          let gameCenterVC = GKGameCenterViewController()
+          gameCenterVC.gameCenterDelegate = self
+          gameCenterVC.viewState = .leaderboards
+          gameCenterVC.leaderboardIdentifier = "com.greenrobot.openspace.top_cash"
+          present(gameCenterVC, animated: true, completion: nil)
       }
     /*
     // MARK: - Navigation

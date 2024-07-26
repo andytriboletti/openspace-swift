@@ -12,6 +12,8 @@ import DynamicBlurView
 import GoogleSignIn
 import IQKeyboardManagerSwift
 import StoreKit
+import GameKit
+import Defaults
 
 #if !targetEnvironment(macCatalyst)
 
@@ -108,6 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         #endif
 
+        authenticateGameCenter()
+
         return true
     }
 
@@ -150,6 +154,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rScene = SCNScene(named: "fist_instant_mesh_red.dae")
         rScene?.rootNode.childNodes.forEach { fistNodeRed!.addChildNode($0) }
     }
+
+
+
+    func authenticateGameCenter() {
+        let localPlayer = GKLocalPlayer.local
+        localPlayer.authenticateHandler = { viewController, error in
+            if let viewController = viewController {
+                // Present the Game Center login view controller
+                self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+            } else if localPlayer.isAuthenticated {
+                // Player is authenticated
+                print("Player is authenticated")
+            } else {
+                // Game Center is disabled or there was an error
+                print("Game Center authentication failed")
+            }
+        }
+    }
+
+    func submitScore() {
+        let cash = Defaults[.currency]
+        let score = GKScore(leaderboardIdentifier: "com.greenrobot.openspace.top_cash")
+        score.value = Int64(cash)
+
+        GKScore.report([score]) { error in
+            if let error = error {
+                print("Error submitting score: \(error.localizedDescription)")
+            } else {
+                print("Score submitted successfully")
+            }
+        }
+    }
+
+
+
 
     #if targetEnvironment(macCatalyst)
     #else
