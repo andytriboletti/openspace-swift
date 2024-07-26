@@ -12,6 +12,17 @@ import WebKit
 class AboutViewController: UIViewController {
     @IBOutlet var webView: WKWebView!
 
+    @IBAction func openSpaceHomepage() {
+        if let url = URL(string: "https://openspace.greenrobot.com") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    @IBAction func openSpaceForum() {
+        if let url = URL(string: "https://community.greenrobot.com/openspacegame-ios-mac-forum/open-space-new-feature-suggestions") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Load the URL

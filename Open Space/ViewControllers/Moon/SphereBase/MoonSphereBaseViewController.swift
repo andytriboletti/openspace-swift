@@ -110,6 +110,9 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             alertToCreateSphere()
         }
         else {
+            return
+            //todo in-app purchase disabled for testflight. todo re-enable when released
+
             //in app purchase
 
             print("claim another sphere")
