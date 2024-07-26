@@ -43,9 +43,19 @@ class ExploreMoonViewController: UIViewController {
         do {
             print("user id is")
             print(Defaults[.userId])
-
+#if DEBUG
             rewardedAd = try await GADRewardedAd.load(
-                withAdUnitID: "ca-app-pub-8840903285420889/2588345097", request: GADRequest())
+                withAdUnitID: MyData.testRewardedVideo, request: GADRequest())
+
+
+#else
+            rewardedAd = try await GADRewardedAd.load(
+                withAdUnitID: MyData.rewardedVideoOnMoon, request: GADRequest())
+
+
+#endif
+
+
             let serverSideVerificationOptions = GADServerSideVerificationOptions()
             serverSideVerificationOptions.userIdentifier = Defaults[.userId].description
             rewardedAd?.serverSideVerificationOptions = serverSideVerificationOptions

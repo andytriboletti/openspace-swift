@@ -486,6 +486,8 @@
 		72D19A26270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */; };
 		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
 		72E8C50526F2586000D5FDEB /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
+		72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
+		72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4E2AC2B9FBA53003FBF0D /* ReplicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */; };
 		72FC18B92B9CEF94007AF494 /* VIdeoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */; };
 		72FC18BB2B9CF08F007AF494 /* VideoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */; };
@@ -754,6 +756,7 @@
 		72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		72E8C50226F257FF00D5FDEB /* mars.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mars.scn; sourceTree = "<group>"; };
 		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
+		72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdManager.swift; sourceTree = "<group>"; };
 		72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorViewController.swift; sourceTree = "<group>"; };
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
 		72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCacheManager.swift; sourceTree = "<group>"; };
@@ -1026,6 +1029,7 @@
 				721BF2A92BBB0FCB0046E7E7 /* Constants.swift */,
 				723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */,
 				720F5BDC2C5158C80073A488 /* AuthCustomView.swift */,
+				72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -2060,6 +2064,7 @@
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
 				6FB0EEFD23FDA1A800EA28D7 /* GameViewController.swift in Sources */,
 				723A0F5E2C3CEC8F00F11350 /* LunarLoungeViewController.swift in Sources */,
+				72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */,
 				72FC18BD2B9D043B007AF494 /* ModelViewController.swift in Sources */,
 				72A99C832C334B4A00D96813 /* GameViewController+Utils.swift in Sources */,
 				72A99C3A2C29D14F00D96813 /* Enemy.swift in Sources */,
@@ -2168,6 +2173,7 @@
 				721AB59C2BB918F400E68231 /* ExploreMoonViewController.swift in Sources */,
 				721AB59D2BB918F400E68231 /* GameState.swift in Sources */,
 				723A0F5F2C3CEC8F00F11350 /* LunarLoungeViewController.swift in Sources */,
+				72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */,
 				721AB59E2BB918F400E68231 /* GameViewController.swift in Sources */,
 				72A99C842C334B4A00D96813 /* GameViewController+Utils.swift in Sources */,
 				72A99C3B2C29D14F00D96813 /* Enemy.swift in Sources */,

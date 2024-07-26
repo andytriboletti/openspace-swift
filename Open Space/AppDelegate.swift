@@ -118,14 +118,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     #if !targetEnvironment(macCatalyst)
 
     func preloadInterstitialAd() {
+
+#if DEBUG
+        GADInterstitialAd.load(withAdUnitID: MyData.testInterstitialAd, request: GADRequest()) { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load test travel interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            self?.interstitial = ad
+            print("Interstitial test ad loaded successfully.")
+        }
+
+
+
+#else
         GADInterstitialAd.load(withAdUnitID: MyData.travelInterstitialAd, request: GADRequest()) { [weak self] ad, error in
             if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                print("Failed to load travel interstitial ad with error: \(error.localizedDescription)")
                 return
             }
             self?.interstitial = ad
             print("Interstitial ad loaded successfully.")
         }
+
+#endif
+
+
+
     }
     #endif
 
@@ -155,7 +174,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rScene?.rootNode.childNodes.forEach { fistNodeRed!.addChildNode($0) }
     }
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+      // Show the app open ad when the app is foregrounded.
 
+#if targetEnvironment(macCatalyst)
+
+#else
+        let isPremium = Defaults[.premium]
+        if(isPremium == 0 ) {
+            AppOpenAdManager.shared.showAdIfAvailable()
+        }
+#endif
+
+    }
 
     func authenticateGameCenter() {
         let localPlayer = GKLocalPlayer.local
@@ -213,8 +244,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-    }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance.handle(url)

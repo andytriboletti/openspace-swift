@@ -374,7 +374,7 @@
                                 <rect key="frame" x="0.0" y="59" width="430" height="790"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uN-eSr">
-                                        <rect key="frame" x="0.0" y="20" width="430" height="940"/>
+                                        <rect key="frame" x="0.0" y="20" width="430" height="1092"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
                                                 <rect key="frame" x="161" y="0.0" width="108.33333333333331" height="40"/>
@@ -502,8 +502,24 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqt-n5-bfy">
+                                                <rect key="frame" x="95" y="790" width="240" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSF-nU-NPo">
+                                                <rect key="frame" x="0.0" y="840" width="430" height="2"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="l08-rW-M7D"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2" id="uCn-Fb-ITh"/>
+                                                </constraints>
+                                            </view>
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMY-Kv-9t4">
+                                                <rect key="frame" x="95" y="842" width="240" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ood-yR-ZiC">
-                                                <rect key="frame" x="171.66666666666666" y="790" width="86.999999999999972" height="75"/>
+                                                <rect key="frame" x="171.66666666666666" y="892" width="86.999999999999972" height="75"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="TAl-Sq-MQX"/>
                                                 </constraints>
@@ -513,18 +529,39 @@
                                                     <action selector="signOutButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="0A5-cJ-RYV"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be sure you want to do this. YOU CANNOT UNDO DELETING YOUR ACCOUNT:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ub-YH-Kdb">
+                                                <rect key="frame" x="38.666666666666657" y="967" width="352.66666666666674" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="oZy-Yx-7fN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-g5-iBC">
-                                                <rect key="frame" x="144.66666666666669" y="865" width="140.66666666666669" height="75"/>
+                                                <rect key="frame" x="144.66666666666669" y="1017" width="140.66666666666669" height="75"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="LqU-Uv-0KZ"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Delete Account"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Delete Account">
+                                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="deleteButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="Ewa-68-aSz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="4Ub-YH-Kdb" firstAttribute="leading" secondItem="f3I-uN-eSr" secondAttribute="leading" constant="38.666666666666657" id="0p2-mi-jLT"/>
+                                            <constraint firstItem="4Ub-YH-Kdb" firstAttribute="centerX" secondItem="f3I-uN-eSr" secondAttribute="centerX" id="8V2-8m-zJT"/>
+                                            <constraint firstItem="wqt-n5-bfy" firstAttribute="leading" secondItem="wMY-Kv-9t4" secondAttribute="leading" id="Vvq-b1-Lxg"/>
+                                            <constraint firstItem="xSF-nU-NPo" firstAttribute="leading" secondItem="f3I-uN-eSr" secondAttribute="leading" id="WrM-Fp-tmF"/>
+                                            <constraint firstItem="xSF-nU-NPo" firstAttribute="top" secondItem="f3I-uN-eSr" secondAttribute="top" constant="840" id="fMX-EF-wfV"/>
+                                            <constraint firstAttribute="height" constant="1092" id="oGL-e2-C3U"/>
+                                            <constraint firstItem="wqt-n5-bfy" firstAttribute="leading" secondItem="f3I-uN-eSr" secondAttribute="leading" constant="95" id="oPv-s1-dkv"/>
+                                            <constraint firstAttribute="trailing" secondItem="xSF-nU-NPo" secondAttribute="trailing" id="yvi-cm-lfs"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -2584,6 +2621,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

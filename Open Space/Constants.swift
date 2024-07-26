@@ -22,7 +22,16 @@ struct ProductIdentifiers {
 
 struct MyData {
     static let travelInterstitialAd = "ca-app-pub-8840903285420889/3173303416"
+    static let testInterstitialAd = "ca-app-pub-3940256099942544/4411468910"
+    
     static let bannerAd = "ca-app-pub-8840903285420889/4245253069"
     static let testBannerAd = "ca-app-pub-3940256099942544/2435281174"
+
+    static let adOpen = "ca-app-pub-8840903285420889/9324498974"
+    static let testAdOpen = "ca-app-pub-3940256099942544/5575463023"
+    
+    static let rewardedVideoOnMoon="ca-app-pub-8840903285420889/2588345097"
+    static let testRewardedVideo="ca-app-pub-3940256099942544/1712485313"
+    static let rewardedVideoForRefillEnergy="ca-app-pub-8840903285420889/7482113898"
 }
 
