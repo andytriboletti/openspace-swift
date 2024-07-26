@@ -661,6 +661,9 @@ PODS:
     - FirebaseAnalytics (~> 10.15.0)
   - Firebase/CoreOnly (10.15.0):
     - FirebaseCore (= 10.15.0)
+  - Firebase/Crashlytics (10.15.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 10.15.0)
   - FirebaseAnalytics (10.15.0):
     - FirebaseAnalytics/AdIdSupport (= 10.15.0)
     - FirebaseCore (~> 10.0)
@@ -703,6 +706,14 @@ PODS:
     - FirebaseCore (~> 10.0)
   - FirebaseCoreInternal (10.15.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
+  - FirebaseCrashlytics (10.15.0):
+    - FirebaseCore (~> 10.5)
+    - FirebaseInstallations (~> 10.0)
+    - FirebaseSessions (~> 10.5)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/Environment (~> 7.8)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
+    - PromisesObjC (~> 2.1)
   - FirebaseDatabase (10.15.0):
     - FirebaseCore (~> 10.0)
     - leveldb-library (~> 1.22)
@@ -750,6 +761,14 @@ PODS:
   - FirebasePhoneAuthUI (13.1.0):
     - FirebaseAuth
     - FirebaseAuthUI
+  - FirebaseSessions (10.24.0):
+    - FirebaseCore (~> 10.5)
+    - FirebaseCoreExtension (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/Environment (~> 7.10)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+    - PromisesSwift (~> 2.1)
   - FirebaseStorage (10.22.0):
     - FirebaseAppCheckInterop (~> 10.0)
     - FirebaseAuthInterop (~> 10.0)
@@ -812,6 +831,10 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - GoogleDataTransport (9.4.1):
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
   - GoogleSignIn (6.2.4):
     - AppAuth (~> 1.5)
     - GTMAppAuth (~> 1.3)
@@ -993,6 +1016,8 @@ PODS:
   - PopupDialog (1.1.1):
     - DynamicBlurView (~> 4.0)
   - PromisesObjC (2.3.1)
+  - PromisesSwift (2.3.1):
+    - PromisesObjC (= 2.3.1)
   - RecaptchaInterop (100.0.0)
   - RxCocoa (6.7.1):
     - RxRelay (= 6.7.1)
@@ -1019,6 +1044,7 @@ DEPENDENCIES:
   - CTFeedbackSwift (from `https://github.com/greenrobotllc/CTFeedbackSwift`)
   - Defaults
   - Firebase
+  - Firebase/Crashlytics
   - FirebaseAnalytics
   - FirebaseAuth
   - FirebaseAuthUI
@@ -1066,6 +1092,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreExtension
     - FirebaseCoreInternal
+    - FirebaseCrashlytics
     - FirebaseDatabase
     - FirebaseDatabaseUI
     - FirebaseEmailAuthUI
@@ -1076,11 +1103,13 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseOAuthUI
     - FirebasePhoneAuthUI
+    - FirebaseSessions
     - FirebaseStorage
     - FirebaseStorageUI
     - FirebaseUI
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
+    - GoogleDataTransport
     - GoogleSignIn
     - GoogleUserMessagingPlatform
     - GoogleUtilities
@@ -1096,6 +1125,7 @@ SPEC REPOS:
     - nanopb
     - PopupDialog
     - PromisesObjC
+    - PromisesSwift
     - RecaptchaInterop
     - RxCocoa
     - RxRelay
@@ -1147,6 +1177,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 2cec518b43635f96afe7ac3a9c513e47558abd2e
   FirebaseCoreExtension: 6394c00b887d0bebadbc7049c464aa0cbddc5d41
   FirebaseCoreInternal: 2f4bee5ed00301b5e56da0849268797a2dd31fb4
+  FirebaseCrashlytics: a83f26fb922a3fe181eb738fb4dcf0c92bba6455
   FirebaseDatabase: f93f1481c7e9e3d77af960cdff82a408d37693e6
   FirebaseDatabaseUI: 13f9d60a13ac9e35a4121e1cb20ba69d4de7ed7e
   FirebaseEmailAuthUI: 548b1b5b557b67b15fd3197d18da29d91a154ef8
@@ -1157,11 +1188,13 @@ SPEC CHECKSUMS:
   FirebaseInstallations: cae95cab0f965ce05b805189de1d4c70b11c76fb
   FirebaseOAuthUI: 5f19522e97d992841163d89a0b44afe315674020
   FirebasePhoneAuthUI: 4e32b332ba0484a0b6cf8246c93c23a24f9dbcad
+  FirebaseSessions: 2651b464e241c93fd44112f995d5ab663c970487
   FirebaseStorage: bc7bddc743548a89cfb896843a77cf4bdde2c231
   FirebaseStorageUI: 5db14fc4c251fdbe3b706eb1a9dddc55bc51b414
   FirebaseUI: d3e0d3f81f5c464554945195a6133a3ab905b6a7
   Google-Mobile-Ads-SDK: 5a6d005a6cb5b5e8f4c7b69ca05cdea79c181139
   GoogleAppMeasurement: 722db6550d1e6d552b08398b69a975ac61039338
+  GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
   GoogleUserMessagingPlatform: b1ad7bb1ee3ce64749d4fec24f667b36e45c396c
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
@@ -1177,6 +1210,7 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
   RxRelay: 4151ba01152436b08271e08410135e099880eae5
@@ -1192,6 +1226,6 @@ SPEC CHECKSUMS:
   Zip: b3fef584b147b6e582b2256a9815c897d60ddc67
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 6de614407db801d8413dd34b62fbc50d6933c3ae
+PODFILE CHECKSUM: 6a5e82f025ed25d1490aa6e36b7e7381aca20d14
 
 COCOAPODS: 1.15.2

@@ -22,6 +22,7 @@ def shared_pods
   
   pod 'RxSwift', '~> 6.0'
   pod 'RxCocoa', '~> 6.0'
+  pod 'Firebase/Crashlytics'
   
   
   
