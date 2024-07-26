@@ -111,7 +111,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         authenticateGameCenter()
-        //fatalError("This is a test crash!")
 
         return true
     }
