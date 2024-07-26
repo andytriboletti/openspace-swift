@@ -29,6 +29,9 @@ class AccountViewController: UIViewController {
 //      }
 
     @objc func upgrade() {
+        return
+        //todo in-app purchase disabled for testflight. todo re-enable when released
+
         print("upgrade to premium")
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
             showPremiumPurchaseAlert(price: price)
@@ -178,6 +181,9 @@ class AccountViewController: UIViewController {
 
 
     @IBAction func upgradeMaxEnergyButtonTapped(_ sender: UIButton) {
+        return
+        //todo in-app purchase disabled for testflight. todo re-enable when released
+
         print("purchaseUpgradeMaxEnergy")
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeMaxEnergy) {
             showPurchaseAlert(price: price)
@@ -188,6 +194,9 @@ class AccountViewController: UIViewController {
     }
 
     @IBAction func buySmallMineralPack(_ sender: UIButton) {
+        return
+        //todo in-app purchase disabled for testflight. todo re-enable when released
+
         print("buysmallMineralPack")
 
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.smallMineralPack) {
@@ -198,6 +207,9 @@ class AccountViewController: UIViewController {
         }
     }
     @IBAction func buyLargeMineralPack(_ sender: UIButton) {
+        return
+        //todo in-app purchase disabled for testflight. todo re-enable when released
+
         print("buyLargeMineralPack")
 
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.largeMineralPack) {
@@ -211,6 +223,8 @@ class AccountViewController: UIViewController {
     
 
     @IBAction func refillEnergyButtonTapped(_ sender: UIButton) {
+        return
+        //todo in-app purchase disabled for testflight. todo re-enable when released
            let alert: UIAlertController
 
            #if targetEnvironment(macCatalyst)
@@ -401,7 +415,6 @@ class AccountViewController: UIViewController {
             window.rootViewController = rootViewController
             window.makeKeyAndVisible()
 
-            // todo go to sign in screen
             // Perform any additional actions or UI updates after sign out
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError.localizedDescription)")

@@ -111,7 +111,6 @@ class MarsViewController: UIViewController {
            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
            scnView.addGestureRecognizer(tapGesture)
 
-         // TODO add Ships button and allow to change ships on mars.
 
         // let shipButton = UIBarButtonItem(title: "Ships", style: .done, target: self, action: #selector(shipsAction(_:)))
         // self.navigationItem.leftBarButtonItem = shipButton

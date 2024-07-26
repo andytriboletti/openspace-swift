@@ -443,7 +443,7 @@ class OpenspaceAPI {
     func getLocation(email: String, authToken: String, completion: @escaping (Result<LocationData, Error>) -> Void) {
         if Defaults[.appToken] == "" {
             print("App Token Null")
-            // TODO: go to sign in to get appToken
+            // shouldn't get here checked earlier
             return
         }
 

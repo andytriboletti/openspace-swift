@@ -96,7 +96,11 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
+        return
+        //todo in-app purchase disabled for testflight. todo re-enable when released
+
         // Create an alert controller
+
         let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
 
         // Add the "Upgrade Passenger Limit" action

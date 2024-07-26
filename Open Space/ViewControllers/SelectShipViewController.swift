@@ -51,7 +51,6 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
             // need to travel = yes
             // appDelegate.gameState.goingToLocationState = LocationState.allCases[indexPath.row]
 
-            // TODO SELECT SHIP
             Defaults[.currentShipModel] = appDelegate.gameState.possibleShips[indexPath.row]
             Defaults[.shipName] = appDelegate.gameState.possibleShips[indexPath.row]
             self.dismiss(animated: false, completion: nil)
