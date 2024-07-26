@@ -369,11 +369,11 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         let allowedSpheres = data.spheresAllowed ?? 0
 
         if sphereCount == 1 {
-            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Sphere. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")"
+            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Sphere. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")."
         } else {
-            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Spheres. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")"
+            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Spheres. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")."
         }
-
+        
         // Uncomment and use this if you need to handle the username
         // if let username = data.username, !username.isEmpty {
         //     Defaults[.username] = username

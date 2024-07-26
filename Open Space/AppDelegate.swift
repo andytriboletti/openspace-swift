@@ -181,8 +181,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 #else
         let isPremium = Defaults[.premium]
+        //only non premium users should get ad
         if(isPremium == 0 ) {
-            AppOpenAdManager.shared.showAdIfAvailable()
+
+            //only logged in users should get ad
+            if let user = Auth.auth().currentUser {
+                if let email = user.email {
+                    AppOpenAdManager.shared.showAdIfAvailable()
+                }
+            }
         }
 #endif
 

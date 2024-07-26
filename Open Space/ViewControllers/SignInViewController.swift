@@ -114,8 +114,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
             imageView.heightAnchor.constraint(equalToConstant: 300)
         ])
 
-        // Load a random image initially
-        loadRandomImage()
 
         // Set up the label
         let titleLabel = UILabel()
@@ -137,7 +135,11 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         ])
 
         // Start the timer to change the image every 10 seconds
-        imageTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(loadRandomImage), userInfo: nil, repeats: true)
+        //imageTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(loadRandomImage), userInfo: nil, repeats: true)
+
+        // Load a random image initially
+        loadRandomImage()
+
     }
 
     @objc private func loadRandomImage() {
