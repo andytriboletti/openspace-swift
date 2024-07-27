@@ -12,7 +12,7 @@ https://testflight.apple.com/join/6MMGHF2j
 https://blog.openspace.greenrobot.com
 
 # Assets License and where they came from
-• All the images are from NASA or are public domain from places like Pexels.com
+• All the images are from NASA or are public domain from places like Pexels.com or created by me
 
 # Video
 https://www.youtube.com/watch?v=VikmTcxnLc0

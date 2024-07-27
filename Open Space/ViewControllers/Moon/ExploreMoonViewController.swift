@@ -84,7 +84,12 @@ class ExploreMoonViewController: UIViewController {
     func addButtonToStackView() {
             // Create a new UIButton instance
             treasureButton = UIButton(type: .system)
-        treasureButton.configuration = UIButton.Configuration.filled()
+        //treasureButton.configuration = UIButton.Configuration.filled()
+
+        treasureButton.backgroundColor = .systemBlue // Or your desired color
+        treasureButton.setTitleColor(.white, for: .normal)
+        treasureButton.layer.cornerRadius = 8 // Adjust for desired roundness
+        treasureButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20) // Adjust padding as needed
 
         treasureButton.setTitle("Claim Hourly Treasure!", for: .normal)
         treasureButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -101,6 +106,12 @@ class ExploreMoonViewController: UIViewController {
     func addRewardedButtonToStackView() {
             // Create a new UIButton instance
             rewardedButton = UIButton(type: .system)
+
+        rewardedButton.backgroundColor = .systemBlue // Or your desired color
+        rewardedButton.setTitleColor(.white, for: .normal)
+        rewardedButton.layer.cornerRadius = 8 // Adjust for desired roundness
+        rewardedButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20) // Adjust padding as needed
+
         rewardedButton.setTitle("Watch a Video Ad To Claim Treasure Now", for: .normal)
         rewardedButton.addTarget(self, action: #selector(buttonTappedRewarded), for: .touchUpInside)
 

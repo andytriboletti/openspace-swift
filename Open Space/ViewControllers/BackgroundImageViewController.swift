@@ -104,45 +104,6 @@ class BackgroundImageViewController: UIViewController {
         }
     }
 
-    func configureButton(_ button: UIButton) {
-        var config = UIButton.Configuration.filled()
-
-        let backgroundColor = UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(red: 0.0, green: 0.0, blue: 0.502, alpha: 1.0) // Dark blue color
-            default:
-                return UIColor(red: 0.678, green: 0.847, blue: 0.902, alpha: 1.0) // Light blue color
-            }
-        }
-
-        let foregroundColor = UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor.white
-            default:
-                return UIColor.black
-            }
-        }
-
-        config.baseBackgroundColor = backgroundColor
-        config.baseForegroundColor = foregroundColor
-
-        let borderColor = UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor.white
-            default:
-                return UIColor.black
-            }
-        }
-
-        config.background.strokeColor = borderColor
-        config.background.strokeWidth = 2.0
-
-        config.cornerStyle = .medium
-
-        button.configuration = config
-    }
+    
 
 }

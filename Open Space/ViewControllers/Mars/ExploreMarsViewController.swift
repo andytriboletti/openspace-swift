@@ -44,7 +44,12 @@ class ExploreMarsViewController: UIViewController {
         func addButtonToStackView() {
                 // Create a new UIButton instance
                 treasureButton = UIButton(type: .system)
-            treasureButton.configuration = UIButton.Configuration.filled()
+            treasureButton.backgroundColor = .systemBlue // Or your desired color
+            treasureButton.setTitleColor(.white, for: .normal)
+            treasureButton.layer.cornerRadius = 8 // Adjust for desired roundness
+            treasureButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20) // Adjust padding as needed
+
+            //treasureButton.configuration = UIButton.Configuration.filled()
 
             treasureButton.setTitle("Claim Hourly Mars Treasure!", for: .normal)
             treasureButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
