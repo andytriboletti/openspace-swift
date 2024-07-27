@@ -9,7 +9,7 @@
 import UIKit
 
 import DynamicBlurView
-class AlertViewController: UIViewController {
+class AlertViewController: BackgroundImageViewController {
     @IBOutlet var cancelButton: UIButton!
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

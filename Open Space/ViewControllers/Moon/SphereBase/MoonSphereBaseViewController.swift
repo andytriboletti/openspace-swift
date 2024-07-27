@@ -2,7 +2,7 @@ import UIKit
 import SceneKit
 import Defaults
 
-class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
+class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRendererDelegate {
     @IBOutlet var headerLabel: PaddingLabel!
     @IBOutlet var sceneView: SCNView!
 
@@ -14,8 +14,9 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     var noNeighborSpheresLabel: UILabel?
 
     var yourSpheres: [[String: Any]]?
-     var neighborSpheres: [[String: Any]]?
+    var neighborSpheres: [[String: Any]]?
     var scene = SCNScene()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let labelText = "Your Spheres: Green     Neighbor Spheres: Blue     Unoccupied Spheres: Red"
@@ -34,17 +35,10 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         // Assign attributedText to your UILabel
         keyLabel.attributedText = attributedText
 
-        // Create a full-screen SCNView
-        // sceneView = SCNView(frame: view.bounds)
-        // sceneView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        // view.addSubview(sceneView)
-
         // Configure the sceneView properties
         sceneView.delegate = self
         sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
-
-        // Create a new SceneKit scene
 
         // Set the background image
         scene.background.contents = UIImage(named: "starry-sky-998641.jpg")
@@ -64,23 +58,22 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         // Check if neighborSpheres is empty
         claimAnotherSphereButton.addTarget(self, action: #selector(claimAnotherSphereMethod), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
-
     }
+
     func refreshLabels() {
-        //self.setupYourSpheres()
-        //self.setupNeighbor()
         getLocation()
     }
+
     @objc func handlePurchaseCompletion(_ notification: Notification) {
-          print("handlePurchaseCompletion called")
-          // Refresh Defaults and labels
+        print("handlePurchaseCompletion called")
+        // Refresh Defaults and labels
         Utils.shared.getLocation() {
-              print("Refreshing labels after location update")
-              DispatchQueue.main.async {
-                  self.refreshLabels()
-              }
-          }
-      }
+            print("Refreshing labels after location update")
+            DispatchQueue.main.async {
+                self.refreshLabels()
+            }
+        }
+    }
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: .purchaseCompleted, object: nil)
@@ -103,29 +96,23 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         // Present the alert controller
         self.present(alertController, animated: true, completion: nil)
     }
+
     @objc func claimAnotherSphereMethod() {
-        //displayAlert()
-        if(Defaults[.spheresAllowed] > yourSpheres!.count) {
-            //name that sphere
+        if Defaults[.spheresAllowed] > yourSpheres!.count {
             alertToCreateSphere()
-        }
-        else {
+        } else {
             return
             //todo in-app purchase disabled for testflight. todo re-enable when released
 
             //in app purchase
-
             print("claim another sphere")
             if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
-                       showPurchaseAlert(price: price)
-                   } else {
-                       showPurchaseAlert(price: "$0.99")
-
-                       print("Product price for sphere not available")
-                   }
-
+                showPurchaseAlert(price: price)
+            } else {
+                showPurchaseAlert(price: "$0.99")
+                print("Product price for sphere not available")
+            }
         }
-
     }
 
     func showPurchaseAlert(price: String) {
@@ -158,14 +145,14 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getLocation()
-
     }
 
     func refresh() {
         getLocation()
-
     }
+
     func setupNeighbor() {
         // Check if neighborSpheres is empty
         if let neighborSpheresData = Defaults[.neighborSpheres] as? Data {
@@ -196,8 +183,8 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
                 print("Error: \(error)")
             }
         }
-
     }
+
     override var prefersStatusBarHidden: Bool {
         return true // Hide the status bar
     }
@@ -211,42 +198,38 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
         return floorNode
     }
+
     func setupYourSpheres() {
         DispatchQueue.main.async { [self] in
-
             // Remove any existing targets
             self.enterYourSphereButton.removeTarget(nil, action: nil, for: .touchUpInside)
 
             if yourSpheres?.count == 0 {
                 self.enterYourSphereButton.setTitle("CLAIM YOUR FIRST SPHERE", for: .normal)
                 self.enterYourSphereButton.addTarget(self, action: #selector(claimFirstSphere), for: .touchUpInside)
-                self.claimAnotherSphereButton.isHidden=true
-
+                self.claimAnotherSphereButton.isHidden = true
             } else {
                 // it's not empty set the action to go to the sphere view
-                self.enterYourSphereButton.setTitle("ENTER YOUR SPHERE", for: .normal)
+                self.enterYourSphereButton.setTitle("Enter Your Sphere", for: .normal)
                 self.enterYourSphereButton.addTarget(self, action: #selector(goToSphereView), for: .touchUpInside)
-                self.claimAnotherSphereButton.isHidden=false
-                if(Defaults[.spheresAllowed] > yourSpheres!.count) {
-                    //CLAIM ANOTHER SPHERE
-                    self.claimAnotherSphereButton.setTitle("CLAIM ANOTHER SPHERE", for: .normal)
-
-                }
-                else {
-                    //INCREASE YOUR SPHERE LIMIT
-                    self.claimAnotherSphereButton.setTitle("INCREASE YOUR SPHERE LIMIT", for: .normal)
-
+                self.claimAnotherSphereButton.isHidden = false
+                if Defaults[.spheresAllowed] > yourSpheres!.count {
+                    // CLAIM ANOTHER SPHERE
+                    self.claimAnotherSphereButton.setTitle("Claim Another Sphere", for: .normal)
+                } else {
+                    // INCREASE YOUR SPHERE LIMIT
+                    self.claimAnotherSphereButton.setTitle("Increase Your Sphere Limit", for: .normal)
                 }
             }
 
-
-            if(Defaults[.spheresAllowed] > yourSpheres!.count && yourSpheres!.count != 0) {
-                //pop up an alert that they can claim another sphere by naming it
+            if Defaults[.spheresAllowed] > yourSpheres!.count && yourSpheres!.count != 0 {
+                // pop up an alert that they can claim another sphere by naming it
                 print("pop up an alert that they can claim another sphere by naming it")
                 alertToCreateSphere()
             }
         }
     }
+
     func presentSphereSelectionPopup() {
         let alertController = UIAlertController(title: "Select a Sphere", message: "Please choose a sphere to view.", preferredStyle: .alert)
 
@@ -272,12 +255,10 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
 
-
     @objc func goToSphereView() {
         print("go to sphere")
         presentSphereSelectionPopup()
     }
-
 
     @objc func claimFirstSphere() {
         alertToCreateSphere()
@@ -320,7 +301,6 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
-
 
     private func showAlert(with title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -373,13 +353,6 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         } else {
             self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Spheres. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")."
         }
-        
-        // Uncomment and use this if you need to handle the username
-        // if let username = data.username, !username.isEmpty {
-        //     Defaults[.username] = username
-        // } else {
-        //     self.askForUserName()
-        // }
 
         do {
             let yourSpheresData = try JSONSerialization.data(withJSONObject: data.yourSpheres ?? [])
@@ -427,11 +400,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
 
         // Add the spheres on the floor
         self.createSpheresOnFloor(scene: self.scene)
-        //self.setNearFromLocationState()
-        //self.setCurrencyAndEnergyLabels()
     }
-
-
 
     func createSpheresOnFloor(scene: SCNScene) {
         let numRows = 10
@@ -445,7 +414,7 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
         let numOwnedSpheres = yourSpheres!.count
 
         // Determine the number of neighbor spheres
-        let numNeighborSpheres = neighborSpheres!.count // Assuming you calculate this correctly
+        let numNeighborSpheres = neighborSpheres!.count
 
         for row in 0..<numRows {
             for column in 0..<numColumns {
@@ -470,5 +439,4 @@ class MoonSphereBaseViewController: UIViewController, SCNSceneRendererDelegate {
             }
         }
     }
-
 }

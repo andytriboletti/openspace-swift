@@ -9,7 +9,7 @@
 import UIKit
 import GameKit
 
-class LeaderboardViewController: UIViewController, GKGameCenterControllerDelegate {
+class LeaderboardViewController: BackgroundImageViewController, GKGameCenterControllerDelegate {
     func displayAlert() {
         // Create the UIAlertController
         let alertController = UIAlertController(title: "Functionality Coming Soon",

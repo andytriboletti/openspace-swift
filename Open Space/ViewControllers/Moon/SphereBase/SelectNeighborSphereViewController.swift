@@ -1,7 +1,7 @@
 import UIKit
 import Defaults
 
-class SelectNeighborSphereViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SelectNeighborSphereViewController: BackgroundImageViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
 

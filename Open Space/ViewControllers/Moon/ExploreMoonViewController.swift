@@ -84,6 +84,8 @@ class ExploreMoonViewController: UIViewController {
     func addButtonToStackView() {
             // Create a new UIButton instance
             treasureButton = UIButton(type: .system)
+        treasureButton.configuration = UIButton.Configuration.filled()
+
         treasureButton.setTitle("Claim Hourly Treasure!", for: .normal)
         treasureButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
 

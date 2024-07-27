@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class LunarLoungeViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
+class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
 
     var webView: WKWebView!
     let titleLabel = UILabel()
@@ -225,7 +225,8 @@ class LunarLoungeViewController: UIViewController, WKNavigationDelegate, WKUIDel
     // Setup the title label
     func setupTitleLabel() {
         titleLabel.text = "Lunar Lounge"
-        titleLabel.textColor = .white
+       // titleLabel.textColor =
+        titleLabel.backgroundColor = .systemBackground
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
@@ -290,7 +291,7 @@ class LunarLoungeViewController: UIViewController, WKNavigationDelegate, WKUIDel
 
     // Setup the logout button
     func setupLogoutButton(_ logoutButton: UIButton, above returnButton: UIButton) {
-        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.setTitle("Logout of Facebook", for: .normal)
         logoutButton.setTitleColor(.white, for: .normal)
         logoutButton.backgroundColor = .systemRed
         logoutButton.layer.cornerRadius = 10

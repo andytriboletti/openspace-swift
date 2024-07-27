@@ -40,6 +40,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 <state key="normal" title="..."/>
+                                                <buttonConfiguration key="configuration" style="filled" title="...">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="landButtonClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="k4P-Ao-FKO"/>
                                                 </connections>
@@ -64,6 +67,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 <state key="normal" title="..."/>
+                                                <buttonConfiguration key="configuration" style="filled" title="...">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="navigateToClicked" destination="BV1-FR-VrT" eventType="touchDown" id="hbh-yg-fWF"/>
                                                 </connections>
@@ -173,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="20" width="430" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Mars! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-ym-5aq" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="31" y="0.0" width="368.33333333333331" height="80"/>
+                                        <rect key="frame" x="38" y="0.0" width="354.33333333333331" height="80"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -190,6 +196,7 @@
                                             <constraint firstAttribute="height" constant="50" id="aOD-yr-mIh"/>
                                         </constraints>
                                         <state key="normal" title="EXPLORE MARS"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Explore Mars"/>
                                         <connections>
                                             <segue destination="3P0-Yo-Sdy" kind="presentation" modalPresentationStyle="fullScreen" id="mz6-TB-ZIG"/>
                                         </connections>
@@ -227,6 +234,7 @@
                                     <constraint firstAttribute="height" constant="60" id="JUn-vv-1qS"/>
                                 </constraints>
                                 <state key="normal" title="TAKE OFF"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Take Off"/>
                                 <connections>
                                     <action selector="takeOffAction" destination="Tx7-Uf-egN" eventType="touchUpInside" id="uw8-0z-EHQ"/>
                                 </connections>
@@ -276,6 +284,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Open Space" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCI-eq-OX6">
                                         <rect key="frame" x="92.666666666666671" y="0.0" width="244.66666666666663" height="75"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="RKm-Kg-rrG"/>
                                         </constraints>
@@ -289,7 +298,7 @@
                                             <constraint firstAttribute="height" constant="50" id="HAb-tZ-mt5"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Go To Open Space Homepage"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go To Open Space Homepage"/>
                                         <connections>
                                             <action selector="openSpaceHomepage" destination="zN1-Qm-r2p" eventType="touchDown" id="yna-qt-gT3"/>
                                         </connections>
@@ -300,7 +309,7 @@
                                             <constraint firstAttribute="height" constant="50" id="4sq-0Q-I1T"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Go To New Feature Suggestions at the Forum" titleAlignment="automatic"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go To New Feature Suggestions at the Forum" titleAlignment="automatic"/>
                                         <connections>
                                             <action selector="openSpaceForum" destination="zN1-Qm-r2p" eventType="touchDown" id="KFr-QS-J3d"/>
                                         </connections>
@@ -311,13 +320,14 @@
                                             <constraint firstAttribute="height" constant="50" id="CC0-Fv-sQO"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Go To Open Space FAQ And Help"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go To Open Space FAQ And Help"/>
                                         <connections>
                                             <action selector="openHelp" destination="zN1-Qm-r2p" eventType="touchDown" id="ZJ9-O5-ppd"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBd-R0-d6x">
                                         <rect key="frame" x="10" y="225" width="410" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="kdo-z2-oy2"/>
                                         </constraints>
@@ -378,6 +388,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-IS-7PY">
                                                 <rect key="frame" x="161" y="0.0" width="108.33333333333331" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="uFP-Xf-gph"/>
                                                 </constraints>
@@ -387,6 +398,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Logged In As:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-oO-GU7">
                                                 <rect key="frame" x="163" y="40" width="104" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ffd-BJ-0cE"/>
                                                 </constraints>
@@ -396,6 +408,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Account Type: Basic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-4I-Wae">
                                                 <rect key="frame" x="137.66666666666669" y="90" width="154.66666666666669" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="YVL-ve-XkV"/>
                                                 </constraints>
@@ -409,10 +422,11 @@
                                                     <constraint firstAttribute="height" constant="75" id="Bvn-Vb-oN9"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Upgrade To Premium. Remove Ads."/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Upgrade To Premium. Remove Ads."/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Username:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juP-iZ-amP">
                                                 <rect key="frame" x="173.66666666666666" y="215" width="82.999999999999972" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="kan-2I-qhm"/>
                                                 </constraints>
@@ -426,13 +440,14 @@
                                                     <constraint firstAttribute="height" constant="75" id="XOL-g9-DkN"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Reset Username"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Reset Username"/>
                                                 <connections>
                                                     <action selector="showResetButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="mRq-qQ-TGj"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energy: x out of 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3N-LV-ksW">
                                                 <rect key="frame" x="148" y="340" width="134" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="FEf-fc-ZWB"/>
                                                 </constraints>
@@ -446,7 +461,7 @@
                                                     <constraint firstAttribute="height" constant="75" id="rRJ-uY-vre"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Refill Energy"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Refill Energy"/>
                                                 <connections>
                                                     <action selector="refillEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="c5M-Db-r1s"/>
                                                 </connections>
@@ -457,7 +472,7 @@
                                                     <constraint firstAttribute="height" constant="75" id="xQv-db-Hr1"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Upgrade Max Energy"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Upgrade Max Energy"/>
                                                 <connections>
                                                     <action selector="upgradeMaxEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="4lQ-8Z-rkW"/>
                                                 </connections>
@@ -468,7 +483,7 @@
                                                     <constraint firstAttribute="height" constant="75" id="JA1-7e-MHy"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Buy A Small Mineral Pack"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Buy A Small Mineral Pack"/>
                                                 <connections>
                                                     <action selector="buySmallMineralPack:" destination="8yW-2I-6Lp" eventType="touchDown" id="RjN-Y1-2v9"/>
                                                 </connections>
@@ -479,13 +494,14 @@
                                                     <constraint firstAttribute="height" constant="75" id="6eD-SV-nZt"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Buy A Large Mineral Pack"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Buy A Large Mineral Pack"/>
                                                 <connections>
                                                     <action selector="buyLargeMineralPack:" destination="8yW-2I-6Lp" eventType="touchDown" id="7gH-ZA-m8z"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earning virtual $10 per day from your Sphere." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-CL-mox">
                                                 <rect key="frame" x="43.333333333333343" y="690" width="343.66666666666663" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="rdk-Ml-OCz"/>
                                                 </constraints>
@@ -495,6 +511,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earning virtual $10 per day from your Objects." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHc-Yb-iH3">
                                                 <rect key="frame" x="41" y="740" width="348.33333333333331" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="u77-kk-P6P"/>
                                                 </constraints>
@@ -524,13 +541,14 @@
                                                     <constraint firstAttribute="height" constant="75" id="TAl-Sq-MQX"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Sign out"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Sign out"/>
                                                 <connections>
                                                     <action selector="signOutButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="0A5-cJ-RYV"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be sure you want to do this. YOU CANNOT UNDO DELETING YOUR ACCOUNT:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ub-YH-Kdb">
                                                 <rect key="frame" x="38.666666666666657" y="967" width="352.66666666666674" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="oZy-Yx-7fN"/>
                                                 </constraints>
@@ -544,8 +562,9 @@
                                                     <constraint firstAttribute="height" constant="75" id="LqU-Uv-0KZ"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Delete Account">
-                                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Delete Account">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="deleteButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="Ewa-68-aSz"/>
@@ -663,6 +682,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passengers and Cargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZs-PK-06h">
                                 <rect key="frame" x="0.0" y="59" width="430" height="75"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="e2e-5A-eb9"/>
                                 </constraints>
@@ -672,6 +692,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="passengersLabel1">
                                 <rect key="frame" x="1" y="144" width="430" height="29"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="passengersLabel1Height"/>
                                 </constraints>
@@ -681,6 +702,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="passengersLabel2">
                                 <rect key="frame" x="0.0" y="174" width="430" height="25"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="passengersLabel2Height"/>
                                 </constraints>
@@ -690,6 +712,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX7-hh-kF9">
                                 <rect key="frame" x="171.66666666666666" y="209" width="86.999999999999972" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fdf-tY-MB3"/>
                                 </constraints>
@@ -703,7 +726,7 @@
                                     <constraint firstAttribute="height" constant="40" id="upgradeButtonHeight"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Upgrade Passenger or Cargo Limit"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Upgrade Passenger or Cargo Limit"/>
                                 <connections>
                                     <action selector="upgradeMaxCargoButtonTapped:" destination="5fb-7X-jYJ" eventType="touchDown" id="HJ9-RB-Aar"/>
                                 </connections>
@@ -775,6 +798,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmd-QV-GK1">
                                         <rect key="frame" x="24.666666666666671" y="0.0" width="164.33333333333331" height="75"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="FgK-rZ-mSr"/>
                                         </constraints>
@@ -785,7 +809,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlg-z7-Jrt">
                                         <rect key="frame" x="0.0" y="125" width="213.66666666666666" height="75"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="View Top Richest Players"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="View Top Richest Players"/>
                                         <connections>
                                             <action selector="showLeaderboard" destination="8AS-f1-fXV" eventType="touchDown" id="SGV-Yx-TLP"/>
                                         </connections>
@@ -867,10 +891,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="872"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="29.666666666666657" y="20" width="370.66666666666674" height="400"/>
+                                <rect key="frame" x="36.666666666666657" y="20" width="356.66666666666674" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="370.66666666666669" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="356.66666666666669" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -882,41 +906,45 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="310.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="100" width="296.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="h5S-tH-Ymy"/>
                                         </constraints>
                                         <state key="normal" title="Explore Earth"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Explore Earth"/>
                                         <connections>
                                             <segue destination="Ipd-nn-3nw" kind="presentation" identifier="exploreEarth" animates="NO" modalPresentationStyle="fullScreen" id="GUK-gq-uwz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="180" width="310.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="180" width="296.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vt4-Ug-hXH"/>
                                         </constraints>
                                         <state key="normal" title="Shipyard: Configure your spaceship"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Shipyard: Configure your spaceship"/>
                                         <connections>
                                             <segue destination="68B-pU-erf" kind="presentation" modalPresentationStyle="fullScreen" id="UoK-ba-gXt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvS-4b-iaH">
-                                        <rect key="frame" x="62.333333333333314" y="260" width="246" height="60"/>
+                                        <rect key="frame" x="30" y="260" width="296.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="xRl-ga-FCP"/>
                                         </constraints>
                                         <state key="normal" title="Configure and launch spacestations"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Configure and launch spacestations"/>
                                         <connections>
                                             <action selector="configureAndLaunchSpaceStationsAction" destination="J0M-22-PC3" eventType="touchDown" id="P8f-lt-nyN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-0A-1Qt">
-                                        <rect key="frame" x="102.33333333333331" y="340" width="166" height="60"/>
+                                        <rect key="frame" x="74.333333333333329" y="340" width="208.33333333333337" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vZK-tQ-Xf1"/>
                                         </constraints>
                                         <state key="normal" title="Quest Command Center"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Quest Command Center"/>
                                         <connections>
                                             <action selector="quests" destination="J0M-22-PC3" eventType="touchDown" id="M9O-ot-2K3"/>
                                         </connections>
@@ -936,6 +964,7 @@
                                     <constraint firstAttribute="height" constant="60" id="l5G-R3-HUa"/>
                                 </constraints>
                                 <state key="normal" title="TAKE OFF"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Take Off"/>
                                 <connections>
                                     <action selector="takeOffAction" destination="J0M-22-PC3" eventType="touchUpInside" id="8US-br-Dyw"/>
                                     <action selector="takeOffAction" destination="Tx7-Uf-egN" eventType="touchUpInside" id="Zgz-Oz-mUw"/>
@@ -1092,6 +1121,7 @@
                                             <constraint firstAttribute="height" constant="60" id="N2M-aE-STD"/>
                                         </constraints>
                                         <state key="normal" title="Cancel"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Cancel"/>
                                         <connections>
                                             <action selector="cancel" destination="32f-fL-zJD" eventType="touchUpInside" id="C9G-gx-7Xf"/>
                                         </connections>
@@ -1169,7 +1199,7 @@
                                 <rect key="frame" x="20" y="0.0" width="390" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Space Station! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vs-Mr-fI7" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="8.3333333333333428" y="0.0" width="373.33333333333326" height="100"/>
+                                        <rect key="frame" x="15.333333333333343" y="0.0" width="359.33333333333326" height="100"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1186,6 +1216,7 @@
                                             <constraint firstAttribute="height" constant="60" id="Hj9-BI-bRK"/>
                                         </constraints>
                                         <state key="normal" title="Change View"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Change View"/>
                                         <connections>
                                             <action selector="changeView" destination="0yc-aj-Qry" eventType="touchDown" id="SgU-gp-FXi"/>
                                         </connections>
@@ -1201,6 +1232,7 @@
                                     <constraint firstAttribute="height" constant="60" id="w04-kz-ajp"/>
                                 </constraints>
                                 <state key="normal" title="TAKE OFF"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Take Off"/>
                                 <connections>
                                     <action selector="takeOffAction" destination="0yc-aj-Qry" eventType="touchUpInside" id="T2g-oT-tdv"/>
                                 </connections>
@@ -1326,6 +1358,7 @@
                                             <constraint firstAttribute="height" constant="60" id="YcX-DJ-ubR"/>
                                         </constraints>
                                         <state key="normal" title="Cancel"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Cancel"/>
                                         <connections>
                                             <action selector="cancel" destination="Ipd-nn-3nw" eventType="touchUpInside" id="aCa-Ki-O63"/>
                                         </connections>
@@ -1374,14 +1407,15 @@
             <objects>
                 <viewController id="4p8-gd-aBJ" customClass="SphereInventoryViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ArW-fu-3FW">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-GO-JnS">
-                                <rect key="frame" x="0.0" y="50" width="430" height="822"/>
+                                <rect key="frame" x="0.0" y="50" width="430" height="832"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Items" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKQ-mQ-eVp">
                                         <rect key="frame" x="0.0" y="0.0" width="430" height="20.333333333333332"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1411,11 +1445,11 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awS-Bd-EUf">
-                                        <rect key="frame" x="0.0" y="484.33333333333337" width="430" height="337.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="484.33333333333337" width="430" height="347.66666666666663"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Exit"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Exit"/>
                                         <connections>
-                                            <segue destination="WR1-6C-qgV" kind="presentation" modalPresentationStyle="fullScreen" id="aTG-Fl-mX6"/>
+                                            <segue destination="WWI-Jn-pUG" kind="presentation" modalPresentationStyle="fullScreen" id="681-o5-YEW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1437,7 +1471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbE-th-eqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3824.6376811594205" y="1078.7946428571429"/>
+            <point key="canvasLocation" x="3674" y="3709"/>
         </scene>
         <!--Replicator View Controller-->
         <scene sceneID="rig-C2-5S9">
@@ -1452,6 +1486,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replicator: Type in something you want to create" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0L-IA-0dQ">
                                         <rect key="frame" x="30" y="0.0" width="370" height="122.66666666666667"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1471,18 +1506,21 @@
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This creation will be shown in your sphere" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WN-7w-4jI">
                                         <rect key="frame" x="56.666666666666657" y="442.66666666666669" width="316.66666666666674" height="122.66666666666669"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating this object will cost 10 kg each of: Regolith, Water Ice, Helium-3, Silicate, Jarosite, Hematite, Goethite, and Opal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWf-6q-yZn">
                                         <rect key="frame" x="15" y="575.33333333333337" width="400.33333333333331" height="61"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eG-Oy-BEN">
                                         <rect key="frame" x="184.66666666666666" y="646.33333333333337" width="60.666666666666657" height="20.333333333333371"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1490,7 +1528,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkD-8P-7QA">
                                         <rect key="frame" x="177.66666666666666" y="676.66666666666663" width="74.666666666666657" height="122.66666666666663"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Create"/>
                                         <connections>
                                             <action selector="createNewItem" destination="nQ1-Kh-9oZ" eventType="touchDown" id="8nO-Na-uED"/>
                                         </connections>
@@ -1498,9 +1536,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgX-v4-T8c">
                                         <rect key="frame" x="132.66666666666669" y="809.33333333333337" width="164.66666666666669" height="122.66666666666663"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Exit Create Screen"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Exit Create Screen"/>
                                         <connections>
-                                            <segue destination="WR1-6C-qgV" kind="presentation" identifier="goToYourSphere" modalPresentationStyle="fullScreen" id="K0X-1L-HJs"/>
+                                            <segue destination="WWI-Jn-pUG" kind="presentation" modalPresentationStyle="fullScreen" id="sRQ-LS-ojo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1530,91 +1568,90 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDo-IE-Sjt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3169.5652173913045" y="1873.6607142857142"/>
+            <point key="canvasLocation" x="2586" y="3829"/>
         </scene>
         <!--Your Sphere View Controller-->
-        <scene sceneID="bzx-tH-QBc">
+        <scene sceneID="tbC-3G-TJ8">
             <objects>
-                <viewController id="WR1-6C-qgV" customClass="YourSphereViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XkB-Je-D8a">
+                <viewController id="WWI-Jn-pUG" customClass="YourSphereViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hb0-Bc-ssf">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="814" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="s3W-ZO-OLD">
-                                <rect key="frame" x="0.0" y="80" width="430" height="450"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="814" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="quI-nA-hfc">
+                                <rect key="frame" x="28" y="241" width="374" height="450"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Items In your sphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n38-j8-Xoy">
-                                        <rect key="frame" x="105.66666666666669" y="0.0" width="219" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Items In your sphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1P-fj-89V">
+                                        <rect key="frame" x="77.666666666666686" y="0.0" width="219" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="UFh-bf-kjx"/>
+                                            <constraint firstAttribute="height" constant="50" id="hsg-2w-HMW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Items" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-Yk-xSx">
-                                        <rect key="frame" x="174.66666666666666" y="100" width="80.666666666666657" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Items" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6r-AU-mnP">
+                                        <rect key="frame" x="146.66666666666666" y="100" width="80.666666666666657" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="fgj-zB-S3o"/>
+                                            <constraint firstAttribute="height" constant="50" id="GHe-A8-62E"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntc-vl-cRj">
-                                        <rect key="frame" x="104.33333333333333" y="200" width="221.33333333333337" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmt-7d-dy3">
+                                        <rect key="frame" x="76.333333333333329" y="200" width="221.33333333333337" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Xqp-5n-asA"/>
+                                            <constraint firstAttribute="height" constant="50" id="zaR-bb-7pZ"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="View Items in your Sphere"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="View Items in your Sphere"/>
                                         <connections>
-                                            <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="e01-Ue-bDj"/>
+                                            <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="VbQ-5y-Crq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnB-CT-7Vk">
-                                        <rect key="frame" x="77.333333333333343" y="300" width="275.33333333333326" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1N6-wL-L27">
+                                        <rect key="frame" x="49.333333333333343" y="300" width="275.33333333333326" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="t1r-RH-W0Y"/>
+                                            <constraint firstAttribute="height" constant="50" id="ObJ-ag-pwB"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create a new item using minerals"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Create a new item using minerals"/>
                                         <connections>
-                                            <action selector="createNewButton" destination="WR1-6C-qgV" eventType="touchDown" id="BbU-lI-YO9"/>
+                                            <segue destination="nQ1-Kh-9oZ" kind="presentation" identifier="goToReplicator" modalPresentationStyle="fullScreen" id="pi8-1V-Y8v"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agd-eM-rfX">
-                                        <rect key="frame" x="140.33333333333331" y="400" width="149.33333333333331" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Eg-of-MbL">
+                                        <rect key="frame" x="112.33333333333333" y="400" width="149.33333333333337" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="YCU-Bn-LgG"/>
+                                            <constraint firstAttribute="height" constant="50" id="oEl-0l-3PE"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Exit Your Sphere"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Exit Your Sphere"/>
                                         <connections>
-                                            <segue destination="U1y-oS-a8q" kind="presentation" identifier="exitSphere" modalPresentationStyle="fullScreen" id="Xc6-Ax-Zhf"/>
+                                            <segue destination="U1y-oS-a8q" kind="presentation" identifier="exitSphere" modalPresentationStyle="fullScreen" id="EOa-GJ-vxj"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="xJ8-Zn-dzm"/>
-                        <color key="backgroundColor" red="0.53047175751743891" green="0.76942896842956543" blue="0.17173472983005569" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="C1C-vY-Teq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="s3W-ZO-OLD" firstAttribute="centerX" secondItem="XkB-Je-D8a" secondAttribute="centerX" id="2Sz-Vn-g0A"/>
-                            <constraint firstItem="s3W-ZO-OLD" firstAttribute="top" secondItem="xJ8-Zn-dzm" secondAttribute="top" constant="80" id="J5Y-MV-wIK"/>
-                            <constraint firstItem="xJ8-Zn-dzm" firstAttribute="trailing" secondItem="s3W-ZO-OLD" secondAttribute="trailing" id="SYl-nw-4f8"/>
-                            <constraint firstItem="s3W-ZO-OLD" firstAttribute="leading" secondItem="xJ8-Zn-dzm" secondAttribute="leading" id="p5s-QG-6h2"/>
+                            <constraint firstItem="quI-nA-hfc" firstAttribute="centerY" secondItem="Hb0-Bc-ssf" secondAttribute="centerY" id="1Uc-jI-OgJ"/>
+                            <constraint firstItem="quI-nA-hfc" firstAttribute="centerX" secondItem="Hb0-Bc-ssf" secondAttribute="centerX" id="hfx-f1-qZp"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerLabel" destination="n38-j8-Xoy" id="Vr5-j4-QwR"/>
-                        <outlet property="numberOfObjectsInSphere" destination="Ojd-Yk-xSx" id="hFP-Zf-bw3"/>
-                        <segue destination="nQ1-Kh-9oZ" kind="presentation" identifier="goToReplicator" modalPresentationStyle="fullScreen" id="x6C-YO-ED4"/>
+                        <outlet property="headerLabel" destination="L1P-fj-89V" id="roJ-WU-kQq"/>
+                        <outlet property="numberOfObjectsInSphere" destination="R6r-AU-mnP" id="Po0-So-Dqo"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h7e-jW-5ay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezb-NO-Cqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3921" y="1826"/>
+            <point key="canvasLocation" x="3822" y="2854"/>
         </scene>
         <!--Model View Controller-->
         <scene sceneID="CdG-FO-2kh">
@@ -1628,7 +1665,7 @@
                                 <rect key="frame" x="0.0" y="59" width="430" height="873"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-Tb-xpX" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="152.33333333333334" y="0.0" width="125.66666666666666" height="80"/>
+                                        <rect key="frame" x="159.33333333333334" y="0.0" width="111.66666666666666" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1720,7 +1757,7 @@
                                 <rect key="frame" x="0.0" y="50" width="430" height="832"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSy-lL-kHv" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="31.333333333333343" y="0.0" width="367.66666666666663" height="50"/>
+                                        <rect key="frame" x="38.333333333333343" y="0.0" width="353.66666666666663" height="50"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1730,28 +1767,33 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Have X Sphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEy-Kt-4mP">
                                         <rect key="frame" x="142.33333333333337" y="70" width="145.66666666666663" height="20.333333333333329"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-1d-pQe">
-                                        <rect key="frame" x="138.66666666666666" y="110.33333333333334" width="152.99999999999997" height="50"/>
+                                        <rect key="frame" x="134.33333333333337" y="110.33333333333334" width="161.66666666666663" height="50"/>
                                         <state key="normal" title="ENTER YOUR SPHERE"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Enter Your Sphere"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="QqY-nA-6q0"/>
+                                            <segue destination="WWI-Jn-pUG" kind="presentation" identifier="goToSphereView" modalPresentationStyle="fullScreen" id="5eH-sR-HPR"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeA-vo-8pC">
-                                        <rect key="frame" x="112" y="180.33333333333334" width="206" height="50"/>
+                                        <rect key="frame" x="103.66666666666667" y="180.33333333333334" width="222.66666666666663" height="50"/>
                                         <state key="normal" title="EXPLORE NEIGHBOR SPHERE"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Explore Neighbor Spheres"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="cJK-o9-3ny"/>
                                             <segue destination="jl2-gm-HZU" kind="presentation" modalPresentationStyle="fullScreen" id="yUZ-Q9-T5m"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVD-fD-zMB">
-                                        <rect key="frame" x="125" y="250.33333333333331" width="180" height="50"/>
+                                        <rect key="frame" x="119.66666666666667" y="250.33333333333331" width="190.66666666666663" height="50"/>
                                         <state key="normal" title="CLAIM ANOTHER SPHERE"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Claim Another Sphere"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="eWr-4H-GBQ"/>
                                         </connections>
@@ -1768,6 +1810,7 @@
                                     </sceneKitView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Spheres: Green     Neighbor Spheres: Blue Unoccupied Spheres: Red" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKZ-Ew-kE4">
                                         <rect key="frame" x="0.0" y="711.33333333333337" width="430" height="40.666666666666629"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1780,12 +1823,13 @@
                                         <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPa-Gp-Lb1">
-                                        <rect key="frame" x="145.66666666666666" y="772" width="138.99999999999997" height="60"/>
+                                        <rect key="frame" x="136" y="772" width="158" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="7ob-zk-Phx"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="I0I-f0-Kpi"/>
                                         </constraints>
                                         <state key="normal" title="GO TO MOON BASE"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go To Moon Base"/>
                                         <connections>
                                             <action selector="takeOffAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="qhd-yA-WfV"/>
                                             <segue destination="GXa-oh-Nth" kind="presentation" modalPresentationStyle="fullScreen" id="yKX-Ie-zFg"/>
@@ -1838,13 +1882,12 @@
                         <outlet property="headerLabel" destination="KSy-lL-kHv" id="KmS-5B-5wj"/>
                         <outlet property="keyLabel" destination="OKZ-Ew-kE4" id="zzz-Kl-iSH"/>
                         <outlet property="sceneView" destination="Lkg-jM-MWz" id="ynK-wP-nep"/>
-                        <outlet property="youHaveNumberOfSpheres" destination="bEy-Kt-4mP" id="zh5-DU-R7K"/>
-                        <segue destination="WR1-6C-qgV" kind="presentation" identifier="goToSphereView" modalPresentationStyle="fullScreen" id="fiu-Wn-O7o"/>
+                        <outlet property="youHaveNumberOfSpheres" destination="bEy-Kt-4mP" id="iiC-v7-xAb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLg-d9-fLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4771" y="1465"/>
+            <point key="canvasLocation" x="5002" y="3628"/>
         </scene>
         <!--Shipyard View Controller-->
         <scene sceneID="L7F-ck-QNe">
@@ -1855,7 +1898,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="Xjd-aF-whv">
-                                <rect key="frame" x="50" y="34" width="330" height="198"/>
+                                <rect key="frame" x="50" y="33.999999999999986" width="330" height="206.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Ship Name: Kri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Miw-GQ-x5S">
                                         <rect key="frame" x="0.0" y="0.0" width="330" height="30"/>
@@ -1867,16 +1910,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTk-eU-Cq5">
-                                        <rect key="frame" x="0.0" y="84" width="330" height="30"/>
+                                        <rect key="frame" x="0.0" y="84" width="330" height="34.333333333333343"/>
                                         <state key="normal" title="Exchange Ship For A New One"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Exchange Ship For A New One"/>
                                         <connections>
                                             <action selector="configureShipDesign" destination="68B-pU-erf" eventType="touchDown" id="Iye-nt-haJ"/>
                                             <segue destination="PdD-hg-Poh" kind="presentation" identifier="exchangeShipForANewOne" modalPresentationStyle="fullScreen" id="pbc-dO-XZT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lJ-HR-LY3">
-                                        <rect key="frame" x="0.0" y="168" width="330" height="30"/>
+                                        <rect key="frame" x="0.0" y="172.33333333333334" width="330" height="34.333333333333343"/>
                                         <state key="normal" title="Return To Earth Landing View"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Return To Earth Landing View"/>
                                         <connections>
                                             <segue destination="J0M-22-PC3" kind="presentation" identifier="cancelAndGoToEarth" modalPresentationStyle="fullScreen" id="G6a-xv-v4e"/>
                                         </connections>
@@ -2023,6 +2068,7 @@
                                             <constraint firstAttribute="height" constant="60" id="OzP-zf-qAB"/>
                                         </constraints>
                                         <state key="normal" title="Cancel"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Cancel"/>
                                         <connections>
                                             <action selector="cancel" destination="PdD-hg-Poh" eventType="touchUpInside" id="FEr-GL-w7m"/>
                                         </connections>
@@ -2097,6 +2143,7 @@
                                     <constraint firstAttribute="height" constant="60" id="qpp-Rj-0MN"/>
                                 </constraints>
                                 <state key="normal" title="TAKE OFF"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Take Off"/>
                                 <connections>
                                     <action selector="takeOffAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="Stp-4l-S5T"/>
                                 </connections>
@@ -2105,7 +2152,7 @@
                                 <rect key="frame" x="0.0" y="20" width="430" height="360"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqc-kC-xpI" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="31.333333333333343" y="0.0" width="367.66666666666663" height="80"/>
+                                        <rect key="frame" x="38.333333333333343" y="0.0" width="353.66666666666663" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2122,6 +2169,7 @@
                                             <constraint firstAttribute="height" constant="50" id="wes-GI-9qV"/>
                                         </constraints>
                                         <state key="normal" title="EXPLORE THE MOON FOR MINERALS"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Explore The Moon For Minerals"/>
                                         <connections>
                                             <segue destination="aFp-bJ-CoG" kind="presentation" identifier="goToExploreMoon" modalPresentationStyle="fullScreen" id="4DD-l7-rYR"/>
                                         </connections>
@@ -2132,26 +2180,29 @@
                                             <constraint firstAttribute="height" constant="50" id="1iv-s4-OP7"/>
                                         </constraints>
                                         <state key="normal" title="GO TO SPHERE BASE"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go To Sphere Base"/>
                                         <connections>
                                             <segue destination="U1y-oS-a8q" kind="presentation" modalPresentationStyle="fullScreen" id="6XQ-gR-cEl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yV-CM-cWD">
-                                        <rect key="frame" x="132.66666666666666" y="240" width="164.99999999999997" height="50"/>
+                                        <rect key="frame" x="126.33333333333333" y="240" width="177.33333333333337" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tl0-4w-vfN"/>
                                         </constraints>
                                         <state key="normal" title="GO TO LUNAR LOUNGE"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go To Lunar Lounge"/>
                                         <connections>
                                             <segue destination="rBP-MD-OG9" kind="presentation" modalPresentationStyle="fullScreen" id="39X-G9-tYr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6f-bO-Qdm">
-                                        <rect key="frame" x="157" y="310" width="116" height="50"/>
+                                        <rect key="frame" x="149.33333333333331" y="310" width="131.33333333333331" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="05M-dx-ZON"/>
                                         </constraints>
                                         <state key="normal" title="PLAY GRIDHACK"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Play GridHack"/>
                                         <connections>
                                             <action selector="goToGridHack:" destination="GXa-oh-Nth" eventType="touchUpInside" id="RaV-nz-Bqc"/>
                                         </connections>
@@ -2273,6 +2324,7 @@
                                     <constraint firstAttribute="height" constant="60" id="mVz-2j-DTe"/>
                                 </constraints>
                                 <state key="normal" title="GO TO MOON BASE"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Go To Moon Base"/>
                                 <connections>
                                     <segue destination="GXa-oh-Nth" kind="presentation" modalPresentationStyle="fullScreen" id="awi-wi-S5y"/>
                                 </connections>
@@ -2281,7 +2333,7 @@
                                 <rect key="frame" x="0.0" y="20" width="430" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring The Moon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-Z8-8O1" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="139.66666666666669" y="0.0" width="150.66666666666669" height="80"/>
+                                        <rect key="frame" x="146.66666666666669" y="0.0" width="136.66666666666669" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2335,6 +2387,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Neighbor Sphere" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb5-xC-WbL">
                                 <rect key="frame" x="20" y="10" width="390" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2368,7 +2421,7 @@
                                     <constraint firstAttribute="height" constant="75" id="t3T-o1-Lxd"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Exit Neighbor Spheres"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Exit Neighbor Spheres"/>
                                 <connections>
                                     <segue destination="U1y-oS-a8q" kind="presentation" modalPresentationStyle="fullScreen" id="Olt-Xz-tpo"/>
                                 </connections>
@@ -2425,7 +2478,7 @@
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="o8R-BD-1Q2"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Back To Neighbor List "/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Back To Neighbor List "/>
                                         <connections>
                                             <segue destination="jl2-gm-HZU" kind="presentation" modalPresentationStyle="fullScreen" id="mCm-fZ-9HZ"/>
                                         </connections>
@@ -2476,6 +2529,7 @@
                                     <constraint firstAttribute="height" constant="60" id="Ey1-z9-uPx"/>
                                 </constraints>
                                 <state key="normal" title="GO TO MARS BASE"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Go To Mars Base"/>
                                 <connections>
                                     <segue destination="Tx7-Uf-egN" kind="presentation" identifier="takeOffFromMars" modalPresentationStyle="fullScreen" id="MVd-TG-9WI"/>
                                 </connections>
@@ -2484,7 +2538,7 @@
                                 <rect key="frame" x="0.0" y="20" width="430" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploring Mars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV1-av-DId" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="157" y="0.0" width="116" height="80"/>
+                                        <rect key="frame" x="164" y="0.0" width="102" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2572,39 +2626,39 @@
     </scenes>
     <designables>
         <designable name="2vs-Mr-fI7">
-            <size key="intrinsicContentSize" width="469.66666666666669" height="31.333333333333332"/>
+            <size key="intrinsicContentSize" width="455.66666666666669" height="21.333333333333332"/>
         </designable>
         <designable name="3Nd-Z8-8O1">
-            <size key="intrinsicContentSize" width="150.66666666666666" height="29"/>
+            <size key="intrinsicContentSize" width="136.66666666666666" height="19"/>
         </designable>
         <designable name="IT3-M6-xxO">
-            <size key="intrinsicContentSize" width="370.66666666666669" height="31.333333333333332"/>
+            <size key="intrinsicContentSize" width="356.66666666666669" height="21.333333333333332"/>
         </designable>
         <designable name="KSy-lL-kHv">
-            <size key="intrinsicContentSize" width="367.66666666666669" height="29"/>
+            <size key="intrinsicContentSize" width="353.66666666666669" height="19"/>
         </designable>
         <designable name="Lqc-kC-xpI">
-            <size key="intrinsicContentSize" width="367.66666666666669" height="29"/>
+            <size key="intrinsicContentSize" width="353.66666666666669" height="19"/>
         </designable>
         <designable name="MeW-Tb-xpX">
-            <size key="intrinsicContentSize" width="125.66666666666667" height="31.333333333333332"/>
+            <size key="intrinsicContentSize" width="111.66666666666667" height="21.333333333333332"/>
         </designable>
         <designable name="PV1-av-DId">
-            <size key="intrinsicContentSize" width="116" height="29"/>
+            <size key="intrinsicContentSize" width="102" height="19"/>
         </designable>
         <designable name="XeF-ym-5aq">
-            <size key="intrinsicContentSize" width="368.33333333333331" height="31.333333333333332"/>
+            <size key="intrinsicContentSize" width="354.33333333333331" height="21.333333333333332"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="yUZ-Q9-T5m"/>
         <segue reference="yKX-Ie-zFg"/>
         <segue reference="67b-Hk-5Ts"/>
-        <segue reference="6XQ-gR-cEl"/>
-        <segue reference="K0X-1L-HJs"/>
-        <segue reference="f65-O9-SAt"/>
-        <segue reference="ULg-O7-lmG"/>
-        <segue reference="XCF-Mg-a4A"/>
+        <segue reference="Olt-Xz-tpo"/>
+        <segue reference="sRQ-LS-ojo"/>
+        <segue reference="VbQ-5y-Crq"/>
+        <segue reference="G6a-xv-v4e"/>
+        <segue reference="Brq-sk-l5G"/>
         <segue reference="MVd-TG-9WI"/>
     </inferredMetricsTieBreakers>
     <resources>

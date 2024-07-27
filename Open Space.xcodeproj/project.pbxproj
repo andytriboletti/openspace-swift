@@ -279,6 +279,30 @@
 		722181912B8FF1C800FB572F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181902B8FF1C800FB572F /* ChatView.swift */; };
 		722181932B8FF26200FB572F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722181922B8FF26200FB572F /* ChatViewController.swift */; };
 		7221819D2B953CC800FB572F /* model2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 7221819A2B953CC800FB572F /* model2.obj */; };
+		72256C452C556ACB00D16A58 /* purplegalaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C422C556ACB00D16A58 /* purplegalaxy.jpg */; };
+		72256C462C556ACB00D16A58 /* purplegalaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C422C556ACB00D16A58 /* purplegalaxy.jpg */; };
+		72256C472C556ACB00D16A58 /* rainbowgalaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C432C556ACB00D16A58 /* rainbowgalaxy.jpg */; };
+		72256C482C556ACB00D16A58 /* rainbowgalaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C432C556ACB00D16A58 /* rainbowgalaxy.jpg */; };
+		72256C492C556ACB00D16A58 /* conenebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C442C556ACB00D16A58 /* conenebula.jpg */; };
+		72256C4A2C556ACB00D16A58 /* conenebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C442C556ACB00D16A58 /* conenebula.jpg */; };
+		72256C542C55706D00D16A58 /* starryai_3et02i.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4B2C55706900D16A58 /* starryai_3et02i.jpg */; };
+		72256C552C55706D00D16A58 /* starryai_3et02i.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4B2C55706900D16A58 /* starryai_3et02i.jpg */; };
+		72256C562C55706D00D16A58 /* starryai_7ejn3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4C2C55706A00D16A58 /* starryai_7ejn3.jpeg */; };
+		72256C572C55706D00D16A58 /* starryai_7ejn3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4C2C55706A00D16A58 /* starryai_7ejn3.jpeg */; };
+		72256C582C55706D00D16A58 /* starryai_ddgnr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4D2C55706A00D16A58 /* starryai_ddgnr.jpg */; };
+		72256C592C55706D00D16A58 /* starryai_ddgnr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4D2C55706A00D16A58 /* starryai_ddgnr.jpg */; };
+		72256C5A2C55706D00D16A58 /* starryai_oafnf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4E2C55706B00D16A58 /* starryai_oafnf.jpg */; };
+		72256C5B2C55706D00D16A58 /* starryai_oafnf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4E2C55706B00D16A58 /* starryai_oafnf.jpg */; };
+		72256C5C2C55706D00D16A58 /* starryai_qw7etf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4F2C55706B00D16A58 /* starryai_qw7etf.jpg */; };
+		72256C5D2C55706D00D16A58 /* starryai_qw7etf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C4F2C55706B00D16A58 /* starryai_qw7etf.jpg */; };
+		72256C5E2C55706D00D16A58 /* starryai_ih7gql.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C502C55706C00D16A58 /* starryai_ih7gql.jpg */; };
+		72256C5F2C55706D00D16A58 /* starryai_ih7gql.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C502C55706C00D16A58 /* starryai_ih7gql.jpg */; };
+		72256C602C55706D00D16A58 /* starryai_5p4zs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C512C55706C00D16A58 /* starryai_5p4zs.jpg */; };
+		72256C612C55706D00D16A58 /* starryai_5p4zs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C512C55706C00D16A58 /* starryai_5p4zs.jpg */; };
+		72256C622C55706D00D16A58 /* starryai_i0q64.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C522C55706D00D16A58 /* starryai_i0q64.jpg */; };
+		72256C632C55706D00D16A58 /* starryai_i0q64.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C522C55706D00D16A58 /* starryai_i0q64.jpg */; };
+		72256C642C55706D00D16A58 /* starryai_ofj82.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C532C55706D00D16A58 /* starryai_ofj82.jpg */; };
+		72256C652C55706D00D16A58 /* starryai_ofj82.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C532C55706D00D16A58 /* starryai_ofj82.jpg */; };
 		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
 		723A0F5B2C3AFB1500F11350 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */; };
 		723A0F5C2C3AFB1500F11350 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */; };
@@ -295,6 +319,8 @@
 		727693932C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
 		727693942C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
 		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
+		727987372C54A5E700CFE8F8 /* BackgroundImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727987362C54A5E700CFE8F8 /* BackgroundImageViewController.swift */; };
+		727987382C54A5E700CFE8F8 /* BackgroundImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727987362C54A5E700CFE8F8 /* BackgroundImageViewController.swift */; };
 		729B3C562A2E8AEA0053D567 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		72A3C04E2A7DAF5C00C2A01E /* AuctionHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */; };
 		72A99BD82C29D14E00D96813 /* independent_bernie_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 72A99B762C29D14E00D96813 /* independent_bernie_1024.png */; };
@@ -636,6 +662,18 @@
 		722181902B8FF1C800FB572F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		722181922B8FF26200FB572F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		7221819A2B953CC800FB572F /* model2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model2.obj; sourceTree = "<group>"; };
+		72256C422C556ACB00D16A58 /* purplegalaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purplegalaxy.jpg; sourceTree = "<group>"; };
+		72256C432C556ACB00D16A58 /* rainbowgalaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rainbowgalaxy.jpg; sourceTree = "<group>"; };
+		72256C442C556ACB00D16A58 /* conenebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = conenebula.jpg; sourceTree = "<group>"; };
+		72256C4B2C55706900D16A58 /* starryai_3et02i.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_3et02i.jpg; sourceTree = "<group>"; };
+		72256C4C2C55706A00D16A58 /* starryai_7ejn3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_7ejn3.jpeg; sourceTree = "<group>"; };
+		72256C4D2C55706A00D16A58 /* starryai_ddgnr.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_ddgnr.jpg; sourceTree = "<group>"; };
+		72256C4E2C55706B00D16A58 /* starryai_oafnf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_oafnf.jpg; sourceTree = "<group>"; };
+		72256C4F2C55706B00D16A58 /* starryai_qw7etf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_qw7etf.jpg; sourceTree = "<group>"; };
+		72256C502C55706C00D16A58 /* starryai_ih7gql.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_ih7gql.jpg; sourceTree = "<group>"; };
+		72256C512C55706C00D16A58 /* starryai_5p4zs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_5p4zs.jpg; sourceTree = "<group>"; };
+		72256C522C55706D00D16A58 /* starryai_i0q64.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_i0q64.jpg; sourceTree = "<group>"; };
+		72256C532C55706D00D16A58 /* starryai_ofj82.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_ofj82.jpg; sourceTree = "<group>"; };
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
 		723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarLoungeViewController.swift; sourceTree = "<group>"; };
@@ -646,6 +684,7 @@
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
 		727693922C3654B000372B7E /* QuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsViewController.swift; sourceTree = "<group>"; };
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		727987362C54A5E700CFE8F8 /* BackgroundImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageViewController.swift; sourceTree = "<group>"; };
 		729B3C552A2E8AEA0053D567 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		72A3C04D2A7DAF5C00C2A01E /* AuctionHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionHouseViewController.swift; sourceTree = "<group>"; };
 		72A99B762C29D14E00D96813 /* independent_bernie_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = independent_bernie_1024.png; sourceTree = "<group>"; };
@@ -913,6 +952,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				727987202C54982E00CFE8F8 /* BackgroundImages */,
 				720F5BC72C50B3900073A488 /* OpenSpaceLoginPics */,
 				722181882B8E90D500FB572F /* processing_model_icon.jpg */,
 				72C513372A53A96700AAD941 /* lroc_color_poles_8k.jpg */,
@@ -1127,6 +1167,7 @@
 				722102D32BB905D7008F431C /* LeaderboardViewController.swift */,
 				72A99C782C324BFE00D96813 /* StationViewController.swift */,
 				72A99C7E2C334A0300D96813 /* UIViewController+Toast.swift */,
+				727987362C54A5E700CFE8F8 /* BackgroundImageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1263,6 +1304,25 @@
 				727693922C3654B000372B7E /* QuestsViewController.swift */,
 			);
 			path = Earth;
+			sourceTree = "<group>";
+		};
+		727987202C54982E00CFE8F8 /* BackgroundImages */ = {
+			isa = PBXGroup;
+			children = (
+				72256C442C556ACB00D16A58 /* conenebula.jpg */,
+				72256C422C556ACB00D16A58 /* purplegalaxy.jpg */,
+				72256C432C556ACB00D16A58 /* rainbowgalaxy.jpg */,
+				72256C4B2C55706900D16A58 /* starryai_3et02i.jpg */,
+				72256C512C55706C00D16A58 /* starryai_5p4zs.jpg */,
+				72256C4C2C55706A00D16A58 /* starryai_7ejn3.jpeg */,
+				72256C4D2C55706A00D16A58 /* starryai_ddgnr.jpg */,
+				72256C522C55706D00D16A58 /* starryai_i0q64.jpg */,
+				72256C502C55706C00D16A58 /* starryai_ih7gql.jpg */,
+				72256C4E2C55706B00D16A58 /* starryai_oafnf.jpg */,
+				72256C532C55706D00D16A58 /* starryai_ofj82.jpg */,
+				72256C4F2C55706B00D16A58 /* starryai_qw7etf.jpg */,
+			);
+			path = BackgroundImages;
 			sourceTree = "<group>";
 		};
 		72A99B7C2C29D14E00D96813 /* images */ = {
@@ -1612,11 +1672,14 @@
 				6FA52B1D23FE335500B16480 /* b.dae in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				72A99C0E2C29D14F00D96813 /* fist_instant_mesh_red.dae in Resources */,
+				72256C5A2C55706D00D16A58 /* starryai_oafnf.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				72C513382A53A96700AAD941 /* lroc_color_poles_8k.jpg in Resources */,
 				6FD0296923FECDD20082209D /* starcrumpled.dae in Resources */,
 				6F022424240250A60035F7E4 /* mtwashington.scn in Resources */,
 				72A99BDC2C29D14E00D96813 /* instigator_bernie_1024.png in Resources */,
+				72256C5C2C55706D00D16A58 /* starryai_qw7etf.jpg in Resources */,
+				72256C642C55706D00D16A58 /* starryai_ofj82.jpg in Resources */,
 				6F34E3272640E9E500E67276 /* spaceshipa.dae in Resources */,
 				6F02241B240248250035F7E4 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
 				6F643EA12530DBCC001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
@@ -1631,6 +1694,7 @@
 				6F636B9324015CEE0070C292 /* sunlowres.scn in Resources */,
 				6F9C596423FE1BDF00808386 /* a.dae in Resources */,
 				720F5BD22C50B3910073A488 /* login6.png in Resources */,
+				72256C562C55706D00D16A58 /* starryai_7ejn3.jpeg in Resources */,
 				72C513242A4FC1C500AAD941 /* geodesic_sphere2.scn in Resources */,
 				72A99C182C29D14F00D96813 /* sm_Protester_Bernie.dae in Resources */,
 				72A99C342C29D14F00D96813 /* Default-568h@2x.png in Resources */,
@@ -1648,20 +1712,25 @@
 				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
 				72A99C242C29D14F00D96813 /* trump_protester_running.dae in Resources */,
 				72E8C50526F2586000D5FDEB /* a.scn in Resources */,
+				72256C452C556ACB00D16A58 /* purplegalaxy.jpg in Resources */,
 				72A99C102C29D14F00D96813 /* attacker.png in Resources */,
 				6F34E32B2641A51200E67276 /* spaceshipc.dae in Resources */,
 				72A99C6C2C29D14F00D96813 /* SceneKit Scene.scn in Resources */,
 				72C513292A50DF2800AAD941 /* moonbackgroundwithearth.jpg in Resources */,
 				72A99BF62C29D14F00D96813 /* donkeyWithEyes.dae in Resources */,
 				6FDB588923FEBAEF004263CB /* yellowstar100.dae in Resources */,
+				72256C622C55706D00D16A58 /* starryai_i0q64.jpg in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				72A99C202C29D14F00D96813 /* t_Protestors_Normal.png in Resources */,
 				6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
+				72256C602C55706D00D16A58 /* starryai_5p4zs.jpg in Resources */,
+				72256C492C556ACB00D16A58 /* conenebula.jpg in Resources */,
 				6FDB587723FE4BA7004263CB /* allgreentree.dae in Resources */,
 				720F5BCA2C50B3910073A488 /* login2.png in Resources */,
 				720F5BDA2C50B3910073A488 /* login10.png in Resources */,
 				6F677BA424076FF4004A1C8B /* 2k_earth_daymap.jpg in Resources */,
 				72A99C0C2C29D14F00D96813 /* fist_instant_mesh_blue.dae in Resources */,
+				72256C582C55706D00D16A58 /* starryai_ddgnr.jpg in Resources */,
 				6F677BA6240772F3004A1C8B /* earth.scn in Resources */,
 				6F6D845823FF87E300328057 /* flagcool.dae in Resources */,
 				72A99BE22C29D14F00D96813 /* protester_trump_1024.png in Resources */,
@@ -1687,7 +1756,9 @@
 				6F643EA02530DBCC001164E4 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
 				72A99C122C29D14F00D96813 /* builder.png in Resources */,
 				722181892B8E90D500FB572F /* processing_model_icon.jpg in Resources */,
+				72256C542C55706D00D16A58 /* starryai_3et02i.jpg in Resources */,
 				6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */,
+				72256C5E2C55706D00D16A58 /* starryai_ih7gql.jpg in Resources */,
 				72E8C50326F257FF00D5FDEB /* mars.scn in Resources */,
 				721BF2AC2BBB2AAC0046E7E7 /* README.md in Resources */,
 				720F5BCC2C50B3910073A488 /* login3.png in Resources */,
@@ -1717,6 +1788,7 @@
 				72A99C142C29D14F00D96813 /* hacker.png in Resources */,
 				72A99BE42C29D14F00D96813 /* Assets.xcassets in Resources */,
 				6F93856624261540001BE3F6 /* pexels_taj-mahal-india-1603650.jpg in Resources */,
+				72256C472C556ACB00D16A58 /* rainbowgalaxy.jpg in Resources */,
 				72A99BFA2C29D14F00D96813 /* t_Donkey_Height.png in Resources */,
 				6FB0EF1023FDA1F500EA28D7 /* spaceshipb.dae in Resources */,
 				72A99C262C29D14F00D96813 /* trump_protester_running.scn in Resources */,
@@ -1761,6 +1833,7 @@
 				721AB5BD2BB918F400E68231 /* starcrumpled.dae in Resources */,
 				721AB5BE2BB918F400E68231 /* mtwashington.scn in Resources */,
 				72A99C012C29D14F00D96813 /* t_Donkey_Roughness.png in Resources */,
+				72256C652C55706D00D16A58 /* starryai_ofj82.jpg in Resources */,
 				721AB5BF2BB918F400E68231 /* spaceshipa.dae in Resources */,
 				721AB5C02BB918F400E68231 /* EXPORT_GOOGLE_SAT_WM-mtwashington.png in Resources */,
 				721AB5C12BB918F400E68231 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
@@ -1768,6 +1841,7 @@
 				720F5BDB2C50B3910073A488 /* login10.png in Resources */,
 				721AB5C32BB918F400E68231 /* LaunchScreen.storyboard in Resources */,
 				721AB5C42BB918F400E68231 /* EXPORT_GOOGLE_SAT_WM.png in Resources */,
+				72256C552C55706D00D16A58 /* starryai_3et02i.jpg in Resources */,
 				721AB5C52BB918F400E68231 /* Artophy.png in Resources */,
 				72A99C112C29D14F00D96813 /* attacker.png in Resources */,
 				721AB5C62BB918F400E68231 /* sunlowres.scn in Resources */,
@@ -1777,11 +1851,13 @@
 				721AB5C82BB918F400E68231 /* geodesic_sphere2.scn in Resources */,
 				721AB5C92BB918F400E68231 /* PIA12348orig.jpg in Resources */,
 				721AB5CA2BB918F400E68231 /* moon.dae in Resources */,
+				72256C482C556ACB00D16A58 /* rainbowgalaxy.jpg in Resources */,
 				721AB5CB2BB918F400E68231 /* space_icon_200.jpg in Resources */,
 				72A99BF92C29D14F00D96813 /* t_Donkey_BaseColor.png in Resources */,
 				721AB5CC2BB918F400E68231 /* geodesic_sphere2.dae in Resources */,
 				721AB5CD2BB918F400E68231 /* Sun_1_1391000.usdz in Resources */,
 				721AB5CE2BB918F400E68231 /* instantmeshstation2.scn in Resources */,
+				72256C462C556ACB00D16A58 /* purplegalaxy.jpg in Resources */,
 				72A99BFF2C29D14F00D96813 /* t_Donkey_Normal.png in Resources */,
 				720F5BD52C50B3910073A488 /* login7.png in Resources */,
 				721AB5CF2BB918F400E68231 /* 2k_sun.jpg in Resources */,
@@ -1793,20 +1869,24 @@
 				72A99C1F2C29D14F00D96813 /* t_Protestors_Metallic.png in Resources */,
 				721AB5D42BB918F400E68231 /* moonbackgroundwithearth.jpg in Resources */,
 				72A99C292C29D14F00D96813 /* trump_protestor_all_takes.jas in Resources */,
+				72256C572C55706D00D16A58 /* starryai_7ejn3.jpeg in Resources */,
 				721AB5D52BB918F400E68231 /* yellowstar100.dae in Resources */,
 				721AB5D62BB918F400E68231 /* PIA13005orig.jpg in Resources */,
+				72256C5F2C55706D00D16A58 /* starryai_ih7gql.jpg in Resources */,
 				721AB5D72BB918F400E68231 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
 				721AB5D82BB918F400E68231 /* allgreentree.dae in Resources */,
 				721AB5D92BB918F400E68231 /* 2k_earth_daymap.jpg in Resources */,
 				72A99C352C29D14F00D96813 /* Default-568h@2x.png in Resources */,
 				72A99C152C29D14F00D96813 /* hacker.png in Resources */,
 				72A99C0B2C29D14F00D96813 /* t_Elephant_Roughness.png in Resources */,
+				72256C612C55706D00D16A58 /* starryai_5p4zs.jpg in Resources */,
 				72A99C272C29D14F00D96813 /* trump_protester_running.scn in Resources */,
 				721AB5DA2BB918F400E68231 /* earth.scn in Resources */,
 				721AB5DB2BB918F400E68231 /* flagcool.dae in Resources */,
 				72A99BD92C29D14E00D96813 /* independent_bernie_1024.png in Resources */,
 				72A99C0D2C29D14F00D96813 /* fist_instant_mesh_blue.dae in Resources */,
 				721AB5DC2BB918F400E68231 /* earth.png in Resources */,
+				72256C592C55706D00D16A58 /* starryai_ddgnr.jpg in Resources */,
 				721AB5DD2BB918F400E68231 /* pexels-abdullah-ghatasheh-1631665.jpg in Resources */,
 				721AB5DE2BB918F400E68231 /* PIA04921orig.jpg in Resources */,
 				721AB5DF2BB918F400E68231 /* flagcool.scn in Resources */,
@@ -1822,8 +1902,10 @@
 				72A99C072C29D14F00D96813 /* t_Elephant_Metallic.png in Resources */,
 				721AB5E42BB918F400E68231 /* iss044e045215_lrg.jpg in Resources */,
 				721AB5E52BB918F400E68231 /* eleuz.scn in Resources */,
+				72256C5B2C55706D00D16A58 /* starryai_oafnf.jpg in Resources */,
 				721AB5E62BB918F400E68231 /* moon_surface.png in Resources */,
 				721AB5E72BB918F400E68231 /* yellowstar.dae in Resources */,
+				72256C632C55706D00D16A58 /* starryai_i0q64.jpg in Resources */,
 				721AB5E82BB918F400E68231 /* instantmeshstation2.dae in Resources */,
 				721AB5E92BB918F400E68231 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
 				72A99C532C29D14F00D96813 /* GridHackLaunchScreen.storyboard in Resources */,
@@ -1831,6 +1913,7 @@
 				721AB5EB2BB918F400E68231 /* processing_model_icon.jpg in Resources */,
 				721AB5EC2BB918F400E68231 /* starry-sky-998641.jpg in Resources */,
 				721AB5ED2BB918F400E68231 /* mars.scn in Resources */,
+				72256C4A2C556ACB00D16A58 /* conenebula.jpg in Resources */,
 				72A99C1B2C29D14F00D96813 /* sm_Protester_Trump.dae in Resources */,
 				721AB5EE2BB918F400E68231 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
 				721AB5EF2BB918F400E68231 /* starregular.dae in Resources */,
@@ -1872,6 +1955,7 @@
 				721AB6042BB918F400E68231 /* moon.scn in Resources */,
 				721AB6052BB918F400E68231 /* model2.obj in Resources */,
 				721AB6062BB918F400E68231 /* earth.dae in Resources */,
+				72256C5D2C55706D00D16A58 /* starryai_qw7etf.jpg in Resources */,
 				721AB6072BB918F400E68231 /* Main.storyboard in Resources */,
 				720F5BD92C50B3910073A488 /* login9.png in Resources */,
 				721AB6082BB918F400E68231 /* space_icon_1024.jpg in Resources */,
@@ -2016,6 +2100,7 @@
 				72A99C482C29D14F00D96813 /* GridHackGameState.swift in Sources */,
 				72A99C8C2C334BA000D96813 /* GameViewController+API.swift in Sources */,
 				7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */,
+				727987372C54A5E700CFE8F8 /* BackgroundImageViewController.swift in Sources */,
 				6FDADF252644D1BF00F7878C /* SelectShipViewController.swift in Sources */,
 				6F91EC9B260F9A700058B9F5 /* ShipyardViewController.swift in Sources */,
 				72A99C602C29D14F00D96813 /* MultiplayerProtocol.swift in Sources */,
@@ -2125,6 +2210,7 @@
 				72A99C492C29D14F00D96813 /* GridHackGameState.swift in Sources */,
 				72A99C8D2C334BA000D96813 /* GameViewController+API.swift in Sources */,
 				721AB5882BB918F400E68231 /* AccountViewController.swift in Sources */,
+				727987382C54A5E700CFE8F8 /* BackgroundImageViewController.swift in Sources */,
 				721AB5892BB918F400E68231 /* SelectShipViewController.swift in Sources */,
 				721AB58A2BB918F400E68231 /* ShipyardViewController.swift in Sources */,
 				72A99C612C29D14F00D96813 /* MultiplayerProtocol.swift in Sources */,

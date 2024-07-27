@@ -9,12 +9,13 @@
 import UIKit
 import Defaults
 
-class YourSphereViewController: UIViewController {
+class YourSphereViewController: BackgroundImageViewController {
     @IBOutlet var inputText: UITextView!
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var numberOfObjectsInSphere: UILabel!
     // @IBOutlet var createNewButton: UIButton!
     override func viewDidLoad() {
+        super.viewDidLoad()
         let selectedSphereName = Defaults[.selectedSphereName]
         self.headerLabel.text = "Viewing your sphere: \(selectedSphereName)"
 

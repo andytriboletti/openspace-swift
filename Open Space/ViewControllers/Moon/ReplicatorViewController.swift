@@ -19,7 +19,7 @@ import Foundation
 import UIKit
 import Defaults
 
-class ReplicatorViewController: UIViewController {
+class ReplicatorViewController: BackgroundImageViewController {
     @IBOutlet var inputText: UITextView!
     @IBOutlet var labelForSphere: UILabel!
     @IBOutlet var doYouHaveEnoughMinerals: UILabel!

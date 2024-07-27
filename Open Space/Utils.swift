@@ -191,3 +191,70 @@ class Utils {
         }
     }
 }
+
+
+extension UIImage {
+    func applyDarkFilter() -> UIImage? {
+        guard let ciImage = CIImage(image: self) else { return nil }
+        let filter = CIFilter(name: "CIColorControls")!
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        filter.setValue(-0.5, forKey: kCIInputBrightnessKey)
+        filter.setValue(1.0, forKey: kCIInputContrastKey)
+
+        let context = CIContext(options: nil)
+        guard let outputImage = filter.outputImage else { return nil }
+        guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return nil }
+
+        return UIImage(cgImage: cgImage)
+    }
+
+    func applyLightFilter() -> UIImage? {
+        guard let ciImage = CIImage(image: self) else { return nil }
+        let filter = CIFilter(name: "CIColorControls")!
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        filter.setValue(0.5, forKey: kCIInputBrightnessKey)
+        filter.setValue(1.0, forKey: kCIInputContrastKey)
+
+        let context = CIContext(options: nil)
+        guard let outputImage = filter.outputImage else { return nil }
+        guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return nil }
+
+        return UIImage(cgImage: cgImage)
+    }
+}
+//
+//
+//class StyledButton: UIButton {
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupStyle()
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        setupStyle()
+//    }
+//
+//    private func setupStyle() {
+//        backgroundColor = .systemBlue.withAlphaComponent(0.7)
+//        setTitleColor(.white, for: .normal)
+//        layer.cornerRadius = 10
+//        contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+//        titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+//
+//        // Add a subtle shadow for depth
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 2)
+//        layer.shadowRadius = 4
+//        layer.shadowOpacity = 0.2
+//    }
+//
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+//            // Adjust colors for dark mode if needed
+//            backgroundColor = .systemBlue.withAlphaComponent(0.7)
+//            setTitleColor(.white, for: .normal)
+//        }
+//    }
+//}

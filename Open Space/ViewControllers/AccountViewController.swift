@@ -7,7 +7,7 @@ import Defaults
 import GoogleMobileAds
 #endif
 
-class AccountViewController: UIViewController {
+class AccountViewController: BackgroundImageViewController {
     var rootViewController: SignInViewController?
 
     @IBOutlet weak var loggedInAs: UILabel!
@@ -480,8 +480,13 @@ class AccountViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        //backgroundImageName = "conenebula.jpg"
+           // Set the overlay alpha if you want a different value than the default
+           //overlayAlpha = 0.5
+
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
+
     }
 
     deinit {

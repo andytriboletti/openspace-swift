@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: BackgroundImageViewController {
     @IBOutlet var webView: WKWebView!
 
     @IBAction func openSpaceHomepage() {
