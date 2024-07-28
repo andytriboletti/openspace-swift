@@ -158,9 +158,9 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         let maxPassengers = Defaults[.passengerLimit]
         let cargoLimit = Defaults[.cargoLimit]
 
-        passengerLabel1.text = "Ship Passengers - Max: \(maxPassengers) Passengers"
-        passengerLabel2.text = "Coming soon: Ability to carry passengers."
-        cargoLabel1.text = "Ship Cargo - Max \(cargoLimit) kg"
+        passengerLabel1.text = "   Ship Passengers - Max: \(maxPassengers) Passengers   "
+        passengerLabel2.text = "   Coming soon: Ability to carry passengers.   "
+        cargoLabel1.text = "   Ship Cargo - Max \(cargoLimit) kg   "
     }
 
     func getUserMinerals(email: String) {
@@ -198,7 +198,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         cell.backgroundView = bgView
 
         if indexPath.section == 1 {
-            cell.textLabel?.text = "Coming soon: Ability to carry mission supplies."
+            cell.textLabel?.text = "   Coming soon: Ability to carry mission supplies.   "
         } else {
             let mineral = minerals[indexPath.row]
             cell.textLabel?.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"

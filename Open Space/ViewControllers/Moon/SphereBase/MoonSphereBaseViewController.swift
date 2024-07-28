@@ -349,9 +349,9 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
         let allowedSpheres = data.spheresAllowed ?? 0
 
         if sphereCount == 1 {
-            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Sphere. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")."
+            self.youHaveNumberOfSpheres.text = "   You have \(sphereCount) Sphere. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s").   "
         } else {
-            self.youHaveNumberOfSpheres.text = "You have \(sphereCount) Spheres. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s")."
+            self.youHaveNumberOfSpheres.text = "   You have \(sphereCount) Spheres. You are allowed \(allowedSpheres) Sphere\(allowedSpheres == 1 ? "" : "s").   "
         }
 
         do {

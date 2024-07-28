@@ -17,7 +17,7 @@ class YourSphereViewController: BackgroundImageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let selectedSphereName = Defaults[.selectedSphereName]
-        self.headerLabel.text = "Viewing your sphere: \(selectedSphereName)"
+        self.headerLabel.text = "   Viewing your sphere: \(selectedSphereName)   "
 
         // todo get sphere items
     }
@@ -55,9 +55,9 @@ class YourSphereViewController: BackgroundImageViewController {
                 self.count = responseData.pending.count + responseData.completed.count
                 DispatchQueue.main.async {
                     if self.count == 1 {
-                        self.numberOfObjectsInSphere.text = "You have \(self.count) item in your sphere, out of a max of 50."
+                        self.numberOfObjectsInSphere.text = "   You have \(self.count) item in your sphere, out of a max of 50.   "
                     } else {
-                        self.numberOfObjectsInSphere.text = "You have \(self.count) items in your sphere, out of a max of 50."
+                        self.numberOfObjectsInSphere.text = "   You have \(self.count) items in your sphere, out of a max of 50.   "
 
                     }
                 }

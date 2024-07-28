@@ -357,7 +357,7 @@ class AccountViewController: BackgroundImageViewController {
             let reward = rewardedAd.adReward
             print("Refill Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
             //update energy label
-            self.energyLabel.text = "Energy: \(Defaults[.totalEnergy]) out of \(Defaults[.totalEnergy])"
+            self.energyLabel.text = "   Energy: \(Defaults[.totalEnergy]) out of \(Defaults[.totalEnergy])   "
 
       }
     #endif
@@ -506,7 +506,7 @@ class AccountViewController: BackgroundImageViewController {
 
       func refreshLabels() {
           print("refreshing labels")
-          self.energyLabel.text = "Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])"
+          self.energyLabel.text = "   Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])   "
           self.updateUsernameLabel()
           self.updateAccountTypeLabel()
       }
@@ -523,13 +523,13 @@ class AccountViewController: BackgroundImageViewController {
               self.upgradeToPremium.removeTarget(self, action: #selector(manageAction), for: .touchUpInside)
               self.upgradeToPremium.addTarget(self, action: #selector(upgrade), for: .touchUpInside)
           }
-          self.accountTypeLabel.text = "Account Type: \(accountType)"
+          self.accountTypeLabel.text = "   Account Type: \(accountType)   "
       }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateUsernameLabel()
-        self.energyLabel.text = "Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])"
+        self.energyLabel.text = "   Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])   "
         var accountType = "Basic"
         if(Defaults[.premium] == 1) {
             accountType = "Premium"
@@ -540,7 +540,7 @@ class AccountViewController: BackgroundImageViewController {
             self.upgradeToPremium.setTitle("Upgrade To Premium. Remove Ads.", for: .normal)
             self.upgradeToPremium.addTarget(self, action: #selector(upgrade), for: .touchUpInside)
         }
-        self.accountTypeLabel.text = "Account Type: \(accountType)"
+        self.accountTypeLabel.text = "   Account Type: \(accountType)   "
         Task {
             await loadRewardedAd()
         }
@@ -553,28 +553,28 @@ class AccountViewController: BackgroundImageViewController {
 
         //spheres
         if(amountFromSpheres == 10) {
-            self.yourAccountIsEarning.text = "Earning virtual $\(amountFromSpheres) per day from \(sphereCount) sphere."
+            self.yourAccountIsEarning.text = "   Earning virtual $\(amountFromSpheres) per day from \(sphereCount) sphere.   "
 
         }
         else if(amountFromSpheres == 0) {
-            self.yourAccountIsEarning.text = "Earning virtual $\(amountFromSpheres) per day. Create a sphere to earn."
+            self.yourAccountIsEarning.text = "   Earning virtual $\(amountFromSpheres) per day. Create a sphere to earn.   "
 
         }
         else {
-            self.yourAccountIsEarning.text = "Earning virtual $\(amountFromSpheres) per day from \(sphereCount) spheres."
+            self.yourAccountIsEarning.text = "   Earning virtual $\(amountFromSpheres) per day from \(sphereCount) spheres.   "
         }
 
         //objects
         if(amountFromObjects == 5) {
-            self.yourAccountIsEarningObjects.text = "Earning virtual $\(amountFromObjects) per day from \(objectCount) object."
+            self.yourAccountIsEarningObjects.text = "   Earning virtual $\(amountFromObjects) per day from \(objectCount) object.   "
 
         }
         else if(amountFromSpheres == 0) {
-            self.yourAccountIsEarningObjects.text = "Earning virtual $\(amountFromObjects) per day. Create a object to earn."
+            self.yourAccountIsEarningObjects.text = "   Earning virtual $\(amountFromObjects) per day. Create a object to earn.   "
 
         }
         else {
-            self.yourAccountIsEarningObjects.text = "Earning virtual $\(amountFromObjects) per day from \(objectCount) objects."
+            self.yourAccountIsEarningObjects.text = "   Earning virtual $\(amountFromObjects) per day from \(objectCount) objects.   "
         }
 
 
@@ -582,8 +582,8 @@ class AccountViewController: BackgroundImageViewController {
 
     func updateUsernameLabel() {
         if let user = Auth.auth().currentUser, let email = user.email {
-            loggedInAs.text = "Logged In As: \(email)"
-            username.text = "Your Username: \(Defaults[.username])"
+            loggedInAs.text = "   Logged In As: \(email)   "
+            username.text = "   Your Username: \(Defaults[.username])   "
         }
     }
 
