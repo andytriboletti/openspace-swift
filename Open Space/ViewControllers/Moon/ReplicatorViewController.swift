@@ -143,19 +143,17 @@ class ReplicatorViewController: BackgroundImageViewController {
         let alertController = UIAlertController(title: "Text Submitted", message: "Your text has been submitted and is in the waiting line to be generated.", preferredStyle: .alert)
 
         // Add an action (button)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Dismiss the current view controller
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
 
         // Present the alert controller
-        self.present(alertController, animated: true) {
-            // go to MoonSphereBaseController
-            // Dismiss the alert controller first
-            alertController.dismiss(animated: true) {
-                // Perform segue to your desired destination
-                self.performSegue(withIdentifier: "goToYourSphere", sender: self)
-            }
-
-        }
+        self.present(alertController, animated: true, completion: nil)
     }
+
+
     func sendText(text: String) {
         let email = Defaults[.email] // Replace with the actual email
         let authToken = Defaults[.authToken] // Replace with the actual auth token

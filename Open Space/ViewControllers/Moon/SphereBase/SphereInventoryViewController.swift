@@ -35,23 +35,63 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
 
     }
 
+//    func goToModel() {
+//        // Get the frame of the existing view controller's view
+//        let frame = self.view.frame
+//
+//        // User is not signed in
+//        let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController
+//
+//        // Set the frame of the new view controller's view to match the existing view controller's frame
+//        rootViewController!.view.frame = frame
+//
+//        // Assuming you have a reference to your app's UIWindow object
+//        guard let window = UIApplication.shared.windows.first else {
+//            return
+//        }
+//        window.rootViewController = rootViewController
+//        window.makeKeyAndVisible()
+//    }
+
+//    func goToModel() {
+//        // Get the frame of the existing view controller's view
+//        let frame = self.view.frame
+//
+//        // User is not signed in
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let rootViewController = storyboard.instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController else {
+//            print("Error: Could not find view controller with identifier 'ModelViewController'")
+//            return
+//        }
+//
+//        // Set the frame of the new view controller's view to match the existing view controller's frame
+//        rootViewController.view.frame = frame
+//
+//        // Assuming you have a reference to your app's UIWindow object
+//        guard let window = UIApplication.shared.windows.first else {
+//            print("Error: Could not find the application's window")
+//            return
+//        }
+//        window.rootViewController = rootViewController
+//        window.makeKeyAndVisible()
+//    }
+
+
     func goToModel() {
-        // Get the frame of the existing view controller's view
-        let frame = self.view.frame
-
         // User is not signed in
-        let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController
-
-        // Set the frame of the new view controller's view to match the existing view controller's frame
-        rootViewController!.view.frame = frame
-
-        // Assuming you have a reference to your app's UIWindow object
-        guard let window = UIApplication.shared.windows.first else {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let rootViewController = storyboard.instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController else {
+            print("Error: Could not find view controller with identifier 'ModelViewController'")
             return
         }
-        window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
+
+        // Set the modal presentation style to full screen
+        rootViewController.modalPresentationStyle = .fullScreen
+
+        // Present the new view controller modally
+        self.present(rootViewController, animated: true, completion: nil)
     }
+
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth: CGFloat = 200
