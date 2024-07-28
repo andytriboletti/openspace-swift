@@ -130,18 +130,31 @@ extension FeedbackViewController {
         case _ as TopicItem:
             wireframe.showTopicsView(with: feedbackEditingService)
         case _ as AttachmentItem:
-            wireframe.showAttachmentActionSheet(authorizePhotoLibrary: { completion in
-                PHPhotoLibrary.requestAuthorization { status in completion(status == .authorized) }
-            },
-                                                authorizeCamera: { completion in
-                if #available(macCatalyst 14.0, *) {
-                    AVCaptureDevice.requestAccess(for: AVMediaType.video,
-                                                  completionHandler: completion)
-                } else {
-                    // Fallback on earlier versions
-                }
-                                                },
-                                                deleteAction: attachmentDeleteAction)
+            wireframe.showAttachmentActionSheet(
+                authorizePhotoLibrary: { completion in
+                    PHPhotoLibrary.requestAuthorization { status in
+                        completion(status == .authorized)
+                    }
+                },
+                authorizeCamera: { completion in
+                    if #available(macCatalyst 14.0, *) {
+                        AVCaptureDevice.requestAccess(for: .video) { granted in
+                            completion(granted)
+                        }
+                    } else {
+                        // Fallback for earlier versions
+#if targetEnvironment(macCatalyst)
+                        // Camera access not available in earlier Mac Catalyst versions
+                        completion(false)
+#else
+                        // iOS fallback
+                        AVCaptureDevice.requestAccess(for: AVMediaType.video) { granted in
+                            completion(granted)
+                        }
+#endif
+                    }
+                },
+                deleteAction: attachmentDeleteAction)
         default: ()
         }
         tableView.deselectRow(at: indexPath, animated: true)

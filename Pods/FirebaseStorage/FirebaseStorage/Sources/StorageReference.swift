@@ -136,7 +136,6 @@ import Foundation
   }
 
   /// Asynchronously uploads a file to the currently specified `StorageReference`.
-  /// `putData` should be used instead of `putFile` in Extensions.
   /// - Parameters:
   ///   - fileURL: A URL representing the system file path of the object to be uploaded.
   ///   - metadata: `StorageMetadata` containing additional information (MIME type, etc.)
@@ -150,7 +149,6 @@ import Foundation
 
   /// Asynchronously uploads a file to the currently specified `StorageReference`,
   /// without additional metadata.
-  /// `putData` should be used instead of `putFile` in Extensions.
   /// @param fileURL A URL representing the system file path of the object to be uploaded.
   /// @return An instance of StorageUploadTask, which can be used to monitor or manage the upload.
   @objc(putFile:) @discardableResult open func __putFile(from fileURL: URL) -> StorageUploadTask {
@@ -158,7 +156,6 @@ import Foundation
   }
 
   /// Asynchronously uploads a file to the currently specified `StorageReference`.
-  /// `putData` should be used instead of `putFile` in Extensions.
   /// - Parameters:
   ///   - fileURL: A URL representing the system file path of the object to be uploaded.
   ///   - metadata: `StorageMetadata` containing additional information (MIME type, etc.)
@@ -289,7 +286,7 @@ import Foundation
                                    queue: storage.dispatchQueue,
                                    file: fileURL)
 
-    if let completion = completion {
+    if let completion {
       task.completionURL = completion
       let callbackQueue = fetcherService.callbackQueue ?? DispatchQueue.main
 
@@ -333,7 +330,7 @@ import Foundation
 
     var paginatedCompletion: ((_: StorageListResult?, _: Error?) -> Void)?
     paginatedCompletion = { (_ listResult: StorageListResult?, _ error: Error?) in
-      if let error = error {
+      if let error {
         completion(nil, error)
         return
       }
@@ -534,7 +531,7 @@ import Foundation
   open func delete() async throws {
     return try await withCheckedThrowingContinuation { continuation in
       self.delete { error in
-        if let error = error {
+        if let error {
           continuation.resume(throwing: error)
         } else {
           continuation.resume()
@@ -598,7 +595,7 @@ import Foundation
 
   private func startAndObserveUploadTask(task: StorageUploadTask,
                                          completion: ((_: StorageMetadata?, _: Error?) -> Void)?) {
-    if let completion = completion {
+    if let completion {
       task.completionMetadata = completion
       let callbackQueue = storage.fetcherServiceForApp.callbackQueue ?? DispatchQueue.main
 

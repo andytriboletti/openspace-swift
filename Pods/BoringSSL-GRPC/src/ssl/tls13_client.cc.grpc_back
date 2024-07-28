@@ -192,11 +192,14 @@ static enum ssl_hs_wait_t do_read_hello_retry_request(SSL_HANDSHAKE *hs) {
   }
 
   // The cipher suite must be one we offered. We currently offer all supported
-  // TLS 1.3 ciphers, so check the version.
+  // TLS 1.3 ciphers unless policy controls limited it. So we check the version
+  // and that it's ok per policy.
   const SSL_CIPHER *cipher = SSL_get_cipher_by_value(server_hello.cipher_suite);
   if (cipher == nullptr ||
       SSL_CIPHER_get_min_version(cipher) > ssl_protocol_version(ssl) ||
-      SSL_CIPHER_get_max_version(cipher) < ssl_protocol_version(ssl)) {
+      SSL_CIPHER_get_max_version(cipher) < ssl_protocol_version(ssl) ||
+      !ssl_tls13_cipher_meets_policy(SSL_CIPHER_get_protocol_id(cipher),
+                                     ssl->config->tls13_cipher_policy)) {
     OPENSSL_PUT_ERROR(SSL, SSL_R_WRONG_CIPHER_RETURNED);
     ssl_send_alert(ssl, SSL3_AL_FATAL, SSL_AD_ILLEGAL_PARAMETER);
     return ssl_hs_error;
@@ -372,7 +375,7 @@ static enum ssl_hs_wait_t do_read_server_hello(SSL_HANDSHAKE *hs) {
   }
 
   // Check the cipher suite, in case this is after HelloRetryRequest.
-  if (SSL_CIPHER_get_value(hs->new_cipher) != server_hello.cipher_suite) {
+  if (SSL_CIPHER_get_protocol_id(hs->new_cipher) != server_hello.cipher_suite) {
     OPENSSL_PUT_ERROR(SSL, SSL_R_WRONG_CIPHER_RETURNED);
     ssl_send_alert(ssl, SSL3_AL_FATAL, SSL_AD_ILLEGAL_PARAMETER);
     return ssl_hs_error;
@@ -667,7 +670,6 @@ static enum ssl_hs_wait_t do_read_certificate_request(SSL_HANDSHAKE *hs) {
   } else {
     hs->ca_names.reset(sk_CRYPTO_BUFFER_new_null());
     if (!hs->ca_names) {
-      OPENSSL_PUT_ERROR(SSL, ERR_R_MALLOC_FAILURE);
       ssl_send_alert(ssl, SSL3_AL_FATAL, SSL_AD_INTERNAL_ERROR);
       return ssl_hs_error;
     }
@@ -809,10 +811,14 @@ static enum ssl_hs_wait_t do_send_client_encrypted_extensions(
       !ssl->s3->early_data_accepted) {
     ScopedCBB cbb;
     CBB body, extensions, extension;
+    uint16_t extension_type = TLSEXT_TYPE_application_settings_old;
+    if (hs->config->alps_use_new_codepoint) {
+      extension_type = TLSEXT_TYPE_application_settings;
+    }
     if (!ssl->method->init_message(ssl, cbb.get(), &body,
                                    SSL3_MT_ENCRYPTED_EXTENSIONS) ||
         !CBB_add_u16_length_prefixed(&body, &extensions) ||
-        !CBB_add_u16(&extensions, TLSEXT_TYPE_application_settings) ||
+        !CBB_add_u16(&extensions, extension_type) ||
         !CBB_add_u16_length_prefixed(&extensions, &extension) ||
         !CBB_add_bytes(&extension,
                        hs->new_session->local_application_settings.data(),

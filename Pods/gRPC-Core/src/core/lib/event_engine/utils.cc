@@ -18,7 +18,6 @@
 #include <stdint.h>
 
 #include <algorithm>
-#include <chrono>
 
 #include "absl/strings/str_cat.h"
 
@@ -29,8 +28,9 @@
 namespace grpc_event_engine {
 namespace experimental {
 
-std::string HandleToString(EventEngine::TaskHandle handle) {
-  return absl::StrCat("{", handle.keys[0], ",", handle.keys[1], "}");
+std::string HandleToStringInternal(uintptr_t a, uintptr_t b) {
+  return absl::StrCat("{", absl::Hex(a, absl::kZeroPad16), ",",
+                      absl::Hex(b, absl::kZeroPad16), "}");
 }
 
 grpc_core::Timestamp ToTimestamp(grpc_core::Timestamp now,
@@ -39,10 +39,6 @@ grpc_core::Timestamp ToTimestamp(grpc_core::Timestamp now,
          std::max(grpc_core::Duration::Milliseconds(1),
                   grpc_core::Duration::NanosecondsRoundUp(delta.count())) +
          grpc_core::Duration::Milliseconds(1);
-}
-
-size_t Milliseconds(EventEngine::Duration d) {
-  return std::chrono::duration_cast<std::chrono::milliseconds>(d).count();
 }
 
 }  // namespace experimental

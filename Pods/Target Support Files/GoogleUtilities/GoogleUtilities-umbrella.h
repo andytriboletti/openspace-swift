@@ -23,6 +23,8 @@
 #import "GULSecureCoding.h"
 #import "GULURLSessionDataResponse.h"
 #import "NSURLSession+GULPromises.h"
+#import "GULObjectSwizzler.h"
+#import "GULSwizzledObject.h"
 #import "GULLogger.h"
 #import "GULLoggerLevel.h"
 #import "GULOriginalIMPConvenienceMacros.h"

@@ -1,5 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
+install! 'cocoapods', :warn_for_unused_master_specs_repo => false
+
 #use_modular_headers!
 def shared_pods
   pod 'Alamofire'
@@ -23,7 +25,7 @@ def shared_pods
   pod 'RxSwift', '~> 6.0'
   pod 'RxCocoa', '~> 6.0'
   pod 'Firebase/Crashlytics'
-  
+  pod 'FirebasePerformance'
   
   
   #pods from gridhack

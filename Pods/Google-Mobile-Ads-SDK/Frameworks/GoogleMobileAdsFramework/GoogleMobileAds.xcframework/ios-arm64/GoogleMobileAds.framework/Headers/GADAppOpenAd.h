@@ -33,11 +33,21 @@ typedef void (^GADAppOpenAdLoadCompletionHandler)(GADAppOpenAd *_Nullable appOpe
                  request:(nullable GADRequest *)request
        completionHandler:(nonnull GADAppOpenAdLoadCompletionHandler)completionHandler;
 
+/// Loads an app open ad.
+///
+/// @param adResponseString A server-to-server ad response string.
+/// @param completionHandler A handler to execute when the load operation finishes or times out.
++ (void)loadWithAdResponseString:(nonnull NSString *)adResponseString
+               completionHandler:(nonnull GADAppOpenAdLoadCompletionHandler)completionHandler;
+
 /// Optional delegate object that receives notifications about presentation and dismissal of full
 /// screen content from this ad. Full screen content covers your application's content. The delegate
 /// may want to pause animations and time sensitive interactions. Set this delegate before
 /// presenting the ad.
 @property(nonatomic, weak, nullable) id<GADFullScreenContentDelegate> fullScreenContentDelegate;
+
+/// The ad unit ID.
+@property(nonatomic, readonly, nonnull) NSString *adUnitID;
 
 /// Information about the ad response that returned the ad.
 @property(nonatomic, readonly, nonnull) GADResponseInfo *responseInfo;

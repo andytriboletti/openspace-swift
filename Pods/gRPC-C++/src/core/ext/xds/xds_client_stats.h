@@ -1,23 +1,23 @@
-/*
- *
- * Copyright 2018 gRPC authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- */
+//
+//
+// Copyright 2018 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+//
 
-#ifndef GRPC_CORE_EXT_XDS_XDS_CLIENT_STATS_H
-#define GRPC_CORE_EXT_XDS_XDS_CLIENT_STATS_H
+#ifndef GRPC_SRC_CORE_EXT_XDS_XDS_CLIENT_STATS_H
+#define GRPC_SRC_CORE_EXT_XDS_XDS_CLIENT_STATS_H
 
 #include <grpc/support/port_platform.h>
 
@@ -33,9 +33,11 @@
 
 #include "src/core/ext/xds/xds_bootstrap.h"
 #include "src/core/lib/gpr/useful.h"
+#include "src/core/lib/gprpp/per_cpu.h"
 #include "src/core/lib/gprpp/ref_counted.h"
 #include "src/core/lib/gprpp/ref_counted_ptr.h"
 #include "src/core/lib/gprpp/sync.h"
+#include "src/core/resolver/endpoint_addresses.h"
 
 namespace grpc_core {
 
@@ -84,20 +86,24 @@ class XdsLocalityName : public RefCounted<XdsLocalityName> {
   const std::string& zone() const { return zone_; }
   const std::string& sub_zone() const { return sub_zone_; }
 
-  const std::string& AsHumanReadableString() {
-    if (human_readable_string_.empty()) {
-      human_readable_string_ =
-          absl::StrFormat("{region=\"%s\", zone=\"%s\", sub_zone=\"%s\"}",
-                          region_, zone_, sub_zone_);
-    }
-    return human_readable_string_;
+  std::string AsHumanReadableString() const {
+    return absl::StrFormat("{region=\"%s\", zone=\"%s\", sub_zone=\"%s\"}",
+                           region_, zone_, sub_zone_);
+  }
+
+  // Channel args traits.
+  static absl::string_view ChannelArgName() {
+    return GRPC_ARG_NO_SUBCHANNEL_PREFIX "xds_locality_name";
+  }
+  static int ChannelArgsCompare(const XdsLocalityName* a,
+                                const XdsLocalityName* b) {
+    return a->Compare(*b);
   }
 
  private:
   std::string region_;
   std::string zone_;
   std::string sub_zone_;
-  std::string human_readable_string_;
 };
 
 // Drop stats for an xds cluster.
@@ -130,7 +136,7 @@ class XdsClusterDropStats : public RefCounted<XdsClusterDropStats> {
   };
 
   XdsClusterDropStats(RefCountedPtr<XdsClient> xds_client,
-                      const XdsBootstrap::XdsServer& lrs_server,
+                      absl::string_view lrs_server,
                       absl::string_view cluster_name,
                       absl::string_view eds_service_name);
   ~XdsClusterDropStats() override;
@@ -143,7 +149,7 @@ class XdsClusterDropStats : public RefCounted<XdsClusterDropStats> {
 
  private:
   RefCountedPtr<XdsClient> xds_client_;
-  const XdsBootstrap::XdsServer& lrs_server_;
+  absl::string_view lrs_server_;
   absl::string_view cluster_name_;
   absl::string_view eds_service_name_;
   std::atomic<uint64_t> uncategorized_drops_{0};
@@ -158,8 +164,8 @@ class XdsClusterDropStats : public RefCounted<XdsClusterDropStats> {
 class XdsClusterLocalityStats : public RefCounted<XdsClusterLocalityStats> {
  public:
   struct BackendMetric {
-    uint64_t num_requests_finished_with_metric;
-    double total_metric_value;
+    uint64_t num_requests_finished_with_metric = 0;
+    double total_metric_value = 0;
 
     BackendMetric& operator+=(const BackendMetric& other) {
       num_requests_finished_with_metric +=
@@ -174,10 +180,10 @@ class XdsClusterLocalityStats : public RefCounted<XdsClusterLocalityStats> {
   };
 
   struct Snapshot {
-    uint64_t total_successful_requests;
-    uint64_t total_requests_in_progress;
-    uint64_t total_error_requests;
-    uint64_t total_issued_requests;
+    uint64_t total_successful_requests = 0;
+    uint64_t total_requests_in_progress = 0;
+    uint64_t total_error_requests = 0;
+    uint64_t total_issued_requests = 0;
     std::map<std::string, BackendMetric> backend_metrics;
 
     Snapshot& operator+=(const Snapshot& other) {
@@ -204,7 +210,7 @@ class XdsClusterLocalityStats : public RefCounted<XdsClusterLocalityStats> {
   };
 
   XdsClusterLocalityStats(RefCountedPtr<XdsClient> xds_client,
-                          const XdsBootstrap::XdsServer& lrs_server_,
+                          absl::string_view lrs_server,
                           absl::string_view cluster_name,
                           absl::string_view eds_service_name,
                           RefCountedPtr<XdsLocalityName> name);
@@ -214,29 +220,32 @@ class XdsClusterLocalityStats : public RefCounted<XdsClusterLocalityStats> {
   Snapshot GetSnapshotAndReset();
 
   void AddCallStarted();
-  void AddCallFinished(bool fail = false);
+  void AddCallFinished(const std::map<absl::string_view, double>* named_metrics,
+                       bool fail = false);
 
  private:
+  struct Stats {
+    std::atomic<uint64_t> total_successful_requests{0};
+    std::atomic<uint64_t> total_requests_in_progress{0};
+    std::atomic<uint64_t> total_error_requests{0};
+    std::atomic<uint64_t> total_issued_requests{0};
+
+    // Protects backend_metrics. A mutex is necessary because the length of
+    // backend_metrics_ can be accessed by both the callback intercepting the
+    // call's recv_trailing_metadata and the load reporting thread.
+    Mutex backend_metrics_mu;
+    std::map<std::string, BackendMetric> backend_metrics
+        ABSL_GUARDED_BY(backend_metrics_mu);
+  };
+
   RefCountedPtr<XdsClient> xds_client_;
-  const XdsBootstrap::XdsServer& lrs_server_;
+  absl::string_view lrs_server_;
   absl::string_view cluster_name_;
   absl::string_view eds_service_name_;
   RefCountedPtr<XdsLocalityName> name_;
-
-  std::atomic<uint64_t> total_successful_requests_{0};
-  std::atomic<uint64_t> total_requests_in_progress_{0};
-  std::atomic<uint64_t> total_error_requests_{0};
-  std::atomic<uint64_t> total_issued_requests_{0};
-
-  // Protects backend_metrics_. A mutex is necessary because the length of
-  // backend_metrics_ can be accessed by both the callback intercepting the
-  // call's recv_trailing_metadata (not from the control plane work serializer)
-  // and the load reporting thread (from the control plane work serializer).
-  Mutex backend_metrics_mu_;
-  std::map<std::string, BackendMetric> backend_metrics_
-      ABSL_GUARDED_BY(backend_metrics_mu_);
+  PerCpu<Stats> stats_{PerCpuOptions().SetMaxShards(32).SetCpusPerShard(4)};
 };
 
 }  // namespace grpc_core
 
-#endif /* GRPC_CORE_EXT_XDS_XDS_CLIENT_STATS_H */
+#endif  // GRPC_SRC_CORE_EXT_XDS_XDS_CLIENT_STATS_H

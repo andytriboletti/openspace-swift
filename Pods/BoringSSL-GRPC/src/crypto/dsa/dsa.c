@@ -74,6 +74,7 @@
 
 #include "internal.h"
 #include "../fipsmodule/bn/internal.h"
+#include "../fipsmodule/dh/internal.h"
 #include "../internal.h"
 
 
@@ -87,19 +88,14 @@ static int dsa_sign_setup(const DSA *dsa, BN_CTX *ctx_in, BIGNUM **out_kinv,
 static CRYPTO_EX_DATA_CLASS g_ex_data_class = CRYPTO_EX_DATA_CLASS_INIT;
 
 DSA *DSA_new(void) {
-  DSA *dsa = OPENSSL_malloc(sizeof(DSA));
+  DSA *dsa = OPENSSL_zalloc(sizeof(DSA));
   if (dsa == NULL) {
-    OPENSSL_PUT_ERROR(DSA, ERR_R_MALLOC_FAILURE);
     return NULL;
   }
 
-  OPENSSL_memset(dsa, 0, sizeof(DSA));
-
   dsa->references = 1;
-
   CRYPTO_MUTEX_init(&dsa->method_mont_lock);
   CRYPTO_new_ex_data(&dsa->ex_data);
-
   return dsa;
 }
 
@@ -129,6 +125,8 @@ int DSA_up_ref(DSA *dsa) {
   CRYPTO_refcount_inc(&dsa->references);
   return 1;
 }
+
+unsigned DSA_bits(const DSA *dsa) { return BN_num_bits(dsa->p); }
 
 const BIGNUM *DSA_get0_pub_key(const DSA *dsa) { return dsa->pub_key; }
 
@@ -200,6 +198,10 @@ int DSA_set0_pqg(DSA *dsa, BIGNUM *p, BIGNUM *q, BIGNUM *g) {
     dsa->g = g;
   }
 
+  BN_MONT_CTX_free(dsa->method_mont_p);
+  dsa->method_mont_p = NULL;
+  BN_MONT_CTX_free(dsa->method_mont_q);
+  dsa->method_mont_q = NULL;
   return 1;
 }
 
@@ -214,16 +216,14 @@ int DSA_generate_parameters_ex(DSA *dsa, unsigned bits, const uint8_t *seed_in,
   BIGNUM *g = NULL, *q = NULL, *p = NULL;
   BN_MONT_CTX *mont = NULL;
   int k, n = 0, m = 0;
-  unsigned i;
   int counter = 0;
   int r = 0;
   BN_CTX *ctx = NULL;
   unsigned int h = 2;
-  unsigned qsize;
   const EVP_MD *evpmd;
 
   evpmd = (bits >= 2048) ? EVP_sha256() : EVP_sha1();
-  qsize = EVP_MD_size(evpmd);
+  size_t qsize = EVP_MD_size(evpmd);
 
   if (bits < 512) {
     bits = 512;
@@ -232,10 +232,10 @@ int DSA_generate_parameters_ex(DSA *dsa, unsigned bits, const uint8_t *seed_in,
   bits = (bits + 63) / 64 * 64;
 
   if (seed_in != NULL) {
-    if (seed_len < (size_t)qsize) {
+    if (seed_len < qsize) {
       return 0;
     }
-    if (seed_len > (size_t)qsize) {
+    if (seed_len > qsize) {
       // Only consume as much seed as is expected.
       seed_len = qsize;
     }
@@ -281,7 +281,7 @@ int DSA_generate_parameters_ex(DSA *dsa, unsigned bits, const uint8_t *seed_in,
       OPENSSL_memcpy(buf, seed, qsize);
       OPENSSL_memcpy(buf2, seed, qsize);
       // precompute "SEED + 1" for step 7:
-      for (i = qsize - 1; i < qsize; i--) {
+      for (size_t i = qsize - 1; i < qsize; i--) {
         buf[i]++;
         if (buf[i] != 0) {
           break;
@@ -293,7 +293,7 @@ int DSA_generate_parameters_ex(DSA *dsa, unsigned bits, const uint8_t *seed_in,
           !EVP_Digest(buf, qsize, buf2, NULL, evpmd, NULL)) {
         goto err;
       }
-      for (i = 0; i < qsize; i++) {
+      for (size_t i = 0; i < qsize; i++) {
         md[i] ^= buf2[i];
       }
 
@@ -337,7 +337,7 @@ int DSA_generate_parameters_ex(DSA *dsa, unsigned bits, const uint8_t *seed_in,
       // now 'buf' contains "SEED + offset - 1"
       for (k = 0; k <= n; k++) {
         // obtain "SEED + offset + k" by incrementing:
-        for (i = qsize - 1; i < qsize; i--) {
+        for (size_t i = qsize - 1; i < qsize; i--) {
           buf[i]++;
           if (buf[i] != 0) {
             break;
@@ -529,16 +529,7 @@ err:
   return ok;
 }
 
-DSA_SIG *DSA_SIG_new(void) {
-  DSA_SIG *sig;
-  sig = OPENSSL_malloc(sizeof(DSA_SIG));
-  if (!sig) {
-    return NULL;
-  }
-  sig->r = NULL;
-  sig->s = NULL;
-  return sig;
-}
+DSA_SIG *DSA_SIG_new(void) { return OPENSSL_zalloc(sizeof(DSA_SIG)); }
 
 void DSA_SIG_free(DSA_SIG *sig) {
   if (!sig) {
@@ -588,7 +579,12 @@ static int mod_mul_consttime(BIGNUM *r, const BIGNUM *a, const BIGNUM *b,
 }
 
 DSA_SIG *DSA_do_sign(const uint8_t *digest, size_t digest_len, const DSA *dsa) {
-  if (!dsa_check_parameters(dsa)) {
+  if (!dsa_check_key(dsa)) {
+    return NULL;
+  }
+
+  if (dsa->priv_key == NULL) {
+    OPENSSL_PUT_ERROR(DSA, DSA_R_MISSING_PARAMETERS);
     return NULL;
   }
 
@@ -609,6 +605,14 @@ DSA_SIG *DSA_do_sign(const uint8_t *digest, size_t digest_len, const DSA *dsa) {
     goto err;
   }
 
+  // Cap iterations so that invalid parameters do not infinite loop. This does
+  // not impact valid parameters because the probability of requiring even one
+  // retry is negligible, let alone 32. Unfortunately, DSA was mis-specified, so
+  // invalid parameters are reachable from most callers handling untrusted
+  // private keys. (The |dsa_check_key| call above is not sufficient. Checking
+  // whether arbitrary paremeters form a valid DSA group is expensive.)
+  static const int kMaxIterations = 32;
+  int iters = 0;
 redo:
   if (!dsa_sign_setup(dsa, ctx, &kinv, &r)) {
     goto err;
@@ -648,8 +652,14 @@ redo:
   // Redo if r or s is zero as required by FIPS 186-3: this is
   // very unlikely.
   if (BN_is_zero(r) || BN_is_zero(s)) {
+    iters++;
+    if (iters > kMaxIterations) {
+      OPENSSL_PUT_ERROR(DSA, DSA_R_TOO_MANY_ITERATIONS);
+      goto err;
+    }
     goto redo;
   }
+
   ret = DSA_SIG_new();
   if (ret == NULL) {
     goto err;
@@ -683,7 +693,12 @@ int DSA_do_verify(const uint8_t *digest, size_t digest_len, DSA_SIG *sig,
 int DSA_do_check_signature(int *out_valid, const uint8_t *digest,
                            size_t digest_len, DSA_SIG *sig, const DSA *dsa) {
   *out_valid = 0;
-  if (!dsa_check_parameters(dsa)) {
+  if (!dsa_check_key(dsa)) {
+    return 0;
+  }
+
+  if (dsa->pub_key == NULL) {
+    OPENSSL_PUT_ERROR(DSA, DSA_R_MISSING_PARAMETERS);
     return 0;
   }
 
@@ -842,6 +857,10 @@ static size_t der_len_len(size_t len) {
 }
 
 int DSA_size(const DSA *dsa) {
+  if (dsa->q == NULL) {
+    return 0;
+  }
+
   size_t order_len = BN_num_bytes(dsa->q);
   // Compute the maximum length of an |order_len| byte integer. Defensively
   // assume that the leading 0x00 is included.
@@ -864,11 +883,6 @@ int DSA_size(const DSA *dsa) {
 
 static int dsa_sign_setup(const DSA *dsa, BN_CTX *ctx, BIGNUM **out_kinv,
                           BIGNUM **out_r) {
-  if (!dsa->p || !dsa->q || !dsa->g) {
-    OPENSSL_PUT_ERROR(DSA, DSA_R_MISSING_PARAMETERS);
-    return 0;
-  }
-
   int ret = 0;
   BIGNUM k;
   BN_init(&k);
