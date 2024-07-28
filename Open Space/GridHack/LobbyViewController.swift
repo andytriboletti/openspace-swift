@@ -107,7 +107,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
 
         var teamName: String = ""
         if Defaults[.team] == "bernie" {
-            teamName = "biden"
+            teamName = "harris"
         } else {
             teamName = "trump"
         }

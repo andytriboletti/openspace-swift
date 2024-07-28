@@ -125,7 +125,7 @@
                             <stackView opaque="NO" contentMode="top" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nJp-5o-XNt">
                                 <rect key="frame" x="37.5" y="50" width="300" height="694"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Biden Vs Trump Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHF-Rg-JxX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Harris Vs Trump Lobby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHF-Rg-JxX">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
@@ -413,7 +413,7 @@ There is a max of 3 instigators, 3 protesters, and 3 independents that each side
             <objects>
                 <viewController id="WfQ-qy-uIQ" customClass="LoginViewMacOrPhoneController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qdc-yP-kqG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="bkp-d9-aOX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -645,7 +645,7 @@ There is a max of 3 instigators, 3 protesters, and 3 independents that each side
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pFl-uD-zLJ">
-                                <rect key="frame" x="120" y="209" width="135" height="229"/>
+                                <rect key="frame" x="120" y="259" width="135" height="129"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="no2-zP-bvL">
                                         <rect key="frame" x="46.5" y="0.0" width="42" height="29"/>
@@ -667,20 +667,6 @@ There is a max of 3 instigators, 3 protesters, and 3 independents that each side
                                         <state key="normal" title="Feedback / Support"/>
                                         <connections>
                                             <action selector="feedbackButtonAction" destination="Rqe-y7-voa" eventType="touchUpInside" id="5oV-ZI-dx0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ah1-Cw-q8x">
-                                        <rect key="frame" x="40" y="149" width="55" height="30"/>
-                                        <state key="normal" title="Log Out"/>
-                                        <connections>
-                                            <action selector="logout" destination="Rqe-y7-voa" eventType="touchUpInside" id="7TS-o3-RjE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tff-Pu-boh">
-                                        <rect key="frame" x="15" y="199" width="105" height="30"/>
-                                        <state key="normal" title="Delete Account"/>
-                                        <connections>
-                                            <action selector="deleteAccount" destination="Rqe-y7-voa" eventType="touchUpInside" id="vsk-Hc-wus"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -770,7 +756,7 @@ There is a max of 3 instigators, 3 protesters, and 3 independents that each side
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HYn-Jf-ncS"/>
-        <segue reference="VlP-Vx-CP0"/>
+        <segue reference="P12-8e-CAO"/>
         <segue reference="Wo9-Vs-4Za"/>
         <segue reference="7vf-4P-ROe"/>
     </inferredMetricsTieBreakers>
