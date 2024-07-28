@@ -1479,12 +1479,12 @@
         <scene sceneID="rig-C2-5S9">
             <objects>
                 <viewController id="nQ1-Kh-9oZ" customClass="ReplicatorViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NgB-UB-ady">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="NgB-UB-ady">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ABJ-iN-BfM">
-                                <rect key="frame" x="0.0" y="30" width="440" height="872"/>
+                                <rect key="frame" x="0.0" y="30" width="440" height="970"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replicator: Type in something you want to create" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0L-IA-0dQ">
                                         <rect key="frame" x="20" y="0.0" width="400" height="100"/>
@@ -1517,14 +1517,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating this object will cost 10 kg each of: Regolith, Water Ice, Helium-3, Silicate, Jarosite, Hematite, Goethite, and Opal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWf-6q-yZn">
-                                        <rect key="frame" x="20" y="560" width="400" height="2"/>
+                                        <rect key="frame" x="20" y="560" width="400" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="lZx-eH-AZj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eG-Oy-BEN">
-                                        <rect key="frame" x="20" y="582" width="400" height="50"/>
+                                        <rect key="frame" x="20" y="680" width="400" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wXM-iq-eQ1"/>
@@ -1534,7 +1537,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkD-8P-7QA">
-                                        <rect key="frame" x="20" y="652" width="400" height="100"/>
+                                        <rect key="frame" x="20" y="750" width="400" height="100"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Create"/>
                                         <connections>
@@ -1542,7 +1545,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgX-v4-T8c">
-                                        <rect key="frame" x="20" y="772" width="400" height="100"/>
+                                        <rect key="frame" x="20" y="870" width="400" height="100"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Exit Create Screen"/>
                                         <connections>
