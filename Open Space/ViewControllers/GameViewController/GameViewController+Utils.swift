@@ -312,10 +312,56 @@ extension GameViewController {
         }
     }
 
+//    func drawISS() {
+//        loadAndDisplayUSDZ(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20)
+//    }
     func drawISS() {
-        addTempObject(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20) // Adjusted scale to 20
-        // setupBackground()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.loadAndDisplayUSDZ(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20)
+        }
     }
+
+
+//    func drawISS() {
+//        addTempObject(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20) // Adjusted scale to 20
+//        // setupBackground()
+//    }
+    func loadAndDisplayUSDZ(name: String, position: SCNVector3, scale: Float) {
+        guard let fileURL = Bundle.main.url(forResource: name, withExtension: nil) else {
+            print("Failed to find the file in the bundle.")
+            return
+        }
+
+        do {
+            let scene = try SCNScene(url: fileURL, options: nil)
+            let stationNode = scene.rootNode.clone()
+            stationNode.position = position
+            stationNode.scale = SCNVector3(scale, scale, scale)
+
+            DispatchQueue.main.async {
+                // Add stationNode to the scene
+                self.scnView.scene?.rootNode.addChildNode(stationNode)
+
+                // Enable animations
+                self.enableAnimations(on: stationNode)
+
+                print("Successfully loaded .usdz file with animations")
+            }
+        } catch {
+            print("Failed to load the .usdz file: \(error.localizedDescription)")
+        }
+    }
+
+
+
+//    func drawISS() {
+//        DispatchQueue.global(qos: .background).async {
+//            //self.loadAndDisplayUSDZ(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20)
+//            self.addTempObject(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20) // Adjusted scale to 20
+//
+//        }
+//    }
+   
 
     func drawMars() {
         addTempObject(name: "mars.scn", position: SCNVector3(-500, 0, -200), scale: 5)
