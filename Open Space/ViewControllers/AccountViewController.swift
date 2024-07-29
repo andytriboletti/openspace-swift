@@ -19,6 +19,8 @@ class AccountViewController: BackgroundImageViewController {
     @IBOutlet weak var upgradeToPremium: UIButton!
     @IBOutlet weak var yourAccountIsEarning: UILabel!
     @IBOutlet weak var yourAccountIsEarningObjects: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var refillEnergy: UIButton!
 
     #if !targetEnvironment(macCatalyst)
     var rewardedAd: GADRewardedAd?
@@ -29,15 +31,20 @@ class AccountViewController: BackgroundImageViewController {
 //      }
 
     @objc func upgrade() {
-        return
+        //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
-
-        //print("upgrade to premium")
-        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
-            showPremiumPurchaseAlert(price: price)
-        } else {
-            showPremiumPurchaseAlert(price: "$4.99")
-            //print("Product price not available")
+        if(MyData.allowInAppPurhcases == 1) {
+            
+            //print("upgrade to premium")
+            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
+                showPremiumPurchaseAlert(price: price)
+            } else {
+                showPremiumPurchaseAlert(price: "$4.99")
+                //print("Product price not available")
+            }
+        }
+        else {
+            displayComingSoonAlert()
         }
     }
     func showPremiumPurchaseAlert(price: String) {
@@ -181,88 +188,107 @@ class AccountViewController: BackgroundImageViewController {
 
 
     @IBAction func upgradeMaxEnergyButtonTapped(_ sender: UIButton) {
-        return
+        //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
+        if(MyData.allowInAppPurhcases == 1) {
 
-        //print("purchaseUpgradeMaxEnergy")
-        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeMaxEnergy) {
-            showPurchaseAlert(price: price)
-        } else {
-            showPurchaseAlert(price: "$0.99")
-            //print("Product price not available")
+            //print("purchaseUpgradeMaxEnergy")
+            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeMaxEnergy) {
+                showPurchaseAlert(price: price)
+            } else {
+                showPurchaseAlert(price: "$0.99")
+                //print("Product price not available")
+            }
+        }
+        else {
+            displayComingSoonAlert()
         }
     }
 
     @IBAction func buySmallMineralPack(_ sender: UIButton) {
-        return
+        //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
+        if(MyData.allowInAppPurhcases == 1) {
 
-        //print("buysmallMineralPack")
+            //print("buysmallMineralPack")
 
-        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.smallMineralPack) {
-            showMineralPurchaseAlert(price: price)
-        } else {
-            showMineralPurchaseAlert(price: "$0.99")
-            //print("Product smallMineralPack price not available")
+            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.smallMineralPack) {
+                showMineralPurchaseAlert(price: price)
+            } else {
+                showMineralPurchaseAlert(price: "$0.99")
+                //print("Product smallMineralPack price not available")
+            }
+        }
+        else {
+            displayComingSoonAlert()
         }
     }
     @IBAction func buyLargeMineralPack(_ sender: UIButton) {
-        return
+        //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
 
         //print("buyLargeMineralPack")
+        if(MyData.allowInAppPurhcases == 1) {
 
-        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.largeMineralPack) {
-            showLargeMineralPurchaseAlert(price: price)
-        } else {
-            showLargeMineralPurchaseAlert(price: "$2.99")
-            //print("Product largeMineralPack price not available")
+            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.largeMineralPack) {
+                showLargeMineralPurchaseAlert(price: price)
+            } else {
+                showLargeMineralPurchaseAlert(price: "$2.99")
+                //print("Product largeMineralPack price not available")
+            }
+        }
+        else {
+            displayComingSoonAlert()
         }
     }
 
     
 
     @IBAction func refillEnergyButtonTapped(_ sender: UIButton) {
-        return
+        //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
-           let alert: UIAlertController
+        if(MyData.allowInAppPurhcases == 1) {
+            let alert: UIAlertController
 
-           #if targetEnvironment(macCatalyst)
-           alert = UIAlertController(title: "Purchase Energy Refill", message: "Purchase Energy Refill To Max For $0.99", preferredStyle: .alert)
-           let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
-               // Handle purchase action
-               //print("purchase energy refill")
-           })
-           alert.addAction(purchaseAction)
-           #else
-           alert = UIAlertController(title: "Refill Energy", message: "Watch a Rewarded Ad to Refill Energy or Purchase Energy Refill To Max", preferredStyle: .alert)
-           let watchAdAction = UIAlertAction(title: "Watch Ad", style: .default, handler: { _ in
-               // Handle watch ad action
-               //print("watch ad to refill energy")
-               self.show()
-           })
-           let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
-               // Handle purchase action
-               //print("purchase energy refill")
-               if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.refillEnergy) {
-                   self.showEnergyRefillPurchaseAlert(price: price)
-               } else {
-                   self.showEnergyRefillPurchaseAlert(price: "$0.99")
-                   //print("Product refill energy price not available")
-               }
+#if targetEnvironment(macCatalyst)
+            alert = UIAlertController(title: "Purchase Energy Refill", message: "Purchase Energy Refill To Max For $0.99", preferredStyle: .alert)
+            let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
+                // Handle purchase action
+                //print("purchase energy refill")
+            })
+            alert.addAction(purchaseAction)
+#else
+            alert = UIAlertController(title: "Refill Energy", message: "Watch a Rewarded Ad to Refill Energy or Purchase Energy Refill To Max", preferredStyle: .alert)
+            let watchAdAction = UIAlertAction(title: "Watch Ad", style: .default, handler: { _ in
+                // Handle watch ad action
+                //print("watch ad to refill energy")
+                self.show()
+            })
+            let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
+                // Handle purchase action
+                //print("purchase energy refill")
+                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.refillEnergy) {
+                    self.showEnergyRefillPurchaseAlert(price: price)
+                } else {
+                    self.showEnergyRefillPurchaseAlert(price: "$0.99")
+                    //print("Product refill energy price not available")
+                }
 
 
-           })
-           alert.addAction(watchAdAction)
-           alert.addAction(purchaseAction)
-           #endif
+            })
+            alert.addAction(watchAdAction)
+            alert.addAction(purchaseAction)
+#endif
 
-           let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-           alert.addAction(cancelAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
 
-           self.present(alert, animated: true, completion: nil)
-       }
-    
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            displayComingSoonAlert()
+        }
+    }
 
 
     @IBAction func showResetButtonTapped(_ sender: UIButton) {
@@ -485,12 +511,34 @@ class AccountViewController: BackgroundImageViewController {
            //overlayAlpha = 0.5
 
         super.viewDidLoad()
+        scrollView.delaysContentTouches = false
+        scrollView.canCancelContentTouches = true
+
+
+
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
 
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: .purchaseCompleted, object: nil)
+    }
+    func displayComingSoonAlert() {
+        // Create the UIAlertController
+        let alertController = UIAlertController(title: "Functionality Coming Soon",
+                                                message: "This functionality will be available soon.",
+                                                preferredStyle: .alert)
+
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Handle OK button tap if needed
+        }
+
+        // Add the OK action to the alert controller
+        alertController.addAction(okAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
     }
 
     @objc func handlePurchaseCompletion(_ notification: Notification) {
@@ -528,6 +576,19 @@ class AccountViewController: BackgroundImageViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // Ensure buttons are enabled and have default interaction
+        signOutButton.isUserInteractionEnabled = true
+        deleteButton.isUserInteractionEnabled = true
+        upgradeToPremium.isUserInteractionEnabled = true
+        refillEnergy.isUserInteractionEnabled = true
+
+        // Ensure buttons have default highlight behavior
+        signOutButton.adjustsImageWhenHighlighted = true
+        deleteButton.adjustsImageWhenHighlighted = true
+        upgradeToPremium.adjustsImageWhenHighlighted = true
+        refillEnergy.adjustsImageWhenHighlighted = true
+
         updateUsernameLabel()
         self.energyLabel.text = "   Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])   "
         var accountType = "Basic"

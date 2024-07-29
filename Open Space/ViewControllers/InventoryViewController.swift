@@ -265,41 +265,62 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 
         present(alertController, animated: true, completion: nil)
     }
+    func displayComingSoonAlert() {
+        // Create the UIAlertController
+        let alertController = UIAlertController(title: "Functionality Coming Soon",
+                                                message: "This functionality will be available soon.",
+                                                preferredStyle: .alert)
 
-    @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
-        return
-        //todo in-app purchase disabled for testflight. todo re-enable when released
-
-        let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
-
-        let upgradePassengerAction = UIAlertAction(title: "Upgrade Passenger Limit +1", style: .default) { action in
-            //print("Upgrade Passenger Limit +1 selected")
-            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradePassengerLimit) {
-                self.showUpgradePassengerPurchaseAlert(price: price)
-            } else {
-                self.showUpgradePassengerPurchaseAlert(price: "$0.99")
-                //print("Product price not available")
-            }
+        // Create the OK action
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Handle OK button tap if needed
         }
 
-        let upgradeCargoAction = UIAlertAction(title: "Upgrade Cargo Limit +1,000kg", style: .default) { action in
-            //print("Upgrade Cargo Limit +1000kg selected")
-            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeCargoLimit) {
-                self.showUpgradeCargoPurchaseAlert(price: price)
-            } else {
-                self.showUpgradeCargoPurchaseAlert(price: "$0.99")
-                //print("Product price not available")
-            }
-        }
+        // Add the OK action to the alert controller
+        alertController.addAction(okAction)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            //print("Cancel selected")
-        }
-
-        alertController.addAction(upgradePassengerAction)
-        alertController.addAction(upgradeCargoAction)
-        alertController.addAction(cancelAction)
-
+        // Present the alert controller
         self.present(alertController, animated: true, completion: nil)
+    }
+    @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
+        //return
+        //todo in-app purchase disabled for testflight. todo re-enable when released
+        if(MyData.allowInAppPurhcases == 1) {
+            
+            let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
+            
+            let upgradePassengerAction = UIAlertAction(title: "Upgrade Passenger Limit +1", style: .default) { action in
+                //print("Upgrade Passenger Limit +1 selected")
+                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradePassengerLimit) {
+                    self.showUpgradePassengerPurchaseAlert(price: price)
+                } else {
+                    self.showUpgradePassengerPurchaseAlert(price: "$0.99")
+                    //print("Product price not available")
+                }
+            }
+            
+            let upgradeCargoAction = UIAlertAction(title: "Upgrade Cargo Limit +1,000kg", style: .default) { action in
+                //print("Upgrade Cargo Limit +1000kg selected")
+                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeCargoLimit) {
+                    self.showUpgradeCargoPurchaseAlert(price: price)
+                } else {
+                    self.showUpgradeCargoPurchaseAlert(price: "$0.99")
+                    //print("Product price not available")
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+                //print("Cancel selected")
+            }
+            
+            alertController.addAction(upgradePassengerAction)
+            alertController.addAction(upgradeCargoAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else {
+            displayComingSoonAlert()
+        }
     }
 }
