@@ -345,7 +345,7 @@ extension GameViewController {
                 // Enable animations
                 self.enableAnimations(on: stationNode)
 
-                print("Successfully loaded .usdz file with animations")
+                //print("Successfully loaded .usdz file with animations")
             }
         } catch {
             print("Failed to load the .usdz file: \(error.localizedDescription)")
