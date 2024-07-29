@@ -52,18 +52,18 @@ class RegisterViewController: UIViewController {
             // print(data.response.debugDescription)
             let json = JSON(data.value as Any)
 
-            print("register")
+            //print("register")
             print(json)
             let result: String = json["result"].stringValue
             if result == "success" {
-                print("success registering")
+                //print("success registering")
                 self.performSegue(withIdentifier: "goToLobbyFromRegister", sender: self)
             } else {
                 let message = json["message"].stringValue
                 if message == "pick-new-username" {
                     self.pleasePick.text = "Username taken. Please try again."
                 }
-                print("error registering")
+                //print("error registering")
                 print(parameters.description)
             }
         })

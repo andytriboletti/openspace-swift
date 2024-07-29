@@ -6,15 +6,15 @@ import UIKit
 class EnemyBuilderFactory: FactoryFactory {
     static func spawnEnemyBuilder(character: MyCharacter?) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            print("Unable to get AppDelegate")
+            //print("Unable to get AppDelegate")
             return
         }
         guard let gridHackGameState = appDelegate.gridHackGameState else {
-            print("GridHackGameState is nil")
+            //print("GridHackGameState is nil")
             return
         }
         guard let scene = appDelegate.scene else {
-            print("Scene is nil")
+            //print("Scene is nil")
             return
         }
 
@@ -71,7 +71,7 @@ class EnemyBuilderFactory: FactoryFactory {
 
     private static func updateCharacterLocation(appDelegate: AppDelegate, myCharacter: inout MyCharacter?, location: CGPoint) {
         guard let firstIndex = appDelegate.gridHackGameState.enemies?.firstIndex(of: myCharacter!) else {
-            print("first index is nil - returning")
+            //print("first index is nil - returning")
             return
         }
         appDelegate.gridHackGameState.enemies?[firstIndex].location = location
@@ -85,7 +85,7 @@ class EnemyBuilderFactory: FactoryFactory {
 
     private static func handleClosestEnemyConstruction(appDelegate: AppDelegate, myCharacter: MyCharacter, builderLocation: CGPoint, myBoxNode: SCNNode) {
         let closest = GridHackUtils().getClosestPendingEnemyConstruction(currentBuilderLocation: builderLocation)
-        print("closest enemy:", closest)
+        //print("closest enemy:", closest)
         if Int(closest.x) == 100 {
             handleIdleEnemyBuilder(appDelegate: appDelegate, myCharacter: myCharacter, location: builderLocation, boxNode: myBoxNode)
         } else {
@@ -115,7 +115,7 @@ class EnemyBuilderFactory: FactoryFactory {
         SCNTransaction.begin()
         SCNTransaction.animationDuration = Double(path1.elements.count) * 0
         myBoxNode.runAction(moveAction, completionHandler: {
-            print("complete")
+            //print("complete")
             guard let firstIndexEnemy = appDelegate.gridHackGameState.enemies?.firstIndex(of: myCharacter) else { return }
             appDelegate.gridHackGameState.enemies?[firstIndexEnemy].location = closest
             if Int(closest.x) != 100 {
@@ -130,7 +130,7 @@ class EnemyBuilderFactory: FactoryFactory {
         appDelegate.gridHackGameState.distanceBetweenEnemyPoints[Int(closest.x)][Int((closest.y))] = 100
 
         DispatchQueue.main.asyncAfter(deadline: .now() + GameScene.TIMETOCAPTURE) {
-            print("captured enemy square...onto the next one")
+            //print("captured enemy square...onto the next one")
             appDelegate.gridHackGameState.points[Int(closest.x)][Int((closest.y))] = GridState.enemyOwned
             let node = appDelegate.gridHackGameState.grid[Int(closest.x)][Int((closest.y))]
 

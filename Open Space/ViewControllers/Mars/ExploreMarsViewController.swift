@@ -66,12 +66,12 @@ class ExploreMarsViewController: UIViewController {
 
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
-        print("Button tapped!")
+        //print("Button tapped!")
         OpenspaceAPI.shared.claimDailyTreasure(planet: "mars") { result in
             switch result {
             case .success(let (status, mineral, amount)):
                 // Handle response
-                print("Response from claim daily treasure: \(status)")
+                //print("Response from claim daily treasure: \(status)")
 
                 if status == "claimed" {
                     // Show a success message to the user on the main thread
@@ -107,7 +107,7 @@ class ExploreMarsViewController: UIViewController {
         OpenspaceAPI.shared.checkDailyTreasureAvailability(planet: "mars") { result in
             switch result {
             case .success(let response):
-                print("Response from check daily treasure availability: \(response)")
+                //print("Response from check daily treasure availability: \(response)")
 
                 // Assuming response is a JSON string and converting it to a dictionary
                 if let data = response.data(using: .utf8),
@@ -124,12 +124,12 @@ class ExploreMarsViewController: UIViewController {
                         }
                     }
                 } else {
-                    print("Unexpected response format")
+                    //print("Unexpected response format")
                     self.showError()
                 }
 
             case .failure(let error):
-                print("Error checking daily treasure availability: \(error.localizedDescription)")
+                //print("Error checking daily treasure availability: \(error.localizedDescription)")
                 self.showError()
             }
         }

@@ -238,11 +238,11 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
         encoder.outputFormatting = .prettyPrinted
         guard let configJsonData = try? encoder.encode(config),
               let configJson = String(data: configJsonData, encoding: .utf8) else {
-            print("Failed to encode config to JSON")
+            //print("Failed to encode config to JSON")
             return
         }
 
-        print("Sending config: \(configJson)")
+        //print("Sending config: \(configJson)")
 
         // Retrieve email and authToken
         let email = Defaults[.email]
@@ -259,7 +259,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
                         self.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
-                    print("Space station created successfully")
+                    //print("Space station created successfully")
 
 
                 }
@@ -274,7 +274,7 @@ class ConfigureSpaceStationViewController: UIViewController, UIColorPickerViewCo
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
-                    print("Failed to create space station: \(error.localizedDescription)")
+                    //print("Failed to create space station: \(error.localizedDescription)")
                 }
             }
         }

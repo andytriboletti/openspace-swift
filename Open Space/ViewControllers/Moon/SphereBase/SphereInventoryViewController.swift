@@ -11,9 +11,9 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             let meshZipURL = completedModels[indexPath.row].meshLocation
             let modelPrompt = completedModels[indexPath.row].textPrompt
             let modelId = completedModels[indexPath.row].meshId
-            print("mesh zip url")
+            //print("mesh zip url")
             print(meshZipURL as Any)
-            print("end mesh zip url")
+            //print("end mesh zip url")
             Defaults[.selectedMeshLocation] = meshZipURL!
             Defaults[.selectedMeshPrompt] = modelPrompt
             Defaults[.selectedMeshId] = modelId
@@ -24,9 +24,9 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             let modelPrompt = pendingModels[indexPath.row].textPrompt
             let modelId = pendingModels[indexPath.row].meshId
 
-            print("pending mesh zip url")
+            //print("pending mesh zip url")
             print(meshZipURL as Any)
-            print("pending end mesh zip url")
+            //print("pending end mesh zip url")
             Defaults[.selectedMeshLocation] = "" //meshZipURL!
             Defaults[.selectedMeshPrompt] = modelPrompt
             Defaults[.selectedMeshId] = modelId
@@ -60,7 +60,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
 //        // User is not signed in
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        guard let rootViewController = storyboard.instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController else {
-//            print("Error: Could not find view controller with identifier 'ModelViewController'")
+//            //print("Error: Could not find view controller with identifier 'ModelViewController'")
 //            return
 //        }
 //
@@ -69,7 +69,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
 //
 //        // Assuming you have a reference to your app's UIWindow object
 //        guard let window = UIApplication.shared.windows.first else {
-//            print("Error: Could not find the application's window")
+//            //print("Error: Could not find the application's window")
 //            return
 //        }
 //        window.rootViewController = rootViewController
@@ -81,7 +81,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         // User is not signed in
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let rootViewController = storyboard.instantiateViewController(withIdentifier: "ModelViewController") as? ModelViewController else {
-            print("Error: Could not find view controller with identifier 'ModelViewController'")
+            //print("Error: Could not find view controller with identifier 'ModelViewController'")
             return
         }
 

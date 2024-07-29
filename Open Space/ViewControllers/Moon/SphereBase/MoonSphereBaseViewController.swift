@@ -65,10 +65,10 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
     }
 
     @objc func handlePurchaseCompletion(_ notification: Notification) {
-        print("handlePurchaseCompletion called")
+        //print("handlePurchaseCompletion called")
         // Refresh Defaults and labels
         Utils.shared.getLocation() {
-            print("Refreshing labels after location update")
+            //print("Refreshing labels after location update")
             DispatchQueue.main.async {
                 self.refreshLabels()
             }
@@ -105,12 +105,12 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
             //todo in-app purchase disabled for testflight. todo re-enable when released
 
             //in app purchase
-            print("claim another sphere")
+            //print("claim another sphere")
             if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
                 showPurchaseAlert(price: price)
             } else {
                 showPurchaseAlert(price: "$0.99")
-                print("Product price for sphere not available")
+                //print("Product price for sphere not available")
             }
         }
     }
@@ -140,7 +140,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
         if let product = IAPManager.shared.products.first {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.newSphere)
         } else {
-            print("Product not available")
+            //print("Product not available")
         }
     }
 
@@ -180,7 +180,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
                 }
             } catch {
                 // Handle JSON serialization error
-                print("Error: \(error)")
+                //print("Error: \(error)")
             }
         }
     }
@@ -224,7 +224,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
 
             if Defaults[.spheresAllowed] > yourSpheres!.count && yourSpheres!.count != 0 {
                 // pop up an alert that they can claim another sphere by naming it
-                print("pop up an alert that they can claim another sphere by naming it")
+                //print("pop up an alert that they can claim another sphere by naming it")
                 alertToCreateSphere()
             }
         }
@@ -234,7 +234,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
         let alertController = UIAlertController(title: "Select a Sphere", message: "Please choose a sphere to view.", preferredStyle: .alert)
 
         guard let spheres = self.yourSpheres else {
-            print("No spheres available.")
+            //print("No spheres available.")
             return
         }
 
@@ -256,7 +256,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
     }
 
     @objc func goToSphereView() {
-        print("go to sphere")
+        //print("go to sphere")
         presentSphereSelectionPopup()
     }
 
@@ -293,10 +293,10 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
         OpenspaceAPI.shared.createSphere(email: email, authToken: authToken, sphereName: name) { [weak self] result in
             switch result {
             case .success:
-                print("Sphere created successfully")
+                //print("Sphere created successfully")
                 self?.refresh()
             case .failure(let error):
-                print("Error creating sphere: \(error.localizedDescription)")
+                //print("Error creating sphere: \(error.localizedDescription)")
                 self?.showAlert(with: "Error", message: error.localizedDescription)
             }
         }
@@ -311,7 +311,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
 
     func getLocation() {
         guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
-            print("Email or authToken is missing")
+            //print("Email or authToken is missing")
             return
         }
 
@@ -330,7 +330,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
     }
 
     private func handleLocationSuccess(data: LocationData) {
-        print("handleLocationSuccess called with data: \(data)")
+        //print("handleLocationSuccess called with data: \(data)")
 
         // Save your_spheres and neighbor_spheres
         if let yourSpheresArray = data.yourSpheres as? [[String: String]] {
@@ -360,7 +360,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
             Defaults[.yourSpheres] = yourSpheresData
             Defaults[.neighborSpheres] = neighborSpheresData
         } catch {
-            print("Error converting spheres data: \(error)")
+            //print("Error converting spheres data: \(error)")
         }
 
         if let spaceStation = data.spaceStation,

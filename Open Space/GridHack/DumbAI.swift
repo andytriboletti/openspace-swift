@@ -31,7 +31,7 @@ class DumbAI {
             for jjj: Int in (1...myPoints[iii].count - 1).reversed() {
                 // half of the time decrease either iii or jjj by 1
                 let number = Int.random(in: 0 ..< 3 )
-                print("random: \(number)")
+                //print("random: \(number)")
                 var myIII = iii
                 var myJJJ = jjj
                 if number == 1 && iii != 1 {

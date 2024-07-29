@@ -82,7 +82,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     }
 
     func webViewDidClose(_ webView: WKWebView) {
-        print("openspace webview closed")
+        //print("openspace webview closed")
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -90,12 +90,12 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        print("Failed to load page: \(error.localizedDescription)")
+        //print("Failed to load page: \(error.localizedDescription)")
         handleWebViewError(error)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("Page finished loading: \(webView.url?.absoluteString ?? "unknown URL")")
+        //print("Page finished loading: \(webView.url?.absoluteString ?? "unknown URL")")
         printCookies()
         checkPageContentWithoutJavaScript()
     }
@@ -105,7 +105,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     }
 
     func handleWebViewError(_ error: Error) {
-        print("WebView encountered an error: \(error.localizedDescription)")
+        //print("WebView encountered an error: \(error.localizedDescription)")
 
         if self.presentedViewController == nil {
             DispatchQueue.main.async {
@@ -126,15 +126,15 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
             guard let self = self else { return }
 
             if let htmlContent = result as? String {
-                print("Page HTML content:")
+                //print("Page HTML content:")
                 print(htmlContent)
 
                 if htmlContent.contains("<body>1<script") {
-                    print("Detected problematic HTML content, reloading original page...")
+                    //print("Detected problematic HTML content, reloading original page...")
                     self.loadOriginalPage()
                 }
             } else if let error = error {
-                print("Error getting HTML content: \(error.localizedDescription)")
+                //print("Error getting HTML content: \(error.localizedDescription)")
             }
         }
     }
@@ -154,7 +154,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     func printCookies() {
         WKWebsiteDataStore.default().httpCookieStore.getAllCookies { cookies in
             for cookie in cookies {
-                print("Cookie: \(cookie)")
+                //print("Cookie: \(cookie)")
             }
         }
     }
@@ -162,7 +162,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     func clearWebViewCache() {
         let dataTypes = WKWebsiteDataStore.allWebsiteDataTypes()
         WKWebsiteDataStore.default().removeData(ofTypes: dataTypes, modifiedSince: Date(timeIntervalSince1970: 0)) {
-            print("Cleared all cookies and cache")
+            //print("Cleared all cookies and cache")
         }
     }
 
@@ -181,7 +181,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "logHandler" {
-            print("Console log: \(message.body)")
+            //print("Console log: \(message.body)")
         }
     }
 
@@ -310,12 +310,12 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     @objc func returnToMoonBase() {
         // Dismiss the current view controller to return to Moon Base
         self.dismiss(animated: true, completion: nil)
-        print("Returning to Moon Base")
+        //print("Returning to Moon Base")
     }
 
     @objc func logout() {
         clearWebViewCache()
         loadOriginalPage()
-        print("Logged out and reloaded the comment page")
+        //print("Logged out and reloaded the comment page")
     }
 }

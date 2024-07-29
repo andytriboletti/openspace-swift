@@ -90,7 +90,7 @@ static func spawnEnemyAttacker(character: MyCharacter?) {
 
         return
     } else {
-        print("closest friendly to attack with protester:")
+        //print("closest friendly to attack with protester:")
         print(closest!.characterType as Any)
         print(closest!.location as Any)
     }
@@ -105,18 +105,18 @@ static func spawnEnemyAttacker(character: MyCharacter?) {
     SCNTransaction.begin()
     SCNTransaction.animationDuration = Double(path1.elements.count) * 0
     myBoxNode!.runAction(moveAction, completionHandler: {
-        print("complete")
+        //print("complete")
         if closest != nil {
             appDelegate!.gridHackGameState.distanceBetweenPoints[Int(closest!.location!.x)][Int((closest!.location!.y))] = 100
 
             DispatchQueue.main.asyncAfter(deadline: .now() + GameScene.TIMETOCAPTUREENEMYUNIT) {
                 let friendlyToRemove = GridHackUtils().findFriendlyUnitFromCoordinates(coordinates: closest!.location!, friendlyType: closest?.characterType)
                 if friendlyToRemove == nil {
-                    print("no friendly to remove-- spawnEnemyAttacker then returning")
+                    //print("no friendly to remove-- spawnEnemyAttacker then returning")
                     if appDelegate!.gridHackGameState.friendlys?.count != 0 {
                         self.spawnEnemyAttacker(character: myCharacter)
                     } else {
-                        print("friendlys is 0 - returning")
+                        //print("friendlys is 0 - returning")
                     }
                     return
 
@@ -124,54 +124,54 @@ static func spawnEnemyAttacker(character: MyCharacter?) {
                 appDelegate!.gridHackGameState.distanceBetweenFriendlyBuilders[Int(friendlyToRemove!.location!.x)][Int(friendlyToRemove!.location!.y)] = 100.0
 
                 friendlyToRemove?.scnNode?.removeFromParentNode()
-                print("eliminating friendly unit ...onto the next one")
+                //print("eliminating friendly unit ...onto the next one")
                 let firstIndex = appDelegate!.gridHackGameState.friendlys!.firstIndex(of: friendlyToRemove!)
                 appDelegate!.gridHackGameState.friendlys!.remove(at: firstIndex!)
 
                 if friendlyToRemove?.characterType == "attacker" {
                     // it's a tie - both characters disappear
-                    print("it's a tie removing enemy attacker")
+                    //print("it's a tie removing enemy attacker")
                     myBoxNode?.removeFromParentNode()
                     let xInt = Int(myCharacter!.location!.x) - 1
                     let yInt = Int(myCharacter!.location!.y) - 1
                     if appDelegate!.gridHackGameState.distanceBetweenEnemyBuilders.count >= xInt
                         && appDelegate!.gridHackGameState.distanceBetweenEnemyBuilders[xInt].count >= yInt {
-                        print("setting distance between EnemyBuilders to 100")
+                        //print("setting distance between EnemyBuilders to 100")
                         appDelegate!.gridHackGameState.distanceBetweenEnemyBuilders[xInt][yInt] = 100.0
 
                     } else {
-                        print("not setting distance EnemyBuilders... array out of range")
+                        //print("not setting distance EnemyBuilders... array out of range")
 
                     }
                     if appDelegate!.gridHackGameState.distanceBetweenEnemyAttackers.count >= xInt
                         && appDelegate!.gridHackGameState.distanceBetweenEnemyAttackers[xInt].count >= yInt {
-                        print("setting distance between EnemyAttackers to 100")
+                        //print("setting distance between EnemyAttackers to 100")
                         appDelegate!.gridHackGameState.distanceBetweenEnemyAttackers[xInt][yInt] = 100.0
 
                     } else {
-                        print("not setting distance EnemyAttackers... array out of range")
+                        //print("not setting distance EnemyAttackers... array out of range")
 
                     }
 
                     if appDelegate!.gridHackGameState.distanceBetweenEnemyHackers.count >= xInt
                         && appDelegate!.gridHackGameState.distanceBetweenEnemyHackers[xInt].count >= yInt {
-                        print("setting distance between EnemyHackers to 100")
+                        //print("setting distance between EnemyHackers to 100")
                         appDelegate!.gridHackGameState.distanceBetweenEnemyAttackers[xInt][yInt] = 100.0
 
                     } else {
-                        print("not setting distance EnemyHackers... array out of range")
+                        //print("not setting distance EnemyHackers... array out of range")
 
                     }
 
                     let firstIndex = appDelegate!.gridHackGameState.enemies!.firstIndex(of: myCharacter!)
                     if firstIndex == nil {
-                        print("first index is nil in enemyattackerfactory. returning")
+                        //print("first index is nil in enemyattackerfactory. returning")
                         return
                     }
                     appDelegate!.gridHackGameState.enemies!.remove(at: firstIndex!)
 
                 } else {
-                    print("it's not a tie... moving enemy attacker")
+                    //print("it's not a tie... moving enemy attacker")
 
                     let currentLocation = CGPoint(x: closest!.location!.x, y: closest!.location!.y)
                     myCharacter!.location = currentLocation
@@ -179,7 +179,7 @@ static func spawnEnemyAttacker(character: MyCharacter?) {
 
                     var firstIndex = appDelegate!.gridHackGameState.enemies?.firstIndex(of: myCharacter!)
                     if firstIndex == nil {
-                        print("enemies doesnt contain character in enemyAttackerFactory.. returning")
+                        //print("enemies doesnt contain character in enemyAttackerFactory.. returning")
                         return
                     }
                     appDelegate!.gridHackGameState.enemies![firstIndex!].location = currentLocation
@@ -193,7 +193,7 @@ static func spawnEnemyAttacker(character: MyCharacter?) {
                         appDelegate!.gridHackGameState.enemies![firstIndex!].location = currentLocation
                         self.spawnEnemyAttacker(character: myCharacter)
                     } else {
-                        print("first index is null enemy")
+                        //print("first index is null enemy")
                     }
 
                 }

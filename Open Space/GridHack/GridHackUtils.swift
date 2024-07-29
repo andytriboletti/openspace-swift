@@ -25,7 +25,7 @@ class GridHackUtils {
             return node
 
         } else {
-            print("Invalid path supplied")
+            //print("Invalid path supplied")
             return SCNNode()
         }
 
@@ -39,7 +39,7 @@ class GridHackUtils {
         GridHackUtils().resetDistanceBetweenEnemyAttackers(location: enemyToRemove.location!)
 
         enemyToRemove.scnNode?.removeFromParentNode()
-        print("eliminating enemy unit ...onto the next one")
+        //print("eliminating enemy unit ...onto the next one")
         let firstIndex = appDelegate.gridHackGameState.enemies!.firstIndex(of: enemyToRemove)
         appDelegate.gridHackGameState.enemies!.remove(at: firstIndex!)
 
@@ -49,7 +49,7 @@ class GridHackUtils {
         GridHackUtils().resetDistanceBetweenFriendlyAttackers(location: friendlyToRemove.location!)
 
         friendlyToRemove.scnNode?.removeFromParentNode()
-        print("eliminating friendly unit ...onto the next one")
+        //print("eliminating friendly unit ...onto the next one")
         let firstIndex = appDelegate.gridHackGameState.friendlys!.firstIndex(of: friendlyToRemove)
         appDelegate.gridHackGameState.friendlys!.remove(at: firstIndex!)
     }
@@ -272,7 +272,7 @@ class GridHackUtils {
         let coord = minFriendlyBuilderLocationInArray()
         let exists = doesFriendlyExistAtLocation(coord: coord)
         if exists {
-            print("get closest friendly coordinates from point \(coord)")
+            //print("get closest friendly coordinates from point \(coord)")
             let myCharacter = MyCharacter()
             myCharacter.characterType = "builder"
             myCharacter.location = coord
@@ -283,7 +283,7 @@ class GridHackUtils {
             let coord = minFriendlyHackerLocationInArray()
             let exists = doesFriendlyExistAtLocation(coord: coord)
             if exists {
-                print("get closest friendly coordinates from point \(coord)")
+                //print("get closest friendly coordinates from point \(coord)")
                 let myCharacter = MyCharacter()
                 myCharacter.characterType = "hacker"
                 myCharacter.location = coord
@@ -294,7 +294,7 @@ class GridHackUtils {
                 let coord = minFriendlyAttackerLocationInArray()
                 let exists = doesFriendlyExistAtLocation(coord: coord)
                 if exists {
-                    print("get closest friendly coordinates from point \(coord)")
+                    //print("get closest friendly coordinates from point \(coord)")
                     let myCharacter = MyCharacter()
                     myCharacter.characterType = "attacker"
                     myCharacter.location = coord
@@ -323,7 +323,7 @@ class GridHackUtils {
         }
 
         for friendly in appDelegate.gridHackGameState.friendlys! {
-            print("hi")
+            //print("hi")
             if friendly.location == coord {
                 return true
             }
@@ -360,7 +360,7 @@ class GridHackUtils {
         }
 
         for enemy in appDelegate.gridHackGameState.enemies! {
-            //            print("hi enemies")
+            //            //print("hi enemies")
             if enemy.location == coord {
                 return true
             }
@@ -588,15 +588,15 @@ class GridHackUtils {
             // print(data.response.debugDescription)
             let json = JSON(data.value as Any)
 
-            print("update party")
+            //print("update party")
             print(json)
             let result: String = json["result"].stringValue
             if result == "success" {
-                print("success updating party")
+                //print("success updating party")
                 delegate.updatedParty()
 
             } else {
-                print("error updating party")
+                //print("error updating party")
                 print(parameters.description)
             }
         })
@@ -610,7 +610,7 @@ class GridHackUtils {
         if firstIndex != nil {
             appDelegate.gridHackGameState.friendlys![firstIndex!].location = currentLocation
         } else {
-            print("first index is null in update friendly location")
+            //print("first index is null in update friendly location")
         }
     }
     func updateEnemyLocation(closest: CGPoint, myCharacter: MyCharacter?) {
@@ -621,13 +621,13 @@ class GridHackUtils {
         if firstIndex != nil {
             appDelegate.gridHackGameState.enemies![firstIndex!].location = currentLocation
         } else {
-            print("first index is null in update enemy location")
+            //print("first index is null in update enemy location")
         }
     }
 
     func setToFriendlyOwned(closest: CGPoint) {
         if self.doesEnemyAttackerExistAtLocation(coord: closest) {
-            print("enemy attacker exists... not setting to friendly owned")
+            //print("enemy attacker exists... not setting to friendly owned")
             return
         }
 
@@ -648,7 +648,7 @@ class GridHackUtils {
 
     func setToEnemyOwned(closest: CGPoint) {
         if self.doesFriendlyAttackerExistAtLocation(coord: closest) {
-            print("friendly attacker exists... not setting to enemy owned")
+            //print("friendly attacker exists... not setting to enemy owned")
             return
         }
 

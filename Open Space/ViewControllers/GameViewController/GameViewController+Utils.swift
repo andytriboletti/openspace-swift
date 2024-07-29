@@ -83,7 +83,7 @@ extension GameViewController {
 
     func drawYourSpaceStation() {
         guard let stationMeshLocation = Defaults[.stationMeshLocation] as? String else {
-            print("Station mesh location not set")
+            //print("Station mesh location not set")
             return
         }
         print(stationMeshLocation)
@@ -97,7 +97,7 @@ extension GameViewController {
 
     func downloadAndDisplayUSDZ(from urlString: String) {
         guard let url = URL(string: urlString) else {
-            print("Invalid URL")
+            //print("Invalid URL")
             return
         }
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -107,26 +107,26 @@ extension GameViewController {
         if FileManager.default.fileExists(atPath: destinationUrl.path) {
             do {
                 try FileManager.default.removeItem(at: destinationUrl)
-                print("Existing file removed")
+                //print("Existing file removed")
             } catch {
-                print("Failed to remove existing file: \(error.localizedDescription)")
+                //print("Failed to remove existing file: \(error.localizedDescription)")
                 return
             }
         }
 
         URLSession.shared.downloadTask(with: url) { (location, _, error) in
             guard let location = location, error == nil else {
-                print("Download error: \(error?.localizedDescription ?? "Unknown error")")
+                //print("Download error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
 
             do {
                 try FileManager.default.moveItem(at: location, to: destinationUrl)
-                print("File downloaded to \(destinationUrl.path)")
+                //print("File downloaded to \(destinationUrl.path)")
 
                 self.displayUSDZ(at: destinationUrl)
             } catch {
-                print("File move error: \(error.localizedDescription)")
+                //print("File move error: \(error.localizedDescription)")
             }
         }.resume()
     }
@@ -143,9 +143,9 @@ extension GameViewController {
             // Enable animations
             enableAnimations(on: stationNode)
 
-            print("Successfully loaded .usdz file with animations")
+            //print("Successfully loaded .usdz file with animations")
         } catch {
-            print("Failed to load the .usdz file: \(error.localizedDescription)")
+            //print("Failed to load the .usdz file: \(error.localizedDescription)")
         }
     }
 
@@ -179,27 +179,27 @@ extension GameViewController {
     func checkFilePermissions(at path: String) {
         let fileManager = FileManager.default
         if fileManager.isReadableFile(atPath: path) {
-            print("File is readable")
+            //print("File is readable")
         } else {
-            print("File is not readable")
+            //print("File is not readable")
         }
 
         if fileManager.isWritableFile(atPath: path) {
-            print("File is writable")
+            //print("File is writable")
         } else {
-            print("File is not writable")
+            //print("File is not writable")
         }
 
         if fileManager.isExecutableFile(atPath: path) {
-            print("File is executable")
+            //print("File is executable")
         } else {
-            print("File is not executable")
+            //print("File is not executable")
         }
 
         if fileManager.isDeletableFile(atPath: path) {
-            print("File is deletable")
+            //print("File is deletable")
         } else {
-            print("File is not deletable")
+            //print("File is not deletable")
         }
     }
 

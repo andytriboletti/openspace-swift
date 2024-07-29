@@ -143,7 +143,7 @@ class NeighborSphereInventoryViewController: UIViewController {
     func cacheOrDownloadAndUnzipFile(from url: URL, into directory: String, index: Int, completion: @escaping () -> Void) {
         FileDownloader.shared.downloadFile(from: url) { cachedURL in
             guard let cachedURL = cachedURL else {
-                print("Failed to download or cache the file from: \(url)")
+                //print("Failed to download or cache the file from: \(url)")
                 self.handleDownloadFailure(index: index)
                 DispatchQueue.main.async {
                     self.updateLoadingProgress(current: self.completedDownloads, total: self.zipFileURLs.count, phase: "Downloading")
@@ -164,7 +164,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                     let destinationUrl = documentsDirectory.appendingPathComponent("unzippedFolder/\(directoryName)")
 
                     if FileManager.default.fileExists(atPath: destinationUrl.path) {
-                        print("Directory already exists: \(destinationUrl.path)")
+                        //print("Directory already exists: \(destinationUrl.path)")
                         if let objFilePath = self.findFirstOBJFile(in: destinationUrl) {
                             self.serialQueue.sync {
                                 self.objFilePaths.append(objFilePath)
@@ -175,7 +175,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                         do {
                             try FileManager.default.createDirectory(at: destinationUrl, withIntermediateDirectories: true, attributes: nil)
                         } catch let createDirectoryError {
-                            print("Error creating directory: \(createDirectoryError)")
+                            //print("Error creating directory: \(createDirectoryError)")
                             self.handleDownloadFailure(index: index)
                             DispatchQueue.main.async {
                                 self.updateLoadingProgress(current: self.completedDownloads, total: self.zipFileURLs.count, phase: "Downloading")
@@ -187,7 +187,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                         let success = SSZipArchive.unzipFile(atPath: cachedURL.path, toDestination: destinationUrl.path)
 
                         if success {
-                            print("Files unzipped successfully at \(destinationUrl.path)")
+                            //print("Files unzipped successfully at \(destinationUrl.path)")
                             if let objFilePath = self.findFirstOBJFile(in: destinationUrl) {
                                 self.serialQueue.sync {
                                     self.objFilePaths.append(objFilePath)
@@ -195,7 +195,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                             }
                             self.markDownloadComplete(index: index)
                         } else {
-                            print("Failed to unzip the file at \(cachedURL.path)")
+                            //print("Failed to unzip the file at \(cachedURL.path)")
                             self.handleDownloadFailure(index: index)
                         }
                     }
@@ -242,11 +242,11 @@ class NeighborSphereInventoryViewController: UIViewController {
 
     func displayOBJFiles() {
         guard !isLoaded && objFilePaths.count > 0 else {
-            print("Not enough OBJ files to display or already displayed")
+            //print("Not enough OBJ files to display or already displayed")
             return
         }
 
-        print("Starting to display OBJ files")
+        //print("Starting to display OBJ files")
 
         let scene = SCNScene()
         let rootNode = scene.rootNode
@@ -287,13 +287,13 @@ class NeighborSphereInventoryViewController: UIViewController {
                             objectNode.position = SCNVector3(positionX, positionY, 0)
                             rootNode.addChildNode(objectNode)
                         }
-                        print("Added object at index \(index) to the scene")
+                        //print("Added object at index \(index) to the scene")
 
                         DispatchQueue.main.async {
                             self.updateLoadingProgress(current: index + 1, total: totalObjects, phase: "Displaying")
                         }
                     } catch {
-                        print("Failed to load OBJ file at index \(index): \(error.localizedDescription)")
+                        //print("Failed to load OBJ file at index \(index): \(error.localizedDescription)")
                     }
                 }
             }
@@ -310,7 +310,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
 
-                print("Scene setup complete")
+                //print("Scene setup complete")
             }
         }
     }
@@ -326,7 +326,7 @@ class NeighborSphereInventoryViewController: UIViewController {
                 }
             }
         } catch {
-            print("Error while enumerating files \(directoryURL.path): \(error.localizedDescription)")
+            //print("Error while enumerating files \(directoryURL.path): \(error.localizedDescription)")
         }
         return nil
     }

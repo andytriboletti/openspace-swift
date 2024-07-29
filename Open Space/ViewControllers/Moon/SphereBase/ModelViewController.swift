@@ -25,33 +25,33 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
 
         if zipURLString == "" {
             headerLabel.text = "Pending: " + Defaults[.selectedMeshPrompt]
-            print("pending model")
+            //print("pending model")
         } else if let zipFileURL = URL(string: zipURLString) {
             cacheOrDownloadAndUnzipFile(from: zipFileURL)
         } else {
-            print("Invalid URL string for selected mesh location.")
+            //print("Invalid URL string for selected mesh location.")
         }
     }
 
 
     @IBAction func exit() {
-        print("exit")
+        //print("exit")
 
         self.dismiss(animated: false, completion: nil)
     }
 
     @IBAction func delete() {
         let meshId = Defaults[.selectedMeshId]
-        print("delete todo seletedMeshId:")
+        //print("delete todo seletedMeshId:")
         print(meshId)
-        print("end mesh id")
+        //print("end mesh id")
 
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
 
         // OK Action
         let okAction = UIAlertAction(title: "Delete", style: .default) { _ in
             // Perform action upon OK
-            print("OK tapped. todo delete")
+            //print("OK tapped. todo delete")
 
 
             let email = Defaults[.email]
@@ -61,7 +61,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                 case .success:
                     DispatchQueue.main.async {
                         //popup an alert saying "Successfully deleted item. After clicking OK, you are taken to the previous view controller
-                        print("Successfully deleted item submitted to server")
+                        //print("Successfully deleted item submitted to server")
                         let successAlert = UIAlertController(title: "Success", message: "Successfully deleted item.", preferredStyle: .alert)
                             let okSuccessAction = UIAlertAction(title: "OK", style: .default) { _ in
                                 // Navigate to the previous view controller
@@ -85,7 +85,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         // Cancel Action
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             // Perform action upon Cancel
-            print("Cancel tapped")
+            //print("Cancel tapped")
             // Add your logic here, if needed
         }
         alertController.addAction(cancelAction)
@@ -99,7 +99,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
     func cacheOrDownloadAndUnzipFile(from url: URL) {
         FileDownloader.shared.downloadFile(from: url) { cachedURL in
             guard let cachedURL = cachedURL else {
-                print("Failed to download or cache the file from: \(url)")
+                //print("Failed to download or cache the file from: \(url)")
                 return
             }
 
@@ -111,7 +111,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                     do {
                         try FileManager.default.createDirectory(at: destinationUrl, withIntermediateDirectories: true, attributes: nil)
                     } catch let createDirectoryError {
-                        print("Error creating directory: \(createDirectoryError)")
+                        //print("Error creating directory: \(createDirectoryError)")
                         return
                     }
 
@@ -119,7 +119,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                     let success = SSZipArchive.unzipFile(atPath: cachedURL.path, toDestination: destinationUrl.path)
 
                     if success {
-                        print("Files unzipped successfully at \(destinationUrl.path)")
+                        //print("Files unzipped successfully at \(destinationUrl.path)")
 
                         // Display the first .obj file
                         if let objFilePath = self.findFirstOBJFile(in: destinationUrl) {
@@ -127,10 +127,10 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                                 self.displayOBJFile(at: objFilePath)
                             }
                         } else {
-                            print("No .obj file found in the directory.")
+                            //print("No .obj file found in the directory.")
                         }
                     } else {
-                        print("Failed to unzip the file at \(cachedURL.path)")
+                        //print("Failed to unzip the file at \(cachedURL.path)")
                     }
                 }
             }
@@ -143,7 +143,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
         // Once the document is created, call the importHandler with the URL of the newly created document
         // If creation fails, call the importHandler with a nil URL and appropriate ImportMode
 
-        print("documentBrowser !!")
+        //print("documentBrowser !!")
     }
 
     func findFirstOBJFile(in directoryURL: URL) -> URL? {
@@ -151,7 +151,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
             let fileManager = FileManager.default
             let directoryContents = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: [])
 
-            print("Contents of directory at \(directoryURL.path): \(directoryContents)")
+            //print("Contents of directory at \(directoryURL.path): \(directoryContents)")
 
             for fileURL in directoryContents {
                 if fileURL.pathExtension.lowercased() == "obj" {
@@ -159,7 +159,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                 }
             }
         } catch {
-            print("Error while enumerating files \(directoryURL.path): \(error.localizedDescription)")
+            //print("Error while enumerating files \(directoryURL.path): \(error.localizedDescription)")
         }
         return nil
     }
@@ -187,7 +187,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
             scnView.allowsCameraControl = true
 
         } catch {
-            print("Failed to load the obj file: \(error)")
+            //print("Failed to load the obj file: \(error)")
         }
     }
 
@@ -196,7 +196,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
 
         // Create a Scene source with the .obj file
         guard let sceneSource = SCNSceneSource(url: objFilePath, options: nil) else {
-            print("Failed to load scene source for \(objFilePath)")
+            //print("Failed to load scene source for \(objFilePath)")
             return
         }
 
@@ -243,13 +243,13 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
                 // Add the loaded node to the scene
                 scene.rootNode.addChildNode(objNode)
             } else {
-                print("Could not load node from obj file.")
+                //print("Could not load node from obj file.")
                 return
             }
 
             // Assuming you have an SCNView in your storyboard or created programmatically
             guard let scnView = self.view as? SCNView else {
-                print("SCNView not set up correctly in the view hierarchy.")
+                //print("SCNView not set up correctly in the view hierarchy.")
                 return
             }
 
@@ -263,7 +263,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
             scnView.allowsCameraControl = true
 
         } catch {
-            print("Error loading scene from \(objFilePath): \(error.localizedDescription)")
+            //print("Error loading scene from \(objFilePath): \(error.localizedDescription)")
         }
     }
 

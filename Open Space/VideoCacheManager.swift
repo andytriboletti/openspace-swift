@@ -37,7 +37,7 @@ class VideoCacheManager {
                 try self.fileManager.moveItem(at: tempURL, to: cacheURL)
                 completion(cacheURL)
             } catch {
-                print("Error caching video: \(error.localizedDescription)")
+                //print("Error caching video: \(error.localizedDescription)")
                 completion(nil)
             }
         }

@@ -82,27 +82,27 @@ class Utils {
     
     public func getLocation(completion: (() -> Void)? = nil) {
         guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
-            print("Email or authToken is missing")
+            //print("Email or authToken is missing")
             completion?()
             return
         }
-        print("in Utils.getLocation() with email: \(email) and authToken: \(authToken)")
+        //print("in Utils.getLocation() with email: \(email) and authToken: \(authToken)")
         OpenspaceAPI.shared.getLocation(email: email, authToken: authToken) { [weak self] (result: Result<LocationData, Error>) in
-            print("API call completed")
+            //print("API call completed")
             guard let self = self else {
-                print("Self is nil, returning early")
+                //print("Self is nil, returning early")
                 return
             }
-            print("inside getLocation 123")
+            //print("inside getLocation 123")
             print(result)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    print("calling handleLocationSuccess with data: \(data)")
+                    //print("calling handleLocationSuccess with data: \(data)")
                     self.handleLocationSuccess(data: data)
                     completion?()
                 case .failure(let error):
-                    print("Error in getLocation: \(error.localizedDescription)")
+                    //print("Error in getLocation: \(error.localizedDescription)")
                     completion?()
                 }
             }
@@ -110,12 +110,12 @@ class Utils {
     }
 
     private func handleLocationSuccess(data: LocationData) {
-        print("handleLocationSuccess called with data: \(data)")
+        //print("handleLocationSuccess called with data: \(data)")
 
         if let username = data.username, !username.isEmpty {
             Defaults[.username] = username
         } else {
-            print("no username?")
+            //print("no username?")
         }
 
         do {
@@ -124,7 +124,7 @@ class Utils {
             Defaults[.yourSpheres] = yourSpheresData
             Defaults[.neighborSpheres] = neighborSpheresData
         } catch {
-            print("Error converting spheres data: \(error)")
+            //print("Error converting spheres data: \(error)")
         }
 
         if let spaceStation = data.spaceStation,
@@ -163,7 +163,7 @@ class Utils {
             Defaults[.spheresAllowed] = spheresAllowed
         }
 
-        print("handleLocationSuccess completed")
+        //print("handleLocationSuccess completed")
     }
 
 
@@ -172,14 +172,15 @@ class Utils {
         let authToken = Defaults[.authToken]
 
         guard !email.isEmpty, !authToken.isEmpty else {
-            print("Error: Email or Auth token is empty")
+            //print("Error: Email or Auth token is empty")
             return
         }
 
         OpenspaceAPI.shared.saveLocation(email: email, authToken: authToken, location: location, usesEnergy: usesEnergy) { result in
             switch result {
             case .success(_):
-                print("openspace: success savign location")
+                //print("openspace: success savign location")
+                break
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
                 if let nsError = error as NSError? {

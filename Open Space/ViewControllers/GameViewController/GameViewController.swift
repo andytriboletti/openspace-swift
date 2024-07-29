@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let myUsername = Defaults[.username]
-        print("my username:")
+        //print("my username:")
         print(myUsername)
         self.googleAdLoaded = 0
 
@@ -144,9 +144,9 @@ class GameViewController: UIViewController {
 //        for fileURL in fileURLs {
 //            FileDownloader.shared.downloadFile(from: fileURL) { cachedURL in
 //                if let cachedURL = cachedURL {
-//                    print("File downloaded and cached at: \(cachedURL.path)")
+//                    //print("File downloaded and cached at: \(cachedURL.path)")
 //                } else {
-//                    print("Failed to download file from: \(fileURL)")
+//                    //print("Failed to download file from: \(fileURL)")
 //                }
 //            }
 //        }

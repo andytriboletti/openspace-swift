@@ -63,14 +63,14 @@ class FriendlyBuilderFactory: FactoryFactory {
             if firstIndex != nil {
                 appDelegate!.gridHackGameState.friendlys![firstIndex!].location = myBuilderLocation
             } else {
-                print("friendly character not found - returning")
+                //print("friendly character not found - returning")
                 return
             }
             myCharacter = appDelegate!.gridHackGameState.friendlys![firstIndex!]
         }
 
         let closest = GridHackUtils().getClosestPendingConstruction(currentBuilderLocation: myBuilderLocation)
-        print("closest pending construction:")
+        //print("closest pending construction:")
         print(closest)
         if Int(closest.x) == 100 {
 
@@ -86,29 +86,29 @@ class FriendlyBuilderFactory: FactoryFactory {
             GridHackUtils().setToFriendlyOwned(closest: myBuilderLocation)
             _ = GridHackUtils().getClosestFriendly(fromCoordinate: myBuilderLocation)
 
-            // print("returning idle builder")
+            // //print("returning idle builder")
             return
         } else {
             var moveAction = SCNAction.move(to: SCNVector3(x: Float(myBuilderLocation.x), y: Float(myBuilderLocation.y), z: 0.0), duration: 0.0)
 
-            print("coord scnnode y: \(String(describing: myCharacter?.location?.y))")
-            print("coord closest y: \(closest.y)")
+            //print("coord scnnode y: \(String(describing: myCharacter?.location?.y))")
+            //print("coord closest y: \(closest.y)")
             let r: Float =    Float(getBearingBetweenTwoPoints1(point1: myCharacter!.location!, point2: closest))
 
             myBoxNode?.rotation = SCNVector4(0, 1, 0.25, r + 3.14/2)
 
-            print("rot: \(r)")
+            //print("rot: \(r)")
             if (myCharacter?.location!.x)! > closest.x {
-                print("rot turning left")
+                //print("rot turning left")
                 // myBoxNode?.rotation = SCNVector4(0, -1, 0, 3.14/2)
                 // myBoxNode?.rotation = SCNVector4(0, -1, 0, r - 3.14/2 )
 
             } else if (myCharacter?.location!.x)! < closest.x {
-                print("rot turning right")
+                //print("rot turning right")
                 // myBoxNode?.rotation = SCNVector4(-1, -1, 0, r - 3.14/2)
 
             } else {
-                print("rot not turning left or right")
+                //print("rot not turning left or right")
             }
 
             // todo make this dynamic based if it's going up or down
@@ -140,7 +140,7 @@ class FriendlyBuilderFactory: FactoryFactory {
                     // reset the distance at this coordinate to be 100 cause there's no unit here anymore
                     appDelegate!.gridHackGameState.distanceBetweenFriendlyBuilders[Int(myCharacter!.location!.x)][Int((myCharacter!.location!.y))] = 100
 
-                    print("captured friendly square...onto the next one")
+                    //print("captured friendly square...onto the next one")
                     GridHackUtils().setToFriendlyOwned(closest: closest)
 
                     if appDelegate!.isMultiplayer {

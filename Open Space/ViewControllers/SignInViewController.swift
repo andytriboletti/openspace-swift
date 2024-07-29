@@ -17,7 +17,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
           if let user = Auth.auth().currentUser {
               if let email = user.email {
-                  print("Logged-in user email: \(email)")
+                  //print("Logged-in user email: \(email)")
                   dismiss(animated: false)
               }
           } else {
@@ -52,22 +52,22 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if let error = error {
-            print("Sign-in error: \(error.localizedDescription)")
+            //print("Sign-in error: \(error.localizedDescription)")
             return
         }
 
         if let currentUser = user {
             currentUser.getIDTokenForcingRefresh(true) { (idToken, error) in
                 if let idToken = idToken {
-                    print("ID token: \(idToken)")
+                    //print("ID token: \(idToken)")
 
                     let email = currentUser.email
                     let uid = currentUser.uid
-                    print("Email: ")
+                    //print("Email: ")
                     print(email!)
-                    print("uid: ")
+                    //print("uid: ")
                     print(uid)
-                    print("IdToken: ")
+                    //print("IdToken: ")
                     print(idToken)
                     Defaults[.email] = email!
                     Defaults[.authToken] = idToken
@@ -75,11 +75,11 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                     OpenspaceAPI.shared.loginWithEmail(email: email!, authToken: idToken) { result in
                         switch result {
                         case .success(let lastLocation):
-                            print("Last Location: \(lastLocation)")
+                            //print("Last Location: \(lastLocation)")
                             Defaults[.email] = email!
                             Defaults[.authToken] = idToken
 
-                            print("Successfully signed in with user: \(user!)")
+                            //print("Successfully signed in with user: \(user!)")
 
                             DispatchQueue.main.async {
                                 self.performSegue(withIdentifier: "goToSignedIn", sender: self)
@@ -89,13 +89,13 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                         }
                     }
                 } else if let error = error {
-                    print("Error occurred: \(error.localizedDescription)")
+                    //print("Error occurred: \(error.localizedDescription)")
                 } else {
-                    print("Both idToken and error are nil.")
+                    //print("Both idToken and error are nil.")
                 }
             }
         } else {
-            print("Successfully signed in with a user, but user data is nil.")
+            //print("Successfully signed in with a user, but user data is nil.")
         }
     }
 

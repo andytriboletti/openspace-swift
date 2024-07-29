@@ -123,7 +123,7 @@ class ReplicatorViewController: BackgroundImageViewController {
     }
 
     @IBAction func createNewItem() {
-        print("create new item")
+        //print("create new item")
         guard let text = inputText.text else { return }
 
         let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. ")
@@ -167,14 +167,14 @@ class ReplicatorViewController: BackgroundImageViewController {
             switch result {
             case .success(let success):
                 if success {
-                    print("Text sent successfully to server")
+                    //print("Text sent successfully to server")
                     // Handle success
                     DispatchQueue.main.async {
                         self.inputText.text = ""
                         self.showSuccessAlert()
                     }
                 } else {
-                    print("Failed to send text to server")
+                    //print("Failed to send text to server")
                     // Handle failure
                 }
             case .failure(let error):

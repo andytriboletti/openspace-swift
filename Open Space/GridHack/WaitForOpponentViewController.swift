@@ -12,7 +12,7 @@ import Toast_Swift
 class WaitForOpponentViewController: UIViewController, MultiplayerProtocol {
     func connectionNotEstablished() {
         if self.view.window == nil {
-            print("window is nil.. not presenting alert")
+            //print("window is nil.. not presenting alert")
             return
         }
             let alert = UIAlertController(title: "Can't Connect!",
@@ -25,7 +25,7 @@ class WaitForOpponentViewController: UIViewController, MultiplayerProtocol {
             self.present(alert, animated: false)
     }
     func endGame() {
-        print("shouldn't happen")
+        //print("shouldn't happen")
     }
     func opponentFound() {
         self.view.makeToast("Opponent Found")

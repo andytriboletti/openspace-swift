@@ -29,7 +29,7 @@ extension GameViewController {
                                 self.present(errorAlert, animated: true, completion: nil)
                             }
                         } else if let submittedUsername = submittedUsername {
-                            print("Username submitted successfully")
+                            //print("Username submitted successfully")
                             completion(submittedUsername)
                         }
                     }
@@ -43,7 +43,7 @@ extension GameViewController {
 
     @IBAction func landButtonClicked() {
         if appDelegate.gameState.locationState == LocationState.nearEarth {
-            print("land on earth")
+            //print("land on earth")
             Utils.shared.saveLocation(location: "onEarth", usesEnergy: "0")
 
             moveToPlanet()
@@ -52,7 +52,7 @@ extension GameViewController {
                 self.performSegue(withIdentifier: "landOnEarth", sender: self)
             }
         } else if appDelegate.gameState.locationState == LocationState.nearISS {
-            print("land on iss")
+            //print("land on iss")
             moveToPlanet()
             Utils.shared.saveLocation(location: "onISS", usesEnergy: "0")
 
@@ -61,7 +61,7 @@ extension GameViewController {
             }
 
         } else if appDelegate.gameState.locationState == LocationState.nearMoon {
-            print("land on the moon")
+            //print("land on the moon")
             moveToPlanet()
             Utils.shared.saveLocation(location: "onMoon", usesEnergy: "0")
 
@@ -69,7 +69,7 @@ extension GameViewController {
                 self.performSegue(withIdentifier: "landOnMoon", sender: self)
             }
         } else if appDelegate.gameState.locationState == LocationState.nearMars {
-            print("land on mars")
+            //print("land on mars")
             moveToPlanet()
             Utils.shared.saveLocation(location: "onMars", usesEnergy: "0")
 
@@ -80,7 +80,7 @@ extension GameViewController {
     }
 
     @IBAction func navigateToClicked() {
-        print("where do you want to go")
+        //print("where do you want to go")
         self.performSegue(withIdentifier: "selectDestination", sender: self)
     }
 
@@ -160,7 +160,7 @@ extension GameViewController {
     func askForUserName() {
         DispatchQueue.main.async {
             let myUsername = Defaults[.username]
-            print("my username:")
+            //print("my username:")
             print(myUsername)
             if myUsername == "" {
                 self.presentUsernameEntryView { enteredUsername in

@@ -122,11 +122,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if DEBUG
         GADInterstitialAd.load(withAdUnitID: MyData.testInterstitialAd, request: GADRequest()) { [weak self] ad, error in
             if let error = error {
-                print("Failed to load test travel interstitial ad with error: \(error.localizedDescription)")
+                //print("Failed to load test travel interstitial ad with error: \(error.localizedDescription)")
                 return
             }
             self?.interstitial = ad
-            print("Interstitial test ad loaded successfully.")
+            //print("Interstitial test ad loaded successfully.")
         }
 
 
@@ -134,11 +134,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #else
         GADInterstitialAd.load(withAdUnitID: MyData.travelInterstitialAd, request: GADRequest()) { [weak self] ad, error in
             if let error = error {
-                print("Failed to load travel interstitial ad with error: \(error.localizedDescription)")
+                //print("Failed to load travel interstitial ad with error: \(error.localizedDescription)")
                 return
             }
             self?.interstitial = ad
-            print("Interstitial ad loaded successfully.")
+            //print("Interstitial ad loaded successfully.")
         }
 
 #endif
@@ -202,10 +202,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
             } else if localPlayer.isAuthenticated {
                 // Player is authenticated
-                print("Player is authenticated")
+                //print("Player is authenticated")
             } else {
                 // Game Center is disabled or there was an error
-                print("Game Center authentication failed")
+                //print("Game Center authentication failed")
             }
         }
     }
@@ -217,9 +217,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         GKScore.report([score]) { error in
             if let error = error {
-                print("Error submitting score: \(error.localizedDescription)")
+                //print("Error submitting score: \(error.localizedDescription)")
             } else {
-                print("Score submitted successfully")
+                //print("Score submitted successfully")
             }
         }
     }
@@ -399,15 +399,15 @@ extension SCNNode {
 
 //extension AppDelegate: GADFullScreenContentDelegate {
 //    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-//        print("Interstitial ad failed to present with error: \(error.localizedDescription)")
+//        //print("Interstitial ad failed to present with error: \(error.localizedDescription)")
 //    }
 //
 ////    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-////        print("Interstitial ad did present.")
+////        //print("Interstitial ad did present.")
 ////    }
 //
 //    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-//        print("Interstitial ad did dismiss.")
+//        //print("Interstitial ad did dismiss.")
 //        // Preload another ad after the current one is dismissed
 //        preloadInterstitialAd()
 //    }

@@ -18,10 +18,10 @@ class Multiplayer: WebSocketDelegate {
     func sendMessage(message: Any) {
         let jsonMessage = JSON(message)
         guard let jsonMessageString = jsonMessage.rawString() else {
-            print("Failed to create JSON string")
+            //print("Failed to create JSON string")
             return
         }
-        print("sending message:", jsonMessageString)
+        //print("sending message:", jsonMessageString)
         sendString(string: jsonMessageString)
     }
 
@@ -84,7 +84,7 @@ class Multiplayer: WebSocketDelegate {
     }
 
     func didReceive(event: Starscream.WebSocketEvent, client: any Starscream.WebSocketClient) {
-        print("did receive \(event)")
+        //print("did receive \(event)")
         switch event {
         case .connected(let headers):
             handleConnected(headers: headers)
@@ -113,7 +113,7 @@ class Multiplayer: WebSocketDelegate {
 
     func handleConnected(headers: [String: String]) {
         isConnected = true
-        print("websocket is connected: \(headers)")
+        //print("websocket is connected: \(headers)")
         let message: [String: Any] = [
             "action": "add_to_waiting_to_join",
             "firebase_uid": Auth.auth().currentUser?.uid ?? ""
@@ -123,11 +123,11 @@ class Multiplayer: WebSocketDelegate {
 
     func handleDisconnected(reason: String, code: UInt16) {
         isConnected = false
-        print("websocket is disconnected: \(reason) with code: \(code)")
+        //print("websocket is disconnected: \(reason) with code: \(code)")
     }
 
     func handleText(string: String) {
-        print("Received text: \(string)")
+        //print("Received text: \(string)")
         let jsonMessage = JSON(parseJSON: string)
         let action = jsonMessage["action"].stringValue
         print(action)
@@ -152,46 +152,46 @@ class Multiplayer: WebSocketDelegate {
     }
 
     func handleBinary(data: Data) {
-        print("Received binary data: \(data)")
+        //print("Received binary data: \(data)")
     }
 
     func handlePing() {
-        print("Received ping")
+        //print("Received ping")
     }
 
     func handlePong() {
-        print("Received pong")
+        //print("Received pong")
     }
 
     func handleReconnectSuggested() {
-        print("Reconnect suggested")
+        //print("Reconnect suggested")
     }
 
     func handleCancelled() {
-        print("Connection cancelled")
+        //print("Connection cancelled")
         isConnected = false
     }
 
     func handleViabilityChanged() {
-        print("Viability changed")
+        //print("Viability changed")
     }
 
     func handlePeerClosed() {
-        print("Peer closed")
+        //print("Peer closed")
     }
 
     func handleError(error: Error?) {
-        print("error with socket server. is it running?")
+        //print("error with socket server. is it running?")
         print(error?.localizedDescription as Any)
     }
 
     func disconnectFromWebSocket() {
-        print("disconnecting from websocket")
+        //print("disconnecting from websocket")
         socket?.disconnect()
     }
 
     func connectToWebSocket() {
-        print("connect to web socket")
+        //print("connect to web socket")
         var request = URLRequest(url: URL(string: "wss://bernie-vs-trump.greenrobot.com:9001")!)
         request.timeoutInterval = 5
         socket = WebSocket(request: request, certPinner: nil)
@@ -208,7 +208,7 @@ class Multiplayer: WebSocketDelegate {
 
     @objc func connectionNotEstablished() {
         if !isConnected {
-            print("not connected, alert user")
+            //print("not connected, alert user")
             delegate?.connectionNotEstablished()
         } else {
             connectionTimer?.invalidate()
@@ -219,14 +219,14 @@ class Multiplayer: WebSocketDelegate {
     // Action handlers
     func handleOpponentFound(jsonMessage: JSON) {
         let opponentUsername = jsonMessage["opponent_username"].stringValue
-        print("opponent username is: \(opponentUsername)")
+        //print("opponent username is: \(opponentUsername)")
         delegate?.opponentFound()
     }
 
     func handleTappedPosition(jsonMessage: JSON) {
         let xCoord = jsonMessage["x"].intValue
         let yCoord = jsonMessage["y"].intValue
-        print("received tapped position for opponent x \(xCoord) y \(yCoord)")
+        //print("received tapped position for opponent x \(xCoord) y \(yCoord)")
         let location = CGPoint(x: xCoord, y: yCoord)
         GridHackUtils().setEnemyTapped(location: location)
     }
@@ -234,7 +234,7 @@ class Multiplayer: WebSocketDelegate {
     func handleEnemyOwned(jsonMessage: JSON) {
         let xCoord = jsonMessage["x"].intValue
         let yCoord = jsonMessage["y"].intValue
-        print("received enemy_owned x \(xCoord) y \(yCoord)")
+        //print("received enemy_owned x \(xCoord) y \(yCoord)")
         let location = CGPoint(x: xCoord, y: yCoord)
         GridHackUtils().setToEnemyOwned(closest: location)
     }
@@ -246,7 +246,7 @@ class Multiplayer: WebSocketDelegate {
         let finalY = jsonMessage["final_y"].intValue
         let characterType = jsonMessage["character_type"].stringValue
 
-        print("received enemy_moved initial_x \(initialX) initial_y \(initialY) final_x \(finalX) final_y \(finalY)")
+        //print("received enemy_moved initial_x \(initialX) initial_y \(initialY) final_x \(finalX) final_y \(finalY)")
         let location = CGPoint(x: initialX, y: initialY)
         let finalLocation = CGPoint(x: finalX, y: finalY)
         if let enemy = GridHackUtils().findEnemyUnitFromCoordinates(coordinates: location, enemyType: characterType) {
@@ -263,7 +263,7 @@ class Multiplayer: WebSocketDelegate {
                 break
             }
         } else {
-            print("can't move enemy it's nil")
+            //print("can't move enemy it's nil")
         }
     }
 
@@ -289,14 +289,14 @@ class Multiplayer: WebSocketDelegate {
         let xCoord = jsonMessage["x"].intValue
         let yCoord = jsonMessage["y"].intValue
         let characterType = jsonMessage["character_type"].stringValue
-        print("received enemy removed x \(xCoord) y \(yCoord)")
+        //print("received enemy removed x \(xCoord) y \(yCoord)")
         let location = CGPoint(x: xCoord, y: yCoord)
         print(location)
 
         if let unit = GridHackUtils().findFriendlyUnitFromCoordinates(coordinates: location, friendlyType: characterType) {
             GridHackUtils().removeFriendly(friendlyToRemove: unit)
         } else {
-            print("couldn't find enemy to remove")
+            //print("couldn't find enemy to remove")
         }
     }
 }

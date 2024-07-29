@@ -83,8 +83,8 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 //        let frame = calculateBackgroundFrame()
 //        backgroundImageView.frame = frame
 //        overlayView.frame = frame
-//        print("Background view frame updated: \(backgroundImageView.frame)")
-//        print("Main view frame: \(view.frame)")
+//        //print("Background view frame updated: \(backgroundImageView.frame)")
+//        //print("Main view frame: \(view.frame)")
 //    }
 
     deinit {
@@ -99,9 +99,9 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 //
 //            if let image = UIImage(named: "conenebula.jpg") {
 //                backgroundImageView.image = image
-//                print("Background image loaded successfully")
+//                //print("Background image loaded successfully")
 //            } else {
-//                print("Failed to load background image")
+//                //print("Failed to load background image")
 //                backgroundImageView.backgroundColor = .red
 //            }
 //
@@ -117,7 +117,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 
 //    private func applyFilterBasedOnUserInterfaceStyle() {
 //        guard let backgroundImage = backgroundImageView.image else {
-//            print("No background image to apply filter to")
+//            //print("No background image to apply filter to")
 //            return
 //        }
 //
@@ -130,9 +130,9 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 //
 //        if let filteredImage = filteredImage {
 //            backgroundImageView.image = filteredImage
-//            print("Filter applied based on user interface style: \(traitCollection.userInterfaceStyle)")
+//            //print("Filter applied based on user interface style: \(traitCollection.userInterfaceStyle)")
 //        } else {
-//            print("Failed to apply filter. Using original image.")
+//            //print("Failed to apply filter. Using original image.")
 //            backgroundImageView.image = backgroundImage
 //        }
 //    }
@@ -145,9 +145,9 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 //    }
 
     @objc func handlePurchaseCompletion(_ notification: Notification) {
-        print("handlePurchaseCompletion called")
+        //print("handlePurchaseCompletion called")
         Utils.shared.getLocation() {
-            print("Refreshing labels after location update")
+            //print("Refreshing labels after location update")
             DispatchQueue.main.async {
                 self.refreshLabels()
             }
@@ -222,7 +222,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradePassengerLimit)
         } else {
-            print("Product upgradePassengerLimit not available")
+            //print("Product upgradePassengerLimit not available")
         }
     }
 
@@ -230,7 +230,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeCargoLimit)
         } else {
-            print("Product upgradeCargoLimit not available")
+            //print("Product upgradeCargoLimit not available")
         }
     }
 
@@ -240,7 +240,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             self.purchaseUpgradePassengerLimit()
-            print("purchase upgrade premium")
+            //print("purchase upgrade premium")
         }
         alertController.addAction(okAction)
 
@@ -256,7 +256,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             self.purchaseUpgradeCargoLimit()
-            print("purchase upgrade premium")
+            //print("purchase upgrade premium")
         }
         alertController.addAction(okAction)
 
@@ -273,27 +273,27 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
 
         let upgradePassengerAction = UIAlertAction(title: "Upgrade Passenger Limit +1", style: .default) { action in
-            print("Upgrade Passenger Limit +1 selected")
+            //print("Upgrade Passenger Limit +1 selected")
             if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradePassengerLimit) {
                 self.showUpgradePassengerPurchaseAlert(price: price)
             } else {
                 self.showUpgradePassengerPurchaseAlert(price: "$0.99")
-                print("Product price not available")
+                //print("Product price not available")
             }
         }
 
         let upgradeCargoAction = UIAlertAction(title: "Upgrade Cargo Limit +1,000kg", style: .default) { action in
-            print("Upgrade Cargo Limit +1000kg selected")
+            //print("Upgrade Cargo Limit +1000kg selected")
             if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeCargoLimit) {
                 self.showUpgradeCargoPurchaseAlert(price: price)
             } else {
                 self.showUpgradeCargoPurchaseAlert(price: "$0.99")
-                print("Product price not available")
+                //print("Product price not available")
             }
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            print("Cancel selected")
+            //print("Cancel selected")
         }
 
         alertController.addAction(upgradePassengerAction)

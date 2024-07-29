@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var aboutButton: UIButton!
 
     @IBAction func aboutButtonAction() {
-        print("about")
+        //print("about")
 
         let alert = UIAlertController(title: "Election Game Credits",
                                       message: "Game Development & Design: Andy Triboletti of GreenRobot.\n\nDonkey, Elephant & Protester modeling and animation: Angel Ayala", preferredStyle: .alert)
@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func feedbackButtonAction() {
-        print("feedback")
+        //print("feedback")
         let configuration = FeedbackConfiguration(toRecipients: ["info+electiongame@greenrobot.com"], hidesAttachmentCell: true )
         let controller    = FeedbackViewController(configuration: configuration)
         navigationController?.pushViewController(controller, animated: true)
@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController {
 
         alert.addAction(UIAlertAction(title: "Delete Account Forever",
                                       style: .destructive, handler: {(_: UIAlertAction!) in
-            print("really delete")
+            //print("really delete")
             self.reallyDelete()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(_: UIAlertAction!) in
@@ -68,14 +68,14 @@ class SettingsViewController: UIViewController {
             completionHandler: { (data: DataResponse) in
             let json = JSON(data.value as Any)
 
-            print("deleted account result")
+            //print("deleted account result")
             print(json)
             let result: String = json["result"].stringValue
             print(result)
             if result == "error" {
-                print("error")
+                //print("error")
             } else if result == "success" {
-                print("success")
+                //print("success")
                 self.logoutOfFirebase()
                 self.performSegue(withIdentifier: "goToLoginFromSettings", sender: self)
             }
@@ -83,15 +83,15 @@ class SettingsViewController: UIViewController {
     }
 
     func logoutOfFirebase() {
-        print("logout of firebase")
+        //print("logout of firebase")
         let firebaseAuth = Auth.auth()
         do {
-            print("sign out")
+            //print("sign out")
             try firebaseAuth.signOut()
             self.performSegue(withIdentifier: "goToLoginFromSettings", sender: self)
 
         } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+            //print("Error signing out: %@", signOutError)
         }
     }
 

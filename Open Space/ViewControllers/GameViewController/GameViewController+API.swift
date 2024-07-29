@@ -19,7 +19,7 @@ extension GameViewController {
 
     func getLocation() {
         guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
-            print("Email or authToken is missing")
+            //print("Email or authToken is missing")
             return
         }
 
@@ -38,7 +38,7 @@ extension GameViewController {
     }
 
     private func handleLocationSuccess(data: LocationData) {
-        print("handleLocationSuccess called with data: \(data)")
+        //print("handleLocationSuccess called with data: \(data)")
 
         if let username = data.username, !username.isEmpty {
             Defaults[.username] = username
@@ -52,7 +52,7 @@ extension GameViewController {
             Defaults[.yourSpheres] = yourSpheresData
             Defaults[.neighborSpheres] = neighborSpheresData
         } catch {
-            print("Error converting spheres data: \(error)")
+            //print("Error converting spheres data: \(error)")
         }
 
         if let spaceStation = data.spaceStation,
@@ -152,7 +152,7 @@ extension GameViewController {
         if isValidUsername(username) {
             errorMessage = nil
             self.username = username
-            print("Username set: \(String(describing: self.username))")
+            //print("Username set: \(String(describing: self.username))")
 
             let email = Defaults[.email]
 
@@ -160,10 +160,10 @@ extension GameViewController {
                 switch result {
                 case .success:
                     Defaults[.username] = username
-                    print("Successfully submitted to server")
+                    //print("Successfully submitted to server")
                     completion(username, nil)
                 case .failure(let error):
-                    print("Error submitting to server: \(error.localizedDescription)")
+                    //print("Error submitting to server: \(error.localizedDescription)")
                     completion(nil, "Error submitting to server: \(error.localizedDescription)")
                 }
             }

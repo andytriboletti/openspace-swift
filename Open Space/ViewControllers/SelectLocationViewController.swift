@@ -35,7 +35,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
+        //print("selected")
         print(indexPath.row)
         print(indexPath.section)
         let energy = Defaults[.currentEnergy]

@@ -22,17 +22,17 @@ extension TravelViewController: GADFullScreenContentDelegate {
 
     /// Tells the delegate that the ad failed to present full screen content.
       func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
+        //print("Ad did fail to present full screen content.")
       }
 
       /// Tells the delegate that the ad will present full screen content.
       func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
+        //print("Ad will present full screen content.")
       }
 
       /// Tells the delegate that the ad dismissed full screen content.
       func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
+        //print("Ad did dismiss full screen content.")
 
           continueOntoGame()
           if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -122,7 +122,7 @@ class TravelViewController: UIViewController {
             NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem)
         } else {
 
-            print("NoFile")
+            //print("NoFile")
         }
 
     }
@@ -131,7 +131,7 @@ class TravelViewController: UIViewController {
     private func presentInterstitialAd() {
         DispatchQueue.main.async {
             guard let interstitial = self.interstitial else {
-                print("Interstitial ad not ready")
+                //print("Interstitial ad not ready")
                 return
             }
 

@@ -311,12 +311,12 @@ class OpenspaceAPI {
         }
 
         // Logging the request parameters
-        print("Request parameters: \(parameters)")
+        //print("Request parameters: \(parameters)")
 
         performSimpleRequest(request: request) { (result: Result<[String: Any], Error>) in
             switch result {
             case .success(let response):
-                print("Server response: \(response)")
+                //print("Server response: \(response)")
                 if let message = response["message"] as? String, message == "Inserted text prompt successfully." {
                     completion(.success(true))
                 } else {
@@ -442,7 +442,7 @@ class OpenspaceAPI {
 
     func getLocation(email: String, authToken: String, completion: @escaping (Result<LocationData, Error>) -> Void) {
         if Defaults[.appToken] == "" {
-            print("App Token Null")
+            //print("App Token Null")
             // shouldn't get here checked earlier
             return
         }
@@ -450,20 +450,20 @@ class OpenspaceAPI {
         let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": Defaults[.appToken]]
         let url = "\(serverURL)get-data"
 
-        print("Requesting location with parameters: \(parameters)")
+        //print("Requesting location with parameters: \(parameters)")
 
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            print("Received response: \(response)")
+            //print("Received response: \(response)")
 
             switch response.result {
             case .success(let value):
                 guard let json = value as? [String: Any] else {
-                    print("Invalid JSON format")
+                    //print("Invalid JSON format")
                     completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
                     return
                 }
 
-                print("Parsed JSON: \(json)")
+                //print("Parsed JSON: \(json)")
 
                 if let location = json["last_location"] as? String,
                    let currency = json["currency"] as? Int,
@@ -527,26 +527,26 @@ class OpenspaceAPI {
                         theNumberOfObjects: theNumberOfObjects
                     )
 
-                    print("Successfully parsed location data")
+                    //print("Successfully parsed location data")
                     completion(.success(locationData))
 
                 } else if let errorString = json["error"] as? String, errorString == "Invalid authToken." {
-                    print("Invalid authToken, refreshing token")
+                    //print("Invalid authToken, refreshing token")
                     self.refreshAuthToken { newToken, tokenError in
                         if let newToken = newToken {
                             Defaults[.authToken] = newToken
                             self.getLocation(email: email, authToken: newToken, completion: completion)
                         } else {
-                            print("Failed to refresh authToken")
+                            //print("Failed to refresh authToken")
                             completion(.failure(tokenError ?? NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
                         }
                     }
                 } else {
-                    print("Required fields missing in JSON response")
+                    //print("Required fields missing in JSON response")
                     completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
                 }
             case .failure(let error):
-                print("Request failed with error: \(error)")
+                //print("Request failed with error: \(error)")
                 completion(.failure(error))
             }
         }
@@ -572,7 +572,7 @@ class OpenspaceAPI {
                     print("Received message: \(text)")
                 case .data(let data):
                     if let text = String(data: data, encoding: .utf8) {
-                        print("Received message: \(text)")
+                        //print("Received message: \(text)")
                     }
                 @unknown default:
                     fatalError()

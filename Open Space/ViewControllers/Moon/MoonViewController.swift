@@ -43,7 +43,7 @@ class MoonViewController: UIViewController {
             viewController.modalPresentationStyle = .fullScreen
             self.present(viewController, animated: true, completion: nil)
         } else {
-            print("Failed to instantiate LobbyViewController from MainGridHack storyboard")
+            //print("Failed to instantiate LobbyViewController from MainGridHack storyboard")
         }
 
      }

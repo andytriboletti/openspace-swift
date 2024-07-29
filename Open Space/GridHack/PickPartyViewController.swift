@@ -18,13 +18,13 @@ class PickPartyViewController: UIViewController, PartyDelegate {
     }
 
     @IBAction func bernie() {
-        print("pick bernie")
+        //print("pick bernie")
         GridHackUtils().pickParty(party: "bernie", delegate: self)
 
     }
 
     @IBAction func trump() {
-        print("pick trump")
+        //print("pick trump")
         GridHackUtils().pickParty(party: "trump", delegate: self)
     }
 

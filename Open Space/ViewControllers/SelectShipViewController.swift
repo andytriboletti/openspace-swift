@@ -42,7 +42,7 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
+        //print("selected")
         print(indexPath.row)
         print(indexPath.section)
         if (collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell) != nil {

@@ -21,7 +21,7 @@ public class GameScene: SCNScene {
     }
 
     func drawGrid() {
-        print("drawing grid")
+        //print("drawing grid")
 
         let geometry = SCNBox(width: 0.90, height: 0.90,
                               length: 0.1, chamferRadius: 0.000)

@@ -41,7 +41,7 @@ class ExploreMoonViewController: UIViewController {
         #if !targetEnvironment(macCatalyst)
 
         do {
-            print("user id is")
+            //print("user id is")
             print(Defaults[.userId])
 #if DEBUG
             rewardedAd = try await GADRewardedAd.load(
@@ -60,7 +60,7 @@ class ExploreMoonViewController: UIViewController {
             serverSideVerificationOptions.userIdentifier = Defaults[.userId].description
             rewardedAd?.serverSideVerificationOptions = serverSideVerificationOptions
         } catch {
-            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+            //print("Rewarded ad failed to load with error: \(error.localizedDescription)")
         }
 
         #endif
@@ -128,31 +128,31 @@ class ExploreMoonViewController: UIViewController {
     func show() {
     #if !targetEnvironment(macCatalyst)
         guard let rewardedAd = rewardedAd else {
-        return print("Ad wasn't ready.")
+        return //print("Ad wasn't ready.")
       }
 
         // The UIViewController parameter is an optional.
         rewardedAd.present(fromRootViewController: nil) {
             let reward = rewardedAd.adReward
-            print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+            //print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
       }
     #endif
     }
 
     @objc func buttonTappedRewarded() {
-        print("rewarded tap")
+        //print("rewarded tap")
         show()
     }
 
    
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
-        print("Button tapped!")
+        //print("Button tapped!")
         OpenspaceAPI.shared.claimDailyTreasure(planet: "moon") { result in
             switch result {
             case .success(let (status, mineral, amount)):
                 // Handle response
-                print("Response from claim daily treasure: \(status)")
+                //print("Response from claim daily treasure: \(status)")
 
                 if status == "claimed" {
                     // Show a success message to the user on the main thread
@@ -188,7 +188,7 @@ class ExploreMoonViewController: UIViewController {
         OpenspaceAPI.shared.checkDailyTreasureAvailability(planet: "moon") { result in
             switch result {
             case .success(let response):
-                print("Response from check daily treasure availability: \(response)")
+                //print("Response from check daily treasure availability: \(response)")
 
                 // Assuming response is a JSON string and converting it to a dictionary
                 if let data = response.data(using: .utf8),
@@ -205,12 +205,12 @@ class ExploreMoonViewController: UIViewController {
                         }
                     }
                 } else {
-                    print("Unexpected response format")
+                    //print("Unexpected response format")
                     self.showError()
                 }
 
             case .failure(let error):
-                print("Error checking daily treasure availability: \(error.localizedDescription)")
+                //print("Error checking daily treasure availability: \(error.localizedDescription)")
                 self.showError()
             }
         }
@@ -359,7 +359,7 @@ class ExploreMoonViewController: UIViewController {
             // Handle successful loading
         } catch {
             // Handle any errors that occur during loading
-            print("Error loading rewarded ad: \(error)")
+            //print("Error loading rewarded ad: \(error)")
         }
     }
 

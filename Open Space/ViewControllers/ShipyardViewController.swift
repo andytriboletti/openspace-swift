@@ -11,7 +11,7 @@ import Defaults
 class ShipyardViewController: UIViewController {
 
     @IBAction func configureShipName() {
-        print("configure ship name")
+        //print("configure ship name")
         // 1. Create the alert controller.
         let alert = UIAlertController(title: "Ship Name", message: "Enter your Ship's Name", preferredStyle: .alert)
 
@@ -23,7 +23,7 @@ class ShipyardViewController: UIViewController {
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            print("Text field: \(String(describing: textField!.text))")
+            //print("Text field: \(String(describing: textField!.text))")
             Defaults[.shipName] = textField!.text!
         }))
 
@@ -33,7 +33,7 @@ class ShipyardViewController: UIViewController {
     }
 
     @IBAction func configureShipDesign() {
-        print("configure ship design")
+        //print("configure ship design")
     }
 
     /*

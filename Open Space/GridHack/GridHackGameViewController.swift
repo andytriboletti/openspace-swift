@@ -12,10 +12,10 @@ import SceneKit
 
 class GridHackGameViewController: UIViewController, MultiplayerProtocol {
     func connectionNotEstablished() {
-        print("shouldn't happen")
+        //print("shouldn't happen")
     }
     func opponentFound() {
-        print("shouldn't happen")
+        //print("shouldn't happen")
     }
     func endGame() {
         appDelegate.gridNode.enumerateChildNodes { (node, _) in
@@ -188,15 +188,15 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
             let hits = self.scnView!.hitTest(location, options: [SCNHitTestOption.rootNode: appDelegate.gridNode])
             if !hits.isEmpty {
                 let tappedNode = hits.first?.node
-                print("tapped: %@", tappedNode!.position)
-                print("tappedx: %@", tappedNode!.position.x)
-                print("tappedy: %@", tappedNode!.position.y)
+                //print("tapped: %@", tappedNode!.position)
+                //print("tappedx: %@", tappedNode!.position.x)
+                //print("tappedy: %@", tappedNode!.position.y)
                 if appDelegate.isMultiplayer {
                     appDelegate.multiplayer.tappedPosition(position: tappedNode!.position)
 
                 }
                 if appDelegate.gridHackGameState.points[Int(tappedNode!.position.x)][Int((tappedNode?.position.y)!)] == GridState.open {
-                    print("it's open")
+                    //print("it's open")
 
                     if appDelegate.isMultiplayer == false {
                         DumbAI.selectSquareToBeBuiltRandomly()
@@ -209,7 +209,7 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
                     checkForIdleUnits()
 
                 } else if appDelegate.gridHackGameState.points[Int(tappedNode!.position.x)][Int((tappedNode?.position.y)!)] == GridState.waitingForFriendlyConstruction {
-                    print("waiting for friendly construction - open now")
+                    //print("waiting for friendly construction - open now")
                     appDelegate.gridHackGameState.points[Int(tappedNode!.position.x)][Int((tappedNode?.position.y)!)] = GridState.open
                     let node = tappedNode!
                     node.geometry = node.geometry!.copy() as? SCNGeometry
@@ -232,7 +232,7 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
         checkForIdleEnemyHackers()
     }
     func checkForIdleBuilders() {
-        // print("check for idle")
+        // //print("check for idle")
         if appDelegate.gridHackGameState.idleBuilders?.count == 0 {
             return
         }
@@ -245,7 +245,7 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
 
     }
     func checkForIdleHackers() {
-        // print("check for idle hackers")
+        // //print("check for idle hackers")
         if appDelegate.gridHackGameState.idleHackers?.count == 0 {
             return
         }
@@ -257,7 +257,7 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
 
     }
     func checkForIdleEnemyHackers() {
-        // print("check for idle enemy hackers")
+        // //print("check for idle enemy hackers")
         if appDelegate.gridHackGameState.idleEnemyHackers?.count == 0 {
             return
         }
@@ -269,7 +269,7 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
     }
 
     func checkForIdleAttackers() {
-        // print("check for idle attackers")
+        // //print("check for idle attackers")
         if appDelegate.gridHackGameState.idleAttackers?.count == 0 {
             return
         }
@@ -281,7 +281,7 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
 
     }
     func checkForIdleEnemyAttackers() {
-        // print("check for idle enemy attackers")
+        // //print("check for idle enemy attackers")
         if appDelegate.gridHackGameState.idleEnemyAttackers!.count == 0 {
             return
         }
@@ -293,7 +293,7 @@ class GridHackGameViewController: UIViewController, MultiplayerProtocol {
 
     }
     func checkForIdleEnemyBuilders() {
-        // print("check for idle enemy builders")
+        // //print("check for idle enemy builders")
         if appDelegate.gridHackGameState.idleEnemyBuilders?.count == 0 {
             return
         }

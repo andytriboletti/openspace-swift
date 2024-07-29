@@ -33,11 +33,11 @@ struct UsernameEntryView: View {
     }
 
     func submitUsername() {
-        print("Entered username: \(enteredUsername)")
+        //print("Entered username: \(enteredUsername)")
         if isValidUsername(enteredUsername) {
             errorMessage = nil
             username = enteredUsername
-            print("Username set: \(username)")
+            //print("Username set: \(username)")
 
             let email = Defaults[.email]
 
@@ -45,7 +45,7 @@ struct UsernameEntryView: View {
                 DispatchQueue.main.async {
                     switch result {
                     case .success:
-                        print("Successfully submitted to server")
+                        //print("Successfully submitted to server")
                         completion(enteredUsername)
                         presentationMode.wrappedValue.dismiss()  // Dismiss the view
                     case .failure(let error):

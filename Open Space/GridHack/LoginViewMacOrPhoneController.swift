@@ -18,11 +18,11 @@ class LoginViewMacOrPhoneController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         #if targetEnvironment(macCatalyst)
-        print("UIKit running on macOS")
+        //print("UIKit running on macOS")
         self.performSegue(withIdentifier: "goToMacLogin", sender: self)
 
         #else
-        print("Your regular code")
+        //print("Your regular code")
         self.performSegue(withIdentifier: "goToPhoneLogin", sender: self)
 
         #endif

@@ -112,7 +112,7 @@ open class InfoOverlayScene: SKScene {
 
         quote = " Your Score: 0   Opponent Score: 0 "
         self.fontSize = getTimeAndInstructionsFontSize(quote: quote)
-        print("fontSize is \(fontSize)")
+        //print("fontSize is \(fontSize)")
         attributedQuote = NSMutableAttributedString(string: quote)
         attributes = [.backgroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(fontSize))]
         attributedQuote.addAttributes(attributes, range: NSRange(location: 0, length: quote.count))
@@ -127,7 +127,7 @@ open class InfoOverlayScene: SKScene {
         quote = " Time Left: 30s. Tap unselected squares. "
         // swiftlint:disable:next line_length
         let fontSize2 = getTimeAndInstructionsFontSize(quote: quote)
-        print("fontSize is \(fontSize2)")
+        //print("fontSize is \(fontSize2)")
         attributedQuote = NSMutableAttributedString(string: quote)
         attributes = [.backgroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(fontSize2))]
         attributedQuote.addAttributes(attributes, range: NSRange(location: 0, length: quote.count))
@@ -251,7 +251,7 @@ open class InfoOverlayScene: SKScene {
         if howManyUnits >= Common.maxUnitAmount {
             return false
         }
-        print("builders: \(howManyUnits)")
+        //print("builders: \(howManyUnits)")
         for xPoints in gs.points {
             for point in xPoints {
                 if point == GridState.waitingForFriendlyConstruction {
@@ -327,7 +327,7 @@ open class InfoOverlayScene: SKScene {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.attackerButton.colorBlendFactor = 0.0
                 }
-                print("add attacker")
+                //print("add attacker")
 
                 FriendlyAttackerFactory.spawnAttacker(character: nil)
 
@@ -344,7 +344,7 @@ open class InfoOverlayScene: SKScene {
                     self.builderButton.colorBlendFactor = 0.0
                 }
 
-                print("add builder")
+                //print("add builder")
 
                 FriendlyBuilderFactory.spawnBuilder(character: nil)
 
@@ -359,7 +359,7 @@ open class InfoOverlayScene: SKScene {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.hackerButton.colorBlendFactor = 0.0
                 }
-                print("add enemy hacker")
+                //print("add enemy hacker")
                 FriendlyHackerFactory.spawnHacker(character: nil)
 
                 if appDelegate!.isMultiplayer == false {

@@ -55,7 +55,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     // Method to initiate the purchase
     func purchaseProduct(with productIdentifier: String) {
         guard let product = products.first(where: { $0.productIdentifier == productIdentifier }) else {
-            print("Product not found")
+            //print("Product not found")
             return
         }
 
@@ -94,7 +94,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
             OpenspaceAPI.shared.sendReceiptToServer(receipt: receipt, productIdentifier: transaction.payment.productIdentifier) { result in
                 switch result {
                 case .success:
-                    print("Receipt successfully sent to server")
+                    //print("Receipt successfully sent to server")
 
                     // Check if the product identifier is for the premium subscription
                     if transaction.payment.productIdentifier == ProductIdentifiers.premiumSubscription {
@@ -115,7 +115,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
 
                     // Post a notification to inform about the successful purchase
                     NotificationCenter.default.post(name: .purchaseCompleted, object: nil, userInfo: ["productIdentifier": transaction.payment.productIdentifier])
-                    print("posting purchase copmleted notification")
+                    //print("posting purchase copmleted notification")
 
                 case .failure(let error):
                     print("Failed to send receipt to server: \(error)")
@@ -129,7 +129,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     private func failedTransaction(_ transaction: SKPaymentTransaction) {
         if let error = transaction.error as? SKError {
             if error.code != .paymentCancelled {
-                print("Transaction failed with error: \(error.localizedDescription)")
+                //print("Transaction failed with error: \(error.localizedDescription)")
             }
         }
         SKPaymentQueue.default().finishTransaction(transaction)

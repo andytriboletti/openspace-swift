@@ -25,7 +25,7 @@ class FriendlyAttackerFactory: FactoryFactory {
         if builderLocation == nil {
             guard let gs = gs else {
                 // Handle the case where gs is nil
-                print("GridHackGameState is nil")
+                //print("GridHackGameState is nil")
                 return // or continue, or handle the error appropriately
             }
 
@@ -83,7 +83,7 @@ class FriendlyAttackerFactory: FactoryFactory {
             if firstIndex != nil {
                 gs!.friendlys![firstIndex!].location = myBuilderLocation
             } else {
-                print("first index is nil in friendly attacker factory, can't edit location... returning")
+                //print("first index is nil in friendly attacker factory, can't edit location... returning")
                 return
             }
             myCharacter = gs!.friendlys![firstIndex!]
@@ -105,7 +105,7 @@ class FriendlyAttackerFactory: FactoryFactory {
 
             return
         } else {
-            print("closest enemy to attack with protester:")
+            //print("closest enemy to attack with protester:")
             print(closest!.characterType as Any)
             print(closest!.location as Any)
 
@@ -125,14 +125,14 @@ class FriendlyAttackerFactory: FactoryFactory {
 
         SCNTransaction.animationDuration = Double(path1.elements.count) * 0
         myBoxNode!.runAction(moveAction, completionHandler: {
-            print("complete")
+            //print("complete")
             if closest != nil {
                 gs!.distanceBetweenEnemyPoints[Int(closest!.location!.x)][Int((closest!.location!.y))] = 100
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + GameScene.TIMETOCAPTUREENEMYUNIT) {
                     let enemyToRemove = GridHackUtils().findEnemyUnitFromCoordinates(coordinates: closest!.location!, enemyType: closest?.characterType)
                     if enemyToRemove == nil {
-                        print("no enemy to remove-- returning")
+                        //print("no enemy to remove-- returning")
                         self.spawnAttacker(character: myCharacter)
 
                         return
@@ -144,30 +144,30 @@ class FriendlyAttackerFactory: FactoryFactory {
 
                     if enemyToRemove?.characterType == "attacker" {
                         // it's a tie - both characters disappear
-                        print("it's a tie removing friendly attacker")
+                        //print("it's a tie removing friendly attacker")
                         myBoxNode?.removeFromParentNode()
                         let xInt = Int(myCharacter!.location!.x) - 1
                         let yInt = Int(myCharacter!.location!.y) - 1
                         if gs!.distanceBetweenFriendlyBuilders.count >= xInt
                             && gs!.distanceBetweenFriendlyBuilders[xInt].count >= yInt {
-                            print("setting distance between units to 100")
+                            //print("setting distance between units to 100")
                             gs!.distanceBetweenFriendlyBuilders[xInt][yInt] = 100.0
 
                         } else {
                             assert(false)
-                            print("not setting distance... array out of range")
+                            //print("not setting distance... array out of range")
 
                         }
 
                         let firstIndex = gs!.friendlys!.firstIndex(of: myCharacter!)
                         if firstIndex == nil {
-                            print("can't remove already removed")
+                            //print("can't remove already removed")
                         } else {
                             appDelegate!.gridHackGameState.friendlys!.remove(at: firstIndex!)
                         }
                     } else { // it's a enemy builder or hacker that was removed
 
-                        print("it's not a tie... moving friendly attacker")
+                        //print("it's not a tie... moving friendly attacker")
 
                         let currentLocation = CGPoint(x: closest!.location!.x, y: closest!.location!.y)
                         myCharacter!.location = currentLocation
@@ -175,7 +175,7 @@ class FriendlyAttackerFactory: FactoryFactory {
 
                         var firstIndex = appDelegate!.gridHackGameState.friendlys?.firstIndex(of: myCharacter!)
                         if firstIndex == nil {
-                            print("friendlys doesnt contain character in friendlyAttackerFactory.. returning")
+                            //print("friendlys doesnt contain character in friendlyAttackerFactory.. returning")
                             return
                         }
                         gs!.friendlys![firstIndex!].location = currentLocation
@@ -189,7 +189,7 @@ class FriendlyAttackerFactory: FactoryFactory {
                             appDelegate!.gridHackGameState.friendlys![firstIndex!].location = currentLocation
                             self.spawnAttacker(character: myCharacter)
                         } else {
-                            print("first index is null friendly 2")
+                            //print("first index is null friendly 2")
                         }
 
                     }

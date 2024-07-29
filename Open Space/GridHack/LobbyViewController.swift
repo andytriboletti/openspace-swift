@@ -38,13 +38,13 @@ class LobbyViewController: UIViewController, PartyDelegate {
             viewController.modalPresentationStyle = .fullScreen
             self.present(viewController, animated: true, completion: nil)
         } else {
-            print("Failed to instantiate LobbyViewController from MainGridHack storyboard")
+            //print("Failed to instantiate LobbyViewController from MainGridHack storyboard")
         }
 
     }
 
     func updatedParty() {
-        print("updated party")
+        //print("updated party")
         // refresh
         refreshNoNetwork()
     }
@@ -62,7 +62,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
     @IBOutlet var teamLabel: UILabel?
 
     @IBAction func switchParty() {
-        print("switch party")
+        //print("switch party")
         if Defaults[.team] == "bernie" {
             self.sceneView!.scene = appDelegate.elephantScene
             Defaults[.team] = "trump"
@@ -126,7 +126,7 @@ class LobbyViewController: UIViewController, PartyDelegate {
         _ = appDelegate.session.request(url, method: .post, parameters: parameters).responseJSON(completionHandler: { (data: DataResponse) in
             let json = JSON(data.value as Any)
 
-            print("enter lobby")
+            //print("enter lobby")
             print(json)
             let result: String = json["status"].stringValue
             print(result)
@@ -142,15 +142,15 @@ class LobbyViewController: UIViewController, PartyDelegate {
                 let systemVariables = json["system_variables"]
                 let enableMultiplayer: Bool = systemVariables["enable_multiplayer"].boolValue
                 if enableMultiplayer {
-                    print("enable multiplayer")
+                    //print("enable multiplayer")
                     self.joinMultiplayerGameButton.isHidden = false
                 } else {
-                    print("disable multiplayer")
+                    //print("disable multiplayer")
                     self.joinMultiplayerGameButton.isHidden = true
 
                 }
 
-                print("enter lobby success")
+                //print("enter lobby success")
 
                 self.appDelegate.team = json["user"]["party"].stringValue
 
@@ -284,8 +284,8 @@ class LobbyViewController: UIViewController, PartyDelegate {
 
         myScene?.rootNode.enumerateHierarchy { (child, _)  in
             if !child.animationKeys.isEmpty {
-                print("child = \(child) -----------------")
-                print("child.aniationKeys = \(child.animationKeys) -----------------")
+                //print("child = \(child) -----------------")
+                //print("child.aniationKeys = \(child.animationKeys) -----------------")
                 animationPlayer = child.animationPlayer(forKey: child.animationKeys[0])
 
                 myScene!.rootNode.addAnimationPlayer(animationPlayer, forKey: "\(child)")
@@ -319,14 +319,14 @@ class LobbyViewController: UIViewController, PartyDelegate {
 
     func showAds() {
         let number = Int.random(in: 0 ..< Common.adFrequency )
-        print("random: \(number)")
+        //print("random: \(number)")
         #if targetEnvironment(macCatalyst)
         #else
 
 //            if appDelegate.interstitial.isReady && number == 0 {
 //                appDelegate.interstitial.present(fromRootViewController: self)
 //            } else {
-//              print("Ad wasn't ready")
+//              //print("Ad wasn't ready")
 //            }
 
         #endif

@@ -24,7 +24,7 @@ class Troll: SCNNode {
             animation.duration = range.duration
             return animation
         } else {
-            print("Failed to copy and cast CAAnimation")
+            //print("Failed to copy and cast CAAnimation")
             return nil
         }
     }
@@ -75,7 +75,7 @@ class Troll: SCNNode {
             let walkPlayer = SCNAnimationPlayer(animation: SCNAnimation(caAnimation: walkAnimation))
             self.body.addAnimationPlayer(walkPlayer, forKey: "walk")
         } else {
-            print("Failed to create walk animation")
+            //print("Failed to create walk animation")
         }
 
         if let deathAnimation = Troll.animation(from: fullAnimation, startingAtFrame: 1810, endingAtFrame: 1850) {
@@ -85,19 +85,19 @@ class Troll: SCNNode {
             let deathPlayer = SCNAnimationPlayer(animation: SCNAnimation(caAnimation: deathAnimation))
             self.body.addAnimationPlayer(deathPlayer, forKey: "death")
         } else {
-            print("Failed to create death animation")
+            //print("Failed to create death animation")
         }
 
         self.scale = SCNVector3(0.1, 0.1, 0.1)
     }
 
     func walk() {
-        print("+++ walk +++")
+        //print("+++ walk +++")
         self.body.animationPlayer(forKey: "walk")?.play()
     }
 
     func death() {
-        print("+++ death +++")
+        //print("+++ death +++")
         self.body.animationPlayer(forKey: "walk")?.stop(withBlendOutDuration: 0.3)
         self.body.animationPlayer(forKey: "death")?.play()
     }

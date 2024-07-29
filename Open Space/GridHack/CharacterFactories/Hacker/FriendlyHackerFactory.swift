@@ -66,7 +66,7 @@ class FriendlyHackerFactory: FactoryFactory {
             if firstIndex != nil {
                 gs!.friendlys![firstIndex!].location = myBuilderLocation
             } else {
-                print("first index is nil, can't edit location")
+                //print("first index is nil, can't edit location")
                 // assert(false)
                 return
             }
@@ -79,7 +79,7 @@ class FriendlyHackerFactory: FactoryFactory {
         myBoxNode!.runAction(moveAction)
 
         let closest = GridHackUtils().getClosestEnemyOwned(currentBuilderLocation: myBuilderLocation)
-        print("closest enemy owned:")
+        //print("closest enemy owned:")
         print(closest)
         if Int(closest.x) == 100 {
 
@@ -95,7 +95,7 @@ class FriendlyHackerFactory: FactoryFactory {
             setToNoneOwned(closest: myBuilderLocation)
             _ = GridHackUtils().getClosestFriendly(fromCoordinate: myBuilderLocation)
 
-            // print("returning idle hacker")
+            // //print("returning idle hacker")
             return
         } else {
             var moveAction = SCNAction.move(to: SCNVector3(x: Float(myBuilderLocation.x), y: Float(myBuilderLocation.y), z: 0.0), duration: 0.0)
@@ -127,7 +127,7 @@ class FriendlyHackerFactory: FactoryFactory {
                     // reset the distance at this coordinate to be 100 cause there's no unit here anymore
                     gs!.distanceBetweenFriendlyHackers[Int(myCharacter!.location!.x)][Int((myCharacter!.location!.y))] = 100
 
-                    print("freed enemy square...onto the next one")
+                    //print("freed enemy square...onto the next one")
 
                     setToNoneOwned(closest: closest)
 

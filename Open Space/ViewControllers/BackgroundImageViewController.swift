@@ -67,9 +67,9 @@ class BackgroundImageViewController: UIViewController {
 
         if let image = UIImage(named: backgroundImageName) {
             backgroundImageView.image = image
-            print("Background image loaded successfully")
+            //print("Background image loaded successfully")
         } else {
-            print("Failed to load background image")
+            //print("Failed to load background image")
             backgroundImageView.backgroundColor = .red
         }
     }
@@ -84,7 +84,7 @@ class BackgroundImageViewController: UIViewController {
 
     private func applyFilterBasedOnUserInterfaceStyle() {
         guard let backgroundImageView = backgroundImageView, let backgroundImage = backgroundImageView.image else {
-            print("No background image to apply filter to")
+            //print("No background image to apply filter to")
             return
         }
 
@@ -97,9 +97,9 @@ class BackgroundImageViewController: UIViewController {
 
         if let filteredImage = filteredImage {
             backgroundImageView.image = filteredImage
-            print("Filter applied based on user interface style: \(traitCollection.userInterfaceStyle.rawValue)")
+            //print("Filter applied based on user interface style: \(traitCollection.userInterfaceStyle.rawValue)")
         } else {
-            print("Failed to apply filter. Using original image.")
+            //print("Failed to apply filter. Using original image.")
             backgroundImageView.image = backgroundImage
         }
     }

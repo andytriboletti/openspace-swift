@@ -32,12 +32,12 @@ class AccountViewController: BackgroundImageViewController {
         return
         //todo in-app purchase disabled for testflight. todo re-enable when released
 
-        print("upgrade to premium")
+        //print("upgrade to premium")
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
             showPremiumPurchaseAlert(price: price)
         } else {
             showPremiumPurchaseAlert(price: "$4.99")
-            print("Product price not available")
+            //print("Product price not available")
         }
     }
     func showPremiumPurchaseAlert(price: String) {
@@ -49,7 +49,7 @@ class AccountViewController: BackgroundImageViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             // Call your method to initiate the purchase here
             self.purchaseUpgradePremium()
-            print("purchase upgrade premium")
+            //print("purchase upgrade premium")
         }
         alertController.addAction(okAction)
 
@@ -70,7 +70,7 @@ class AccountViewController: BackgroundImageViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             // Call your method to initiate the purchase here
             self.purchaseEnergyRefill()
-            print("purchase refill energy")
+            //print("purchase refill energy")
         }
         alertController.addAction(okAction)
 
@@ -90,7 +90,7 @@ class AccountViewController: BackgroundImageViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             // Call your method to initiate the purchase here
             self.purchaseUpgradeMaxEnergy()
-            print("purchase upgrade max energy")
+            //print("purchase upgrade max energy")
         }
         alertController.addAction(okAction)
 
@@ -110,7 +110,7 @@ class AccountViewController: BackgroundImageViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             // Call your method to initiate the purchase here
             self.purchaseSmallMineral()
-            print("purchase small Mineral")
+            //print("purchase small Mineral")
         }
         alertController.addAction(okAction)
 
@@ -130,7 +130,7 @@ class AccountViewController: BackgroundImageViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             // Call your method to initiate the purchase here
             self.purchaseLargeMineral()
-            print("purchase small Mineral")
+            //print("purchase small Mineral")
         }
         alertController.addAction(okAction)
 
@@ -146,21 +146,21 @@ class AccountViewController: BackgroundImageViewController {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeMaxEnergy)
         } else {
-            print("Product purchaseUpgradeMaxEnergy not available")
+            //print("Product purchaseUpgradeMaxEnergy not available")
         }
     }
     func purchaseSmallMineral() {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.smallMineralPack)
         } else {
-            print("Product smallMineralPack not available")
+            //print("Product smallMineralPack not available")
         }
     }
     func purchaseLargeMineral() {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.largeMineralPack)
         } else {
-            print("Product largeMineralPack not available")
+            //print("Product largeMineralPack not available")
         }
     }
 
@@ -168,14 +168,14 @@ class AccountViewController: BackgroundImageViewController {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.premiumSubscription)
         } else {
-            print("Product purchaseUpgradePremium not available")
+            //print("Product purchaseUpgradePremium not available")
         }
     }
     func purchaseEnergyRefill() {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.refillEnergy)
         } else {
-            print("Product purchaseEnergyRefill not available")
+            //print("Product purchaseEnergyRefill not available")
         }
     }
 
@@ -184,12 +184,12 @@ class AccountViewController: BackgroundImageViewController {
         return
         //todo in-app purchase disabled for testflight. todo re-enable when released
 
-        print("purchaseUpgradeMaxEnergy")
+        //print("purchaseUpgradeMaxEnergy")
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeMaxEnergy) {
             showPurchaseAlert(price: price)
         } else {
             showPurchaseAlert(price: "$0.99")
-            print("Product price not available")
+            //print("Product price not available")
         }
     }
 
@@ -197,26 +197,26 @@ class AccountViewController: BackgroundImageViewController {
         return
         //todo in-app purchase disabled for testflight. todo re-enable when released
 
-        print("buysmallMineralPack")
+        //print("buysmallMineralPack")
 
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.smallMineralPack) {
             showMineralPurchaseAlert(price: price)
         } else {
             showMineralPurchaseAlert(price: "$0.99")
-            print("Product smallMineralPack price not available")
+            //print("Product smallMineralPack price not available")
         }
     }
     @IBAction func buyLargeMineralPack(_ sender: UIButton) {
         return
         //todo in-app purchase disabled for testflight. todo re-enable when released
 
-        print("buyLargeMineralPack")
+        //print("buyLargeMineralPack")
 
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.largeMineralPack) {
             showLargeMineralPurchaseAlert(price: price)
         } else {
             showLargeMineralPurchaseAlert(price: "$2.99")
-            print("Product largeMineralPack price not available")
+            //print("Product largeMineralPack price not available")
         }
     }
 
@@ -231,24 +231,24 @@ class AccountViewController: BackgroundImageViewController {
            alert = UIAlertController(title: "Purchase Energy Refill", message: "Purchase Energy Refill To Max For $0.99", preferredStyle: .alert)
            let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
                // Handle purchase action
-               print("purchase energy refill")
+               //print("purchase energy refill")
            })
            alert.addAction(purchaseAction)
            #else
            alert = UIAlertController(title: "Refill Energy", message: "Watch a Rewarded Ad to Refill Energy or Purchase Energy Refill To Max", preferredStyle: .alert)
            let watchAdAction = UIAlertAction(title: "Watch Ad", style: .default, handler: { _ in
                // Handle watch ad action
-               print("watch ad to refill energy")
+               //print("watch ad to refill energy")
                self.show()
            })
            let purchaseAction = UIAlertAction(title: "Purchase", style: .default, handler: { _ in
                // Handle purchase action
-               print("purchase energy refill")
+               //print("purchase energy refill")
                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.refillEnergy) {
                    self.showEnergyRefillPurchaseAlert(price: price)
                } else {
                    self.showEnergyRefillPurchaseAlert(price: "$0.99")
-                   print("Product refill energy price not available")
+                   //print("Product refill energy price not available")
                }
 
 
@@ -271,7 +271,7 @@ class AccountViewController: BackgroundImageViewController {
         // OK Action
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             // Perform action upon OK
-            print("OK tapped")
+            //print("OK tapped")
 
             let email = Defaults[.email]
             OpenspaceAPI.shared.resetUsername(email: email) { result in
@@ -279,12 +279,12 @@ class AccountViewController: BackgroundImageViewController {
                 case .success:
                     DispatchQueue.main.async {
                         Defaults[.username] = ""
-                        print("Successfully reset username submitted to server")
+                        //print("Successfully reset username submitted to server")
 
                         // Use the Utils class to present the username entry
                         Utils.presentUsernameEntry(from: self) { enteredUsername in
                             Defaults[.username] = enteredUsername
-                            print("New username entered: \(enteredUsername)")
+                            //print("New username entered: \(enteredUsername)")
                             self.updateUsernameLabel()
                         }
                     }
@@ -298,7 +298,7 @@ class AccountViewController: BackgroundImageViewController {
         // Cancel Action
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             // Perform action upon Cancel
-            print("Cancel tapped")
+            //print("Cancel tapped")
             // Add your logic here, if needed
         }
         alertController.addAction(cancelAction)
@@ -314,14 +314,14 @@ class AccountViewController: BackgroundImageViewController {
             // Handle successful loading
         } catch {
             // Handle any errors that occur during loading
-            print("Error loading rewarded ad: \(error)")
+            //print("Error loading rewarded ad: \(error)")
         }
     }
     func loadRewardedAd() async {
         #if !targetEnvironment(macCatalyst)
 
         do {
-            print("user id is")
+            //print("user id is")
             print(Defaults[.userId])
 
 
@@ -341,7 +341,7 @@ class AccountViewController: BackgroundImageViewController {
             serverSideVerificationOptions.userIdentifier = Defaults[.userId].description
             rewardedAd?.serverSideVerificationOptions = serverSideVerificationOptions
         } catch {
-            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+            //print("Rewarded ad failed to load with error: \(error.localizedDescription)")
         }
 
         #endif
@@ -349,13 +349,13 @@ class AccountViewController: BackgroundImageViewController {
     func show() {
     #if !targetEnvironment(macCatalyst)
         guard let rewardedAd = rewardedAd else {
-        return print("Ad wasn't ready.")
+        return //print("Ad wasn't ready.")
       }
 
         // The UIViewController parameter is an optional.
         rewardedAd.present(fromRootViewController: nil) {
             let reward = rewardedAd.adReward
-            print("Refill Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+            //print("Refill Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
             //update energy label
             self.energyLabel.text = "   Energy: \(Defaults[.totalEnergy]) out of \(Defaults[.totalEnergy])   "
 
@@ -364,7 +364,7 @@ class AccountViewController: BackgroundImageViewController {
     }
 
 //    @objc func buttonTappedRewarded() {
-//        print("rewarded tap")
+//        //print("rewarded tap")
 //        show()
 //    }
 
@@ -375,7 +375,7 @@ class AccountViewController: BackgroundImageViewController {
                do {
                    try Auth.auth().signOut()
                } catch let signOutError as NSError {
-                   print("Error signing out: \(signOutError.localizedDescription)")
+                   //print("Error signing out: \(signOutError.localizedDescription)")
                }
 
                self?.deleteUser()
@@ -428,7 +428,7 @@ class AccountViewController: BackgroundImageViewController {
 
             // Perform any additional actions or UI updates after sign out
         } catch let signOutError as NSError {
-            print("Error signing out: \(signOutError.localizedDescription)")
+            //print("Error signing out: \(signOutError.localizedDescription)")
         }
 
     }
@@ -444,7 +444,7 @@ class AccountViewController: BackgroundImageViewController {
             switch result {
             case .success(let message):
                 // User deleted successfully
-                print("Success: \(message)")
+                //print("Success: \(message)")
 
                 // Clear all stored values
                 Defaults.removeAll()
@@ -462,13 +462,13 @@ class AccountViewController: BackgroundImageViewController {
     // Define the callback method with @objc attribute
       @objc func upgradeAction() {
           // Handle the button tap event
-          print("Upgrade button tapped")
+          //print("Upgrade button tapped")
           // Add your custom logic here
       }
     // Define the callback method with @objc attribute
       @objc func manageAction() {
           // Handle the button tap event
-          print("Manage Your Account button tapped")
+          //print("Manage Your Account button tapped")
           // Add your custom logic here
           showSubscriptionManagement()
 
@@ -494,10 +494,10 @@ class AccountViewController: BackgroundImageViewController {
     }
 
     @objc func handlePurchaseCompletion(_ notification: Notification) {
-          print("handlePurchaseCompletion called")
+          //print("handlePurchaseCompletion called")
           // Refresh Defaults and labels
         Utils.shared.getLocation() {
-              print("Refreshing labels after location update")
+              //print("Refreshing labels after location update")
               DispatchQueue.main.async {
                   self.refreshLabels()
               }
@@ -505,7 +505,7 @@ class AccountViewController: BackgroundImageViewController {
       }
 
       func refreshLabels() {
-          print("refreshing labels")
+          //print("refreshing labels")
           self.energyLabel.text = "   Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])   "
           self.updateUsernameLabel()
           self.updateAccountTypeLabel()

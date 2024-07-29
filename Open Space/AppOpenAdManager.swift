@@ -39,7 +39,7 @@ class AppOpenAdManager: NSObject {
         appOpenAd?.fullScreenContentDelegate = self
 
     } catch {
-      print("App open ad failed to load with error: \(error.localizedDescription)")
+      //print("App open ad failed to load with error: \(error.localizedDescription)")
     }
     isLoadingAd = false
   }
@@ -80,7 +80,7 @@ class AppOpenAdManager: NSObject {
 // MARK: - GADFullScreenContentDelegate methods
 extension AppOpenAdManager: GADFullScreenContentDelegate {
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    print("App open ad will be presented.")
+    //print("App open ad will be presented.")
   }
 
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
