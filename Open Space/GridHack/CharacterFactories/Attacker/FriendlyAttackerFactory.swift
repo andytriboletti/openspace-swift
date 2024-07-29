@@ -106,8 +106,8 @@ class FriendlyAttackerFactory: FactoryFactory {
             return
         } else {
             //print("closest enemy to attack with protester:")
-            print(closest!.characterType as Any)
-            print(closest!.location as Any)
+            //print(closest!.characterType as Any)
+            //print(closest!.location as Any)
 
         }
         let r: Float =    Float(getBearingBetweenTwoPoints1(point1: myCharacter!.location!, point2: closest!.location!))

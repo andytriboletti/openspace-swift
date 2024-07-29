@@ -198,7 +198,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         cell.backgroundView = bgView
 
         if indexPath.section == 1 {
-            cell.textLabel?.text = "   Coming soon: Ability to carry mission supplies.   "
+            cell.textLabel?.text = "Coming soon: Ability to carry mission supplies."
         } else {
             let mineral = minerals[indexPath.row]
             cell.textLabel?.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"

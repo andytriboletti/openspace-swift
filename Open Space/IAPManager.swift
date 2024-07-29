@@ -36,13 +36,13 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     // Delegate method to receive product information
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
-        print(products.description)
+        //print(products.description)
     }
 
     // Method to get the price of a product
     func getPrice(for productIdentifier: String) -> String? {
-        print(products.description)
-        print(productIdentifier)
+        //print(products.description)
+        //print(productIdentifier)
         if let product = products.first(where: { $0.productIdentifier == productIdentifier }) {
             let priceFormatter = NumberFormatter()
             priceFormatter.numberStyle = .currency
@@ -106,7 +106,8 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
                         OpenspaceAPI.shared.addSubscription(userId: currentUserId, originalTransactionId: originalTransactionId, productIdentifier: transaction.payment.productIdentifier) { result in
                             switch result {
                             case .success:
-                                print("Subscription successfully added to server")
+                                break
+                                //print("Subscription successfully added to server")
                             case .failure(let error):
                                 print("Failed to add subscription to server: \(error)")
                             }

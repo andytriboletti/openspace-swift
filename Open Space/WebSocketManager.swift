@@ -27,11 +27,14 @@ class WebSocketManager: WebSocketDelegate {
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
         switch event {
         case .connected(let headers):
-            print("Connected to WebSocket server with headers: \(headers)")
+             break
+            //print("Connected to WebSocket server with headers: \(headers)")
         case .disconnected(let reason, let code):
-            print("Disconnected from WebSocket server: \(reason) (code: \(code))")
+            break
+            //print("Disconnected from WebSocket server: \(reason) (code: \(code))")
         case .text(let string):
-            print("Received text: \(string)")
+            break
+            //print("Received text: \(string)")
         case .ping:
             break
         case .pong:

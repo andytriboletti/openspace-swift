@@ -130,7 +130,7 @@ class Multiplayer: WebSocketDelegate {
         //print("Received text: \(string)")
         let jsonMessage = JSON(parseJSON: string)
         let action = jsonMessage["action"].stringValue
-        print(action)
+        //print(action)
         switch action {
         case "opponent_found":
             handleOpponentFound(jsonMessage: jsonMessage)
@@ -182,7 +182,7 @@ class Multiplayer: WebSocketDelegate {
 
     func handleError(error: Error?) {
         //print("error with socket server. is it running?")
-        print(error?.localizedDescription as Any)
+        //print(error?.localizedDescription as Any)
     }
 
     func disconnectFromWebSocket() {
@@ -291,7 +291,7 @@ class Multiplayer: WebSocketDelegate {
         let characterType = jsonMessage["character_type"].stringValue
         //print("received enemy removed x \(xCoord) y \(yCoord)")
         let location = CGPoint(x: xCoord, y: yCoord)
-        print(location)
+        //print(location)
 
         if let unit = GridHackUtils().findFriendlyUnitFromCoordinates(coordinates: location, friendlyType: characterType) {
             GridHackUtils().removeFriendly(friendlyToRemove: unit)

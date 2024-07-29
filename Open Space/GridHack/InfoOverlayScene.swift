@@ -46,7 +46,7 @@ open class InfoOverlayScene: SKScene {
         return Float(InfoOverlayScene.calculateOptimalFontSize(textLength: CGFloat(quote.count), boundingBox: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.frame.size.width - 20, height: self.getHeightForTimeAndInstructions()))))
     }
     func getFontSizeForUnits() -> CGFloat {
-        print(GridHackUtils().modelIdentifier())
+        //print(GridHackUtils().modelIdentifier())
         var fontSize = 20.0
         if GridHackUtils().modelIdentifier() == "iPhone8,4" {
             fontSize = 16.0

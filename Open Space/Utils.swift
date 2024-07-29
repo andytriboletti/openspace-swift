@@ -94,7 +94,7 @@ class Utils {
                 return
             }
             //print("inside getLocation 123")
-            print(result)
+            //print(result)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
@@ -182,11 +182,11 @@ class Utils {
                 //print("openspace: success savign location")
                 break
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+                //print("Error: \(error.localizedDescription)")
                 if let nsError = error as NSError? {
-                    print("Error Domain: \(nsError.domain)")
-                    print("Error Code: \(nsError.code)")
-                    print("Error UserInfo: \(nsError.userInfo)")
+                    //print("Error Domain: \(nsError.domain)")
+                    //print("Error Code: \(nsError.code)")
+                    //print("Error UserInfo: \(nsError.userInfo)")
                 }
             }
         }

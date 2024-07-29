@@ -127,7 +127,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
 
             if let htmlContent = result as? String {
                 //print("Page HTML content:")
-                print(htmlContent)
+                //print(htmlContent)
 
                 if htmlContent.contains("<body>1<script") {
                     //print("Detected problematic HTML content, reloading original page...")

@@ -21,7 +21,7 @@ extension GameViewController {
                     self.submitUsername(username: username) { submittedUsername, errorMessage in
                         if let errorMessage = errorMessage {
                             DispatchQueue.main.async {
-                                print(errorMessage)
+                                //print(errorMessage)
                                 let errorAlert = UIAlertController(title: "Error", message: "Please select a new username. The username '\(username)' is already taken.", preferredStyle: .alert)
                                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                                     self.presentUsernameEntryView(completion: completion)
@@ -161,7 +161,7 @@ extension GameViewController {
         DispatchQueue.main.async {
             let myUsername = Defaults[.username]
             //print("my username:")
-            print(myUsername)
+            //print(myUsername)
             if myUsername == "" {
                 self.presentUsernameEntryView { enteredUsername in
                     self.username = enteredUsername

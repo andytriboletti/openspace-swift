@@ -142,7 +142,7 @@ class MarsViewController: UIViewController {
             baseNode.addChildNode(childNode)
             baseNode.scale = SCNVector3(0.50, 0.50, 0.50)
             baseNode.position = SCNVector3(0, 0, 0)
-            // print(child.animationKeys)
+            // //print(child.animationKeys)
 
         }
 

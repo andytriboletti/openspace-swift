@@ -49,11 +49,11 @@ class RegisterViewController: UIViewController {
         }
 
         _ = appDelegate.session.request(url, method: .post, parameters: parameters).responseJSON(completionHandler: { (data: DataResponse) in
-            // print(data.response.debugDescription)
+            // //print(data.response.debugDescription)
             let json = JSON(data.value as Any)
 
             //print("register")
-            print(json)
+            //print(json)
             let result: String = json["result"].stringValue
             if result == "success" {
                 //print("success registering")
@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController {
                     self.pleasePick.text = "Username taken. Please try again."
                 }
                 //print("error registering")
-                print(parameters.description)
+                //print(parameters.description)
             }
         })
 

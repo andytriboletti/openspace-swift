@@ -569,7 +569,8 @@ class OpenspaceAPI {
             case .success(let message):
                 switch message {
                 case .string(let text):
-                    print("Received message: \(text)")
+                    break
+                    //print("Received message: \(text)")
                 case .data(let data):
                     if let text = String(data: data, encoding: .utf8) {
                         //print("Received message: \(text)")

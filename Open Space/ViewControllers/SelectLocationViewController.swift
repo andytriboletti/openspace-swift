@@ -36,8 +36,8 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("selected")
-        print(indexPath.row)
-        print(indexPath.section)
+        //print(indexPath.row)
+        //print(indexPath.section)
         let energy = Defaults[.currentEnergy]
         if(energy == 0) {
 
@@ -90,7 +90,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
                     whereString = "nearNothing"
                 }
                 
-                print(whereString) // Output: "premium"
+                //print(whereString) // Output: "premium"
                 
                 Utils.shared.saveLocation(location: whereString, usesEnergy: "1")
                 Defaults[.traveling] = "true"

@@ -71,7 +71,7 @@ class FriendlyBuilderFactory: FactoryFactory {
 
         let closest = GridHackUtils().getClosestPendingConstruction(currentBuilderLocation: myBuilderLocation)
         //print("closest pending construction:")
-        print(closest)
+        //print(closest)
         if Int(closest.x) == 100 {
 
             let builder = myCharacter!

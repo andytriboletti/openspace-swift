@@ -43,8 +43,8 @@ class SelectShipViewController: AlertViewController, UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("selected")
-        print(indexPath.row)
-        print(indexPath.section)
+        //print(indexPath.row)
+        //print(indexPath.section)
         if (collectionView.cellForItem(at: indexPath) as? LocationCollectionViewCell) != nil {
             // cell.backgroundColor = .red
             // appDelegate.gameState.locationState = LocationState.allCases[indexPath.row]

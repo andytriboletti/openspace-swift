@@ -69,9 +69,9 @@ class SettingsViewController: UIViewController {
             let json = JSON(data.value as Any)
 
             //print("deleted account result")
-            print(json)
+            //print(json)
             let result: String = json["result"].stringValue
-            print(result)
+            //print(result)
             if result == "error" {
                 //print("error")
             } else if result == "success" {

@@ -585,11 +585,11 @@ class GridHackUtils {
         ]
 
         _ = appDelegate.session.request(url, method: .post, parameters: parameters).responseJSON(completionHandler: { (data: DataResponse) in
-            // print(data.response.debugDescription)
+            // //print(data.response.debugDescription)
             let json = JSON(data.value as Any)
 
             //print("update party")
-            print(json)
+            //print(json)
             let result: String = json["result"].stringValue
             if result == "success" {
                 //print("success updating party")
@@ -597,7 +597,7 @@ class GridHackUtils {
 
             } else {
                 //print("error updating party")
-                print(parameters.description)
+                //print(parameters.description)
             }
         })
     }

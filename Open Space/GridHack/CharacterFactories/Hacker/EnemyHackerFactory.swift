@@ -85,7 +85,7 @@ class EnemyHackerFactory: FactoryFactory {
 
         let closest = GridHackUtils().getClosestFriendlyOwned(currentBuilderLocation: myBuilderLocation)
         //print("closest friendly owned:")
-        print(closest)
+        //print(closest)
         if Int(closest.x) == 100 {
 
             let builder = myCharacter!

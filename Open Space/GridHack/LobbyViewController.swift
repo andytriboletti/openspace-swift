@@ -127,9 +127,9 @@ class LobbyViewController: UIViewController, PartyDelegate {
             let json = JSON(data.value as Any)
 
             //print("enter lobby")
-            print(json)
+            //print(json)
             let result: String = json["status"].stringValue
-            print(result)
+            //print(result)
             if result == "error" {
                 let message: String = json["message"].stringValue
                 if message == "user-missing" {

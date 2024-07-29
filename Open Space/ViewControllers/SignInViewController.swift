@@ -64,11 +64,11 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                     let email = currentUser.email
                     let uid = currentUser.uid
                     //print("Email: ")
-                    print(email!)
+                    //print(email!)
                     //print("uid: ")
-                    print(uid)
+                    //print(uid)
                     //print("IdToken: ")
-                    print(idToken)
+                    //print(idToken)
                     Defaults[.email] = email!
                     Defaults[.authToken] = idToken
 

@@ -322,7 +322,7 @@ class AccountViewController: BackgroundImageViewController {
 
         do {
             //print("user id is")
-            print(Defaults[.userId])
+            //print(Defaults[.userId])
 
 
 #if DEBUG

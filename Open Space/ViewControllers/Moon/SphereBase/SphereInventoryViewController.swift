@@ -12,7 +12,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             let modelPrompt = completedModels[indexPath.row].textPrompt
             let modelId = completedModels[indexPath.row].meshId
             //print("mesh zip url")
-            print(meshZipURL as Any)
+            //print(meshZipURL as Any)
             //print("end mesh zip url")
             Defaults[.selectedMeshLocation] = meshZipURL!
             Defaults[.selectedMeshPrompt] = modelPrompt
@@ -25,7 +25,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             let modelId = pendingModels[indexPath.row].meshId
 
             //print("pending mesh zip url")
-            print(meshZipURL as Any)
+            //print(meshZipURL as Any)
             //print("pending end mesh zip url")
             Defaults[.selectedMeshLocation] = "" //meshZipURL!
             Defaults[.selectedMeshPrompt] = modelPrompt
@@ -142,7 +142,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         if indexPath.section == 0 {
             let videoURL = URL(string: completedModels[indexPath.row].videoLocation!)
             let label = completedModels[indexPath.row].textPrompt
-            print(videoURL!)
+            //print(videoURL!)
 
             // Use the FileDownloader to cache the video file
             FileDownloader.shared.downloadFile(from: videoURL!) { cachedURL in

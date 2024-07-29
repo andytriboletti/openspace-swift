@@ -43,7 +43,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
     @IBAction func delete() {
         let meshId = Defaults[.selectedMeshId]
         //print("delete todo seletedMeshId:")
-        print(meshId)
+        //print(meshId)
         //print("end mesh id")
 
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
@@ -282,7 +282,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
             baseNode.addChildNode(childNode)
             baseNode.scale = SCNVector3(1, 1, 1)
             baseNode.position = SCNVector3(0, 0, 0)
-            // print(child.animationKeys)
+            // //print(child.animationKeys)
 
         }
     }

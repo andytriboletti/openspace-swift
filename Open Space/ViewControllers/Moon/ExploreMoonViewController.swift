@@ -42,7 +42,7 @@ class ExploreMoonViewController: UIViewController {
 
         do {
             //print("user id is")
-            print(Defaults[.userId])
+            //print(Defaults[.userId])
 #if DEBUG
             rewardedAd = try await GADRewardedAd.load(
                 withAdUnitID: MyData.testRewardedVideo, request: GADRequest())
@@ -383,7 +383,7 @@ class ExploreMoonViewController: UIViewController {
             baseNode.addChildNode(childNode)
             baseNode.scale = SCNVector3(0.50, 0.50, 0.50)
             baseNode.position = SCNVector3(0, 0, 0)
-            // print(child.animationKeys)
+            // //print(child.animationKeys)
 
         }
 

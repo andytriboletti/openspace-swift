@@ -86,7 +86,7 @@ extension GameViewController {
             //print("Station mesh location not set")
             return
         }
-        print(stationMeshLocation)
+        //print(stationMeshLocation)
         // if stationMeshLocation.lowercased().hasSuffix(".usdz") {
             downloadAndDisplayUSDZ(from: stationMeshLocation)
        // } else {

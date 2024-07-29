@@ -50,7 +50,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         let myUsername = Defaults[.username]
         //print("my username:")
-        print(myUsername)
+        //print(myUsername)
         self.googleAdLoaded = 0
 
         //let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
