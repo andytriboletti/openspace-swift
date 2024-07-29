@@ -106,8 +106,6 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         }
     }
 
-
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationIdentifier", for: indexPath) as? LocationCollectionViewCell else {
             return UICollectionViewCell()
@@ -126,16 +124,30 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
         case 3:
             cellImage = UIImage(named: "mars.png")
         case 4:
-            if let previewLocation = Defaults[.stationPreviewLocation] as? String, let url = URL(string: previewLocation) {
-                cellImage = UIImage(data: try! Data(contentsOf: url))
+            let previewLocation = Defaults[.stationPreviewLocation]
+            if !previewLocation.isEmpty, let url = URL(string: previewLocation) {
+                FileDownloader.shared.downloadFile(from: url) { cachedURL in
+                    if let cachedURL = cachedURL, let imageData = try? Data(contentsOf: cachedURL) {
+                        DispatchQueue.main.async {
+                            if let downloadedImage = UIImage(data: imageData) {
+                                let size = CGSize(width: 100, height: 100)
+                                let aspectScaledToFitImage = downloadedImage.af.imageAspectScaled(toFill: size)
+                                cell.cellImage.image = aspectScaledToFitImage
+                            }
+                        }
+                    }
+                }
             }
         default:
             break
         }
 
-        let size = CGSize(width: 100, height: 100)
-        let aspectScaledToFitImage = cellImage?.af.imageAspectScaled(toFill: size)
-        cell.cellImage.image = aspectScaledToFitImage
+        if let cellImage = cellImage {
+            let size = CGSize(width: 100, height: 100)
+            let aspectScaledToFitImage = cellImage.af.imageAspectScaled(toFill: size)
+            cell.cellImage.image = aspectScaledToFitImage
+        }
+
         let theText = self.locations[indexPath.row]
         cell.cellLabel?.text = theText
 

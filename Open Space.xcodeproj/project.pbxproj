@@ -107,6 +107,8 @@
 		6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343D26614B3500CFEFD2 /* Anderik.png */; };
 		6FF9344126614B3500CFEFD2 /* Eleuz.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343E26614B3500CFEFD2 /* Eleuz.png */; };
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
+		7204DB082C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */; };
+		7204DB092C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */; };
 		720F5BC82C50B3900073A488 /* login1.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBD2C50B3900073A488 /* login1.png */; };
 		720F5BC92C50B3910073A488 /* login1.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBD2C50B3900073A488 /* login1.png */; };
 		720F5BCA2C50B3910073A488 /* login2.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBE2C50B3900073A488 /* login2.png */; };
@@ -637,6 +639,7 @@
 		6FF9343D26614B3500CFEFD2 /* Anderik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Anderik.png; sourceTree = "<group>"; };
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
+		7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoonSphereBaseViewController+SceneKit.swift"; sourceTree = "<group>"; };
 		720F5BBD2C50B3900073A488 /* login1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login1.png; sourceTree = "<group>"; };
 		720F5BBE2C50B3900073A488 /* login2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login2.png; sourceTree = "<group>"; };
 		720F5BBF2C50B3900073A488 /* login3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login3.png; sourceTree = "<group>"; };
@@ -1276,6 +1279,7 @@
 				7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */,
 				72301FA02A579D1A00898D50 /* YourSphereViewController.swift */,
 				72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */,
+				7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */,
 				72ADF8E02BB737FE00976E4C /* NeighborSphereInventoryViewController.swift */,
 				72B0B3A32BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift */,
 			);
@@ -2111,6 +2115,7 @@
 				72A99C682C29D14F00D96813 /* ProfileViewController.swift in Sources */,
 				723A0F842C45F72E00F11350 /* SpaceStationConfig.swift in Sources */,
 				72B0B3A42BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift in Sources */,
+				7204DB082C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */,
 				72A99C7C2C3349E300D96813 /* UsernameEntryView.swift in Sources */,
 				72A99C702C29D14F00D96813 /* Troll.swift in Sources */,
 				72A99C4E2C29D14F00D96813 /* HelpViewController.swift in Sources */,
@@ -2221,6 +2226,7 @@
 				72A99C692C29D14F00D96813 /* ProfileViewController.swift in Sources */,
 				723A0F852C45F72E00F11350 /* SpaceStationConfig.swift in Sources */,
 				721AB58D2BB918F400E68231 /* SelectNeighborSphereViewController.swift in Sources */,
+				7204DB092C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */,
 				72A99C7D2C3349E300D96813 /* UsernameEntryView.swift in Sources */,
 				72A99C712C29D14F00D96813 /* Troll.swift in Sources */,
 				72A99C4F2C29D14F00D96813 /* HelpViewController.swift in Sources */,
