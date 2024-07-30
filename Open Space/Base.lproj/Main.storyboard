@@ -894,10 +894,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="872"/>
                             </sceneKitView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-Dg-CTU">
-                                <rect key="frame" x="36.666666666666657" y="20" width="356.66666666666674" height="400"/>
+                                <rect key="frame" x="29.666666666666657" y="20" width="370.66666666666674" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Earth! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-M6-xxO" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="356.66666666666669" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="370.66666666666669" height="80"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -909,7 +909,7 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOQ-Lg-Woz">
-                                        <rect key="frame" x="30" y="100" width="296.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="100" width="310.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="h5S-tH-Ymy"/>
                                         </constraints>
@@ -920,7 +920,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-Ji-ZQh">
-                                        <rect key="frame" x="30" y="180" width="296.66666666666669" height="60"/>
+                                        <rect key="frame" x="30" y="180" width="310.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vt4-Ug-hXH"/>
                                         </constraints>
@@ -931,7 +931,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvS-4b-iaH">
-                                        <rect key="frame" x="30" y="260" width="296.66666666666669" height="60"/>
+                                        <rect key="frame" x="37" y="260" width="296.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="xRl-ga-FCP"/>
                                         </constraints>
@@ -942,7 +942,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-0A-1Qt">
-                                        <rect key="frame" x="74.333333333333329" y="340" width="208.33333333333337" height="60"/>
+                                        <rect key="frame" x="81.333333333333329" y="340" width="208.33333333333337" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vZK-tQ-Xf1"/>
                                         </constraints>
@@ -1702,29 +1702,33 @@
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqy-9R-Tlp">
-                                        <rect key="frame" x="0.0" y="90" width="430" height="673"/>
+                                        <rect key="frame" x="0.0" y="90" width="430" height="698"/>
                                     </sceneKitView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="u6j-CT-eht">
-                                        <rect key="frame" x="0.0" y="773" width="430" height="100"/>
+                                        <rect key="frame" x="0.0" y="798" width="430" height="75"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-P0-nKm">
-                                                <rect key="frame" x="0.0" y="0.0" width="190" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="190" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="nCP-9l-ldS"/>
+                                                    <constraint firstAttribute="height" constant="75" id="nCP-9l-ldS"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Exit"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Exit"/>
                                                 <connections>
                                                     <segue destination="4p8-gd-aBJ" kind="presentation" identifier="goToSphereInventory" modalPresentationStyle="fullScreen" id="WHQ-Wr-Nav"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ui-bR-Qxs">
-                                                <rect key="frame" x="240" y="0.0" width="190" height="100"/>
+                                                <rect key="frame" x="240" y="0.0" width="190" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="OOV-wC-drK"/>
+                                                    <constraint firstAttribute="height" constant="75" id="OOV-wC-drK"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Delete This Object"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Delete This Object">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                    </backgroundConfiguration>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="delete" destination="0oZ-qm-bPz" eventType="touchDown" id="0UN-XI-Au5"/>
                                                 </connections>
@@ -1734,7 +1738,6 @@
                                             <constraint firstItem="9Ui-bR-Qxs" firstAttribute="height" secondItem="uEN-P0-nKm" secondAttribute="height" id="Ri0-kw-x1b"/>
                                             <constraint firstItem="9Ui-bR-Qxs" firstAttribute="centerY" secondItem="u6j-CT-eht" secondAttribute="centerY" id="XH1-CV-fao"/>
                                             <constraint firstItem="uEN-P0-nKm" firstAttribute="centerY" secondItem="u6j-CT-eht" secondAttribute="centerY" id="dgb-2G-KwG"/>
-                                            <constraint firstAttribute="height" constant="100" id="ktU-T7-WSp"/>
                                             <constraint firstItem="9Ui-bR-Qxs" firstAttribute="width" secondItem="uEN-P0-nKm" secondAttribute="width" id="wXO-Q5-Tvv"/>
                                         </constraints>
                                     </stackView>
