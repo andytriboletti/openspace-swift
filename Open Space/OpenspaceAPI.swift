@@ -133,7 +133,8 @@ class OpenspaceAPI {
             "receipt-data": receipt,
             "productIdentifier": productIdentifier,
             "userId": userId,
-            "appToken": Defaults[.appToken]
+            "appToken": Defaults[.appToken],
+            "email": Defaults[.email]
         ]
 
         AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
@@ -153,7 +154,8 @@ class OpenspaceAPI {
                "user_id": userId,
                "original_transaction_id": originalTransactionId,
                "product_identifier": productIdentifier,
-               "appToken": Defaults[.appToken]
+               "appToken": Defaults[.appToken],
+               "email": Defaults[.email]
            ]
 
            AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
