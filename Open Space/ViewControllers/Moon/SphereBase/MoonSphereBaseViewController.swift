@@ -99,7 +99,21 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
         if Defaults[.spheresAllowed] > yourSpheres!.count {
             alertToCreateSphere()
         } else {
-            return
+            //return
+            //todo in-app purchase disabled for testflight. todo re-enable when released
+            if(MyData.allowInAppPurhcases == 1) {
+
+                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
+                    showPurchaseAlert(price: price)
+                } else {
+                    showPurchaseAlert(price: "$0.99")
+                    //print("Product price not available")
+                }
+            }
+            else {
+                displayAlert()
+            }
+
         }
     }
 
