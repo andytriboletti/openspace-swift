@@ -43,6 +43,7 @@ extension GameViewController {
         if let username = data.username, !username.isEmpty {
             Defaults[.username] = username
         } else {
+            Defaults[.username] = ""
             self.askForUserName()
         }
 
