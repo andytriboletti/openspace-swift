@@ -1,6 +1,0 @@
-framework module FirebaseAnonymousAuthUI {
-  umbrella header "FirebaseAnonymousAuthUI-umbrella.h"
-
-  export *
-  module * { export * }
-}
