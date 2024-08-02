@@ -312,9 +312,7 @@ extension GameViewController {
         }
     }
 
-//    func drawISS() {
-//        loadAndDisplayUSDZ(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20)
-//    }
+
     func drawISS() {
         DispatchQueue.global(qos: .userInitiated).async {
             self.loadAndDisplayUSDZ(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20)
@@ -322,10 +320,7 @@ extension GameViewController {
     }
 
 
-//    func drawISS() {
-//        addTempObject(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20) // Adjusted scale to 20
-//        // setupBackground()
-//    }
+
     func loadAndDisplayUSDZ(name: String, position: SCNVector3, scale: Float) {
         guard let fileURL = Bundle.main.url(forResource: name, withExtension: nil) else {
             print("Failed to find the file in the bundle.")
@@ -354,13 +349,7 @@ extension GameViewController {
 
 
 
-//    func drawISS() {
-//        DispatchQueue.global(qos: .background).async {
-//            //self.loadAndDisplayUSDZ(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20)
-//            self.addTempObject(name: "ISS_stationary2.usdz", position: SCNVector3(-500, 0, -200), scale: 20) // Adjusted scale to 20
-//
-//        }
-//    }
+
    
 
     func drawMars() {

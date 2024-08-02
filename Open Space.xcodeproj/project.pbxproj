@@ -444,6 +444,8 @@
 		72C5132D2A51EFE400AAD941 /* MoonSphereBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5132C2A51EFE400AAD941 /* MoonSphereBaseViewController.swift */; };
 		72D19A24270DF62800175BD9 /* Open_SpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */; };
 		72D19A26270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */; };
+		72E05CDC2C5C88BC0055B784 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */; };
+		72E05CDD2C5C88BC0055B784 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */; };
 		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
 		72E8C50526F2586000D5FDEB /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
 		72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
@@ -694,6 +696,7 @@
 		72D19A21270DF62800175BD9 /* Open SpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open SpaceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITests.swift; sourceTree = "<group>"; };
 		72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moon_surface.jpg; sourceTree = "<group>"; };
 		72E8C50226F257FF00D5FDEB /* mars.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mars.scn; sourceTree = "<group>"; };
 		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
 		72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdManager.swift; sourceTree = "<group>"; };
@@ -825,6 +828,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */,
 				727987202C54982E00CFE8F8 /* BackgroundImages */,
 				720F5BC72C50B3900073A488 /* OpenSpaceLoginPics */,
 				72C513282A50DF2800AAD941 /* moonbackgroundwithearth.jpg */,
@@ -1536,6 +1540,7 @@
 				6FED3587268E762F002F1B12 /* iss.png in Resources */,
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
+				72E05CDC2C5C88BC0055B784 /* moon_surface.jpg in Resources */,
 				6F34E32D2641A52100E67276 /* eleuz.scn in Resources */,
 				720F5BCE2C50B3910073A488 /* login4.png in Resources */,
 				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
@@ -1613,6 +1618,7 @@
 				72256C552C55706D00D16A58 /* starryai_3et02i.jpg in Resources */,
 				721AB5C52BB918F400E68231 /* Artophy.png in Resources */,
 				72A99C112C29D14F00D96813 /* attacker.png in Resources */,
+				72E05CDD2C5C88BC0055B784 /* moon_surface.jpg in Resources */,
 				720F5BD72C50B3910073A488 /* login8.png in Resources */,
 				72A99C052C29D14F00D96813 /* t_Elephant_BaseColor.png in Resources */,
 				721AB5C92BB918F400E68231 /* PIA12348orig.jpg in Resources */,

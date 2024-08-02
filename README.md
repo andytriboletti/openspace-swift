@@ -22,15 +22,7 @@ https://www.youtube.com/watch?v=VikmTcxnLc0
 
 # TODO
 
-• Ship selection screen for new users
-
-• Save last location of your ship for all places. Currently only near planets is saved.
-
-• Work on Neighbor spheres view
-
-• Explore Mars
-
-• Speed up travel video segue
+• View the new feature suggestions thread on the Open Space Forum: https://community.greenrobot.com/openspacegame-ios-mac-forum/open-space-new-feature-suggestions/
 
 • I have an Asana with a lot of tasks for this game. If you'd like to contribute, let me know.
 
