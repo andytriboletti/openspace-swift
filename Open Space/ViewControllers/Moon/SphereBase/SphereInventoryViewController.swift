@@ -155,7 +155,14 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
                 }
             }
         } else if indexPath.section == 1 {
-            let label = "Pending: \(pendingModels[indexPath.row].textPrompt)"
+            var label = "Pending"
+            if(pendingModels[indexPath.row].error == 1) {
+                label = "Error: \(pendingModels[indexPath.row].textPrompt)"
+
+            }
+            else {
+                label = "Pending: \(pendingModels[indexPath.row].textPrompt)"
+            }
             cell.configureForTextOnly(labelText: label)
         } else {
             // Handle unexpected section or provide a default cell configuration
