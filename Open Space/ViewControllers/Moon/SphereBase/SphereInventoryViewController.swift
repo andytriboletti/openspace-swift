@@ -142,7 +142,13 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
         if indexPath.section == 0 {
             let videoURL = URL(string: completedModels[indexPath.row].videoLocation!)
             let label = completedModels[indexPath.row].textPrompt
+            let acceptableName = completedModels[indexPath.row].acceptableName
+            if(acceptableName == 0) {
+                let acceptableName = "(Moderated) " + completedModels[indexPath.row].textPrompt
+            }
+
             //print(videoURL!)
+
 
             // Use the FileDownloader to cache the video file
             FileDownloader.shared.downloadFile(from: videoURL!) { cachedURL in
@@ -156,13 +162,24 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             }
         } else if indexPath.section == 1 {
             var label = "Pending"
+            let acceptableName = completedModels[indexPath.row].acceptableName
+
             if(pendingModels[indexPath.row].error == 1) {
                 label = "Error: \(pendingModels[indexPath.row].textPrompt)"
+
+                if(acceptableName == 0) {
+                    let acceptableName = "(Moderated) Error: " + completedModels[indexPath.row].textPrompt
+                }
 
             }
             else {
                 label = "Pending: \(pendingModels[indexPath.row].textPrompt)"
+                if(acceptableName == 0) {
+                    let acceptableName = "(Moderated) Pending: " + completedModels[indexPath.row].textPrompt
+                }
             }
+
+
             cell.configureForTextOnly(labelText: label)
         } else {
             // Handle unexpected section or provide a default cell configuration

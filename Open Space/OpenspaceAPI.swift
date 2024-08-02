@@ -18,16 +18,18 @@ class OpenspaceAPI {
         let completed: String
         let videoLocation: String?
         let meshLocation: String?
-        let error: Int
         let meshId: Int
+        let error: Int
+        let acceptableName: Int
 
         enum CodingKeys: String, CodingKey {
             case textPrompt = "text_prompt"
             case completed
             case videoLocation = "video_location"
             case meshLocation = "mesh_location"
-            case error = "error"
             case meshId = "mesh_id"
+            case error = "error"
+            case acceptableName = "acceptable_name"
         }
     }
 
