@@ -6,8 +6,10 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     var webView: WKWebView!
     let titleLabel = UILabel()
     var checkTimer: Timer?
-    let originalURL = "https://server3.openspace.greenrobot.com/comments/index2.php"
+    //let originalURL //= "https://server3.openspace.greenrobot.com/comments/index2.php"
+    var allowedOneReload = false
 
+    let originalURL = "https://www.facebook.com/plugins/feedback.php?app_id=2386110974&channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df05db8be9617ecac9%26domain%3Dserver3.openspace.greenrobot.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fserver3.openspace.greenrobot.com%252Ffed39cc9e40f89eaa%26relation%3Dparent.parent&container_width=229&height=100&href=https%3A%2F%2Fopenspace.greenrobot.com%2F&locale=en_US&numposts=10&sdk=joey&version=v20.0&width=550"
     func setCustomUserAgent(for webView: WKWebView) {
         //print("Setting custom user agent")
         #if targetEnvironment(macCatalyst)
@@ -61,7 +63,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
         setupLogoutButton(logoutButton, above: returnButton)
 
         if let url = URL(string: originalURL) {
-            //print("Loading initial URL: \(originalURL)")
+            print("Loading initial URL: \(originalURL)")
             let request = URLRequest(url: url)
             webView.load(request)
         }
@@ -73,7 +75,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     }
 
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        //print("WebView - createWebViewWith: \(navigationAction.request.url?.absoluteString ?? "unknown URL")")
+        print("WebView - createWebViewWith: \(navigationAction.request.url?.absoluteString ?? "unknown URL")")
         if navigationAction.targetFrame == nil {
             webView.load(navigationAction.request)
         }
@@ -95,7 +97,7 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        //print("WebView - didFinish navigation: \(webView.url?.absoluteString ?? "unknown URL")")
+        print("WebView - didFinish navigation: \(webView.url?.absoluteString ?? "unknown URL")")
         //printCookies()
         checkPageContentWithoutJavaScript()
     }
@@ -106,15 +108,16 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     }
 
     func handleWebViewError(_ error: Error) {
+        return
         //print("WebView encountered an error: \(error.localizedDescription)")
-
-        if self.presentedViewController == nil {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Error", message: "An error occurred: \(error.localizedDescription)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+//
+//        if self.presentedViewController == nil {
+//            DispatchQueue.main.async {
+//                let alert = UIAlertController(title: "Error", message: "An error occurred: \(error.localizedDescription)", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
     }
 
     func startCheckingForContent() {
@@ -123,22 +126,49 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
         checkTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(checkPageContentWithoutJavaScript), userInfo: nil, repeats: true)
     }
 
+//    @objc func checkPageContentWithoutJavaScript() {
+//        //print("Checking page content without JavaScript")
+//        webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") { [weak self] (result, error) in
+//            guard let self = self else { return }
+//
+//            if let htmlContent = result as? String {
+//                //print("Page HTML content length: \(htmlContent.count)")
+//                if htmlContent.contains("<body>1<script") {
+//                    //print("Detected problematic HTML content, reloading original page...")
+//                    self.loadOriginalPage()
+//                }
+//            } else if let error = error {
+//                //print("Error getting HTML content: \(error.localizedDescription)")
+//            }
+//        }
+//    }
+
     @objc func checkPageContentWithoutJavaScript() {
-        //print("Checking page content without JavaScript")
+        print("Checking page content without JavaScript")
+        if(webView == nil) {
+            return
+        }
         webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") { [weak self] (result, error) in
             guard let self = self else { return }
 
             if let htmlContent = result as? String {
-                //print("Page HTML content length: \(htmlContent.count)")
-                if htmlContent.contains("<body>1<script") {
-                    //print("Detected problematic HTML content, reloading original page...")
+                print("Page HTML content length: \(htmlContent.count)")
+                print("Page URL: \(self.webView.url?.absoluteString ?? "unknown")")
+
+                // Check if the content is just "1" (which might indicate a login response)
+                if htmlContent.trimmingCharacters(in: .whitespacesAndNewlines) == "1" {
+                    print("Detected '1' response, reloading page...")
+                    self.loadOriginalPage()
+                } else if htmlContent.contains("<body>1<script") && !htmlContent.contains("facebook.com") {
+                    print("Detected problematic HTML content, reloading original page...")
                     self.loadOriginalPage()
                 }
             } else if let error = error {
-                //print("Error getting HTML content: \(error.localizedDescription)")
+                print("Error getting HTML content: \(error.localizedDescription)")
             }
         }
     }
+
 
     func loadOriginalPage() {
         //print("Loading original page: \(originalURL)")
@@ -326,19 +356,48 @@ class LunarLoungeViewController: BackgroundImageViewController, WKNavigationDele
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            //print("WebView - decidePolicyFor navigationAction: \(navigationAction.request.url?.absoluteString ?? "unknown URL")")
-            //print("Navigation type: \(navigationAction.navigationType.rawValue)")
+        print("WebView - decidePolicyFor navigationAction: \(navigationAction.request.url?.absoluteString ?? "unknown URL")")
+        print("Navigation type: \(navigationAction.navigationType.rawValue)")
 
-            if navigationAction.navigationType == .formSubmitted {
-                //print("Form submitted")
-            } else if navigationAction.navigationType == .linkActivated {
-                //print("Link activated")
-            } else if navigationAction.navigationType == .other {
-                //print("Other navigation type")
+        if let urlString = navigationAction.request.url?.absoluteString, urlString.contains("https://www.facebook.com/plugins/close_popup.php") {
+            print("Detected close_popup URL, will reload original page after this loads")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.loadOriginalPage()
             }
-
             decisionHandler(.allow)
+            return
         }
+
+        switch navigationAction.navigationType {
+        case .formSubmitted:
+            print("Form submitted")
+        case .linkActivated:
+            print("Link activated")
+        case .reload:
+            print("Page reload")
+            if allowedOneReload {
+                print("Allowing one reload for login process")
+                allowedOneReload = false
+                decisionHandler(.allow)
+                return
+            } else if navigationAction.request.url?.absoluteString.contains("facebook.com") == true {
+                print("Allowing Facebook login reload")
+                decisionHandler(.allow)
+                return
+            }
+        case .other:
+            print("Other navigation type")
+            if navigationAction.request.url?.absoluteString.contains("facebook.com") == true {
+                print("Potential Facebook login, allowing one reload")
+                allowedOneReload = true
+            }
+        default:
+            print("Unhandled navigation type")
+        }
+
+        decisionHandler(.allow)
+    }
+
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             //print("WebView - didStartProvisionalNavigation: \(webView.url?.absoluteString ?? "unknown URL")")
