@@ -83,26 +83,6 @@
 		6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9343F26614B3500CFEFD2 /* Artophy.png */; };
 		7204DB082C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */; };
 		7204DB092C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */; };
-		720F5BC82C50B3900073A488 /* login1.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBD2C50B3900073A488 /* login1.png */; };
-		720F5BC92C50B3910073A488 /* login1.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBD2C50B3900073A488 /* login1.png */; };
-		720F5BCA2C50B3910073A488 /* login2.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBE2C50B3900073A488 /* login2.png */; };
-		720F5BCB2C50B3910073A488 /* login2.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBE2C50B3900073A488 /* login2.png */; };
-		720F5BCC2C50B3910073A488 /* login3.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBF2C50B3900073A488 /* login3.png */; };
-		720F5BCD2C50B3910073A488 /* login3.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BBF2C50B3900073A488 /* login3.png */; };
-		720F5BCE2C50B3910073A488 /* login4.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC02C50B3900073A488 /* login4.png */; };
-		720F5BCF2C50B3910073A488 /* login4.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC02C50B3900073A488 /* login4.png */; };
-		720F5BD02C50B3910073A488 /* login5.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC12C50B3900073A488 /* login5.png */; };
-		720F5BD12C50B3910073A488 /* login5.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC12C50B3900073A488 /* login5.png */; };
-		720F5BD22C50B3910073A488 /* login6.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC22C50B3900073A488 /* login6.png */; };
-		720F5BD32C50B3910073A488 /* login6.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC22C50B3900073A488 /* login6.png */; };
-		720F5BD42C50B3910073A488 /* login7.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC32C50B3900073A488 /* login7.png */; };
-		720F5BD52C50B3910073A488 /* login7.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC32C50B3900073A488 /* login7.png */; };
-		720F5BD62C50B3910073A488 /* login8.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC42C50B3900073A488 /* login8.png */; };
-		720F5BD72C50B3910073A488 /* login8.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC42C50B3900073A488 /* login8.png */; };
-		720F5BD82C50B3910073A488 /* login9.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC52C50B3900073A488 /* login9.png */; };
-		720F5BD92C50B3910073A488 /* login9.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC52C50B3900073A488 /* login9.png */; };
-		720F5BDA2C50B3910073A488 /* login10.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC62C50B3900073A488 /* login10.png */; };
-		720F5BDB2C50B3910073A488 /* login10.png in Resources */ = {isa = PBXBuildFile; fileRef = 720F5BC62C50B3900073A488 /* login10.png */; };
 		720F5BDD2C5158C90073A488 /* AuthCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F5BDC2C5158C80073A488 /* AuthCustomView.swift */; };
 		720F5BDE2C5158C90073A488 /* AuthCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F5BDC2C5158C80073A488 /* AuthCustomView.swift */; };
 		721AB5842BB918F400E68231 /* ExploreMarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E52BB896CA00976E4C /* ExploreMarsViewController.swift */; };
@@ -243,6 +223,49 @@
 		72256C642C55706D00D16A58 /* starryai_ofj82.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C532C55706D00D16A58 /* starryai_ofj82.jpg */; };
 		72256C652C55706D00D16A58 /* starryai_ofj82.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72256C532C55706D00D16A58 /* starryai_ofj82.jpg */; };
 		72301FA12A579D1A00898D50 /* YourSphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72301FA02A579D1A00898D50 /* YourSphereViewController.swift */; };
+		723074252C6886B0005F0317 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723074242C6886B0005F0317 /* OnboardingView.swift */; };
+		7230742A2C68876F005F0317 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723074292C68876F005F0317 /* OnboardingViewController.swift */; };
+		7230742B2C68876F005F0317 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723074292C68876F005F0317 /* OnboardingViewController.swift */; };
+		7230742D2C688E1F005F0317 /* login1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7230742C2C688E1F005F0317 /* login1.jpg */; };
+		7230742E2C688E1F005F0317 /* login1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7230742C2C688E1F005F0317 /* login1.jpg */; };
+		723074392C688F6B005F0317 /* login5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7230742F2C688F6A005F0317 /* login5.jpg */; };
+		7230743A2C688F6B005F0317 /* login5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7230742F2C688F6A005F0317 /* login5.jpg */; };
+		7230743D2C688F6B005F0317 /* login4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074312C688F6A005F0317 /* login4.jpg */; };
+		7230743E2C688F6B005F0317 /* login4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074312C688F6A005F0317 /* login4.jpg */; };
+		7230743F2C688F6B005F0317 /* login2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074322C688F6A005F0317 /* login2.jpg */; };
+		723074402C688F6B005F0317 /* login2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074322C688F6A005F0317 /* login2.jpg */; };
+		723074412C688F6B005F0317 /* login6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074332C688F6A005F0317 /* login6.jpg */; };
+		723074422C688F6B005F0317 /* login6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074332C688F6A005F0317 /* login6.jpg */; };
+		723074432C688F6B005F0317 /* login8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074342C688F6A005F0317 /* login8.jpg */; };
+		723074442C688F6B005F0317 /* login8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074342C688F6A005F0317 /* login8.jpg */; };
+		723074452C688F6B005F0317 /* login9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074352C688F6A005F0317 /* login9.jpg */; };
+		723074462C688F6B005F0317 /* login9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074352C688F6A005F0317 /* login9.jpg */; };
+		723074472C688F6B005F0317 /* login10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074362C688F6B005F0317 /* login10.jpg */; };
+		723074482C688F6B005F0317 /* login10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074362C688F6B005F0317 /* login10.jpg */; };
+		723074492C688F6B005F0317 /* login3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074372C688F6B005F0317 /* login3.jpg */; };
+		7230744A2C688F6B005F0317 /* login3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074372C688F6B005F0317 /* login3.jpg */; };
+		7230744B2C688F6B005F0317 /* login7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074382C688F6B005F0317 /* login7.jpg */; };
+		7230744C2C688F6B005F0317 /* login7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074382C688F6B005F0317 /* login7.jpg */; };
+		7230744F2C6895A8005F0317 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723074242C6886B0005F0317 /* OnboardingView.swift */; };
+		723074522C692F1A005F0317 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 723074512C692F1A005F0317 /* OnboardingKit */; };
+		7230745C2C693E27005F0317 /* hematite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074542C693E24005F0317 /* hematite.png */; };
+		7230745D2C693E27005F0317 /* hematite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074542C693E24005F0317 /* hematite.png */; };
+		7230745E2C693E27005F0317 /* goethite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074552C693E25005F0317 /* goethite.png */; };
+		7230745F2C693E27005F0317 /* goethite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074552C693E25005F0317 /* goethite.png */; };
+		723074602C693E27005F0317 /* jarosite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074562C693E25005F0317 /* jarosite.png */; };
+		723074612C693E27005F0317 /* jarosite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074562C693E25005F0317 /* jarosite.png */; };
+		723074622C693E27005F0317 /* opal.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074572C693E25005F0317 /* opal.png */; };
+		723074632C693E27005F0317 /* opal.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074572C693E25005F0317 /* opal.png */; };
+		723074642C693E27005F0317 /* silicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074582C693E26005F0317 /* silicate.png */; };
+		723074652C693E27005F0317 /* silicate.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074582C693E26005F0317 /* silicate.png */; };
+		723074662C693E27005F0317 /* regolith.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074592C693E26005F0317 /* regolith.png */; };
+		723074672C693E27005F0317 /* regolith.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074592C693E26005F0317 /* regolith.png */; };
+		723074682C693E27005F0317 /* water ice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7230745A2C693E26005F0317 /* water ice.png */; };
+		723074692C693E27005F0317 /* water ice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7230745A2C693E26005F0317 /* water ice.png */; };
+		7230746A2C693E27005F0317 /* helium-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7230745B2C693E26005F0317 /* helium-3.png */; };
+		7230746B2C693E27005F0317 /* helium-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7230745B2C693E26005F0317 /* helium-3.png */; };
+		7230746D2C695D62005F0317 /* MineralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230746C2C695D62005F0317 /* MineralTableViewCell.swift */; };
+		7230746E2C695D62005F0317 /* MineralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230746C2C695D62005F0317 /* MineralTableViewCell.swift */; };
 		723489E52C5A010B0065F72B /* LocationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723489E42C5A010B0065F72B /* LocationState.swift */; };
 		723489E62C5A010B0065F72B /* LocationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723489E42C5A010B0065F72B /* LocationState.swift */; };
 		723A0F5B2C3AFB1500F11350 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */; };
@@ -548,16 +571,6 @@
 		6FF9343E26614B3500CFEFD2 /* Eleuz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eleuz.png; sourceTree = "<group>"; };
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
 		7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoonSphereBaseViewController+SceneKit.swift"; sourceTree = "<group>"; };
-		720F5BBD2C50B3900073A488 /* login1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login1.png; sourceTree = "<group>"; };
-		720F5BBE2C50B3900073A488 /* login2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login2.png; sourceTree = "<group>"; };
-		720F5BBF2C50B3900073A488 /* login3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login3.png; sourceTree = "<group>"; };
-		720F5BC02C50B3900073A488 /* login4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login4.png; sourceTree = "<group>"; };
-		720F5BC12C50B3900073A488 /* login5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login5.png; sourceTree = "<group>"; };
-		720F5BC22C50B3900073A488 /* login6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login6.png; sourceTree = "<group>"; };
-		720F5BC32C50B3900073A488 /* login7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login7.png; sourceTree = "<group>"; };
-		720F5BC42C50B3900073A488 /* login8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login8.png; sourceTree = "<group>"; };
-		720F5BC52C50B3900073A488 /* login9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login9.png; sourceTree = "<group>"; };
-		720F5BC62C50B3900073A488 /* login10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login10.png; sourceTree = "<group>"; };
 		720F5BDC2C5158C80073A488 /* AuthCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCustomView.swift; sourceTree = "<group>"; };
 		721AB6192BB918F400E68231 /* Open Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -584,6 +597,27 @@
 		72256C522C55706D00D16A58 /* starryai_i0q64.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_i0q64.jpg; sourceTree = "<group>"; };
 		72256C532C55706D00D16A58 /* starryai_ofj82.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starryai_ofj82.jpg; sourceTree = "<group>"; };
 		72301FA02A579D1A00898D50 /* YourSphereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSphereViewController.swift; sourceTree = "<group>"; };
+		723074242C6886B0005F0317 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		723074292C68876F005F0317 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		7230742C2C688E1F005F0317 /* login1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login1.jpg; sourceTree = "<group>"; };
+		7230742F2C688F6A005F0317 /* login5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login5.jpg; sourceTree = "<group>"; };
+		723074312C688F6A005F0317 /* login4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login4.jpg; sourceTree = "<group>"; };
+		723074322C688F6A005F0317 /* login2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login2.jpg; sourceTree = "<group>"; };
+		723074332C688F6A005F0317 /* login6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login6.jpg; sourceTree = "<group>"; };
+		723074342C688F6A005F0317 /* login8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login8.jpg; sourceTree = "<group>"; };
+		723074352C688F6A005F0317 /* login9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login9.jpg; sourceTree = "<group>"; };
+		723074362C688F6B005F0317 /* login10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login10.jpg; sourceTree = "<group>"; };
+		723074372C688F6B005F0317 /* login3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login3.jpg; sourceTree = "<group>"; };
+		723074382C688F6B005F0317 /* login7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login7.jpg; sourceTree = "<group>"; };
+		723074542C693E24005F0317 /* hematite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hematite.png; sourceTree = "<group>"; };
+		723074552C693E25005F0317 /* goethite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goethite.png; sourceTree = "<group>"; };
+		723074562C693E25005F0317 /* jarosite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jarosite.png; sourceTree = "<group>"; };
+		723074572C693E25005F0317 /* opal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opal.png; sourceTree = "<group>"; };
+		723074582C693E26005F0317 /* silicate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silicate.png; sourceTree = "<group>"; };
+		723074592C693E26005F0317 /* regolith.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regolith.png; sourceTree = "<group>"; };
+		7230745A2C693E26005F0317 /* water ice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "water ice.png"; sourceTree = "<group>"; };
+		7230745B2C693E26005F0317 /* helium-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "helium-3.png"; sourceTree = "<group>"; };
+		7230746C2C695D62005F0317 /* MineralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralTableViewCell.swift; sourceTree = "<group>"; };
 		723489E42C5A010B0065F72B /* LocationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationState.swift; sourceTree = "<group>"; };
 		723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarLoungeViewController.swift; sourceTree = "<group>"; };
@@ -714,6 +748,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				723074522C692F1A005F0317 /* OnboardingKit in Frameworks */,
 				1522AE7C17624B8C391058D1 /* Pods_Open_Space.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,6 +840,7 @@
 				7221818C2B8EA2C200FB572F /* ModelCollectionViewCell.swift */,
 				72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */,
 				72B0B3A52BB6556000BACE67 /* NeighborSphereCell.swift */,
+				7230746C2C695D62005F0317 /* MineralTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -828,6 +864,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				723074532C693E11005F0317 /* minerals */,
 				72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */,
 				727987202C54982E00CFE8F8 /* BackgroundImages */,
 				720F5BC72C50B3900073A488 /* OpenSpaceLoginPics */,
@@ -933,6 +970,8 @@
 				723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */,
 				720F5BDC2C5158C80073A488 /* AuthCustomView.swift */,
 				72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */,
+				723074242C6886B0005F0317 /* OnboardingView.swift */,
+				723074292C68876F005F0317 /* OnboardingViewController.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -1059,18 +1098,33 @@
 		720F5BC72C50B3900073A488 /* OpenSpaceLoginPics */ = {
 			isa = PBXGroup;
 			children = (
-				720F5BBD2C50B3900073A488 /* login1.png */,
-				720F5BBE2C50B3900073A488 /* login2.png */,
-				720F5BBF2C50B3900073A488 /* login3.png */,
-				720F5BC02C50B3900073A488 /* login4.png */,
-				720F5BC12C50B3900073A488 /* login5.png */,
-				720F5BC22C50B3900073A488 /* login6.png */,
-				720F5BC32C50B3900073A488 /* login7.png */,
-				720F5BC42C50B3900073A488 /* login8.png */,
-				720F5BC52C50B3900073A488 /* login9.png */,
-				720F5BC62C50B3900073A488 /* login10.png */,
+				7230742C2C688E1F005F0317 /* login1.jpg */,
+				723074322C688F6A005F0317 /* login2.jpg */,
+				723074372C688F6B005F0317 /* login3.jpg */,
+				723074312C688F6A005F0317 /* login4.jpg */,
+				7230742F2C688F6A005F0317 /* login5.jpg */,
+				723074332C688F6A005F0317 /* login6.jpg */,
+				723074382C688F6B005F0317 /* login7.jpg */,
+				723074342C688F6A005F0317 /* login8.jpg */,
+				723074352C688F6A005F0317 /* login9.jpg */,
+				723074362C688F6B005F0317 /* login10.jpg */,
 			);
 			path = OpenSpaceLoginPics;
+			sourceTree = "<group>";
+		};
+		723074532C693E11005F0317 /* minerals */ = {
+			isa = PBXGroup;
+			children = (
+				723074552C693E25005F0317 /* goethite.png */,
+				7230745B2C693E26005F0317 /* helium-3.png */,
+				723074542C693E24005F0317 /* hematite.png */,
+				723074562C693E25005F0317 /* jarosite.png */,
+				723074572C693E25005F0317 /* opal.png */,
+				723074592C693E26005F0317 /* regolith.png */,
+				723074582C693E26005F0317 /* silicate.png */,
+				7230745A2C693E26005F0317 /* water ice.png */,
+			);
+			path = minerals;
 			sourceTree = "<group>";
 		};
 		723A0F892C45F7B200F11350 /* CreateSpaceStation */ = {
@@ -1393,6 +1447,9 @@
 			dependencies = (
 			);
 			name = "Open Space";
+			packageProductDependencies = (
+				723074512C692F1A005F0317 /* OnboardingKit */,
+			);
 			productName = "Open Space";
 			productReference = 6FB0EEF523FDA1A800EA28D7 /* Open Space.app */;
 			productType = "com.apple.product-type.application";
@@ -1412,6 +1469,8 @@
 			dependencies = (
 			);
 			name = "Open Space Desktop";
+			packageProductDependencies = (
+			);
 			productName = "Open Space";
 			productReference = 721AB6192BB918F400E68231 /* Open Space.app */;
 			productType = "com.apple.product-type.application";
@@ -1463,6 +1522,9 @@
 				Base,
 			);
 			mainGroup = 6FB0EEEC23FDA1A800EA28D7;
+			packageReferences = (
+				723074502C692F1A005F0317 /* XCRemoteSwiftPackageReference "OnboardingKit" */,
+			);
 			productRefGroup = 6FB0EEF623FDA1A800EA28D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1480,14 +1542,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				72A99BD82C29D14E00D96813 /* independent_bernie_1024.png in Resources */,
-				720F5BD02C50B3910073A488 /* login5.png in Resources */,
 				72A99BFE2C29D14F00D96813 /* t_Donkey_Normal.png in Resources */,
 				6F643EA22530DBCC001164E4 /* pexels-pixabay-262786-pyramid.jpg in Resources */,
+				723074682C693E27005F0317 /* water ice.png in Resources */,
 				6F4AD6A323FDC1A70052B8F0 /* Metal_Weave_003_basecolor.jpg in Resources */,
 				72A99C0E2C29D14F00D96813 /* fist_instant_mesh_red.dae in Resources */,
 				72256C5A2C55706D00D16A58 /* starryai_oafnf.jpg in Resources */,
 				6FE911FB23FF435500255491 /* PIA15415orig.jpg in Resources */,
 				72A99BDC2C29D14E00D96813 /* instigator_bernie_1024.png in Resources */,
+				723074492C688F6B005F0317 /* login3.jpg in Resources */,
 				72256C5C2C55706D00D16A58 /* starryai_qw7etf.jpg in Resources */,
 				72256C642C55706D00D16A58 /* starryai_ofj82.jpg in Resources */,
 				6F643EA12530DBCC001164E4 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
@@ -1497,20 +1560,22 @@
 				72A99C1E2C29D14F00D96813 /* t_Protestors_Metallic.png in Resources */,
 				72A99C1C2C29D14F00D96813 /* t_Protestors_Bernie_BaseColor.png in Resources */,
 				72A99C3E2C29D14F00D96813 /* flag.png in Resources */,
+				723074432C688F6B005F0317 /* login8.jpg in Resources */,
 				6FF9344226614B3500CFEFD2 /* Artophy.png in Resources */,
-				720F5BD22C50B3910073A488 /* login6.png in Resources */,
 				72256C562C55706D00D16A58 /* starryai_7ejn3.jpeg in Resources */,
 				72A99C182C29D14F00D96813 /* sm_Protester_Bernie.dae in Resources */,
+				723074392C688F6B005F0317 /* login5.jpg in Resources */,
 				72A99C342C29D14F00D96813 /* Default-568h@2x.png in Resources */,
 				6F96DE6423FDE0DA00BAE0CF /* PIA12348orig.jpg in Resources */,
 				72A99C0A2C29D14F00D96813 /* t_Elephant_Roughness.png in Resources */,
 				6FD0296523FEC8620082209D /* space_icon_200.jpg in Resources */,
 				72A99C082C29D14F00D96813 /* t_Elephant_Normal.png in Resources */,
-				720F5BC82C50B3900073A488 /* login1.png in Resources */,
 				6F6D845B23FF8B8E00328057 /* PIA01120orig.jpg in Resources */,
 				6FD92057259B87A2008F6CA3 /* 14648179676_db2001e0fa_o.jpg in Resources */,
 				72A99C242C29D14F00D96813 /* trump_protester_running.dae in Resources */,
+				723074452C688F6B005F0317 /* login9.jpg in Resources */,
 				72E8C50526F2586000D5FDEB /* a.scn in Resources */,
+				723074472C688F6B005F0317 /* login10.jpg in Resources */,
 				72256C452C556ACB00D16A58 /* purplegalaxy.jpg in Resources */,
 				72A99C102C29D14F00D96813 /* attacker.png in Resources */,
 				72A99C6C2C29D14F00D96813 /* SceneKit Scene.scn in Resources */,
@@ -1519,40 +1584,40 @@
 				72256C622C55706D00D16A58 /* starryai_i0q64.jpg in Resources */,
 				6FE911F923FF427B00255491 /* PIA13005orig.jpg in Resources */,
 				72A99C202C29D14F00D96813 /* t_Protestors_Normal.png in Resources */,
+				7230743F2C688F6B005F0317 /* login2.jpg in Resources */,
 				6F643EA32530DBCC001164E4 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
 				72256C602C55706D00D16A58 /* starryai_5p4zs.jpg in Resources */,
 				72256C492C556ACB00D16A58 /* conenebula.jpg in Resources */,
-				720F5BCA2C50B3910073A488 /* login2.png in Resources */,
-				720F5BDA2C50B3910073A488 /* login10.png in Resources */,
 				6F677BA424076FF4004A1C8B /* 2k_earth_daymap.jpg in Resources */,
 				72A99C0C2C29D14F00D96813 /* fist_instant_mesh_blue.dae in Resources */,
+				7230745E2C693E27005F0317 /* goethite.png in Resources */,
+				723074662C693E27005F0317 /* regolith.png in Resources */,
 				72256C582C55706D00D16A58 /* starryai_ddgnr.jpg in Resources */,
 				6F677BA6240772F3004A1C8B /* earth.scn in Resources */,
 				72A99BE22C29D14F00D96813 /* protester_trump_1024.png in Resources */,
-				720F5BD42C50B3910073A488 /* login7.png in Resources */,
 				6FED358A268E762F002F1B12 /* earth.png in Resources */,
 				6F4A3F5F252E40A800147723 /* pexels-abdullah-ghatasheh-1631665.jpg in Resources */,
+				723074602C693E27005F0317 /* jarosite.png in Resources */,
 				6F677BAA240776F1004A1C8B /* PIA04921orig.jpg in Resources */,
 				6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */,
 				72C5132B2A51ED7200AAD941 /* GameScene.scn in Resources */,
 				72A99BDE2C29D14E00D96813 /* instigator_trump_1024.png in Resources */,
-				720F5BD62C50B3910073A488 /* login8.png in Resources */,
 				6FED3587268E762F002F1B12 /* iss.png in Resources */,
 				6F158183240167E60005A00E /* ISS_stationary2.usdz in Resources */,
 				6FD92053259B87A2008F6CA3 /* iss044e045215_lrg.jpg in Resources */,
 				72E05CDC2C5C88BC0055B784 /* moon_surface.jpg in Resources */,
 				6F34E32D2641A52100E67276 /* eleuz.scn in Resources */,
-				720F5BCE2C50B3910073A488 /* login4.png in Resources */,
 				6F895FA52606B4E000378FA7 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
 				72A99C022C29D14F00D96813 /* elephant3.dae in Resources */,
 				6F643EA02530DBCC001164E4 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
+				7230744B2C688F6B005F0317 /* login7.jpg in Resources */,
 				72A99C122C29D14F00D96813 /* builder.png in Resources */,
+				723074642C693E27005F0317 /* silicate.png in Resources */,
 				72256C542C55706D00D16A58 /* starryai_3et02i.jpg in Resources */,
 				6F303535240FEA66006C4684 /* starry-sky-998641.jpg in Resources */,
 				72256C5E2C55706D00D16A58 /* starryai_ih7gql.jpg in Resources */,
 				72E8C50326F257FF00D5FDEB /* mars.scn in Resources */,
 				721BF2AC2BBB2AAC0046E7E7 /* README.md in Resources */,
-				720F5BCC2C50B3910073A488 /* login3.png in Resources */,
 				6F303533240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
 				6FD0296D23FED5A80082209D /* 2k_mars.jpg in Resources */,
 				6F894C9F24227C5A00F011AC /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
@@ -1560,11 +1625,15 @@
 				6FED3588268E762F002F1B12 /* mars.png in Resources */,
 				6FED3589268E762F002F1B12 /* moon.png in Resources */,
 				6FD92042259B71B5008F6CA3 /* quasar.png in Resources */,
+				723074412C688F6B005F0317 /* login6.jpg in Resources */,
+				7230745C2C693E27005F0317 /* hematite.png in Resources */,
 				72A99C222C29D14F00D96813 /* t_Protestors_Trump_BaseColor.png in Resources */,
 				6F643EA42530DBCC001164E4 /* pexels-pixabay-259967-machu-picchu.jpg in Resources */,
 				72B0B3A22BB4E79600BACE67 /* GoogleService-Info.plist in Resources */,
 				6FD92055259B87A2008F6CA3 /* bwhi1apicaaamlo.jpg_large.jpg in Resources */,
 				72A99C282C29D14F00D96813 /* trump_protestor_all_takes.jas in Resources */,
+				7230746A2C693E27005F0317 /* helium-3.png in Resources */,
+				7230743D2C688F6B005F0317 /* login4.jpg in Resources */,
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				72A99C1A2C29D14F00D96813 /* sm_Protester_Trump.dae in Resources */,
 				6FA5934724001043007C16E3 /* artophy.scn in Resources */,
@@ -1581,6 +1650,7 @@
 				72A99C262C29D14F00D96813 /* trump_protester_running.scn in Resources */,
 				6FA314692401945D009D77AB /* PIA17563orig.jpg in Resources */,
 				72A99C5C2C29D14F00D96813 /* MainGridHack.storyboard in Resources */,
+				723074622C693E27005F0317 /* opal.png in Resources */,
 				6F303531240FE382006C4684 /* moon.scn in Resources */,
 				72A99BF82C29D14F00D96813 /* t_Donkey_BaseColor.png in Resources */,
 				6FB0EF0023FDA1A800EA28D7 /* Main.storyboard in Resources */,
@@ -1589,12 +1659,12 @@
 				72A99BDA2C29D14E00D96813 /* independent_trump_1024.png in Resources */,
 				6FD92059259B87A2008F6CA3 /* 24609260915_a840b027e5_o.jpg in Resources */,
 				6F294565240B1E6E008328FC /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
+				7230742D2C688E1F005F0317 /* login1.jpg in Resources */,
 				72A99C062C29D14F00D96813 /* t_Elephant_Metallic.png in Resources */,
 				6F81A27C24155C4300D79494 /* Assets.xcassets in Resources */,
 				6F294567240B1F7F008328FC /* iss006e48523orig.jpg in Resources */,
 				6F34E3292640E9F600E67276 /* anderik.scn in Resources */,
 				72A99BE02C29D14E00D96813 /* protester_bernie_1024.png in Resources */,
-				720F5BD82C50B3910073A488 /* login9.png in Resources */,
 				6FD92056259B87A2008F6CA3 /* iss045e166104.jpg in Resources */,
 				72A99BFC2C29D14F00D96813 /* t_Donkey_Metallic.png in Resources */,
 			);
@@ -1607,28 +1677,32 @@
 				72A99BDF2C29D14E00D96813 /* instigator_trump_1024.png in Resources */,
 				721AB5B82BB918F400E68231 /* pexels-pixabay-262786-pyramid.jpg in Resources */,
 				72A99C252C29D14F00D96813 /* trump_protester_running.dae in Resources */,
+				723074672C693E27005F0317 /* regolith.png in Resources */,
 				721AB5BA2BB918F400E68231 /* Metal_Weave_003_basecolor.jpg in Resources */,
+				7230744C2C688F6B005F0317 /* login7.jpg in Resources */,
 				721AB5BB2BB918F400E68231 /* PIA15415orig.jpg in Resources */,
 				72A99C012C29D14F00D96813 /* t_Donkey_Roughness.png in Resources */,
 				72256C652C55706D00D16A58 /* starryai_ofj82.jpg in Resources */,
 				721AB5C12BB918F400E68231 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
 				721AB5C22BB918F400E68231 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
-				720F5BDB2C50B3910073A488 /* login10.png in Resources */,
 				721AB5C32BB918F400E68231 /* LaunchScreen.storyboard in Resources */,
 				72256C552C55706D00D16A58 /* starryai_3et02i.jpg in Resources */,
 				721AB5C52BB918F400E68231 /* Artophy.png in Resources */,
 				72A99C112C29D14F00D96813 /* attacker.png in Resources */,
 				72E05CDD2C5C88BC0055B784 /* moon_surface.jpg in Resources */,
-				720F5BD72C50B3910073A488 /* login8.png in Resources */,
 				72A99C052C29D14F00D96813 /* t_Elephant_BaseColor.png in Resources */,
+				723074612C693E27005F0317 /* jarosite.png in Resources */,
+				7230744A2C688F6B005F0317 /* login3.jpg in Resources */,
 				721AB5C92BB918F400E68231 /* PIA12348orig.jpg in Resources */,
 				72256C482C556ACB00D16A58 /* rainbowgalaxy.jpg in Resources */,
 				721AB5CB2BB918F400E68231 /* space_icon_200.jpg in Resources */,
 				72A99BF92C29D14F00D96813 /* t_Donkey_BaseColor.png in Resources */,
 				72256C462C556ACB00D16A58 /* purplegalaxy.jpg in Resources */,
+				7230743E2C688F6B005F0317 /* login4.jpg in Resources */,
 				72A99BFF2C29D14F00D96813 /* t_Donkey_Normal.png in Resources */,
-				720F5BD52C50B3910073A488 /* login7.png in Resources */,
 				721AB5D02BB918F400E68231 /* PIA01120orig.jpg in Resources */,
+				723074422C688F6B005F0317 /* login6.jpg in Resources */,
+				723074462C688F6B005F0317 /* login9.jpg in Resources */,
 				721AB5D12BB918F400E68231 /* 14648179676_db2001e0fa_o.jpg in Resources */,
 				721AB5D22BB918F400E68231 /* a.scn in Resources */,
 				72A99BF72C29D14F00D96813 /* donkeyWithEyes.dae in Resources */,
@@ -1638,15 +1712,18 @@
 				72256C572C55706D00D16A58 /* starryai_7ejn3.jpeg in Resources */,
 				721AB5D62BB918F400E68231 /* PIA13005orig.jpg in Resources */,
 				72256C5F2C55706D00D16A58 /* starryai_ih7gql.jpg in Resources */,
+				723074632C693E27005F0317 /* opal.png in Resources */,
 				721AB5D72BB918F400E68231 /* pexels-chait-goli-1797161-colosseum.jpg in Resources */,
 				721AB5D92BB918F400E68231 /* 2k_earth_daymap.jpg in Resources */,
 				72A99C352C29D14F00D96813 /* Default-568h@2x.png in Resources */,
 				72A99C152C29D14F00D96813 /* hacker.png in Resources */,
 				72A99C0B2C29D14F00D96813 /* t_Elephant_Roughness.png in Resources */,
 				72256C612C55706D00D16A58 /* starryai_5p4zs.jpg in Resources */,
+				723074442C688F6B005F0317 /* login8.jpg in Resources */,
 				72A99C272C29D14F00D96813 /* trump_protester_running.scn in Resources */,
 				721AB5DA2BB918F400E68231 /* earth.scn in Resources */,
 				72A99BD92C29D14E00D96813 /* independent_bernie_1024.png in Resources */,
+				7230746B2C693E27005F0317 /* helium-3.png in Resources */,
 				72A99C0D2C29D14F00D96813 /* fist_instant_mesh_blue.dae in Resources */,
 				721AB5DC2BB918F400E68231 /* earth.png in Resources */,
 				72256C592C55706D00D16A58 /* starryai_ddgnr.jpg in Resources */,
@@ -1654,34 +1731,38 @@
 				721AB5DE2BB918F400E68231 /* PIA04921orig.jpg in Resources */,
 				721AB5DF2BB918F400E68231 /* flagcool.scn in Resources */,
 				72A99BDD2C29D14E00D96813 /* instigator_bernie_1024.png in Resources */,
-				720F5BC92C50B3910073A488 /* login1.png in Resources */,
 				721AB5E02BB918F400E68231 /* GameScene.scn in Resources */,
+				723074482C688F6B005F0317 /* login10.jpg in Resources */,
 				72A99BE12C29D14E00D96813 /* protester_bernie_1024.png in Resources */,
+				723074402C688F6B005F0317 /* login2.jpg in Resources */,
 				721AB5E22BB918F400E68231 /* iss.png in Resources */,
 				72A99C032C29D14F00D96813 /* elephant3.dae in Resources */,
 				721AB5E32BB918F400E68231 /* ISS_stationary2.usdz in Resources */,
 				72A99C6D2C29D14F00D96813 /* SceneKit Scene.scn in Resources */,
 				72A99C072C29D14F00D96813 /* t_Elephant_Metallic.png in Resources */,
+				7230745D2C693E27005F0317 /* hematite.png in Resources */,
 				721AB5E42BB918F400E68231 /* iss044e045215_lrg.jpg in Resources */,
 				721AB5E52BB918F400E68231 /* eleuz.scn in Resources */,
 				72256C5B2C55706D00D16A58 /* starryai_oafnf.jpg in Resources */,
 				72256C632C55706D00D16A58 /* starryai_i0q64.jpg in Resources */,
+				7230743A2C688F6B005F0317 /* login5.jpg in Resources */,
 				721AB5E92BB918F400E68231 /* lightspeed_PexelsVideos2757709.mp4 in Resources */,
+				723074652C693E27005F0317 /* silicate.png in Resources */,
 				72A99C532C29D14F00D96813 /* GridHackLaunchScreen.storyboard in Resources */,
 				721AB5EA2BB918F400E68231 /* pexels-fly-rj-2818895-christ.jpg in Resources */,
 				721AB5EC2BB918F400E68231 /* starry-sky-998641.jpg in Resources */,
 				721AB5ED2BB918F400E68231 /* mars.scn in Resources */,
 				72256C4A2C556ACB00D16A58 /* conenebula.jpg in Resources */,
 				72A99C1B2C29D14F00D96813 /* sm_Protester_Trump.dae in Resources */,
+				723074692C693E27005F0317 /* water ice.png in Resources */,
 				721AB5EE2BB918F400E68231 /* photo-of-stars-and-galaxy-3772378.jpg in Resources */,
 				72A99BFD2C29D14F00D96813 /* t_Donkey_Metallic.png in Resources */,
 				721AB5F02BB918F400E68231 /* 2k_mars.jpg in Resources */,
 				72A99C232C29D14F00D96813 /* t_Protestors_Trump_BaseColor.png in Resources */,
-				720F5BD12C50B3910073A488 /* login5.png in Resources */,
 				721AB5F12BB918F400E68231 /* scenic-view-of-agricultural-field-against-sky-during-sunset-325944.jpg in Resources */,
+				7230745F2C693E27005F0317 /* goethite.png in Resources */,
 				721AB5F22BB918F400E68231 /* Eleuz.png in Resources */,
 				721AB5F32BB918F400E68231 /* mars.png in Resources */,
-				720F5BCD2C50B3910073A488 /* login3.png in Resources */,
 				721AB5F42BB918F400E68231 /* moon.png in Resources */,
 				72A99BDB2C29D14E00D96813 /* independent_trump_1024.png in Resources */,
 				721AB5F52BB918F400E68231 /* quasar.png in Resources */,
@@ -1691,8 +1772,6 @@
 				721AB5F92BB918F400E68231 /* PIA09653orig.jpg in Resources */,
 				721AB5FA2BB918F400E68231 /* artophy.scn in Resources */,
 				72A99C1D2C29D14F00D96813 /* t_Protestors_Bernie_BaseColor.png in Resources */,
-				720F5BCF2C50B3910073A488 /* login4.png in Resources */,
-				720F5BD32C50B3910073A488 /* login6.png in Resources */,
 				72A99C3F2C29D14F00D96813 /* flag.png in Resources */,
 				72A99BE52C29D14F00D96813 /* Assets.xcassets in Resources */,
 				72A99C5D2C29D14F00D96813 /* MainGridHack.storyboard in Resources */,
@@ -1703,17 +1782,16 @@
 				721AB6002BB918F400E68231 /* pexels_taj-mahal-india-1603650.jpg in Resources */,
 				72A99C0F2C29D14F00D96813 /* fist_instant_mesh_red.dae in Resources */,
 				72A99BE32C29D14F00D96813 /* protester_trump_1024.png in Resources */,
+				7230742E2C688E1F005F0317 /* login1.jpg in Resources */,
 				721AB6032BB918F400E68231 /* PIA17563orig.jpg in Resources */,
 				72A99C092C29D14F00D96813 /* t_Elephant_Normal.png in Resources */,
 				721AB6042BB918F400E68231 /* moon.scn in Resources */,
 				72256C5D2C55706D00D16A58 /* starryai_qw7etf.jpg in Resources */,
 				721AB6072BB918F400E68231 /* Main.storyboard in Resources */,
-				720F5BD92C50B3910073A488 /* login9.png in Resources */,
 				721AB6082BB918F400E68231 /* space_icon_1024.jpg in Resources */,
 				721AB6092BB918F400E68231 /* florence.jpg in Resources */,
 				72A99C132C29D14F00D96813 /* builder.png in Resources */,
 				72A99BFB2C29D14F00D96813 /* t_Donkey_Height.png in Resources */,
-				720F5BCB2C50B3910073A488 /* login2.png in Resources */,
 				721AB60B2BB918F400E68231 /* 24609260915_a840b027e5_o.jpg in Resources */,
 				721AB60C2BB918F400E68231 /* GSFC_20171208_Archive_e001359orig.jpg in Resources */,
 				721AB60D2BB918F400E68231 /* Assets.xcassets in Resources */,
@@ -1881,9 +1959,11 @@
 				72A99C6E2C29D14F00D96813 /* SettingsViewController.swift in Sources */,
 				72A3C04E2A7DAF5C00C2A01E /* AuctionHouseViewController.swift in Sources */,
 				72A99C382C29D14F00D96813 /* DumbAI.swift in Sources */,
+				7230742A2C68876F005F0317 /* OnboardingViewController.swift in Sources */,
 				72A99C762C29D14F00D96813 /* WaitForOpponentViewController.swift in Sources */,
 				72A99C892C334B8700D96813 /* GameViewController+Scene.swift in Sources */,
 				72A99C722C29D14F00D96813 /* Trump.swift in Sources */,
+				723074252C6886B0005F0317 /* OnboardingView.swift in Sources */,
 				7221818D2B8EA2C200FB572F /* ModelCollectionViewCell.swift in Sources */,
 				72A99C642C29D14F00D96813 /* PartyDelegate.swift in Sources */,
 				72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */,
@@ -1926,6 +2006,7 @@
 				722181912B8FF1C800FB572F /* ChatView.swift in Sources */,
 				722181932B8FF26200FB572F /* ChatViewController.swift in Sources */,
 				721BF2A82BBB020C0046E7E7 /* IAPManager.swift in Sources */,
+				7230746D2C695D62005F0317 /* MineralTableViewCell.swift in Sources */,
 				72A99C362C29D14F00D96813 /* DefaultKeys.swift in Sources */,
 				72F4E2AC2B9FBA53003FBF0D /* ReplicatorViewController.swift in Sources */,
 				72A99C542C29D14F00D96813 /* LobbyViewController.swift in Sources */,
@@ -1986,6 +2067,7 @@
 				721AB5922BB918F400E68231 /* EarthLocationState.swift in Sources */,
 				72A99C632C29D14F00D96813 /* MyCharacter.swift in Sources */,
 				72A99C5F2C29D14F00D96813 /* Multiplayer.swift in Sources */,
+				7230744F2C6895A8005F0317 /* OnboardingView.swift in Sources */,
 				72AA231E2C21F1D600001448 /* ConfigureSpaceStationViewController.swift in Sources */,
 				721AB5932BB918F400E68231 /* SpaceStationViewController.swift in Sources */,
 				721AB5942BB918F400E68231 /* SphereInventoryViewController.swift in Sources */,
@@ -2014,6 +2096,7 @@
 				72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */,
 				721AB59E2BB918F400E68231 /* GameViewController.swift in Sources */,
 				72A99C842C334B4A00D96813 /* GameViewController+Utils.swift in Sources */,
+				7230742B2C68876F005F0317 /* OnboardingViewController.swift in Sources */,
 				72A99C3B2C29D14F00D96813 /* Enemy.swift in Sources */,
 				72A99C752C29D14F00D96813 /* GridHackUtils.swift in Sources */,
 				72A99BEF2C29D14F00D96813 /* FriendlyBuilderFactory.swift in Sources */,
@@ -2037,6 +2120,7 @@
 				721AB5AA2BB918F400E68231 /* Defaults.swift in Sources */,
 				721AB5AB2BB918F400E68231 /* ChatView.swift in Sources */,
 				721AB5AD2BB918F400E68231 /* ChatViewController.swift in Sources */,
+				7230746E2C695D62005F0317 /* MineralTableViewCell.swift in Sources */,
 				72A99C372C29D14F00D96813 /* DefaultKeys.swift in Sources */,
 				721BF2AD2BBB73F10046E7E7 /* IAPManager.swift in Sources */,
 				72A99C552C29D14F00D96813 /* LobbyViewController.swift in Sources */,
@@ -2162,7 +2246,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2219,7 +2302,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2243,8 +2325,6 @@
 				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2274,8 +2354,6 @@
 				INFOPLIST_FILE = "Open Space-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2305,8 +2383,6 @@
 				INFOPLIST_FILE = "Open Space Mac-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2336,8 +2412,6 @@
 				INFOPLIST_FILE = "Open Space Mac-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Open Space";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2441,6 +2515,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		723074502C692F1A005F0317 /* XCRemoteSwiftPackageReference "OnboardingKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/OnboardingKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		723074512C692F1A005F0317 /* OnboardingKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 723074502C692F1A005F0317 /* XCRemoteSwiftPackageReference "OnboardingKit" */;
+			productName = OnboardingKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6FB0EEED23FDA1A800EA28D7 /* Project object */;
 }

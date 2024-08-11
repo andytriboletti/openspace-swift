@@ -400,6 +400,7 @@ class AccountViewController: BackgroundImageViewController {
            confirmationAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
                do {
                    try Auth.auth().signOut()
+                   Defaults.removeAll()
                } catch let signOutError as NSError {
                    //print("Error signing out: \(signOutError.localizedDescription)")
                }

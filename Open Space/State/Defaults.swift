@@ -56,5 +56,6 @@ extension Defaults.Keys {
     static let numberOfSpheres = Key<Int>("numberOfSpheres", default: 0)
     static let earningFromObjectsDaily = Key<Int>("earningFromObjectsDaily", default: 0)
     static let theNumberOfObjects = Key<Int>("theNumberOfObjects", default: 0)
+    static let hasWatchedOnboarding = Key<Int>("hasWatchedOnboarding", default: 0)
 
 }

@@ -23,8 +23,6 @@ class NavGameController: UINavigationController, FUIAuthDelegate {
             do {
                 try Auth.auth().signOut()
 
-                // Clear all stored values
-                Defaults.removeAll()
 
             } catch let signOutError as NSError {
                 //print("Error signing out to get app token: \(signOutError.localizedDescription)")

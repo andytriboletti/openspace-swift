@@ -43,8 +43,17 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
               // Customizing authController view
               customizeAuthControllerView(authController.view)
+              //let hasOnboard = 0 //Defaults[.hasWatchedOnboarding]
+              let hasOnboard = Defaults[.hasWatchedOnboarding]
 
-              present(authController, animated: true, completion: nil)
+              print(hasOnboard)
+              if(hasOnboard == 1) {
+                  present(authController, animated: true, completion: nil)
+              }
+              else {
+                  performSegue(withIdentifier: "goToOnboarding", sender: self)
+              }
+
           }
       }
 
@@ -144,7 +153,8 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
     @objc private func loadRandomImage() {
         let randomIndex = Int.random(in: 1...10)
-        let imageName = "login\(randomIndex)"
+        let imageName = "login\(randomIndex).jpg"
+       // let imageName = "login1.jpg"
         imageView.image = UIImage(named: imageName)
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

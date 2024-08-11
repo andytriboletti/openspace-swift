@@ -112,6 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         authenticateGameCenter()
 
+
+        
         return true
     }
 

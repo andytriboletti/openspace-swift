@@ -39,6 +39,10 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         //overlayAlpha = 0.3 // Adjust as needed
 
         super.viewDidLoad()
+        tableView.register(MineralTableViewCell.self, forCellReuseIdentifier: "MineralCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+
         tableView.dataSource = self
         tableView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
@@ -184,31 +188,61 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 1 : minerals.count
+        if section == 1 {
+            return 1  // "Coming Soon" section
+        } else {
+            return minerals.count + 1  // Minerals section + 1 for the total row
+        }
     }
+
+
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
-
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
-
-        let bgView = UIView()
-        bgView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.3)
-        cell.backgroundView = bgView
-
         if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
             cell.textLabel?.text = "Coming soon: Ability to carry mission supplies."
+            cell.textLabel?.textColor = .label
+            cell.textLabel?.textAlignment = .left  // Align text to the left
+            return cell
         } else {
-            let mineral = minerals[indexPath.row]
-            cell.textLabel?.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"
+            if indexPath.row == minerals.count {
+                // This is the total row
+                let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+
+                let totalWeight = minerals.reduce(0.0) { $0 + (Double($1.kilograms) ?? 0.0) }
+                cell.textLabel?.text = "Total Minerals on Board: \(totalWeight) kg"
+                cell.textLabel?.textColor = .label
+                cell.textLabel?.textAlignment = .left  // Align text to the left
+
+                // Set white background for the total row
+                cell.backgroundColor = .white
+                cell.contentView.backgroundColor = .white
+
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+                cell.textLabel?.adjustsFontSizeToFitWidth = false
+                cell.textLabel?.numberOfLines = 1
+
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "MineralCell", for: indexPath) as? MineralTableViewCell else {
+                    return UITableViewCell()
+                }
+
+                let mineral = minerals[indexPath.row]
+                cell.mineralLabel.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"
+                let imageName = mineral.mineralName.lowercased()
+                cell.mineralImageView.image = UIImage(named: imageName)
+
+                cell.mineralLabel.font = UIFont.systemFont(ofSize: 17)
+                cell.mineralLabel.adjustsFontSizeToFitWidth = false
+                cell.mineralLabel.numberOfLines = 1
+
+                return cell
+            }
         }
-
-        // Use system label color which adapts to the current theme
-        cell.textLabel?.textColor = .label
-
-        return cell
     }
+
+
 
     // MARK: - In-App Purchase Methods
 
