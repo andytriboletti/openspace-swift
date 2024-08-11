@@ -10,7 +10,8 @@ import UIKit
 import SceneKit
 import Alamofire
 import Defaults
-
+//import ExytePopupView
+import PopupView
 #if targetEnvironment(macCatalyst)
 // Exclude GoogleMobileAds for Mac Catalyst
 #else
@@ -18,6 +19,8 @@ import GoogleMobileAds
 #endif
 
 class ExploreMoonViewController: UIViewController {
+    private var hostingController: UIHostingController<PopupContainerView>?
+
     @IBOutlet weak var stackView: UIStackView!
 
     @IBOutlet var spaceportButton: UIButton!
@@ -144,7 +147,45 @@ class ExploreMoonViewController: UIViewController {
         show()
     }
 
-   
+    func showSuccessMessage(mineral: String, amount: Int) {
+           let popupContainerView = PopupContainerView(
+               mineral: mineral,
+               amount: amount,
+               checkDailyTreasureAvailability: checkDailyTreasureAvailability,
+               dismiss: { [weak self] in
+                   self?.dismissPopup()
+               }
+           )
+
+           hostingController = UIHostingController(rootView: popupContainerView)
+
+           if let hostingView = hostingController?.view {
+               hostingView.backgroundColor = .clear
+               hostingView.translatesAutoresizingMaskIntoConstraints = false
+
+               addChild(hostingController!)
+               view.addSubview(hostingView)
+
+               NSLayoutConstraint.activate([
+                   hostingView.topAnchor.constraint(equalTo: view.topAnchor),
+                   hostingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                   hostingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                   hostingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+               ])
+
+               hostingController?.didMove(toParent: self)
+           }
+       }
+
+       private func dismissPopup() {
+           hostingController?.willMove(toParent: nil)
+           hostingController?.view.removeFromSuperview()
+           hostingController?.removeFromParent()
+           hostingController = nil
+
+           checkDailyTreasureAvailability()
+       }
+
     @objc func buttonTapped() {
         // Action to be performed when the button is tapped
         //print("Button tapped!")
@@ -265,6 +306,9 @@ class ExploreMoonViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         // Call the function to check if the daily treasure is available for the user
          checkDailyTreasureAvailability()
+
+        showSuccessMessage(mineral: "Hematite", amount: 2)
+
 
     }
 
@@ -434,20 +478,25 @@ class ExploreMoonViewController: UIViewController {
         }
         addObject(name: "a.scn", position: myPosition, scale: myScale)
     }
+//
+//    func showSuccessMessage(mineral: String?, amount: Int?) {
+//        // Show a success message to the user (e.g., an alert or a label)
+//        guard let mineral = mineral, let amount = amount else {
+//            // Handle the case where mineral or amount is nil
+//            return
+//        }
+//
+//        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your daily treasure of \(amount) \(mineral).", preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alertController.addAction(okAction)
+//        checkDailyTreasureAvailability()
+//        present(alertController, animated: true, completion: nil)
+//    }
 
-    func showSuccessMessage(mineral: String?, amount: Int?) {
-        // Show a success message to the user (e.g., an alert or a label)
-        guard let mineral = mineral, let amount = amount else {
-            // Handle the case where mineral or amount is nil
-            return
-        }
 
-        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your daily treasure of \(amount) \(mineral).", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        checkDailyTreasureAvailability()
-        present(alertController, animated: true, completion: nil)
-    }
+
+
+
 
     func showError() {
         // Show an error message to the user (e.g., an alert or a label)
@@ -457,4 +506,76 @@ class ExploreMoonViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
+}
+
+
+struct PopupContainerView: View {
+    @State private var showPopup: Bool = true
+    let mineral: String
+    let amount: Int
+    let checkDailyTreasureAvailability: () -> Void
+    let dismiss: () -> Void
+
+    var body: some View {
+        Color.clear
+            .popup(isPresented: $showPopup) {
+                MineralPopupView(mineral: mineral, amount: amount) {
+                    showPopup = false
+                    dismiss()
+                }
+            } customize: {
+                $0
+                    .type(.floater())
+                    .position(.center)
+                    .animation(.spring())
+                    .autohideIn(nil)
+                    .dragToDismiss(true)
+                    .closeOnTap(false)
+                    .closeOnTapOutside(true)
+                    .backgroundColor(.black.opacity(0.4))
+            }
+            .onChange(of: showPopup) { newValue in
+                if !newValue {
+                    dismiss()
+                }
+            }
+    }
+}
+
+import SwiftUI
+
+struct MineralPopupView: View {
+    let mineral: String
+    let amount: Int
+    let onDismiss: () -> Void
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(uiImage: UIImage(named: mineral.lowercased()) ?? UIImage(systemName: "mountain.2.fill")!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100, height: 100)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
+
+            Text("Congratulations!")
+                .font(.title)
+                .fontWeight(.bold)
+
+            Text("You claimed your hourly treasure of \(amount) \(mineral).")
+                .multilineTextAlignment(.center)
+
+            Button("OK") {
+                onDismiss()
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 10)
+    }
 }

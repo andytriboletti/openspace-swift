@@ -247,7 +247,6 @@
 		7230744B2C688F6B005F0317 /* login7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074382C688F6B005F0317 /* login7.jpg */; };
 		7230744C2C688F6B005F0317 /* login7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 723074382C688F6B005F0317 /* login7.jpg */; };
 		7230744F2C6895A8005F0317 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723074242C6886B0005F0317 /* OnboardingView.swift */; };
-		723074522C692F1A005F0317 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 723074512C692F1A005F0317 /* OnboardingKit */; };
 		7230745C2C693E27005F0317 /* hematite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074542C693E24005F0317 /* hematite.png */; };
 		7230745D2C693E27005F0317 /* hematite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074542C693E24005F0317 /* hematite.png */; };
 		7230745E2C693E27005F0317 /* goethite.png in Resources */ = {isa = PBXBuildFile; fileRef = 723074552C693E25005F0317 /* goethite.png */; };
@@ -471,6 +470,10 @@
 		72E05CDD2C5C88BC0055B784 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */; };
 		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
 		72E8C50526F2586000D5FDEB /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
+		72F1D1D62C696526004039C3 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1D52C696526004039C3 /* OnboardingKit */; };
+		72F1D1DE2C6965FE004039C3 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1DD2C6965FE004039C3 /* PopupView */; };
+		72F1D1E02C696605004039C3 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1DF2C696605004039C3 /* PopupView */; };
+		72F1D1E22C69660E004039C3 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1E12C69660E004039C3 /* OnboardingKit */; };
 		72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4E2AC2B9FBA53003FBF0D /* ReplicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */; };
@@ -748,7 +751,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723074522C692F1A005F0317 /* OnboardingKit in Frameworks */,
+				72F1D1DE2C6965FE004039C3 /* PopupView in Frameworks */,
+				72F1D1D62C696526004039C3 /* OnboardingKit in Frameworks */,
 				1522AE7C17624B8C391058D1 /* Pods_Open_Space.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,6 +761,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72F1D1E22C69660E004039C3 /* OnboardingKit in Frameworks */,
+				72F1D1E02C696605004039C3 /* PopupView in Frameworks */,
 				3063D485CA5084449BF4D98D /* Pods_Open_Space_Desktop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1448,7 +1454,8 @@
 			);
 			name = "Open Space";
 			packageProductDependencies = (
-				723074512C692F1A005F0317 /* OnboardingKit */,
+				72F1D1D52C696526004039C3 /* OnboardingKit */,
+				72F1D1DD2C6965FE004039C3 /* PopupView */,
 			);
 			productName = "Open Space";
 			productReference = 6FB0EEF523FDA1A800EA28D7 /* Open Space.app */;
@@ -1470,6 +1477,8 @@
 			);
 			name = "Open Space Desktop";
 			packageProductDependencies = (
+				72F1D1DF2C696605004039C3 /* PopupView */,
+				72F1D1E12C69660E004039C3 /* OnboardingKit */,
 			);
 			productName = "Open Space";
 			productReference = 721AB6192BB918F400E68231 /* Open Space.app */;
@@ -1523,7 +1532,8 @@
 			);
 			mainGroup = 6FB0EEEC23FDA1A800EA28D7;
 			packageReferences = (
-				723074502C692F1A005F0317 /* XCRemoteSwiftPackageReference "OnboardingKit" */,
+				72F1D1D42C696526004039C3 /* XCRemoteSwiftPackageReference "OnboardingKit" */,
+				72F1D1DC2C6965FE004039C3 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 6FB0EEF623FDA1A800EA28D7 /* Products */;
 			projectDirPath = "";
@@ -2517,7 +2527,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		723074502C692F1A005F0317 /* XCRemoteSwiftPackageReference "OnboardingKit" */ = {
+		72F1D1D42C696526004039C3 /* XCRemoteSwiftPackageReference "OnboardingKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielsaidi/OnboardingKit";
 			requirement = {
@@ -2525,12 +2535,35 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		72F1D1DC2C6965FE004039C3 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		723074512C692F1A005F0317 /* OnboardingKit */ = {
+		72F1D1D52C696526004039C3 /* OnboardingKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 723074502C692F1A005F0317 /* XCRemoteSwiftPackageReference "OnboardingKit" */;
+			package = 72F1D1D42C696526004039C3 /* XCRemoteSwiftPackageReference "OnboardingKit" */;
+			productName = OnboardingKit;
+		};
+		72F1D1DD2C6965FE004039C3 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72F1D1DC2C6965FE004039C3 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+		72F1D1DF2C696605004039C3 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72F1D1DC2C6965FE004039C3 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+		72F1D1E12C69660E004039C3 /* OnboardingKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72F1D1D42C696526004039C3 /* XCRemoteSwiftPackageReference "OnboardingKit" */;
 			productName = OnboardingKit;
 		};
 /* End XCSwiftPackageProductDependency section */
