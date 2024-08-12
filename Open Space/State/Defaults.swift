@@ -59,3 +59,7 @@ extension Defaults.Keys {
     static let hasWatchedOnboarding = Key<Int>("hasWatchedOnboarding", default: 0)
 
 }
+import SwiftUI
+extension Image {
+    static let greenOrange = Image("replicator")
+}

@@ -478,6 +478,8 @@
 		72F1D1E62C69A15B004039C3 /* MineralPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */; };
 		72F1D1E82C69A1A9004039C3 /* PopupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */; };
 		72F1D1E92C69A1A9004039C3 /* PopupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */; };
+		72F1D1EC2C69AD5F004039C3 /* replicator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F1D1EB2C69AD5F004039C3 /* replicator.jpg */; };
+		72F1D1ED2C69AD5F004039C3 /* replicator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F1D1EB2C69AD5F004039C3 /* replicator.jpg */; };
 		72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4E2AC2B9FBA53003FBF0D /* ReplicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */; };
@@ -742,6 +744,7 @@
 		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
 		72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralPopupView.swift; sourceTree = "<group>"; };
 		72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContainerView.swift; sourceTree = "<group>"; };
+		72F1D1EB2C69AD5F004039C3 /* replicator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = replicator.jpg; sourceTree = "<group>"; };
 		72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdManager.swift; sourceTree = "<group>"; };
 		72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorViewController.swift; sourceTree = "<group>"; };
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -876,6 +879,7 @@
 		6F96DE6223FDDE3800BAE0CF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				72F1D1EA2C69AD53004039C3 /* onboarding */,
 				723074532C693E11005F0317 /* minerals */,
 				72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */,
 				727987202C54982E00CFE8F8 /* BackgroundImages */,
@@ -1450,6 +1454,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		72F1D1EA2C69AD53004039C3 /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				72F1D1EB2C69AD5F004039C3 /* replicator.jpg */,
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1663,6 +1675,7 @@
 				6F677BA82407742F004A1C8B /* PIA09653orig.jpg in Resources */,
 				72A99C1A2C29D14F00D96813 /* sm_Protester_Trump.dae in Resources */,
 				6FA5934724001043007C16E3 /* artophy.scn in Resources */,
+				72F1D1EC2C69AD5F004039C3 /* replicator.jpg in Resources */,
 				6FF9344026614B3500CFEFD2 /* Anderik.png in Resources */,
 				6F93855E2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg in Resources */,
 				72A99C002C29D14F00D96813 /* t_Donkey_Roughness.png in Resources */,
@@ -1712,6 +1725,7 @@
 				721AB5C12BB918F400E68231 /* pexels-alex-azabache-3290068-chicken-itza.jpg in Resources */,
 				721AB5C22BB918F400E68231 /* pexels-tom-fisk-1653823_great-wall.jpg in Resources */,
 				721AB5C32BB918F400E68231 /* LaunchScreen.storyboard in Resources */,
+				72F1D1ED2C69AD5F004039C3 /* replicator.jpg in Resources */,
 				72256C552C55706D00D16A58 /* starryai_3et02i.jpg in Resources */,
 				721AB5C52BB918F400E68231 /* Artophy.png in Resources */,
 				72A99C112C29D14F00D96813 /* attacker.png in Resources */,
