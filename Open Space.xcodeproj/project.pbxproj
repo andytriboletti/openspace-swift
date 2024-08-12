@@ -480,6 +480,8 @@
 		72F1D1E92C69A1A9004039C3 /* PopupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */; };
 		72F1D1EC2C69AD5F004039C3 /* replicator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F1D1EB2C69AD5F004039C3 /* replicator.jpg */; };
 		72F1D1ED2C69AD5F004039C3 /* replicator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F1D1EB2C69AD5F004039C3 /* replicator.jpg */; };
+		72F1D1EF2C69B4BB004039C3 /* lroc_color_poles_8k.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F1D1EE2C69B4BB004039C3 /* lroc_color_poles_8k.jpg */; };
+		72F1D1F02C69B4BB004039C3 /* lroc_color_poles_8k.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F1D1EE2C69B4BB004039C3 /* lroc_color_poles_8k.jpg */; };
 		72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4E2AC2B9FBA53003FBF0D /* ReplicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */; };
@@ -745,6 +747,7 @@
 		72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralPopupView.swift; sourceTree = "<group>"; };
 		72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContainerView.swift; sourceTree = "<group>"; };
 		72F1D1EB2C69AD5F004039C3 /* replicator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = replicator.jpg; sourceTree = "<group>"; };
+		72F1D1EE2C69B4BB004039C3 /* lroc_color_poles_8k.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lroc_color_poles_8k.jpg; sourceTree = "<group>"; };
 		72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdManager.swift; sourceTree = "<group>"; };
 		72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorViewController.swift; sourceTree = "<group>"; };
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -889,6 +892,7 @@
 				6FF9343C26614AF800CFEFD2 /* ship_thumbnails */,
 				6F93855D2422C068001BE3F6 /* eye-of-the-storm-image-from-outer-space-71116.jpg */,
 				6F303534240FEA66006C4684 /* starry-sky-998641.jpg */,
+				72F1D1EE2C69B4BB004039C3 /* lroc_color_poles_8k.jpg */,
 				6F303532240FE993006C4684 /* photo-of-stars-and-galaxy-3772378.jpg */,
 				6FE911F723FF425400255491 /* nasa */,
 				6FD0296C23FED5A80082209D /* 2k_mars.jpg */,
@@ -1635,6 +1639,7 @@
 				72A99BE22C29D14F00D96813 /* protester_trump_1024.png in Resources */,
 				6FED358A268E762F002F1B12 /* earth.png in Resources */,
 				6F4A3F5F252E40A800147723 /* pexels-abdullah-ghatasheh-1631665.jpg in Resources */,
+				72F1D1EF2C69B4BB004039C3 /* lroc_color_poles_8k.jpg in Resources */,
 				723074602C693E27005F0317 /* jarosite.png in Resources */,
 				6F677BAA240776F1004A1C8B /* PIA04921orig.jpg in Resources */,
 				6F988A9923FF944100F7ED73 /* flagcool.scn in Resources */,
@@ -1744,6 +1749,7 @@
 				723074422C688F6B005F0317 /* login6.jpg in Resources */,
 				723074462C688F6B005F0317 /* login9.jpg in Resources */,
 				721AB5D12BB918F400E68231 /* 14648179676_db2001e0fa_o.jpg in Resources */,
+				72F1D1F02C69B4BB004039C3 /* lroc_color_poles_8k.jpg in Resources */,
 				721AB5D22BB918F400E68231 /* a.scn in Resources */,
 				72A99BF72C29D14F00D96813 /* donkeyWithEyes.dae in Resources */,
 				72A99C1F2C29D14F00D96813 /* t_Protestors_Metallic.png in Resources */,
