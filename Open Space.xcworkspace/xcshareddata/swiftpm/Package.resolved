@@ -1,15 +1,6 @@
 {
-  "originHash" : "67de53c6e3f50c81b56fc641fb4e39c529b40236996d4842d278d62fac8ad19b",
+  "originHash" : "f85ec36b55e6c3bddc4e146f4fc996922ed5c902954d863dc9c50577c5aae4c9",
   "pins" : [
-    {
-      "identity" : "onboardingkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/OnboardingKit",
-      "state" : {
-        "revision" : "dc49c16deb4c944abecfe0837ab59640ef94a7db",
-        "version" : "8.0.0"
-      }
-    },
     {
       "identity" : "popupview",
       "kind" : "remoteSourceControl",
