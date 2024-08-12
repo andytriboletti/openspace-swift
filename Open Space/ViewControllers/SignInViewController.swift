@@ -44,7 +44,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
               // Customizing authController view
               customizeAuthControllerView(authController.view)
               //let hasOnboard = 0 //Defaults[.hasWatchedOnboarding]
-              let hasOnboard =  Defaults[.hasWatchedOnboarding]
+              let hasOnboard =  0//Defaults[.hasWatchedOnboarding]
 
               print(hasOnboard)
               if(hasOnboard == 1) {
