@@ -9,8 +9,10 @@
 import UIKit
 import SceneKit
 import Defaults
+import SwiftUI
 
 class ExploreMarsViewController: UIViewController {
+        private var hostingController: UIHostingController<PopupContainerView>?
         @IBOutlet weak var stackView: UIStackView!
 
         @IBOutlet var spaceportButton: UIButton!
@@ -308,19 +310,63 @@ class ExploreMarsViewController: UIViewController {
             addObject(name: "a.scn", position: myPosition, scale: myScale)
         }
 
-    func showSuccessMessage(mineral: String?, amount: Int?) {
-        // Show a success message to the user (e.g., an alert or a label)
-        guard let mineral = mineral, let amount = amount else {
-            // Handle the case where mineral or amount is nil
-            return
-        }
 
-        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your daily treasure of \(amount) \(mineral).", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        checkDailyTreasureAvailability()
-        present(alertController, animated: true, completion: nil)
-    }
+
+
+    func showSuccessMessage(mineral: String, amount: Int) {
+           let popupContainerView = PopupContainerView(
+               mineral: mineral,
+               amount: amount,
+               checkDailyTreasureAvailability: checkDailyTreasureAvailability,
+               dismiss: { [weak self] in
+                   self?.dismissPopup()
+               }
+           )
+
+           hostingController = UIHostingController(rootView: popupContainerView)
+
+           if let hostingView = hostingController?.view {
+               hostingView.backgroundColor = .clear
+               hostingView.translatesAutoresizingMaskIntoConstraints = false
+
+               addChild(hostingController!)
+               view.addSubview(hostingView)
+
+               NSLayoutConstraint.activate([
+                   hostingView.topAnchor.constraint(equalTo: view.topAnchor),
+                   hostingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                   hostingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                   hostingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+               ])
+
+               hostingController?.didMove(toParent: self)
+           }
+       }
+
+       private func dismissPopup() {
+           hostingController?.willMove(toParent: nil)
+           hostingController?.view.removeFromSuperview()
+           hostingController?.removeFromParent()
+           hostingController = nil
+
+           checkDailyTreasureAvailability()
+       }
+
+
+//
+//    func showSuccessMessage(mineral: String?, amount: Int?) {
+//        // Show a success message to the user (e.g., an alert or a label)
+//        guard let mineral = mineral, let amount = amount else {
+//            // Handle the case where mineral or amount is nil
+//            return
+//        }
+//
+//        let alertController = UIAlertController(title: "Congratulations!", message: "You claimed your daily treasure of \(amount) \(mineral).", preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alertController.addAction(okAction)
+//        checkDailyTreasureAvailability()
+//        present(alertController, animated: true, completion: nil)
+//    }
 
         func showError() {
             // Show an error message to the user (e.g., an alert or a label)

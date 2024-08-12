@@ -474,6 +474,10 @@
 		72F1D1DE2C6965FE004039C3 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1DD2C6965FE004039C3 /* PopupView */; };
 		72F1D1E02C696605004039C3 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1DF2C696605004039C3 /* PopupView */; };
 		72F1D1E22C69660E004039C3 /* OnboardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1E12C69660E004039C3 /* OnboardingKit */; };
+		72F1D1E52C69A15B004039C3 /* MineralPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */; };
+		72F1D1E62C69A15B004039C3 /* MineralPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */; };
+		72F1D1E82C69A1A9004039C3 /* PopupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */; };
+		72F1D1E92C69A1A9004039C3 /* PopupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */; };
 		72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */; };
 		72F4E2AC2B9FBA53003FBF0D /* ReplicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */; };
@@ -736,6 +740,8 @@
 		72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moon_surface.jpg; sourceTree = "<group>"; };
 		72E8C50226F257FF00D5FDEB /* mars.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mars.scn; sourceTree = "<group>"; };
 		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
+		72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralPopupView.swift; sourceTree = "<group>"; };
+		72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupContainerView.swift; sourceTree = "<group>"; };
 		72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdManager.swift; sourceTree = "<group>"; };
 		72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorViewController.swift; sourceTree = "<group>"; };
 		72FC18B82B9CEF94007AF494 /* VIdeoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -957,6 +963,7 @@
 				6F82074424815CB5008C52D4 /* Open Space.entitlements */,
 				72B0B3A12BB4E79600BACE67 /* GoogleService-Info.plist */,
 				72C5132A2A51ED7200AAD941 /* GameScene.scn */,
+				72F1D1E32C69A0E9004039C3 /* Views */,
 				6FA3146A2401E56D009D77AB /* State */,
 				6F86CC6B24003A94005AECC9 /* Cells */,
 				6FDB587D23FE5EA9004263CB /* ViewControllers */,
@@ -969,15 +976,11 @@
 				6FD92044259B71E9008F6CA3 /* quasar.png */,
 				6F81A27B24155C4300D79494 /* Assets.xcassets */,
 				7221818E2B8FD80600FB572F /* WebSocketManager.swift */,
-				7221818A2B8EA20300FB572F /* HeaderView.swift */,
 				72FC18BA2B9CF08F007AF494 /* VideoCacheManager.swift */,
 				721BF2A72BBB020B0046E7E7 /* IAPManager.swift */,
 				721BF2A92BBB0FCB0046E7E7 /* Constants.swift */,
 				723A0F5A2C3AFB1500F11350 /* FileDownloader.swift */,
-				720F5BDC2C5158C80073A488 /* AuthCustomView.swift */,
 				72F4D0F12C5373FA000758E7 /* AppOpenAdManager.swift */,
-				723074242C6886B0005F0317 /* OnboardingView.swift */,
-				723074292C68876F005F0317 /* OnboardingViewController.swift */,
 			);
 			path = "Open Space";
 			sourceTree = "<group>";
@@ -1420,6 +1423,7 @@
 		72C513272A4FC2A500AAD941 /* PlanetViews */ = {
 			isa = PBXGroup;
 			children = (
+				723074292C68876F005F0317 /* OnboardingViewController.swift */,
 				6F9385582422ADDE001BE3F6 /* SpaceStationViewController.swift */,
 			);
 			path = PlanetViews;
@@ -1432,6 +1436,18 @@
 				72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */,
 			);
 			path = "Open SpaceUITests";
+			sourceTree = "<group>";
+		};
+		72F1D1E32C69A0E9004039C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				720F5BDC2C5158C80073A488 /* AuthCustomView.swift */,
+				7221818A2B8EA20300FB572F /* HeaderView.swift */,
+				723074242C6886B0005F0317 /* OnboardingView.swift */,
+				72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */,
+				72F1D1E72C69A1A9004039C3 /* PopupContainerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1980,11 +1996,13 @@
 				723A0F812C45F71700F11350 /* UIComponents.swift in Sources */,
 				7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */,
 				72FC18BB2B9CF08F007AF494 /* VideoCacheManager.swift in Sources */,
+				72F1D1E52C69A15B004039C3 /* MineralPopupView.swift in Sources */,
 				721BF2AA2BBB0FCC0046E7E7 /* Constants.swift in Sources */,
 				72A99C3C2C29D14F00D96813 /* EntryViewController.swift in Sources */,
 				72A99C422C29D14F00D96813 /* GameResultViewController.swift in Sources */,
 				72A99C402C29D14F00D96813 /* Friendly.swift in Sources */,
 				72B693B32A61BC4D005A0863 /* OpenspaceAPI.swift in Sources */,
+				72F1D1E82C69A1A9004039C3 /* PopupContainerView.swift in Sources */,
 				72A99C462C29D14F00D96813 /* GameScore.swift in Sources */,
 				7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */,
 				6FA4D33423FFB2CB0088B4A4 /* GameState.swift in Sources */,
@@ -2094,11 +2112,13 @@
 				721AB5982BB918F400E68231 /* MoonViewController.swift in Sources */,
 				721AB5992BB918F400E68231 /* HeaderView.swift in Sources */,
 				721AB59A2BB918F400E68231 /* VideoCacheManager.swift in Sources */,
+				72F1D1E62C69A15B004039C3 /* MineralPopupView.swift in Sources */,
 				72A99C3D2C29D14F00D96813 /* EntryViewController.swift in Sources */,
 				72A99C432C29D14F00D96813 /* GameResultViewController.swift in Sources */,
 				72A99C412C29D14F00D96813 /* Friendly.swift in Sources */,
 				721BF2AE2BBB740E0046E7E7 /* Constants.swift in Sources */,
 				72A99C472C29D14F00D96813 /* GameScore.swift in Sources */,
+				72F1D1E92C69A1A9004039C3 /* PopupContainerView.swift in Sources */,
 				721AB59B2BB918F400E68231 /* OpenspaceAPI.swift in Sources */,
 				721AB59C2BB918F400E68231 /* ExploreMoonViewController.swift in Sources */,
 				721AB59D2BB918F400E68231 /* GameState.swift in Sources */,
