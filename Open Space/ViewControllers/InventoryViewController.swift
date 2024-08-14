@@ -207,7 +207,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         } else {
             if indexPath.row == minerals.count {
                 // This is the total row
-                let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
 
                 let totalWeight = minerals.reduce(0.0) { $0 + (Double($1.kilograms) ?? 0.0) }
                 cell.textLabel?.text = "Total Minerals on Board: \(totalWeight) kg"
@@ -215,8 +215,8 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
                 cell.textLabel?.textAlignment = .left  // Align text to the left
 
                 // Set white background for the total row
-                cell.backgroundColor = .white
-                cell.contentView.backgroundColor = .white
+                //cell.backgroundColor = .white
+                //cell.contentView.backgroundColor = .white
 
                 cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
                 cell.textLabel?.adjustsFontSizeToFitWidth = false
