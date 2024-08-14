@@ -33,8 +33,8 @@ class AccountViewController: BackgroundImageViewController {
     @objc func upgrade() {
         //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
-        if(MyData.allowInAppPurhcases == 1) {
-            
+        if(MyData.allowInAppPurchases == 1) {
+
             //print("upgrade to premium")
             if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
                 showPremiumPurchaseAlert(price: price)
@@ -190,7 +190,7 @@ class AccountViewController: BackgroundImageViewController {
     @IBAction func upgradeMaxEnergyButtonTapped(_ sender: UIButton) {
         //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
-        if(MyData.allowInAppPurhcases == 1) {
+        if(MyData.allowInAppPurchases == 1) {
 
             //print("purchaseUpgradeMaxEnergy")
             if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeMaxEnergy) {
@@ -208,7 +208,7 @@ class AccountViewController: BackgroundImageViewController {
     @IBAction func buySmallMineralPack(_ sender: UIButton) {
         //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
-        if(MyData.allowInAppPurhcases == 1) {
+        if(MyData.allowInAppPurchases == 1) {
 
             //print("buysmallMineralPack")
 
@@ -228,7 +228,7 @@ class AccountViewController: BackgroundImageViewController {
         //todo in-app purchase disabled for testflight. todo re-enable when released
 
         //print("buyLargeMineralPack")
-        if(MyData.allowInAppPurhcases == 1) {
+        if(MyData.allowInAppPurchases == 1) {
 
             if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.largeMineralPack) {
                 showLargeMineralPurchaseAlert(price: price)
@@ -247,7 +247,7 @@ class AccountViewController: BackgroundImageViewController {
     @IBAction func refillEnergyButtonTapped(_ sender: UIButton) {
         //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
-        if(MyData.allowInAppPurhcases == 1) {
+        if(MyData.allowInAppPurchases == 1) {
             let alert: UIAlertController
 
 #if targetEnvironment(macCatalyst)

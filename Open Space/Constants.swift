@@ -34,6 +34,6 @@ struct MyData {
     static let testRewardedVideo="ca-app-pub-3940256099942544/1712485313"
     static let rewardedVideoForRefillEnergy="ca-app-pub-8840903285420889/7482113898"
 
-    static let allowInAppPurhcases = 0
+    static let allowInAppPurchases = 1
 }
 

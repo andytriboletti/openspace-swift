@@ -8,16 +8,16 @@ import FirebaseGoogleAuthUI
 
 class SignInViewController: UIViewController, FUIAuthDelegate {
     public var authUI: FUIAuth = FUIAuth.defaultAuthUI()!
-    var rootViewController: SignInViewController?
-    let imageView = UIImageView()
-    var imageTimer: Timer?
+      var rootViewController: SignInViewController?
+      let imageView = UIImageView()
+      var imageTimer: Timer?
+      var onboardingShown = false // Add this flag
 
-    override func viewDidAppear(_ animated: Bool) {
+      override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
 
           if let user = Auth.auth().currentUser {
               if let email = user.email {
-                  //print("Logged-in user email: \(email)")
                   dismiss(animated: false)
               }
           } else {
@@ -43,22 +43,18 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
               // Customizing authController view
               customizeAuthControllerView(authController.view)
-              //let hasOnboard = 0 //Defaults[.hasWatchedOnboarding]
+
               let hasOnboard =  Defaults[.hasWatchedOnboarding]
 
-              print(hasOnboard)
-              if(hasOnboard == 1) {
+              if hasOnboard == 1 {
                   present(authController, animated: true, completion: nil)
-              }
-              else {
+              } else if !onboardingShown { // Check if onboarding has already been shown
+                  onboardingShown = true // Set the flag to true
                   performSegue(withIdentifier: "goToOnboarding", sender: self)
               }
-
           }
       }
-
-
-
+    
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if let error = error {
             //print("Sign-in error: \(error.localizedDescription)")

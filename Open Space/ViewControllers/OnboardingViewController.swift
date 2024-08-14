@@ -1,7 +1,6 @@
 import UIKit
 import SwiftUI
 import Defaults
-import OnboardingKit
 
 class OnboardingViewController: UIViewController {
     private let pages = [
@@ -124,11 +123,14 @@ class OnboardingViewController: UIViewController {
     }
 
     private func finishOnboarding() {
+        // Set the flag indicating onboarding has been completed
         Defaults[.hasWatchedOnboarding] = 1
 
-        let newValue = UserDefaults.standard.string(forKey: "hasWatchedOnboarding")
-        print("New hasWatchedOnboarding value: \(newValue ?? "nil")")
-
-        performSegue(withIdentifier: "goToSignIn", sender: self)
+        // Dismiss the onboarding and return to the sign-in screen
+        dismiss(animated: true) {
+            if let signInViewController = self.presentingViewController as? SignInViewController {
+                signInViewController.performSegue(withIdentifier: "goToSignedIn", sender: signInViewController)
+            }
+        }
     }
 }

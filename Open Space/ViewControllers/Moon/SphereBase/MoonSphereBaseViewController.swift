@@ -101,7 +101,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
         } else {
             //return
             //todo in-app purchase disabled for testflight. todo re-enable when released
-            if(MyData.allowInAppPurhcases == 1) {
+            if(MyData.allowInAppPurchases == 1) {
 
                 if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
                     showPurchaseAlert(price: price)

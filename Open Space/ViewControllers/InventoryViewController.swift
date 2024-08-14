@@ -319,7 +319,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
     @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
         //return
         //todo in-app purchase disabled for testflight. todo re-enable when released
-        if(MyData.allowInAppPurhcases == 1) {
+        if(MyData.allowInAppPurchases == 1) {
             
             let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
             
