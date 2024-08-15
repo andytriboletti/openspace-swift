@@ -96,13 +96,13 @@ class WhereOnEarthSelectCollectionViewController: AlertViewController, UICollect
         }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            let widthPerItem = collectionView.frame.width / 2 - flowLayout.minimumInteritemSpacing
-            return CGSize(width: widthPerItem, height: widthPerItem)
-        }
+//        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+//            let widthPerItem = collectionView.frame.width / 2 - flowLayout.minimumInteritemSpacing
+//            return CGSize(width: widthPerItem, height: widthPerItem)
+//        }
 
         // Default size if casting fails
-        return CGSize(width: 50, height: 50)
+        return CGSize(width:200, height:200)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

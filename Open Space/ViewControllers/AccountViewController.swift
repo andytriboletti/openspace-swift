@@ -21,6 +21,7 @@ class AccountViewController: BackgroundImageViewController {
     @IBOutlet weak var yourAccountIsEarningObjects: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var refillEnergy: UIButton!
+    @IBOutlet weak var priceLabel: UILabel!
 
     #if !targetEnvironment(macCatalyst)
     var rewardedAd: GADRewardedAd?
@@ -29,6 +30,18 @@ class AccountViewController: BackgroundImageViewController {
 //    @IBAction func upgradeToPremium(_ sender: UIButton) {
 //            upgrade()
 //      }
+
+
+    @IBAction func viewTerms(_ sender: UIButton) {
+        if let url = URL(string: "https://greenrobot.com/terms") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    @IBAction func viewPrivacy(_ sender: UIButton) {
+        if let url = URL(string: "https://greenrobot.com/privacy") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 
     @objc func upgrade() {
         //return
@@ -506,6 +519,12 @@ class AccountViewController: BackgroundImageViewController {
         }
     }
 
+    func setPriceForLabel(price : String) {
+        print("price")
+        print(price)
+        priceLabel.text="   Subscription to Premium lasts 1 month. It is \(price).   "
+
+    }
     override func viewDidLoad() {
         //backgroundImageName = "conenebula.jpg"
            // Set the overlay alpha if you want a different value than the default
@@ -516,6 +535,12 @@ class AccountViewController: BackgroundImageViewController {
         scrollView.canCancelContentTouches = true
 
 
+        if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
+            setPriceForLabel(price: price)
+        } else {
+            setPriceForLabel(price: "$4.99")
+            //print("Product price not available")
+        }
 
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseCompletion(_:)), name: .purchaseCompleted, object: nil)
 
