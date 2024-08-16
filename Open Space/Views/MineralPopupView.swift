@@ -1,11 +1,3 @@
-//
-//  MineralPopupView.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 8/11/24.
-//  Copyright © 2024 GreenRobot LLC. All rights reserved.
-//
-
 import UIKit
 import SwiftUI
 
@@ -13,6 +5,20 @@ struct MineralPopupView: View {
     let mineral: String
     let amount: Int
     let onDismiss: () -> Void
+
+    // Determine the background color based on the color scheme
+    private var backgroundColor: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? UIColor.black : UIColor.white
+        })
+    }
+
+    // Determine the text color based on the color scheme
+    private var textColor: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
+        })
+    }
 
     var body: some View {
         VStack(spacing: 20) {
@@ -26,9 +32,11 @@ struct MineralPopupView: View {
             Text("Congratulations!")
                 .font(.title)
                 .fontWeight(.bold)
+                .foregroundColor(textColor)
 
             Text("You claimed your hourly treasure of \(amount) \(mineral).")
                 .multilineTextAlignment(.center)
+                .foregroundColor(textColor)
 
             Button("OK") {
                 onDismiss()
@@ -39,7 +47,7 @@ struct MineralPopupView: View {
             .cornerRadius(10)
         }
         .padding()
-        .background(Color.white)
+        .background(backgroundColor)
         .cornerRadius(20)
         .shadow(radius: 10)
     }

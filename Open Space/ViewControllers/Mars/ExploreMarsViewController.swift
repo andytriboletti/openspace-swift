@@ -138,16 +138,20 @@ class ExploreMarsViewController: UIViewController {
     }
 
 
-            func showClaimedText() {
-                // addButtonToStackView()
-                // Hide the button and show the text
-                treasureButton.isHidden = true
-                let claimedLabel = UILabel()
-                claimedLabel.text = "Hourly Mars treasure already claimed."
-                claimedLabel.textAlignment = .center
-                claimedLabel.textColor = .white
-                stackView.addArrangedSubview(claimedLabel)
-            }
+    func showClaimedText() {
+        // Hide the treasure button
+        treasureButton.isHidden = true
+
+        // Check if the claimed label is already in the stackView
+        if !stackView.arrangedSubviews.contains(where: { ($0 as? UILabel)?.text == "Hourly Mars treasure already claimed." }) {
+            let claimedLabel = UILabel()
+            claimedLabel.text = "Hourly Mars treasure already claimed."
+            claimedLabel.textAlignment = .center
+            claimedLabel.textColor = .white
+            stackView.addArrangedSubview(claimedLabel)
+        }
+    }
+
 
         func showTreasureButton() {
             // Hide the text and show the button
