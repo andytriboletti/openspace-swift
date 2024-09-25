@@ -279,6 +279,9 @@
 		723A0F882C45F74000F11350 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0F862C45F74000F11350 /* CodableColor.swift */; };
 		7243A82D2A7862F80054E261 /* SphereInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */; };
 		7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */; };
+		7258F2982CA4921A008A8EFE /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 7258F2972CA4921A008A8EFE /* JWTDecode */; };
+		7258F29D2CA495C2008A8EFE /* AlienTavernManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */; };
+		7258F29E2CA495C2008A8EFE /* AlienTavernManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */; };
 		727693932C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
 		727693942C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
 		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
@@ -639,6 +642,7 @@
 		723A0F862C45F74000F11350 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
+		7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienTavernManager.swift; sourceTree = "<group>"; };
 		727693922C3654B000372B7E /* QuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsViewController.swift; sourceTree = "<group>"; };
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		727987362C54A5E700CFE8F8 /* BackgroundImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageViewController.swift; sourceTree = "<group>"; };
@@ -778,6 +782,7 @@
 			files = (
 				72F1D1E02C696605004039C3 /* PopupView in Frameworks */,
 				3063D485CA5084449BF4D98D /* Pods_Open_Space_Desktop.framework in Frameworks */,
+				7258F2982CA4921A008A8EFE /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,6 +1456,7 @@
 		72E0B4862C9F9561004CAA21 /* AlienTavern */ = {
 			isa = PBXGroup;
 			children = (
+				7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */,
 				7219EACA2CA47FE00076AB89 /* ATConfig.swift */,
 				72E0B4882C9F9592004CAA21 /* AlienTavern.swift */,
 				72E0B4872C9F9581004CAA21 /* CommentsView.swift */,
@@ -1521,6 +1527,7 @@
 			name = "Open Space Desktop";
 			packageProductDependencies = (
 				72F1D1DF2C696605004039C3 /* PopupView */,
+				7258F2972CA4921A008A8EFE /* JWTDecode */,
 			);
 			productName = "Open Space";
 			productReference = 721AB6192BB918F400E68231 /* Open Space.app */;
@@ -1575,6 +1582,7 @@
 			mainGroup = 6FB0EEEC23FDA1A800EA28D7;
 			packageReferences = (
 				72F1D1DC2C6965FE004039C3 /* XCRemoteSwiftPackageReference "PopupView" */,
+				7258F2962CA4921A008A8EFE /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
 			);
 			productRefGroup = 6FB0EEF623FDA1A800EA28D7 /* Products */;
 			projectDirPath = "";
@@ -1992,6 +2000,7 @@
 				6F30352D240FB007006C4684 /* NavGameController.swift in Sources */,
 				727693932C3654B100372B7E /* QuestsViewController.swift in Sources */,
 				72A99C682C29D14F00D96813 /* ProfileViewController.swift in Sources */,
+				7258F29D2CA495C2008A8EFE /* AlienTavernManager.swift in Sources */,
 				723A0F842C45F72E00F11350 /* SpaceStationConfig.swift in Sources */,
 				72B0B3A42BB5F7CF00BACE67 /* SelectNeighborSphereViewController.swift in Sources */,
 				7204DB082C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */,
@@ -2110,6 +2119,7 @@
 				721AB58C2BB918F400E68231 /* NavGameController.swift in Sources */,
 				727693942C3654B100372B7E /* QuestsViewController.swift in Sources */,
 				72A99C692C29D14F00D96813 /* ProfileViewController.swift in Sources */,
+				7258F29E2CA495C2008A8EFE /* AlienTavernManager.swift in Sources */,
 				723A0F852C45F72E00F11350 /* SpaceStationConfig.swift in Sources */,
 				721AB58D2BB918F400E68231 /* SelectNeighborSphereViewController.swift in Sources */,
 				7204DB092C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */,
@@ -2580,6 +2590,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7258F2962CA4921A008A8EFE /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
 		72F1D1DC2C6965FE004039C3 /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/PopupView.git";
@@ -2591,6 +2609,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7258F2972CA4921A008A8EFE /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7258F2962CA4921A008A8EFE /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
 		72F1D1DD2C6965FE004039C3 /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 72F1D1DC2C6965FE004039C3 /* XCRemoteSwiftPackageReference "PopupView" */;

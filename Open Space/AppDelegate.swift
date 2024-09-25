@@ -112,6 +112,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         authenticateGameCenter()
 
+        // Create and configure ATConfig
+               let config = ATConfig(boardDisplayName: "Lunar Lounge", board_id: "testboard123", app_id: "1499913239")
+
+               // Configure AlienTavernManager
+               AlienTavernManager.shared.configure(with: config)
+
+               // Setup AlienTavernManager
+               AlienTavernManager.shared.setup { success, errorMessage in
+                   if success {
+                       print("AlienTavernManager setup successful")
+                   } else {
+                       print("AlienTavernManager setup failed: \(errorMessage ?? "Unknown error")")
+                       // Handle setup failure (e.g., show an alert to the user)
+                   }
+               }
+
 
         
         return true

@@ -5,108 +5,206 @@
 //  Created by Andrew Triboletti on 9/21/24.
 //  Copyright © 2024 GreenRobot LLC. All rights reserved.
 //
-
-
 import Foundation
+import JWTDecode // You'll need to add this dependency to your project
 
 class AlienTavern {
     static let baseURL = "https://alientavern.com/api/"
+    static var jwtToken: String?
 
-       static func loadComments(board_id: String, app_id: String, app_secret: String, completion: @escaping ([Comment]?, Error?) -> Void) {
-           let url = URL(string: baseURL + "get_comment_board")!
 
-           var request = URLRequest(url: url)
-           request.httpMethod = "POST"
+    enum APIError: Error {
+        case invalidURL
+        case networkError(Error)
+        case decodingError(Error)
+        case encodingError(Error)
+        case invalidResponse
+        case authenticationError
+        case serverError(String)
+        case emptyResponse
+    }
 
-           // Set the request body
-           let requestBody: [String: Any] = [
-               "board_id": board_id,
-               "app_id": app_id,
-               "app_secret": app_secret
-           ]
 
-           request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody, options: [])
-           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-           // Create URL session
-           let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-               guard let data = data, error == nil else {
-                   completion(nil, error)
-                   return
-               }
 
-               do {
-                   // Print raw JSON for debugging purposes
-                   if let jsonString = String(data: data, encoding: .utf8) {
-                       print("Raw JSON: \(jsonString)")
-                   }
 
-                   // Decode the JSON into an array of Comment objects
-                   let comments = try JSONDecoder().decode([Comment].self, from: data)
-                   completion(comments, nil)
-               } catch let decodingError {
-                   print("Error decoding JSON: \(decodingError.localizedDescription)")
-                   completion(nil, decodingError)
-               }
-           }
-           task.resume()
-       }
-    
-    static func postComment(board_id: String, app_id: String, app_secret: String, comment_text: String, username: String, completion: @escaping (Bool, Error?) -> Void) {
-        let url = URL(string: baseURL + "post_comment")! // Adjust the endpoint for posting comments
-        
+
+    static func authenticate(appID: String, appSecret: String, completion: @escaping (Result<Void, APIError>) -> Void) {
+        print("AlienTavern: Starting authentication process")
+        guard let url = URL(string: baseURL + "authenticate") else {
+            print("AlienTavern: Invalid URL")
+            completion(.failure(.invalidURL))
+            return
+        }
+
+        print("AlienTavern: Creating URL request")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        // Set the request body for posting the comment
-        let requestBody: [String: Any] = [
-            "board_id": board_id,
-            "app_id": app_id,
-            "app_secret": app_secret,
-            "comment_text": comment_text,
-            "username": username
-        ]
-        
-        request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody, options: [])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // Create URL session
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let _ = data, error == nil else {
-                completion(false, error)
+
+        let body = ["app_id": appID, "app_secret": appSecret]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        } catch {
+            print("AlienTavern: Failed to serialize request body: \(error)")
+            completion(.failure(.encodingError(error)))
+            return
+        }
+
+        print("AlienTavern: Sending authentication request to \(url)")
+        print("AlienTavern: Request headers: \(request.allHTTPHeaderFields ?? [:])")
+        print("AlienTavern: Request body: \(String(data: request.httpBody ?? Data(), encoding: .utf8) ?? "")")
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print("AlienTavern: Received response from server")
+            if let error = error {
+                print("AlienTavern: Network error occurred: \(error.localizedDescription)")
+                completion(.failure(.networkError(error)))
                 return
             }
-            
-            // Assuming the post was successful
-            completion(true, nil)
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("AlienTavern: Invalid response type")
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            print("AlienTavern: Received response with status code: \(httpResponse.statusCode)")
+            print("AlienTavern: Response headers: \(httpResponse.allHeaderFields)")
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                print("AlienTavern: Server responded with error status code: \(httpResponse.statusCode)")
+                completion(.failure(.serverError("Server responded with status code \(httpResponse.statusCode)")))
+                return
+            }
+
+            guard let data = data else {
+                print("AlienTavern: Received empty response data")
+                completion(.failure(.emptyResponse))
+                return
+            }
+
+            print("AlienTavern: Received response data: \(String(data: data, encoding: .utf8) ?? "Unable to decode response")")
+
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                    print("AlienTavern: Parsed JSON response: \(json)")
+                    if let token = json["token"] as? String {
+                        self.jwtToken = token
+                        print("AlienTavern: Successfully extracted token")
+                        completion(.success(()))
+                    } else {
+                        print("AlienTavern: Token not found in response")
+                        completion(.failure(.authenticationError))
+                    }
+                } else {
+                    print("AlienTavern: Unable to parse response as JSON")
+                    completion(.failure(.decodingError(NSError(domain: "AlienTavern", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid JSON structure"]))))
+                }
+            } catch {
+                print("AlienTavern: JSON parsing error: \(error.localizedDescription)")
+                completion(.failure(.decodingError(error)))
+            }
         }
+
+        print("AlienTavern: Starting network request")
         task.resume()
+    }
+
+    static func loadComments(boardID: String, completion: @escaping (Result<[Comment], APIError>) -> Void) {
+        guard let token = jwtToken else {
+            completion(.failure(.authenticationError))
+            return
+        }
+
+        let url = URL(string: baseURL + "get_comment_board")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let body = ["board_id": boardID]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(.networkError(error)))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            do {
+                let comments = try JSONDecoder().decode([Comment].self, from: data)
+                completion(.success(comments))
+            } catch {
+                completion(.failure(.decodingError(error)))
+            }
+        }.resume()
+    }
+
+    static func postComment(boardID: String, commentText: String, username: String, completion: @escaping (Result<Void, APIError>) -> Void) {
+        guard let token = jwtToken else {
+            completion(.failure(.authenticationError))
+            return
+        }
+
+        let url = URL(string: baseURL + "post_comment")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let body: [String: Any] = [
+            "board_id": boardID,
+            "comment_text": commentText,
+            "username": username
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(.networkError(error)))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let success = json["success"] as? Bool, success {
+                    completion(.success(()))
+                } else {
+                    let errorMessage = (try? JSONDecoder().decode(ErrorResponse.self, from: data))?.error ?? "Unknown error"
+                    completion(.failure(.serverError(errorMessage)))
+                }
+            } catch {
+                completion(.failure(.decodingError(error)))
+            }
+        }.resume()
     }
 }
 
-// Comment model
 struct Comment: Codable {
-    let board_id: String
-    let created_at: String
-    let comment_text: String
+    let boardID: String
+    let createdAt: String
+    let commentText: String
     let username: String
+
+    enum CodingKeys: String, CodingKey {
+        case boardID = "board_id"
+        case createdAt = "created_at"
+        case commentText = "comment_text"
+        case username
+    }
 }
-// Example usage
-//AlienTavern.loadComments(board_id: "testboard123", app_id: "1499913239", app_secret: "c934b3a03d97f5cfccb1482bf219c7bf") { comments, error in
-//    if let error = error {
-//        print("Error loading comments: \(error)")
-//    } else if let comments = comments {
-//        print("Comments loaded successfully:")
-//        for comment in comments {
-//            print("\(comment.username): \(comment.comment_text) at \(comment.created_at)")
-//        }
-//    }
-//}
-//
-//AlienTavern.postComment(board_id: "testboard123", app_id: "1499913239", app_secret: "c934b3a03d97f5cfccb1482bf219c7bf", comment_text: "New comment", username: "User1") { success, error in
-//    if success {
-//        print("Comment posted successfully.")
-//    } else if let error = error {
-//        print("Error posting comment: \(error)")
-//    }
-//}
+
+struct ErrorResponse: Codable {
+    let error: String
+}

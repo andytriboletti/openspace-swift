@@ -5,7 +5,6 @@
 //  Created by Andrew Triboletti on 9/21/24.
 //  Copyright © 2024 GreenRobot LLC. All rights reserved.
 //
-
 import UIKit
 import SwiftUI
 
@@ -17,7 +16,6 @@ class LunarLoungeViewController: UIViewController {
         // Set up the view
         view = UIView()
         setupGradientBackground()
-        setupCommentsView()
     }
 
     override func viewDidLoad() {
@@ -25,6 +23,9 @@ class LunarLoungeViewController: UIViewController {
 
         // Set up a navigation bar with a Close button
         setupNavBar()
+
+        // Set up AlienTavernManager and CommentsView
+        setupAlienTavernAndCommentsView()
     }
 
     // Set up the gradient background
@@ -36,6 +37,34 @@ class LunarLoungeViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
+
+    func setupAlienTavernAndCommentsView() {
+           print("LunarLoungeViewController: Setting up AlienTavern")
+
+           // Configure AlienTavernManager with ATConfig
+            let config = ATConfig(boardDisplayName: "Lunar Lounge", board_id: "testboard123", app_id: "1499913239")
+
+           AlienTavernManager.shared.configure(with: config)
+
+           AlienTavernManager.shared.setup { [weak self] success, errorMessage in
+               guard let self = self else { return }
+
+               DispatchQueue.main.async {
+                   if success {
+                       print("LunarLoungeViewController: AlienTavern setup successful")
+                       self.setupCommentsView()
+                   } else {
+                       print("LunarLoungeViewController: AlienTavern setup failed")
+                       if let errorMessage = errorMessage {
+                           print("Error: \(errorMessage)")
+                       }
+                       self.showAuthenticationFailureAlert()
+                   }
+               }
+           }
+       }
+
+
     func setupCommentsView() {
         // Create an instance of ATConfig
         let config = ATConfig(
@@ -48,9 +77,7 @@ class LunarLoungeViewController: UIViewController {
         let commentsView = UIHostingController(
             rootView: CommentsView(
                 boardDisplayName: config.boardDisplayName,
-                board_id: config.board_id,
-                app_id: config.app_id,
-                app_secret: config.app_secret
+                boardID: config.board_id
             )
         )
 
@@ -67,7 +94,6 @@ class LunarLoungeViewController: UIViewController {
             commentsView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
 
     // Set up navigation bar with a Close button
     func setupNavBar() {
@@ -97,4 +123,16 @@ class LunarLoungeViewController: UIViewController {
         // Refreshing the comments - currently handled automatically within the SwiftUI view
         print("Refresh button tapped, refreshing comments.")
     }
+
+    func showAuthenticationFailureAlert() {
+        let alert = UIAlertController(title: "Authentication Failed", message: "Failed to connect to AlienTavern. Please try again later.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
+
+//// Updated ATConfig struct
+//struct ATConfig {
+//    let boardDisplayName: String
+//    let board_id: String
+//}

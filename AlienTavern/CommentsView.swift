@@ -6,19 +6,18 @@
 //  Copyright © 2024 GreenRobot LLC. All rights reserved.
 //
 
-
 import SwiftUI
 
 struct CommentsView: View {
-    @State private var comments: [Comment] = []
+    @StateObject private var viewModel: CommentsViewModel
     @State private var newComment: String = ""
-    @State private var isLoading: Bool = true
-    @State private var errorMessage: String?
+
+    init(boardDisplayName: String, boardID: String) {
+        _viewModel = StateObject(wrappedValue: CommentsViewModel(boardID: boardID))
+        self.boardDisplayName = boardDisplayName
+    }
 
     var boardDisplayName: String
-    var board_id: String
-    var app_id: String
-    var app_secret: String
 
     var body: some View {
         VStack {
@@ -26,26 +25,26 @@ struct CommentsView: View {
                 .font(.title)
                 .padding()
 
-            if isLoading {
+            if viewModel.isLoading {
                 ProgressView("Loading comments...")
-            } else if let errorMessage = errorMessage {
+            } else if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
-            } else if comments.isEmpty {
+            } else if viewModel.comments.isEmpty {
                 Text("No comments yet. Be the first to post!")
                     .foregroundColor(.gray)
                     .padding()
             } else {
                 ScrollView {
-                    ForEach(comments, id: \.created_at) { comment in
+                    ForEach(viewModel.comments, id: \.createdAt) { comment in
                         VStack(alignment: .leading) {
                             Text(comment.username)
                                 .font(.headline)
                                 .foregroundColor(.primary)
-                            Text(comment.comment_text)
+                            Text(comment.commentText)
                                 .foregroundColor(.secondary)
                                 .padding(.bottom, 4)
-                            Text(comment.created_at)
+                            Text(comment.createdAt)
                                 .font(.caption)
                                 .foregroundColor(.gray)
                         }
@@ -64,9 +63,10 @@ struct CommentsView: View {
                 TextField("Write a comment...", text: $newComment)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                
+
                 Button(action: {
-                    postComment()
+                    viewModel.postComment(text: newComment, username: "Anonymous")
+                    newComment = ""
                 }) {
                     Text("Post")
                         .padding()
@@ -79,66 +79,56 @@ struct CommentsView: View {
             }
         }
         .onAppear {
-            loadComments()
+            viewModel.loadComments()
         }
         .background(Color(UIColor.systemBackground))
-        .onAppear {
-            loadComments()
-        }
-    }
-
-    // Load comments method
-    private func loadComments() {
-        isLoading = true
-        AlienTavern.loadComments(board_id: board_id, app_id: app_id, app_secret: app_secret) { fetchedComments, error in
-            DispatchQueue.main.async {
-                self.isLoading = false
-
-                if let error = error {
-                    self.errorMessage = "Failed to load comments: \(error.localizedDescription)"
-                } else if let fetchedComments = fetchedComments {
-                    print("Raw JSON response: \(fetchedComments)")
-                    self.comments = fetchedComments
-                }
-            }
-        }
-    }
-
-
-    // Post new comment method
-    private func postComment() {
-        AlienTavern.postComment(board_id: board_id, app_id: app_id, app_secret: app_secret, comment_text: newComment, username: "Anonymous") { success, error in
-            if success {
-                self.newComment = ""
-                self.loadComments() // Reload comments after posting
-            } else if let error = error {
-                self.errorMessage = "Failed to post comment: \(error.localizedDescription)"
-            }
-        }
     }
 }
 
-// Sample Comment model
-//struct Comment: Codable {
-//    let board_id: Int
-//    let created_at: String
-//    let comment_text: String
-//    let username: String
-//}
+import Foundation
 
-// Example usage in a SwiftUI view
-//struct ContentView: View {
-//    var body: some View {
-//        CommentsView(boardDisplayName: "Test Board", board_id: "testboard123", app_id: "1499913239", app_secret: "c934b3a03d97f5cfccb1482bf219c7bf")
-//    }
-//}
+class CommentsViewModel: ObservableObject {
+    @Published var comments: [Comment] = []
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
 
-// Preview for SwiftUI
-//struct CommentsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CommentsView(boardDisplayName: "Test Board", board_id: "testboard123", app_id: "1499913239", app_secret: "c934b3a03d97f5cfccb1482bf219c7bf")
-//            .preferredColorScheme(.light) // Light mode
-//        CommentsView(boardDisplayName: "Test Board", board_id: "testboard123", app_id: "1499913239", app_secret: "c934b3a03d97f5cfccb1482bf219c7bf")
-//            .preferredColorScheme(.dark) // Dark mode
-//    }
-//}
+    private let boardID: String
+
+    init(boardID: String) {
+        self.boardID = boardID
+    }
+
+    func loadComments() {
+        isLoading = true
+        errorMessage = nil
+
+        AlienTavernManager.shared.getComments(for: boardID) { [weak self] comments in
+            DispatchQueue.main.async(execute: DispatchWorkItem(block: {
+                guard let self = self else { return }
+                self.isLoading = false
+                if let fetchedComments = comments {
+                    self.comments = fetchedComments
+                } else {
+                    self.errorMessage = "Failed to load comments"
+                }
+            }))
+        }
+    }
+
+    func postComment(text: String, username: String) {
+        isLoading = true
+        errorMessage = nil
+
+        AlienTavernManager.shared.postComment(boardID: boardID, text: text, username: username) { [weak self] success in
+            DispatchQueue.main.async(execute: DispatchWorkItem(block: {
+                guard let self = self else { return }
+                self.isLoading = false
+                if success {
+                    self.loadComments() // Reload comments after posting
+                } else {
+                    self.errorMessage = "Failed to post comment"
+                }
+            }))
+        }
+    }
+}
