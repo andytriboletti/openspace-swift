@@ -25,6 +25,15 @@ class MoonViewController: UIViewController {
     var baseNode: SCNNode!
     @IBOutlet var scnView: SCNView!
 
+    @IBAction func goToLunarLounge() {
+        let lunarLoungeVC = LunarLoungeViewController()
+        let navigationController = UINavigationController(rootViewController: lunarLoungeVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true, completion: nil)
+
+    }
+
+    
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
         Utils.shared.saveLocation(location: "nearMoon", usesEnergy: "0")

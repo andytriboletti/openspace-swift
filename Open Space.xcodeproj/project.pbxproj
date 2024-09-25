@@ -85,6 +85,8 @@
 		7204DB092C5744EF003B20D6 /* MoonSphereBaseViewController+SceneKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */; };
 		720F5BDD2C5158C90073A488 /* AuthCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F5BDC2C5158C80073A488 /* AuthCustomView.swift */; };
 		720F5BDE2C5158C90073A488 /* AuthCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F5BDC2C5158C80073A488 /* AuthCustomView.swift */; };
+		7219EACB2CA47FE00076AB89 /* ATConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7219EACA2CA47FE00076AB89 /* ATConfig.swift */; };
+		7219EACC2CA47FE00076AB89 /* ATConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7219EACA2CA47FE00076AB89 /* ATConfig.swift */; };
 		721AB5842BB918F400E68231 /* ExploreMarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ADF8E52BB896CA00976E4C /* ExploreMarsViewController.swift */; };
 		721AB5852BB918F400E68231 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B3C552A2E8AEA0053D567 /* SignInViewController.swift */; };
 		721AB5862BB918F400E68231 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F895FA72606B51500378FA7 /* TravelViewController.swift */; };
@@ -466,6 +468,10 @@
 		72D19A26270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */; };
 		72E05CDC2C5C88BC0055B784 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */; };
 		72E05CDD2C5C88BC0055B784 /* moon_surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */; };
+		72E0B4892C9F974E004CAA21 /* AlienTavern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E0B4882C9F9592004CAA21 /* AlienTavern.swift */; };
+		72E0B48A2C9F974E004CAA21 /* AlienTavern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E0B4882C9F9592004CAA21 /* AlienTavern.swift */; };
+		72E0B48B2C9F9757004CAA21 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E0B4872C9F9581004CAA21 /* CommentsView.swift */; };
+		72E0B48C2C9F9757004CAA21 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E0B4872C9F9581004CAA21 /* CommentsView.swift */; };
 		72E8C50326F257FF00D5FDEB /* mars.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50226F257FF00D5FDEB /* mars.scn */; };
 		72E8C50526F2586000D5FDEB /* a.scn in Resources */ = {isa = PBXBuildFile; fileRef = 72E8C50426F2586000D5FDEB /* a.scn */; };
 		72F1D1DE2C6965FE004039C3 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 72F1D1DD2C6965FE004039C3 /* PopupView */; };
@@ -579,6 +585,7 @@
 		6FF9343F26614B3500CFEFD2 /* Artophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Artophy.png; sourceTree = "<group>"; };
 		7204DB072C5744EE003B20D6 /* MoonSphereBaseViewController+SceneKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoonSphereBaseViewController+SceneKit.swift"; sourceTree = "<group>"; };
 		720F5BDC2C5158C80073A488 /* AuthCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCustomView.swift; sourceTree = "<group>"; };
+		7219EACA2CA47FE00076AB89 /* ATConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATConfig.swift; sourceTree = "<group>"; };
 		721AB6192BB918F400E68231 /* Open Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Space.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		721BF29F2BB9CF3E0046E7E7 /* Open Space Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		721BF2A52BB9D09D0046E7E7 /* Open Space-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Open Space-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -737,6 +744,8 @@
 		72D19A23270DF62800175BD9 /* Open_SpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITests.swift; sourceTree = "<group>"; };
 		72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_SpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		72E05CDB2C5C88BC0055B784 /* moon_surface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moon_surface.jpg; sourceTree = "<group>"; };
+		72E0B4872C9F9581004CAA21 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		72E0B4882C9F9592004CAA21 /* AlienTavern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienTavern.swift; sourceTree = "<group>"; };
 		72E8C50226F257FF00D5FDEB /* mars.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mars.scn; sourceTree = "<group>"; };
 		72E8C50426F2586000D5FDEB /* a.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = a.scn; sourceTree = "<group>"; };
 		72F1D1E42C69A15B004039C3 /* MineralPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralPopupView.swift; sourceTree = "<group>"; };
@@ -933,6 +942,7 @@
 		6FB0EEEC23FDA1A800EA28D7 = {
 			isa = PBXGroup;
 			children = (
+				72E0B4862C9F9561004CAA21 /* AlienTavern */,
 				721BF2AB2BBB2AAC0046E7E7 /* README.md */,
 				6FB0EEF723FDA1A800EA28D7 /* Open Space */,
 				72D19A22270DF62800175BD9 /* Open SpaceUITests */,
@@ -1170,7 +1180,6 @@
 				72C513252A4FC29700AAD941 /* MoonViewController.swift */,
 				7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */,
 				72F4E2AB2B9FBA53003FBF0D /* ReplicatorViewController.swift */,
-				723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */,
 			);
 			path = Moon;
 			sourceTree = "<group>";
@@ -1437,6 +1446,17 @@
 				72D19A25270DF62800175BD9 /* Open_SpaceUITestsLaunchTests.swift */,
 			);
 			path = "Open SpaceUITests";
+			sourceTree = "<group>";
+		};
+		72E0B4862C9F9561004CAA21 /* AlienTavern */ = {
+			isa = PBXGroup;
+			children = (
+				7219EACA2CA47FE00076AB89 /* ATConfig.swift */,
+				72E0B4882C9F9592004CAA21 /* AlienTavern.swift */,
+				72E0B4872C9F9581004CAA21 /* CommentsView.swift */,
+				723A0F5D2C3CEC8F00F11350 /* LunarLoungeViewController.swift */,
+			);
+			path = AlienTavern;
 			sourceTree = "<group>";
 		};
 		72F1D1E32C69A0E9004039C3 /* Views */ = {
@@ -2010,6 +2030,7 @@
 				72A99C422C29D14F00D96813 /* GameResultViewController.swift in Sources */,
 				72A99C402C29D14F00D96813 /* Friendly.swift in Sources */,
 				72B693B32A61BC4D005A0863 /* OpenspaceAPI.swift in Sources */,
+				72E0B4892C9F974E004CAA21 /* AlienTavern.swift in Sources */,
 				72F1D1E82C69A1A9004039C3 /* PopupContainerView.swift in Sources */,
 				72A99C462C29D14F00D96813 /* GameScore.swift in Sources */,
 				7243A8312A796CB50054E261 /* ExploreMoonViewController.swift in Sources */,
@@ -2018,8 +2039,10 @@
 				723A0F5E2C3CEC8F00F11350 /* LunarLoungeViewController.swift in Sources */,
 				72F4D0F22C5373FA000758E7 /* AppOpenAdManager.swift in Sources */,
 				72FC18BD2B9D043B007AF494 /* ModelViewController.swift in Sources */,
+				7219EACB2CA47FE00076AB89 /* ATConfig.swift in Sources */,
 				72A99C832C334B4A00D96813 /* GameViewController+Utils.swift in Sources */,
 				72A99C3A2C29D14F00D96813 /* Enemy.swift in Sources */,
+				72E0B48B2C9F9757004CAA21 /* CommentsView.swift in Sources */,
 				72A99C742C29D14F00D96813 /* GridHackUtils.swift in Sources */,
 				72A99BEE2C29D14F00D96813 /* FriendlyBuilderFactory.swift in Sources */,
 				6F86CC6D24003AB3005AECC9 /* LocationCollectionViewCell.swift in Sources */,
@@ -2125,6 +2148,7 @@
 				72A99C412C29D14F00D96813 /* Friendly.swift in Sources */,
 				721BF2AE2BBB740E0046E7E7 /* Constants.swift in Sources */,
 				72A99C472C29D14F00D96813 /* GameScore.swift in Sources */,
+				72E0B48A2C9F974E004CAA21 /* AlienTavern.swift in Sources */,
 				72F1D1E92C69A1A9004039C3 /* PopupContainerView.swift in Sources */,
 				721AB59B2BB918F400E68231 /* OpenspaceAPI.swift in Sources */,
 				721AB59C2BB918F400E68231 /* ExploreMoonViewController.swift in Sources */,
@@ -2133,8 +2157,10 @@
 				72F4D0F32C5373FA000758E7 /* AppOpenAdManager.swift in Sources */,
 				721AB59E2BB918F400E68231 /* GameViewController.swift in Sources */,
 				72A99C842C334B4A00D96813 /* GameViewController+Utils.swift in Sources */,
+				7219EACC2CA47FE00076AB89 /* ATConfig.swift in Sources */,
 				7230742B2C68876F005F0317 /* OnboardingViewController.swift in Sources */,
 				72A99C3B2C29D14F00D96813 /* Enemy.swift in Sources */,
+				72E0B48C2C9F9757004CAA21 /* CommentsView.swift in Sources */,
 				72A99C752C29D14F00D96813 /* GridHackUtils.swift in Sources */,
 				72A99BEF2C29D14F00D96813 /* FriendlyBuilderFactory.swift in Sources */,
 				721AB59F2BB918F400E68231 /* ModelViewController.swift in Sources */,

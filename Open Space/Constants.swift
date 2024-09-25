@@ -25,7 +25,7 @@ struct MyData {
     static let testInterstitialAd = "ca-app-pub-3940256099942544/4411468910"
     
     static let bannerAd = "ca-app-pub-8840903285420889/4245253069"
-    static let testBannerAd = "ca-app-pub-3940256099942544/2435281174"
+    static let testBannerAd = bannerAd //"ca-app-pub-3940256099942544/2435281174"
 
     static let adOpen = "ca-app-pub-8840903285420889/9324498974"
     static let testAdOpen = "ca-app-pub-3940256099942544/5575463023"

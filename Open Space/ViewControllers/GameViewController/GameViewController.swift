@@ -64,6 +64,42 @@ class GameViewController: UIViewController {
 
     }
 
+//
+//#if targetEnvironment(macCatalyst)
+//
+//#else
+//
+//// MARK: - GADBannerViewDelegate
+//
+//func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+//    print("Ad loaded successfully.")
+//}
+////
+//    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+//        print("Failed to load ad: \(error.localizedDescription)")
+//    }
+//    
+//func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+//    print("Ad is about to present a full screen view.")
+//}
+//
+//func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+//    print("Ad is about to dismiss the full screen view.")
+//}
+//
+//func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+//    print("Ad has dismissed the full screen view.")
+//}
+//
+//func bannerViewWillLeaveApplication(_ bannerView: GADBannerView) {
+//    print("Ad will cause the user to leave the application.")
+//}
+//
+//#endif
+
+
+
+
     override func viewWillAppear(_ animated: Bool) {
         scnView.scene?.rootNode.enumerateChildNodes { (node, _) in
             node.removeFromParentNode()
@@ -215,3 +251,17 @@ class GameViewController: UIViewController {
 
     
 }
+
+#if !targetEnvironment(macCatalyst)
+extension GameViewController: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner did receive ad.")
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("Banner failed to receive ad with error: \(error.localizedDescription)")
+    }
+
+    // Other delegate methods...
+}
+#endif

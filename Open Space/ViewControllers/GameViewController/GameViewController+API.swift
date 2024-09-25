@@ -123,29 +123,29 @@ extension GameViewController {
 
 #else
 
-        
-        let isPremium = Defaults[.premium]
-        if(isPremium == 0 && googleAdLoaded == 0) {
-            bannerView = GADBannerView(adSize: GADAdSizeBanner)
-            bannerView.adSize = GADAdSizeBanner
-            addBannerViewToView(bannerView)
-            //  Set the ad unit ID and view controller that contains the GADBannerView.
-            bannerView.adUnitID = MyData.testBannerAd
+let isPremium = Defaults[.premium]
+if(isPremium == 0 && googleAdLoaded == 0) {
+    bannerView = GADBannerView(adSize: GADAdSizeBanner)
+    bannerView.adSize = GADAdSizeBanner
+    addBannerViewToView(bannerView)
+
+    // Set the ad unit ID and view controller that contains the GADBannerView.
 #if DEBUG
-            bannerView.adUnitID = MyData.testBannerAd
+    bannerView.adUnitID = MyData.testBannerAd
 #else
-            bannerView.adUnitID = MyData.bannerAd
+    bannerView.adUnitID = MyData.bannerAd
 #endif
-            bannerView.rootViewController = self
+    bannerView.rootViewController = self
+    bannerView.delegate = self // Set the delegate to receive events
 
-            bannerView.load(GADRequest())
-            
-            self.googleAdLoaded=1
+    print("Loading ad with unit ID: \(bannerView.adUnitID)") // Debugging log
+    bannerView.load(GADRequest())
 
-        }
+    self.googleAdLoaded = 1
+}
 
 #endif
-        
+
     }
 
 
