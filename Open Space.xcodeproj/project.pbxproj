@@ -282,6 +282,11 @@
 		7258F2982CA4921A008A8EFE /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 7258F2972CA4921A008A8EFE /* JWTDecode */; };
 		7258F29D2CA495C2008A8EFE /* AlienTavernManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */; };
 		7258F29E2CA495C2008A8EFE /* AlienTavernManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */; };
+		7258F2A02CA4D6C0008A8EFE /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 7258F29F2CA4D6C0008A8EFE /* JWTDecode */; };
+		7258F2A22CA4DB77008A8EFE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F2A12CA4DB77008A8EFE /* Comment.swift */; };
+		7258F2A32CA4DB77008A8EFE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F2A12CA4DB77008A8EFE /* Comment.swift */; };
+		7258F2A52CA4DB88008A8EFE /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F2A42CA4DB88008A8EFE /* CommentsViewModel.swift */; };
+		7258F2A62CA4DB88008A8EFE /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258F2A42CA4DB88008A8EFE /* CommentsViewModel.swift */; };
 		727693932C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
 		727693942C3654B100372B7E /* QuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727693922C3654B000372B7E /* QuestsViewController.swift */; };
 		7277184A2A48C42900465B2E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727718492A48C42900465B2E /* AccountViewController.swift */; };
@@ -643,6 +648,8 @@
 		7243A82C2A7862F80054E261 /* SphereInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereInventoryViewController.swift; sourceTree = "<group>"; };
 		7243A8302A796CB50054E261 /* ExploreMoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoonViewController.swift; sourceTree = "<group>"; };
 		7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienTavernManager.swift; sourceTree = "<group>"; };
+		7258F2A12CA4DB77008A8EFE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		7258F2A42CA4DB88008A8EFE /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		727693922C3654B000372B7E /* QuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsViewController.swift; sourceTree = "<group>"; };
 		727718492A48C42900465B2E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		727987362C54A5E700CFE8F8 /* BackgroundImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageViewController.swift; sourceTree = "<group>"; };
@@ -773,6 +780,7 @@
 			files = (
 				72F1D1DE2C6965FE004039C3 /* PopupView in Frameworks */,
 				1522AE7C17624B8C391058D1 /* Pods_Open_Space.framework in Frameworks */,
+				7258F2A02CA4D6C0008A8EFE /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1456,6 +1464,8 @@
 		72E0B4862C9F9561004CAA21 /* AlienTavern */ = {
 			isa = PBXGroup;
 			children = (
+				7258F2A42CA4DB88008A8EFE /* CommentsViewModel.swift */,
+				7258F2A12CA4DB77008A8EFE /* Comment.swift */,
 				7258F29C2CA495C2008A8EFE /* AlienTavernManager.swift */,
 				7219EACA2CA47FE00076AB89 /* ATConfig.swift */,
 				72E0B4882C9F9592004CAA21 /* AlienTavern.swift */,
@@ -1505,6 +1515,7 @@
 			name = "Open Space";
 			packageProductDependencies = (
 				72F1D1DD2C6965FE004039C3 /* PopupView */,
+				7258F29F2CA4D6C0008A8EFE /* JWTDecode */,
 			);
 			productName = "Open Space";
 			productReference = 6FB0EEF523FDA1A800EA28D7 /* Open Space.app */;
@@ -2031,6 +2042,7 @@
 				72A99C642C29D14F00D96813 /* PartyDelegate.swift in Sources */,
 				72C513262A4FC29700AAD941 /* MoonViewController.swift in Sources */,
 				723A0F812C45F71700F11350 /* UIComponents.swift in Sources */,
+				7258F2A62CA4DB88008A8EFE /* CommentsViewModel.swift in Sources */,
 				7221818B2B8EA20300FB572F /* HeaderView.swift in Sources */,
 				72FC18BB2B9CF08F007AF494 /* VideoCacheManager.swift in Sources */,
 				72F1D1E52C69A15B004039C3 /* MineralPopupView.swift in Sources */,
@@ -2039,6 +2051,7 @@
 				72A99C422C29D14F00D96813 /* GameResultViewController.swift in Sources */,
 				72A99C402C29D14F00D96813 /* Friendly.swift in Sources */,
 				72B693B32A61BC4D005A0863 /* OpenspaceAPI.swift in Sources */,
+				7258F2A22CA4DB77008A8EFE /* Comment.swift in Sources */,
 				72E0B4892C9F974E004CAA21 /* AlienTavern.swift in Sources */,
 				72F1D1E82C69A1A9004039C3 /* PopupContainerView.swift in Sources */,
 				72A99C462C29D14F00D96813 /* GameScore.swift in Sources */,
@@ -2150,6 +2163,7 @@
 				721AB5972BB918F400E68231 /* ModelCollectionViewCell.swift in Sources */,
 				723A0F822C45F71700F11350 /* UIComponents.swift in Sources */,
 				721AB5982BB918F400E68231 /* MoonViewController.swift in Sources */,
+				7258F2A52CA4DB88008A8EFE /* CommentsViewModel.swift in Sources */,
 				721AB5992BB918F400E68231 /* HeaderView.swift in Sources */,
 				721AB59A2BB918F400E68231 /* VideoCacheManager.swift in Sources */,
 				72F1D1E62C69A15B004039C3 /* MineralPopupView.swift in Sources */,
@@ -2158,6 +2172,7 @@
 				72A99C412C29D14F00D96813 /* Friendly.swift in Sources */,
 				721BF2AE2BBB740E0046E7E7 /* Constants.swift in Sources */,
 				72A99C472C29D14F00D96813 /* GameScore.swift in Sources */,
+				7258F2A32CA4DB77008A8EFE /* Comment.swift in Sources */,
 				72E0B48A2C9F974E004CAA21 /* AlienTavern.swift in Sources */,
 				72F1D1E92C69A1A9004039C3 /* PopupContainerView.swift in Sources */,
 				721AB59B2BB918F400E68231 /* OpenspaceAPI.swift in Sources */,
@@ -2610,6 +2625,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		7258F2972CA4921A008A8EFE /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7258F2962CA4921A008A8EFE /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
+		7258F29F2CA4D6C0008A8EFE /* JWTDecode */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7258F2962CA4921A008A8EFE /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
 			productName = JWTDecode;

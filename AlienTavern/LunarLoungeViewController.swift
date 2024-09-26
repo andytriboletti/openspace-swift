@@ -1,10 +1,3 @@
-//
-//  LunarLoungeViewController.swift
-//  Open Space
-//
-//  Created by Andrew Triboletti on 9/21/24.
-//  Copyright © 2024 GreenRobot LLC. All rights reserved.
-//
 import UIKit
 import SwiftUI
 
@@ -39,46 +32,53 @@ class LunarLoungeViewController: UIViewController {
     }
 
     func setupAlienTavernAndCommentsView() {
-           print("LunarLoungeViewController: Setting up AlienTavern")
-
-           // Configure AlienTavernManager with ATConfig
-            let config = ATConfig(boardDisplayName: "Lunar Lounge", board_id: "testboard123", app_id: "1499913239")
-
-           AlienTavernManager.shared.configure(with: config)
-
-           AlienTavernManager.shared.setup { [weak self] success, errorMessage in
-               guard let self = self else { return }
-
-               DispatchQueue.main.async {
-                   if success {
-                       print("LunarLoungeViewController: AlienTavern setup successful")
-                       self.setupCommentsView()
-                   } else {
-                       print("LunarLoungeViewController: AlienTavern setup failed")
-                       if let errorMessage = errorMessage {
-                           print("Error: \(errorMessage)")
-                       }
-                       self.showAuthenticationFailureAlert()
-                   }
-               }
-           }
-       }
+        print("LunarLoungeViewController: Setting up AlienTavern")
 
 
-    func setupCommentsView() {
-        // Create an instance of ATConfig
-        let config = ATConfig(
+        // Set the username from UserDefaults
+        if let username = UserDefaults.standard.string(forKey: "username") {
+            AlienTavernManager.shared.setUsername(username)
+        }
+        
+        // Create a dynamic board configuration
+        let boardConfig = ATConfig(
             boardDisplayName: "Lunar Lounge",
-            board_id: "testboard123",
-            app_id: "1499913239"
+            //board_id: "lunarlounge_\(UUID().uuidString)"
+            board_id: "lunarlounge_commentboard"
         )
 
+        // Check if AlienTavernManager is already set up
+        if AlienTavern.jwtToken == nil {
+            // If not set up, configure and setup AlienTavernManager
+            let appConfig = ATAppConfig(app_id: "1499913239")
+            AlienTavernManager.shared.configure(with: appConfig)
+
+            AlienTavernManager.shared.setup { [weak self] success, errorMessage in
+                guard let self = self else { return }
+
+                DispatchQueue.main.async {
+                    if success {
+                        print("LunarLoungeViewController: AlienTavern setup successful")
+                        self.setupCommentsView(with: boardConfig)
+                    } else {
+                        print("LunarLoungeViewController: AlienTavern setup failed")
+                        if let errorMessage = errorMessage {
+                            print("Error: \(errorMessage)")
+                        }
+                        self.showAuthenticationFailureAlert()
+                    }
+                }
+            }
+        } else {
+            // If already set up, proceed to setup CommentsView
+            setupCommentsView(with: boardConfig)
+        }
+    }
+
+    func setupCommentsView(with config: ATConfig) {
         // Embed SwiftUI CommentsView into the UIKit view using ATConfig
         let commentsView = UIHostingController(
-            rootView: CommentsView(
-                boardDisplayName: config.boardDisplayName,
-                boardID: config.board_id
-            )
+            rootView: CommentsView(config: config)
         )
 
         addChild(commentsView)
@@ -130,9 +130,3 @@ class LunarLoungeViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
-
-//// Updated ATConfig struct
-//struct ATConfig {
-//    let boardDisplayName: String
-//    let board_id: String
-//}
