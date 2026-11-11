@@ -1,12 +1,20 @@
 import Foundation
 import StoreKit
-import Defaults
+import UIKit
+import FirebaseAuth
 
+/// StoreKit purchases. The game server decides what a purchase is worth: it checks the
+/// App Store receipt with Apple and credits each transaction once (see /verifyReceipt in
+/// openspace-php). A transaction is only finished after the server has credited it, so a
+/// purchase is never lost to a network error: StoreKit keeps unfinished transactions and
+/// hands them back on the next launch, and `retryPendingTransactions()` runs after sign-in.
 class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     static let shared = IAPManager()
 
     var products: [SKProduct] = []
     private var productsRequest: SKProductsRequest?
+    /// Transactions currently being sent to the server, so a retry never double-sends.
+    private var inFlight = Set<String>()
 
     func startObserving() {
         SKPaymentQueue.default().add(self)
@@ -36,13 +44,10 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     // Delegate method to receive product information
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
-        //print(products.description)
     }
 
     // Method to get the price of a product
     func getPrice(for productIdentifier: String) -> String? {
-        //print(products.description)
-        //print(productIdentifier)
         if let product = products.first(where: { $0.productIdentifier == productIdentifier }) {
             let priceFormatter = NumberFormatter()
             priceFormatter.numberStyle = .currency
@@ -54,8 +59,8 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
 
     // Method to initiate the purchase
     func purchaseProduct(with productIdentifier: String) {
+        if askGuestToSaveAccount() { return }
         guard let product = products.first(where: { $0.productIdentifier == productIdentifier }) else {
-            //print("Product not found")
             return
         }
 
@@ -63,22 +68,65 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
         SKPaymentQueue.default().add(payment)
     }
 
+    /// "Restore Purchases" (required by App Review for the subscription and upgrades).
+    func restorePurchases() {
+        if askGuestToSaveAccount() { return }
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+
+    /// Guests save their account (Google or Apple) before buying or restoring, so a purchase
+    /// is never tied to a guest game that could be lost. Returns true if it asked.
+    private func askGuestToSaveAccount() -> Bool {
+        guard Auth.auth().currentUser?.isAnonymous == true else { return false }
+        DispatchQueue.main.async {
+            guard let top = AccountSaver.topViewController() else { return }
+            let alert = UIAlertController(title: "Save your account first",
+                                          message: "Purchases belong to your account. Save your guest game with Google or Apple so you never lose what you buy.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Not Now", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Save Account", style: .default) { _ in
+                AccountSaver.shared.save(from: top) { _ in }
+            })
+            top.present(alert, animated: true)
+        }
+        return true
+    }
+
+    /// Sends any purchases the server hasn't confirmed yet. Called after sign-in, because
+    /// StoreKit may hand over unfinished transactions at launch before the player is signed in.
+    func retryPendingTransactions() {
+        for transaction in SKPaymentQueue.default().transactions
+        where transaction.transactionState == .purchased || transaction.transactionState == .restored {
+            process(transaction, restored: transaction.transactionState == .restored, quiet: true)
+        }
+    }
+
     // SKPaymentTransactionObserver methods
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased:
-                completeTransaction(transaction)
-            case .failed:
-                failedTransaction(transaction)
+                process(transaction, restored: false, quiet: false)
             case .restored:
-                restoreTransaction(transaction)
+                process(transaction, restored: true, quiet: true)
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
             case .deferred, .purchasing:
                 break
             @unknown default:
                 break
             }
         }
+    }
+
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        showMessage(title: "Purchases Restored",
+                    message: "Purchases made with this Apple ID have been restored to your account.")
+    }
+
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        if (error as? SKError)?.code == .paymentCancelled { return }
+        showMessage(title: "Restore Failed", message: error.localizedDescription)
     }
 
     private func fetchReceipt() -> String? {
@@ -88,56 +136,53 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
         }
         return receiptData.base64EncodedString(options: [])
     }
-    private func completeTransaction(_ transaction: SKPaymentTransaction) {
-        // Perform any actions necessary upon successful purchase
-        if let receipt = fetchReceipt() {
-            OpenspaceAPI.shared.sendReceiptToServer(receipt: receipt, productIdentifier: transaction.payment.productIdentifier) { result in
+
+    private func process(_ transaction: SKPaymentTransaction, restored: Bool, quiet: Bool) {
+        let productIdentifier = transaction.payment.productIdentifier
+        let key = transaction.transactionIdentifier ?? "\(productIdentifier)-\(transaction.hash)"
+        guard !inFlight.contains(key) else { return }
+
+        guard let receipt = fetchReceipt() else {
+            // No receipt on the device yet; StoreKit will hand the transaction back later.
+            return
+        }
+        inFlight.insert(key)
+
+        OpenspaceAPI.shared.sendReceiptToServer(receipt: receipt, productIdentifier: productIdentifier) { result in
+            DispatchQueue.main.async {
+                self.inFlight.remove(key)
                 switch result {
-                case .success:
-                    //print("Receipt successfully sent to server")
-
-                    // Check if the product identifier is for the premium subscription
-                    if transaction.payment.productIdentifier == ProductIdentifiers.premiumSubscription {
-                        // Get the original_transaction_id from the transaction
-                        let originalTransactionId = transaction.original?.transactionIdentifier ?? transaction.transactionIdentifier ?? ""
-
-                        // Send the original_transaction_id and user_id to the server
-                        let currentUserId = Defaults[.userId] // Ensure this retrieves the current user ID correctly
-                        OpenspaceAPI.shared.addSubscription(userId: currentUserId, originalTransactionId: originalTransactionId, productIdentifier: transaction.payment.productIdentifier) { result in
-                            switch result {
-                            case .success:
-                                break
-                                //print("Subscription successfully added to server")
-                            case .failure(let error):
-                                print("Failed to add subscription to server: \(error)")
-                            }
-                        }
+                case .credited:
+                    SKPaymentQueue.default().finishTransaction(transaction)
+                    NotificationCenter.default.post(name: .purchaseCompleted, object: nil, userInfo: ["productIdentifier": productIdentifier])
+                case .alreadyCredited:
+                    SKPaymentQueue.default().finishTransaction(transaction)
+                case .rejected(let message):
+                    // A restored item the server won't credit (for example an expired
+                    // subscription) is done. A new purchase stays queued and is retried.
+                    if restored {
+                        SKPaymentQueue.default().finishTransaction(transaction)
+                    } else if !quiet {
+                        self.showMessage(title: "Purchase Not Confirmed", message: message)
                     }
-
-                    // Post a notification to inform about the successful purchase
-                    NotificationCenter.default.post(name: .purchaseCompleted, object: nil, userInfo: ["productIdentifier": transaction.payment.productIdentifier])
-                    //print("posting purchase copmleted notification")
-
-                case .failure(let error):
-                    print("Failed to send receipt to server: \(error)")
+                case .retryLater:
+                    if !quiet {
+                        self.showMessage(title: "Purchase Pending",
+                                         message: "Your purchase went through, but the game server couldn't confirm it yet. It will be added automatically the next time you open the game.")
+                    }
                 }
             }
         }
-        SKPaymentQueue.default().finishTransaction(transaction)
     }
 
-
-    private func failedTransaction(_ transaction: SKPaymentTransaction) {
-        if let error = transaction.error as? SKError {
-            if error.code != .paymentCancelled {
-                //print("Transaction failed with error: \(error.localizedDescription)")
-            }
+    private func showMessage(title: String, message: String) {
+        DispatchQueue.main.async {
+            let window = UIApplication.shared.delegate?.window ?? nil
+            guard var top = window?.rootViewController else { return }
+            while let presented = top.presentedViewController { top = presented }
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            top.present(alert, animated: true)
         }
-        SKPaymentQueue.default().finishTransaction(transaction)
-    }
-
-    private func restoreTransaction(_ transaction: SKPaymentTransaction) {
-        // Perform any actions necessary upon successful restoration
-        SKPaymentQueue.default().finishTransaction(transaction)
     }
 }

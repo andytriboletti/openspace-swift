@@ -96,24 +96,16 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
     }
 
     @objc func claimAnotherSphereMethod() {
-        if Defaults[.spheresAllowed] > yourSpheres!.count {
+        if Defaults[.spheresAllowed] > (yourSpheres?.count ?? 0) {
             alertToCreateSphere()
         } else {
-            //return
-            //todo in-app purchase disabled for testflight. todo re-enable when released
-            if(MyData.allowInAppPurchases == 1) {
-
-                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.newSphere) {
-                    showPurchaseAlert(price: price)
-                } else {
-                    showPurchaseAlert(price: "$0.99")
-                    //print("Product price not available")
-                }
-            }
-            else {
-                displayAlert()
-            }
-
+            // Extra spheres are no longer sold: 3D object creation is offline, so a new
+            // sphere would stay empty.
+            let alertController = UIAlertController(title: "No more spheres available",
+                                                    message: "You've claimed all the spheres available to your account.",
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alertController, animated: true)
         }
     }
 
@@ -256,7 +248,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
 
     func createSphere(with name: String) {
         let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
+        let authToken = AppSecrets.authToken
 
         OpenspaceAPI.shared.createSphere(email: email, authToken: authToken, sphereName: name) { [weak self] result in
             switch result {
@@ -276,7 +268,7 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
     }
 
     func getLocation() {
-        guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
+        guard let email = Defaults[.email] as String?, let authToken = AppSecrets.authToken as String? else {
             return
         }
 

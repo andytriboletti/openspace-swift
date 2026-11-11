@@ -105,7 +105,7 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
 
     func fetchData() {
         let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
+        let authToken = AppSecrets.authToken
         let yourSphereId = Defaults[.selectedSphereId]
 
         OpenspaceAPI.shared.fetchData(email: email, authToken: authToken, sphereId: yourSphereId) { result in
@@ -139,51 +139,30 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
             fatalError("Unexpected cell type")
         }
 
-        if indexPath.section == 0 {
-            let videoURL = URL(string: completedModels[indexPath.row].videoLocation!)
-            let label = completedModels[indexPath.row].textPrompt
-            let acceptableName = completedModels[indexPath.row].acceptableName
-            if(acceptableName == 0) {
-                let acceptableName = "(Moderated) " + completedModels[indexPath.row].textPrompt
+        if indexPath.section == 0, indexPath.row < completedModels.count {
+            let model = completedModels[indexPath.row]
+            let label = model.textPrompt
+
+            // A finished item without a usable video (or one outside our storage) shows as text
+            // instead of crashing: this used to force-unwrap videoLocation.
+            guard let videoURL = TrustedURL.from(model.videoLocation) else {
+                cell.configureForTextOnly(labelText: label)
+                return cell
             }
-
-            //print(videoURL!)
-
 
             // Use the FileDownloader to cache the video file
-            FileDownloader.shared.downloadFile(from: videoURL!) { cachedURL in
+            FileDownloader.shared.downloadFile(from: videoURL) { cachedURL in
                 DispatchQueue.main.async {
-                    if let cachedURL = cachedURL {
-                        cell.configure(withURL: cachedURL, labelText: label)
-                    } else {
-                        cell.configure(withURL: videoURL!, labelText: label) // Fallback to original URL if caching fails
-                    }
+                    cell.configure(withURL: cachedURL ?? videoURL, labelText: label)
                 }
             }
-        } else if indexPath.section == 1 {
-            var label = "Pending"
-            let acceptableName = completedModels[indexPath.row].acceptableName
-
-            if(pendingModels[indexPath.row].error == 1) {
-                label = "Error: \(pendingModels[indexPath.row].textPrompt)"
-
-                if(acceptableName == 0) {
-                    let acceptableName = "(Moderated) Error: " + completedModels[indexPath.row].textPrompt
-                }
-
-            }
-            else {
-                label = "Pending: \(pendingModels[indexPath.row].textPrompt)"
-                if(acceptableName == 0) {
-                    let acceptableName = "(Moderated) Pending: " + completedModels[indexPath.row].textPrompt
-                }
-            }
-
-
+        } else if indexPath.section == 1, indexPath.row < pendingModels.count {
+            // Read only the pending list here; this used to index completedModels with a
+            // pending row number and crashed when there were more pending than finished items.
+            let model = pendingModels[indexPath.row]
+            let label = model.error == 1 ? "Error: \(model.textPrompt)" : "Pending: \(model.textPrompt)"
             cell.configureForTextOnly(labelText: label)
         } else {
-            // Handle unexpected section or provide a default cell configuration
-            // This is a generic fallback. Adjust according to your needs.
             cell.configureForTextOnly(labelText: "Unknown Item")
         }
 

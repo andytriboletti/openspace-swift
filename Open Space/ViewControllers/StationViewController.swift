@@ -27,7 +27,7 @@ class StationViewController: UIViewController {
         }
 
         // Load the preview image
-        if let location = previewLocation, let url = URL(string: location) {
+        if let url = TrustedURL.from(previewLocation) {
             loadPreviewImage(from: url)
         }
     }

@@ -63,3 +63,75 @@ import SwiftUI
 extension Image {
     static let greenOrange = Image("replicator")
 }
+
+import Security
+
+/// The server credential (appToken) and the Firebase ID token are kept in the Keychain,
+/// on this device only and out of backups, instead of in UserDefaults (a plain plist).
+/// Values an older app version saved in UserDefaults are moved over the first time they're read.
+enum AppSecrets {
+    static var appToken: String {
+        get { value(for: "appToken", legacyKey: .appToken) }
+        set { store(newValue, for: "appToken") }
+    }
+
+    static var authToken: String {
+        get { value(for: "authToken", legacyKey: .authToken) }
+        set { store(newValue, for: "authToken") }
+    }
+
+    private static let service = "com.greenrobot.openspace.credentials"
+    private static var cache: [String: String] = [:]
+    private static let lock = NSLock()
+
+    private static func value(for account: String, legacyKey: Defaults.Key<String>) -> String {
+        lock.lock(); defer { lock.unlock() }
+        if let cached = cache[account] { return cached }
+
+        var result = readKeychain(account) ?? ""
+        if result.isEmpty, !Defaults[legacyKey].isEmpty {
+            result = Defaults[legacyKey]
+            writeKeychain(result, account: account)
+        }
+        Defaults[legacyKey] = ""   // never leave a copy in UserDefaults
+        cache[account] = result
+        return result
+    }
+
+    private static func store(_ value: String, for account: String) {
+        lock.lock(); defer { lock.unlock() }
+        writeKeychain(value, account: account)
+        cache[account] = value
+    }
+
+    private static func baseQuery(_ account: String) -> [String: Any] {
+        var query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account
+        ]
+        #if targetEnvironment(macCatalyst)
+        query[kSecUseDataProtectionKeychain as String] = true
+        #endif
+        return query
+    }
+
+    private static func writeKeychain(_ value: String, account: String) {
+        SecItemDelete(baseQuery(account) as CFDictionary)
+        guard !value.isEmpty else { return }
+        var query = baseQuery(account)
+        query[kSecValueData as String] = Data(value.utf8)
+        query[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+        SecItemAdd(query as CFDictionary, nil)
+    }
+
+    private static func readKeychain(_ account: String) -> String? {
+        var query = baseQuery(account)
+        query[kSecReturnData as String] = true
+        query[kSecMatchLimit as String] = kSecMatchLimitOne
+        var item: CFTypeRef?
+        guard SecItemCopyMatching(query as CFDictionary, &item) == errSecSuccess,
+              let data = item as? Data else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+}

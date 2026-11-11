@@ -125,7 +125,7 @@ class SelectLocationViewController: AlertViewController, UICollectionViewDataSou
             cellImage = UIImage(named: "mars.png")
         case 4:
             let previewLocation = Defaults[.stationPreviewLocation]
-            if !previewLocation.isEmpty, let url = URL(string: previewLocation) {
+            if let url = TrustedURL.from(previewLocation) {
                 FileDownloader.shared.downloadFile(from: url) { cachedURL in
                     if let cachedURL = cachedURL, let imageData = try? Data(contentsOf: cachedURL) {
                         DispatchQueue.main.async {

@@ -101,7 +101,7 @@ class OpenspaceAPI {
 
 
     func fetchSphereDetails(email: String, authToken: String, sphereId: Int, completion: @escaping (Result<[URL], FetchDataError>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereId": sphereId, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereId": sphereId, "appToken": AppSecrets.appToken]
         let urlString = "\(serverURL)get-sphere-details"
 
         AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
@@ -109,7 +109,7 @@ class OpenspaceAPI {
             .responseDecodable(of: SphereDetailsResponse.self) { response in
                 switch response.result {
                 case .success(let responseData):
-                    let zipFileURLs = responseData.results.compactMap { URL(string: $0.mesh_location) }
+                    let zipFileURLs = responseData.results.compactMap { TrustedURL.from($0.mesh_location) }
                     completion(.success(zipFileURLs))
                 case .failure(let error):
                     completion(.failure(.networkError(error)))
@@ -119,63 +119,51 @@ class OpenspaceAPI {
 
 
     
-    func sendReceiptToServer(receipt: String, productIdentifier: String, completion: @escaping (Result<Void, FetchDataError>) -> Void) {
-        #if DEBUG
-        let urlString = "\(serverURL)verifyReceiptSandbox"
-        #else
-        let urlString = "\(serverURL)verifyReceipt"
-        #endif
+    /// What the server did with a purchase (see /verifyReceipt in openspace-php).
+    enum ReceiptResult {
+        case credited          // applied to the player's account
+        case alreadyCredited   // this transaction was credited before
+        case rejected(String)  // the server checked it and won't credit it
+        case retryLater        // network error, server error, or not signed in yet
+    }
 
-        // Retrieve the user ID from Defaults, ensuring it is optional
-        guard let userId = Defaults[.userId] as Int? else {
-            completion(.failure(.missingUserId))
+    /// Sends the App Store receipt for one purchase. Every build uses the same endpoint:
+    /// the server asks Apple's sandbox itself when the receipt is a sandbox one
+    /// (TestFlight, App Review, debug builds). The server credits the signed-in player,
+    /// so no user id is sent.
+    func sendReceiptToServer(receipt: String, productIdentifier: String, completion: @escaping (ReceiptResult) -> Void) {
+        let email = Defaults[.email]   // empty for guests; the server then uses the appToken alone
+        let appToken = AppSecrets.appToken
+        guard !appToken.isEmpty else {
+            completion(.retryLater)
             return
         }
 
-        // Include the user ID in the parameters
         let parameters: [String: Any] = [
             "receipt-data": receipt,
             "productIdentifier": productIdentifier,
-            "userId": userId,
-            "appToken": Defaults[.appToken],
-            "email": Defaults[.email]
+            "appToken": appToken,
+            "email": email
         ]
 
-        AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate()
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    completion(.success(()))
-                case .failure(let error):
-                    completion(.failure(.networkError(error)))
+        AF.request("\(serverURL)verifyReceipt", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseData { response in
+                switch response.response?.statusCode ?? 0 {
+                case 200..<300:
+                    completion(.credited)
+                case 409:
+                    completion(.alreadyCredited)
+                case 400, 403:
+                    let json = (try? JSONSerialization.jsonObject(with: response.data ?? Data())) as? [String: Any]
+                    completion(.rejected(json?["error"] as? String ?? "The purchase could not be verified."))
+                default:
+                    completion(.retryLater) // no response, 401 (signed out), 5xx
                 }
             }
     }
-    func addSubscription(userId: Int, originalTransactionId: String, productIdentifier: String, completion: @escaping (Result<Void, FetchDataError>) -> Void) {
-           let urlString = "\(serverURL)addSubscription"
-           let parameters: [String: Any] = [
-               "user_id": userId,
-               "original_transaction_id": originalTransactionId,
-               "product_identifier": productIdentifier,
-               "appToken": Defaults[.appToken],
-               "email": Defaults[.email]
-           ]
-
-           AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-               .validate()
-               .responseJSON { response in
-                   switch response.result {
-                   case .success:
-                       completion(.success(()))
-                   case .failure(let error):
-                       completion(.failure(.networkError(error)))
-                   }
-               }
-       }
 
     func fetchUserMinerals(email: String, completion: @escaping (Result<[UserMineral], FetchDataError>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "appToken": AppSecrets.appToken]
         guard let request = createPostRequest(urlString: "\(serverURL)get-user-minerals", parameters: parameters) else {
             completion(.failure(.invalidResponse))
             return
@@ -203,7 +191,7 @@ class OpenspaceAPI {
     }
 
     func fetchData(email: String, authToken: String, sphereId: String, completion: @escaping (Result<ResponseData, FetchDataError>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereId": sphereId, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereId": sphereId, "appToken": AppSecrets.appToken]
         guard let request = createPostRequest(urlString: "\(serverURL)get-prompts-and-models", parameters: parameters) else {
             completion(.failure(.invalidResponse))
             return
@@ -212,7 +200,7 @@ class OpenspaceAPI {
     }
 
     func fetchNeighbors(email: String, authToken: String, completion: @escaping (Result<[Neighbor], FetchDataError>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": AppSecrets.appToken]
         guard let request = createPostRequest(urlString: "\(serverURL)get-neighbor-spheres", parameters: parameters) else {
             completion(.failure(.invalidResponse))
             return
@@ -228,7 +216,7 @@ class OpenspaceAPI {
     }
 
     func checkDailyTreasureAvailability(planet: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": Defaults[.email], "authToken": Defaults[.authToken], "appToken": Defaults[.appToken], "planet": planet]
+        let parameters: [String: Any] = ["email": Defaults[.email], "authToken": AppSecrets.authToken, "appToken": AppSecrets.appToken, "planet": planet]
         guard let request = createPostRequest(urlString: "\(serverURL)check-daily-treasure", parameters: parameters) else {
             completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
             return
@@ -237,7 +225,7 @@ class OpenspaceAPI {
     }
 
     func claimDailyTreasure(planet: String, completion: @escaping (Result<(String, String, Int), Error>) -> Void) {
-           let parameters: [String: Any] = ["email": Defaults[.email], "authToken": Defaults[.authToken], "planet": planet, "appToken": Defaults[.appToken]]
+           let parameters: [String: Any] = ["email": Defaults[.email], "authToken": AppSecrets.authToken, "planet": planet, "appToken": AppSecrets.appToken]
            AF.request("\(serverURL)claim-daily-treasure", method: .post, parameters: parameters, encoding: JSONEncoding.default)
                .validate()
                .responseJSON { response in
@@ -277,11 +265,16 @@ class OpenspaceAPI {
                      let appToken = jsonResponse["appToken"] as? String {
                       // Store the appToken in UserDefaults or any secure storage
                       //UserDefaults.standard.set(appToken, forKey: "appToken")
-                      Defaults[.appToken] = appToken
+                      AppSecrets.appToken = appToken
+                      // Purchases StoreKit handed over before sign-in can be sent now.
+                      IAPManager.shared.retryPendingTransactions()
                       completion(.success(lastLocation))
                   } else if let jsonResponse = value as? [String: Any],
                             let errorMessage = jsonResponse["error"] as? String {
-                      completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+                      // Keep the server's error code (e.g. "account_exists") for the caller.
+                      var info: [String: Any] = [NSLocalizedDescriptionKey: errorMessage]
+                      if let code = jsonResponse["code"] as? String { info["code"] = code }
+                      completion(.failure(NSError(domain: "OpenspaceLogin", code: response.response?.statusCode ?? -1, userInfo: info)))
                   } else {
                       completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response received"])))
                   }
@@ -292,7 +285,7 @@ class OpenspaceAPI {
       }
 
     func saveLocation(email: String, authToken: String, location: String, usesEnergy: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "location": location, "usesEnergy": usesEnergy, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "location": location, "usesEnergy": usesEnergy, "appToken": AppSecrets.appToken]
         guard let request = createPostRequest(urlString: "\(serverURL)save-location", parameters: parameters) else {
             completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
             return
@@ -301,7 +294,7 @@ class OpenspaceAPI {
     }
 
     func deleteUser(email: String, authToken: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": AppSecrets.appToken]
         guard let request = createPostRequest(urlString: "\(serverURL)delete-user", parameters: parameters) else {
             completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
             return
@@ -310,7 +303,7 @@ class OpenspaceAPI {
     }
 
     func sendTextToServer(email: String, authToken: String, text: String, sphereId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "text": text, "sphereId": sphereId, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "text": text, "sphereId": sphereId, "appToken": AppSecrets.appToken]
         guard let request = createPostRequest(urlString: "\(serverURL)send-text", parameters: parameters) else {
             completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
             return
@@ -337,7 +330,7 @@ class OpenspaceAPI {
 
 
     func submitToServer(username: String, email: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let parameters: [String: Any] = ["username": username, "email": email, "authToken": Defaults[.authToken], "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["username": username, "email": email, "authToken": AppSecrets.authToken, "appToken": AppSecrets.appToken]
 
         let urlString = "\(serverURL)save-username"
 
@@ -354,7 +347,7 @@ class OpenspaceAPI {
     }
     
     func resetUsername(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": Defaults[.authToken], "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": AppSecrets.authToken, "appToken": AppSecrets.appToken]
 
         let urlString = "\(serverURL)reset-username"
 
@@ -371,7 +364,7 @@ class OpenspaceAPI {
     }
 
     func deleteItemFromSphere(email: String, meshId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": Defaults[.authToken], "mesh_id": meshId, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": AppSecrets.authToken, "mesh_id": meshId, "appToken": AppSecrets.appToken]
         let urlString = "\(serverURL)delete-item-from-sphere"
 
         AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
@@ -389,7 +382,7 @@ class OpenspaceAPI {
     
 
     func createSphere(email: String, authToken: String, sphereName: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereName": sphereName, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "sphereName": sphereName, "appToken": AppSecrets.appToken]
 
         AF.request("\(serverURL)create-sphere", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate(statusCode: 200..<300)
@@ -417,7 +410,7 @@ class OpenspaceAPI {
             "configJson": configJson,
             "spaceStationName": spaceStationName,
             "spaceStationLocation": spaceStationLocation,
-            "appToken": Defaults[.appToken]
+            "appToken": AppSecrets.appToken
         ]
 
         let url = "\(serverURL)create-space-station"
@@ -447,13 +440,13 @@ class OpenspaceAPI {
     }
 
     func getLocation(email: String, authToken: String, completion: @escaping (Result<LocationData, Error>) -> Void) {
-        if Defaults[.appToken] == "" {
+        if AppSecrets.appToken == "" {
             //print("App Token Null")
             // shouldn't get here checked earlier
             return
         }
 
-        let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": Defaults[.appToken]]
+        let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": AppSecrets.appToken]
         let url = "\(serverURL)get-data"
 
         //print("Requesting location with parameters: \(parameters)")
@@ -540,7 +533,7 @@ class OpenspaceAPI {
                     //print("Invalid authToken, refreshing token")
                     self.refreshAuthToken { newToken, tokenError in
                         if let newToken = newToken {
-                            Defaults[.authToken] = newToken
+                            AppSecrets.authToken = newToken
                             self.getLocation(email: email, authToken: newToken, completion: completion)
                         } else {
                             //print("Failed to refresh authToken")

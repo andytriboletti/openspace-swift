@@ -46,7 +46,7 @@ class YourSphereViewController: BackgroundImageViewController {
     }
     func fetchData() {
         let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
+        let authToken = AppSecrets.authToken
         let yourSphereId = Defaults[.selectedSphereId]
 
         OpenspaceAPI.shared.fetchData(email: email, authToken: authToken, sphereId: yourSphereId) { result in

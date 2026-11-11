@@ -96,7 +96,7 @@ extension GameViewController {
     }
 
     func downloadAndDisplayUSDZ(from urlString: String) {
-        guard let url = URL(string: urlString) else {
+        guard let url = TrustedURL.from(urlString) else {
             //print("Invalid URL")
             return
         }

@@ -524,7 +524,7 @@
                                                     <action selector="upgradeMaxEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="4lQ-8Z-rkW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3E-Rm-g5s">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="T3E-Rm-g5s">
                                                 <rect key="frame" x="107.33333333333333" y="865" width="215.66666666666669" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="JA1-7e-MHy"/>
@@ -535,7 +535,7 @@
                                                     <action selector="buySmallMineralPack:" destination="8yW-2I-6Lp" eventType="touchDown" id="RjN-Y1-2v9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipb-XI-wrQ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="ipb-XI-wrQ">
                                                 <rect key="frame" x="106.33333333333333" y="935" width="217.33333333333337" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="6eD-SV-nZt"/>
@@ -980,7 +980,7 @@
                                             <segue destination="68B-pU-erf" kind="presentation" modalPresentationStyle="fullScreen" id="UoK-ba-gXt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvS-4b-iaH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="XvS-4b-iaH">
                                         <rect key="frame" x="30" y="260" width="296.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="xRl-ga-FCP"/>
@@ -1687,7 +1687,7 @@
                                             <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="VbQ-5y-Crq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1N6-wL-L27">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="1N6-wL-L27">
                                         <rect key="frame" x="49.333333333333343" y="300" width="275.33333333333326" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ObJ-ag-pwB"/>
@@ -2265,7 +2265,7 @@
                                             <segue destination="U1y-oS-a8q" kind="presentation" modalPresentationStyle="fullScreen" id="6XQ-gR-cEl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yV-CM-cWD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="5yV-CM-cWD">
                                         <rect key="frame" x="126.33333333333333" y="240" width="177.33333333333337" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tl0-4w-vfN"/>

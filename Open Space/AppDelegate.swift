@@ -112,22 +112,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         authenticateGameCenter()
 
-      // Configure AlienTavernManager with app-level configuration
-      let appConfig = ATAppConfig(app_id: "1499913239")
-      AlienTavernManager.shared.configure(with: appConfig)
+        // The AlienTavern comments service (Lunar Lounge) was removed: its API no longer
+        // exists, and it needed an app-wide secret that can't be kept safe inside an app.
 
-
-      // Setup AlienTavernManager
-      AlienTavernManager.shared.setup { success, errorMessage in
-          if success {
-              print("AlienTavernManager setup successful")
-          } else {
-              print("AlienTavernManager setup failed: \(errorMessage ?? "Unknown error")")
-              // Handle setup failure (e.g., show an alert to the user)
-          }
-      }
-
-        
         return true
     }
 

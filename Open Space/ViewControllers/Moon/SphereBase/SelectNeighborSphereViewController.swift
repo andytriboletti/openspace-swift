@@ -21,7 +21,7 @@ class SelectNeighborSphereViewController: BackgroundImageViewController, UIColle
 
     func fetchData() {
         let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
+        let authToken = AppSecrets.authToken
 
         OpenspaceAPI.shared.fetchNeighbors(email: email, authToken: authToken) { result in
             switch result {

@@ -18,7 +18,7 @@ import GoogleMobileAds
 extension GameViewController {
 
     func getLocation() {
-        guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
+        guard let email = Defaults[.email] as String?, let authToken = AppSecrets.authToken as String? else {
             //print("Email or authToken is missing")
             return
         }

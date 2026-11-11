@@ -156,7 +156,7 @@ class ReplicatorViewController: BackgroundImageViewController {
 
     func sendText(text: String) {
         let email = Defaults[.email] // Replace with the actual email
-        let authToken = Defaults[.authToken] // Replace with the actual auth token
+        let authToken = AppSecrets.authToken // Replace with the actual auth token
         let yourSphereId = Defaults[.selectedSphereId]
         //print(email)
         //print(authToken)

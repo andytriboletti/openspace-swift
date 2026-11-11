@@ -95,8 +95,11 @@ class ExploreMoonViewController: UIViewController {
         #if !targetEnvironment(macCatalyst)
         if let rewardedAd = rewardedAd {
             rewardedAd.present(fromRootViewController: self) {
-                let reward = rewardedAd.adReward
-                // Handle the reward
+                // The server unlocks the treasure when Google's signed reward callback reaches it,
+                // a few seconds after the ad; check again then so the player can claim it.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+                    self?.checkDailyTreasureAvailability()
+                }
             }
         } else {
             showError(message: "Ad not available yet.")

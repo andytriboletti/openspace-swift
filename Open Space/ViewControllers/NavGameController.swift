@@ -19,7 +19,7 @@ class NavGameController: UINavigationController, FUIAuthDelegate {
         super.viewDidAppear(animated)
 
         // Check if appToken is empty and show SignInViewController if needed
-        if Defaults[.appToken].isEmpty {
+        if AppSecrets.appToken.isEmpty {
             do {
                 try Auth.auth().signOut()
 

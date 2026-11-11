@@ -16,92 +16,106 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
       override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
 
-          if let user = Auth.auth().currentUser {
-              if let email = user.email {
-                  dismiss(animated: false)
-              }
-          } else {
-              let authUI = FUIAuth.defaultAuthUI()
-              authUI!.delegate = self
-              let googleAuthProvider = FUIGoogleAuth(authUI: authUI!)
-              let providers: [FUIAuthProvider] = [
-                  googleAuthProvider,
-                  FUIOAuth.appleAuthProvider()
-              ]
+          if Auth.auth().currentUser != nil {
+              // Guests have no email, so don't require one here.
+              dismiss(animated: false)
+              return
+          }
 
-              authUI!.providers = providers
-
-              let authViewController = authUI!.authViewController()
-              authViewController.modalPresentationStyle = .fullScreen
-              authViewController.modalTransitionStyle = .crossDissolve
-
-              let frame = self.view.frame
-              let authController = authUI!.authViewController()
-              authController.view.frame = frame
-              authController.preferredContentSize = frame.size
-              authController.modalPresentationStyle = .fullScreen
-
-              // Customizing authController view
-              customizeAuthControllerView(authController.view)
-
-              let hasOnboard =  Defaults[.hasWatchedOnboarding]
-
-              if hasOnboard == 1 {
-                  present(authController, animated: true, completion: nil)
-              } else if !onboardingShown { // Check if onboarding has already been shown
-                  onboardingShown = true // Set the flag to true
-                  performSegue(withIdentifier: "goToOnboarding", sender: self)
-              }
+          let hasOnboard = Defaults[.hasWatchedOnboarding]
+          if hasOnboard == 1 {
+              presentAuthUI()
+          } else if !onboardingShown { // Check if onboarding has already been shown
+              onboardingShown = true // Set the flag to true
+              performSegue(withIdentifier: "goToOnboarding", sender: self)
           }
       }
-    
+
+    private func presentAuthUI() {
+        let authUI = FUIAuth.defaultAuthUI()!
+        authUI.delegate = self
+        authUI.shouldAutoUpgradeAnonymousUsers = false
+        authUI.providers = [FUIGoogleAuth(authUI: authUI), FUIOAuth.appleAuthProvider()]
+
+        let authController = authUI.authViewController()
+        authController.view.frame = self.view.frame
+        authController.preferredContentSize = self.view.frame.size
+        authController.modalPresentationStyle = .fullScreen
+
+        // Customizing authController view
+        customizeAuthControllerView(authController.view)
+        present(authController, animated: true, completion: nil)
+    }
+
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-        if let error = error {
-            //print("Sign-in error: \(error.localizedDescription)")
+        if error != nil {
             return
         }
+        if let user = user {
+            completeSignIn(user: user)
+        }
+    }
 
-        if let currentUser = user {
-            currentUser.getIDTokenForcingRefresh(true) { (idToken, error) in
-                if let idToken = idToken {
-                    //print("ID token: \(idToken)")
+    /// "Play as Guest": a Firebase anonymous account. The player can save it later from the
+    /// Account tab (Google or Apple), keeping their progress.
+    @objc private func playAsGuestTapped(_ sender: UIButton) {
+        sender.isEnabled = false
+        Auth.auth().signInAnonymously { [weak self] result, error in
+            guard let self = self else { return }
+            guard let user = result?.user else {
+                sender.isEnabled = true
+                self.showError("Couldn't start a guest game. Please check your connection and try again.", over: self.presentedViewController ?? self)
+                return
+            }
+            // Close the sign-in picker first, the same way FirebaseUI does for Google/Apple.
+            if let picker = self.presentedViewController {
+                picker.dismiss(animated: true) { self.completeSignIn(user: user) }
+            } else {
+                self.completeSignIn(user: user)
+            }
+        }
+    }
 
-                    let email = currentUser.email
-                    let uid = currentUser.uid
-                    //print("Email: ")
-                    //print(email!)
-                    //print("uid: ")
-                    //print(uid)
-                    //print("IdToken: ")
-                    //print(idToken)
-                    Defaults[.email] = email!
-                    Defaults[.authToken] = idToken
+    /// Exchanges the Firebase sign-in (Google, Apple or guest) for the game server's appToken.
+    private func completeSignIn(user: User) {
+        user.getIDTokenForcingRefresh(true) { [weak self] idToken, _ in
+            guard let self = self else { return }
+            guard let idToken = idToken else {
+                self.signInFailed("Couldn't sign in. Please try again.")
+                return
+            }
+            let email = user.email ?? ""   // guests have no email
+            Defaults[.email] = email
+            AppSecrets.authToken = idToken
 
-                    OpenspaceAPI.shared.loginWithEmail(email: email!, authToken: idToken) { result in
-                        switch result {
-                        case .success(let lastLocation):
-                            //print("Last Location: \(lastLocation)")
-                            Defaults[.email] = email!
-                            Defaults[.authToken] = idToken
-
-                            //print("Successfully signed in with user: \(user!)")
-
-                            DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "goToSignedIn", sender: self)
-                            }
-                        case .failure(let error):
-                            print("Error: \(error.localizedDescription)")
-                        }
+            OpenspaceAPI.shared.loginWithEmail(email: email, authToken: idToken) { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "goToSignedIn", sender: self)
                     }
-                } else if let error = error {
-                    //print("Error occurred: \(error.localizedDescription)")
-                } else {
-                    //print("Both idToken and error are nil.")
+                case .failure(let error):
+                    self.signInFailed(error.localizedDescription)
                 }
             }
-        } else {
-            //print("Successfully signed in with a user, but user data is nil.")
         }
+    }
+
+    private func signInFailed(_ message: String) {
+        DispatchQueue.main.async {
+            try? Auth.auth().signOut()
+            self.showError(message, over: self.presentedViewController ?? self) { [weak self] in
+                if self?.presentedViewController == nil {
+                    self?.presentAuthUI()
+                }
+            }
+        }
+    }
+
+    private func showError(_ message: String, over controller: UIViewController, then: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: "Sign-in problem", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in then?() })
+        controller.present(alert, animated: true)
     }
 
     private func customizeAuthControllerView(_ authView: UIView) {
@@ -144,6 +158,19 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
         // Load a random image initially
         loadRandomImage()
+
+        // "Play as Guest" under the Google / Apple buttons.
+        let guestButton = UIButton(type: .system)
+        guestButton.setTitle("Play as Guest", for: .normal)
+        guestButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        guestButton.accessibilityIdentifier = "playAsGuest"
+        guestButton.translatesAutoresizingMaskIntoConstraints = false
+        guestButton.addTarget(self, action: #selector(playAsGuestTapped(_:)), for: .touchUpInside)
+        authView.addSubview(guestButton)
+        NSLayoutConstraint.activate([
+            guestButton.centerXAnchor.constraint(equalTo: authView.centerXAnchor),
+            guestButton.bottomAnchor.constraint(equalTo: authView.safeAreaLayoutGuide.bottomAnchor, constant: -24)
+        ])
 
     }
 

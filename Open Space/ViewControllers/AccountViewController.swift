@@ -1,5 +1,8 @@
 import UIKit
 import FirebaseAuth
+import FirebaseAuthUI
+import FirebaseGoogleAuthUI
+import FirebaseOAuthUI
 import Defaults
 #if targetEnvironment(macCatalyst)
 // Exclude GoogleMobileAds for Mac Catalyst
@@ -26,11 +29,69 @@ class AccountViewController: BackgroundImageViewController {
     #if !targetEnvironment(macCatalyst)
     var rewardedAd: GADRewardedAd?
     #endif
+    /// When the last rewarded ad finished (its reward reaches the server a few seconds later).
+    private var lastRewardAt: Date?
+    private var saveAccountButton: UIButton?
 
 //    @IBAction func upgradeToPremium(_ sender: UIButton) {
 //            upgrade()
 //      }
 
+
+    /// App Review requires a way to restore the subscription and one-time upgrades.
+    /// Added under "Upgrade To Premium" in the same stack view, styled like it.
+    private func addRestorePurchasesButton() {
+        guard let stack = upgradeToPremium.superview as? UIStackView,
+              let index = stack.arrangedSubviews.firstIndex(of: upgradeToPremium) else { return }
+
+        let restore = makeButtonLikeUpgrade(title: "Restore Purchases")
+        restore.accessibilityIdentifier = "restorePurchases"
+        restore.addTarget(self, action: #selector(restorePurchasesTapped), for: .touchUpInside)
+        stack.insertArrangedSubview(restore, at: index + 1)
+
+        // Guests only: link Google or Apple so the game is kept (same Firebase user).
+        let save = makeButtonLikeUpgrade(title: "Save Your Account")
+        save.accessibilityIdentifier = "saveAccount"
+        save.addTarget(self, action: #selector(saveAccountTapped), for: .touchUpInside)
+        stack.insertArrangedSubview(save, at: index + 1)
+        saveAccountButton = save
+        updateGuestUI()
+    }
+
+    /// A button styled like "Upgrade To Premium". That button uses a UIButton.Configuration
+    /// (filled style), so its look lives in the configuration, not in backgroundColor.
+    private func makeButtonLikeUpgrade(title: String) -> UIButton {
+        let button = UIButton(type: .system)
+        if var configuration = upgradeToPremium.configuration {
+            configuration.title = title
+            button.configuration = configuration
+        } else {
+            var configuration = UIButton.Configuration.filled()
+            configuration.title = title
+            configuration.cornerStyle = .large
+            button.configuration = configuration
+        }
+        return button
+    }
+
+    private var isGuest: Bool {
+        return Auth.auth().currentUser?.isAnonymous ?? false
+    }
+
+    private func updateGuestUI() {
+        saveAccountButton?.isHidden = !isGuest
+    }
+
+    @objc private func saveAccountTapped() {
+        AccountSaver.shared.save(from: self) { [weak self] _ in
+            self?.refreshLabels()
+            self?.updateGuestUI()
+        }
+    }
+
+    @objc private func restorePurchasesTapped() {
+        IAPManager.shared.restorePurchases()
+    }
 
     @IBAction func viewTerms(_ sender: UIButton) {
         if let url = URL(string: "https://greenrobot.com/terms") {
@@ -393,11 +454,17 @@ class AccountViewController: BackgroundImageViewController {
 
         // The UIViewController parameter is an optional.
         rewardedAd.present(fromRootViewController: nil) {
-            let reward = rewardedAd.adReward
-            //print("Refill Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
-            //update energy label
-            self.energyLabel.text = "   Energy: \(Defaults[.totalEnergy]) out of \(Defaults[.totalEnergy])   "
-
+            // The server refills energy when Google's signed reward callback reaches it, a few
+            // seconds after the ad. Save the refill now (the label used to be reset to the old
+            // value when the ad closed), then confirm with the server once the callback is in.
+            Defaults[.currentEnergy] = Defaults[.totalEnergy]
+            self.lastRewardAt = Date()
+            self.refreshLabels()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+                Utils.shared.getLocation {
+                    DispatchQueue.main.async { self?.refreshLabels() }
+                }
+            }
       }
     #endif
     }
@@ -408,22 +475,23 @@ class AccountViewController: BackgroundImageViewController {
 //    }
 
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
-           let confirmationAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
-           confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-           confirmationAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-               do {
-                   try Auth.auth().signOut()
-                   Defaults.removeAll()
-               } catch let signOutError as NSError {
-                   //print("Error signing out: \(signOutError.localizedDescription)")
-               }
+        let confirmationAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account? This removes your game permanently.", preferredStyle: .alert)
+        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        confirmationAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            // Ask the server first, while we still have the credentials. (Signing out and
+            // clearing them first meant the server never received a valid delete request.)
+            self?.deleteUser()
+        }))
+        self.present(confirmationAlert, animated: true, completion: nil)
+    }
 
-               self?.deleteUser()
-           }))
-
-           // Present the confirmation alert
-           self.present(confirmationAlert, animated: true, completion: nil)
-       }
+    /// Signs out of Firebase and forgets every stored credential and cached value.
+    private func clearLocalAccount() {
+        try? Auth.auth().signOut()
+        Defaults.removeAll()
+        AppSecrets.appToken = ""
+        AppSecrets.authToken = ""
+    }
 
     func goToSignIn() {
         // Get the frame of the existing view controller's view
@@ -444,33 +512,22 @@ class AccountViewController: BackgroundImageViewController {
     }
 
     @IBAction func signOutButtonTapped(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-
-            // Clear all stored values
-            Defaults.removeAll()
-
-            // Get the frame of the existing view controller's view
-            let frame = self.view.frame
-
-            // User is not signed in
-            rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController
-
-            // Set the frame of the new view controller's view to match the existing view controller's frame
-            rootViewController!.view.frame = frame
-
-            // Assuming you have a reference to your app's UIWindow object
-            guard let window = UIApplication.shared.windows.first else {
-                return
-            }
-            window.rootViewController = rootViewController
-            window.makeKeyAndVisible()
-
-            // Perform any additional actions or UI updates after sign out
-        } catch let signOutError as NSError {
-            //print("Error signing out: \(signOutError.localizedDescription)")
+        guard isGuest else {
+            performSignOut()
+            return
         }
+        let alert = UIAlertController(title: "You're playing as a guest",
+                                      message: "If you sign out without saving your account, this game can't be recovered.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Save Your Account", style: .default) { [weak self] _ in self?.saveAccountTapped() })
+        alert.addAction(UIAlertAction(title: "Sign Out Anyway", style: .destructive) { [weak self] _ in self?.performSignOut() })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
 
+    private func performSignOut() {
+        clearLocalAccount()
+        goToSignIn()
     }
 
     // Delete user
@@ -478,24 +535,26 @@ class AccountViewController: BackgroundImageViewController {
     ///
     func deleteUser() {
         let email = Defaults[.email] // Replace with the actual email
-        let authToken = Defaults[.authToken] // Replace with the actual auth token
+        let authToken = AppSecrets.authToken // Replace with the actual auth token
 
         OpenspaceAPI.shared.deleteUser(email: email, authToken: authToken) { [weak self] result in
             switch result {
-            case .success(let message):
-                // User deleted successfully
-                //print("Success: \(message)")
-
-                // Clear all stored values
-                Defaults.removeAll()
-
+            case .success:
                 DispatchQueue.main.async {
-                    // Your UI update code or UI-related task
+                    // Remove the Firebase user too (may need a recent sign-in for Google/Apple;
+                    // the game account is already gone either way).
+                    Auth.auth().currentUser?.delete { _ in }
+                    self?.clearLocalAccount()
                     self?.goToSignIn()
                 }
-            case .failure(let error):
-                // Handle the error
-                print("Error: \(error.localizedDescription)")
+            case .failure:
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Couldn't delete your account",
+                                                  message: "Please check your connection and try again.",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self?.present(alert, animated: true)
+                }
             }
         }
     }
@@ -533,6 +592,7 @@ class AccountViewController: BackgroundImageViewController {
         super.viewDidLoad()
         scrollView.delaysContentTouches = false
         scrollView.canCancelContentTouches = true
+        addRestorePurchasesButton()
 
 
         if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.premiumSubscription) {
@@ -597,7 +657,11 @@ class AccountViewController: BackgroundImageViewController {
               self.upgradeToPremium.removeTarget(self, action: #selector(manageAction), for: .touchUpInside)
               self.upgradeToPremium.addTarget(self, action: #selector(upgrade), for: .touchUpInside)
           }
-          self.accountTypeLabel.text = "   Account Type: \(accountType)   "
+          if Auth.auth().currentUser?.isAnonymous ?? false {
+            accountType += " (Guest)"
+        }
+        self.accountTypeLabel.text = "   Account Type: \(accountType)   "
+        self.updateGuestUI()
       }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -617,6 +681,13 @@ class AccountViewController: BackgroundImageViewController {
 
         updateUsernameLabel()
         self.energyLabel.text = "   Energy: \(Defaults[.currentEnergy]) out of \(Defaults[.totalEnergy])   "
+        // Show the server's numbers, except right after a rewarded ad: Google's callback may not
+        // have reached the server yet, and the delayed refresh above handles that case.
+        if lastRewardAt.map({ Date().timeIntervalSince($0) > 15 }) ?? true {
+            Utils.shared.getLocation { [weak self] in
+                DispatchQueue.main.async { self?.refreshLabels() }
+            }
+        }
         var accountType = "Basic"
         if(Defaults[.premium] == 1) {
             accountType = "Premium"
@@ -668,10 +739,9 @@ class AccountViewController: BackgroundImageViewController {
     }
 
     func updateUsernameLabel() {
-        if let user = Auth.auth().currentUser, let email = user.email {
-            loggedInAs.text = "   Logged In As: \(email)   "
-            username.text = "   Your Username: \(Defaults[.username])   "
-        }
+        guard let user = Auth.auth().currentUser else { return }
+        loggedInAs.text = user.isAnonymous ? "   Playing as a guest   " : "   Logged In As: \(user.email ?? "")   "
+        username.text = "   Your Username: \(Defaults[.username])   "
     }
 
     /*
@@ -684,3 +754,117 @@ class AccountViewController: BackgroundImageViewController {
     }
     */
 }
+
+
+/// Saves a guest (Firebase anonymous) game by linking Google or Apple sign-in. FirebaseUI's
+/// auto-upgrade keeps the same Firebase user, so the server keeps the same game and records
+/// the email. If that Google/Apple sign-in already has its own game, the player can switch to it.
+final class AccountSaver: NSObject, FUIAuthDelegate {
+    static let shared = AccountSaver()
+
+    private var completion: ((Bool) -> Void)?
+
+    func save(from presenter: UIViewController, completion: @escaping (Bool) -> Void) {
+        guard Auth.auth().currentUser?.isAnonymous == true, let authUI = FUIAuth.defaultAuthUI() else {
+            completion(false)
+            return
+        }
+        self.completion = completion
+        authUI.delegate = self
+        authUI.shouldAutoUpgradeAnonymousUsers = true
+        authUI.providers = [FUIGoogleAuth(authUI: authUI), FUIOAuth.appleAuthProvider()]
+        let controller = authUI.authViewController()
+        controller.modalPresentationStyle = .fullScreen
+        presenter.present(controller, animated: true)
+    }
+
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        authUI.shouldAutoUpgradeAnonymousUsers = false
+
+        if let error = error as NSError? {
+            if error.domain == FUIAuthErrorDomain,
+               error.code == Int(FUIAuthErrorCode.mergeConflict.rawValue),
+               let credential = error.userInfo[FUIAuthCredentialKey] as? AuthCredential {
+                askToSwitch(to: credential)
+            } else if error.domain == FUIAuthErrorDomain, error.code == Int(FUIAuthErrorCode.userCancelledSignIn.rawValue) {
+                finish(false)
+            } else {
+                show("Couldn't save your account", error.localizedDescription)
+                finish(false)
+            }
+            return
+        }
+
+        guard let user = authDataResult?.user else {
+            finish(false)
+            return
+        }
+        register(user, success: ("Account saved", "Sign in with this account on any device to keep playing."))
+    }
+
+    /// Tells the game server about the signed-in user (it records the email for a saved guest).
+    private func register(_ user: User, success: (String, String)) {
+        user.getIDTokenForcingRefresh(true) { token, _ in
+            guard let token = token else {
+                self.show("Couldn't save your account", "Please try again.")
+                self.finish(false)
+                return
+            }
+            OpenspaceAPI.shared.loginWithEmail(email: user.email ?? "", authToken: token) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        Defaults[.email] = user.email ?? ""
+                        AppSecrets.authToken = token
+                        Utils.shared.getLocation()
+                        self.show(success.0, success.1)
+                        self.finish(true)
+                    case .failure(let error):
+                        self.show("Couldn't save your account", error.localizedDescription)
+                        self.finish(false)
+                    }
+                }
+            }
+        }
+    }
+
+    private func askToSwitch(to credential: AuthCredential) {
+        let alert = UIAlertController(title: "This account already has a game",
+                                      message: "Switch to that game? The guest game on this device will be lost.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in self.finish(false) })
+        alert.addAction(UIAlertAction(title: "Switch", style: .destructive) { _ in
+            Auth.auth().signIn(with: credential) { result, error in
+                guard let user = result?.user else {
+                    self.show("Couldn't switch accounts", error?.localizedDescription ?? "Please try again.")
+                    self.finish(false)
+                    return
+                }
+                self.register(user, success: ("Switched", "You're now playing your saved game."))
+            }
+        })
+        AccountSaver.topViewController()?.present(alert, animated: true)
+    }
+
+    private func finish(_ saved: Bool) {
+        let completion = self.completion
+        self.completion = nil
+        DispatchQueue.main.async { completion?(saved) }
+    }
+
+    private func show(_ title: String, _ message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            AccountSaver.topViewController()?.present(alert, animated: true)
+        }
+    }
+
+    static func topViewController() -> UIViewController? {
+        let window = UIApplication.shared.delegate?.window ?? nil
+        guard var top = window?.rootViewController else { return nil }
+        while let presented = top.presentedViewController { top = presented }
+        return top
+    }
+}
+

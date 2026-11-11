@@ -32,7 +32,7 @@ class ModelViewController: UIViewController, UIDocumentBrowserViewControllerDele
 
         if zipURLString == "" {
             headerLabel.text = "Pending: " + Defaults[.selectedMeshPrompt]
-        } else if let zipFileURL = URL(string: zipURLString) {
+        } else if let zipFileURL = TrustedURL.from(zipURLString) {
             startLoading()
             cacheOrDownloadAndUnzipFile(from: zipFileURL)
         }

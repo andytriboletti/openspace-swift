@@ -81,7 +81,7 @@ class Utils {
     }
     
     public func getLocation(completion: (() -> Void)? = nil) {
-        guard let email = Defaults[.email] as String?, let authToken = Defaults[.authToken] as String? else {
+        guard let email = Defaults[.email] as String?, let authToken = AppSecrets.authToken as String? else {
             //print("Email or authToken is missing")
             completion?()
             return
@@ -169,9 +169,10 @@ class Utils {
 
     public func saveLocation(location: String, usesEnergy: String) {
         let email = Defaults[.email]
-        let authToken = Defaults[.authToken]
+        let authToken = AppSecrets.authToken
 
-        guard !email.isEmpty, !authToken.isEmpty else {
+        // Guests have no email; the appToken is what identifies the player.
+        guard !AppSecrets.appToken.isEmpty, !authToken.isEmpty else {
             //print("Error: Email or Auth token is empty")
             return
         }
