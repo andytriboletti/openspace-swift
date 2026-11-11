@@ -778,6 +778,12 @@ final class AccountSaver: NSObject, FUIAuthDelegate {
         presenter.present(controller, animated: true)
     }
 
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        return OpenSpaceAuthPickerViewController(nibName: "FUIAuthPickerViewController",
+                                                 bundle: FUIAuthUtils.authUIBundle(),
+                                                 authUI: authUI)
+    }
+
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         authUI.shouldAutoUpgradeAnonymousUsers = false
 

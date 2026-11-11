@@ -35,7 +35,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         let authUI = FUIAuth.defaultAuthUI()!
         authUI.delegate = self
         authUI.shouldAutoUpgradeAnonymousUsers = false
-        authUI.providers = [FUIGoogleAuth(authUI: authUI), FUIOAuth.appleAuthProvider()]
+        authUI.providers = [FUIGoogleAuth(authUI: authUI), FUIOAuth.appleAuthProvider(), GuestAuthProvider()]
 
         let authController = authUI.authViewController()
         authController.view.frame = self.view.frame
@@ -47,32 +47,23 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         present(authController, animated: true, completion: nil)
     }
 
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        return OpenSpaceAuthPickerViewController(nibName: "FUIAuthPickerViewController",
+                                                 bundle: FUIAuthUtils.authUIBundle(),
+                                                 authUI: authUI)
+    }
+
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if error != nil {
             return
         }
-        if let user = user {
+        guard let user = user else { return }
+        // For Google/Apple FirebaseUI calls this once the picker has closed; for a guest it
+        // calls it while the picker is still closing, so wait for that to finish.
+        if let closing = presentedViewController?.transitionCoordinator {
+            closing.animate(alongsideTransition: nil) { _ in self.completeSignIn(user: user) }
+        } else {
             completeSignIn(user: user)
-        }
-    }
-
-    /// "Play as Guest": a Firebase anonymous account. The player can save it later from the
-    /// Account tab (Google or Apple), keeping their progress.
-    @objc private func playAsGuestTapped(_ sender: UIButton) {
-        sender.isEnabled = false
-        Auth.auth().signInAnonymously { [weak self] result, error in
-            guard let self = self else { return }
-            guard let user = result?.user else {
-                sender.isEnabled = true
-                self.showError("Couldn't start a guest game. Please check your connection and try again.", over: self.presentedViewController ?? self)
-                return
-            }
-            // Close the sign-in picker first, the same way FirebaseUI does for Google/Apple.
-            if let picker = self.presentedViewController {
-                picker.dismiss(animated: true) { self.completeSignIn(user: user) }
-            } else {
-                self.completeSignIn(user: user)
-            }
         }
     }
 
@@ -158,20 +149,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
         // Load a random image initially
         loadRandomImage()
-
-        // "Play as Guest" under the Google / Apple buttons.
-        let guestButton = UIButton(type: .system)
-        guestButton.setTitle("Play as Guest", for: .normal)
-        guestButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        guestButton.accessibilityIdentifier = "playAsGuest"
-        guestButton.translatesAutoresizingMaskIntoConstraints = false
-        guestButton.addTarget(self, action: #selector(playAsGuestTapped(_:)), for: .touchUpInside)
-        authView.addSubview(guestButton)
-        NSLayoutConstraint.activate([
-            guestButton.centerXAnchor.constraint(equalTo: authView.centerXAnchor),
-            guestButton.bottomAnchor.constraint(equalTo: authView.safeAreaLayoutGuide.bottomAnchor, constant: -24)
-        ])
-
     }
 
     @objc private func loadRandomImage() {
@@ -192,5 +169,78 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         if let titleLabel = view.subviews.first(where: { $0 is UILabel }) as? UILabel {
             titleLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
         }
+    }
+}
+
+/// "Play as Guest" as a FirebaseUI sign-in provider, so it is drawn as a real button in the same
+/// column, size and style as Sign in with Google / Apple. It creates a Firebase anonymous account;
+/// the player can save it later from the Account tab (Google or Apple) and keep their progress.
+final class GuestAuthProvider: NSObject, FUIAuthProvider {
+    var providerID: String? { nil }
+    var shortName: String { "Guest" }
+    var signInLabel: String { "Play as Guest" }
+    var buttonBackgroundColor: UIColor { UIColor(red: 0.29, green: 0.31, blue: 0.35, alpha: 1) }
+    var buttonTextColor: UIColor { .white }
+    var buttonAlignment: FUIButtonAlignment = .center
+    var accessToken: String? { nil }
+
+    /// A person symbol on the same 24 x 24 canvas as FirebaseUI's Google and Apple icons.
+    var icon: UIImage {
+        let canvas = CGSize(width: 24, height: 24)
+        let config = UIImage.SymbolConfiguration(pointSize: 15, weight: .semibold)
+        guard let symbol = UIImage(systemName: "person.fill", withConfiguration: config)?
+            .withTintColor(.white, renderingMode: .alwaysOriginal) else { return UIImage() }
+        return UIGraphicsImageRenderer(size: canvas).image { _ in
+            symbol.draw(in: CGRect(x: (canvas.width - symbol.size.width) / 2,
+                                   y: (canvas.height - symbol.size.height) / 2,
+                                   width: symbol.size.width,
+                                   height: symbol.size.height))
+        }
+    }
+
+    func signIn(withDefaultValue defaultValue: String?,
+                presenting presentingViewController: UIViewController?,
+                completion: FUIAuthProviderSignInCompletionBlock? = nil) {
+        Auth.auth().signInAnonymously { result, error in
+            guard let result = result else {
+                // Explain the problem here and report a cancel, so FirebaseUI leaves the
+                // picker open for another try.
+                let alert = UIAlertController(title: "Sign-in problem",
+                                              message: "Couldn't start a guest game. Please check your connection and try again.",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                presentingViewController?.present(alert, animated: true)
+                completion?(nil, NSError(domain: FUIAuthErrorDomain,
+                                         code: Int(FUIAuthErrorCode.userCancelledSignIn.rawValue)), nil, nil)
+                return
+            }
+            // FirebaseUI treats an anonymous user with no credential as a finished guest
+            // sign-in: it closes the picker and calls authUI(_:didSignInWith:error:).
+            completion?(nil, nil, nil, ["FUIAuthProviderSignInUserInfoKeyAuthDataResult": result])
+        }
+    }
+
+    func signIn(withEmail email: String?,
+                presenting presentingViewController: UIViewController?,
+                completion: FUIAuthProviderSignInCompletionBlock? = nil) {
+        signIn(withDefaultValue: email, presenting: presentingViewController, completion: completion)
+    }
+
+    func signOut() {}
+}
+
+/// FirebaseUI's sign-in picker, minus the scrolling. Its buttons sit in a scroll view sized so the
+/// screen could always be dragged up and down a little, even though they fit. Scrolling only stays
+/// on when they really don't fit (for example with very large text).
+final class OpenSpaceAuthPickerViewController: FUIAuthPickerViewController {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // The terms text is a UITextView, which is also a scroll view; skip it.
+        guard let scrollView = view.subviews.first(where: { $0 is UIScrollView && !($0 is UITextView) }) as? UIScrollView else {
+            return
+        }
+        let visibleHeight = scrollView.bounds.height - scrollView.safeAreaInsets.top
+        scrollView.isScrollEnabled = scrollView.contentSize.height > visibleHeight + 1
+        scrollView.alwaysBounceVertical = false
     }
 }
