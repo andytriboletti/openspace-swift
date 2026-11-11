@@ -63,8 +63,7 @@ class TravelViewController: UIViewController {
         #if !targetEnvironment(macCatalyst)
 
 
-        let premium = Defaults[.premium]
-        if(premium == 0) {
+        if AdPolicy.showAutomaticAds {
 
             // Access the preloaded interstitial ad from the AppDelegate
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {

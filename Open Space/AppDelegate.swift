@@ -184,9 +184,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if targetEnvironment(macCatalyst)
 
 #else
-        let isPremium = Defaults[.premium]
         //only non premium users should get ad
-        if(isPremium == 0 ) {
+        if AdPolicy.showAutomaticAds {
             let username = Defaults[.username]
 
             //only logged in users should get ad
@@ -450,5 +449,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         for context in contexts {
             _ = GIDSignIn.sharedInstance.handle(context.url)
         }
+    }
+}
+
+/// Whether to show the ads that appear on their own: the banner, the app open ad and the
+/// interstitial when traveling. Premium players see none. Debug builds launched with
+/// -ScreenshotMode show none either, so App Store screenshots and app preview videos can be
+/// recorded without Google's test ads in them. Rewarded ads only appear when the player asks.
+enum AdPolicy {
+    static var showAutomaticAds: Bool {
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("-ScreenshotMode") { return false }
+        #endif
+        return Defaults[.premium] == 0
     }
 }

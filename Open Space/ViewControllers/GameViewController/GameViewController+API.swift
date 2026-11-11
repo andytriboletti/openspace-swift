@@ -123,8 +123,7 @@ extension GameViewController {
 
 #else
 
-let isPremium = Defaults[.premium]
-if(isPremium == 0 && googleAdLoaded == 0) {
+if(AdPolicy.showAutomaticAds && googleAdLoaded == 0) {
     bannerView = GADBannerView(adSize: GADAdSizeBanner)
     bannerView.adSize = GADAdSizeBanner
     addBannerViewToView(bannerView)
