@@ -177,8 +177,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rScene?.rootNode.childNodes.forEach { fistNodeRed!.addChildNode($0) }
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-      // Show the app open ad when the app is foregrounded.
+    /// Shows the app open ad when the app comes to the foreground. Called by SceneDelegate:
+    /// with the scene lifecycle, UIKit no longer calls applicationDidBecomeActive.
+    func showAppOpenAdIfNeeded() {
 
 #if targetEnvironment(macCatalyst)
 
@@ -417,4 +418,37 @@ extension SCNNode {
 //}
 extension Notification.Name {
     static let purchaseCompleted = Notification.Name("purchaseCompleted")
+}
+
+/// The app's window scene. iOS 27 requires the scene-based app lifecycle: an app built with the
+/// iOS 27 SDK that only has an app delegate crashes at launch
+/// (_UIApplicationEvaluateRuntimeIssueForNoSceneLifecycleAdoption). Info.plist names this class
+/// and Main.storyboard, so UIKit creates the window from the storyboard as before.
+///
+/// The window is also handed to the app delegate, so code that reads AppDelegate.window or
+/// UIApplication.shared.delegate?.window (purchase alerts, Save Your Account, Game Center)
+/// keeps working.
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var window: UIWindow?
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        (UIApplication.shared.delegate as? AppDelegate)?.window = window
+        // A Google sign-in redirect that launched the app.
+        handle(connectionOptions.urlContexts)
+    }
+
+    /// Google sign-in redirects. These used to arrive at application(_:open:options:).
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        handle(URLContexts)
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        (UIApplication.shared.delegate as? AppDelegate)?.showAppOpenAdIfNeeded()
+    }
+
+    private func handle(_ contexts: Set<UIOpenURLContext>) {
+        for context in contexts {
+            _ = GIDSignIn.sharedInstance.handle(context.url)
+        }
+    }
 }
