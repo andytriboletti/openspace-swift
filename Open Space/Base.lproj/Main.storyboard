@@ -71,7 +71,7 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="navigateToClicked" destination="BV1-FR-VrT" eventType="touchDown" id="hbh-yg-fWF"/>
+                                                    <action selector="navigateToClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="hbh-yg-fWF"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -300,7 +300,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Go To Open Space Homepage"/>
                                         <connections>
-                                            <action selector="openSpaceHomepage" destination="zN1-Qm-r2p" eventType="touchDown" id="yna-qt-gT3"/>
+                                            <action selector="openSpaceHomepage" destination="zN1-Qm-r2p" eventType="touchUpInside" id="yna-qt-gT3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6S-cB-5j7">
@@ -311,7 +311,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Go To New Feature Suggestions at the Forum" titleAlignment="automatic"/>
                                         <connections>
-                                            <action selector="openSpaceForum" destination="zN1-Qm-r2p" eventType="touchDown" id="KFr-QS-J3d"/>
+                                            <action selector="openSpaceForum" destination="zN1-Qm-r2p" eventType="touchUpInside" id="KFr-QS-J3d"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZ7-5b-rPp">
@@ -322,7 +322,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Go To Open Space FAQ And Help"/>
                                         <connections>
-                                            <action selector="openHelp" destination="zN1-Qm-r2p" eventType="touchDown" id="ZJ9-O5-ppd"/>
+                                            <action selector="openHelp" destination="zN1-Qm-r2p" eventType="touchUpInside" id="ZJ9-O5-ppd"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBd-R0-d6x">
@@ -380,7 +380,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-QK-2md">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-QK-2md" customClass="DragFriendlyScrollView" customModule="Open_Space" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="59" width="430" height="790"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f3I-uN-eSr">
@@ -455,7 +455,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="View Terms"/>
                                                         <connections>
-                                                            <action selector="viewTerms:" destination="8yW-2I-6Lp" eventType="touchDown" id="fLD-ay-LL7"/>
+                                                            <action selector="viewTerms:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="fLD-ay-LL7"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBL-fL-Zwb">
@@ -466,7 +466,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="View Privacy Policy"/>
                                                         <connections>
-                                                            <action selector="viewPrivacy:" destination="8yW-2I-6Lp" eventType="touchDown" id="Spf-aN-UkY"/>
+                                                            <action selector="viewPrivacy:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="Spf-aN-UkY"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -489,7 +489,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Reset Username"/>
                                                 <connections>
-                                                    <action selector="showResetButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="mRq-qQ-TGj"/>
+                                                    <action selector="showResetButtonTapped:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="mRq-qQ-TGj"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Energy: x out of 5   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3N-LV-ksW">
@@ -510,7 +510,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Refill Energy"/>
                                                 <connections>
-                                                    <action selector="refillEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="c5M-Db-r1s"/>
+                                                    <action selector="refillEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="c5M-Db-r1s"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-sM-a37">
@@ -521,7 +521,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Upgrade Max Energy"/>
                                                 <connections>
-                                                    <action selector="upgradeMaxEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="4lQ-8Z-rkW"/>
+                                                    <action selector="upgradeMaxEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="4lQ-8Z-rkW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="T3E-Rm-g5s">
@@ -532,7 +532,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Buy A Small Mineral Pack"/>
                                                 <connections>
-                                                    <action selector="buySmallMineralPack:" destination="8yW-2I-6Lp" eventType="touchDown" id="RjN-Y1-2v9"/>
+                                                    <action selector="buySmallMineralPack:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="RjN-Y1-2v9"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="ipb-XI-wrQ">
@@ -543,7 +543,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Buy A Large Mineral Pack"/>
                                                 <connections>
-                                                    <action selector="buyLargeMineralPack:" destination="8yW-2I-6Lp" eventType="touchDown" id="7gH-ZA-m8z"/>
+                                                    <action selector="buyLargeMineralPack:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="7gH-ZA-m8z"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earning virtual $10 per day from your Sphere." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-CL-mox">
@@ -590,7 +590,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Sign out"/>
                                                 <connections>
-                                                    <action selector="signOutButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="0A5-cJ-RYV"/>
+                                                    <action selector="signOutButtonTapped:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="0A5-cJ-RYV"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ub-YH-Kdb">
@@ -615,7 +615,7 @@
                                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="deleteButtonTapped:" destination="8yW-2I-6Lp" eventType="touchDown" id="Ewa-68-aSz"/>
+                                                    <action selector="deleteButtonTapped:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="Ewa-68-aSz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -781,7 +781,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Upgrade Passenger or Cargo Limit"/>
                                 <connections>
-                                    <action selector="upgradeMaxCargoButtonTapped:" destination="5fb-7X-jYJ" eventType="touchDown" id="HJ9-RB-Aar"/>
+                                    <action selector="upgradeMaxCargoButtonTapped:" destination="5fb-7X-jYJ" eventType="touchUpInside" id="HJ9-RB-Aar"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-le-RyT">
@@ -864,7 +864,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="View Top Richest Players"/>
                                         <connections>
-                                            <action selector="showLeaderboard" destination="8AS-f1-fXV" eventType="touchDown" id="SGV-Yx-TLP"/>
+                                            <action selector="showLeaderboard" destination="8AS-f1-fXV" eventType="touchUpInside" id="SGV-Yx-TLP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -988,7 +988,7 @@
                                         <state key="normal" title="Configure and launch spacestations"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Configure and launch spacestations"/>
                                         <connections>
-                                            <action selector="configureAndLaunchSpaceStationsAction" destination="J0M-22-PC3" eventType="touchDown" id="P8f-lt-nyN"/>
+                                            <action selector="configureAndLaunchSpaceStationsAction" destination="J0M-22-PC3" eventType="touchUpInside" id="P8f-lt-nyN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulW-0A-1Qt">
@@ -999,7 +999,7 @@
                                         <state key="normal" title="Quest Command Center"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Quest Command Center"/>
                                         <connections>
-                                            <action selector="quests" destination="J0M-22-PC3" eventType="touchDown" id="M9O-ot-2K3"/>
+                                            <action selector="quests" destination="J0M-22-PC3" eventType="touchUpInside" id="M9O-ot-2K3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1272,7 +1272,7 @@
                                         <state key="normal" title="Change View"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Change View"/>
                                         <connections>
-                                            <action selector="changeView" destination="0yc-aj-Qry" eventType="touchDown" id="SgU-gp-FXi"/>
+                                            <action selector="changeView" destination="0yc-aj-Qry" eventType="touchUpInside" id="SgU-gp-FXi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1593,7 +1593,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Create"/>
                                         <connections>
-                                            <action selector="createNewItem" destination="nQ1-Kh-9oZ" eventType="touchDown" id="8nO-Na-uED"/>
+                                            <action selector="createNewItem" destination="nQ1-Kh-9oZ" eventType="touchUpInside" id="8nO-Na-uED"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgX-v4-T8c">
@@ -1780,7 +1780,7 @@
                                                     </backgroundConfiguration>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="delete" destination="0oZ-qm-bPz" eventType="touchDown" id="0UN-XI-Au5"/>
+                                                    <action selector="delete" destination="0oZ-qm-bPz" eventType="touchUpInside" id="0UN-XI-Au5"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1992,7 +1992,7 @@
                                         <state key="normal" title="Exchange Ship For A New One"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Exchange Ship For A New One"/>
                                         <connections>
-                                            <action selector="configureShipDesign" destination="68B-pU-erf" eventType="touchDown" id="Iye-nt-haJ"/>
+                                            <action selector="configureShipDesign" destination="68B-pU-erf" eventType="touchUpInside" id="Iye-nt-haJ"/>
                                             <segue destination="PdD-hg-Poh" kind="presentation" identifier="exchangeShipForANewOne" modalPresentationStyle="fullScreen" id="pbc-dO-XZT"/>
                                         </connections>
                                     </button>
@@ -2273,7 +2273,7 @@
                                         <state key="normal" title="GO TO LUNAR LOUNGE"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Go To Lunar Lounge"/>
                                         <connections>
-                                            <action selector="goToLunarLounge" destination="GXa-oh-Nth" eventType="touchDown" id="uBi-0L-SjQ"/>
+                                            <action selector="goToLunarLounge" destination="GXa-oh-Nth" eventType="touchUpInside" id="uBi-0L-SjQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6f-bO-Qdm">

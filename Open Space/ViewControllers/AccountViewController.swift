@@ -722,18 +722,10 @@ class AccountViewController: BackgroundImageViewController {
             self.yourAccountIsEarning.text = "   Earning virtual $\(amountFromSpheres) per day from \(sphereCount) spheres.   "
         }
 
-        //objects
-        if(amountFromObjects == 5) {
-            self.yourAccountIsEarningObjects.text = "   Earning virtual $\(amountFromObjects) per day from \(objectCount) object.   "
-
-        }
-        else if(amountFromSpheres == 0) {
-            self.yourAccountIsEarningObjects.text = "   Earning virtual $\(amountFromObjects) per day. Create a object to earn.   "
-
-        }
-        else {
-            self.yourAccountIsEarningObjects.text = "   Earning virtual $\(amountFromObjects) per day from \(objectCount) objects.   "
-        }
+        // Objects. Creating new 3D objects is switched off, so only players who already
+        // have some see this line (the stack view closes the gap when it is hidden).
+        self.yourAccountIsEarningObjects.isHidden = (objectCount == 0)
+        self.yourAccountIsEarningObjects.text = "   Earning virtual $\(amountFromObjects) per day from \(objectCount) \(objectCount == 1 ? "object" : "objects").   "
 
 
     }
@@ -874,3 +866,13 @@ final class AccountSaver: NSObject, FUIAuthDelegate {
     }
 }
 
+
+/// The Account screen's scroll view. UIKit normally won't let a drag that starts on a button
+/// scroll the page once the button has the touch, so the page felt stuck. Here a drag always
+/// scrolls; the button just loses its highlight, and a tap still presses it.
+final class DragFriendlyScrollView: UIScrollView {
+    override func touchesShouldCancel(in view: UIView) -> Bool {
+        if view is UIControl { return true }
+        return super.touchesShouldCancel(in: view)
+    }
+}
