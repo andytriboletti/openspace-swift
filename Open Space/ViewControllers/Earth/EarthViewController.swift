@@ -12,10 +12,6 @@ import SceneKit
 
 class EarthViewController: UIViewController {
 
-    @IBOutlet var spaceportButton: UIButton!
-
-    @IBOutlet var tradingPostButton: UIButton!
-
     @IBOutlet var exploreButton: UIButton!
 
     @IBOutlet var takeOffButton: UIButton!

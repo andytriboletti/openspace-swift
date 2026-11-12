@@ -58,6 +58,10 @@ extension Defaults.Keys {
     static let theNumberOfObjects = Key<Int>("theNumberOfObjects", default: 0)
     static let hasWatchedOnboarding = Key<Int>("hasWatchedOnboarding", default: 0)
 
+    // When each full-screen ad was last shown (seconds since 1970; 0 = never). See AdPolicy.
+    static let lastTravelAdShown = Key<Double>("lastTravelAdShown", default: 0)
+    static let lastAppOpenAdShown = Key<Double>("lastAppOpenAdShown", default: 0)
+
 }
 import SwiftUI
 extension Image {

@@ -200,7 +200,6 @@ PODS:
   - RxSwift (6.7.1)
   - SCLAlertView (0.8.1)
   - SSZipArchive (2.4.3)
-  - Starscream (4.0.8)
 
 DEPENDENCIES:
   - Alamofire
@@ -221,7 +220,6 @@ DEPENDENCIES:
   - RxSwift (~> 6.0)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
   - SSZipArchive
-  - Starscream
 
 SPEC REPOS:
   trunk:
@@ -267,7 +265,6 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SSZipArchive
-    - Starscream
 
 EXTERNAL SOURCES:
   SCLAlertView:
@@ -322,8 +319,7 @@ SPEC CHECKSUMS:
   RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
-  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
 
-PODFILE CHECKSUM: 66d1a627cc40b4280262c1b6d71448d80694fc7a
+PODFILE CHECKSUM: c4cc3dbbee95f4f4dd5bd1c5075f3f596c65026b
 
 COCOAPODS: 1.16.2

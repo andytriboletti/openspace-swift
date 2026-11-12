@@ -15,10 +15,6 @@ class SpaceStationViewController: UIViewController {
 
     @IBOutlet var changeViewButton: UIButton!
 
-    @IBOutlet var spaceportButton: UIButton!
-
-    @IBOutlet var tradingPostButton: UIButton!
-
     @IBOutlet var exploreButton: UIButton!
 
     @IBOutlet var takeOffButton: UIButton!

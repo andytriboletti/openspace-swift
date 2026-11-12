@@ -6,6 +6,7 @@
 //  Copyright © 2024 GreenRobot LLC. All rights reserved.
 //
 
+import Defaults
 import Foundation
 #if !targetEnvironment(macCatalyst)
 import GoogleMobileAds
@@ -80,7 +81,7 @@ class AppOpenAdManager: NSObject {
 // MARK: - GADFullScreenContentDelegate methods
 extension AppOpenAdManager: GADFullScreenContentDelegate {
   func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-    //print("App open ad will be presented.")
+    AdPolicy.recordDailyAdShown(.lastAppOpenAdShown)
   }
 
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {

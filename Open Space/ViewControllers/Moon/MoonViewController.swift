@@ -12,10 +12,6 @@ import SceneKit
 
 class MoonViewController: UIViewController {
 
-    @IBOutlet var spaceportButton: UIButton!
-
-    @IBOutlet var tradingPostButton: UIButton!
-
     @IBOutlet var exploreButton: UIButton!
 
     @IBOutlet var takeOffButton: UIButton!
@@ -26,9 +22,6 @@ class MoonViewController: UIViewController {
     @IBOutlet var scnView: SCNView!
 
     // Lunar Lounge (AlienTavern comments) was removed; its button is hidden in Main.storyboard.
-    @IBAction func goToLunarLounge() {}
-
-    
     @IBAction func takeOffAction() {
         // self.dismiss(animated: true, completion: {
         Utils.shared.saveLocation(location: "nearMoon", usesEnergy: "0")

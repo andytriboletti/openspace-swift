@@ -25,7 +25,6 @@ class GameViewController: UIViewController {
     var bannerView: GADBannerView!
 #endif
 
-    var webSocketManager: WebSocketManager!
     var errorMessage: String?
 
     var baseNode: SCNNode!

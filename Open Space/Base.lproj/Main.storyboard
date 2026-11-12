@@ -201,31 +201,11 @@
                                             <segue destination="3P0-Yo-Sdy" kind="presentation" modalPresentationStyle="fullScreen" id="mz6-TB-ZIG"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP9-IT-vpA">
-                                        <rect key="frame" x="28" y="150" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="cbz-z0-J1g"/>
-                                        </constraints>
-                                        <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s13-Zs-hVV">
-                                        <rect key="frame" x="28" y="150" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="wne-Vm-tth"/>
-                                        </constraints>
-                                        <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="iP9-IT-vpA" secondAttribute="trailing" constant="28" id="0TU-YX-ZPT"/>
                                     <constraint firstItem="XeF-ym-5aq" firstAttribute="centerX" secondItem="uGk-0C-Fzj" secondAttribute="centerX" id="5GR-nh-fxL"/>
                                     <constraint firstItem="35Y-34-oAg" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="Cqe-5S-Q3Y"/>
-                                    <constraint firstItem="s13-Zs-hVV" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="MZG-6T-ZVJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="s13-Zs-hVV" secondAttribute="trailing" constant="28" id="WAc-SJ-l1c"/>
                                     <constraint firstAttribute="trailing" secondItem="35Y-34-oAg" secondAttribute="trailing" constant="28" id="eTo-Sn-NZR"/>
-                                    <constraint firstItem="iP9-IT-vpA" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="kO9-L8-E7C"/>
-                                    <constraint firstItem="iP9-IT-vpA" firstAttribute="leading" secondItem="uGk-0C-Fzj" secondAttribute="leading" constant="28" id="pR3-Pz-rBL"/>
-                                    <constraint firstAttribute="trailing" secondItem="iP9-IT-vpA" secondAttribute="trailing" constant="28" id="shd-Ba-sRe"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-ms-FfK">
@@ -261,9 +241,7 @@
                         <outlet property="exploreButton" destination="35Y-34-oAg" id="xnO-hc-8Eu"/>
                         <outlet property="headerLabel" destination="XeF-ym-5aq" id="8Jx-9y-RF8"/>
                         <outlet property="scnView" destination="1HM-3k-odO" id="fsl-iu-kyR"/>
-                        <outlet property="spaceportButton" destination="iP9-IT-vpA" id="elg-D6-Kyb"/>
                         <outlet property="takeOffButton" destination="nBS-ms-FfK" id="am8-B1-02N"/>
-                        <outlet property="tradingPostButton" destination="s13-Zs-hVV" id="Ita-g8-NdN"/>
                         <segue destination="4cu-mg-f7Y" kind="presentation" identifier="takeOff" modalPresentationStyle="fullScreen" id="rQs-aG-VQ2"/>
                     </connections>
                 </viewController>
@@ -522,28 +500,6 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Upgrade Max Energy"/>
                                                 <connections>
                                                     <action selector="upgradeMaxEnergyButtonTapped:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="4lQ-8Z-rkW"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="T3E-Rm-g5s">
-                                                <rect key="frame" x="107.33333333333333" y="865" width="215.66666666666669" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="JA1-7e-MHy"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Buy A Small Mineral Pack"/>
-                                                <connections>
-                                                    <action selector="buySmallMineralPack:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="RjN-Y1-2v9"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="ipb-XI-wrQ">
-                                                <rect key="frame" x="106.33333333333333" y="935" width="217.33333333333337" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="6eD-SV-nZt"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Buy A Large Mineral Pack"/>
-                                                <connections>
-                                                    <action selector="buyLargeMineralPack:" destination="8yW-2I-6Lp" eventType="touchUpInside" id="7gH-ZA-m8z"/>
                                                 </connections>
                                             </button>
                                             <label minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earning virtual $10 per day from your Sphere." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-CL-mox">
@@ -893,14 +849,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0N-G6-edg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5184.057971014493" y="-504.24107142857139"/>
-        </scene>
-        <!--Configure Space Station View Controller-->
-        <scene sceneID="AhQ-i1-9Ip">
-            <objects>
-                <viewController id="0Bi-po-kge" customClass="ConfigureSpaceStationViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D1M-T1-0tR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3738" y="-304"/>
         </scene>
         <!--Earth View Controller-->
         <scene sceneID="HX3-a7-kr1">
@@ -1473,207 +1421,6 @@
             </objects>
             <point key="canvasLocation" x="3674" y="3709"/>
         </scene>
-        <!--Replicator View Controller-->
-        <scene sceneID="rig-C2-5S9">
-            <objects>
-                <viewController id="nQ1-Kh-9oZ" customClass="ReplicatorViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NgB-UB-ady">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ABJ-iN-BfM">
-                                <rect key="frame" x="0.0" y="30" width="430" height="872"/>
-                                <subviews>
-                                    <label minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replicator: Type in something you want to create" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z0L-IA-0dQ">
-                                        <rect key="frame" x="20" y="0.0" width="390" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="v3b-AH-ewR"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iee-e7-whr">
-                                        <rect key="frame" x="20" y="120" width="390" height="202"/>
-                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="jeS-dN-l49"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <label minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This creation will be shown in your sphere" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3WN-7w-4jI">
-                                        <rect key="frame" x="20" y="342" width="390" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating this object will cost 10 kg each of: Regolith, Water Ice, Helium-3, Silicate, Jarosite, Hematite, Goethite, and Opal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BWf-6q-yZn">
-                                        <rect key="frame" x="20" y="462" width="390" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="lZx-eH-AZj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6eG-Oy-BEN">
-                                        <rect key="frame" x="20" y="582" width="390" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="wXM-iq-eQ1"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkD-8P-7QA">
-                                        <rect key="frame" x="20" y="652" width="390" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="0vW-LL-IGM"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Create"/>
-                                        <connections>
-                                            <action selector="createNewItem" destination="nQ1-Kh-9oZ" eventType="touchUpInside" id="8nO-Na-uED"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgX-v4-T8c">
-                                        <rect key="frame" x="20" y="772" width="390" height="100"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Exit Create Screen"/>
-                                        <connections>
-                                            <segue destination="WWI-Jn-pUG" kind="presentation" modalPresentationStyle="fullScreen" id="sRQ-LS-ojo"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="z0L-IA-0dQ" secondAttribute="trailing" constant="20" id="0Ic-ug-Xmf"/>
-                                    <constraint firstAttribute="trailing" secondItem="6eG-Oy-BEN" secondAttribute="trailing" constant="20" id="3ld-Nk-Np3"/>
-                                    <constraint firstItem="z0L-IA-0dQ" firstAttribute="leading" secondItem="ABJ-iN-BfM" secondAttribute="leading" constant="20" id="4Ey-To-7Mq"/>
-                                    <constraint firstItem="AgX-v4-T8c" firstAttribute="leading" secondItem="ABJ-iN-BfM" secondAttribute="leading" constant="20" id="630-vv-8fG"/>
-                                    <constraint firstItem="3WN-7w-4jI" firstAttribute="height" secondItem="z0L-IA-0dQ" secondAttribute="height" id="D9Q-H6-rDX"/>
-                                    <constraint firstItem="hkD-8P-7QA" firstAttribute="leading" secondItem="ABJ-iN-BfM" secondAttribute="leading" constant="20" id="KkR-6s-4zj"/>
-                                    <constraint firstItem="BWf-6q-yZn" firstAttribute="leading" secondItem="ABJ-iN-BfM" secondAttribute="leading" constant="20" id="LUG-Ir-zDu"/>
-                                    <constraint firstAttribute="trailing" secondItem="3WN-7w-4jI" secondAttribute="trailing" constant="20" id="QfU-Vg-jBu"/>
-                                    <constraint firstItem="3WN-7w-4jI" firstAttribute="leading" secondItem="ABJ-iN-BfM" secondAttribute="leading" constant="20" id="ScH-CK-Em4"/>
-                                    <constraint firstAttribute="trailing" secondItem="iee-e7-whr" secondAttribute="trailing" constant="20" id="gNb-3l-4JU"/>
-                                    <constraint firstItem="6eG-Oy-BEN" firstAttribute="leading" secondItem="ABJ-iN-BfM" secondAttribute="leading" constant="20" id="mRI-4X-KJL"/>
-                                    <constraint firstItem="AgX-v4-T8c" firstAttribute="height" secondItem="z0L-IA-0dQ" secondAttribute="height" id="n0v-26-y9L"/>
-                                    <constraint firstAttribute="trailing" secondItem="BWf-6q-yZn" secondAttribute="trailing" constant="20" id="p40-g6-Kbw"/>
-                                    <constraint firstAttribute="trailing" secondItem="hkD-8P-7QA" secondAttribute="trailing" constant="20" id="tCe-9h-Lza"/>
-                                    <constraint firstAttribute="trailing" secondItem="AgX-v4-T8c" secondAttribute="trailing" constant="20" id="wnD-hc-eNp"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cJe-hB-15c"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="cJe-hB-15c" firstAttribute="trailing" secondItem="ABJ-iN-BfM" secondAttribute="trailing" id="33a-Ne-kii"/>
-                            <constraint firstItem="ABJ-iN-BfM" firstAttribute="leading" secondItem="cJe-hB-15c" secondAttribute="leading" id="B8X-TX-DfR"/>
-                            <constraint firstItem="ABJ-iN-BfM" firstAttribute="top" secondItem="cJe-hB-15c" secondAttribute="top" constant="30" id="F9j-2j-Mqa"/>
-                            <constraint firstItem="ABJ-iN-BfM" firstAttribute="centerY" secondItem="NgB-UB-ady" secondAttribute="centerY" id="Kxv-4p-Te0"/>
-                            <constraint firstItem="ABJ-iN-BfM" firstAttribute="centerX" secondItem="NgB-UB-ady" secondAttribute="centerX" id="NRc-WJ-t2A"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="createNewItemButton" destination="hkD-8P-7QA" id="JGn-aH-sWn"/>
-                        <outlet property="doYouHaveEnoughMinerals" destination="6eG-Oy-BEN" id="nJo-G6-DeC"/>
-                        <outlet property="inputText" destination="iee-e7-whr" id="E5z-I6-MnK"/>
-                        <outlet property="labelForSphere" destination="3WN-7w-4jI" id="65m-uy-Mnh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aDo-IE-Sjt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2586" y="3829"/>
-        </scene>
-        <!--Your Sphere View Controller-->
-        <scene sceneID="tbC-3G-TJ8">
-            <objects>
-                <viewController id="WWI-Jn-pUG" customClass="YourSphereViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hb0-Bc-ssf">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="814" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="quI-nA-hfc">
-                                <rect key="frame" x="28" y="241" width="374" height="450"/>
-                                <subviews>
-                                    <label minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewing Items In your sphere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L1P-fj-89V">
-                                        <rect key="frame" x="77.666666666666686" y="0.0" width="219" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="hsg-2w-HMW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Items" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R6r-AU-mnP">
-                                        <rect key="frame" x="146.66666666666666" y="100" width="80.666666666666657" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="GHe-A8-62E"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmt-7d-dy3">
-                                        <rect key="frame" x="76.333333333333329" y="200" width="221.33333333333337" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="zaR-bb-7pZ"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="View Items in your Sphere"/>
-                                        <connections>
-                                            <segue destination="4p8-gd-aBJ" kind="presentation" modalPresentationStyle="fullScreen" id="VbQ-5y-Crq"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="1N6-wL-L27">
-                                        <rect key="frame" x="49.333333333333343" y="300" width="275.33333333333326" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="ObJ-ag-pwB"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Create a new item using minerals"/>
-                                        <connections>
-                                            <segue destination="nQ1-Kh-9oZ" kind="presentation" identifier="goToReplicator" modalPresentationStyle="fullScreen" id="pi8-1V-Y8v"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Eg-of-MbL">
-                                        <rect key="frame" x="112.33333333333333" y="400" width="149.33333333333337" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="oEl-0l-3PE"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Exit Your Sphere"/>
-                                        <connections>
-                                            <segue destination="U1y-oS-a8q" kind="presentation" identifier="exitSphere" modalPresentationStyle="fullScreen" id="EOa-GJ-vxj"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="C1C-vY-Teq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="quI-nA-hfc" firstAttribute="centerY" secondItem="Hb0-Bc-ssf" secondAttribute="centerY" id="1Uc-jI-OgJ"/>
-                            <constraint firstItem="quI-nA-hfc" firstAttribute="centerX" secondItem="Hb0-Bc-ssf" secondAttribute="centerX" id="hfx-f1-qZp"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="headerLabel" destination="L1P-fj-89V" id="roJ-WU-kQq"/>
-                        <outlet property="numberOfObjectsInSphere" destination="R6r-AU-mnP" id="Po0-So-Dqo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ezb-NO-Cqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3822" y="2854"/>
-        </scene>
         <!--Model View Controller-->
         <scene sceneID="CdG-FO-2kh">
             <objects>
@@ -1762,7 +1509,6 @@
                     <connections>
                         <outlet property="headerLabel" destination="MeW-Tb-xpX" id="gPH-j4-jSY"/>
                         <outlet property="scnView" destination="dqy-9R-Tlp" id="ezb-tT-w0n"/>
-                        <segue destination="4p8-gd-aBJ" kind="presentation" id="f65-O9-SAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RlT-4H-l2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1782,6 +1528,9 @@
                                 <subviews>
                                     <label numberOfLines="2" minimumScaleFactor="0.5" opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To The Moon! Where Do You Want To Go?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSy-lL-kHv" customClass="PaddingLabel" customModule="Open_Space" customModuleProvider="target">
                                         <rect key="frame" x="38.333333333333343" y="0.0" width="353.66666666666663" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="sBh-Hd-r50"/>
+                                        </constraints>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1798,6 +1547,9 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-1d-pQe">
                                         <rect key="frame" x="134.33333333333337" y="110.33333333333334" width="161.66666666666663" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="sBe-Bt-n50"/>
+                                        </constraints>
                                         <state key="normal" title="ENTER YOUR SPHERE"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Enter Your Sphere"/>
                                         <connections>
@@ -1807,6 +1559,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeA-vo-8pC">
                                         <rect key="frame" x="103.66666666666667" y="180.33333333333334" width="222.66666666666663" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="sBx-Bt-n50"/>
+                                        </constraints>
                                         <state key="normal" title="EXPLORE NEIGHBOR SPHERE"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Explore Neighbor Spheres"/>
                                         <connections>
@@ -1816,18 +1571,14 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVD-fD-zMB">
                                         <rect key="frame" x="119.66666666666667" y="250.33333333333331" width="190.66666666666663" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="sBc-Bt-n50"/>
+                                        </constraints>
                                         <state key="normal" title="CLAIM ANOTHER SPHERE"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Claim Another Sphere"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="eWr-4H-GBQ"/>
                                         </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0i-9f-WcI">
-                                        <rect key="frame" x="28" y="310.33333333333331" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="33N-pD-Gaf"/>
-                                        </constraints>
-                                        <state key="normal" title="SPACEPORT: BUILD &amp; REPAIR SHIPS"/>
                                     </button>
                                     <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lkg-jM-MWz">
                                         <rect key="frame" x="0.0" y="320.33333333333331" width="430" height="370.99999999999994"/>
@@ -1839,13 +1590,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rL8-m9-NBo">
-                                        <rect key="frame" x="28" y="762" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="b6i-T2-ZWq"/>
-                                        </constraints>
-                                        <state key="normal" title="TRADING POST: BUY &amp; SELL GOODS"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPa-Gp-Lb1">
                                         <rect key="frame" x="136" y="772" width="158" height="60"/>
                                         <constraints>
@@ -1861,28 +1605,18 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="rL8-m9-NBo" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" constant="28" id="1Yy-NY-OJw"/>
                                     <constraint firstItem="OKZ-Ew-kE4" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="42c-gp-8Fl"/>
                                     <constraint firstAttribute="trailing" secondItem="OKZ-Ew-kE4" secondAttribute="trailing" id="51K-Zc-UZL"/>
                                     <constraint firstItem="Lkg-jM-MWz" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="6fH-s6-lPo"/>
-                                    <constraint firstAttribute="trailing" secondItem="rL8-m9-NBo" secondAttribute="trailing" constant="28" id="CLc-IN-KpD"/>
                                     <constraint firstAttribute="trailing" secondItem="Lkg-jM-MWz" secondAttribute="trailing" id="DmS-er-3Zi"/>
                                     <constraint firstItem="KSy-lL-kHv" firstAttribute="top" secondItem="cCj-gM-4oO" secondAttribute="top" id="EsR-SV-JSa"/>
-                                    <constraint firstAttribute="trailing" secondItem="x0i-9f-WcI" secondAttribute="trailing" constant="28" id="FRH-RO-jHV"/>
                                     <constraint firstItem="KSy-lL-kHv" firstAttribute="top" secondItem="cCj-gM-4oO" secondAttribute="top" id="He2-Mw-Jkv"/>
                                     <constraint firstItem="Lkg-jM-MWz" firstAttribute="centerX" secondItem="cCj-gM-4oO" secondAttribute="centerX" id="Hvj-BN-dsj"/>
-                                    <constraint firstItem="eVD-fD-zMB" firstAttribute="height" secondItem="KSy-lL-kHv" secondAttribute="height" id="LzH-tF-IcD"/>
                                     <constraint firstItem="OKZ-Ew-kE4" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="VsX-sd-d9l"/>
                                     <constraint firstItem="Lkg-jM-MWz" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" id="ZJc-Nm-L3w"/>
-                                    <constraint firstItem="x0i-9f-WcI" firstAttribute="height" secondItem="KSy-lL-kHv" secondAttribute="height" id="ZQg-1n-0MF"/>
-                                    <constraint firstAttribute="trailing" secondItem="x0i-9f-WcI" secondAttribute="trailing" constant="28" id="cVf-it-WpX"/>
-                                    <constraint firstItem="8Hq-1d-pQe" firstAttribute="height" secondItem="KSy-lL-kHv" secondAttribute="height" id="co4-YV-LTB"/>
-                                    <constraint firstItem="x0i-9f-WcI" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" constant="28" id="d1e-vJ-Srb"/>
-                                    <constraint firstItem="x0i-9f-WcI" firstAttribute="leading" secondItem="cCj-gM-4oO" secondAttribute="leading" constant="28" id="fTp-4R-E3f"/>
                                     <constraint firstAttribute="trailing" secondItem="OKZ-Ew-kE4" secondAttribute="trailing" id="jp2-HP-JQ6"/>
                                     <constraint firstAttribute="trailing" secondItem="Lkg-jM-MWz" secondAttribute="trailing" id="lFc-wP-QWx"/>
                                     <constraint firstItem="KSy-lL-kHv" firstAttribute="centerX" secondItem="cCj-gM-4oO" secondAttribute="centerX" id="mf0-RO-JcE"/>
-                                    <constraint firstItem="yeA-vo-8pC" firstAttribute="height" secondItem="KSy-lL-kHv" secondAttribute="height" id="mhx-gn-xDh"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -2137,21 +1871,6 @@
             </objects>
             <point key="canvasLocation" x="8620" y="306"/>
         </scene>
-        <!--Lunar Lounge View Controller-->
-        <scene sceneID="Fwa-gN-wOJ">
-            <objects>
-                <viewController id="rBP-MD-OG9" customClass="LunarLoungeViewController" customModule="Open_Space" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fwF-1b-sh9">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="rAQ-kb-KUw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SvS-Ey-Ygu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7180" y="-2017"/>
-        </scene>
         <!--Moon-->
         <scene sceneID="zSS-rH-UaL">
             <objects>
@@ -2209,17 +1928,6 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Go To Sphere Base"/>
                                         <connections>
                                             <segue destination="U1y-oS-a8q" kind="presentation" modalPresentationStyle="fullScreen" id="6XQ-gR-cEl"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES" id="5yV-CM-cWD">
-                                        <rect key="frame" x="126.33333333333333" y="240" width="177.33333333333337" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="tl0-4w-vfN"/>
-                                        </constraints>
-                                        <state key="normal" title="GO TO LUNAR LOUNGE"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Go To Lunar Lounge"/>
-                                        <connections>
-                                            <action selector="goToLunarLounge" destination="GXa-oh-Nth" eventType="touchUpInside" id="uBi-0L-SjQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2624,8 +2332,6 @@
         <segue reference="9aL-RP-RIb"/>
         <segue reference="R0G-66-DuO"/>
         <segue reference="6XQ-gR-cEl"/>
-        <segue reference="sRQ-LS-ojo"/>
-        <segue reference="f65-O9-SAt"/>
         <segue reference="G6a-xv-v4e"/>
         <segue reference="Brq-sk-l5G"/>
         <segue reference="MVd-TG-9WI"/>

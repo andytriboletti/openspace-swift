@@ -15,10 +15,6 @@ class ExploreMarsViewController: UIViewController {
         private var hostingController: UIHostingController<PopupContainerView>?
         @IBOutlet weak var stackView: UIStackView!
 
-        @IBOutlet var spaceportButton: UIButton!
-
-        @IBOutlet var tradingPostButton: UIButton!
-
         @IBOutlet var treasureButton: UIButton!
 
         @IBOutlet var takeOffButton: UIButton!

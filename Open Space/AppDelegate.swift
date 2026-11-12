@@ -118,8 +118,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if AdPolicy.showAutomaticAds {
             let username = Defaults[.username]
 
-            //only logged in users should get ad
-            if(username != "") {
+            //only logged in users should get ad, at most once a day
+            if(username != "") && AdPolicy.canShowDailyAd(.lastAppOpenAdShown) {
                 AppOpenAdManager.shared.showAdIfAvailable()
             }
         }
@@ -379,5 +379,17 @@ enum AdPolicy {
         if ProcessInfo.processInfo.arguments.contains("-ScreenshotMode") { return false }
         #endif
         return Defaults[.premium] == 0
+    }
+
+    /// Full-screen ads (the travel interstitial and the app-open ad) show at most once per
+    /// calendar day each. Banners and rewarded ads the player chooses to watch are not limited.
+    static func canShowDailyAd(_ key: Defaults.Key<Double>) -> Bool {
+        let last = Defaults[key]
+        guard last > 0 else { return true }
+        return !Calendar.current.isDateInToday(Date(timeIntervalSince1970: last))
+    }
+
+    static func recordDailyAdShown(_ key: Defaults.Key<Double>) {
+        Defaults[key] = Date().timeIntervalSince1970
     }
 }

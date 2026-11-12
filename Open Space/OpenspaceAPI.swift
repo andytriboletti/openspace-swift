@@ -6,7 +6,6 @@ import Alamofire
 class OpenspaceAPI {
     static let shared = OpenspaceAPI()
     let serverURL = "https://server3.openspace.greenrobot.com/wp-json/openspace/v1/"
-    var webSocketTask: URLSessionWebSocketTask?
 
     var pendingModels: [Int: [String: String]] = [:]
     var completedModels: [Int: [String: String]] = [:]
@@ -551,38 +550,6 @@ class OpenspaceAPI {
         }
     }
 
-
-    // MARK: - WebSocket
-
-    func initWebsocket() {
-        let serverURL = URL(string: "wss://server3.openspace.greenrobot.com:8080")!
-        let session = URLSession(configuration: .default)
-        webSocketTask = session.webSocketTask(with: serverURL)
-        webSocketTask?.resume()
-        receiveMessages()
-    }
-
-    func receiveMessages() {
-        webSocketTask?.receive { result in
-            switch result {
-            case .success(let message):
-                switch message {
-                case .string(let text):
-                    break
-                    //print("Received message: \(text)")
-                case .data(let data):
-                    if let text = String(data: data, encoding: .utf8) {
-                        //print("Received message: \(text)")
-                    }
-                @unknown default:
-                    fatalError()
-                }
-                self.receiveMessages() // Continue listening for messages
-            case .failure(let error):
-                print("Error receiving message: \(error)")
-            }
-        }
-    }
 
     // MARK: - Helper Methods
 

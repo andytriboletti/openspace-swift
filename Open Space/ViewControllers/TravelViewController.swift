@@ -22,12 +22,16 @@ extension TravelViewController: GADFullScreenContentDelegate {
 
     /// Tells the delegate that the ad failed to present full screen content.
       func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        //print("Ad did fail to present full screen content.")
+          // Never leave the player stuck on the travel screen because an ad couldn't show.
+          continueOntoGame()
+          if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+              appDelegate.preloadInterstitialAd()
+          }
       }
 
       /// Tells the delegate that the ad will present full screen content.
       func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        //print("Ad will present full screen content.")
+          AdPolicy.recordDailyAdShown(.lastTravelAdShown)
       }
 
       /// Tells the delegate that the ad dismissed full screen content.
@@ -52,6 +56,11 @@ class TravelViewController: UIViewController {
 
        var player: AVPlayer?
 
+       // viewDidAppear runs again when the travel ad closes, and the ad's dismiss callback also
+       // continues the trip; these make sure the trip is started and finished only once.
+       private var hasStartedTrip = false
+       private var hasContinued = false
+
        override func viewDidLoad() {
            super.viewDidLoad()
 
@@ -59,26 +68,28 @@ class TravelViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard !hasStartedTrip else { return }
+        hasStartedTrip = true
 
         #if !targetEnvironment(macCatalyst)
-
-
-        if AdPolicy.showAutomaticAds {
-
-            // Access the preloaded interstitial ad from the AppDelegate
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                interstitial = appDelegate.interstitial
-                interstitial?.fullScreenContentDelegate = self
-                presentInterstitialAd()
+        // Show the preloaded travel ad if there is one; the trip continues when it's dismissed.
+        // With no ad ready (no fill, offline, still loading) go straight on, or the player would
+        // be stuck on this screen: continueOntoGame() only ran from the ad's dismiss callback.
+        if AdPolicy.showAutomaticAds,
+           AdPolicy.canShowDailyAd(.lastTravelAdShown),
+           let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+           let ad = appDelegate.interstitial {
+            interstitial = ad
+            appDelegate.interstitial = nil   // an interstitial can only be shown once
+            ad.fullScreenContentDelegate = self
+            ad.present(fromRootViewController: self)
+        } else {
+            if AdPolicy.showAutomaticAds, let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+               appDelegate.interstitial == nil {
+                appDelegate.preloadInterstitialAd()   // none loaded yet: try again for a later trip
             }
-        }
-        else {
             continueOntoGame()
         }
-
-
-
-
         #else
             continueOntoGame()
         #endif
@@ -91,8 +102,12 @@ class TravelViewController: UIViewController {
     }
 
     func continueOntoGame() {
+         guard !hasContinued else { return }
+         hasContinued = true
 
-         appDelegate.gameState.locationState = appDelegate.gameState.goingToLocationState!
+         if let destination = appDelegate.gameState.goingToLocationState {
+             appDelegate.gameState.locationState = destination
+         }
          appDelegate.gameState.goingToLocationState = nil
          DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
              self.performSegue(withIdentifier: "goToGame", sender: self)
@@ -125,20 +140,5 @@ class TravelViewController: UIViewController {
         }
 
     }
-#if !targetEnvironment(macCatalyst)
-
-    private func presentInterstitialAd() {
-        DispatchQueue.main.async {
-            guard let interstitial = self.interstitial else {
-                //print("Interstitial ad not ready")
-                return
-            }
-
-            interstitial.present(fromRootViewController: self)
-        }
-    }
-
-
-#endif
 
 }

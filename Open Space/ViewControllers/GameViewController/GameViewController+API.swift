@@ -178,12 +178,4 @@ if(AdPolicy.showAutomaticAds && googleAdLoaded == 0) {
         let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", usernameRegex)
         return usernamePredicate.evaluate(with: username)
     }
-
-    func sendMessage() {
-        webSocketManager.socket.write(string: "Hello, server!")
-    }
-
-    func disconnect() {
-        webSocketManager.socket.disconnect()
-    }
 }

@@ -182,66 +182,12 @@ class AccountViewController: BackgroundImageViewController {
         // Present the alert controller
         present(alertController, animated: true, completion: nil)
     }
-    func showMineralPurchaseAlert(price: String) {
-        // Create the alert controller with the price
-        let msgText = "Do you want to purchase a small mineral pack with 20 of each type of mineral for \(price)?"
-        let alertController = UIAlertController(title: "Confirm Purchase: Small Energy Pack", message: msgText, preferredStyle: .alert)
-
-        // Create OK action
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            // Call your method to initiate the purchase here
-            self.purchaseSmallMineral()
-            //print("purchase small Mineral")
-        }
-        alertController.addAction(okAction)
-
-        // Create Cancel action
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-
-        // Present the alert controller
-        present(alertController, animated: true, completion: nil)
-    }
-    func showLargeMineralPurchaseAlert(price: String) {
-        // Create the alert controller with the price
-        let msgText = "Do you want to purchase a large mineral pack with 150 of each type of mineral for \(price)?"
-        let alertController = UIAlertController(title: "Confirm Purchase: Large Mineral Pack", message: msgText, preferredStyle: .alert)
-
-        // Create OK action
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            // Call your method to initiate the purchase here
-            self.purchaseLargeMineral()
-            //print("purchase small Mineral")
-        }
-        alertController.addAction(okAction)
-
-        // Create Cancel action
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-
-        // Present the alert controller
-        present(alertController, animated: true, completion: nil)
-    }
 
     func purchaseUpgradeMaxEnergy() {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeMaxEnergy)
         } else {
             //print("Product purchaseUpgradeMaxEnergy not available")
-        }
-    }
-    func purchaseSmallMineral() {
-        if IAPManager.shared.products.first != nil {
-            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.smallMineralPack)
-        } else {
-            //print("Product smallMineralPack not available")
-        }
-    }
-    func purchaseLargeMineral() {
-        if IAPManager.shared.products.first != nil {
-            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.largeMineralPack)
-        } else {
-            //print("Product largeMineralPack not available")
         }
     }
 
@@ -279,42 +225,7 @@ class AccountViewController: BackgroundImageViewController {
         }
     }
 
-    @IBAction func buySmallMineralPack(_ sender: UIButton) {
-        //return
-        //todo in-app purchase disabled for testflight. todo re-enable when released
-        if(MyData.allowInAppPurchases == 1) {
 
-            //print("buysmallMineralPack")
-
-            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.smallMineralPack) {
-                showMineralPurchaseAlert(price: price)
-            } else {
-                showMineralPurchaseAlert(price: "$0.99")
-                //print("Product smallMineralPack price not available")
-            }
-        }
-        else {
-            displayComingSoonAlert()
-        }
-    }
-    @IBAction func buyLargeMineralPack(_ sender: UIButton) {
-        //return
-        //todo in-app purchase disabled for testflight. todo re-enable when released
-
-        //print("buyLargeMineralPack")
-        if(MyData.allowInAppPurchases == 1) {
-
-            if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.largeMineralPack) {
-                showLargeMineralPurchaseAlert(price: price)
-            } else {
-                showLargeMineralPurchaseAlert(price: "$2.99")
-                //print("Product largeMineralPack price not available")
-            }
-        }
-        else {
-            displayComingSoonAlert()
-        }
-    }
 
     
 
@@ -478,9 +389,29 @@ class AccountViewController: BackgroundImageViewController {
         let confirmationAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account? This removes your game permanently.", preferredStyle: .alert)
         confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         confirmationAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            // Ask the server first, while we still have the credentials. (Signing out and
-            // clearing them first meant the server never received a valid delete request.)
-            self?.deleteUser()
+            guard let self = self else { return }
+            // Sign in with Apple accounts must have their Apple token revoked when the account is
+            // deleted. Apple asks the player to confirm once more; nothing is deleted if they cancel.
+            guard AppleSignInRevoker.isAppleUser(Auth.auth().currentUser) else {
+                // Ask the server first, while we still have the credentials. (Signing out and
+                // clearing them first meant the server never received a valid delete request.)
+                self.deleteUser()
+                return
+            }
+            AppleSignInRevoker.revoke(presentingFrom: self.view) { [weak self] outcome in
+                switch outcome {
+                case .revoked:
+                    self?.deleteUser()
+                case .cancelled:
+                    break
+                case .failed:
+                    let alert = UIAlertController(title: "Couldn't confirm with Apple",
+                                                  message: "Your account was not deleted. Please try again with the Apple ID you use for Open Space.",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self?.present(alert, animated: true)
+                }
+            }
         }))
         self.present(confirmationAlert, animated: true, completion: nil)
     }

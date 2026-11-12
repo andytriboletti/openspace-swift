@@ -16,7 +16,6 @@ def shared_pods
   #pod 'FirebaseUI'
   pod 'FirebaseAuthUI'
   pod 'GoogleSignIn'
-  pod 'Starscream'
   #pod 'Zip', '~> 2.1'
   #pod 'ZipArchive'
   pod 'SSZipArchive'
