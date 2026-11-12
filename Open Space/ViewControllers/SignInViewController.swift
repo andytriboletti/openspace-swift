@@ -9,8 +9,6 @@ import FirebaseGoogleAuthUI
 class SignInViewController: UIViewController, FUIAuthDelegate {
     public var authUI: FUIAuth = FUIAuth.defaultAuthUI()!
       var rootViewController: SignInViewController?
-      let imageView = UIImageView()
-      var imageTimer: Timer?
       var onboardingShown = false // Add this flag
 
       override func viewDidAppear(_ animated: Bool) {
@@ -41,16 +39,15 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         authController.view.frame = self.view.frame
         authController.preferredContentSize = self.view.frame.size
         authController.modalPresentationStyle = .fullScreen
-
-        // Customizing authController view
-        customizeAuthControllerView(authController.view)
         present(authController, animated: true, completion: nil)
     }
 
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
-        return OpenSpaceAuthPickerViewController(nibName: "FUIAuthPickerViewController",
-                                                 bundle: FUIAuthUtils.authUIBundle(),
-                                                 authUI: authUI)
+        let picker = OpenSpaceAuthPickerViewController(nibName: "FUIAuthPickerViewController",
+                                                       bundle: FUIAuthUtils.authUIBundle(),
+                                                       authUI: authUI)
+        picker.brandingImage = UIImage(named: "login\(Int.random(in: 1...10)).jpg")
+        return picker
     }
 
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
@@ -107,68 +104,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         let alert = UIAlertController(title: "Sign-in problem", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in then?() })
         controller.present(alert, animated: true)
-    }
-
-    private func customizeAuthControllerView(_ authView: UIView) {
-        // Set up the image view
-        imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        authView.addSubview(imageView)
-
-        // Center the imageView
-        NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: authView.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: authView.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 300),
-            imageView.heightAnchor.constraint(equalToConstant: 300)
-        ])
-
-
-        // Set up the label
-        let titleLabel = UILabel()
-        titleLabel.text = "Open Space"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        // Use dynamic color that adapts to light/dark mode
-        titleLabel.textColor = UIColor { traitCollection in
-            return traitCollection.userInterfaceStyle == .dark ? .white : .black
-        }
-
-        authView.addSubview(titleLabel)
-
-        // Center the label horizontally and place it a bit lower
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: authView.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: authView.topAnchor, constant: 100)
-        ])
-
-        // Start the timer to change the image every 10 seconds
-        //imageTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(loadRandomImage), userInfo: nil, repeats: true)
-
-        // Load a random image initially
-        loadRandomImage()
-    }
-
-    @objc private func loadRandomImage() {
-        let randomIndex = Int.random(in: 1...10)
-        let imageName = "login\(randomIndex).jpg"
-       // let imageName = "login1.jpg"
-        imageView.image = UIImage(named: imageName)
-    }
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            updateLabelColor()
-        }
-    }
-
-    private func updateLabelColor() {
-        if let titleLabel = view.subviews.first(where: { $0 is UILabel }) as? UILabel {
-            titleLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
-        }
     }
 }
 
@@ -229,18 +164,69 @@ final class GuestAuthProvider: NSObject, FUIAuthProvider {
     func signOut() {}
 }
 
-/// FirebaseUI's sign-in picker, minus the scrolling. Its buttons sit in a scroll view sized so the
-/// screen could always be dragged up and down a little, even though they fit. Scrolling only stays
-/// on when they really don't fit (for example with very large text).
+/// FirebaseUI's sign-in picker, minus the scrolling, with the Open Space title and picture.
+///
+/// Its buttons sit in a scroll view sized so the screen could always be dragged up and down a
+/// little, even though they fit. Scrolling only stays on when they really don't fit (for example
+/// with very large text).
+///
+/// The title and picture are laid out in the space above the sign-in buttons, and the picture
+/// shrinks to fit. It used to be a fixed 300-point square centered on the screen, which covered
+/// Sign in with Google in a short Mac window.
 final class OpenSpaceAuthPickerViewController: FUIAuthPickerViewController {
+    /// Set to show the "Open Space" title and this picture. The Save Your Account picker leaves it nil.
+    /// (FirebaseUI loads the view inside its initializer, so viewDidLoad has already run by the
+    /// time this can be set; the views are added here instead.)
+    var brandingImage: UIImage? {
+        didSet {
+            guard let image = brandingImage else { return }
+            titleLabel.text = "Open Space"
+            titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+            titleLabel.textColor = .label
+            imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+            view.addSubview(imageView)
+            view.addSubview(titleLabel)
+            view.setNeedsLayout()
+        }
+    }
+
+    private let titleLabel = UILabel()
+    private let imageView = UIImageView()
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // The terms text is a UITextView, which is also a scroll view; skip it.
-        guard let scrollView = view.subviews.first(where: { $0 is UIScrollView && !($0 is UITextView) }) as? UIScrollView else {
-            return
+        if let scrollView = view.subviews.first(where: { $0 is UIScrollView && !($0 is UITextView) }) as? UIScrollView {
+            let visibleHeight = scrollView.bounds.height - scrollView.safeAreaInsets.top
+            scrollView.isScrollEnabled = scrollView.contentSize.height > visibleHeight + 1
+            scrollView.alwaysBounceVertical = false
         }
-        let visibleHeight = scrollView.bounds.height - scrollView.safeAreaInsets.top
-        scrollView.isScrollEnabled = scrollView.contentSize.height > visibleHeight + 1
-        scrollView.alwaysBounceVertical = false
+        layoutBranding()
+    }
+
+    private func layoutBranding() {
+        guard brandingImage != nil else { return }
+        let bounds = view.bounds
+        titleLabel.sizeToFit()
+        let titleTop = max(100, view.safeAreaInsets.top + 16)
+        titleLabel.frame.origin = CGPoint(x: (bounds.width - titleLabel.bounds.width) / 2, y: titleTop)
+
+        // The picture fills the gap between the title and the first sign-in button, up to 300 points.
+        let buttonsTop = signInButtons(in: view).map { $0.convert($0.bounds, to: view).minY }.min() ?? bounds.maxY
+        let top = titleLabel.frame.maxY + 24
+        let bottom = buttonsTop - 24
+        let side = min(300, bottom - top, bounds.width - 40)
+        imageView.isHidden = side < 80
+        imageView.frame = CGRect(x: (bounds.width - side) / 2,
+                                 y: top + (bottom - top - side) / 2,
+                                 width: max(side, 0), height: max(side, 0))
+    }
+
+    /// FirebaseUI's provider buttons (FUIAuthSignInButton isn't public, so match it by name).
+    private func signInButtons(in root: UIView) -> [UIView] {
+        root.subviews.flatMap { sub -> [UIView] in
+            (NSStringFromClass(type(of: sub)).contains("FUIAuthSignInButton") ? [sub] : []) + signInButtons(in: sub)
+        }
     }
 }

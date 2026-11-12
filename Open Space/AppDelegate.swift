@@ -432,6 +432,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         (UIApplication.shared.delegate as? AppDelegate)?.window = window
+        #if targetEnvironment(macCatalyst)
+        // The game's screens are laid out for a portrait phone; don't let the Mac window get
+        // so small that buttons overlap.
+        if let windowScene = scene as? UIWindowScene {
+            windowScene.sizeRestrictions?.minimumSize = CGSize(width: 600, height: 720)
+        }
+        #endif
         // A Google sign-in redirect that launched the app.
         handle(connectionOptions.urlContexts)
     }
