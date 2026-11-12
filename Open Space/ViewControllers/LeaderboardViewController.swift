@@ -10,32 +10,12 @@ import UIKit
 import GameKit
 
 class LeaderboardViewController: BackgroundImageViewController, GKGameCenterControllerDelegate {
-    func displayAlert() {
-        // Create the UIAlertController
-        let alertController = UIAlertController(title: "Functionality Coming Soon",
-                                                message: "This functionality will be available soon.",
-                                                preferredStyle: .alert)
-
-        // Create the OK action
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            // Handle OK button tap if needed
-        }
-
-        // Add the OK action to the alert controller
-        alertController.addAction(okAction)
-
-        // Present the alert controller
-        self.present(alertController, animated: true, completion: nil)
-    }
-
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
            gameCenterViewController.dismiss(animated: true, completion: nil)
        }
 
     // Function to display leaderboard
     @IBAction func showLeaderboard() {
-        //displayAlert()
-
           let gameCenterVC = GKGameCenterViewController()
           gameCenterVC.gameCenterDelegate = self
           gameCenterVC.viewState = .leaderboards
@@ -52,8 +32,14 @@ class LeaderboardViewController: BackgroundImageViewController, GKGameCenterCont
     }
     */
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private var hasShownLeaderboard = false
+
+    // Open Game Center the first time the tab appears. Presenting from viewDidLoad (before the
+    // view is in a window) is unsupported and could leave the app ignoring taps.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard !hasShownLeaderboard else { return }
+        hasShownLeaderboard = true
         showLeaderboard()
     }
 

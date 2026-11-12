@@ -15,14 +15,18 @@ import UIKit
     @IBInspectable var leftInset: CGFloat = 7.0
     @IBInspectable var rightInset: CGFloat = 7.0
 
+    private var insets: UIEdgeInsets {
+        UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+    }
+
     override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
         super.drawText(in: rect.inset(by: insets))
     }
 
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + leftInset + rightInset,
-                      height: size.height + topInset + bottomInset)
+    // Measure text inside the insets too, so wrapped or shrunk text isn't clipped by the padding.
+    // intrinsicContentSize is derived from this, so it already includes the padding.
+    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let textRect = super.textRect(forBounds: bounds.inset(by: insets), limitedToNumberOfLines: numberOfLines)
+        return textRect.inset(by: UIEdgeInsets(top: -topInset, left: -leftInset, bottom: -bottomInset, right: -rightInset))
     }
 }

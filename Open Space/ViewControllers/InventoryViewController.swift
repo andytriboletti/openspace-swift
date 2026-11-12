@@ -10,8 +10,6 @@ import GoogleMobileAds
 class InventoryViewController: BackgroundImageViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var passengerLabel1: UILabel!
-    @IBOutlet weak var passengerLabel2: UILabel!
     @IBOutlet weak var cargoLabel1: UILabel!
     @IBOutlet weak var upgradeButton: UIButton!
 
@@ -159,11 +157,7 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
     }
 
     func refreshLabels() {
-        let maxPassengers = Defaults[.passengerLimit]
         let cargoLimit = Defaults[.cargoLimit]
-
-        passengerLabel1.text = "   Ship Passengers - Max: \(maxPassengers) Passengers   "
-        passengerLabel2.text = "   Coming soon: Ability to carry passengers.   "
         cargoLabel1.text = "   Ship Cargo - Max \(cargoLimit) kg   "
     }
 
@@ -184,61 +178,51 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
     // MARK: - UITableViewDataSource
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
-            return 1  // "Coming Soon" section
-        } else {
-            return minerals.count + 1  // Minerals section + 1 for the total row
-        }
+        return minerals.count + 1  // Minerals + 1 for the total row
     }
 
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
+        if indexPath.row == minerals.count {
+            // This is the total row
             let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
-            cell.textLabel?.text = "Coming soon: Ability to carry mission supplies."
+
+            let totalWeight = minerals.reduce(0.0) { $0 + (Double($1.kilograms) ?? 0.0) }
+            cell.textLabel?.text = "Total Minerals on Board: \(totalWeight) kg"
             cell.textLabel?.textColor = .label
             cell.textLabel?.textAlignment = .left  // Align text to the left
+
+            // Set white background for the total row
+            //cell.backgroundColor = .white
+            //cell.contentView.backgroundColor = .white
+
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+            cell.textLabel?.adjustsFontSizeToFitWidth = true
+            cell.textLabel?.minimumScaleFactor = 0.6
+            cell.textLabel?.numberOfLines = 1
+
             return cell
         } else {
-            if indexPath.row == minerals.count {
-                // This is the total row
-                let cell = tableView.dequeueReusableCell(withIdentifier: "CargoCell", for: indexPath)
-
-                let totalWeight = minerals.reduce(0.0) { $0 + (Double($1.kilograms) ?? 0.0) }
-                cell.textLabel?.text = "Total Minerals on Board: \(totalWeight) kg"
-                cell.textLabel?.textColor = .label
-                cell.textLabel?.textAlignment = .left  // Align text to the left
-
-                // Set white background for the total row
-                //cell.backgroundColor = .white
-                //cell.contentView.backgroundColor = .white
-
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
-                cell.textLabel?.adjustsFontSizeToFitWidth = false
-                cell.textLabel?.numberOfLines = 1
-
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "MineralCell", for: indexPath) as? MineralTableViewCell else {
-                    return UITableViewCell()
-                }
-
-                let mineral = minerals[indexPath.row]
-                cell.mineralLabel.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"
-                let imageName = mineral.mineralName.lowercased()
-                cell.mineralImageView.image = UIImage(named: imageName)
-
-                cell.mineralLabel.font = UIFont.systemFont(ofSize: 17)
-                cell.mineralLabel.adjustsFontSizeToFitWidth = false
-                cell.mineralLabel.numberOfLines = 1
-
-                return cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MineralCell", for: indexPath) as? MineralTableViewCell else {
+                return UITableViewCell()
             }
+
+            let mineral = minerals[indexPath.row]
+            cell.mineralLabel.text = "Mineral: \(mineral.mineralName)  Weight: \(mineral.kilograms) kg"
+            let imageName = mineral.mineralName.lowercased()
+            cell.mineralImageView.image = UIImage(named: imageName)
+
+            cell.mineralLabel.font = UIFont.systemFont(ofSize: 17)
+            cell.mineralLabel.adjustsFontSizeToFitWidth = true
+            cell.mineralLabel.minimumScaleFactor = 0.6
+            cell.mineralLabel.numberOfLines = 1
+
+            return cell
         }
     }
 
@@ -252,36 +236,12 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         }
     }
 
-    func purchaseUpgradePassengerLimit() {
-        if IAPManager.shared.products.first != nil {
-            IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradePassengerLimit)
-        } else {
-            //print("Product upgradePassengerLimit not available")
-        }
-    }
-
     func purchaseUpgradeCargoLimit() {
         if IAPManager.shared.products.first != nil {
             IAPManager.shared.purchaseProduct(with: ProductIdentifiers.upgradeCargoLimit)
         } else {
             //print("Product upgradeCargoLimit not available")
         }
-    }
-
-    func showUpgradePassengerPurchaseAlert(price: String) {
-        let msgText = "Do you want to purchase an upgrade to Passenger limit +1 for \(price)?"
-        let alertController = UIAlertController(title: "Confirm Purchase: Upgrade To Passenger Limit", message: msgText, preferredStyle: .alert)
-
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            self.purchaseUpgradePassengerLimit()
-            //print("purchase upgrade premium")
-        }
-        alertController.addAction(okAction)
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-
-        present(alertController, animated: true, completion: nil)
     }
 
     func showUpgradeCargoPurchaseAlert(price: String) {
@@ -299,62 +259,8 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 
         present(alertController, animated: true, completion: nil)
     }
-    func displayComingSoonAlert() {
-        // Create the UIAlertController
-        let alertController = UIAlertController(title: "Functionality Coming Soon",
-                                                message: "This functionality will be available soon.",
-                                                preferredStyle: .alert)
-
-        // Create the OK action
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            // Handle OK button tap if needed
-        }
-
-        // Add the OK action to the alert controller
-        alertController.addAction(okAction)
-
-        // Present the alert controller
-        self.present(alertController, animated: true, completion: nil)
-    }
     @IBAction func upgradeMaxCargoButtonTapped(_ sender: UIButton) {
-        //return
-        //todo in-app purchase disabled for testflight. todo re-enable when released
-        if(MyData.allowInAppPurchases == 1) {
-            
-            let alertController = UIAlertController(title: "Upgrade Options", message: "Choose an upgrade option:", preferredStyle: .alert)
-            
-            let upgradePassengerAction = UIAlertAction(title: "Upgrade Passenger Limit +1", style: .default) { action in
-                //print("Upgrade Passenger Limit +1 selected")
-                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradePassengerLimit) {
-                    self.showUpgradePassengerPurchaseAlert(price: price)
-                } else {
-                    self.showUpgradePassengerPurchaseAlert(price: "$0.99")
-                    //print("Product price not available")
-                }
-            }
-            
-            let upgradeCargoAction = UIAlertAction(title: "Upgrade Cargo Limit +1,000kg", style: .default) { action in
-                //print("Upgrade Cargo Limit +1000kg selected")
-                if let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeCargoLimit) {
-                    self.showUpgradeCargoPurchaseAlert(price: price)
-                } else {
-                    self.showUpgradeCargoPurchaseAlert(price: "$0.99")
-                    //print("Product price not available")
-                }
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-                //print("Cancel selected")
-            }
-            
-            alertController.addAction(upgradePassengerAction)
-            alertController.addAction(upgradeCargoAction)
-            alertController.addAction(cancelAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else {
-            displayComingSoonAlert()
-        }
+        let price = IAPManager.shared.getPrice(for: ProductIdentifiers.upgradeCargoLimit) ?? "$0.99"
+        showUpgradeCargoPurchaseAlert(price: price)
     }
 }

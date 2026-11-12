@@ -26,6 +26,8 @@ class MineralTableViewCell: UITableViewCell {
         // Configure label
         mineralLabel.textColor = .label
         mineralLabel.numberOfLines = 1
+        mineralLabel.adjustsFontSizeToFitWidth = true
+        mineralLabel.minimumScaleFactor = 0.6
         contentView.addSubview(mineralLabel)
 
         // Set up Auto Layout constraints
