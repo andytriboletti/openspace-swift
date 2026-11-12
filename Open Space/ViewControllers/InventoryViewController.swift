@@ -22,16 +22,6 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
 
     var minerals: [OpenspaceAPI.UserMineral] = []  // Use the fully qualified name
 
-    private func calculateBackgroundFrame() -> CGRect {
-        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-        return CGRect(
-            x: 0,
-            y: 0,
-            width: view.bounds.width,
-            height: view.bounds.height - tabBarHeight
-        )
-    }
-
     override func viewDidLoad() {
         //backgroundImageName = "conenebula.jpg"
         //overlayAlpha = 0.3 // Adjust as needed
@@ -54,10 +44,6 @@ class InventoryViewController: BackgroundImageViewController, UITableViewDataSou
         //setupBackgroundOverlay()
         //applyFilterBasedOnUserInterfaceStyle()
 
-        // Adjust table view insets
-        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: tabBarHeight, right: 0)
-        tableView.scrollIndicatorInsets = tableView.contentInset
         //styleButton(upgradeButton)
 
     }

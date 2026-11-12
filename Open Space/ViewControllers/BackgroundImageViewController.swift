@@ -46,15 +46,11 @@ class BackgroundImageViewController: UIViewController {
         }
     }
 
+    // Fill the whole view. Subtracting the tab bar's height assumed a bar at the bottom: on the Mac
+    // the tab bar is at the top, which left a white strip at the bottom, and on iOS 26+ the
+    // floating glass tab bar should show the background behind it.
     private func calculateBackgroundFrame() -> CGRect {
-        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-        let frameHeight = view.bounds.height - (tabBarHeight > 0 ? tabBarHeight : 0)
-        return CGRect(
-            x: 0,
-            y: 0,
-            width: view.bounds.width,
-            height: frameHeight
-        )
+        return view.bounds
     }
 
     private func setupBackgroundImageView() {
