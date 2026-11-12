@@ -173,12 +173,16 @@ class MoonSphereBaseViewController: BackgroundImageViewController, SCNSceneRende
             self.enterYourSphereButton.removeTarget(nil, action: nil, for: .touchUpInside)
 
             if yourSpheres?.count == 0 {
+                self.enterYourSphereButton.isHidden = false
                 self.enterYourSphereButton.setTitle("CLAIM YOUR FIRST SPHERE", for: .normal)
                 self.enterYourSphereButton.addTarget(self, action: #selector(claimFirstSphere), for: .touchUpInside)
                 self.claimAnotherSphereButton.isHidden = true
             } else {
                 self.enterYourSphereButton.setTitle("Enter Your Sphere", for: .normal)
                 self.enterYourSphereButton.addTarget(self, action: #selector(goToSphereView), for: .touchUpInside)
+                // Creating objects is switched off, so a sphere without objects would only show
+                // an empty page. The sphere still counts (and earns) on its own.
+                self.enterYourSphereButton.isHidden = Defaults[.theNumberOfObjects] == 0
                 self.claimAnotherSphereButton.isHidden = false
                 if Defaults[.spheresAllowed] > yourSpheres!.count {
                     self.claimAnotherSphereButton.setTitle("Claim Another Sphere", for: .normal)

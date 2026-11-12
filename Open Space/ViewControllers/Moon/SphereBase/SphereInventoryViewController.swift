@@ -115,11 +115,26 @@ class SphereInventoryViewController: AlertViewController, UICollectionViewDataSo
                 self.completedModels = responseData.completed
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
+                    self.showEmptyMessageIfNeeded()
                 }
             case .failure(let error):
                 print("Error fetching data: \(error)")
             }
         }
+    }
+
+    /// A sphere can be empty (objects can't be created any more), so say so instead of a blank grid.
+    private func showEmptyMessageIfNeeded() {
+        guard pendingModels.isEmpty && completedModels.isEmpty else {
+            collectionView.backgroundView = nil
+            return
+        }
+        let label = UILabel()
+        label.text = "There are no objects in this sphere."
+        label.textColor = .white
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        collectionView.backgroundView = label
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -1503,7 +1503,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Exit"/>
                                         <connections>
-                                            <segue destination="WWI-Jn-pUG" kind="presentation" modalPresentationStyle="fullScreen" id="681-o5-YEW"/>
+                                            <segue destination="U1y-oS-a8q" kind="presentation" modalPresentationStyle="fullScreen" id="681-o5-YEW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1856,7 +1856,7 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Enter Your Sphere"/>
                                         <connections>
                                             <action selector="exploreAction" destination="GXa-oh-Nth" eventType="touchUpInside" id="QqY-nA-6q0"/>
-                                            <segue destination="WWI-Jn-pUG" kind="presentation" identifier="goToSphereView" modalPresentationStyle="fullScreen" id="5eH-sR-HPR"/>
+                                            <segue destination="4p8-gd-aBJ" kind="presentation" identifier="goToSphereView" modalPresentationStyle="fullScreen" id="5eH-sR-HPR"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeA-vo-8pC">
@@ -2274,17 +2274,6 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Go To Lunar Lounge"/>
                                         <connections>
                                             <action selector="goToLunarLounge" destination="GXa-oh-Nth" eventType="touchUpInside" id="uBi-0L-SjQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6f-bO-Qdm">
-                                        <rect key="frame" x="149.33333333333331" y="310" width="131.33333333333331" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="05M-dx-ZON"/>
-                                        </constraints>
-                                        <state key="normal" title="PLAY GRIDHACK"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Play GridHack"/>
-                                        <connections>
-                                            <action selector="goToGridHack:" destination="GXa-oh-Nth" eventType="touchUpInside" id="RaV-nz-Bqc"/>
                                         </connections>
                                     </button>
                                 </subviews>
