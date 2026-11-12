@@ -8,7 +8,6 @@ PODS:
   - AppAuth/Core (1.7.5)
   - AppAuth/ExternalUserAgent (1.7.5):
     - AppAuth/Core
-  - CTFeedbackSwift (0.1.7)
   - Defaults (4.2.2)
   - DynamicBlurView (4.1.0)
   - Firebase (10.29.0):
@@ -182,88 +181,6 @@ PODS:
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.3.0)
   - IQKeyboardManagerSwift (6.5.16)
-  - MaterialComponents/AnimationTiming (124.2.0)
-  - MaterialComponents/Availability (124.2.0)
-  - MaterialComponents/Buttons (124.2.0):
-    - MaterialComponents/Elevation
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/Ripple
-    - MaterialComponents/Shadow
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/ShapeLibrary
-    - MaterialComponents/Shapes
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - "MaterialComponents/Buttons+ColorThemer (124.2.0)":
-    - MaterialComponents/Buttons
-    - MaterialComponents/schemes/Color
-  - "MaterialComponents/Buttons+ShapeThemer (124.2.0)":
-    - MaterialComponents/Buttons
-    - MaterialComponents/schemes/Shape
-  - "MaterialComponents/Buttons+Theming (124.2.0)":
-    - MaterialComponents/Buttons
-    - "MaterialComponents/Buttons+ColorThemer"
-    - "MaterialComponents/Buttons+ShapeThemer"
-    - "MaterialComponents/Buttons+TypographyThemer"
-    - MaterialComponents/schemes/Container
-    - MaterialComponents/ShadowElevations
-  - "MaterialComponents/Buttons+TypographyThemer (124.2.0)":
-    - MaterialComponents/Buttons
-    - MaterialComponents/schemes/Typography
-  - MaterialComponents/Elevation (124.2.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Ink (124.2.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/private/Application (124.2.0)
-  - MaterialComponents/private/Color (124.2.0):
-    - MaterialComponents/Availability
-  - MaterialComponents/private/Math (124.2.0)
-  - MaterialComponents/Ripple (124.2.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/schemes/Color (124.2.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-  - MaterialComponents/schemes/Container (124.2.0):
-    - MaterialComponents/schemes/Color
-    - MaterialComponents/schemes/Shape
-    - MaterialComponents/schemes/Typography
-  - MaterialComponents/schemes/Shape (124.2.0):
-    - MaterialComponents/ShapeLibrary
-    - MaterialComponents/Shapes
-  - MaterialComponents/schemes/Typography (124.2.0):
-    - "MaterialComponents/schemes/Typography+BasicFontScheme"
-    - "MaterialComponents/schemes/Typography+Scheming"
-    - MaterialComponents/Typography
-  - "MaterialComponents/schemes/Typography+BasicFontScheme (124.2.0)"
-  - "MaterialComponents/schemes/Typography+Scheming (124.2.0)"
-  - MaterialComponents/Shadow (124.2.0):
-    - MaterialComponents/Availability
-  - MaterialComponents/ShadowElevations (124.2.0)
-  - MaterialComponents/ShadowLayer (124.2.0):
-    - MaterialComponents/ShadowElevations
-  - MaterialComponents/ShapeLibrary (124.2.0):
-    - MaterialComponents/private/Math
-    - MaterialComponents/Shapes
-  - MaterialComponents/Shapes (124.2.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowLayer
-  - MaterialComponents/Typography (124.2.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Math
-    - MDFTextAccessibility
-  - MDFInternationalization (3.0.0)
-  - MDFTextAccessibility (2.0.1)
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -282,17 +199,12 @@ PODS:
     - RxSwift (= 6.7.1)
   - RxSwift (6.7.1)
   - SCLAlertView (0.8.1)
-  - ShowTime (2.5.3)
   - SSZipArchive (2.4.3)
   - Starscream (4.0.8)
-  - SwiftyJSON (5.0.2)
-  - SwiftyUserDefaults (5.3.0)
-  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - CTFeedbackSwift (from `https://github.com/greenrobotllc/CTFeedbackSwift`)
   - Defaults
   - Firebase
   - Firebase/Crashlytics
@@ -304,18 +216,12 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - GoogleSignIn
   - IQKeyboardManagerSwift
-  - MaterialComponents/Buttons
-  - "MaterialComponents/Buttons+Theming"
   - PopupDialog
   - RxCocoa (~> 6.0)
   - RxSwift (~> 6.0)
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
-  - ShowTime (~> 2)
   - SSZipArchive
   - Starscream
-  - SwiftyJSON
-  - SwiftyUserDefaults
-  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -352,9 +258,6 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
-    - MaterialComponents
-    - MDFInternationalization
-    - MDFTextAccessibility
     - nanopb
     - PopupDialog
     - PromisesObjC
@@ -363,23 +266,14 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
-    - ShowTime
     - SSZipArchive
     - Starscream
-    - SwiftyJSON
-    - SwiftyUserDefaults
-    - Toast-Swift
 
 EXTERNAL SOURCES:
-  CTFeedbackSwift:
-    :git: https://github.com/greenrobotllc/CTFeedbackSwift
   SCLAlertView:
     :git: https://github.com/vikmeup/SCLAlertView-Swift
 
 CHECKOUT OPTIONS:
-  CTFeedbackSwift:
-    :commit: 8777d13d003d049ccedd8cccb68d22835e1b5cc8
-    :git: https://github.com/greenrobotllc/CTFeedbackSwift
   SCLAlertView:
     :commit: 2148ecd7b96899b48f41147e2acaad875711dd61
     :git: https://github.com/vikmeup/SCLAlertView-Swift
@@ -388,7 +282,6 @@ SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
   AlamofireImage: 843953fa97bee5f561cf05d83abd759e590b068d
   AppAuth: 501c04eda8a8d11f179dbe8637b7a91bb7e5d2fa
-  CTFeedbackSwift: 2a0d844ef8bade492f3cad59b21c8bd8300f5a91
   Defaults: d785e56c0fb8890dc40351603f05c8e1df1bdd45
   DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   Firebase: cec914dab6fd7b1bd8ab56ea07ce4e03dd251c2d
@@ -419,9 +312,6 @@ SPEC CHECKSUMS:
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
-  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
-  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
-  MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
@@ -431,13 +321,9 @@ SPEC CHECKSUMS:
   RxRelay: 4151ba01152436b08271e08410135e099880eae5
   RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
   SCLAlertView: 776813fb1f62248965f37cb7edf4088ee6394460
-  ShowTime: 06cc9dc79886274b21041fe19b79c9eff59b9714
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
-  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
-  SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
-  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 4ec048af64917257b9bf56749c6e6cb22d1a4d4c
+PODFILE CHECKSUM: 66d1a627cc40b4280262c1b6d71448d80694fc7a
 
 COCOAPODS: 1.16.2

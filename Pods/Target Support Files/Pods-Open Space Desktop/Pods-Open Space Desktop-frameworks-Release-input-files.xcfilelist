@@ -2,7 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-Open Space Desktop/Pods-Open Space Deskto
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
 ${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
-${BUILT_PRODUCTS_DIR}/CTFeedbackSwift/CTFeedbackSwift.framework
 ${BUILT_PRODUCTS_DIR}/Defaults/Defaults.framework
 ${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework
@@ -27,9 +26,6 @@ ${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework
 ${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
-${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
-${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework
-${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework
 ${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
 ${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework
@@ -39,9 +35,5 @@ ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
 ${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework
 ${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework
-${BUILT_PRODUCTS_DIR}/ShowTime/ShowTime.framework
 ${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
-${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
-${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework
-${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

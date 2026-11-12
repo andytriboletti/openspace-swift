@@ -27,16 +27,8 @@ def shared_pods
   pod 'Firebase/Crashlytics'
   pod 'FirebasePerformance'
   
-  
-  #pods from gridhack
-  pod 'SwiftyUserDefaults'
-  pod 'SwiftyJSON'
+
   pod 'Firebase'
-  pod 'CTFeedbackSwift' , :git => 'https://github.com/greenrobotllc/CTFeedbackSwift'
-  pod 'ShowTime', '~> 2'
-  pod 'MaterialComponents/Buttons+Theming'
-  pod 'MaterialComponents/Buttons'
-  pod 'Toast-Swift', '~> 5.0.1'
   
 end
 

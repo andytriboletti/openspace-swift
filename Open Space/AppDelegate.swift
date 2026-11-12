@@ -2,10 +2,7 @@ import UIKit
 import SceneKit
 import Alamofire
 import Firebase
-import ShowTime
 // import GoogleMobileAds
-import MaterialComponents.MaterialButtons
-import MaterialComponents.MaterialButtons_Theming
 import FirebaseCore
 import SpriteKit
 import DynamicBlurView
@@ -29,60 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     #endif
 
-    var containerSchemeBlue: MDCContainerScheme!
-    var containerSchemeRed: MDCContainerScheme!
-
     #if targetEnvironment(macCatalyst)
     #else
         // var interstitial: GADInterstitial!
     #endif
     let animationDuration = 2.0
 
-    var gridNode = SCNNode()
-    var donkeyNode: SCNNode?
-    var elephantNode: SCNNode?
-    var bernieProtesterNode: SCNNode?
-    var trumpProtesterNode: SCNNode?
-    var fistNodeBlue: SCNNode?
-    var fistNodeRed: SCNNode?
-
-    let donkeyScene = SCNScene(named: "donkeyWithEyes.dae")
-    let elephantScene = SCNScene(named: "elephant3.dae")
-
-    var team: String?
-    var username: String?
-    var isMultiplayer: Bool = false
-
-    var scene: GameScene?
-    var gameViewController: GridHackGameViewController?
     var session: Session = Alamofire.Session()
-    var multiplayer: Multiplayer = Multiplayer()
     var window: UIWindow?
 
     var gameState: GameState!
-    var gridHackGameState: GridHackGameState!
     var blurView: DynamicBlurView?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Common setup
-        team="bernie"
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
-
-        // GridHack setup
-        ShowTime.enabled = .never
-        containerSchemeBlue = MDCContainerScheme()
-        containerSchemeBlue.colorScheme.primaryColor = UIColor.blue.darker()!
-        containerSchemeBlue.colorScheme.primaryColorVariant = .blue
-
-        let customTypographyScheme = MDCTypographyScheme(defaults: .material201902)
-        customTypographyScheme.button = UIFont.systemFont(ofSize: 20)
-        containerSchemeBlue.typographyScheme = customTypographyScheme
-
-        containerSchemeRed = MDCContainerScheme()
-        containerSchemeRed.colorScheme.primaryColor = UIColor.red.darker()!
-        containerSchemeRed.colorScheme.primaryColorVariant = .red
-        containerSchemeRed.typographyScheme = customTypographyScheme
 
         self.gameState = GameState()
 
@@ -91,8 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //    GADMobileAds.sharedInstance().start(completionHandler: nil)
         //    interstitial = createAndLoadInterstitial()
         #endif
-
-        initializeNodes()
 
         IAPManager.shared.requestProducts()
         // Add IAPManager as a transaction observer
@@ -150,32 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     #endif
-
-    func initializeNodes() {
-        donkeyNode = SCNNode()
-        let shipScene = SCNScene(named: "donkeyWithEyes.dae")
-        shipScene?.rootNode.childNodes.forEach { donkeyNode!.addChildNode($0) }
-
-        elephantNode = SCNNode()
-        let eScene = SCNScene(named: "elephant3.dae")
-        eScene?.rootNode.childNodes.forEach { elephantNode!.addChildNode($0) }
-
-        bernieProtesterNode = SCNNode()
-        let bScene = SCNScene(named: "sm_Protester_Bernie.dae")
-        bScene?.rootNode.childNodes.forEach { bernieProtesterNode!.addChildNode($0) }
-
-        trumpProtesterNode = SCNNode()
-        let tScene = SCNScene(named: "sm_Protester_Trump.dae")
-        tScene?.rootNode.childNodes.forEach { trumpProtesterNode!.addChildNode($0) }
-
-        fistNodeBlue = SCNNode()
-        let fScene = SCNScene(named: "fist_instant_mesh_blue.dae")
-        fScene?.rootNode.childNodes.forEach { fistNodeBlue!.addChildNode($0) }
-
-        fistNodeRed = SCNNode()
-        let rScene = SCNScene(named: "fist_instant_mesh_red.dae")
-        rScene?.rootNode.childNodes.forEach { fistNodeRed!.addChildNode($0) }
-    }
 
     /// Shows the app open ad when the app comes to the foreground. Called by SceneDelegate:
     /// with the scene lifecycle, UIKit no longer calls applicationDidBecomeActive.
@@ -271,26 +201,6 @@ extension SCNScene {
         return (UIApplication.shared.delegate as? AppDelegate?)!!
     }
 }
-extension GameScore {
-    var appDelegate: AppDelegate {
-        return (UIApplication.shared.delegate as? AppDelegate?)!!
-    }
-}
-extension GridHackUtils {
-    var appDelegate: AppDelegate {
-        return (UIApplication.shared.delegate as? AppDelegate?)!!
-    }
-    var gameState: GameState {
-        return appDelegate.gameState
-    }
-}
-
-extension FactoryFactory {
-    var appDelegate: AppDelegate {
-        return (UIApplication.shared.delegate as? AppDelegate?)!!
-    }
-}
-
 extension SCNNode {
     convenience init(named name: String) {
         self.init()
