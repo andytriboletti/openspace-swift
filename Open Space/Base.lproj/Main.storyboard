@@ -2221,7 +2221,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Back To Neighbor List "/>
                                         <connections>
-                                            <segue destination="jl2-gm-HZU" kind="presentation" modalPresentationStyle="fullScreen" id="mCm-fZ-9HZ"/>
+                                            <segue destination="jl2-gm-HZU" kind="presentation" identifier="backToNeighbors" modalPresentationStyle="fullScreen" id="mCm-fZ-9HZ"/>
                                         </connections>
                                     </button>
                                 </subviews>

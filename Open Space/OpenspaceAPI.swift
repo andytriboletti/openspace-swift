@@ -292,6 +292,34 @@ class OpenspaceAPI {
         performSimpleRequest(request: request, completion: completion)
     }
 
+    // MARK: - Reporting and blocking (neighbor spheres)
+
+    enum ReportReason: String {
+        case offensive, spam, other
+    }
+
+    /// Reports another player's sphere to the moderators.
+    func reportPlayer(userId: Int, sphereId: Int, reason: ReportReason, details: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let parameters: [String: Any] = ["email": Defaults[.email], "appToken": AppSecrets.appToken,
+                                         "reportedUserId": userId, "sphereId": sphereId,
+                                         "reason": reason.rawValue, "details": details]
+        guard let request = createPostRequest(urlString: "\(serverURL)report-player", parameters: parameters) else {
+            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+            return
+        }
+        performSimpleRequest(request: request, completion: completion)
+    }
+
+    /// Blocks another player: their spheres no longer appear for this account.
+    func blockPlayer(userId: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        let parameters: [String: Any] = ["email": Defaults[.email], "appToken": AppSecrets.appToken, "blockedUserId": userId]
+        guard let request = createPostRequest(urlString: "\(serverURL)block-player", parameters: parameters) else {
+            completion(.failure(NSError(domain: "com.openspace.error", code: -1, userInfo: nil)))
+            return
+        }
+        performSimpleRequest(request: request, completion: completion)
+    }
+
     func deleteUser(email: String, authToken: String, completion: @escaping (Result<String, Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "authToken": authToken, "appToken": AppSecrets.appToken]
         guard let request = createPostRequest(urlString: "\(serverURL)delete-user", parameters: parameters) else {

@@ -24,12 +24,14 @@ class NeighborSphereInventoryViewController: UIViewController {
     var completedDownloads = 0
 
     let serialQueue = DispatchQueue(label: "com.greenrobot.openspace.serialQueue")
+    private var reportButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         baseNode = SCNNode()
         let neighborUsername = Defaults[.neighborUsername]
         headerLabel.text = "Viewing \(neighborUsername)'s sphere"
+        setupReportButton()
 
         setupLoadingViews()
         startLoading()
@@ -329,5 +331,117 @@ class NeighborSphereInventoryViewController: UIViewController {
             //print("Error while enumerating files \(directoryURL.path): \(error.localizedDescription)")
         }
         return nil
+    }
+
+    // MARK: - Report or block (App Review guideline 1.2: user-generated content)
+
+    /// Adds "Report or Block" under the header. Hidden on the player's own sphere.
+    private func setupReportButton() {
+        let neighborId = Defaults[.neighborUserId]
+        guard neighborId > 0, neighborId != Defaults[.userId],
+              let stack = headerLabel.superview as? UIStackView else { return }
+
+        var config = UIButton.Configuration.plain()
+        config.title = "Report or Block"
+        config.image = UIImage(systemName: "flag")
+        config.imagePadding = 6
+        let button = UIButton(configuration: config)
+        button.addTarget(self, action: #selector(reportOrBlockTapped), for: .touchUpInside)
+        let index = (stack.arrangedSubviews.firstIndex(of: headerLabel) ?? 0) + 1
+        stack.insertArrangedSubview(button, at: index)
+        reportButton = button
+    }
+
+    @objc private func reportOrBlockTapped() {
+        let name = Defaults[.neighborUsername]
+        let sheet = UIAlertController(title: "\(name)'s sphere", message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Report This Sphere", style: .default) { [weak self] _ in self?.chooseReportReason() })
+        sheet.addAction(UIAlertAction(title: "Block \(name)", style: .destructive) { [weak self] _ in self?.confirmBlock() })
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        presentSheet(sheet)
+    }
+
+    private func chooseReportReason() {
+        let sheet = UIAlertController(title: "Why are you reporting this sphere?", message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Offensive or inappropriate", style: .default) { [weak self] _ in self?.sendReport(.offensive, details: "") })
+        sheet.addAction(UIAlertAction(title: "Spam or misleading", style: .default) { [weak self] _ in self?.sendReport(.spam, details: "") })
+        sheet.addAction(UIAlertAction(title: "Something else", style: .default) { [weak self] _ in self?.askForDetails() })
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        presentSheet(sheet)
+    }
+
+    private func askForDetails() {
+        let alert = UIAlertController(title: "Report This Sphere", message: "Tell us what's wrong (optional).", preferredStyle: .alert)
+        alert.addTextField { $0.placeholder = "Details" }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Send", style: .default) { [weak self, weak alert] _ in
+            self?.sendReport(.other, details: alert?.textFields?.first?.text ?? "")
+        })
+        present(alert, animated: true)
+    }
+
+    private func sendReport(_ reason: OpenspaceAPI.ReportReason, details: String) {
+        let name = Defaults[.neighborUsername]
+        OpenspaceAPI.shared.reportPlayer(userId: Defaults[.neighborUserId], sphereId: Defaults[.neighborSphereId],
+                                         reason: reason, details: details) { [weak self] (result: Result<String, Error>) in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    let alert = UIAlertController(title: "Thanks for reporting",
+                                                  message: "We review every report within 24 hours. You can also block \(name) so you no longer see their spheres.",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Block \(name)", style: .destructive) { _ in self.block() })
+                    alert.addAction(UIAlertAction(title: "Done", style: .cancel))
+                    self.present(alert, animated: true)
+                case .failure:
+                    self.showMessage(title: "Couldn't send the report", message: "Please check your connection and try again.")
+                }
+            }
+        }
+    }
+
+    private func confirmBlock() {
+        let name = Defaults[.neighborUsername]
+        let alert = UIAlertController(title: "Block \(name)?", message: "You won't see \(name)'s spheres anymore.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Block", style: .destructive) { [weak self] _ in self?.block() })
+        present(alert, animated: true)
+    }
+
+    private func block() {
+        let name = Defaults[.neighborUsername]
+        OpenspaceAPI.shared.blockPlayer(userId: Defaults[.neighborUserId]) { [weak self] (result: Result<String, Error>) in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    let alert = UIAlertController(title: "\(name) is blocked", message: "Their spheres won't appear for you anymore.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                        // Back to a fresh neighbor list, which no longer includes this player.
+                        self.performSegue(withIdentifier: "backToNeighbors", sender: self)
+                    })
+                    self.present(alert, animated: true)
+                case .failure:
+                    self.showMessage(title: "Couldn't block \(name)", message: "Please check your connection and try again.")
+                }
+            }
+        }
+    }
+
+    private func showMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
+    /// Action sheets need an anchor on iPad and Mac, where they show as popovers.
+    private func presentSheet(_ sheet: UIAlertController) {
+        if let popover = sheet.popoverPresentationController {
+            let anchor: UIView = reportButton ?? view
+            popover.sourceView = anchor
+            popover.sourceRect = anchor.bounds
+        }
+        present(sheet, animated: true)
     }
 }

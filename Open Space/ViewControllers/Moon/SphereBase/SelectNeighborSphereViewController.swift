@@ -73,6 +73,7 @@ class SelectNeighborSphereViewController: BackgroundImageViewController, UIColle
         // Ensure the index is within bounds
         if indexPath.item < neighbors.count {
             Defaults[.neighborUsername] = neighbors[indexPath.item].username
+            Defaults[.neighborUserId] = neighbors[indexPath.item].userId
             Defaults[.neighborSphereId] = neighbors[indexPath.item].sphereId
             performSegue(withIdentifier: "NeighborSphereInventorySegue", sender: indexPath)
         }
